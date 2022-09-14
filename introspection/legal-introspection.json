@@ -1,0 +1,378 @@
+{
+  "__schema": {
+    "types": [
+      {
+        "kind": "INTERFACE",
+        "name": "Entry",
+        "possibleTypes": [
+          {
+            "name": "ImageWithFocalPoint"
+          },
+          {
+            "name": "ComponentHeroBannerFocalPoint"
+          },
+          {
+            "name": "ComponentHeroContainer"
+          },
+          {
+            "name": "Page"
+          },
+          {
+            "name": "ComponentDuplexContainer"
+          },
+          {
+            "name": "PageCommerceToolsCategory"
+          },
+          {
+            "name": "ComponentCardCollection"
+          },
+          {
+            "name": "PageCommerceTools"
+          },
+          {
+            "name": "VariationContainer"
+          },
+          {
+            "name": "ComponentCta"
+          },
+          {
+            "name": "ComponentFaq"
+          },
+          {
+            "name": "TopicFaqList"
+          },
+          {
+            "name": "TopicQuestion"
+          },
+          {
+            "name": "ComponentImageGallery"
+          },
+          {
+            "name": "ComponentInfoBlock"
+          },
+          {
+            "name": "TopicContentSnippet"
+          },
+          {
+            "name": "TopicTestimonial"
+          },
+          {
+            "name": "TopicBrand"
+          },
+          {
+            "name": "TopicProduct"
+          },
+          {
+            "name": "TopicCategory"
+          },
+          {
+            "name": "ComponentTestimonial"
+          },
+          {
+            "name": "WrapperAudio"
+          },
+          {
+            "name": "WrapperImage"
+          },
+          {
+            "name": "WrapperRichMedia"
+          },
+          {
+            "name": "WrapperVideo"
+          },
+          {
+            "name": "HeaderMenu"
+          },
+          {
+            "name": "MenuGroup"
+          },
+          {
+            "name": "FooterMenu"
+          },
+          {
+            "name": "ComponentHeroBanner"
+          },
+          {
+            "name": "TopicArticle"
+          },
+          {
+            "name": "TopicAuthor"
+          },
+          {
+            "name": "TopicArticleList"
+          },
+          {
+            "name": "TopicBusinessInfo"
+          },
+          {
+            "name": "TopicCampaign"
+          },
+          {
+            "name": "WrapperExternalDam"
+          },
+          {
+            "name": "ComponentCommerceToolsProducts"
+          },
+          {
+            "name": "Migration"
+          },
+          {
+            "name": "GlobalMicrocopy"
+          }
+        ]
+      },
+      {
+        "kind": "UNION",
+        "name": "PageCommerceToolsCategoryExtraSectionItem",
+        "possibleTypes": [
+          {
+            "name": "ComponentCardCollection"
+          },
+          {
+            "name": "ComponentCta"
+          },
+          {
+            "name": "ComponentDuplexContainer"
+          },
+          {
+            "name": "ComponentFaq"
+          },
+          {
+            "name": "ComponentHeroContainer"
+          },
+          {
+            "name": "ComponentImageGallery"
+          },
+          {
+            "name": "ComponentInfoBlock"
+          },
+          {
+            "name": "ComponentTestimonial"
+          },
+          {
+            "name": "WrapperAudio"
+          },
+          {
+            "name": "WrapperImage"
+          },
+          {
+            "name": "WrapperRichMedia"
+          },
+          {
+            "name": "WrapperVideo"
+          },
+          {
+            "name": "VariationContainer"
+          }
+        ]
+      },
+      {
+        "kind": "UNION",
+        "name": "PageCommerceToolsExtraSectionItem",
+        "possibleTypes": [
+          {
+            "name": "VariationContainer"
+          },
+          {
+            "name": "ComponentCardCollection"
+          },
+          {
+            "name": "ComponentCta"
+          },
+          {
+            "name": "ComponentDuplexContainer"
+          },
+          {
+            "name": "ComponentFaq"
+          },
+          {
+            "name": "ComponentHeroContainer"
+          },
+          {
+            "name": "ComponentImageGallery"
+          },
+          {
+            "name": "ComponentInfoBlock"
+          },
+          {
+            "name": "ComponentTestimonial"
+          },
+          {
+            "name": "WrapperAudio"
+          },
+          {
+            "name": "WrapperImage"
+          },
+          {
+            "name": "WrapperRichMedia"
+          },
+          {
+            "name": "WrapperVideo"
+          }
+        ]
+      },
+      {
+        "kind": "UNION",
+        "name": "ComponentInfoBlockBlockContentsItem",
+        "possibleTypes": [
+          {
+            "name": "TopicContentSnippet"
+          },
+          {
+            "name": "TopicTestimonial"
+          }
+        ]
+      },
+      {
+        "kind": "UNION",
+        "name": "TopicCategoryRelatedProductsItem",
+        "possibleTypes": [
+          {
+            "name": "Page"
+          }
+        ]
+      },
+      {
+        "kind": "UNION",
+        "name": "TopicBrandRelatedProductsItem",
+        "possibleTypes": [
+          {
+            "name": "TopicProduct"
+          },
+          {
+            "name": "Page"
+          }
+        ]
+      },
+      {
+        "kind": "UNION",
+        "name": "PageTopSectionItem",
+        "possibleTypes": [
+          {
+            "name": "VariationContainer"
+          },
+          {
+            "name": "ComponentCardCollection"
+          },
+          {
+            "name": "ComponentCta"
+          },
+          {
+            "name": "ComponentDuplexContainer"
+          },
+          {
+            "name": "ComponentFaq"
+          },
+          {
+            "name": "ComponentHeroContainer"
+          },
+          {
+            "name": "ComponentImageGallery"
+          },
+          {
+            "name": "ComponentInfoBlock"
+          },
+          {
+            "name": "ComponentTestimonial"
+          },
+          {
+            "name": "WrapperAudio"
+          },
+          {
+            "name": "WrapperImage"
+          },
+          {
+            "name": "WrapperRichMedia"
+          },
+          {
+            "name": "WrapperVideo"
+          }
+        ]
+      },
+      {
+        "kind": "UNION",
+        "name": "PagePageContent",
+        "possibleTypes": [
+          {
+            "name": "TopicArticle"
+          },
+          {
+            "name": "TopicArticleList"
+          },
+          {
+            "name": "TopicBrand"
+          },
+          {
+            "name": "TopicBusinessInfo"
+          },
+          {
+            "name": "TopicCampaign"
+          },
+          {
+            "name": "TopicCategory"
+          },
+          {
+            "name": "TopicProduct"
+          }
+        ]
+      },
+      {
+        "kind": "UNION",
+        "name": "PageExtraSectionItem",
+        "possibleTypes": [
+          {
+            "name": "VariationContainer"
+          },
+          {
+            "name": "ComponentCardCollection"
+          },
+          {
+            "name": "ComponentCta"
+          },
+          {
+            "name": "ComponentDuplexContainer"
+          },
+          {
+            "name": "ComponentFaq"
+          },
+          {
+            "name": "ComponentHeroContainer"
+          },
+          {
+            "name": "ComponentImageGallery"
+          },
+          {
+            "name": "ComponentInfoBlock"
+          },
+          {
+            "name": "ComponentTestimonial"
+          },
+          {
+            "name": "WrapperAudio"
+          },
+          {
+            "name": "WrapperImage"
+          },
+          {
+            "name": "WrapperRichMedia"
+          },
+          {
+            "name": "WrapperVideo"
+          }
+        ]
+      },
+      {
+        "kind": "UNION",
+        "name": "ComponentHeroContainerHeroBannersItem",
+        "possibleTypes": [
+          {
+            "name": "ComponentHeroBanner"
+          },
+          {
+            "name": "ComponentHeroBannerFocalPoint"
+          }
+        ]
+      }
+    ]
+  }
+}
