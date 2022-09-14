@@ -186,3 +186,9 @@ bower_components
 .env
 
 storybook-static
+
+### Intellij ###
+.idea/
+
+### Install artifacts ###
+package-lock.json
