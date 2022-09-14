@@ -1,18 +1,7 @@
 /* eslint-disable no-param-reassign */
 const withImages = require('next-images');
-const SentryWebpackPlugin = require('@sentry/webpack-plugin');
 
 require('dotenv').config();
-
-const {
-  NEXT_PUBLIC_SENTRY_DSN: SENTRY_DSN,
-  SENTRY_ORG,
-  SENTRY_PROJECT,
-  SENTRY_AUTH_TOKEN,
-  NODE_ENV,
-} = process.env;
-
-process.env.SENTRY_DSN = SENTRY_DSN;
 
 const path = require('path');
 
@@ -49,27 +38,6 @@ module.exports = withImages({
 
       return entries;
     };
-
-    if (!isServer) {
-      config.resolve.alias['@sentry/node'] = '@sentry/browser';
-    }
-
-    if (
-      SENTRY_DSN &&
-      SENTRY_ORG &&
-      SENTRY_PROJECT &&
-      SENTRY_AUTH_TOKEN &&
-      NODE_ENV === 'production'
-    ) {
-      config.plugins.push(
-        new SentryWebpackPlugin({
-          include: '.next',
-          ignore: ['node_modules'],
-          urlPrefix: '~/_next',
-          release: buildId,
-        }),
-      );
-    }
 
     return config;
   },
@@ -138,7 +106,6 @@ module.exports = withImages({
       process.env.CONFIG_CONTENTFUL_DE_FOOTER_LEGAL,
     CONFIG_CONTENTFUL_DE_FOOTER_DISCLAIMER:
       process.env.CONFIG_CONTENTFUL_DE_FOOTER_DISCLAIMER,
-    NEXT_PUBLIC_SENTRY_DSN: process.env.NEXT_PUBLIC_SENTRY_DSN,
     NEXT_PUBLIC_GOOGLE_ANALYTICS_ID:
       process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID,
   },

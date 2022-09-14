@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import Head from 'next/head';
 import App, { AppContext, AppProps } from 'next/app';
-import * as Sentry from '@sentry/node';
 import { ThemeProvider } from '@material-ui/styles';
 import Layout from '@src/components/layout/layout';
 import colorfulTheme from '@src/theme';
@@ -51,11 +50,6 @@ const contentfulContextValue: ContentfulContextInterface = {
 };
 
 export const ContentfulContext = React.createContext(contentfulContextValue);
-
-Sentry.init({
-  enabled: process.env.NODE_ENV === 'production',
-  dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
-});
 
 const CustomApp = (
   props: AppProps & {

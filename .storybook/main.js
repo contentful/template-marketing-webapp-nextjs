@@ -9,7 +9,6 @@ module.exports = {
       '@src': path.resolve(__dirname, '../src/'),
       '@pages': path.resolve(__dirname, '../pages/'),
       '@ctf-components': path.resolve(__dirname, '../src/ctf-components/'),
-      '@sentry/node': '@sentry/browser',
     };
     config.resolve.extensions.push('.ts', '.tsx');
     return config;

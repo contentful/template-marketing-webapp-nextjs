@@ -2,7 +2,6 @@ import React from 'react';
 import { IncomingMessage } from 'http';
 import { NextPage, NextPageContext } from 'next';
 import NextErrorComponent, { ErrorProps } from 'next/error';
-import * as Sentry from '@sentry/node';
 import { tryget } from '@src/utils';
 import PageError from '@src/components/errors/page-error';
 
@@ -93,27 +92,6 @@ const ErrorPage: NextPage<ErrorPagePropsInterface> = ({
   message,
   req,
 }) => {
-  if (!hasGetInitialPropsRun && err) {
-    // getInitialProps is not called in case of
-    // https://github.com/vercel/next.js/issues/8592. As a workaround, we pass
-    // err via _app.js so it can be captured
-    Sentry.captureException(err, (scope) => {
-      if (req === undefined) {
-        return scope;
-      }
-
-      scope.setTag('host', req.headers.host || '');
-      scope.setTag('url', req.url || '');
-      scope.setTag('method', req.method || '');
-      scope.setContext('query', req.query || {});
-      scope.setContext('cookies', req.cookies || {});
-      scope.setContext('body', req.body || {});
-      scope.setContext('headers', req.headers);
-
-      return scope;
-    });
-  }
-
   if (code !== undefined && message !== undefined) {
     return <PageError error={{ code, message }} />;
   }
@@ -164,27 +142,10 @@ ErrorPage.getInitialProps = async ({
   //    Boundaries: https://reactjs.org/docs/error-boundaries.html
 
   if (res?.statusCode === 404) {
-    // Opinionated: do not record an exception in Sentry for 404
     return { statusCode: 404 };
   }
 
   if (err) {
-    Sentry.captureException(err, (scope) => {
-      if (req === undefined) {
-        return scope;
-      }
-
-      scope.setTag('host', req.headers.host || '');
-      scope.setTag('url', req.url || '');
-      scope.setTag('method', req.method || '');
-      scope.setContext('query', req.query || {});
-      scope.setContext('cookies', req.cookies || {});
-      scope.setContext('body', req.body || {});
-      scope.setContext('headers', req.headers);
-
-      return scope;
-    });
-
     return {
       ...errorInitialProps,
       ...getStatusAndMessageFromError(err, res?.statusCode),
@@ -200,13 +161,6 @@ ErrorPage.getInitialProps = async ({
         : undefined,
     };
   }
-
-  // If this point is reached, getInitialProps was called without any
-  // information about what the error might be. This is unexpected and may
-  // indicate a bug introduced in Next.js, so record it in Sentry
-  Sentry.captureException(
-    new Error(`_error.js getInitialProps missing data at path: ${asPath}`),
-  );
 
   return errorInitialProps;
 };
