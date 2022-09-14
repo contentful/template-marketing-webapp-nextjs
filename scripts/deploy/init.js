@@ -1,7 +1,5 @@
 const { createClient } = require('contentful-management');
 const catchify = require('catchify');
-const sentry = require('@sentry/node');
-const CaptureConsole = require('@sentry/integrations').CaptureConsole;
 
 const createSpace = require('./createSpace');
 const importContentModel = require('./importContentModel');
@@ -34,7 +32,6 @@ const init = async (input) => {
     legalSpaceId,
     legalSpaceToken,
     vercelDeployToken,
-    sentryDsn,
     googleAnalyticsId,
     googleTagManagerId,
     ninetailedAPIKey,
@@ -42,23 +39,6 @@ const init = async (input) => {
   } = input;
   const client = createClient({
     accessToken: cmaToken,
-  });
-
-  sentry.init({
-    dsn: sentryDsn || process.env.CONTENTFUL_SENTRY_DSN,
-    integrations: [
-      new CaptureConsole({
-        levels: ['error', 'warn']
-      })
-    ],
-    initialScope: {
-      tags: {
-        organizationId,
-        email,
-        type: 'Provisioing Error',
-        project: 'Coin',
-      },
-    }
   });
 
   const startTime = new Date();
@@ -546,7 +526,6 @@ const init = async (input) => {
     legalSpaceId,
     legalSpaceToken,
     vercelDeployToken,
-    sentryDsn,
     googleAnalyticsId,
     googleTagManagerId,
     ninetailedAPIKey,
