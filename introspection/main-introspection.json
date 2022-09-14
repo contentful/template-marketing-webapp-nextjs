@@ -1,0 +1,291 @@
+{
+  "__schema": {
+    "types": [
+      {
+        "kind": "INTERFACE",
+        "name": "Entry",
+        "possibleTypes": [
+          {
+            "name": "Seo"
+          },
+          {
+            "name": "Page"
+          },
+          {
+            "name": "ComponentHeroBanner"
+          },
+          {
+            "name": "Post"
+          },
+          {
+            "name": "ComponentCta"
+          },
+          {
+            "name": "PersonalizationContainer"
+          },
+          {
+            "name": "ComponentDuplex"
+          },
+          {
+            "name": "NtAudience"
+          },
+          {
+            "name": "ComponentInfoBlock"
+          },
+          {
+            "name": "ComponentProductTable"
+          },
+          {
+            "name": "TopicProduct"
+          },
+          {
+            "name": "TopicProductFeature"
+          },
+          {
+            "name": "ComponentQuote"
+          },
+          {
+            "name": "WrapperExternalAsset"
+          },
+          {
+            "name": "ComponentFeaturedCards"
+          },
+          {
+            "name": "ComponentTextBlock"
+          },
+          {
+            "name": "Category"
+          },
+          {
+            "name": "TopicPerson"
+          },
+          {
+            "name": "TopicBusinessInfo"
+          },
+          {
+            "name": "Audience"
+          },
+          {
+            "name": "NtMergetag"
+          },
+          {
+            "name": "ContentFeed"
+          },
+          {
+            "name": "ContentMapping"
+          }
+        ]
+      },
+      {
+        "kind": "UNION",
+        "name": "PersonalizationContainerDefaultVariation",
+        "possibleTypes": [
+          {
+            "name": "ComponentCta"
+          },
+          {
+            "name": "ComponentDuplex"
+          },
+          {
+            "name": "ComponentFeaturedCards"
+          },
+          {
+            "name": "ComponentHeroBanner"
+          },
+          {
+            "name": "ComponentInfoBlock"
+          },
+          {
+            "name": "ComponentQuote"
+          },
+          {
+            "name": "ComponentTextBlock"
+          },
+          {
+            "name": "WrapperExternalAsset"
+          }
+        ]
+      },
+      {
+        "kind": "UNION",
+        "name": "ComponentDuplexTargetPage",
+        "possibleTypes": [
+          {
+            "name": "Page"
+          },
+          {
+            "name": "Post"
+          }
+        ]
+      },
+      {
+        "kind": "UNION",
+        "name": "PersonalizationContainerAlternativesItem",
+        "possibleTypes": [
+          {
+            "name": "ComponentCta"
+          },
+          {
+            "name": "ComponentDuplex"
+          },
+          {
+            "name": "ComponentFeaturedCards"
+          },
+          {
+            "name": "ComponentHeroBanner"
+          },
+          {
+            "name": "ComponentInfoBlock"
+          },
+          {
+            "name": "ComponentQuote"
+          },
+          {
+            "name": "ComponentTextBlock"
+          },
+          {
+            "name": "WrapperExternalAsset"
+          }
+        ]
+      },
+      {
+        "kind": "UNION",
+        "name": "ComponentCtaTargetPage",
+        "possibleTypes": [
+          {
+            "name": "Page"
+          },
+          {
+            "name": "Post"
+          }
+        ]
+      },
+      {
+        "kind": "UNION",
+        "name": "PostExtraSectionItem",
+        "possibleTypes": [
+          {
+            "name": "ComponentCta"
+          },
+          {
+            "name": "ComponentDuplex"
+          },
+          {
+            "name": "ComponentFeaturedCards"
+          },
+          {
+            "name": "ComponentHeroBanner"
+          },
+          {
+            "name": "ComponentInfoBlock"
+          },
+          {
+            "name": "ComponentQuote"
+          },
+          {
+            "name": "ComponentTextBlock"
+          },
+          {
+            "name": "WrapperExternalAsset"
+          },
+          {
+            "name": "PersonalizationContainer"
+          }
+        ]
+      },
+      {
+        "kind": "UNION",
+        "name": "ComponentHeroBannerTargetPage",
+        "possibleTypes": [
+          {
+            "name": "Page"
+          },
+          {
+            "name": "Post"
+          }
+        ]
+      },
+      {
+        "kind": "UNION",
+        "name": "PageTopSectionItem",
+        "possibleTypes": [
+          {
+            "name": "ComponentCta"
+          },
+          {
+            "name": "ComponentDuplex"
+          },
+          {
+            "name": "ComponentFeaturedCards"
+          },
+          {
+            "name": "ComponentHeroBanner"
+          },
+          {
+            "name": "ComponentInfoBlock"
+          },
+          {
+            "name": "ComponentQuote"
+          },
+          {
+            "name": "ComponentTextBlock"
+          },
+          {
+            "name": "WrapperExternalAsset"
+          },
+          {
+            "name": "PersonalizationContainer"
+          }
+        ]
+      },
+      {
+        "kind": "UNION",
+        "name": "PagePageContent",
+        "possibleTypes": [
+          {
+            "name": "TopicBusinessInfo"
+          },
+          {
+            "name": "TopicProduct"
+          },
+          {
+            "name": "ComponentProductTable"
+          }
+        ]
+      },
+      {
+        "kind": "UNION",
+        "name": "PageExtraSectionItem",
+        "possibleTypes": [
+          {
+            "name": "ComponentCta"
+          },
+          {
+            "name": "ComponentDuplex"
+          },
+          {
+            "name": "ComponentFeaturedCards"
+          },
+          {
+            "name": "ComponentHeroBanner"
+          },
+          {
+            "name": "ComponentInfoBlock"
+          },
+          {
+            "name": "ComponentQuote"
+          },
+          {
+            "name": "ComponentTextBlock"
+          },
+          {
+            "name": "WrapperExternalAsset"
+          },
+          {
+            "name": "PersonalizationContainer"
+          }
+        ]
+      }
+    ]
+  }
+}

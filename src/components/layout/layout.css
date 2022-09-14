@@ -1,0 +1,18 @@
+html {
+  font-size: 10px;
+}
+
+html,
+body,
+#__next {
+  height: 100%;
+}
+
+body.is-scroll-locked {
+  overflow: hidden;
+}
+
+#__next {
+  display: flex;
+  flex-direction: column;
+}
