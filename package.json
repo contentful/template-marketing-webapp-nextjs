@@ -1,9 +1,10 @@
 {
-  "name": "colorful-demo-fintech",
+  "name": "template-marketing-webapp-nextjs",
   "private": true,
   "version": "0.0.1",
   "engines": {
-    "node": "16.x"
+    "node": "16.15.1",
+    "npm": "Please use Yarn"
   },
   "description": "",
   "main": "index.js",
