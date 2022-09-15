@@ -14,11 +14,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-type Props = {
+interface Props {
   className?: string;
   style?: CSSProperties;
   children?: React.ReactNode | React.ReactNode[];
-};
+}
 
 const CategoryContainer = (props: Props) => {
   const classes = useStyles();

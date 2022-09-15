@@ -25,7 +25,7 @@ const CtfTextBlockGql = (props: CtfTextBlockGqlPropsInterface) => {
 
   if (
     queryResult.data === undefined ||
-    queryResult.loading === true ||
+    queryResult.loading ||
     queryResult.data.componentTextBlock === null
   ) {
     return null;

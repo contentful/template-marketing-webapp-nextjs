@@ -166,7 +166,7 @@ const CtfDuplex: PersonalizedComponent<CtfDuplexPropsInterface> = (props) => {
     containerLayoutBoolean === true ? 'imageLeft' : 'imageRight';
   const imageStyle = imageStyleBoolean ? 'fixed' : 'full';
   const backgroundImage = useMemo(
-    () => (image ? `${image.url}?w=${600 * 2}` : undefined),
+    () => ((image != null) ? `${image.url}?w=${600 * 2}` : undefined),
     [image],
   );
   const imageAlignment = useMemo(() => {
@@ -193,7 +193,7 @@ const CtfDuplex: PersonalizedComponent<CtfDuplexPropsInterface> = (props) => {
 
   return (
     <WrapIf
-      when={xrayActive === true && isPersonalized === true}
+      when={xrayActive && isPersonalized}
       wrap={(children) => (
         <PersonalizationFrame audienceId={ninetailed?.audience.id ?? null}>
           {children}
@@ -228,7 +228,7 @@ const CtfDuplex: PersonalizedComponent<CtfDuplexPropsInterface> = (props) => {
                 {optimizeLineBreak(headline)}
               </Typography>
             )}
-            {bodyText && (
+            {(bodyText != null) && (
               <LayoutContext.Provider
                 value={{ ...defaultLayout, parent: 'duplex' }}
               >
@@ -237,7 +237,7 @@ const CtfDuplex: PersonalizedComponent<CtfDuplexPropsInterface> = (props) => {
                 </div>
               </LayoutContext.Provider>
             )}
-            {targetPage && targetPage.slug && (
+            {(targetPage != null) && targetPage.slug && (
               <div className={classes.ctaContainer}>
                 {targetPage.__typename === 'Page' && (
                   <PageLink
@@ -276,7 +276,7 @@ const CtfDuplex: PersonalizedComponent<CtfDuplexPropsInterface> = (props) => {
                 }}
               />
             )}
-            {imageStyle === 'full' && image && (
+            {imageStyle === 'full' && (image != null) && (
               <div
                 className={clsx(
                   classes.imageFull,

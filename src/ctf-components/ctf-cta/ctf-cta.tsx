@@ -58,7 +58,7 @@ const CtfCta: PersonalizedComponent<CtfCtaPropsInterface> = (props) => {
 
   return (
     <WrapIf
-      when={xrayActive === true && isPersonalized === true}
+      when={xrayActive && isPersonalized}
       wrap={(children) => (
         <PersonalizationFrame audienceId={ninetailed?.audience.id ?? null}>
           {children}
@@ -83,7 +83,7 @@ const CtfCta: PersonalizedComponent<CtfCtaPropsInterface> = (props) => {
               {optimizeLineBreak(headline)}
             </Typography>
           )}
-          {subline && (
+          {(subline != null) && (
             <LayoutContext.Provider
               value={{ ...defaultLayout, parent: 'cta-subline' }}
             >
@@ -92,7 +92,7 @@ const CtfCta: PersonalizedComponent<CtfCtaPropsInterface> = (props) => {
               </div>
             </LayoutContext.Provider>
           )}
-          {targetPage && targetPage.slug && (
+          {(targetPage != null) && targetPage.slug && (
             <div className={classes.ctaContainer}>
               {targetPage.__typename === 'Page' && (
                 <PageLink

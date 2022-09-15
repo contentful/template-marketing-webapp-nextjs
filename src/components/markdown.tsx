@@ -33,10 +33,10 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 const renderer = unified().use(parse).use(breaks).use(rehypeReact, {createElement: React.createElement});
-type Props = {
+interface Props {
   text: string;
   className?: string;
-};
+}
 
 const Markdown = (props: Props) => {
   const classes = useStyles();

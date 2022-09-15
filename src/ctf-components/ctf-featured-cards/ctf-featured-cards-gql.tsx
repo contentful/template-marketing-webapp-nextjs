@@ -35,7 +35,7 @@ const CtfFeaturedCardsGql = ({
 
   if (
     queryResult.data === undefined ||
-    queryResult.loading === true ||
+    queryResult.loading ||
     queryResult.data.componentFeaturedCards === null
   ) {
     return null;

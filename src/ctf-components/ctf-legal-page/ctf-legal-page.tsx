@@ -16,7 +16,7 @@ const CtfLegalPage = (props: CtfLegalPagePropsInterface) => {
 
   return (
     <PageContainer>
-      {pageContent && (
+      {(pageContent != null) && (
         <LayoutContext.Provider value={defaultLayout} key={pageContent.sys.id}>
           <CtfBusinessInfo
             body={

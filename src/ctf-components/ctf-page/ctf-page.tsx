@@ -8,12 +8,12 @@ export interface CtfPagePropsInterface extends PageFragment {}
 
 const CtfPage = (props: CtfPagePropsInterface) => {
   const topSection =
-    props.topSectionCollection &&
-    props.topSectionCollection.items.filter((it) => !!it);
+    (props.topSectionCollection != null) &&
+    props.topSectionCollection.items.filter((it) => !(it == null));
   const content = props.pageContent;
   const extraSection =
-    props.extraSectionCollection &&
-    props.extraSectionCollection.items.filter((it) => !!it);
+    (props.extraSectionCollection != null) &&
+    props.extraSectionCollection.items.filter((it) => !(it == null));
 
   const layoutConfig = {
     ...defaultLayout,
@@ -22,23 +22,23 @@ const CtfPage = (props: CtfPagePropsInterface) => {
 
   return (
     <PageContainer>
-      {topSection &&
+      {(topSection != null) &&
         topSection.map((entry) => (
-          <LayoutContext.Provider value={layoutConfig} key={entry!.sys.id}>
-            <ComponentResolver componentProps={entry!} />
+          <LayoutContext.Provider value={layoutConfig} key={entry.sys.id}>
+            <ComponentResolver componentProps={entry} />
           </LayoutContext.Provider>
         ))}
 
-      {content && (
+      {(content != null) && (
         <LayoutContext.Provider value={defaultLayout} key={content.sys.id}>
           <ComponentResolver componentProps={content} />
         </LayoutContext.Provider>
       )}
 
-      {extraSection &&
+      {(extraSection != null) &&
         extraSection.map((entry) => (
-          <LayoutContext.Provider value={layoutConfig} key={entry!.sys.id}>
-            <ComponentResolver componentProps={entry!} />
+          <LayoutContext.Provider value={layoutConfig} key={entry.sys.id}>
+            <ComponentResolver componentProps={entry} />
           </LayoutContext.Provider>
         ))}
     </PageContainer>

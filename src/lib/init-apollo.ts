@@ -28,7 +28,7 @@ export function createLink(url: string) {
   return new HttpLink({
     uri: url,
     credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
-    fetch: !process['browser'] && (fetch as any),
+    fetch: !process.browser && (fetch as any),
   });
 }
 
@@ -43,8 +43,8 @@ export function createClientWithLink(
     : undefined;
 
   const cacheInstance = new InMemoryCache(
-    fragmentMatcher ? { fragmentMatcher } : undefined,
-  ).restore(initialState || {});
+    (fragmentMatcher != null) ? { fragmentMatcher } : undefined,
+  ).restore((initialState != null) || {});
 
   return new ApolloClient({
     connectToDevTools,

@@ -59,8 +59,8 @@ Default.args = {
         category: null,
         extraSectionCollection: null,
       },
-    ].reduce((_prev, current) => {
+    ].reduce<any>((_prev, current) => {
       return [current, current, current];
-    }, [] as any),
+    }, []),
   },
 };

@@ -145,7 +145,7 @@ const CtfProduct = (props: CtfProductPropsInterface) => {
                 {name}
               </Typography>
             )}
-            {description && (
+            {(description != null) && (
               <LayoutContext.Provider
                 value={{ ...defaultLayout, parent: 'product-description' }}
               >
@@ -164,7 +164,7 @@ const CtfProduct = (props: CtfProductPropsInterface) => {
               </Link>
             </div>
           </div>
-          {featuredImage && (
+          {(featuredImage != null) && (
             <div className={classes.imageContainer}>
               <CtfAsset
                 {...featuredImage}
@@ -176,7 +176,7 @@ const CtfProduct = (props: CtfProductPropsInterface) => {
           )}
         </div>
       </Container>
-      {featuresCollection && featuresCollection.items.length > 0 && (
+      {(featuresCollection != null) && featuresCollection.items.length > 0 && (
         <LayoutContext.Provider
           value={{ ...defaultLayout, parent: 'product-table' }}
         >
@@ -186,7 +186,7 @@ const CtfProduct = (props: CtfProductPropsInterface) => {
                 <div>
                   {featuresCollection.items.map(
                     (item) =>
-                      item && (
+                      (item != null) && (
                         <React.Fragment key={item.sys.id}>
                           <div className={classes.featureSeparator} />
                           <div className={classes.featureRow}>
@@ -198,7 +198,7 @@ const CtfProduct = (props: CtfProductPropsInterface) => {
                               {item.name}
                             </Typography>
                             <div className={classes.featureValue}>
-                              {item.longDescription && (
+                              {(item.longDescription != null) && (
                                 <CtfRichtext {...item.longDescription} />
                               )}
                             </div>

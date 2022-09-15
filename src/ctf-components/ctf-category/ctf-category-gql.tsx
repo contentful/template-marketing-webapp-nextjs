@@ -26,7 +26,7 @@ const CtfCategoryGql = (props: Props) => {
   });
   useDataForPreview(queryResult);
 
-  if (queryResult.data === undefined || queryResult.loading === true) {
+  if (queryResult.data === undefined || queryResult.loading) {
     return null;
   }
 
@@ -85,7 +85,7 @@ const CtfCategoryGql = (props: Props) => {
         {robots.length > 0 && (
           <meta key="robots" name="robots" content={robots.join(', ')} />
         )}
-        {metaTags.image && (
+        {(metaTags.image != null) && (
           <meta
             key="og:image"
             property="og:image"
@@ -108,7 +108,7 @@ const CtfCategoryGql = (props: Props) => {
         )}
       </Head>
       <CtfCategory
-        posts={queryResult.data.postCollection?.items || []}
+        posts={((queryResult.data.postCollection?.items) != null) || []}
         {...category}
       />
     </>

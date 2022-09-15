@@ -20,7 +20,7 @@ const CtfProductGql = (props: CtfProductGqlPropsInterface) => {
   });
   useDataForPreview(queryResult);
 
-  if (queryResult.data === undefined || queryResult.loading === true) {
+  if (queryResult.data === undefined || queryResult.loading) {
     return null;
   }
 
@@ -36,7 +36,7 @@ const CtfProductGql = (props: CtfProductGqlPropsInterface) => {
 
   return (
     <>
-      {product.featuredImage && (
+      {(product.featuredImage != null) && (
         <Head>
           <meta
             key="og:image"

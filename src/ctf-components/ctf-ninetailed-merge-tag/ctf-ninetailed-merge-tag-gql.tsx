@@ -38,7 +38,7 @@ const CtfNinetailedMergeTagGql = (
 
   if (!data || loading) return null;
 
-  return <MergeTag {...data!.ntMergetag!} />;
+  return <MergeTag {...data.ntMergetag!} />;
 };
 
 export default CtfNinetailedMergeTagGql;

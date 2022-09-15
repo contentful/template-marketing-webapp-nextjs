@@ -42,7 +42,7 @@ const CtfLegalPageGgl = (props: Props) => {
   const page = tryget(() => queryResult.data!.pageCollection!.items[0]);
 
   if (queryResult.loading) return <></>;
-  if (!page) {
+  if (page == null) {
     const error = {
       code: 404,
       message:

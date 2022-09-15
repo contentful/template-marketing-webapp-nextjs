@@ -227,7 +227,7 @@ const CtfProductTable: PersonalizedComponent<CtfProductTablePropsInterface> = (
 
   // Keeping the grid items the same size
   const gridElement = useRef<HTMLDivElement>(null);
-  const gridColumnElements = useRef<(HTMLDivElement | null)[]>([]);
+  const gridColumnElements = useRef<Array<HTMLDivElement | null>>([]);
   const [gridSizes, setGridSizes] = useState<{ [key: string]: number }>({});
   const resizeGridItems = useCallback(
     throttle(() => {
@@ -286,7 +286,7 @@ const CtfProductTable: PersonalizedComponent<CtfProductTablePropsInterface> = (
 
   return (
     <WrapIf
-      when={xrayActive === true && isPersonalized === true}
+      when={xrayActive && isPersonalized}
       wrap={(children) => (
         <PersonalizationFrame audienceId={ninetailed?.audience.id ?? null}>
           {children}
@@ -306,7 +306,7 @@ const CtfProductTable: PersonalizedComponent<CtfProductTablePropsInterface> = (
                 <div className={classes.comparisonTable}>
                   {productsCollection.items.map(
                     (product, j) =>
-                      product && (
+                      (product != null) && (
                         <div
                           key={product.sys.id}
                           className={classes.comparisonTableColumn}
@@ -324,7 +324,7 @@ const CtfProductTable: PersonalizedComponent<CtfProductTablePropsInterface> = (
                                     : `${gridSizes[`index-0`]}px`,
                               }}
                             >
-                              {product.featuredImage && (
+                              {(product.featuredImage != null) && (
                                 <Image
                                   src={product.featuredImage.url as string}
                                   alt={
@@ -361,7 +361,7 @@ const CtfProductTable: PersonalizedComponent<CtfProductTablePropsInterface> = (
                                   : `${gridSizes['index-2']}px`,
                             }}
                           >
-                            {product.description && (
+                            {(product.description != null) && (
                               <LayoutContext.Provider
                                 value={{
                                   ...defaultLayout,
@@ -419,7 +419,7 @@ const CtfProductTable: PersonalizedComponent<CtfProductTablePropsInterface> = (
                               {realLocale === 'de-DE' ? 'Anmelden' : 'Sign Up'}
                             </Link>
                           </div>
-                          {featureNames && featuresGrid && (
+                          {(featureNames != null) && (featuresGrid != null) && (
                             <LayoutContext.Provider
                               value={{
                                 ...defaultLayout,
@@ -464,7 +464,7 @@ const CtfProductTable: PersonalizedComponent<CtfProductTablePropsInterface> = (
                           )}
                           <div
                             className={classes.pricingBottom}
-                            data-equal-size={(featureNames || []).length + 4}
+                            data-equal-size={((featureNames != null) || []).length + 4}
                             style={{
                               height:
                                 featureNames === null ||

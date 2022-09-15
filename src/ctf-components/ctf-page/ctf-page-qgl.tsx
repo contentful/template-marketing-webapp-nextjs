@@ -55,7 +55,7 @@ const CtfPageGgl = (props: Props) => {
   const page = tryget(() => queryResult.data!.pageCollection!.items[0]);
 
   if (queryResult.loading) return <></>;
-  if (!page) {
+  if (page == null) {
     const error = {
       code: 404,
       message:
@@ -105,7 +105,7 @@ const CtfPageGgl = (props: Props) => {
         {robots.length > 0 && (
           <meta key="robots" name="robots" content={robots.join(', ')} />
         )}
-        {metaTags.image && (
+        {(metaTags.image != null) && (
           <meta
             key="og:image"
             property="og:image"

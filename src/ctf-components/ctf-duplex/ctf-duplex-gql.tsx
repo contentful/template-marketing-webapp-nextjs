@@ -29,7 +29,7 @@ const CtfDuplexGql = ({ id, locale, preview }: CtfDuplexGqlPropsInterface) => {
 
   if (
     queryResult.data === undefined ||
-    queryResult.loading === true ||
+    queryResult.loading ||
     queryResult.data.componentDuplex === null
   ) {
     return null;

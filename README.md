@@ -22,25 +22,37 @@ The legal space is not spun up when the deployment script is used, instead, we r
 Create an `.env` file with the folowing structure:
 
 ```
+BUNDLE_ANALYZE=false
+ENVIRONMENT_NAME=local
+
 CONFIG_CONTENTFUL_META_URL=http://localhost:3000
+
 CONFIG_CONTENTFUL_MAIN_SPACE_ID=
 CONFIG_CONTENTFUL_MAIN_SPACE_TOKEN=
 CONFIG_CONTENTFUL_MAIN_SPACE_PREVIEW_TOKEN=
 CONFIG_CONTENTFUL_MAIN_SPACE_MANAGEMENT_TOKEN=
 CONFIG_CONTENTFUL_LEGAL_SPACE_ID=
 CONFIG_CONTENTFUL_LEGAL_SPACE_TOKEN=
+
+CONTENTFUL_DEPLOY_TOKEN=
+CONTENTFUL_DEPLOY_ORG=
+
+VERCEL_DEPLOY_TOKEN=
+
+NEXT_PUBLIC_NINETAILED_API_KEY=
+NEXT_PUBLIC_NINETAILED_ENVIRONMENT=
 ```
 
-You can find the values for the legal space environment variables by checking out the .env file linked in the deployment guide linked at the start.
+You can find the values for the legal space environment variables by checking out the `.env` file linked here [Installation guide](https://contentful.atlassian.net/wiki/spaces/MAR/pages/2080309537/Colorful+Coin+setup+guide#Installing)
 
 Note that that .env file contains some additional variables that are only needed if you will be using the deployment script to spin up your own instance of the demo.
 
 ---
 
-Once you have the .env file in place, and you have installed the `npm` dependencies with `npm install`, you can run
+Once you have the `.env` file in place, and you have installed dependencies with `yarn`, you can run
 
 ```
-npm run dev
+yarn dev
 ```
 
 to start the local development server. By default, the server will listen on `http://localhost:3000`

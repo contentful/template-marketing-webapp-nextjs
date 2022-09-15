@@ -27,14 +27,14 @@ const CtfAsset = (props: CtfAssetPropsInterface) => {
         showDescription={
           ['quote', 'product-table', 'info-block', 'duplex'].includes(
             layout.parent,
-          ) === true
+          )
             ? false
             : showDescription
         }
         widthPx={
           ['quote', 'product-table', 'info-block', 'duplex'].includes(
             layout.parent,
-          ) === true && props.width !== null
+          ) && props.width !== null
             ? Math.round(props.width / 2)
             : props.widthPx
         }

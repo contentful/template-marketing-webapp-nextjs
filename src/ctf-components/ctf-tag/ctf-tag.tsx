@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 interface CtfTagPropsInterface {
   tag: CtfTagQuery_postCollection_items_contentfulMetadata_tags | null;
-  posts: (CtfTagQuery_postCollection_items | null)[];
+  posts: Array<CtfTagQuery_postCollection_items | null>;
 }
 
 const CtfTag = (props: CtfTagPropsInterface) => {

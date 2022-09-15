@@ -90,7 +90,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 const CtfBusinessInfo = (props: CtfBusinessInfoPropsInterface) => {
   const { body, name, shortDescription, featuredImage } = props;
   const backgroundImage = useMemo(
-    () => (featuredImage ? `${featuredImage.url}?w=1920` : undefined),
+    () => ((featuredImage != null) ? `${featuredImage.url}?w=1920` : undefined),
     [featuredImage],
   );
 

@@ -26,7 +26,7 @@ const CtfPostGql = (props: Props) => {
   });
   useDataForPreview(queryResult);
 
-  if (queryResult.data === undefined || queryResult.loading === true) {
+  if (queryResult.data === undefined || queryResult.loading) {
     return null;
   }
 
@@ -84,7 +84,7 @@ const CtfPostGql = (props: Props) => {
         {robots.length > 0 && (
           <meta key="robots" name="robots" content={robots.join(', ')} />
         )}
-        {metaTags.image && (
+        {(metaTags.image != null) && (
           <meta
             key="og:image"
             property="og:image"

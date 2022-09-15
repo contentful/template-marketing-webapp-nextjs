@@ -20,7 +20,7 @@ const CtfBusinessInfoGql = (props: CtfBusinessInfoGqlPropsInterface) => {
   });
   useDataForPreview(queryResult);
 
-  if (queryResult.data === undefined || queryResult.loading === true) {
+  if (queryResult.data === undefined || queryResult.loading) {
     return null;
   }
 
@@ -36,7 +36,7 @@ const CtfBusinessInfoGql = (props: CtfBusinessInfoGqlPropsInterface) => {
 
   return (
     <>
-      {topicBusinessInfo.featuredImage && (
+      {(topicBusinessInfo.featuredImage != null) && (
         <Head>
           <meta
             key="og:image"

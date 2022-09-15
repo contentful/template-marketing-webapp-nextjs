@@ -30,11 +30,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-type Props = {
+interface Props {
   sectionHeadline?: string | null;
   sectionSubline?: string | null;
   headerAlignment?: string | null; // 'Left-aligned | 'Center-aligned'
-};
+}
 export type SectionHeadlinesProps = Props;
 
 const CtfSectionHeadline = (props: Props) => {

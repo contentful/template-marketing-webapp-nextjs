@@ -3,8 +3,8 @@ const nestedPaths = ['/post', '/category', '/legal'];
 
 const pathToNextLinkHref = (path: string): string | null => {
   if (
-    path.startsWith('http://') === true ||
-    path.startsWith('https://') === true
+    path.startsWith('http://') ||
+    path.startsWith('https://')
   ) {
     return path;
   }
@@ -18,7 +18,7 @@ const pathToNextLinkHref = (path: string): string | null => {
   }
 
   const nestedPathMatch = nestedPaths.find(
-    (nestedPath) => path.startsWith(nestedPath) === true,
+    (nestedPath) => path.startsWith(nestedPath),
   );
 
   if (nestedPathMatch !== undefined) {

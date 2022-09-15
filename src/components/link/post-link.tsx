@@ -51,7 +51,7 @@ const PostLink = (props: PostLinkPropsInterface) => {
 
   return (
     <Link {...linkProps}>
-      {props.render ? props.render(as) : props.children}
+      {(props.render != null) ? props.render(as) : props.children}
     </Link>
   );
 };

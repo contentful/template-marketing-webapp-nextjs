@@ -63,7 +63,7 @@ const CtfFeaturedCards: PersonalizedComponent<CtfFeaturedCardsPropsType> = (
 
   return (
     <WrapIf
-      when={xrayActive === true && isPersonalized === true}
+      when={xrayActive && isPersonalized}
       wrap={(children) => (
         <PersonalizationFrame audienceId={ninetailed?.audience.id ?? null}>
           {children}
@@ -79,9 +79,9 @@ const CtfFeaturedCards: PersonalizedComponent<CtfFeaturedCardsPropsType> = (
             align="left"
           />
           <div className={classes.blocksGrid}>
-            {featuredPostsCollection &&
+            {(featuredPostsCollection != null) &&
               featuredPostsCollection.items
-                .filter((featuredPost) => !!featuredPost)
+                .filter((featuredPost) => !(featuredPost == null))
                 .map((featuredPost) => (
                   <div key={featuredPost!.sys.id} className={classes.block}>
                     <CardPost {...featuredPost!} linkToPost />

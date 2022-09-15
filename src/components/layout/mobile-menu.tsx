@@ -93,7 +93,7 @@ const MobileMenu = (props: MobileMenuPropsInterface) => {
   };
 
   const renderMenuItemChildren = (menuItem: {
-    children?: { label: string; location: string }[];
+    children?: Array<{ label: string; location: string }>;
   }): JSX.Element | null => {
     if (menuItem.children === undefined) {
       return null;

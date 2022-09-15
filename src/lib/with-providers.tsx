@@ -113,7 +113,7 @@ export const generateGetServerSideProps =
   }): GetServerSideProps =>
   async (ctx) => {
     const error: null | { code: number; message?: string } = null;
-    const pageProps = customGetServerSideProps
+    const pageProps = (customGetServerSideProps != null)
       ? await customGetServerSideProps(ctx)
       : { props: {} };
 

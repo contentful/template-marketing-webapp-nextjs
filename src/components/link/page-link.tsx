@@ -3,10 +3,10 @@ import { ContentfulContext } from '@pages/_app';
 import Link from '@src/components/link/link';
 import { getLocaleConfig } from '@src/locales-map';
 
-export type PageLinkPage = {
+export interface PageLinkPage {
   sys: { id: string };
   slug?: string | null;
-};
+}
 
 interface Props {
   page: PageLinkPage;
@@ -64,7 +64,7 @@ const PageLink = (props: Props) => {
 
   return (
     <Link {...linkProps}>
-      {props.render ? props.render(as) : props.children}
+      {(props.render != null) ? props.render(as) : props.children}
     </Link>
   );
 };

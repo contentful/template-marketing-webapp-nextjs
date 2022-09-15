@@ -26,7 +26,9 @@
     "deploy": "node ./scripts/deploy",
     "jumpgate": "ts-node --project tsconfig.scripts.json ./scripts/jumpgate.ts",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "lint": "eslint src/**/*.{ts,tsx}",
+    "lint:fix": "eslint --fix 'src/**/*.{ts,tsx}'"
   },
   "license": "UNLICENSED",
   "dependencies": {
@@ -85,7 +87,6 @@
     "remark-rehype": "^10.1.0",
     "styled-jsx": "^5.0.2",
     "ts-node": "^10.9.1",
-    "typescript": "^4.7.4",
     "unified": "^10.1.2",
     "validator": "^13.7.0"
   },
@@ -97,7 +98,7 @@
     "@types/react-slick": "^0.23.10",
     "@types/url-parse": "^1.4.8",
     "@types/yargs": "^17.0.11",
-    "@typescript-eslint/eslint-plugin": "^5.32.0",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.32.0",
     "@vercel/build-utils": "^5.2.0",
     "@vercel/client": "^12.1.10",
@@ -106,21 +107,25 @@
     "babel-loader": "^8.2.5",
     "circular-dependency-plugin": "^5.2.2",
     "contentful-import": "^8.3.2",
-    "eslint": "^8.21.0",
+    "eslint": "^8.0.1",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard-with-typescript": "^23.0.0",
     "eslint-import-resolver-alias": "^1.1.2",
-    "eslint-plugin-import": "^2.26.0",
+    "eslint-import-resolver-typescript": "^3.5.1",
+    "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-n": "^15.0.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-promise": "^6.0.0",
-    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react": "^7.31.8",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-standard": "^5.0.0",
     "postcss": "^8.4.14",
     "prettier": "^2.7.1",
+    "typescript": "^4.8.3",
     "yargs": "^17.5.1"
   }
 }

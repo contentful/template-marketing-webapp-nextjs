@@ -43,7 +43,7 @@ const CtfTextBlock = (props: CtfTextBlockPropsInterface) => {
           }}
           className={classes.sectionHeadlines}
         />
-        {body && (
+        {(body != null) && (
           <div
             style={{
               color: colorConfig.textColor,

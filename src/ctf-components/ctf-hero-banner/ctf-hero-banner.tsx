@@ -119,12 +119,12 @@ const CtfHeroBanner: PersonalizedComponent<CtfHeroBannerInterface> = (
   const colorConfig = getColorConfigFromPalette(colorPalette || '');
   const imageStyle = imageStyleBoolean ? 'partial' : 'full';
   const heroSize =
-    heroSizeBoolean === null || heroSizeBoolean === true
+    heroSizeBoolean === null || heroSizeBoolean
       ? 'full_screen'
       : 'fixed_height';
   const backgroundImage = useMemo(
     () =>
-      image
+      (image != null)
         ? `${image.url}?w=${
             imageStyle === 'partial' ? 767 * 2 : layout.containerWidth * 2
           }`
@@ -139,7 +139,7 @@ const CtfHeroBanner: PersonalizedComponent<CtfHeroBannerInterface> = (
 
   return (
     <WrapIf
-      when={xrayActive === true && isPersonalized === true}
+      when={xrayActive && isPersonalized}
       wrap={(children) => (
         <PersonalizationFrame audienceId={ninetailed?.audience.id ?? null}>
           {children}
@@ -155,7 +155,7 @@ const CtfHeroBanner: PersonalizedComponent<CtfHeroBannerInterface> = (
         style={{
           backgroundImage:
             imageStyle === 'full' && backgroundImage
-              ? `url(${backgroundImage!})`
+              ? `url(${backgroundImage})`
               : undefined,
           backgroundColor: colorConfig.backgroundColor,
         }}
@@ -165,7 +165,7 @@ const CtfHeroBanner: PersonalizedComponent<CtfHeroBannerInterface> = (
             <div
               className={classes.partialBg}
               style={{
-                backgroundImage: `url(${backgroundImage!})`,
+                backgroundImage: `url(${backgroundImage})`,
               }}
             />
           </div>
@@ -180,7 +180,7 @@ const CtfHeroBanner: PersonalizedComponent<CtfHeroBannerInterface> = (
               {headline}
             </Typography>
           )}
-          {bodyText && (
+          {(bodyText != null) && (
             <LayoutContext.Provider
               value={{ ...defaultLayout, parent: 'hero-banner-body' }}
             >
@@ -189,7 +189,7 @@ const CtfHeroBanner: PersonalizedComponent<CtfHeroBannerInterface> = (
               </div>
             </LayoutContext.Provider>
           )}
-          {targetPage && ctaText && (
+          {(targetPage != null) && ctaText && (
             <div className={classes.ctaContainer}>
               {targetPage.__typename === 'Page' && (
                 <PageLink

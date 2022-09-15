@@ -167,7 +167,7 @@ const Header = (props: HeaderPropsInterface) => {
   };
 
   const renderMenuItemChildren = (menuItem: {
-    children?: { label: string; location: string }[];
+    children?: Array<{ label: string; location: string }>;
   }): JSX.Element | null => {
     if (menuItem.children === undefined) {
       return null;
@@ -271,7 +271,7 @@ const Header = (props: HeaderPropsInterface) => {
         {/* menu button */}
         <Hidden mdUp>
           <Box>
-            <IconButton onClick={() => onMenuClick && onMenuClick()}>
+            <IconButton onClick={() => (onMenuClick != null) && onMenuClick()}>
               <Menu />
             </IconButton>
           </Box>

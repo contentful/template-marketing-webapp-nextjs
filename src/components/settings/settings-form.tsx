@@ -315,7 +315,7 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = (props) => {
   const { spaceEnv, appUrl, xrayActive, previewActive } =
     useContext(ContentfulContext);
   const [environments, setEnvironments] = useState(
-    [] as { name: string; createdAt: string }[],
+    [] as Array<{ name: string; createdAt: string }>,
   );
   const [defaultEnv, setDefaultEnv] = useState('');
   const [newSpaceEnv, setNewSpaceEnv] = useState(
@@ -331,9 +331,9 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = (props) => {
     let shouldCancelFetch = false;
 
     fetch(`${appUrl}/api/entry?api=environments`)
-      .then((res) => res.json())
+      .then(async (res) => await res.json())
       .then((availableEnvironments) => {
-        if (shouldCancelFetch === true) {
+        if (shouldCancelFetch) {
           return;
         }
 
@@ -374,9 +374,9 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = (props) => {
       newSpaceEnv === null ? '' : newSpaceEnv.split(' ')[0];
 
     fetch(`${appUrl}/api/entry?api=audiences&environmentId=${environmentIdArg}`)
-      .then((res) => res.json())
+      .then(async (res) => await res.json())
       .then((availableAudiences) => {
-        if (shouldCancelFetch === true) {
+        if (shouldCancelFetch) {
           return;
         }
 
@@ -391,11 +391,11 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = (props) => {
   const onSubmit = async (event) => {
     event.preventDefault();
 
-    if (isDirty === false) {
+    if (!isDirty) {
       return;
     }
 
-    let queryParams = queryString.parse(window.location.search);
+    const queryParams = queryString.parse(window.location.search);
 
     if (newSpaceEnv !== spaceEnv) {
       if ([null, '', defaultEnv].includes(newSpaceEnv)) {
@@ -406,7 +406,7 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = (props) => {
     }
 
     if (xrayActive !== newXrayActive) {
-      if (newXrayActive === false) {
+      if (!newXrayActive) {
         delete queryParams.xray;
       } else {
         queryParams.xray = '1';
@@ -414,7 +414,7 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = (props) => {
     }
 
     if (previewActive !== newPreviewActive) {
-      if (newPreviewActive === false) {
+      if (!newPreviewActive) {
         delete queryParams.preview;
       } else {
         queryParams.preview = '1';

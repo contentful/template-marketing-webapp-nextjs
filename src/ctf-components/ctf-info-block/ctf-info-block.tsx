@@ -105,7 +105,7 @@ const CtfInfoBlock: PersonalizedComponent<CtfInfoBlockPropsInterface> = (
 
   return (
     <WrapIf
-      when={xrayActive === true && isPersonalized === true}
+      when={xrayActive && isPersonalized}
       wrap={(children) => (
         <PersonalizationFrame audienceId={ninetailed?.audience.id ?? null}>
           {children}
@@ -141,9 +141,9 @@ const CtfInfoBlock: PersonalizedComponent<CtfInfoBlockPropsInterface> = (
             value={{ ...defaultLayout, parent: 'info-block' }}
           >
             <div className={classes.blocksGrid}>
-              {block1Body && (
+              {(block1Body != null) && (
                 <div className={classes.block}>
-                  {block1Image && (
+                  {(block1Image != null) && (
                     <div className={classes.itemIcon}>
                       <CtfAsset {...block1Image} showDescription={false} />
                     </div>
@@ -153,9 +153,9 @@ const CtfInfoBlock: PersonalizedComponent<CtfInfoBlockPropsInterface> = (
                   </div>
                 </div>
               )}
-              {block2Body && (
+              {(block2Body != null) && (
                 <div className={classes.block}>
-                  {block2Image && (
+                  {(block2Image != null) && (
                     <div className={classes.itemIcon}>
                       <CtfAsset {...block2Image} showDescription={false} />
                     </div>
@@ -165,9 +165,9 @@ const CtfInfoBlock: PersonalizedComponent<CtfInfoBlockPropsInterface> = (
                   </div>
                 </div>
               )}
-              {block3Body && (
+              {(block3Body != null) && (
                 <div className={classes.block}>
-                  {block3Image && (
+                  {(block3Image != null) && (
                     <div className={classes.itemIcon}>
                       <CtfAsset {...block3Image} showDescription={false} />
                     </div>

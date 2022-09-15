@@ -86,7 +86,7 @@ const CtfCategoriesMenu: React.FC<CtfCategoriesMenuPropsInterface> = (
 
   if (
     categoriesQueryResult.data === undefined ||
-    categoriesQueryResult.loading === true ||
+    categoriesQueryResult.loading ||
     categoriesQueryResult.data.categoryCollection === null
   ) {
     return null;
@@ -98,7 +98,7 @@ const CtfCategoriesMenu: React.FC<CtfCategoriesMenuPropsInterface> = (
         <div className={classes.categories}>
           {categoriesQueryResult.data.categoryCollection.items.map(
             (category) =>
-              category && (
+              (category != null) && (
                 <Link
                   key={category.sys.id}
                   href="/[lang]/category/[slug]"

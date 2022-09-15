@@ -27,7 +27,7 @@ const CtfAuthor = (props: CtfAuthorPropsInterface) => {
 
   return (
     <div className={classes.root}>
-      {avatar && (
+      {(avatar != null) && (
         <div className={classes.avatar}>
           <Avatar asset={avatar} />
         </div>

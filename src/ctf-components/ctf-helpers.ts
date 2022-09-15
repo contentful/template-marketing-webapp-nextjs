@@ -33,20 +33,20 @@ type ComponentWithNullableAudience<T> = T & {
 
 type ComponentWithVariants<T> = T & {
   ntVariantsCollection: {
-    items: (ComponentWithNullableAudience<
+    items: Array<ComponentWithNullableAudience<
       Omit<T, 'ntVariantsCollection'>
-    > | null)[];
+    > | null>;
   } | null;
 };
 
 export function unwrapVariants<T>(
   data: ComponentWithVariants<T>,
-): T & { variants: Variant<T>[] } {
+): T & { variants: Array<Variant<T>> } {
   return {
     ...data,
     variants: (
       data.ntVariantsCollection?.items ??
-      ([] as (ComponentWithNullableAudience<T> | null)[])
+      ([] as Array<ComponentWithNullableAudience<T> | null>)
     )
       .filter(
         (variant): variant is ComponentWithAudience<T> =>

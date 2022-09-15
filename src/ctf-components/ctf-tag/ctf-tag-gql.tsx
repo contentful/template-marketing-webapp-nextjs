@@ -50,7 +50,7 @@ const CtfTagGql = (props: Props) => {
     };
   }, [queryResult.data]);
 
-  if (queryResult.data === undefined || queryResult.loading === true) {
+  if (queryResult.data === undefined || queryResult.loading) {
     return null;
   }
 
@@ -82,7 +82,7 @@ const CtfTagGql = (props: Props) => {
           />
         )}
       </Head>
-      <CtfTag posts={queryResult.data.postCollection?.items || []} tag={tag} />
+      <CtfTag posts={((queryResult.data.postCollection?.items) != null) || []} tag={tag} />
     </>
   );
 };

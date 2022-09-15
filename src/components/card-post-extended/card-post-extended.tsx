@@ -78,7 +78,7 @@ const CtfCardPostExtended = (props: CtfCardPostExtendedPropsInterface) => {
 
     return (
       <span className={classes.metaDate}>
-        {author && <>{realLocale === 'de-DE' ? ', am ' : ', on '}</>}
+        {(author != null) && <>{realLocale === 'de-DE' ? ', am ' : ', on '}</>}
         {formatDate(new Date(publishedDate), 'MMM dd, yyyy')}
       </span>
     );
@@ -87,7 +87,7 @@ const CtfCardPostExtended = (props: CtfCardPostExtendedPropsInterface) => {
   return (
     <article className={classes.root}>
       <Link href="/[lang]/post/[slug]" as={`/${lang}/post/${slug}`}>
-        {featuredImage && (
+        {(featuredImage != null) && (
           <CtfAsset
             {...featuredImage}
             showDescription={false}
@@ -99,17 +99,17 @@ const CtfCardPostExtended = (props: CtfCardPostExtendedPropsInterface) => {
           <Typography variant="body1" component="h2" className={classes.title}>
             {postName}
           </Typography>
-          {introText && (
+          {(introText != null) && (
             <LayoutContext.Provider
               value={{ ...defaultLayout, parent: 'post-intro' }}
             >
               <CtfRichtext {...introText} containerClassName={classes.text} />
             </LayoutContext.Provider>
           )}
-          {author && (
+          {(author != null) && (
             <div className={classes.meta}>
               <div className={classes.author}>
-                {author.avatar && (
+                {(author.avatar != null) && (
                   <div className={classes.authorAvatar}>
                     <Avatar asset={author.avatar} widthPx={34} />
                   </div>
@@ -119,7 +119,7 @@ const CtfCardPostExtended = (props: CtfCardPostExtendedPropsInterface) => {
               {publishedDateFormated}
             </div>
           )}
-          {!author && (
+          {(author == null) && (
             <div className={classes.meta}>{publishedDateFormated}</div>
           )}
         </div>

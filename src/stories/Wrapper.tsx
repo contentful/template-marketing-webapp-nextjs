@@ -34,7 +34,7 @@ const Wrapper: React.FC = (props) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (isInIframe() === false || wrapperRef.current === null) {
+    if (!isInIframe() || wrapperRef.current === null) {
       return;
     }
 

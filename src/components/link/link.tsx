@@ -58,7 +58,7 @@ const Link = (props: Props) => {
     const urlQuerystring = router.asPath.split('?')[1];
     if (urlQuerystring) {
       href +=
-        href.indexOf('?') < 0 ? `?${urlQuerystring}` : `&${urlQuerystring}`;
+        !href.includes('?') ? `?${urlQuerystring}` : `&${urlQuerystring}`;
       as += `?${urlQuerystring}`;
     }
   }
@@ -100,13 +100,13 @@ const Link = (props: Props) => {
   const external = href.startsWith('http://') || href.startsWith('https://');
   const underlineStyle = underline ? 'always' : 'none';
 
-  if (external === true || !href) {
+  if (external || !href) {
     return isButton ? (
       <MuiButton
         href={href}
         className={className}
         color={color}
-        onClick={() => onClick && onClick()}
+        onClick={() => (onClick != null) && onClick()}
         variant={variant}
         size={size}
         startIcon={startIcon}
@@ -122,7 +122,7 @@ const Link = (props: Props) => {
         href={href}
         target={props.target}
         rel="noopener noreferrer"
-        onClick={() => onClick && onClick()}
+        onClick={() => (onClick != null) && onClick()}
       >
         {children}
       </MuiLink>
@@ -137,14 +137,14 @@ const Link = (props: Props) => {
     );
   }
 
-  if (isButton === true) {
+  if (isButton) {
     return (
       <NextLink href={href} as={as}>
         <MuiButton
           href={as}
           className={className}
           color={color}
-          onClick={() => onClick && onClick()}
+          onClick={() => (onClick != null) && onClick()}
           variant={variant}
           size={size}
           startIcon={startIcon}
@@ -163,7 +163,7 @@ const Link = (props: Props) => {
         className={className}
         underline={underlineStyle}
         color={color}
-        onClick={() => onClick && onClick()}
+        onClick={() => (onClick != null) && onClick()}
       >
         {children}
       </MuiLink>
