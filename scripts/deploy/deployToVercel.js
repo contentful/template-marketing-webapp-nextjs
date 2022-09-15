@@ -10,8 +10,6 @@ const deployToVercel = async (input) => {
     legalSpaceId,
     legalSpaceToken,
     vercelDeployToken,
-    googleAnalyticsId,
-    googleTagManagerId,
     ninetailedAPIKey,
   } = input;
 
@@ -41,15 +39,6 @@ const deployToVercel = async (input) => {
           legalSpaceToken ||
           process.env.CONFIG_CONTENTFUL_LEGAL_SPACE_TOKEN ||
           '',
-        NEXT_PUBLIC_GOOGLE_ANALYTICS_ID:
-          googleAnalyticsId ||
-          process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID ||
-          '',
-        NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID:
-          googleTagManagerId ||
-          process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID ||
-          process.env.CONTENTFUL_INTERNAL_DEMO_GOOGLE_TAG_MANAGER_ID ||
-          '',
         NEXT_PUBLIC_NINETAILED_API_KEY: '6207cd14-ab62-4f52-a7d2-baa5cf31ae38',
         NEXT_PUBLIC_NINETAILED_ENVIRONMENT: spaceId,
       },
@@ -64,15 +53,6 @@ const deployToVercel = async (input) => {
           CONFIG_CONTENTFUL_LEGAL_SPACE_TOKEN:
             legalSpaceToken ||
             process.env.CONFIG_CONTENTFUL_LEGAL_SPACE_TOKEN ||
-            '',
-          NEXT_PUBLIC_GOOGLE_ANALYTICS_ID:
-            googleAnalyticsId ||
-            process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID ||
-            '',
-          NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID:
-            googleTagManagerId ||
-            process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID ||
-            process.env.CONTENTFUL_INTERNAL_DEMO_GOOGLE_TAG_MANAGER_ID ||
             '',
           NEXT_PUBLIC_NINETAILED_API_KEY:
             '6207cd14-ab62-4f52-a7d2-baa5cf31ae38',

@@ -12,7 +12,6 @@ const createPartialBackupEnvironment = require('./createPartialBackupEnvironment
 const inviteToSpace = require('./inviteToSpace');
 const logToZapier = require('./logToZapier');
 const installTasksApp = require('./installTasksApp');
-const installGoogleAnalyticsApp = require('./installGoogleAnalyticsApp');
 const installJumpgateApp = require('./installJumpgateApp');
 const installSchemaConnectorApp = require('./installSchemaConnectorApp');
 const installTypeformApp = require('./installTypeformApp');
@@ -32,8 +31,6 @@ const init = async (input) => {
     legalSpaceId,
     legalSpaceToken,
     vercelDeployToken,
-    googleAnalyticsId,
-    googleTagManagerId,
     ninetailedAPIKey,
     source = 'script',
   } = input;
@@ -284,38 +281,6 @@ const init = async (input) => {
     console.info('Skipping Tasks app installation - reusing existing space');
   }
 
-  // Install the Google Analytics app
-  if (inputSpaceId === undefined) {
-    const installGAAppStartTime = new Date();
-    console.info('Installing the Google Analytics app...');
-
-    const installGAAppResult = await installGoogleAnalyticsApp({
-      spaceId,
-      cmaToken,
-    });
-
-    if (installGAAppResult.state === 'error') {
-      await cleanupSpaceOnError();
-      return {
-        state: 'error',
-        error: installGAAppResult.error,
-      };
-    }
-
-    const installGAAppEndTime = new Date();
-
-    console.info(
-      `Google Analytics app installed. Done in ${Math.round(
-        (installGAAppEndTime.getTime() - installGAAppStartTime.getTime()) /
-          1000,
-      )}s`,
-    );
-  } else {
-    console.info(
-      'Skipping Google Analytics app installation - reusing existing space',
-    );
-  }
-
   // Install the Jumpgate app
   if (inputSpaceId === undefined) {
     const installJumpgateAppStartTime = new Date();
@@ -526,8 +491,6 @@ const init = async (input) => {
     legalSpaceId,
     legalSpaceToken,
     vercelDeployToken,
-    googleAnalyticsId,
-    googleTagManagerId,
     ninetailedAPIKey,
   });
 

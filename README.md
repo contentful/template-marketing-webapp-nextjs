@@ -29,7 +29,6 @@ CONFIG_CONTENTFUL_MAIN_SPACE_PREVIEW_TOKEN=
 CONFIG_CONTENTFUL_MAIN_SPACE_MANAGEMENT_TOKEN=
 CONFIG_CONTENTFUL_LEGAL_SPACE_ID=
 CONFIG_CONTENTFUL_LEGAL_SPACE_TOKEN=
-NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=UA-40725207-18
 ```
 
 You can find the values for the legal space environment variables by checking out the .env file linked in the deployment guide linked at the start.

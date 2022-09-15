@@ -10,7 +10,6 @@ import getContentfulConfig from '@src/get-contentful-config';
 import { getLocaleConfig } from '@src/locales-map';
 import '@src/components/layout/layout.css';
 import { NinetailedProvider } from '@ninetailed/experience.js-next';
-import { NinetailedGoogleAnalyticsPlugin } from '@ninetailed/experience.js-plugin-google-analytics';
 import { NinetailedPreviewPlugin } from '@ninetailed/experience.js-plugin-preview';
 
 import Settings from '@src/components/settings/settings';
@@ -52,16 +51,9 @@ const contentfulContextValue: ContentfulContextInterface = {
 export const ContentfulContext = React.createContext(contentfulContextValue);
 
 const CustomApp = (
-  props: AppProps & {
-    ninetailed: {
-      profile: any;
-      preview: {
-        audiences: string[];
-      };
-    };
-  },
+  props: AppProps,
 ) => {
-  const { Component, pageProps, router, ninetailed } = props;
+  const { Component, pageProps, router } = props;
 
   useEffect(() => {
     // when component is mounting we remove server side rendered css:
@@ -70,23 +62,10 @@ const CustomApp = (
       jssStyles.parentNode.removeChild(jssStyles);
     }
 
-    const onRouteChange = (url: string) => {
-      // Google analytics
-      if (process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID) {
-        try {
-          window.gtag('config', process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID, {
-            page_location: url,
-          });
-        } catch (error) {
-          console.warn('could not "gtag"');
-        }
-      }
-    };
-
-    router.events.on('routeChangeComplete', onRouteChange);
+    router.events.on('routeChangeComplete', () => null);
 
     return () => {
-      router.events.off('routeChangeComplete', onRouteChange);
+      router.events.off('routeChangeComplete', () => null);
     };
   }, []);
 
@@ -111,12 +90,6 @@ const CustomApp = (
         clientId={process.env.NEXT_PUBLIC_NINETAILED_API_KEY ?? ''}
         environment={process.env.NEXT_PUBLIC_NINETAILED_ENVIRONMENT}
         plugins={[
-          NinetailedGoogleAnalyticsPlugin({
-            trackingId: process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID ?? '',
-            actionTemplate: 'Seen Component - Audience:{{ audience.name }}',
-            labelTemplate:
-              '{{ baselineOrVariant }}:{{ component.__typename }} - {{ component.internalName }}',
-          }),
           NinetailedPreviewPlugin({
             clientId: '4cbb065e-d983-4a0b-9949-7eb4fce9dd7b',
             secret: '35f3fd2c-b564-4aff-8240-677636bf110a',
