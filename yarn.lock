@@ -1823,20 +1823,6 @@
     ts-toolbelt "^9.6.0"
     uuid "^8.3.2"
 
-"@ninetailed/experience.js-plugin-google-analytics@^1.8.1":
-  version "1.8.1"
-  resolved "https://registry.yarnpkg.com/@ninetailed/experience.js-plugin-google-analytics/-/experience.js-plugin-google-analytics-1.8.1.tgz#c8859603f4a5663689d49c9b61cad9f36e85f467"
-  integrity sha512-TnS9nlhyw1t2FA135EgBLqqeSReFQ10picZerm+Xizx/Qna/nLeA7rEP26IM4kzyCWVCsWFoR7JEWFn+IjUvow==
-  dependencies:
-    "@analytics/google-analytics" "^0.5.3"
-    "@ninetailed/experience.js-shared" "1.8.1"
-    analytics "^0.8.0"
-    i18n-iso-countries "^7.3.0"
-    locale-enum "^1.1.1"
-    lodash "^4.17.21"
-    ts-toolbelt "^9.6.0"
-    uuid "^8.3.2"
-
 "@ninetailed/experience.js-plugin-preview@^1.8.1":
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/@ninetailed/experience.js-plugin-preview/-/experience.js-plugin-preview-1.8.1.tgz#3f1a164c6d55d10ae5e9080661c1ab95121143f1"
