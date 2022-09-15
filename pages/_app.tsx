@@ -10,7 +10,6 @@ import getContentfulConfig from '@src/get-contentful-config';
 import { getLocaleConfig } from '@src/locales-map';
 import '@src/components/layout/layout.css';
 import { NinetailedProvider } from '@ninetailed/experience.js-next';
-import { NinetailedGoogleAnalyticsPlugin } from '@ninetailed/experience.js-plugin-google-analytics';
 import { NinetailedPreviewPlugin } from '@ninetailed/experience.js-plugin-preview';
 
 import Settings from '@src/components/settings/settings';
@@ -52,16 +51,9 @@ const contentfulContextValue: ContentfulContextInterface = {
 export const ContentfulContext = React.createContext(contentfulContextValue);
 
 const CustomApp = (
-  props: AppProps & {
-    ninetailed: {
-      profile: any;
-      preview: {
-        audiences: string[];
-      };
-    };
-  },
+  props: AppProps,
 ) => {
-  const { Component, pageProps, router, ninetailed } = props;
+  const { Component, pageProps, router } = props;
 
   useEffect(() => {
     // when component is mounting we remove server side rendered css:
@@ -70,23 +62,10 @@ const CustomApp = (
       jssStyles.parentNode.removeChild(jssStyles);
     }
 
-    const onRouteChange = (url: string) => {
-      // Google analytics
-      if (process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID) {
-        try {
-          window.gtag('config', process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID, {
-            page_location: url,
-          });
-        } catch (error) {
-          console.warn('could not "gtag"');
-        }
-      }
-    };
-
-    router.events.on('routeChangeComplete', onRouteChange);
+    router.events.on('routeChangeComplete', () => null);
 
     return () => {
-      router.events.off('routeChangeComplete', onRouteChange);
+      router.events.off('routeChangeComplete', () => null);
     };
   }, []);
 
@@ -107,74 +86,71 @@ const CustomApp = (
 
   return (
     <ContentfulContext.Provider value={contentfulContextValue}>
-      {/* TODO: comment back in or out, depending on the fate of Ninetailed. For now it's commented out to run the local development environment */}
-      {/*<NinetailedProvider*/}
-      {/*  clientId={process.env.NEXT_PUBLIC_NINETAILED_API_KEY ?? ''}*/}
-      {/*  environment={process.env.NEXT_PUBLIC_NINETAILED_ENVIRONMENT}*/}
-      {/*  plugins={[*/}
-      {/*    NinetailedGoogleAnalyticsPlugin({*/}
-      {/*      trackingId: process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID ?? '',*/}
-      {/*      actionTemplate: 'Seen Component - Audience:{{ audience.name }}',*/}
-      {/*      labelTemplate:*/}
-      {/*        '{{ baselineOrVariant }}:{{ component.__typename }} - {{ component.internalName }}',*/}
-      {/*    }),*/}
-      {/*    NinetailedPreviewPlugin({*/}
-      {/*      clientId: '4cbb065e-d983-4a0b-9949-7eb4fce9dd7b',*/}
-      {/*      secret: '35f3fd2c-b564-4aff-8240-677636bf110a',*/}
-      {/*      environment: process.env.NEXT_PUBLIC_NINETAILED_ENVIRONMENT,*/}
-      {/*      ui: {*/}
-      {/*        opener: {*/}
-      {/*          hide: true,*/}
-      {/*        },*/}
-      {/*      },*/}
-      {/*    }),*/}
-      {/*  ]}*/}
-      {/*  // profile={ninetailed.profile}*/}
-      {/*>*/}
-      <ThemeProvider theme={colorfulTheme}>
-        <Head>
-          <meta
-            name="viewport"
-            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
-          />
-          <title key="title">{contentfulConfig.meta.title}</title>
-          <meta
-            key="og:title"
-            property="og:title"
-            content={contentfulConfig.meta.title}
-          />
-          <meta
-            key="description"
-            name="description"
-            content={contentfulConfig.meta.description}
-          />
-          <meta
-            key="og:description"
-            property="og:description"
-            content={contentfulConfig.meta.description}
-          />
-          <meta
-            key="og:image"
-            property="og:image"
-            content={contentfulConfig.meta.image}
-          />
-          <meta key="og:image:width" property="og:image:width" content="1200" />
-          <meta
-            key="og:image:height"
-            property="og:image:height"
-            content="630"
-          />
-          <meta key="og:type" property="og:type" content="website" />
-        </Head>
-        <Layout
-          locale={contentfulContextValue.locale}
-          preview={contentfulContextValue.previewActive}
-        >
-          <Component {...pageProps} err={(props as any).err} />
-          <Settings />
-        </Layout>
-      </ThemeProvider>
-      {/*</NinetailedProvider>*/}
+      <NinetailedProvider
+        clientId={process.env.NEXT_PUBLIC_NINETAILED_API_KEY ?? ''}
+        environment={process.env.NEXT_PUBLIC_NINETAILED_ENVIRONMENT}
+        plugins={[
+          NinetailedPreviewPlugin({
+            clientId: '4cbb065e-d983-4a0b-9949-7eb4fce9dd7b',
+            secret: '35f3fd2c-b564-4aff-8240-677636bf110a',
+            environment: process.env.NEXT_PUBLIC_NINETAILED_ENVIRONMENT,
+            ui: {
+              opener: {
+                hide: true,
+              },
+            },
+          }),
+        ]}
+        // profile={ninetailed.profile}
+      >
+        <ThemeProvider theme={colorfulTheme}>
+          <Head>
+            <meta
+              name="viewport"
+              content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
+            />
+            <title key="title">{contentfulConfig.meta.title}</title>
+            <meta
+              key="og:title"
+              property="og:title"
+              content={contentfulConfig.meta.title}
+            />
+            <meta
+              key="description"
+              name="description"
+              content={contentfulConfig.meta.description}
+            />
+            <meta
+              key="og:description"
+              property="og:description"
+              content={contentfulConfig.meta.description}
+            />
+            <meta
+              key="og:image"
+              property="og:image"
+              content={contentfulConfig.meta.image}
+            />
+            <meta
+              key="og:image:width"
+              property="og:image:width"
+              content="1200"
+            />
+            <meta
+              key="og:image:height"
+              property="og:image:height"
+              content="630"
+            />
+            <meta key="og:type" property="og:type" content="website" />
+          </Head>
+          <Layout
+            locale={contentfulContextValue.locale}
+            preview={contentfulContextValue.previewActive}
+          >
+            <Component {...pageProps} err={(props as any).err} />
+            <Settings />
+          </Layout>
+        </ThemeProvider>
+      </NinetailedProvider>
     </ContentfulContext.Provider>
   );
 };

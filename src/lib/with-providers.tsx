@@ -155,14 +155,6 @@ export const generateGetServerSideProps =
     try {
       await getDataFromTree(
         <NinetailedProvider
-          // analyticsPlugins={{
-          //   googleAnalytics: {
-          //     trackingId: process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID ?? '',
-          //     actionTemplate: 'Seen Component - Audience:{{ audience.name }}',
-          //     labelTemplate:
-          //       '{{ baselineOrVariant }}:{{ component.__typename }} - {{ component.internalName }}',
-          //   },
-          // }}
           clientId={process.env.NEXT_PUBLIC_NINETAILED_API_KEY ?? ''}
           environment="main"
           plugins={[]}
