@@ -50,7 +50,7 @@ export function unwrapVariants<T>(
     )
       .filter(
         (variant): variant is ComponentWithAudience<T> =>
-          variant !== null && variant.ntAudience !== null,
+          variant?.ntAudience !== null,
       )
       .map((variant) => ({
         id: '',

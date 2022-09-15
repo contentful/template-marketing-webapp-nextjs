@@ -66,7 +66,7 @@ const ComponentResolver = (props: Props) => {
     }
 
     return true;
-  }, [props.forceGql]);
+  }, [ComponentGql, componentProps, props.forceGql]);
 
   const Component = !shouldForceGql && componentMap[componentProps.__typename];
 
