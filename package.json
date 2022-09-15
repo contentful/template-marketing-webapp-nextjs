@@ -101,7 +101,7 @@
     "@typescript-eslint/parser": "^5.32.0",
     "@vercel/build-utils": "^5.2.0",
     "@vercel/client": "^12.1.10",
-    "apollo": "^2.11.1",
+    "apollo": "^2.34.0",
     "axios": "^0.27.2",
     "babel-loader": "^8.2.5",
     "circular-dependency-plugin": "^5.2.2",

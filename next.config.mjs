@@ -45,7 +45,7 @@ export default withPlugins(plugins, {
   // swcMinify: true,
 
   poweredByHeader: false,
-  reactStrictMode: true,
+  reactStrictMode: false,
   compress: true,
 
   /**
