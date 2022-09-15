@@ -1,12 +1,1 @@
-
-<svg width="15px" height="26px" viewBox="0 0 15 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="footer-dark" transform="translate(-1145.000000, -321.000000)" fill="#4A4A4A">
-            <g id="footer">
-                <g id="Social" transform="translate(1145.000000, 321.000000)">
-                    <path d="M9.73620696,26 L9.73620696,14.1402482 L14.1587772,14.1402482 L14.8208944,9.51820958 L9.73620696,9.51820958 L9.73620696,6.56724217 C9.73620696,5.22905413 10.1489785,4.3171539 12.280909,4.3171539 L15,4.31600643 L15,0.18210465 C14.5296087,0.125878261 12.9156185,0 11.0378778,0 C7.11756807,0 4.43378829,2.15392967 4.43378829,6.10962822 L4.43378829,9.51820958 L0,9.51820958 L0,14.1402482 L4.43378829,14.1402482 L4.43378829,26 L9.73620696,26 Z" id="Faacebook"></path>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="15" height="26" xmlns:v="https://vecta.io/nano"><path d="M9.736 26V14.14h4.423l.662-4.622H9.736V6.567c0-1.338.413-2.25 2.545-2.25L15 4.316V.182C14.53.126 12.916 0 11.038 0c-3.92 0-6.604 2.154-6.604 6.11v3.409H0v4.622h4.434V26h5.302z" fill="#4a4a4a" fill-rule="evenodd"/></svg>
