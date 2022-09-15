@@ -4913,10 +4913,6 @@
           "widgetNamespace": "app"
         },
         {
-          "widgetId": "content-workflows-tasks-widget",
-          "widgetNamespace": "sidebar-builtin"
-        },
-        {
           "widgetId": "content-preview-widget",
           "widgetNamespace": "sidebar-builtin"
         },
@@ -5990,10 +5986,6 @@
           "widgetNamespace": "app"
         },
         {
-          "widgetId": "content-workflows-tasks-widget",
-          "widgetNamespace": "sidebar-builtin"
-        },
-        {
           "widgetId": "content-preview-widget",
           "widgetNamespace": "sidebar-builtin"
         },
@@ -6149,10 +6141,6 @@
         {
           "widgetId": "2zxg33XZAtuAD1BBuV0Svy",
           "widgetNamespace": "app"
-        },
-        {
-          "widgetId": "content-workflows-tasks-widget",
-          "widgetNamespace": "sidebar-builtin"
         },
         {
           "widgetId": "content-preview-widget",

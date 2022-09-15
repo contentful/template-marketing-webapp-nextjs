@@ -11,9 +11,7 @@ const createBackupEnvironment = require('./createBackupEnvironment');
 const createPartialBackupEnvironment = require('./createPartialBackupEnvironment');
 const inviteToSpace = require('./inviteToSpace');
 const logToZapier = require('./logToZapier');
-const installTasksApp = require('./installTasksApp');
 const installJumpgateApp = require('./installJumpgateApp');
-const installSchemaConnectorApp = require('./installSchemaConnectorApp');
 const installTypeformApp = require('./installTypeformApp');
 const installCloudinaryApp = require('./installCloudinaryApp');
 const installNinetailedApp = require('./installNinetailedApp');
@@ -250,37 +248,6 @@ const init = async (input) => {
     );
   }
 
-  // Install the Tasks app
-  if (inputSpaceId === undefined) {
-    const installTasksAppStartTime = new Date();
-    console.info('Installing the Tasks app...');
-
-    const installTasksAppResult = await installTasksApp({
-      spaceId,
-      cmaToken,
-    });
-
-    if (installTasksAppResult.state === 'error') {
-      await cleanupSpaceOnError();
-      return {
-        state: 'error',
-        error: installTasksAppResult.error,
-      };
-    }
-
-    const installTasksAppEndTime = new Date();
-
-    console.info(
-      `Tasks app installed. Done in ${Math.round(
-        (installTasksAppEndTime.getTime() -
-          installTasksAppStartTime.getTime()) /
-          1000,
-      )}s`,
-    );
-  } else {
-    console.info('Skipping Tasks app installation - reusing existing space');
-  }
-
   // Install the Jumpgate app
   if (inputSpaceId === undefined) {
     const installJumpgateAppStartTime = new Date();
@@ -311,40 +278,6 @@ const init = async (input) => {
     );
   } else {
     console.info('Skipping Jumpgate app installation - reusing existing space');
-  }
-
-  // Install the Schema Connector app
-  if (inputSpaceId === undefined) {
-    const installSchemaConnectorAppStartTime = new Date();
-    console.info('Installing the Schema Connector app...');
-
-    const installSchemaConnectorAppResult = await installSchemaConnectorApp({
-      spaceId,
-      cmaToken,
-      organizationId,
-    });
-
-    if (installSchemaConnectorAppResult.state === 'error') {
-      await cleanupSpaceOnError();
-      return {
-        state: 'error',
-        error: installSchemaConnectorAppResult.error,
-      };
-    }
-
-    const installSchemaConnectorAppEndTime = new Date();
-
-    console.info(
-      `Schema Connector app installed. Done in ${Math.round(
-        (installSchemaConnectorAppEndTime.getTime() -
-          installSchemaConnectorAppStartTime.getTime()) /
-          1000,
-      )}s`,
-    );
-  } else {
-    console.info(
-      'Skipping Schema Connector app installation - reusing existing space',
-    );
   }
 
   // Install the Typeform app
@@ -420,7 +353,7 @@ const init = async (input) => {
       spaceId,
       cmaToken,
       spaceName: createdSpaceName,
-      organizationId
+      organizationId,
     });
 
     if (installNinetailedAppResult.state === 'error') {
