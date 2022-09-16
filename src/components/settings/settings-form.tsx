@@ -18,7 +18,7 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { ContentfulContext } from '@pages/_app';
-import settingsIcon from '@src/img/settings-icon.svg';
+import SettingsIcon from '@src/icons/settings-icon.svg';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -538,7 +538,7 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = (props) => {
   return (
     <section className={classes.root}>
       <header className={classes.header}>
-        <img src={settingsIcon} className={classes.logo} alt="Logo" />
+        <SettingsIcon className={classes.logo} />
         <Typography className={classes.headerTitle} variant="h1">
           Editorial Toolbox
         </Typography>
