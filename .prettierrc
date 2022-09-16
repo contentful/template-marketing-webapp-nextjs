@@ -1,7 +1,4 @@
 {
   "singleQuote": true,
-  "trailingComma": "all",
-  "printWidth": 100,
-  "bracketSameLine": true,
-  "jsxSingleQuote": true
+  "trailingComma": "all"
 }

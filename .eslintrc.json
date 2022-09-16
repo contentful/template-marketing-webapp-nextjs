@@ -8,8 +8,7 @@
     "plugin:react/recommended",
     "standard-with-typescript",
     "prettier",
-    "airbnb",
-    "prettier/react"
+    "airbnb"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -20,18 +19,32 @@
     "sourceType": "module",
     "project": "./tsconfig.json"
   },
-  "plugins": ["react", "@typescript-eslint", "react-hooks", "prettier"],
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "react-hooks",
+    "prettier",
+    "simple-import-sort",
+    "import"
+  ],
   "rules": {
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
-    "@typescript-eslint/restrict-template-expressions": ["error", { "allowNullish": true }],
+    "@typescript-eslint/restrict-template-expressions": [
+      "error",
+      { "allowNullish": true }
+    ],
     "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/prefer-optional-chain": "warn",
     "@typescript-eslint/no-var-requires": "error",
-    "import/no-duplicates": "error",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "react/prop-types": "off"
+    "react/prop-types": "off",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "import/no-duplicates": "error",
+    "import/no-unresolved": "error",
+    "import/newline-after-import": "error"
   },
   "overrides": [
     {
@@ -47,6 +60,9 @@
       "version": "detect"
     },
     "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true
+      },
       "alias": {
         "map": [
           ["@pages", "./pages"],
