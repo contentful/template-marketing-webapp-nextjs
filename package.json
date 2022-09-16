@@ -24,7 +24,6 @@
     "migrate:init": "ctf-migrate init",
     "migrate:content-model": "ctf-migrate up -a",
     "deploy": "node ./scripts/deploy",
-    "jumpgate": "ts-node --project tsconfig.scripts.json ./scripts/jumpgate.ts",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },

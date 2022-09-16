@@ -11,7 +11,6 @@ const createBackupEnvironment = require('./createBackupEnvironment');
 const createPartialBackupEnvironment = require('./createPartialBackupEnvironment');
 const inviteToSpace = require('./inviteToSpace');
 const logToZapier = require('./logToZapier');
-const installJumpgateApp = require('./installJumpgateApp');
 const installTypeformApp = require('./installTypeformApp');
 const installCloudinaryApp = require('./installCloudinaryApp');
 const installNinetailedApp = require('./installNinetailedApp');
@@ -246,38 +245,6 @@ const init = async (input) => {
     console.info(
       'Skipping partial backup environment creation - reusing existing space',
     );
-  }
-
-  // Install the Jumpgate app
-  if (inputSpaceId === undefined) {
-    const installJumpgateAppStartTime = new Date();
-    console.info('Installing the Jumpgate app...');
-
-    const installJumpgateAppResult = await installJumpgateApp({
-      spaceId,
-      cmaToken,
-      organizationId,
-    });
-
-    if (installJumpgateAppResult.state === 'error') {
-      await cleanupSpaceOnError();
-      return {
-        state: 'error',
-        error: installJumpgateAppResult.error,
-      };
-    }
-
-    const installJumpgateAppEndTime = new Date();
-
-    console.info(
-      `Jumpgate app installed. Done in ${Math.round(
-        (installJumpgateAppEndTime.getTime() -
-          installJumpgateAppStartTime.getTime()) /
-          1000,
-      )}s`,
-    );
-  } else {
-    console.info('Skipping Jumpgate app installation - reusing existing space');
   }
 
   // Install the Typeform app
