@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Theme, makeStyles, useTheme } from '@material-ui/core';
 import { CSSTransition } from 'react-transition-group';
 import SettingsForm from '@src/components/settings/settings-form';
-import settingsIcon from '@src/img/settings-icon.svg';
+import SettingsIcon from '@src/icons/settings-icon.svg';
 
 const useStyles = makeStyles((theme: Theme) => ({
   toggle: {
@@ -100,7 +100,7 @@ const Settings = () => {
         }}
         title="Toggle editorial toolbox"
       >
-        <img className={classes.toggleImage} src={settingsIcon} alt="" />
+        <SettingsIcon className={classes.toggleImage} />
       </button>
     </>
   );

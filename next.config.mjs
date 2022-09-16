@@ -82,6 +82,11 @@ export default withPlugins(plugins, {
       );
     }
 
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ["@svgr/webpack"]
+    });
+
     includePolyfills(config);
 
     return config;

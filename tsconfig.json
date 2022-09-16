@@ -16,6 +16,7 @@
     "target": "esnext",
     "baseUrl": "./",
     "paths": {
+      "@public/*": ["./public/*"],
       "@pages/*": [
         "./pages/*"
       ],
