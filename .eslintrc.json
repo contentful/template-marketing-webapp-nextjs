@@ -1,73 +1,68 @@
 {
-  "plugins": ["@typescript-eslint", "react", "react-hooks", "prettier"],
-  "extends": ["airbnb", "prettier", "prettier/react"],
   "env": {
-    "browser": true
+    "browser": true,
+    "es2021": true
   },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "standard-with-typescript",
+    "prettier",
+    "airbnb"
+  ],
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
     },
     "ecmaVersion": 2018,
-    "sourceType": "module"
+    "sourceType": "module",
+    "project": "./tsconfig.json"
   },
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "react-hooks",
+    "prettier",
+    "simple-import-sort",
+    "import"
+  ],
   "rules": {
-    "import/prefer-default-export": 0,
-    "react/jsx-filename-extension": [
-      1,
-      { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
-    ],
-    "import/extensions": 0,
-    "no-underscore-dangle": "off",
-    "semi": ["off"],
-    "import/no-cycle": 0,
-    "react/forbid-prop-types": 0,
-    "camelcase": "off",
-    "jsx-a11y/anchor-is-valid": "off",
-    "react-hooks/rules-of-hooks": "error",
-    "quotes": "off",
-    "object-curly-newline": "off",
-    "radix": "off",
-    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
-    "react/destructuring-assignment": 0,
-    "operator-linebreak": [
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/strict-boolean-expressions": "off",
+    "@typescript-eslint/restrict-template-expressions": [
       "error",
-      "after",
-      {
-        "overrides": {
-          "=": "after",
-          "?": "ignore",
-          ":": "ignore",
-          "&&": "ignore"
-        }
-      }
+      { "allowNullish": true }
     ],
-    "no-console": "off",
-    "no-restricted-syntax": "off",
-    "react/require-default-props": "off",
-    "react/jsx-props-no-spreading": "off"
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/prefer-optional-chain": "warn",
+    "@typescript-eslint/no-var-requires": "error",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/prop-types": "off",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "import/no-duplicates": "error",
+    "import/no-unresolved": "error",
+    "import/newline-after-import": "error"
   },
-
   "overrides": [
     {
-      "files": ["**/*.ts", "**/*.tsx"],
-      "parser": "@typescript-eslint/parser",
-      "parserOptions": {
-        "ecmaFeatures": {
-          "jsx": true
-        },
-        "useJSXTextNode": true,
-        "project": "./tsconfig.json"
-      },
+      // enable the rule specifically for TypeScript files
+      "files": ["*.ts", "*.tsx"],
       "rules": {
-        "no-unused-vars": "off",
-        "react/prop-types": "off"
+        "@typescript-eslint/explicit-function-return-type": "off"
       }
     }
   ],
-
   "settings": {
+    "react": {
+      "version": "detect"
+    },
     "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true
+      },
       "alias": {
         "map": [
           ["@pages", "./pages"],
