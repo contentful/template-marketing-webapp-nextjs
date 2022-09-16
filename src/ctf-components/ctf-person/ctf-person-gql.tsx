@@ -26,7 +26,7 @@ const CtfPersonGql = (props: CtfPersonGqlPropsInterface) => {
 
   if (
     queryResult.data === undefined ||
-    queryResult.loading ||
+    queryResult.loading === true ||
     queryResult.data.topicPerson === null
   ) {
     return null;

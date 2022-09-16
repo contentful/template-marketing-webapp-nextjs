@@ -13,11 +13,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-interface Props {
+type Props = {
   className?: string;
   style?: CSSProperties;
   children?: React.ReactNode | React.ReactNode[];
-}
+};
 
 const ProductContainer = (props: Props) => {
   const classes = useStyles();

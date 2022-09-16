@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 import { NextPage, GetServerSideProps } from 'next';
 import {
   ApolloClient,
@@ -16,8 +17,8 @@ import {
 import getContentfulConfig from '@src/get-contentful-config';
 import { NinetailedProvider } from '@ninetailed/experience.js-next';
 
-import mainIntrospection from '../../introspection/main-introspection.json';
-import legalIntrospection from '../../introspection/legal-introspection.json';
+const mainIntrospection = require('../../introspection/main-introspection.json');
+const legalIntrospection = require('../../introspection/legal-introspection.json');
 
 interface CfulApolloConfig {
   url: string;
@@ -112,11 +113,11 @@ export const generateGetServerSideProps =
   }): GetServerSideProps =>
   async (ctx) => {
     const error: null | { code: number; message?: string } = null;
-    const pageProps = (customGetServerSideProps != null)
+    const pageProps = customGetServerSideProps
       ? await customGetServerSideProps(ctx)
       : { props: {} };
 
-    if (ctx.res?.finished) {
+    if (ctx.res && ctx.res.finished) {
       return pageProps;
     }
 

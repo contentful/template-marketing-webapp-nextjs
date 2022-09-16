@@ -105,7 +105,7 @@ const CtfInfoBlock: PersonalizedComponent<CtfInfoBlockPropsInterface> = (
 
   return (
     <WrapIf
-      when={xrayActive && isPersonalized}
+      when={xrayActive === true && isPersonalized === true}
       wrap={(children) => (
         <PersonalizationFrame audienceId={ninetailed?.audience.id ?? null}>
           {children}

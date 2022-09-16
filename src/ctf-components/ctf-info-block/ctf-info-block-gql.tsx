@@ -35,7 +35,7 @@ const CtfInfoBlockGql = ({
 
   if (
     queryResult.data === undefined ||
-    queryResult.loading ||
+    queryResult.loading === true ||
     queryResult.data.componentInfoBlock === null
   ) {
     return null;

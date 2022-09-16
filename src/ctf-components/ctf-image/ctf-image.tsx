@@ -104,7 +104,7 @@ const CtfImage = (props: CtfImagePropsInterface) => {
             src={imgSrc}
             srcSet={imgSrcset}
             alt={title!}
-            width={widthPx || undefined}
+            width={widthPx ? widthPx : undefined}
           />
           {showDescription && description && (
             <figcaption>{description}</figcaption>

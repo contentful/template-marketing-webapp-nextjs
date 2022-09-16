@@ -1,9 +1,9 @@
-export interface ContentfulConfig {
+export type ContentfulConfig = {
   mainSpace: SpaceConfig;
-}
+};
 
-export interface SpaceConfig {
+export type SpaceConfig = {
   spaceId: string;
   apiKey: string;
   previewApiKey: string;
-}
+};

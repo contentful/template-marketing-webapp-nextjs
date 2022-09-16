@@ -291,7 +291,7 @@ const Footer = (props: FooterPropsInterface) => {
   };
 
   const renderMenuItemChildren = (menuItem: {
-    children?: Array<{ label: string; location: string }>;
+    children?: { label: string; location: string }[];
   }): JSX.Element | null => {
     if (menuItem.children === undefined) {
       return null;

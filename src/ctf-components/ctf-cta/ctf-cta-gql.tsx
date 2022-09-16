@@ -29,7 +29,7 @@ const CtfCtaGql = ({ id, locale, preview }: CtfCtaGqlPropsInterface) => {
 
   if (
     queryResult.data === undefined ||
-    queryResult.loading ||
+    queryResult.loading === true ||
     queryResult.data.componentCta === null
   ) {
     return null;

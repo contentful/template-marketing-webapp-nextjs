@@ -30,7 +30,7 @@ const CtfQuoteGql = (props: CtfQuoteGqlPropsInterface) => {
 
   if (
     queryResult.data === undefined ||
-    queryResult.loading ||
+    queryResult.loading === true ||
     queryResult.data.componentQuote === null
   ) {
     return null;

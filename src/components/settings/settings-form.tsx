@@ -315,7 +315,7 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = (props) => {
   const { spaceEnv, appUrl, xrayActive, previewActive } =
     useContext(ContentfulContext);
   const [environments, setEnvironments] = useState(
-    [] as Array<{ name: string; createdAt: string }>,
+    [] as { name: string; createdAt: string }[],
   );
   const [defaultEnv, setDefaultEnv] = useState('');
   const [newSpaceEnv, setNewSpaceEnv] = useState(
@@ -391,11 +391,11 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = (props) => {
   const onSubmit = async (event) => {
     event.preventDefault();
 
-    if (!isDirty) {
+    if (isDirty === false) {
       return;
     }
 
-    const queryParams = queryString.parse(window.location.search);
+    let queryParams = queryString.parse(window.location.search);
 
     if (newSpaceEnv !== spaceEnv) {
       if ([null, '', defaultEnv].includes(newSpaceEnv)) {
@@ -406,7 +406,7 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = (props) => {
     }
 
     if (xrayActive !== newXrayActive) {
-      if (!newXrayActive) {
+      if (newXrayActive === false) {
         delete queryParams.xray;
       } else {
         queryParams.xray = '1';
@@ -414,7 +414,7 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = (props) => {
     }
 
     if (previewActive !== newPreviewActive) {
-      if (!newPreviewActive) {
+      if (newPreviewActive === false) {
         delete queryParams.preview;
       } else {
         queryParams.preview = '1';

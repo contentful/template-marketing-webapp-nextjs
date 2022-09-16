@@ -40,7 +40,7 @@ const CtfCardPost = (props: CtfCardPostPropsInterface) => {
       return null;
     }
 
-    if (!linkToPost) {
+    if (linkToPost === false) {
       return (
         <Typography variant="body1" component="h3" className={classes.title}>
           {postName}
@@ -62,7 +62,7 @@ const CtfCardPost = (props: CtfCardPostPropsInterface) => {
       return null;
     }
 
-    if (!linkToPost) {
+    if (linkToPost === false) {
       return (
         <CtfAsset
           {...featuredImage}

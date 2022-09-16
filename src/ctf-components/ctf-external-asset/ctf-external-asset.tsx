@@ -150,35 +150,35 @@ const isEmbeddableImage = (src: string): boolean => {
 };
 
 const getFileIcon = (extension: string): IconProp => {
-  if (['.zip', '.rar', '.7zip'].includes(extension)) {
+  if (['.zip', '.rar', '.7zip'].includes(extension) === true) {
     return faFileArchive;
   }
 
-  if (['.pdf'].includes(extension)) {
+  if (['.pdf'].includes(extension) === true) {
     return faFilePdf;
   }
 
-  if (['.xls', '.xlsx', '.xltx', '.xltm'].includes(extension)) {
+  if (['.xls', '.xlsx', '.xltx', '.xltm'].includes(extension) === true) {
     return faFileExcel;
   }
 
-  if (['.doc', '.docx'].includes(extension)) {
+  if (['.doc', '.docx'].includes(extension) === true) {
     return faFileWord;
   }
 
-  if (['.ppt', '.pptx'].includes(extension)) {
+  if (['.ppt', '.pptx'].includes(extension) === true) {
     return faFilePowerpoint;
   }
 
-  if (['.jpg', '.jpeg', '.png', '.webp', '.gif'].includes(extension)) {
+  if (['.jpg', '.jpeg', '.png', '.webp', '.gif'].includes(extension) === true) {
     return faFileImage;
   }
 
-  if (['.mp3', '.waw'].includes(extension)) {
+  if (['.mp3', '.waw'].includes(extension) === true) {
     return faFileAudio;
   }
 
-  if (['.mp4', '.avi'].includes(extension)) {
+  if (['.mp4', '.avi'].includes(extension) === true) {
     return faFileVideo;
   }
 
@@ -222,7 +222,7 @@ const CtfExternalAsset = (props: CtfExternalAssetPropsInterface) => {
     return null;
   }
 
-  if (!isEmbeddableImage(src)) {
+  if (isEmbeddableImage(src) === false) {
     // Not an image, render an asset card instead
 
     return (

@@ -86,7 +86,7 @@ const CtfCategoriesMenu: React.FC<CtfCategoriesMenuPropsInterface> = (
 
   if (
     categoriesQueryResult.data === undefined ||
-    categoriesQueryResult.loading ||
+    categoriesQueryResult.loading === true ||
     categoriesQueryResult.data.categoryCollection === null
   ) {
     return null;

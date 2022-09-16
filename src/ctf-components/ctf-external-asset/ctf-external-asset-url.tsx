@@ -38,7 +38,7 @@ const CtfExternalAssetUrl = (props: CtfExternalAssetUrlPropsInterface) => {
   const externalUrlWrapperEl = useRef<HTMLDivElement>(null);
   const transformer = transformers.find(
     (potentialTransformer) =>
-      potentialTransformer.shouldTransform(externalUrl),
+      potentialTransformer.shouldTransform(externalUrl) === true,
   );
 
   useEffect(() => {

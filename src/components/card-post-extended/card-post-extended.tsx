@@ -78,7 +78,7 @@ const CtfCardPostExtended = (props: CtfCardPostExtendedPropsInterface) => {
 
     return (
       <span className={classes.metaDate}>
-        {(author != null) && <>{realLocale === 'de-DE' ? ', am ' : ', on '}</>}
+        {author && <>{realLocale === 'de-DE' ? ', am ' : ', on '}</>}
         {formatDate(new Date(publishedDate), 'MMM dd, yyyy')}
       </span>
     );
@@ -109,7 +109,7 @@ const CtfCardPostExtended = (props: CtfCardPostExtendedPropsInterface) => {
           {author && (
             <div className={classes.meta}>
               <div className={classes.author}>
-                {(author.avatar != null) && (
+                {author.avatar && (
                   <div className={classes.authorAvatar}>
                     <Avatar asset={author.avatar} widthPx={34} />
                   </div>

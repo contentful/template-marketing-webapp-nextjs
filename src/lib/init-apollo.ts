@@ -28,7 +28,7 @@ export function createLink(url: string) {
   return new HttpLink({
     uri: url,
     credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
-    fetch: !process.browser && (fetch as any),
+    fetch: !process['browser'] && (fetch as any),
   });
 }
 

@@ -12,7 +12,7 @@ export const reverseLocalesMap = Object.fromEntries(
   Object.entries(localesMap).map((entry) => entry.reverse()),
 );
 
-export interface LocaleConfig { lang: string; locale: string }
+export type LocaleConfig = { lang: string; locale: string };
 
 export function getLocaleConfig(lang: string): LocaleConfig {
   if (localesMap[lang] === undefined && reverseLocalesMap[lang] === undefined) {

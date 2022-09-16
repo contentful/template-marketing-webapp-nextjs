@@ -50,7 +50,7 @@ const CtfTagGql = (props: Props) => {
     };
   }, [queryResult.data]);
 
-  if (queryResult.data === undefined || queryResult.loading) {
+  if (queryResult.data === undefined || queryResult.loading === true) {
     return null;
   }
 

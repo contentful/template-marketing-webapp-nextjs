@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 interface CtfCategoryPropsInterface extends CategoryFragment {
-  posts: Array<CtfCategoryQuery_postCollection_items | null>;
+  posts: (CtfCategoryQuery_postCollection_items | null)[];
 }
 
 const CtfCategory = (props: CtfCategoryPropsInterface) => {

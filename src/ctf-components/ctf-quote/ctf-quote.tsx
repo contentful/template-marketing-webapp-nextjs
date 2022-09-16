@@ -132,7 +132,7 @@ const CtfQuote: PersonalizedComponent<CtfQuotePropsInterface> = (props) => {
 
   return (
     <WrapIf
-      when={xrayActive && isPersonalized}
+      when={xrayActive === true && isPersonalized === true}
       wrap={(children) => (
         <PersonalizationFrame audienceId={ninetailed?.audience.id ?? null}>
           {children}

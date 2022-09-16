@@ -100,7 +100,7 @@ const Link = (props: Props) => {
   const external = href.startsWith('http://') || href.startsWith('https://');
   const underlineStyle = underline ? 'always' : 'none';
 
-  if (external || !href) {
+  if (external === true || !href) {
     return isButton ? (
       <MuiButton
         href={href}
@@ -137,14 +137,14 @@ const Link = (props: Props) => {
     );
   }
 
-  if (isButton) {
+  if (isButton === true) {
     return (
       <NextLink href={href} as={as}>
         <MuiButton
           href={as}
           className={className}
           color={color}
-          onClick={() => (onClick != null) && onClick()}
+          onClick={() => onClick && onClick()}
           variant={variant}
           size={size}
           startIcon={startIcon}
@@ -163,7 +163,7 @@ const Link = (props: Props) => {
         className={className}
         underline={underlineStyle}
         color={color}
-        onClick={() => (onClick != null) && onClick()}
+        onClick={() => onClick && onClick()}
       >
         {children}
       </MuiLink>

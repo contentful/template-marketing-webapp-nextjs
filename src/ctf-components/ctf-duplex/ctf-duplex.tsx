@@ -193,7 +193,7 @@ const CtfDuplex: PersonalizedComponent<CtfDuplexPropsInterface> = (props) => {
 
   return (
     <WrapIf
-      when={xrayActive && isPersonalized}
+      when={xrayActive === true && isPersonalized === true}
       wrap={(children) => (
         <PersonalizationFrame audienceId={ninetailed?.audience.id ?? null}>
           {children}
@@ -237,7 +237,7 @@ const CtfDuplex: PersonalizedComponent<CtfDuplexPropsInterface> = (props) => {
                 </div>
               </LayoutContext.Provider>
             )}
-            {targetPage?.slug && (
+            {targetPage && targetPage.slug && (
               <div className={classes.ctaContainer}>
                 {targetPage.__typename === 'Page' && (
                   <PageLink

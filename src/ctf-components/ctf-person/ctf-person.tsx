@@ -22,7 +22,7 @@ interface CtfPersonPropsInterface extends PersonFragment {
 const CtfPerson = (props: CtfPersonPropsInterface) => {
   const layout = useContext(LayoutContext);
   const classes = useStyles();
-  const isLeadership = props.cardStyle === false;
+  const isLeadership = props.cardStyle === false ? true : false;
 
   return layout.parent === 'quote' ? (
     <div className={classes.root} style={{ maxWidth: layout.containerWidth }}>

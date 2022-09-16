@@ -58,14 +58,14 @@ const Settings = () => {
   const [settingsOpen, setSettingsOpen] = useState(false);
 
   useEffect(() => {
-    if (!settingsOpen) {
+    if (settingsOpen === false) {
       document.body.classList.remove('is-scroll-locked');
       return;
     }
 
     if (
       window.matchMedia(theme.breakpoints.up('md').replace('@media ', ''))
-        .matches
+        .matches === true
     ) {
       return;
     }

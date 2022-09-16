@@ -197,13 +197,13 @@ const CtfRichtext = (props: CtfRichtextPropsInterface) => {
 
   const entryBlocks = useMemo(
     () =>
-      tryget(() => links!.entries!.block.filter((b) => !!b), [] as Block[])!,
+      tryget(() => links!.entries!.block!.filter((b) => !!b), [] as Block[])!,
     [links],
   );
 
   const assetBlocks = useMemo(
     () =>
-      tryget(() => links!.assets!.block.filter((b) => !!b), [] as Asset[])!,
+      tryget(() => links!.assets!.block!.filter((b) => !!b), [] as Asset[])!,
     [links],
   );
 
@@ -225,7 +225,7 @@ const CtfRichtext = (props: CtfRichtextPropsInterface) => {
             'cta-subline',
             'hero-banner-body',
             'post-intro',
-          ].includes(layout.parent)
+          ].includes(layout.parent) === true
         }
       >
         <div className={containerClassName}>
@@ -259,7 +259,7 @@ const CtfRichtext = (props: CtfRichtextPropsInterface) => {
       [BLOCKS.EMBEDDED_ENTRY]: (node) => {
         const id = tryget(() => node.data.target.sys.id);
         if (id) {
-          const entry = entryBlocks.find((block) => block.sys.id === id);
+          const entry = entryBlocks.find((block) => block!.sys.id === id);
 
           if (entry) {
             return (
@@ -275,7 +275,7 @@ const CtfRichtext = (props: CtfRichtextPropsInterface) => {
       [BLOCKS.EMBEDDED_ASSET]: (node) => {
         const id = tryget(() => node.data.target.sys.id);
         if (id) {
-          const asset = assetBlocks.find((block) => block.sys.id === id);
+          const asset = assetBlocks.find((block) => block!.sys.id === id);
 
           return (
             <ParagraphGridContainer>
@@ -317,7 +317,7 @@ const CtfRichtext = (props: CtfRichtextPropsInterface) => {
 
         const { loading, data } = queryResult;
 
-        if ((data == null) || loading) return null;
+        if (!data || loading) return null;
 
         if (data.page !== null) {
           return (
@@ -385,20 +385,20 @@ const CtfRichtext = (props: CtfRichtextPropsInterface) => {
         );
       };
 
-    opts.renderNode[BLOCKS.PARAGRAPH] = paragraphRenderer({
+    opts.renderNode![BLOCKS.PARAGRAPH] = paragraphRenderer({
       variant: 'body1',
     });
-    opts.renderNode[BLOCKS.HEADING_1] = paragraphRenderer({ variant: 'h1' });
-    opts.renderNode[BLOCKS.HEADING_2] = paragraphRenderer({ variant: 'h2' });
-    opts.renderNode[BLOCKS.HEADING_3] = paragraphRenderer({ variant: 'h3' });
-    opts.renderNode[BLOCKS.HEADING_4] = paragraphRenderer({ variant: 'h4' });
-    opts.renderNode[BLOCKS.HEADING_5] = paragraphRenderer({ variant: 'h5' });
-    opts.renderNode[BLOCKS.HEADING_6] = paragraphRenderer({ variant: 'h6' });
-    opts.renderNode[BLOCKS.QUOTE] = paragraphRenderer({
+    opts.renderNode![BLOCKS.HEADING_1] = paragraphRenderer({ variant: 'h1' });
+    opts.renderNode![BLOCKS.HEADING_2] = paragraphRenderer({ variant: 'h2' });
+    opts.renderNode![BLOCKS.HEADING_3] = paragraphRenderer({ variant: 'h3' });
+    opts.renderNode![BLOCKS.HEADING_4] = paragraphRenderer({ variant: 'h4' });
+    opts.renderNode![BLOCKS.HEADING_5] = paragraphRenderer({ variant: 'h5' });
+    opts.renderNode![BLOCKS.HEADING_6] = paragraphRenderer({ variant: 'h6' });
+    opts.renderNode![BLOCKS.QUOTE] = paragraphRenderer({
       component: 'blockquote',
       variant: 'body1',
     });
-    opts.renderNode[BLOCKS.TABLE] = (_, children) => {
+    opts.renderNode![BLOCKS.TABLE] = (_, children) => {
       return (
         <ParagraphGridContainer>
           <div
@@ -411,19 +411,19 @@ const CtfRichtext = (props: CtfRichtextPropsInterface) => {
         </ParagraphGridContainer>
       );
     };
-    opts.renderNode[BLOCKS.HR] = hrRenderer;
-    opts.renderNode[BLOCKS.LIST_ITEM] = (_, children) => (
+    opts.renderNode![BLOCKS.HR] = hrRenderer;
+    opts.renderNode![BLOCKS.LIST_ITEM] = (_, children) => (
       <li className={classes.paragrahGridListItem}>{children}</li>
     );
 
     opts.renderText = (text) => {
-      return text.split('\n').reduce<any[]>((children, textSegment, index) => {
+      return text.split('\n').reduce((children, textSegment, index) => {
         return [
           ...children,
           index > 0 && <br key={textSegment} />,
           textSegment,
         ];
-      }, []);
+      }, [] as any[]);
     };
 
     return opts;

@@ -119,7 +119,7 @@ const CtfHeroBanner: PersonalizedComponent<CtfHeroBannerInterface> = (
   const colorConfig = getColorConfigFromPalette(colorPalette || '');
   const imageStyle = imageStyleBoolean ? 'partial' : 'full';
   const heroSize =
-    heroSizeBoolean === null || heroSizeBoolean
+    heroSizeBoolean === null || heroSizeBoolean === true
       ? 'full_screen'
       : 'fixed_height';
   const backgroundImage = useMemo(
@@ -139,7 +139,7 @@ const CtfHeroBanner: PersonalizedComponent<CtfHeroBannerInterface> = (
 
   return (
     <WrapIf
-      when={xrayActive && isPersonalized}
+      when={xrayActive === true && isPersonalized === true}
       wrap={(children) => (
         <PersonalizationFrame audienceId={ninetailed?.audience.id ?? null}>
           {children}
@@ -155,7 +155,7 @@ const CtfHeroBanner: PersonalizedComponent<CtfHeroBannerInterface> = (
         style={{
           backgroundImage:
             imageStyle === 'full' && backgroundImage
-              ? `url(${backgroundImage})`
+              ? `url(${backgroundImage!})`
               : undefined,
           backgroundColor: colorConfig.backgroundColor,
         }}
@@ -165,7 +165,7 @@ const CtfHeroBanner: PersonalizedComponent<CtfHeroBannerInterface> = (
             <div
               className={classes.partialBg}
               style={{
-                backgroundImage: `url(${backgroundImage})`,
+                backgroundImage: `url(${backgroundImage!})`,
               }}
             />
           </div>

@@ -58,7 +58,7 @@ const CtfCta: PersonalizedComponent<CtfCtaPropsInterface> = (props) => {
 
   return (
     <WrapIf
-      when={xrayActive && isPersonalized}
+      when={xrayActive === true && isPersonalized === true}
       wrap={(children) => (
         <PersonalizationFrame audienceId={ninetailed?.audience.id ?? null}>
           {children}
@@ -92,7 +92,7 @@ const CtfCta: PersonalizedComponent<CtfCtaPropsInterface> = (props) => {
               </div>
             </LayoutContext.Provider>
           )}
-          {targetPage?.slug && (
+          {targetPage && targetPage.slug && (
             <div className={classes.ctaContainer}>
               {targetPage.__typename === 'Page' && (
                 <PageLink

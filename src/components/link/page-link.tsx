@@ -3,10 +3,10 @@ import { ContentfulContext } from '@pages/_app';
 import Link from '@src/components/link/link';
 import { getLocaleConfig } from '@src/locales-map';
 
-export interface PageLinkPage {
+export type PageLinkPage = {
   sys: { id: string };
   slug?: string | null;
-}
+};
 
 interface Props {
   page: PageLinkPage;

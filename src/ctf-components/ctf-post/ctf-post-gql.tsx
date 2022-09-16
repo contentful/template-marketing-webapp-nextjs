@@ -26,7 +26,7 @@ const CtfPostGql = (props: Props) => {
   });
   useDataForPreview(queryResult);
 
-  if (queryResult.data === undefined || queryResult.loading) {
+  if (queryResult.data === undefined || queryResult.loading === true) {
     return null;
   }
 

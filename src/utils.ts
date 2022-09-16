@@ -8,16 +8,16 @@ export type ArgumentTypes<F extends Function> = F extends (
 ) => any
   ? A
   : never;
-export type ArrayWithoutNulls<T extends any[]> = Array<Exclude<
+export type ArrayWithoutNulls<T extends any[]> = Exclude<
   T[0],
   null | undefined
->>;
+>[];
 export type NonNullValues<T> = {
   [P in keyof T]: Exclude<T[P], null | undefined>;
 };
 export type RecursivePartial<T> = {
-  [P in keyof T]?: T[P] extends Array<infer U>
-    ? Array<RecursivePartial<U>>
+  [P in keyof T]?: T[P] extends (infer U)[]
+    ? RecursivePartial<U>[]
     : T[P] extends object
     ? RecursivePartial<T[P]>
     : T[P];

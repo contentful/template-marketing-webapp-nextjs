@@ -227,7 +227,7 @@ const CtfProductTable: PersonalizedComponent<CtfProductTablePropsInterface> = (
 
   // Keeping the grid items the same size
   const gridElement = useRef<HTMLDivElement>(null);
-  const gridColumnElements = useRef<Array<HTMLDivElement | null>>([]);
+  const gridColumnElements = useRef<(HTMLDivElement | null)[]>([]);
   const [gridSizes, setGridSizes] = useState<{ [key: string]: number }>({});
   const resizeGridItems = useCallback(
     throttle(() => {
@@ -286,7 +286,7 @@ const CtfProductTable: PersonalizedComponent<CtfProductTablePropsInterface> = (
 
   return (
     <WrapIf
-      when={xrayActive && isPersonalized}
+      when={xrayActive === true && isPersonalized === true}
       wrap={(children) => (
         <PersonalizationFrame audienceId={ninetailed?.audience.id ?? null}>
           {children}
