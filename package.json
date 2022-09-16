@@ -19,7 +19,6 @@
     "build": "npm run build:server && npm run build:next",
     "export": "next export",
     "start": "next start",
-    "start:heroku": "next start -p $PORT",
     "test": "echo \"Error: no test specified\" && exit 1",
     "migrate:init": "ctf-migrate init",
     "migrate:content-model": "ctf-migrate up -a",
