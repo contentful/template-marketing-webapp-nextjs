@@ -141,9 +141,9 @@ const CtfInfoBlock: PersonalizedComponent<CtfInfoBlockPropsInterface> = (
             value={{ ...defaultLayout, parent: 'info-block' }}
           >
             <div className={classes.blocksGrid}>
-              {(block1Body != null) && (
+              {block1Body && (
                 <div className={classes.block}>
-                  {(block1Image != null) && (
+                  {block1Image && (
                     <div className={classes.itemIcon}>
                       <CtfAsset {...block1Image} showDescription={false} />
                     </div>
@@ -153,9 +153,9 @@ const CtfInfoBlock: PersonalizedComponent<CtfInfoBlockPropsInterface> = (
                   </div>
                 </div>
               )}
-              {(block2Body != null) && (
+              {block2Body && (
                 <div className={classes.block}>
-                  {(block2Image != null) && (
+                  {block2Image && (
                     <div className={classes.itemIcon}>
                       <CtfAsset {...block2Image} showDescription={false} />
                     </div>
@@ -165,9 +165,9 @@ const CtfInfoBlock: PersonalizedComponent<CtfInfoBlockPropsInterface> = (
                   </div>
                 </div>
               )}
-              {(block3Body != null) && (
+              {block3Body && (
                 <div className={classes.block}>
-                  {(block3Image != null) && (
+                  {block3Image && (
                     <div className={classes.itemIcon}>
                       <CtfAsset {...block3Image} showDescription={false} />
                     </div>

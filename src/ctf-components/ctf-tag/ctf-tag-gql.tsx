@@ -82,7 +82,7 @@ const CtfTagGql = (props: Props) => {
           />
         )}
       </Head>
-      <CtfTag posts={((queryResult.data.postCollection?.items) != null) || []} tag={tag} />
+      <CtfTag posts={queryResult.data.postCollection?.items || []} tag={tag} />
     </>
   );
 };

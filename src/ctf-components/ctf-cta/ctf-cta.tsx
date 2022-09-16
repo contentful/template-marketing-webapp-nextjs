@@ -83,7 +83,7 @@ const CtfCta: PersonalizedComponent<CtfCtaPropsInterface> = (props) => {
               {optimizeLineBreak(headline)}
             </Typography>
           )}
-          {(subline != null) && (
+          {subline && (
             <LayoutContext.Provider
               value={{ ...defaultLayout, parent: 'cta-subline' }}
             >
@@ -92,7 +92,7 @@ const CtfCta: PersonalizedComponent<CtfCtaPropsInterface> = (props) => {
               </div>
             </LayoutContext.Provider>
           )}
-          {(targetPage != null) && targetPage.slug && (
+          {targetPage?.slug && (
             <div className={classes.ctaContainer}>
               {targetPage.__typename === 'Page' && (
                 <PageLink

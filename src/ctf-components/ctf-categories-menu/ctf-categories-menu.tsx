@@ -98,7 +98,7 @@ const CtfCategoriesMenu: React.FC<CtfCategoriesMenuPropsInterface> = (
         <div className={classes.categories}>
           {categoriesQueryResult.data.categoryCollection.items.map(
             (category) =>
-              (category != null) && (
+              category && (
                 <Link
                   key={category.sys.id}
                   href="/[lang]/category/[slug]"

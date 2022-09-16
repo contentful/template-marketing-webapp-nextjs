@@ -124,7 +124,7 @@ const CtfHeroBanner: PersonalizedComponent<CtfHeroBannerInterface> = (
       : 'fixed_height';
   const backgroundImage = useMemo(
     () =>
-      (image != null)
+      image
         ? `${image.url}?w=${
             imageStyle === 'partial' ? 767 * 2 : layout.containerWidth * 2
           }`
@@ -180,7 +180,7 @@ const CtfHeroBanner: PersonalizedComponent<CtfHeroBannerInterface> = (
               {headline}
             </Typography>
           )}
-          {(bodyText != null) && (
+          {bodyText && (
             <LayoutContext.Provider
               value={{ ...defaultLayout, parent: 'hero-banner-body' }}
             >
@@ -189,7 +189,7 @@ const CtfHeroBanner: PersonalizedComponent<CtfHeroBannerInterface> = (
               </div>
             </LayoutContext.Provider>
           )}
-          {(targetPage != null) && ctaText && (
+          {targetPage && ctaText && (
             <div className={classes.ctaContainer}>
               {targetPage.__typename === 'Page' && (
                 <PageLink

@@ -43,8 +43,8 @@ export function createClientWithLink(
     : undefined;
 
   const cacheInstance = new InMemoryCache(
-    (fragmentMatcher != null) ? { fragmentMatcher } : undefined,
-  ).restore((initialState != null) || {});
+    fragmentMatcher ? { fragmentMatcher } : undefined,
+  ).restore(initialState || {});
 
   return new ApolloClient({
     connectToDevTools,

@@ -58,7 +58,7 @@ const Link = (props: Props) => {
     const urlQuerystring = router.asPath.split('?')[1];
     if (urlQuerystring) {
       href +=
-        !href.includes('?') ? `?${urlQuerystring}` : `&${urlQuerystring}`;
+        href.indexOf('?') < 0 ? `?${urlQuerystring}` : `&${urlQuerystring}`;
       as += `?${urlQuerystring}`;
     }
   }
@@ -106,7 +106,7 @@ const Link = (props: Props) => {
         href={href}
         className={className}
         color={color}
-        onClick={() => (onClick != null) && onClick()}
+        onClick={() => onClick && onClick()}
         variant={variant}
         size={size}
         startIcon={startIcon}
@@ -122,7 +122,7 @@ const Link = (props: Props) => {
         href={href}
         target={props.target}
         rel="noopener noreferrer"
-        onClick={() => (onClick != null) && onClick()}
+        onClick={() => onClick && onClick()}
       >
         {children}
       </MuiLink>

@@ -79,9 +79,9 @@ const CtfFeaturedCards: PersonalizedComponent<CtfFeaturedCardsPropsType> = (
             align="left"
           />
           <div className={classes.blocksGrid}>
-            {(featuredPostsCollection != null) &&
+            {featuredPostsCollection &&
               featuredPostsCollection.items
-                .filter((featuredPost) => !(featuredPost == null))
+              .filter((featuredPost) => !!featuredPost)
                 .map((featuredPost) => (
                   <div key={featuredPost!.sys.id} className={classes.block}>
                     <CardPost {...featuredPost!} linkToPost />

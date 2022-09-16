@@ -89,7 +89,7 @@ const CtfCardPost = (props: CtfCardPostPropsInterface) => {
     <article>
       {featuredImageBlock()}
       {postNameBlock()}
-      {(author != null) && <p className={classes.author}>by {author.name}</p>}
+      {author && <p className={classes.author}>by {author.name}</p>}
     </article>
   );
 };

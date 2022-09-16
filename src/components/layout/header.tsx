@@ -271,7 +271,7 @@ const Header = (props: HeaderPropsInterface) => {
         {/* menu button */}
         <Hidden mdUp>
           <Box>
-            <IconButton onClick={() => (onMenuClick != null) && onMenuClick()}>
+           <IconButton onClick={() => onMenuClick && onMenuClick()}>
               <Menu />
             </IconButton>
           </Box>

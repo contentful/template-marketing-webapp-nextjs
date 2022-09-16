@@ -76,19 +76,19 @@ const CtfCardLeadership = (props: CtfCardLeadershipPropsInterface) => {
           : undefined,
       )}
     >
-      {(avatar != null) && (
+      {avatar && (
         <div className={classes.avatar}>
           <CtfAsset {...avatar} showDescription={false} widthPx={442} />
         </div>
       )}
       <div>
-        {(nameSplit != null) && (
+        {nameSplit && (
           <Typography className={classes.name}>{nameSplit[0]}</Typography>
         )}
-        {(nameSplit != null) && nameSplit.length === 2 && (
+        {nameSplit && nameSplit.length === 2 && (
           <Typography className={classes.role}>{nameSplit[1]}</Typography>
         )}
-        {(bio != null) && (
+        {bio && (
           <LayoutContext.Provider
             value={{ ...defaultLayout, parent: 'card-person' }}
           >

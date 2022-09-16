@@ -115,8 +115,8 @@ const CtfPost = (props: CtfPostPropsInterface) => {
   const classes = useStyles();
 
   const extraSection =
-    (props.extraSectionCollection != null) &&
-    props.extraSectionCollection.items.filter((it) => !(it == null));
+    props.extraSectionCollection &&
+    props.extraSectionCollection.items.filter((it) => !!it);
 
   const publishedDateFormated = useMemo(() => {
     if (publishedDate === null) {
@@ -217,7 +217,7 @@ const CtfPost = (props: CtfPostPropsInterface) => {
                       </div>
                     </div>
 
-                    {(introText != null) && (
+                    {introText && (
                       <LayoutContext.Provider
                         value={{ ...defaultLayout, parent: 'post-intro' }}
                       >
@@ -229,7 +229,7 @@ const CtfPost = (props: CtfPostPropsInterface) => {
                     )}
                   </div>
                 </div>
-                {(featuredImage != null) && (
+                {featuredImage && (
                   <div
                     className={clsx(classes.container, classes.featuredImage)}
                   >
@@ -242,7 +242,7 @@ const CtfPost = (props: CtfPostPropsInterface) => {
                 )}
               </div>
             </Container>
-            {(body != null) && (
+            {body && (
               <CtfRichtext
                 {...body}
                 containerClassName={classes.container}
@@ -250,7 +250,7 @@ const CtfPost = (props: CtfPostPropsInterface) => {
               />
             )}
 
-            {(tags != null) && (
+            {tags && (
               <Container maxWidth={false}>
                 <div className={classes.tagsContainer}>
                   <div className={classes.container}>
@@ -263,7 +263,7 @@ const CtfPost = (props: CtfPostPropsInterface) => {
             )}
           </div>
         </WrapIf>
-        {(author != null) && (
+        {author && (
           <WrapIf
             when={xrayActive}
             wrap={(children) => (
@@ -287,9 +287,9 @@ const CtfPost = (props: CtfPostPropsInterface) => {
           </WrapIf>
         )}
 
-        {(extraSection != null) &&
+        {extraSection &&
           extraSection.map((entry) => (
-            <ComponentResolver componentProps={entry} key={entry.sys.id} />
+            <ComponentResolver componentProps={entry!} key={entry!.sys.id} />
           ))}
       </PostContainer>
     </LayoutContext.Provider>

@@ -39,14 +39,14 @@ const CtfCardPerson = (props: CtfCardPersonPropsInterface) => {
 
   return (
     <div className={classes.root}>
-      {(avatar != null) && (
+      {avatar && (
         <div className={classes.avatar}>
           <Avatar asset={avatar} />
         </div>
       )}
       <div>
         {name && <p className={classes.name}>{name}</p>}
-        {(bio != null) && (
+        {bio && (
           <LayoutContext.Provider
             value={{ ...defaultLayout, parent: 'card-person' }}
           >

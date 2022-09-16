@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginRight: 'auto',
     // maxWidth: '126rem',
     maxWidth: (props: CtfQuotePropsInterface) =>
-      (props.image == null) ? '93.4rem' : '126rem',
+      !props.image ? '93.4rem' : '126rem',
     padding: theme.spacing(19, 0, 19),
     [theme.breakpoints.up('md')]: {
       alignItems: 'center',
@@ -120,7 +120,7 @@ const CtfQuote: PersonalizedComponent<CtfQuotePropsInterface> = (props) => {
   const containerLayout = imagePosition === true ? 'imageLeft' : 'imageRight';
   const quoteAlignment = quoteAlignmentBoolean === true ? 'center' : 'left';
   const backgroundImage = useMemo(
-    () => ((image != null) ? `${image.url}?w=${600 * 2}` : undefined),
+    () => (image ? `${image.url}?w=${600 * 2}` : undefined),
     [image],
   );
   const classes = useStyles(props);
@@ -154,7 +154,7 @@ const CtfQuote: PersonalizedComponent<CtfQuotePropsInterface> = (props) => {
                 backgroundImage ? undefined : classes.innerBodyFull,
               )}
             >
-              {(quote != null) && (
+              {quote && (
                 <div
                   style={{
                     color: colorConfig.textColor,

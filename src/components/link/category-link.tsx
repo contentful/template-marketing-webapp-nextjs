@@ -49,7 +49,7 @@ const CategoryLink = (props: CategoryLinkPropsInterface) => {
 
   return (
     <Link {...linkProps}>
-      {(props.render != null) ? props.render(as) : props.children}
+      {props.render ? props.render(as) : props.children}
     </Link>
   );
 };

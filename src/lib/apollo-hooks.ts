@@ -6,7 +6,7 @@ export const useDataForPreview = (data?: DataValue<any, any>) => {
   const { previewActive } = useContext(ContentfulContext);
 
   useEffect(() => {
-    if (!previewActive || (data == null)) {
+    if (!previewActive || !data) {
       return undefined;
     }
 

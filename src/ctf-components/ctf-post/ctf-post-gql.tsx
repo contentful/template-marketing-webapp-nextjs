@@ -84,7 +84,7 @@ const CtfPostGql = (props: Props) => {
         {robots.length > 0 && (
           <meta key="robots" name="robots" content={robots.join(', ')} />
         )}
-        {(metaTags.image != null) && (
+        {metaTags.image && (
           <meta
             key="og:image"
             property="og:image"

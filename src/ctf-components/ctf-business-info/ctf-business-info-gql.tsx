@@ -36,7 +36,7 @@ const CtfBusinessInfoGql = (props: CtfBusinessInfoGqlPropsInterface) => {
 
   return (
     <>
-      {(topicBusinessInfo.featuredImage != null) && (
+      {topicBusinessInfo.featuredImage && (
         <Head>
           <meta
             key="og:image"

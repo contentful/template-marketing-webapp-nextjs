@@ -30,7 +30,7 @@ const CtfHeroGql = (props: CtfHeroGqlPropsInterface) => {
 
   const { loading, data } = queryResult;
 
-  if ((data == null) || loading) return null;
+  if (!data || loading) return null;
 
   return (
     <Personalize

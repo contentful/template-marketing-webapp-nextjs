@@ -331,9 +331,9 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = (props) => {
     let shouldCancelFetch = false;
 
     fetch(`${appUrl}/api/entry?api=environments`)
-      .then(async (res) => await res.json())
+      .then((res) => res.json())
       .then((availableEnvironments) => {
-        if (shouldCancelFetch) {
+        if (shouldCancelFetch === true) {
           return;
         }
 
@@ -374,9 +374,9 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = (props) => {
       newSpaceEnv === null ? '' : newSpaceEnv.split(' ')[0];
 
     fetch(`${appUrl}/api/entry?api=audiences&environmentId=${environmentIdArg}`)
-      .then(async (res) => await res.json())
+      .then((res) => res.json())
       .then((availableAudiences) => {
-        if (shouldCancelFetch) {
+        if (shouldCancelFetch === true) {
           return;
         }
 

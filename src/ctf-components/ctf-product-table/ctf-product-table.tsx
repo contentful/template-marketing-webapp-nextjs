@@ -306,7 +306,7 @@ const CtfProductTable: PersonalizedComponent<CtfProductTablePropsInterface> = (
                 <div className={classes.comparisonTable}>
                   {productsCollection.items.map(
                     (product, j) =>
-                      (product != null) && (
+                      product && (
                         <div
                           key={product.sys.id}
                           className={classes.comparisonTableColumn}
@@ -324,7 +324,7 @@ const CtfProductTable: PersonalizedComponent<CtfProductTablePropsInterface> = (
                                     : `${gridSizes[`index-0`]}px`,
                               }}
                             >
-                              {(product.featuredImage != null) && (
+                              {product.featuredImage && (
                                 <Image
                                   src={product.featuredImage.url as string}
                                   alt={
@@ -361,7 +361,7 @@ const CtfProductTable: PersonalizedComponent<CtfProductTablePropsInterface> = (
                                   : `${gridSizes['index-2']}px`,
                             }}
                           >
-                            {(product.description != null) && (
+                            {product.description && (
                               <LayoutContext.Provider
                                 value={{
                                   ...defaultLayout,
@@ -419,7 +419,7 @@ const CtfProductTable: PersonalizedComponent<CtfProductTablePropsInterface> = (
                               {realLocale === 'de-DE' ? 'Anmelden' : 'Sign Up'}
                             </Link>
                           </div>
-                          {(featureNames != null) && (featuresGrid != null) && (
+                          {featureNames && featuresGrid && (
                             <LayoutContext.Provider
                               value={{
                                 ...defaultLayout,
@@ -464,7 +464,7 @@ const CtfProductTable: PersonalizedComponent<CtfProductTablePropsInterface> = (
                           )}
                           <div
                             className={classes.pricingBottom}
-                            data-equal-size={((featureNames != null) || []).length + 4}
+                            data-equal-size={(featureNames || []).length + 4}
                             style={{
                               height:
                                 featureNames === null ||

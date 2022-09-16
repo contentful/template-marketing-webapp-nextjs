@@ -85,7 +85,7 @@ const CtfCategoryGql = (props: Props) => {
         {robots.length > 0 && (
           <meta key="robots" name="robots" content={robots.join(', ')} />
         )}
-        {(metaTags.image != null) && (
+        {metaTags.image && (
           <meta
             key="og:image"
             property="og:image"
@@ -108,7 +108,7 @@ const CtfCategoryGql = (props: Props) => {
         )}
       </Head>
       <CtfCategory
-        posts={((queryResult.data.postCollection?.items) != null) || []}
+        posts={queryResult.data.postCollection?.items || []}
         {...category}
       />
     </>

@@ -36,7 +36,7 @@ const CtfProductGql = (props: CtfProductGqlPropsInterface) => {
 
   return (
     <>
-      {(product.featuredImage != null) && (
+     {product.featuredImage && (
         <Head>
           <meta
             key="og:image"
