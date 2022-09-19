@@ -1,9 +1,3 @@
-import React, { useContext, useState, useEffect, useMemo } from 'react';
-import clsx from 'clsx';
-import { useRouter } from 'next/router';
-import queryString from 'query-string';
-import format from 'date-fns/format';
-import Autocomplete from '@material-ui/lab/Autocomplete';
 import {
   Theme,
   FormHelperText,
@@ -16,8 +10,15 @@ import {
   Typography,
   InputAdornment,
 } from '@material-ui/core';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import { makeStyles } from '@material-ui/styles';
-import { ContentfulContext } from '@pages/_app';
+import clsx from 'clsx';
+import format from 'date-fns/format';
+import { useRouter } from 'next/router';
+import queryString from 'query-string';
+import React, { useContext, useState, useEffect } from 'react';
+
+import { ContentfulContext } from '@src/contentful-context';
 import SettingsIcon from '@src/icons/settings-icon.svg';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -222,8 +223,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginLeft: '0.5rem',
     marginRight: '0.5rem',
     padding: '0 1.4rem',
-    transition:
-      'background .2s ease-in-out,opacity .2s ease-in-out,border-color 0.2s ease-in-out',
+    transition: 'background .2s ease-in-out,opacity .2s ease-in-out,border-color 0.2s ease-in-out',
     width: 'calc(50% - 2rem)',
     '&:hover, &:focus': {
       backgroundColor: '#d3dce0',
@@ -294,8 +294,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: 'inline-block',
     fontSize: '1.4rem',
     padding: '0 1.4rem',
-    transition:
-      'background .2s ease-in-out,opacity .2s ease-in-out,border-color 0.2s ease-in-out',
+    transition: 'background .2s ease-in-out,opacity .2s ease-in-out,border-color 0.2s ease-in-out',
     '&:hover, &:focus': {
       backgroundColor: '#d3dce0',
       transform: 'none',
@@ -307,32 +306,25 @@ interface SettingsFormPropsInterface {
   onClose: () => void;
 }
 
-const SettingsForm: React.FC<SettingsFormPropsInterface> = (props) => {
+const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
   const { onClose } = props;
   const router = useRouter();
 
   const classes = useStyles();
-  const { spaceEnv, appUrl, xrayActive, previewActive } =
-    useContext(ContentfulContext);
-  const [environments, setEnvironments] = useState(
-    [] as { name: string; createdAt: string }[],
-  );
+  const { spaceEnv, appUrl, xrayActive, previewActive } = useContext(ContentfulContext);
+  const [environments, setEnvironments] = useState([] as { name: string; createdAt: string }[]);
   const [defaultEnv, setDefaultEnv] = useState('');
-  const [newSpaceEnv, setNewSpaceEnv] = useState(
-    spaceEnv !== 'default' ? spaceEnv : '',
-  );
+  const [newSpaceEnv, setNewSpaceEnv] = useState(spaceEnv !== 'default' ? spaceEnv : '');
   const [newXrayActive, setNewXrayActive] = useState(xrayActive || false);
-  const [newPreviewActive, setNewPreviewActive] = useState(
-    previewActive || false,
-  );
+  const [newPreviewActive, setNewPreviewActive] = useState(previewActive || false);
   const [isDirty, setIsDirty] = useState(false);
 
   useEffect(() => {
     let shouldCancelFetch = false;
 
     fetch(`${appUrl}/api/entry?api=environments`)
-      .then((res) => res.json())
-      .then((availableEnvironments) => {
+      .then(res => res.json())
+      .then(availableEnvironments => {
         if (shouldCancelFetch === true) {
           return;
         }
@@ -351,51 +343,39 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = (props) => {
     return () => {
       shouldCancelFetch = true;
     };
-  }, []);
-
-  // Audiences
-  interface Audience {
-    id: string;
-    name: string;
-    description: string;
-  }
-
-  const [audiencesList, setAudiencesList] = useState<Audience[]>([]);
+  }, [appUrl, newSpaceEnv]);
 
   useEffect(() => {
     if (newSpaceEnv === '') {
-      return () => {};
+      return () => null;
     }
 
     let shouldCancelFetch = false;
     // We split by an empty space because a default environment has a
     // " (default)" suffix applied
-    const environmentIdArg =
-      newSpaceEnv === null ? '' : newSpaceEnv.split(' ')[0];
+    const environmentIdArg = newSpaceEnv === null ? '' : newSpaceEnv.split(' ')[0];
 
     fetch(`${appUrl}/api/entry?api=audiences&environmentId=${environmentIdArg}`)
-      .then((res) => res.json())
-      .then((availableAudiences) => {
+      .then(res => res.json())
+      .then(() => {
         if (shouldCancelFetch === true) {
           return;
         }
-
-        setAudiencesList(availableAudiences);
       });
 
     return () => {
       shouldCancelFetch = true;
     };
-  }, [newSpaceEnv]);
+  }, [appUrl, newSpaceEnv]);
 
-  const onSubmit = async (event) => {
+  const onSubmit = async event => {
     event.preventDefault();
 
     if (isDirty === false) {
       return;
     }
 
-    let queryParams = queryString.parse(window.location.search);
+    const queryParams = queryString.parse(window.location.search);
 
     if (newSpaceEnv !== spaceEnv) {
       if ([null, '', defaultEnv].includes(newSpaceEnv)) {
@@ -424,9 +404,7 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = (props) => {
     router.push(
       `${router.pathname}?${queryString.stringify(queryParams)}`,
       `${router.asPath.split('?')[0]}${
-        queryString.stringify(queryParams)
-          ? `?${queryString.stringify(queryParams)}`
-          : ''
+        queryString.stringify(queryParams) ? `?${queryString.stringify(queryParams)}` : ''
       }`,
     );
   };
@@ -438,8 +416,8 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = (props) => {
 
     return (
       <Autocomplete
-        options={environments.map((environment) => environment.name)}
-        renderInput={(params) => (
+        options={environments.map(environment => environment.name)}
+        renderInput={params => (
           <TextField
             {...params}
             label="Source environment"
@@ -454,8 +432,7 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = (props) => {
                     height="12"
                     viewBox="0 0 12 12"
                     fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
+                    xmlns="http://www.w3.org/2000/svg">
                     <path
                       d="M12 7.49l-1.69 1.69-2.186-2.087-.994.994 2.187 2.186-1.79 1.69H12V7.49zm0-2.98V.036H7.528l1.69 1.69-3.479 3.478H.075v1.49h6.26l3.976-3.975L12 4.51z"
                       fill="#2A3039"
@@ -466,19 +443,14 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = (props) => {
             }}
           />
         )}
-        renderOption={(option) => {
+        renderOption={option => {
           const environment = environments.find(
-            (availableEnvironment) => availableEnvironment.name === option,
+            availableEnvironment => availableEnvironment.name === option,
           );
 
           if (environment === undefined) {
             return (
-              <Typography
-                className={clsx(
-                  classes.envOptionName,
-                  classes.autocompleteOptionFont,
-                )}
-              >
+              <Typography className={clsx(classes.envOptionName, classes.autocompleteOptionFont)}>
                 {option}
               </Typography>
             );
@@ -492,31 +464,19 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = (props) => {
                   height="22"
                   viewBox="0 0 12 12"
                   fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                  xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M12 7.49l-1.69 1.69-2.186-2.087-.994.994 2.187 2.186-1.79 1.69H12V7.49zm0-2.98V.036H7.528l1.69 1.69-3.479 3.478H.075v1.49h6.26l3.976-3.975L12 4.51z"
-                    fill={
-                      newSpaceEnv === environment.name ? '#2A3039' : '#B5C3C9'
-                    }
+                    fill={newSpaceEnv === environment.name ? '#2A3039' : '#B5C3C9'}
                   />
                 </svg>
               </div>
               <div className={classes.envOptionBody}>
-                <Typography
-                  className={clsx(
-                    classes.envOptionName,
-                    classes.autocompleteOptionFont,
-                  )}
-                >
+                <Typography className={clsx(classes.envOptionName, classes.autocompleteOptionFont)}>
                   {environment.name}
                 </Typography>
                 <Typography
-                  className={clsx(
-                    classes.envOptionDescription,
-                    classes.autocompleteOptionFont,
-                  )}
-                >
+                  className={clsx(classes.envOptionDescription, classes.autocompleteOptionFont)}>
                   {`Created on ${format(
                     new Date(environment.createdAt),
                     'MMM d, yyyy',
@@ -586,8 +546,7 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = (props) => {
                 label="X-ray mode"
               />
               <FormHelperText>
-                Highlight components making up a page and provide a deep link to
-                the entry editor.
+                Highlight components making up a page and provide a deep link to the entry editor.
               </FormHelperText>
             </FormControl>
           </div>
@@ -612,8 +571,7 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = (props) => {
                     onClick={() => {
                       (window as any).ninetailed.plugins.preview.open();
                       onClose();
-                    }}
-                  >
+                    }}>
                     Preview
                   </Button>
                 }
@@ -631,21 +589,16 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = (props) => {
               type="button"
               variant="text"
               color="primary"
-              onClick={onClose}
-            >
+              onClick={onClose}>
               Close
             </Button>
             <Button
-              className={clsx(
-                classes.footerButton,
-                classes.footerButtonPrimary,
-              )}
+              className={clsx(classes.footerButton, classes.footerButtonPrimary)}
               type="submit"
               variant="text"
               color="primary"
               onClick={onClose}
-              disabled={!isDirty}
-            >
+              disabled={!isDirty}>
               Apply changes
             </Button>
           </footer>

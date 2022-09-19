@@ -1,7 +1,9 @@
 import { Container, Box } from '@material-ui/core';
 import React from 'react';
-import PageContainer from '@src/components/layout/page-container';
+
 import GraphqlError from './graphql-error';
+
+import PageContainer from '@src/components/layout/page-container';
 
 const PageGraphqlError = (props: { error: any }) => (
   <PageContainer>

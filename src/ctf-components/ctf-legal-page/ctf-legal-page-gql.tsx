@@ -1,14 +1,18 @@
-import React, { useContext } from 'react';
-import Head from 'next/head';
-import { useDataForPreview } from '@src/lib/apollo-hooks';
-import { tryget } from '@src/utils';
 import { gql } from 'apollo-boost';
+import Head from 'next/head';
+import React, { useContext } from 'react';
 import { useQuery } from 'react-apollo';
-import PageError from '@src/components/errors/page-error';
+
+import { CtfLegalPageQuery } from './__generated__/CtfLegalPageQuery';
 import CtfLegalPage from './ctf-legal-page';
 import { legalPageFragment } from './ctf-legal-page-query';
+
+import PageError from '@src/components/errors/page-error';
+import { useDataForPreview } from '@src/lib/apollo-hooks';
 import { ApolloContext } from '@src/lib/with-providers';
-import { CtfLegalPageQuery } from './__generated__/CtfLegalPageQuery';
+import { tryget } from '@src/utils';
+
+
 
 interface Props {
   topic?: string;

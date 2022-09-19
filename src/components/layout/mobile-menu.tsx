@@ -1,12 +1,13 @@
+import { Drawer, SvgIcon, makeStyles } from '@material-ui/core';
 import React, { useContext, useMemo } from 'react';
-import { Drawer, Button, SvgIcon, makeStyles } from '@material-ui/core';
+
 import Link from '@src/components/link/link';
-import { ContentfulContext } from '@pages/_app';
-import { getLocaleConfig } from '@src/locales-map';
+import { ContentfulContext } from '@src/contentful-context';
 import getContentfulConfig from '@src/get-contentful-config';
+import { getLocaleConfig } from '@src/locales-map';
 import pathToNextLinkHref from '@src/routing/path-to-next-link-href';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   menu: {
     listStyle: 'none',
     margin: 0,
@@ -69,10 +70,7 @@ const MobileMenu = (props: MobileMenuPropsInterface) => {
     return getContentfulConfig(realLocale);
   }, [realLocale]);
 
-  const renderMenuItem = (menuItem: {
-    label: string;
-    location?: string;
-  }): string | JSX.Element => {
+  const renderMenuItem = (menuItem: { label: string; location?: string }): string | JSX.Element => {
     if (menuItem.location === undefined) {
       return menuItem.label;
     }
@@ -133,8 +131,7 @@ const MobileMenu = (props: MobileMenuPropsInterface) => {
               isButton
               variant="contained"
               color="primary"
-              size="small"
-            >
+              size="small">
               {realLocale === 'de-DE' ? 'Anmelden' : 'Sign Up'}
             </Link>
           </li>
@@ -159,8 +156,7 @@ const MobileMenu = (props: MobileMenuPropsInterface) => {
                     </clipPath>
                   </defs>
                 </SvgIcon>
-              }
-            >
+              }>
               {realLocale === 'de-DE' ? 'Einloggen' : 'Sign In'}
             </Link>
           </li>

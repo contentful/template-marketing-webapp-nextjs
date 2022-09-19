@@ -1,17 +1,19 @@
-import React, { useContext, useMemo } from 'react';
-import clsx from 'clsx';
 import { Container, Theme, makeStyles, Typography } from '@material-ui/core';
+import { PersonalizedComponent } from '@ninetailed/experience.js-next';
+import clsx from 'clsx';
+import React, { useContext, useMemo } from 'react';
+
+import { DuplexFragment } from './__generated__/DuplexFragment';
+
+import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
 import PageLink from '@src/components/link/page-link';
 import PostLink from '@src/components/link/post-link';
-import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
-import optimizeLineBreak from '@src/typography/optimize-line-break';
+import PersonalizationFrame from '@src/components/personalization-frame';
+import { ContentfulContext } from '@src/contentful-context';
+import { WrapIf } from '@src/jsx-utils';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 import { getColorConfigFromPalette } from '@src/theme';
-import { PersonalizedComponent } from '@ninetailed/experience.js-next';
-import { ContentfulContext } from '@pages/_app';
-import { WrapIf } from '@src/jsx-utils';
-import PersonalizationFrame from '@src/components/personalization-frame';
-import { DuplexFragment } from './__generated__/DuplexFragment';
+import optimizeLineBreak from '@src/typography/optimize-line-break';
 
 const useStyles = makeStyles((theme: Theme) => ({
   innerContainer: {
@@ -146,7 +148,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export interface CtfDuplexPropsInterface extends DuplexFragment {}
 
-const CtfDuplex: PersonalizedComponent<CtfDuplexPropsInterface> = (props) => {
+const CtfDuplex: PersonalizedComponent<CtfDuplexPropsInterface> = props => {
   const {
     containerLayout: containerLayoutBoolean,
     image,
@@ -162,13 +164,9 @@ const CtfDuplex: PersonalizedComponent<CtfDuplexPropsInterface> = (props) => {
   } = props;
 
   const colorConfig = getColorConfigFromPalette(colorPalette || '');
-  const containerLayout =
-    containerLayoutBoolean === true ? 'imageLeft' : 'imageRight';
+  const containerLayout = containerLayoutBoolean === true ? 'imageLeft' : 'imageRight';
   const imageStyle = imageStyleBoolean ? 'fixed' : 'full';
-  const backgroundImage = useMemo(
-    () => (image ? `${image.url}?w=${600 * 2}` : undefined),
-    [image],
-  );
+  const backgroundImage = useMemo(() => (image ? `${image.url}?w=${600 * 2}` : undefined), [image]);
   const imageAlignment = useMemo(() => {
     if (imageAlignmentParam === null) {
       return 'center';
@@ -188,50 +186,38 @@ const CtfDuplex: PersonalizedComponent<CtfDuplexPropsInterface> = (props) => {
   const { xrayActive } = useContext(ContentfulContext);
 
   const isPersonalized =
-    ntVariantsCollection?.items !== undefined &&
-    ntVariantsCollection.items.length > 0;
+    ntVariantsCollection?.items !== undefined && ntVariantsCollection.items.length > 0;
 
   return (
     <WrapIf
       when={xrayActive === true && isPersonalized === true}
-      wrap={(children) => (
+      wrap={children => (
         <PersonalizationFrame audienceId={ninetailed?.audience.id ?? null}>
           {children}
         </PersonalizationFrame>
-      )}
-    >
+      )}>
       <Container
         maxWidth={false}
         style={{
           backgroundColor: colorConfig.backgroundColor,
-        }}
-      >
+        }}>
         <div
           className={clsx(
             classes.innerContainer,
             imageStyle === 'full' ? classes.innerContainerFull : undefined,
-          )}
-        >
-          <div
-            className={clsx(
-              classes.innerBody,
-              classes[`innerBody-${containerLayout}`],
-            )}
-          >
+          )}>
+          <div className={clsx(classes.innerBody, classes[`innerBody-${containerLayout}`])}>
             {headline && (
               <Typography
                 variant="h1"
                 component="h2"
                 className={classes.headline}
-                style={{ color: colorConfig.headlineColor }}
-              >
+                style={{ color: colorConfig.headlineColor }}>
                 {optimizeLineBreak(headline)}
               </Typography>
             )}
             {bodyText && (
-              <LayoutContext.Provider
-                value={{ ...defaultLayout, parent: 'duplex' }}
-              >
+              <LayoutContext.Provider value={{ ...defaultLayout, parent: 'duplex' }}>
                 <div style={{ color: colorConfig.textColor }}>
                   <CtfRichtext {...bodyText} className={classes.body} />
                 </div>
@@ -244,8 +230,7 @@ const CtfDuplex: PersonalizedComponent<CtfDuplexPropsInterface> = (props) => {
                     page={targetPage}
                     variant="contained"
                     color={colorConfig.buttonColor}
-                    isButton
-                  >
+                    isButton>
                     {ctaText}
                   </PageLink>
                 )}
@@ -254,8 +239,7 @@ const CtfDuplex: PersonalizedComponent<CtfDuplexPropsInterface> = (props) => {
                     post={targetPage}
                     variant="contained"
                     color={colorConfig.buttonColor}
-                    isButton
-                  >
+                    isButton>
                     {ctaText}
                   </PostLink>
                 )}
@@ -266,8 +250,7 @@ const CtfDuplex: PersonalizedComponent<CtfDuplexPropsInterface> = (props) => {
             className={clsx(
               classes.imageContainer,
               imageStyle === 'full' ? classes.imageContainerFull : undefined,
-            )}
-          >
+            )}>
             {imageStyle === 'fixed' && backgroundImage && (
               <div
                 className={classes.imageFixed}
@@ -281,8 +264,7 @@ const CtfDuplex: PersonalizedComponent<CtfDuplexPropsInterface> = (props) => {
                 className={clsx(
                   classes.imageFull,
                   classes[`imageFull-${containerLayout}${imageAlignment}`],
-                )}
-              >
+                )}>
                 <img
                   className={classes.imageFullImage}
                   alt={image.description || undefined}

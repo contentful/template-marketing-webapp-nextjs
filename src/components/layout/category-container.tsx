@@ -1,7 +1,8 @@
-import React from 'react';
-import clsx from 'clsx';
 import { makeStyles, Theme } from '@material-ui/core';
 import { CSSProperties } from '@material-ui/core/styles/withStyles';
+import clsx from 'clsx';
+import React from 'react';
+
 import { HEADER_HEIGHT, HEADER_HEIGHT_MD } from '@src/theme';
 
 const useStyles = makeStyles((theme: Theme) => ({

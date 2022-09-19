@@ -1,14 +1,15 @@
-import React, { useContext, useMemo } from 'react';
-import formatDate from 'date-fns/format';
 import { makeStyles, Theme, Typography } from '@material-ui/core';
+import formatDate from 'date-fns/format';
+import React, { useContext, useMemo } from 'react';
+
 import CtfAsset from '@ctf-components/ctf-asset/ctf-asset';
-import { ContentfulContext } from '@pages/_app';
 import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
 import Avatar from '@src/components/avatar/avatar';
 import Link from '@src/components/link/link';
-import { getLocaleConfig } from '@src/locales-map';
-import LayoutContext, { defaultLayout } from '@src/layout-context';
+import { ContentfulContext } from '@src/contentful-context';
 import { PostFragmentBase } from '@src/ctf-components/ctf-post/__generated__/PostFragmentBase';
+import LayoutContext, { defaultLayout } from '@src/layout-context';
+import { getLocaleConfig } from '@src/locales-map';
 
 interface CtfCardPostExtendedPropsInterface extends PostFragmentBase {}
 
@@ -58,14 +59,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 const CtfCardPostExtended = (props: CtfCardPostExtendedPropsInterface) => {
-  const {
-    postName,
-    featuredImage,
-    slug,
-    introText,
-    author,
-    publishedDate,
-  } = props;
+  const { postName, featuredImage, slug, introText, author, publishedDate } = props;
   const { locale } = useContext(ContentfulContext);
   const { lang, locale: realLocale } = getLocaleConfig(locale);
 
@@ -82,7 +76,7 @@ const CtfCardPostExtended = (props: CtfCardPostExtendedPropsInterface) => {
         {formatDate(new Date(publishedDate), 'MMM dd, yyyy')}
       </span>
     );
-  }, [publishedDate]);
+  }, [author, classes.metaDate, publishedDate, realLocale]);
 
   return (
     <article className={classes.root}>
@@ -100,9 +94,7 @@ const CtfCardPostExtended = (props: CtfCardPostExtendedPropsInterface) => {
             {postName}
           </Typography>
           {introText && (
-            <LayoutContext.Provider
-              value={{ ...defaultLayout, parent: 'post-intro' }}
-            >
+            <LayoutContext.Provider value={{ ...defaultLayout, parent: 'post-intro' }}>
               <CtfRichtext {...introText} containerClassName={classes.text} />
             </LayoutContext.Provider>
           )}
@@ -119,9 +111,7 @@ const CtfCardPostExtended = (props: CtfCardPostExtendedPropsInterface) => {
               {publishedDateFormated}
             </div>
           )}
-          {!author && (
-            <div className={classes.meta}>{publishedDateFormated}</div>
-          )}
+          {!author && <div className={classes.meta}>{publishedDateFormated}</div>}
         </div>
       </Link>
     </article>

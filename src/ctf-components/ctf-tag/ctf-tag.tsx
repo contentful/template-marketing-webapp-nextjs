@@ -1,15 +1,17 @@
-import React, { useContext } from 'react';
 import { Theme, makeStyles, Typography, Container } from '@material-ui/core';
-import LayoutContext, { defaultLayout } from '@src/layout-context';
-import TagContainer from '@src/components/layout/category-container';
-import CardPostExtended from '@src/components/card-post-extended/card-post-extended';
-import Link from '@src/components/link/link';
-import { ContentfulContext } from '@pages/_app';
-import { getLocaleConfig } from '@src/locales-map';
+import React, { useContext } from 'react';
+
 import {
   CtfTagQuery_postCollection_items,
   CtfTagQuery_postCollection_items_contentfulMetadata_tags,
 } from './__generated__/CtfTagQuery';
+
+import CardPostExtended from '@src/components/card-post-extended/card-post-extended';
+import TagContainer from '@src/components/layout/category-container';
+import Link from '@src/components/link/link';
+import { ContentfulContext } from '@src/contentful-context';
+import LayoutContext, { defaultLayout } from '@src/layout-context';
+import { getLocaleConfig } from '@src/locales-map';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -85,8 +87,7 @@ const CtfTag = (props: CtfTagPropsInterface) => {
                     href="/[lang]/blog"
                     as={`/${lang}/blog`}
                     withoutMaterial
-                    className={classes.title}
-                  >
+                    className={classes.title}>
                     <Typography variant="h1">
                       {tag === null ? 'Blog' : `Tagged with: ${tag.name}`}
                     </Typography>
@@ -98,8 +99,8 @@ const CtfTag = (props: CtfTagPropsInterface) => {
             {posts && posts.length > 0 && (
               <div className={classes.containerNarrow}>
                 {(posts as CtfTagQuery_postCollection_items[])
-                  .filter((post) => post !== null)
-                  .map((post) => (
+                  .filter(post => post !== null)
+                  .map(post => (
                     <div key={post.sys.id} className={classes.postWrap}>
                       <CardPostExtended {...post} />
                     </div>

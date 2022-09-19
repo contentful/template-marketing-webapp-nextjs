@@ -1,6 +1,8 @@
 import gql from 'graphql-tag';
-import { componentReferenceFragment } from '@ctf-components/fragments';
+
 import { assetFragment } from '../ctf-asset/ctf-asset-query';
+
+import { componentReferenceFragment } from '@ctf-components/fragments';
 
 export const contentFragment = gql`
   fragment BusinessInfoFragment on TopicBusinessInfo {

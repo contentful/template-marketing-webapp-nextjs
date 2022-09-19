@@ -1,11 +1,10 @@
-import React, { useContext } from 'react';
 import { NextPage, GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
+import React, { useContext } from 'react';
+
+import { ContentfulContext } from '@src/contentful-context';
 import CtfLegalPageGgl from '@src/ctf-components/ctf-legal-page/ctf-legal-page-gql';
-import { ContentfulContext } from '@pages/_app';
-import withProviders, {
-  generateGetServerSideProps,
-} from '@src/lib/with-providers';
+import withProviders, { generateGetServerSideProps } from '@src/lib/with-providers';
 
 interface LegalPagePropsInterface {
   ssrQuery?: {
@@ -13,7 +12,7 @@ interface LegalPagePropsInterface {
   };
 }
 
-const LegalPage: NextPage<LegalPagePropsInterface> = (props) => {
+const LegalPage: NextPage<LegalPagePropsInterface> = props => {
   const router = useRouter();
   const query = router ? router.query : props.ssrQuery;
   const { locale } = useContext(ContentfulContext);
@@ -24,10 +23,8 @@ const LegalPage: NextPage<LegalPagePropsInterface> = (props) => {
 
 const LegalPageWithProviders = withProviders()(LegalPage);
 
-export const getServerSideProps: GetServerSideProps = generateGetServerSideProps(
-  {
-    Page: LegalPageWithProviders,
-  },
-);
+export const getServerSideProps: GetServerSideProps = generateGetServerSideProps({
+  Page: LegalPageWithProviders,
+});
 
 export default LegalPageWithProviders;

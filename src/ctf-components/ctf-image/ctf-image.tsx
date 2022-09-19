@@ -1,11 +1,12 @@
-import { AssetFragment } from '@ctf-components/ctf-asset/__generated__/AssetFragment';
-import { Theme } from '@material-ui/core';
+import { ButtonBase } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
-import { CONTAINER_WIDTH } from '@src/theme';
-import React, { useMemo } from 'react';
 import clsx from 'clsx';
+import React, { useMemo } from 'react';
 
-const useStyles = makeStyles((theme: Theme) => ({
+import { AssetFragment } from '@ctf-components/ctf-asset/__generated__/AssetFragment';
+import { CONTAINER_WIDTH } from '@src/theme';
+
+const useStyles = makeStyles(() => ({
   root: {
     width: '100%',
   },
@@ -57,14 +58,8 @@ const CtfImage = (props: CtfImagePropsInterface) => {
     showDescription = true,
   } = props;
 
-  if (url === null) {
-    return null;
-  }
-
   const imgSrc = useMemo(() => {
-    return widthPx === undefined
-      ? url
-      : `${url}?w=${Math.min(widthPx, width || CONTAINER_WIDTH)}`;
+    return widthPx === undefined ? url : `${url}?w=${Math.min(widthPx, width || CONTAINER_WIDTH)}`;
   }, [url, widthPx, width]);
   const imgSrcset = useMemo(() => {
     if (widthPx === undefined) {
@@ -73,19 +68,23 @@ const CtfImage = (props: CtfImagePropsInterface) => {
 
     const computedWidth = Math.min(widthPx, width || CONTAINER_WIDTH);
 
-    return `${url}?w=${computedWidth} ${computedWidth}w, ${url}?w=${
+    return `${url}?w=${computedWidth} ${computedWidth}w, ${url}?w=${computedWidth * 2} ${
       computedWidth * 2
-    } ${computedWidth * 2}w`;
-  }, [url, widthPx, width, CONTAINER_WIDTH]);
+    }w`;
+  }, [url, widthPx, width]);
   const paddingTop = useMemo(
     () => `${(ratio || (height || 0) / (width || 0)) * 100}%`,
-    [ratio, width, height, CONTAINER_WIDTH],
+    [ratio, width, height],
   );
   const asBackground = ratio !== undefined || cover === true;
   const classes = useStyles();
 
+  if (url === null) {
+    return null;
+  }
+
   return (
-    <div className={clsx(classes.root, className)} onClick={onClick}>
+    <ButtonBase className={clsx(classes.root, className)} onClick={onClick}>
       {asBackground ? (
         <div>
           <div
@@ -101,17 +100,15 @@ const CtfImage = (props: CtfImagePropsInterface) => {
         <figure className={clsx(classes.figure, figureClassName)}>
           <img
             className={clsx(classes.image, imgClassName)}
-            src={imgSrc}
+            src={imgSrc || undefined}
             srcSet={imgSrcset}
             alt={title!}
             width={widthPx ? widthPx : undefined}
           />
-          {showDescription && description && (
-            <figcaption>{description}</figcaption>
-          )}
+          {showDescription && description && <figcaption>{description}</figcaption>}
         </figure>
       )}
-    </div>
+    </ButtonBase>
   );
 };
 

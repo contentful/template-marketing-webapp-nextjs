@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
 import { makeStyles, Theme, Typography } from '@material-ui/core';
+import React, { useContext } from 'react';
+
 import CtfAsset from '@ctf-components/ctf-asset/ctf-asset';
-import { ContentfulContext } from '@pages/_app';
-import Link from '@src/components/link/link';
-import { getLocaleConfig } from '@src/locales-map';
 import { PostFragmentBase } from '@ctf-components/ctf-post/__generated__/PostFragmentBase';
+import Link from '@src/components/link/link';
+import { ContentfulContext } from '@src/contentful-context';
+import { getLocaleConfig } from '@src/locales-map';
 
 interface CtfCardPostPropsInterface extends PostFragmentBase {
   linkToPost?: boolean;

@@ -1,12 +1,14 @@
-import React from 'react';
-import Head from 'next/head';
 import { Container } from '@material-ui/core';
-import EntryNotFound from '@src/components/errors/entry-not-found';
-import { useDataForPreview } from '@src/lib/apollo-hooks';
+import Head from 'next/head';
+import React from 'react';
 import { useQuery } from 'react-apollo';
+
+import { CtfProductQuery } from './__generated__/CtfProductQuery';
 import CtfProduct from './ctf-product';
 import { query } from './ctf-product-query';
-import { CtfProductQuery } from './__generated__/CtfProductQuery';
+
+import EntryNotFound from '@src/components/errors/entry-not-found';
+import { useDataForPreview } from '@src/lib/apollo-hooks';
 
 interface CtfProductGqlPropsInterface {
   id: string;

@@ -1,8 +1,10 @@
-import React, { useContext, useRef, useEffect } from 'react';
 import { makeStyles, Theme, Container } from '@material-ui/core';
-import LayoutContext from '@src/layout-context';
 import clsx from 'clsx';
+import React, { useContext, useRef, useEffect } from 'react';
+
 import transformers from './services';
+
+import LayoutContext from '@src/layout-context';
 
 const useStyles = makeStyles((theme: Theme) => ({
   container: {
@@ -37,8 +39,7 @@ const CtfExternalAssetUrl = (props: CtfExternalAssetUrlPropsInterface) => {
   const layout = useContext(LayoutContext);
   const externalUrlWrapperEl = useRef<HTMLDivElement>(null);
   const transformer = transformers.find(
-    (potentialTransformer) =>
-      potentialTransformer.shouldTransform(externalUrl) === true,
+    potentialTransformer => potentialTransformer.shouldTransform(externalUrl) === true,
   );
 
   useEffect(() => {
@@ -51,17 +52,12 @@ const CtfExternalAssetUrl = (props: CtfExternalAssetUrlPropsInterface) => {
     }
 
     transformer.effect(externalUrlWrapperEl, externalUrl);
-  }, [externalUrl, externalUrlWrapperEl]);
+  }, [externalUrl, externalUrlWrapperEl, transformer]);
 
   const classes = useStyles();
 
   if (transformer === undefined) {
-    return (
-      <p>
-        Url &quot;{externalUrl}&quot; could not be embedded, service not
-        supported
-      </p>
-    );
+    return <p>Url &quot;{externalUrl}&quot; could not be embedded, service not supported</p>;
   }
 
   return (
@@ -71,8 +67,7 @@ const CtfExternalAssetUrl = (props: CtfExternalAssetUrlPropsInterface) => {
           classes.container,
           transformer.id === 'typeform' ? classes.containerNoMargins : null,
         )}
-        style={{ maxWidth: layout.containerWidth }}
-      >
+        style={{ maxWidth: layout.containerWidth }}>
         <div
           className={classes.content}
           // eslint-disable-next-line react/no-danger

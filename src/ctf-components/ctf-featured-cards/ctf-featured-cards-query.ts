@@ -1,6 +1,7 @@
 import gql from 'graphql-tag';
-import { postFragmentBase } from '@ctf-components/ctf-post/ctf-post-query';
+
 import { ninetailedAudienceFragment } from '@ctf-components/ctf-ninetailed-audience/ctf-ninetailed-audience-query';
+import { postFragmentBase } from '@ctf-components/ctf-post/ctf-post-query';
 
 export const featuredCardsFragment = gql`
   fragment FeaturedCardsFragmentBase on ComponentFeaturedCards {

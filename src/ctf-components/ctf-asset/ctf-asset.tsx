@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
+
+import { AssetFragment } from './__generated__/AssetFragment';
+
 import CtfImage from '@ctf-components/ctf-image/ctf-image';
 import CtfVideo from '@ctf-components/ctf-video/ctf-video';
 import LayoutContext from '@src/layout-context';
-import { AssetFragment } from './__generated__/AssetFragment';
 
 interface CtfAssetPropsInterface extends AssetFragment {
   className?: string;

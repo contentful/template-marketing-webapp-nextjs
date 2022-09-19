@@ -1,19 +1,22 @@
-import React from 'react';
 import { Container } from '@material-ui/core';
-import EntryNotFound from '@src/components/errors/entry-not-found';
-import { useDataForPreview } from '@src/lib/apollo-hooks';
-import { useQuery } from 'react-apollo';
 import { Personalize } from '@ninetailed/experience.js-next';
-import CtfProductTable, {
-  CtfProductTablePropsInterface,
-} from './ctf-product-table';
-import { query } from './ctf-product-table-query';
+import React from 'react';
+import { useQuery } from 'react-apollo';
+
+import { unwrapVariants } from '../ctf-helpers';
 import {
   CtfProductTableQuery,
   CtfProductTableQuery_componentProductTable,
 } from './__generated__/CtfProductTableQuery';
+import CtfProductTable, {
+  CtfProductTablePropsInterface,
+} from './ctf-product-table';
+import { query } from './ctf-product-table-query';
 
-import { unwrapVariants } from '../ctf-helpers';
+import EntryNotFound from '@src/components/errors/entry-not-found';
+import { useDataForPreview } from '@src/lib/apollo-hooks';
+
+
 
 interface CtfProductTableGqlPropsInterface {
   id: string;

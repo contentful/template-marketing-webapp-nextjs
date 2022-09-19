@@ -1,12 +1,14 @@
-import React, { useContext } from 'react';
 import { makeStyles, Theme, Container, Typography } from '@material-ui/core';
-import { ContentfulContext } from '@pages/_app';
+import React, { useContext } from 'react';
+
+import { ProductFragment } from './__generated__/ProductFragment';
+
 import CtfAsset from '@ctf-components/ctf-asset/ctf-asset';
 import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
 import Link from '@src/components/link/link';
+import { ContentfulContext } from '@src/contentful-context';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 import { getLocaleConfig } from '@src/locales-map';
-import { ProductFragment } from './__generated__/ProductFragment';
 
 const useStyles = makeStyles((theme: Theme) => ({
   innerIntroContainer: {
@@ -137,18 +139,12 @@ const CtfProduct = (props: CtfProductPropsInterface) => {
         <div className={classes.innerIntroContainer}>
           <div className={classes.innerBody}>
             {name && (
-              <Typography
-                variant="h1"
-                component="h2"
-                className={classes.headline}
-              >
+              <Typography variant="h1" component="h2" className={classes.headline}>
                 {name}
               </Typography>
             )}
             {description && (
-              <LayoutContext.Provider
-                value={{ ...defaultLayout, parent: 'product-description' }}
-              >
+              <LayoutContext.Provider value={{ ...defaultLayout, parent: 'product-description' }}>
                 <CtfRichtext {...description} className={classes.body} />
               </LayoutContext.Provider>
             )}
@@ -158,8 +154,7 @@ const CtfProduct = (props: CtfProductPropsInterface) => {
                 as={`/${lang}/sign-in`}
                 isButton
                 color="primary"
-                variant="contained"
-              >
+                variant="contained">
                 Sign Up
               </Link>
             </div>
@@ -177,30 +172,22 @@ const CtfProduct = (props: CtfProductPropsInterface) => {
         </div>
       </Container>
       {featuresCollection && featuresCollection.items.length > 0 && (
-        <LayoutContext.Provider
-          value={{ ...defaultLayout, parent: 'product-table' }}
-        >
+        <LayoutContext.Provider value={{ ...defaultLayout, parent: 'product-table' }}>
           <section className={classes.featuresSection}>
             <Container maxWidth={false}>
               <div className={classes.innerContainer}>
                 <div>
                   {featuresCollection.items.map(
-                    (item) =>
+                    item =>
                       item && (
                         <React.Fragment key={item.sys.id}>
                           <div className={classes.featureSeparator} />
                           <div className={classes.featureRow}>
-                            <Typography
-                              variant="h3"
-                              component="h4"
-                              className={classes.featureName}
-                            >
+                            <Typography variant="h3" component="h4" className={classes.featureName}>
                               {item.name}
                             </Typography>
                             <div className={classes.featureValue}>
-                              {item.longDescription && (
-                                <CtfRichtext {...item.longDescription} />
-                              )}
+                              {item.longDescription && <CtfRichtext {...item.longDescription} />}
                             </div>
                           </div>
                         </React.Fragment>

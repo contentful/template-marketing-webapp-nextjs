@@ -1,4 +1,5 @@
 import gql from 'graphql-tag';
+
 import { postFragmentBase } from '../ctf-post/ctf-post-query';
 
 export const query = gql`

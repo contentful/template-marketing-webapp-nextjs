@@ -1,24 +1,24 @@
-import React, { useContext } from 'react';
-import Head from 'next/head';
-import { NextPage, GetServerSideProps } from 'next';
-import gql from 'graphql-tag';
-import { useQuery } from 'react-apollo';
 import { Container, makeStyles } from '@material-ui/core';
-import { ContentfulContext } from '@pages/_app';
-import PageLink from '@src/components/link/page-link';
-import PostLink from '@src/components/link/post-link';
-import CategoryLink from '@src/components/link/category-link';
-import PageContainer from '@src/components/layout/page-container';
-import CtfSectionHeadline from '@src/ctf-components/ctf-section-headline/ctf-section-headline';
-import { useDataForPreview } from '@src/lib/apollo-hooks';
-import withProviders, {
-  generateGetServerSideProps,
-} from '@src/lib/with-providers';
-import { getLocaleConfig } from '@src/locales-map';
-import getContentfulConfig from '@src/get-contentful-config';
+import gql from 'graphql-tag';
+import { NextPage, GetServerSideProps } from 'next';
+import Head from 'next/head';
+import React, { useContext } from 'react';
+import { useQuery } from 'react-apollo';
+
 import { SitemapQuery } from './__generated__/SitemapQuery';
 
-const useStyles = makeStyles((theme) => ({
+import PageContainer from '@src/components/layout/page-container';
+import CategoryLink from '@src/components/link/category-link';
+import PageLink from '@src/components/link/page-link';
+import PostLink from '@src/components/link/post-link';
+import { ContentfulContext } from '@src/contentful-context';
+import CtfSectionHeadline from '@src/ctf-components/ctf-section-headline/ctf-section-headline';
+import getContentfulConfig from '@src/get-contentful-config';
+import { useDataForPreview } from '@src/lib/apollo-hooks';
+import withProviders, { generateGetServerSideProps } from '@src/lib/with-providers';
+import { getLocaleConfig } from '@src/locales-map';
+
+const useStyles = makeStyles(theme => ({
   sitemapRoot: {
     padding: theme.spacing(6, 0, 25, 0),
   },
@@ -78,9 +78,7 @@ const query = gql`
 `;
 
 const SitemapPage: NextPage = () => {
-  const { appUrl, locale, previewActive, defaultLocale } = useContext(
-    ContentfulContext,
-  );
+  const { appUrl, locale, previewActive, defaultLocale } = useContext(ContentfulContext);
   const { locale: realLocale, lang } = getLocaleConfig(locale || defaultLocale);
   const queryResult = useQuery<SitemapQuery>(query, {
     variables: {
@@ -103,12 +101,8 @@ const SitemapPage: NextPage = () => {
     queryResult.data.pageCollection === null
       ? null
       : queryResult.data.pageCollection.items
-          .filter((page) => page !== null && page.slug !== null)
-          .map((page) =>
-            page!.slug === 'home'
-              ? ({ ...page, slug: '' } as typeof page)
-              : page,
-          )
+          .filter(page => page !== null && page.slug !== null)
+          .map(page => (page!.slug === 'home' ? ({ ...page, slug: '' } as typeof page) : page))
           .sort((a, b) => {
             return a!.slug!.localeCompare(b!.slug!);
           });
@@ -117,7 +111,7 @@ const SitemapPage: NextPage = () => {
     queryResult.data.postCollection === null
       ? null
       : queryResult.data.postCollection.items
-          .filter((post) => post !== null && post.slug !== null)
+          .filter(post => post !== null && post.slug !== null)
           .sort((a, b) => {
             return a!.slug!.localeCompare(b!.slug!);
           });
@@ -126,7 +120,7 @@ const SitemapPage: NextPage = () => {
     queryResult.data.categoryCollection === null
       ? null
       : queryResult.data.categoryCollection.items
-          .filter((category) => category !== null && category.slug !== null)
+          .filter(category => category !== null && category.slug !== null)
           .sort((a, b) => {
             return a!.slug!.localeCompare(b!.slug!);
           });
@@ -136,11 +130,7 @@ const SitemapPage: NextPage = () => {
       <Head>
         <title key="title">Sitemap</title>
         <meta key="og:title" property="og:title" content="Sitemap" />
-        <meta
-          key="description"
-          name="description"
-          content={contentfulConfig.meta.description}
-        />
+        <meta key="description" name="description" content={contentfulConfig.meta.description} />
         <meta
           key="og:description"
           property="og:description"
@@ -151,27 +141,20 @@ const SitemapPage: NextPage = () => {
           property="og:url"
           content={`${contentfulConfig.meta.url}/${lang}/sitemap`}
         />
-        <meta
-          key="og:locale"
-          property="og:locale"
-          content={locale.replace('-', '_')}
-        />
+        <meta key="og:locale" property="og:locale" content={locale.replace('-', '_')} />
       </Head>
       <PageContainer className={classes.sitemapRoot}>
         <Container>
           <CtfSectionHeadline sectionHeadline="Sitemap" />
           <ul className={classes.pageList}>
             {pages &&
-              pages.map((page) => (
+              pages.map(page => (
                 <li key={page!.slug!}>
                   <PageLink
                     page={page!}
-                    render={(pathname) => (
+                    render={pathname => (
                       <>
-                        <strong>{`${appUrl}/${pathname!.replace(
-                          /^\//,
-                          '',
-                        )}`}</strong>
+                        <strong>{`${appUrl}/${pathname!.replace(/^\//, '')}`}</strong>
                         {`  - [${page!.pageName}]`}
                       </>
                     )}
@@ -182,17 +165,14 @@ const SitemapPage: NextPage = () => {
           <ul className={classes.pageList}>
             {posts &&
               posts.map(
-                (post) =>
+                post =>
                   post && (
                     <li key={post.slug!}>
                       <PostLink
                         post={post}
-                        render={(pathname) => (
+                        render={pathname => (
                           <>
-                            <strong>{`${appUrl}/${pathname!.replace(
-                              /^\//,
-                              '',
-                            )}`}</strong>
+                            <strong>{`${appUrl}/${pathname!.replace(/^\//, '')}`}</strong>
                             {`  - [${post.postName}]`}
                           </>
                         )}
@@ -204,17 +184,14 @@ const SitemapPage: NextPage = () => {
           <ul className={classes.pageList}>
             {categories &&
               categories.map(
-                (category) =>
+                category =>
                   category && (
                     <li key={category.slug!}>
                       <CategoryLink
                         category={category}
-                        render={(pathname) => (
+                        render={pathname => (
                           <>
-                            <strong>{`${appUrl}/${pathname!.replace(
-                              /^\//,
-                              '',
-                            )}`}</strong>
+                            <strong>{`${appUrl}/${pathname!.replace(/^\//, '')}`}</strong>
                             {`  - [${category.categoryName}]`}
                           </>
                         )}
@@ -231,10 +208,8 @@ const SitemapPage: NextPage = () => {
 
 const SitemapPageWithProviders = withProviders()(SitemapPage);
 
-export const getServerSideProps: GetServerSideProps = generateGetServerSideProps(
-  {
-    Page: SitemapPageWithProviders,
-  },
-);
+export const getServerSideProps: GetServerSideProps = generateGetServerSideProps({
+  Page: SitemapPageWithProviders,
+});
 
 export default SitemapPageWithProviders;

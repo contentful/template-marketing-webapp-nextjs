@@ -1,9 +1,12 @@
-import React from 'react';
 import { makeStyles, Theme, Container } from '@material-ui/core';
+import React from 'react';
+
+import { TextBlockFragment } from './__generated__/TextBlockFragment';
+
 import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
 import SectionHeadlines from '@src/components/section-headlines/section-headlines';
 import { getColorConfigFromPalette } from '@src/theme';
-import { TextBlockFragment } from './__generated__/TextBlockFragment';
+
 
 const useStyles = makeStyles((theme: Theme) => ({
   innerContainer: {

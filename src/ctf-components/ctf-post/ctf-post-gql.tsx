@@ -1,15 +1,17 @@
-import React, { useContext } from 'react';
-import Head from 'next/head';
 import { Container } from '@material-ui/core';
-import EntryNotFound from '@src/components/errors/entry-not-found';
-import { useDataForPreview } from '@src/lib/apollo-hooks';
+import Head from 'next/head';
+import React, { useContext } from 'react';
 import { useQuery } from 'react-apollo';
-import { getLocaleConfig } from '@src/locales-map';
-import getContentfulConfig from '@src/get-contentful-config';
-import { ContentfulContext } from '@pages/_app';
+
+import { CtfPostQuery } from './__generated__/CtfPostQuery';
 import CtfPost from './ctf-post';
 import { query } from './ctf-post-query';
-import { CtfPostQuery } from './__generated__/CtfPostQuery';
+
+import EntryNotFound from '@src/components/errors/entry-not-found';
+import { ContentfulContext } from '@src/contentful-context';
+import getContentfulConfig from '@src/get-contentful-config';
+import { useDataForPreview } from '@src/lib/apollo-hooks';
+import { getLocaleConfig } from '@src/locales-map';
 
 interface Props {
   slug: string;
@@ -69,21 +71,11 @@ const CtfPostGql = (props: Props) => {
         )}
         {metaTags.description && (
           <>
-            <meta
-              key="description"
-              name="description"
-              content={metaTags.description}
-            />
-            <meta
-              key="og:description"
-              property="og:description"
-              content={metaTags.description}
-            />
+            <meta key="description" name="description" content={metaTags.description} />
+            <meta key="og:description" property="og:description" content={metaTags.description} />
           </>
         )}
-        {robots.length > 0 && (
-          <meta key="robots" name="robots" content={robots.join(', ')} />
-        )}
+        {robots.length > 0 && <meta key="robots" name="robots" content={robots.join(', ')} />}
         {metaTags.image && (
           <meta
             key="og:image"
@@ -100,11 +92,7 @@ const CtfPostGql = (props: Props) => {
         )}
         <meta key="og:type" property="og:type" content="article" />
         {props.locale && props.locale !== 'en-US' && (
-          <meta
-            key="og:locale"
-            property="og:locale"
-            content={props.locale.replace('-', '_')}
-          />
+          <meta key="og:locale" property="og:locale" content={props.locale.replace('-', '_')} />
         )}
       </Head>
       <CtfPost {...post} />

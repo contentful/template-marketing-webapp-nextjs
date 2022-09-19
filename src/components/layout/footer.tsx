@@ -1,4 +1,3 @@
-import React, { useContext, useMemo } from 'react';
 import {
   makeStyles,
   Theme,
@@ -9,16 +8,14 @@ import {
   Typography,
 } from '@material-ui/core';
 import { Twitter, Facebook, LinkedIn, Instagram } from '@material-ui/icons';
+import React, { useContext, useMemo } from 'react';
+
 import Link from '@src/components/link/link';
-import { ContentfulContext } from '@pages/_app';
-import {
-  getLocaleConfig,
-  prettifyLocale,
-  localeToLanguage,
-} from '@src/locales-map';
-import { CONTAINER_WIDTH } from '@src/theme';
+import { ContentfulContext } from '@src/contentful-context';
 import getContentfulConfig from '@src/get-contentful-config';
+import { getLocaleConfig, prettifyLocale, localeToLanguage } from '@src/locales-map';
 import pathToNextLinkHref from '@src/routing/path-to-next-link-href';
+import { CONTAINER_WIDTH } from '@src/theme';
 
 const useStyles = makeStyles((theme: Theme) => ({
   footerContainer: {
@@ -280,11 +277,7 @@ const Footer = (props: FooterPropsInterface) => {
     }
 
     return (
-      <Link
-        href={internalHref}
-        as={`/${lang}${menuItem.location}`}
-        className={className}
-      >
+      <Link href={internalHref} as={`/${lang}${menuItem.location}`} className={className}>
         {menuItem.label}
       </Link>
     );
@@ -349,9 +342,8 @@ const Footer = (props: FooterPropsInterface) => {
                   disableUnderline
                   onChange={(event: React.ChangeEvent<{ value: unknown }>) => {
                     onLocaleChange(event.target.value as string);
-                  }}
-                >
-                  {availableLocales.map((availableLocale) => (
+                  }}>
+                  {availableLocales.map(availableLocale => (
                     <MenuItem key={availableLocale} value={availableLocale}>
                       {localeToLanguage(prettifyLocale(availableLocale))}
                     </MenuItem>
@@ -364,8 +356,7 @@ const Footer = (props: FooterPropsInterface) => {
               {contentfulConfig.footer.googlePlayLogo && (
                 <a
                   className={classes.storeLogo}
-                  href="https://play.google.com/store/apps/details?id=com.contentful.colorfulcoin"
-                >
+                  href="https://play.google.com/store/apps/details?id=com.contentful.colorfulcoin">
                   <img
                     src={contentfulConfig.footer.googlePlayLogo}
                     srcSet={`${contentfulConfig.footer.googlePlayLogo}?w=110 110w, ${contentfulConfig.footer.googlePlayLogo}?w=220 220w`}
@@ -376,8 +367,7 @@ const Footer = (props: FooterPropsInterface) => {
               {contentfulConfig.footer.appStoreLogo && (
                 <a
                   className={classes.storeLogo}
-                  href="https://apps.apple.com/de/app/colorful-coin/id1612505445?l=en"
-                >
+                  href="https://apps.apple.com/de/app/colorful-coin/id1612505445?l=en">
                   <img
                     src={contentfulConfig.footer.appStoreLogo}
                     srcSet={`${contentfulConfig.footer.appStoreLogo}?w=110 110w, ${contentfulConfig.footer.appStoreLogo}?w=220 220w`}
@@ -405,9 +395,7 @@ const Footer = (props: FooterPropsInterface) => {
 
             <section className={classes.copyrightAndLegal}>
               {contentfulConfig.footer.copyright && (
-                <p className={classes.copyright}>
-                  {contentfulConfig.footer.copyright}
-                </p>
+                <p className={classes.copyright}>{contentfulConfig.footer.copyright}</p>
               )}
               {contentfulConfig.footer.legal.length > 0 && (
                 <nav role="navigation" className={classes.legalMenuWrapper}>
@@ -427,9 +415,7 @@ const Footer = (props: FooterPropsInterface) => {
 
           <div className={classes.socialDisclaimer}>
             {contentfulConfig.footer.disclaimer && (
-              <p className={classes.disclaimer}>
-                {contentfulConfig.footer.disclaimer}
-              </p>
+              <p className={classes.disclaimer}>{contentfulConfig.footer.disclaimer}</p>
             )}
 
             <div className={classes.socialWrapper}>

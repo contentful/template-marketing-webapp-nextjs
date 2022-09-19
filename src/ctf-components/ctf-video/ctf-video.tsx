@@ -1,9 +1,9 @@
-import React from 'react';
-import { Theme, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
+import React from 'react';
+
 import { AssetFragment } from '@ctf-components/ctf-asset/__generated__/AssetFragment';
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   image: {
     width: '100%',
   },
@@ -37,12 +37,8 @@ const CtfVideo = (props: CtfVideoPropsInterface) => {
   const classes = useStyles();
   return (
     <div className={className}>
-      <video
-        src={url!}
-        autoPlay={autoplay}
-        controls
-        className={classes.video}
-      />
+      {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+      <video src={url!} autoPlay={autoplay} controls className={classes.video} />
       {showDescription && <p className={classes.caption}>{description}</p>}
     </div>
   );

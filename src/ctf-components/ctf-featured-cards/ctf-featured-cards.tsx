@@ -1,12 +1,14 @@
-import React, { useContext } from 'react';
 import { makeStyles, Theme, Container } from '@material-ui/core';
-import SectionHeadlines from '@src/components/section-headlines/section-headlines';
+import { PersonalizedComponent } from '@ninetailed/experience.js-next';
+import React, { useContext } from 'react';
+
+import { FeaturedCardsFragment } from './__generated__/FeaturedCardsFragment';
+
 import CardPost from '@src/components/card-post/card-post';
 import PersonalizationFrame from '@src/components/personalization-frame';
-import { PersonalizedComponent } from '@ninetailed/experience.js-next';
-import { ContentfulContext } from '@pages/_app';
+import SectionHeadlines from '@src/components/section-headlines/section-headlines';
+import { ContentfulContext } from '@src/contentful-context';
 import { WrapIf } from '@src/jsx-utils';
-import { FeaturedCardsFragment } from './__generated__/FeaturedCardsFragment';
 
 const useStyles = makeStyles((theme: Theme) => ({
   section: {
@@ -45,31 +47,22 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export interface CtfFeaturedCardsPropsType extends FeaturedCardsFragment {}
 
-const CtfFeaturedCards: PersonalizedComponent<CtfFeaturedCardsPropsType> = (
-  props,
-) => {
-  const {
-    headline,
-    featuredPostsCollection,
-    ninetailed,
-    ntVariantsCollection,
-  } = props;
+const CtfFeaturedCards: PersonalizedComponent<CtfFeaturedCardsPropsType> = props => {
+  const { headline, featuredPostsCollection, ninetailed, ntVariantsCollection } = props;
   const classes = useStyles();
   const { xrayActive } = useContext(ContentfulContext);
 
   const isPersonalized =
-    ntVariantsCollection?.items !== undefined &&
-    ntVariantsCollection.items.length > 0;
+    ntVariantsCollection?.items !== undefined && ntVariantsCollection.items.length > 0;
 
   return (
     <WrapIf
       when={xrayActive === true && isPersonalized === true}
-      wrap={(children) => (
+      wrap={children => (
         <PersonalizationFrame audienceId={ninetailed?.audience.id ?? null}>
           {children}
         </PersonalizationFrame>
-      )}
-    >
+      )}>
       <Container maxWidth={false} className={classes.section}>
         <div className={classes.innerContainer}>
           <SectionHeadlines
@@ -81,8 +74,8 @@ const CtfFeaturedCards: PersonalizedComponent<CtfFeaturedCardsPropsType> = (
           <div className={classes.blocksGrid}>
             {featuredPostsCollection &&
               featuredPostsCollection.items
-                .filter((featuredPost) => !!featuredPost)
-                .map((featuredPost) => (
+                .filter(featuredPost => !!featuredPost)
+                .map(featuredPost => (
                   <div key={featuredPost!.sys.id} className={classes.block}>
                     <CardPost {...featuredPost!} linkToPost />
                   </div>

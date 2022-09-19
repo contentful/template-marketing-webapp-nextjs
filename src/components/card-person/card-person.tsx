@@ -1,10 +1,11 @@
-import React from 'react';
 import { Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
-import LayoutContext, { defaultLayout } from '@src/layout-context';
+import React from 'react';
+
+import { PersonFragment } from '@ctf-components/ctf-person/__generated__/PersonFragment';
 import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
 import Avatar from '@src/components/avatar/avatar';
-import { PersonFragment } from '@ctf-components/ctf-person/__generated__/PersonFragment';
+import LayoutContext, { defaultLayout } from '@src/layout-context';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {

@@ -1,4 +1,5 @@
 import { Variant } from '@ninetailed/experience.js-next';
+
 import { tryget } from '@src/utils';
 
 export function extractSectionHeadlines(data: any) {

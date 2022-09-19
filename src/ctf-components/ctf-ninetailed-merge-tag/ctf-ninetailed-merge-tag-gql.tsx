@@ -1,9 +1,11 @@
-import { useDataForPreview } from '@src/lib/apollo-hooks';
-import React from 'react';
-import { useQuery } from 'react-apollo';
 import { makeStyles } from '@material-ui/styles';
 import { MergeTag } from '@ninetailed/experience.js-next';
+import React from 'react';
+import { useQuery } from 'react-apollo';
+
 import { query } from './ctf-ninetailed-merge-tag-query';
+
+import { useDataForPreview } from '@src/lib/apollo-hooks';
 
 const useStyles = makeStyles(() => ({
   '@global': {

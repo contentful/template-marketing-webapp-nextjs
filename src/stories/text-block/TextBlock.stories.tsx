@@ -1,5 +1,6 @@
-import React from 'react';
 import { Story, Meta } from '@storybook/react';
+import React from 'react';
+
 import CtfTextBlock, {
   CtfTextBlockPropsInterface,
 } from '@ctf-components/ctf-text-block/ctf-text-block';

@@ -1,7 +1,8 @@
 import gql from 'graphql-tag';
+
+import { ninetailedAudienceFragment } from '@ctf-components/ctf-ninetailed-audience/ctf-ninetailed-audience-query';
 import { pageForPageLinkFragment } from '@src/components/link/page-link-query';
 import { postForPostLinkFragment } from '@src/components/link/post-link-query';
-import { ninetailedAudienceFragment } from '@ctf-components/ctf-ninetailed-audience/ctf-ninetailed-audience-query';
 
 export const ctaFragment = gql`
   fragment CtaFragmentBase on ComponentCta {

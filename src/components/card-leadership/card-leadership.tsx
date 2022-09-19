@@ -1,10 +1,11 @@
-import React from 'react';
-import clsx from 'clsx';
 import { Theme, makeStyles, Typography } from '@material-ui/core';
-import LayoutContext, { defaultLayout } from '@src/layout-context';
-import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
+import clsx from 'clsx';
+import React from 'react';
+
 import CtfAsset from '@ctf-components/ctf-asset/ctf-asset';
 import { PersonFragment } from '@ctf-components/ctf-person/__generated__/PersonFragment';
+import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
+import LayoutContext, { defaultLayout } from '@src/layout-context';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {

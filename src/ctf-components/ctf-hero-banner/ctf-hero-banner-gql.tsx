@@ -1,14 +1,16 @@
 import { Personalize } from '@ninetailed/experience.js-next';
-import { useDataForPreview } from '@src/lib/apollo-hooks';
 import React from 'react';
 import { useQuery } from 'react-apollo';
+
 import { unwrapVariants } from '../ctf-helpers';
-import CtfHeroBanner from './ctf-hero-banner';
-import { query } from './ctf-hero-banner-query';
 import {
   CtfHeroBannerQuery,
   CtfHeroBannerQuery_componentHeroBanner
 } from './__generated__/CtfHeroBannerQuery';
+import CtfHeroBanner from './ctf-hero-banner';
+import { query } from './ctf-hero-banner-query';
+
+import { useDataForPreview } from '@src/lib/apollo-hooks';
 
 interface CtfHeroGqlPropsInterface {
   id: string;

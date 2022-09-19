@@ -1,12 +1,14 @@
-import React from 'react';
-import Head from 'next/head';
 import { Container } from '@material-ui/core';
-import EntryNotFound from '@src/components/errors/entry-not-found';
-import { useDataForPreview } from '@src/lib/apollo-hooks';
+import Head from 'next/head';
+import React from 'react';
 import { useQuery } from 'react-apollo';
+
+import { CtfBusinessInfoQuery } from './__generated__/CtfBusinessInfoQuery';
 import CtfBusinessInfo from './ctf-business-info';
 import { query } from './ctf-business-info-query';
-import { CtfBusinessInfoQuery } from './__generated__/CtfBusinessInfoQuery';
+
+import EntryNotFound from '@src/components/errors/entry-not-found';
+import { useDataForPreview } from '@src/lib/apollo-hooks';
 
 interface CtfBusinessInfoGqlPropsInterface {
   slug: string;

@@ -1,20 +1,18 @@
-import React, { useMemo, useContext } from 'react';
 import { Container, makeStyles, Theme, Typography } from '@material-ui/core';
 import { PersonalizedComponent } from '@ninetailed/experience.js-next';
+import clsx from 'clsx';
+import React, { useMemo, useContext } from 'react';
+
+import { HeroBannerFragment } from './__generated__/HeroBannerFragment';
+
+import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
 import PageLink from '@src/components/link/page-link';
 import PostLink from '@src/components/link/post-link';
-import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
-import LayoutContext, { defaultLayout } from '@src/layout-context';
-import {
-  getColorConfigFromPalette,
-  HEADER_HEIGHT_MD,
-  HEADER_HEIGHT,
-} from '@src/theme';
-import { ContentfulContext } from '@pages/_app';
-import { WrapIf } from '@src/jsx-utils';
 import PersonalizationFrame from '@src/components/personalization-frame';
-import { HeroBannerFragment } from './__generated__/HeroBannerFragment';
-import clsx from 'clsx';
+import { ContentfulContext } from '@src/contentful-context';
+import { WrapIf } from '@src/jsx-utils';
+import LayoutContext, { defaultLayout } from '@src/layout-context';
+import { getColorConfigFromPalette, HEADER_HEIGHT_MD, HEADER_HEIGHT } from '@src/theme';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -99,9 +97,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export interface CtfHeroBannerInterface extends HeroBannerFragment {}
 
-const CtfHeroBanner: PersonalizedComponent<CtfHeroBannerInterface> = (
-  props,
-) => {
+const CtfHeroBanner: PersonalizedComponent<CtfHeroBannerInterface> = props => {
   const {
     image,
     imageStyle: imageStyleBoolean,
@@ -119,47 +115,35 @@ const CtfHeroBanner: PersonalizedComponent<CtfHeroBannerInterface> = (
   const colorConfig = getColorConfigFromPalette(colorPalette || '');
   const imageStyle = imageStyleBoolean ? 'partial' : 'full';
   const heroSize =
-    heroSizeBoolean === null || heroSizeBoolean === true
-      ? 'full_screen'
-      : 'fixed_height';
+    heroSizeBoolean === null || heroSizeBoolean === true ? 'full_screen' : 'fixed_height';
   const backgroundImage = useMemo(
     () =>
       image
-        ? `${image.url}?w=${
-            imageStyle === 'partial' ? 767 * 2 : layout.containerWidth * 2
-          }`
+        ? `${image.url}?w=${imageStyle === 'partial' ? 767 * 2 : layout.containerWidth * 2}`
         : undefined,
-    [image],
+    [image, imageStyle, layout.containerWidth],
   );
   const classes = useStyles();
 
   const isPersonalized =
-    ntVariantsCollection?.items !== undefined &&
-    ntVariantsCollection.items.length > 0;
+    ntVariantsCollection?.items !== undefined && ntVariantsCollection.items.length > 0;
 
   return (
     <WrapIf
       when={xrayActive === true && isPersonalized === true}
-      wrap={(children) => (
+      wrap={children => (
         <PersonalizationFrame audienceId={ninetailed?.audience.id ?? null}>
           {children}
         </PersonalizationFrame>
-      )}
-    >
+      )}>
       <Container
         maxWidth={false}
-        className={clsx(
-          classes.root,
-          heroSize === 'full_screen' ? classes.fullScreen : null,
-        )}
+        className={clsx(classes.root, heroSize === 'full_screen' ? classes.fullScreen : null)}
         style={{
           backgroundImage:
-            imageStyle === 'full' && backgroundImage
-              ? `url(${backgroundImage!})`
-              : undefined,
+            imageStyle === 'full' && backgroundImage ? `url(${backgroundImage!})` : undefined,
           backgroundColor: colorConfig.backgroundColor,
-        }}
-      >
+        }}>
         {imageStyle === 'partial' && backgroundImage && (
           <div className={classes.partialBgContainer}>
             <div
@@ -175,15 +159,12 @@ const CtfHeroBanner: PersonalizedComponent<CtfHeroBannerInterface> = (
             <Typography
               variant="h1"
               className={classes.headline}
-              style={{ color: colorConfig.headlineColor }}
-            >
+              style={{ color: colorConfig.headlineColor }}>
               {headline}
             </Typography>
           )}
           {bodyText && (
-            <LayoutContext.Provider
-              value={{ ...defaultLayout, parent: 'hero-banner-body' }}
-            >
+            <LayoutContext.Provider value={{ ...defaultLayout, parent: 'hero-banner-body' }}>
               <div style={{ color: colorConfig.textColor }}>
                 <CtfRichtext {...bodyText} className={classes.body} />
               </div>
@@ -196,8 +177,7 @@ const CtfHeroBanner: PersonalizedComponent<CtfHeroBannerInterface> = (
                   page={targetPage}
                   variant="contained"
                   color={colorConfig.buttonColor}
-                  isButton
-                >
+                  isButton>
                   {ctaText}
                 </PageLink>
               )}
@@ -206,8 +186,7 @@ const CtfHeroBanner: PersonalizedComponent<CtfHeroBannerInterface> = (
                   post={targetPage}
                   variant="contained"
                   color={colorConfig.buttonColor}
-                  isButton
-                >
+                  isButton>
                   {ctaText}
                 </PostLink>
               )}

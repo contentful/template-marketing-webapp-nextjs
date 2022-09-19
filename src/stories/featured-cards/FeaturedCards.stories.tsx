@@ -1,5 +1,6 @@
-import React from 'react';
 import { Story, Meta } from '@storybook/react';
+import React from 'react';
+
 import CtfFeaturedCards, {
   CtfFeaturedCardsPropsType,
 } from '@ctf-components/ctf-featured-cards/ctf-featured-cards';

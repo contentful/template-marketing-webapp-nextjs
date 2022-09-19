@@ -1,9 +1,11 @@
 import React from 'react';
 import { useQuery } from 'react-apollo';
-import { useDataForPreview } from '@src/lib/apollo-hooks';
+
+import { CtfTextBlockQuery } from './__generated__/CtfTextBlockQuery';
 import CtfTextBlock from './ctf-text-block';
 import { query } from './ctf-text-block-query';
-import { CtfTextBlockQuery } from './__generated__/CtfTextBlockQuery';
+
+import { useDataForPreview } from '@src/lib/apollo-hooks';
 
 interface CtfTextBlockGqlPropsInterface {
   id: string;

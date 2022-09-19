@@ -1,16 +1,18 @@
-import React, { useContext } from 'react';
-import clsx from 'clsx';
 import { makeStyles, Theme, Container } from '@material-ui/core';
+import { PersonalizedComponent } from '@ninetailed/experience.js-next';
+import clsx from 'clsx';
+import React, { useContext } from 'react';
+
+import { InfoBlockFragment } from './__generated__/InfoBlockFragment';
+
 import CtfAsset from '@ctf-components/ctf-asset/ctf-asset';
 import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
+import PersonalizationFrame from '@src/components/personalization-frame';
 import SectionHeadlines from '@src/components/section-headlines/section-headlines';
+import { ContentfulContext } from '@src/contentful-context';
+import { WrapIf } from '@src/jsx-utils';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 import { getColorConfigFromPalette } from '@src/theme';
-import PersonalizationFrame from '@src/components/personalization-frame';
-import { PersonalizedComponent } from '@ninetailed/experience.js-next';
-import { ContentfulContext } from '@pages/_app';
-import { WrapIf } from '@src/jsx-utils';
-import { InfoBlockFragment } from './__generated__/InfoBlockFragment';
 
 const useStyles = makeStyles((theme: Theme) => ({
   innerContainer: {
@@ -78,9 +80,7 @@ export interface CtfInfoBlockPropsInterface extends InfoBlockFragment {
   previousComponent?: string | null;
 }
 
-const CtfInfoBlock: PersonalizedComponent<CtfInfoBlockPropsInterface> = (
-  props,
-) => {
+const CtfInfoBlock: PersonalizedComponent<CtfInfoBlockPropsInterface> = props => {
   const {
     headline,
     subline,
@@ -100,32 +100,28 @@ const CtfInfoBlock: PersonalizedComponent<CtfInfoBlockPropsInterface> = (
   const { xrayActive } = useContext(ContentfulContext);
 
   const isPersonalized =
-    ntVariantsCollection?.items !== undefined &&
-    ntVariantsCollection.items.length > 0;
+    ntVariantsCollection?.items !== undefined && ntVariantsCollection.items.length > 0;
 
   return (
     <WrapIf
       when={xrayActive === true && isPersonalized === true}
-      wrap={(children) => (
+      wrap={children => (
         <PersonalizationFrame audienceId={ninetailed?.audience.id ?? null}>
           {children}
         </PersonalizationFrame>
-      )}
-    >
+      )}>
       <Container
         maxWidth={false}
         style={{
           backgroundColor: colorConfig.backgroundColor,
-        }}
-      >
+        }}>
         <div
           className={clsx(
             classes.innerContainer,
             previousComponent === 'ComponentInfoBlock' && !headline && !subline
               ? classes.innerContainerAfterInfoBlock
               : null,
-          )}
-        >
+          )}>
           <SectionHeadlines
             headline={headline}
             headlineProps={{
@@ -137,9 +133,7 @@ const CtfInfoBlock: PersonalizedComponent<CtfInfoBlockPropsInterface> = (
             }}
             className={classes.sectionHeadlines}
           />
-          <LayoutContext.Provider
-            value={{ ...defaultLayout, parent: 'info-block' }}
-          >
+          <LayoutContext.Provider value={{ ...defaultLayout, parent: 'info-block' }}>
             <div className={classes.blocksGrid}>
               {block1Body && (
                 <div className={classes.block}>

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
-import { ContentfulContext } from '@pages/_app';
+
 import Link from '@src/components/link/link';
+import { ContentfulContext } from '@src/contentful-context';
 import { getLocaleConfig } from '@src/locales-map';
 
 export type PageLinkPage = {
@@ -62,11 +63,7 @@ const PageLink = (props: Props) => {
     urlParams: props.urlParams,
   };
 
-  return (
-    <Link {...linkProps}>
-      {props.render ? props.render(as) : props.children}
-    </Link>
-  );
+  return <Link {...linkProps}>{props.render ? props.render(as) : props.children}</Link>;
 };
 
 export default PageLink;

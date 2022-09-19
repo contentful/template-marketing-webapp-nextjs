@@ -1,4 +1,3 @@
-import React, { useContext, useMemo } from 'react';
 import {
   AppBar,
   Container,
@@ -11,12 +10,14 @@ import {
 } from '@material-ui/core';
 import { Menu } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/styles';
-import { ContentfulContext } from '@pages/_app';
-import { getLocaleConfig } from '@src/locales-map';
-import { HEADER_HEIGHT, HEADER_HEIGHT_MD, CONTAINER_WIDTH } from '@src/theme';
+import React, { useContext, useMemo } from 'react';
+
 import Link from '@src/components/link/link';
+import { ContentfulContext } from '@src/contentful-context';
 import getContentfulConfig from '@src/get-contentful-config';
+import { getLocaleConfig } from '@src/locales-map';
 import pathToNextLinkHref from '@src/routing/path-to-next-link-href';
+import { HEADER_HEIGHT, HEADER_HEIGHT_MD, CONTAINER_WIDTH } from '@src/theme';
 
 const useStyles = makeStyles((theme: Theme) => ({
   appbar: {
@@ -143,10 +144,7 @@ const Header = (props: HeaderPropsInterface) => {
     return getContentfulConfig(realLocale);
   }, [realLocale]);
 
-  const renderMenuItem = (menuItem: {
-    label: string;
-    location?: string;
-  }): string | JSX.Element => {
+  const renderMenuItem = (menuItem: { label: string; location?: string }): string | JSX.Element => {
     if (menuItem.location === undefined) {
       return menuItem.label;
     }
@@ -175,7 +173,7 @@ const Header = (props: HeaderPropsInterface) => {
 
     return (
       <ul className={classes.submenu}>
-        {menuItem.children.map((submenuItem) => (
+        {menuItem.children.map(submenuItem => (
           <li key={submenuItem.label} className={classes.submenuItem}>
             {renderMenuItem(submenuItem)}
           </li>
@@ -193,8 +191,7 @@ const Header = (props: HeaderPropsInterface) => {
           maxWidth={false}
           style={{
             maxWidth: `${CONTAINER_WIDTH / 10}rem`,
-          }}
-        >
+          }}>
           <Link href="/[lang]" as={`/${lang}`} withoutMaterial>
             <img
               src={contentfulConfig.header.logo}
@@ -210,11 +207,9 @@ const Header = (props: HeaderPropsInterface) => {
               <div className={classes.menuWrapper}>
                 <nav role="navigation">
                   <ul className={classes.menu}>
-                    {contentfulConfig.header.menu.map((menuItem) => (
+                    {contentfulConfig.header.menu.map(menuItem => (
                       <li key={menuItem.label} className={classes.menuItem}>
-                        {menuItem.location
-                          ? renderMenuItem(menuItem)
-                          : menuItem.label}
+                        {menuItem.location ? renderMenuItem(menuItem) : menuItem.label}
                         {renderMenuItemChildren(menuItem)}
                       </li>
                     ))}
@@ -230,8 +225,7 @@ const Header = (props: HeaderPropsInterface) => {
                         isButton
                         variant="contained"
                         color="primary"
-                        size="small"
-                      >
+                        size="small">
                         {realLocale === 'de-DE' ? 'Anmelden' : 'Sign Up'}
                       </Link>
                     </li>
@@ -256,8 +250,7 @@ const Header = (props: HeaderPropsInterface) => {
                               </clipPath>
                             </defs>
                           </SvgIcon>
-                        }
-                      >
+                        }>
                         {realLocale === 'de-DE' ? 'Einloggen' : 'Sign In'}
                       </Link>
                     </li>

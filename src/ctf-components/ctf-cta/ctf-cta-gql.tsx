@@ -1,14 +1,16 @@
+import { Personalize } from '@ninetailed/experience.js-next';
 import React from 'react';
 import { useQuery } from 'react-apollo';
-import { useDataForPreview } from '@src/lib/apollo-hooks';
-import { Personalize } from '@ninetailed/experience.js-next';
-import CtfCta, { CtfCtaPropsInterface } from './ctf-cta';
-import { query } from './ctf-cta-query';
+
+import { unwrapVariants } from '../ctf-helpers';
 import {
   CtfCtaQuery,
   CtfCtaQuery_componentCta,
 } from './__generated__/CtfCtaQuery';
-import { unwrapVariants } from '../ctf-helpers';
+import CtfCta, { CtfCtaPropsInterface } from './ctf-cta';
+import { query } from './ctf-cta-query';
+
+import { useDataForPreview } from '@src/lib/apollo-hooks';
 
 interface CtfCtaGqlPropsInterface {
   id: string;

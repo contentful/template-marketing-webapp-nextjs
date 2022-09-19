@@ -1,18 +1,13 @@
-import React, { useContext } from 'react';
-import Head from 'next/head';
+import { Container, Typography, makeStyles, Theme, Button } from '@material-ui/core';
 import { NextPage } from 'next';
-import {
-  Container,
-  Typography,
-  makeStyles,
-  Theme,
-  Button,
-} from '@material-ui/core';
-import { ContentfulContext } from '@pages/_app';
+import Head from 'next/head';
+import React, { useContext } from 'react';
+
 import PageContainer from '@src/components/layout/page-container';
 import Link from '@src/components/link/link';
-import { getLocaleConfig } from '@src/locales-map';
+import { ContentfulContext } from '@src/contentful-context';
 import getContentfulConfig from '@src/get-contentful-config';
+import { getLocaleConfig } from '@src/locales-map';
 
 let contentfulConfig = getContentfulConfig();
 
@@ -104,11 +99,7 @@ const SignInPage: NextPage = () => {
       <Head>
         <title key="title">Sign In</title>
         <meta key="og:title" property="og:title" content="Sign In" />
-        <meta
-          key="description"
-          name="description"
-          content={contentfulConfig.meta.description}
-        />
+        <meta key="description" name="description" content={contentfulConfig.meta.description} />
         <meta
           key="og:description"
           property="og:description"
@@ -119,11 +110,7 @@ const SignInPage: NextPage = () => {
           property="og:url"
           content={`${contentfulConfig.meta.url}/${lang}/sign-in`}
         />
-        <meta
-          key="og:locale"
-          property="og:locale"
-          content={locale.replace('-', '_')}
-        />
+        <meta key="og:locale" property="og:locale" content={locale.replace('-', '_')} />
       </Head>
       <PageContainer className={classes.page}>
         <Container maxWidth={false}>
@@ -149,12 +136,7 @@ const SignInPage: NextPage = () => {
                     {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                     <label htmlFor="sign-in-email">E-Mail</label>
                   </div>
-                  <input
-                    id="sign-in-email"
-                    name="email"
-                    type="email"
-                    className={classes.input}
-                  />
+                  <input id="sign-in-email" name="email" type="email" className={classes.input} />
                 </div>
                 <div className={classes.formField}>
                   <div className={classes.formFieldLabel}>
@@ -162,9 +144,7 @@ const SignInPage: NextPage = () => {
                       {realLocale === 'de-DE' ? 'Kennwort' : 'Password'}
                     </label>
                     <a href="#" className={classes.forgotPassword}>
-                      {realLocale === 'de-DE'
-                        ? 'Kennwort vergessen?'
-                        : 'Forgot Password?'}
+                      {realLocale === 'de-DE' ? 'Kennwort vergessen?' : 'Forgot Password?'}
                     </a>
                   </div>
                   <input
@@ -175,25 +155,18 @@ const SignInPage: NextPage = () => {
                   />
                 </div>
                 <div className={classes.formField}>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    className={classes.signIn}
-                  >
+                  <Button variant="contained" color="primary" className={classes.signIn}>
                     {realLocale === 'de-DE' ? 'Einloggen' : 'Sign In'}
                   </Button>
                   <Typography className={classes.signUpText}>
-                    {realLocale === 'de-DE'
-                      ? 'Sie haben kein Konto?'
-                      : "Don't have an account?"}{' '}
+                    {realLocale === 'de-DE' ? 'Sie haben kein Konto?' : "Don't have an account?"}{' '}
                     <Link
                       href="/[lang]/sign-up"
                       as={`/${lang}/sign-up`}
                       variant="text"
                       color="primary"
                       underline
-                      className={classes.signUp}
-                    >
+                      className={classes.signUp}>
                       {realLocale === 'de-DE' ? 'Anmelden' : 'Sign Up'}
                     </Link>
                   </Typography>

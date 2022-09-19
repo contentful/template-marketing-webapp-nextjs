@@ -1,8 +1,9 @@
-import { ThemeProvider, makeStyles } from '@material-ui/styles';
-import colorfulTheme from '@src/theme';
-import React, { useEffect, useRef } from 'react';
 import { CssBaseline, Theme } from '@material-ui/core';
+import { ThemeProvider, makeStyles } from '@material-ui/styles';
 import imagesLoaded from 'imagesloaded';
+import React, { useEffect, useRef } from 'react';
+
+import colorfulTheme from '@src/theme';
 
 const useStyles = makeStyles((theme: Theme) => ({
   content: {
@@ -22,15 +23,13 @@ const isInIframe = (): boolean => {
   }
 };
 
-const WrapperChild: React.FC = (props) => {
+const WrapperChild = ({ children }) => {
   const classes = useStyles();
-  const { children } = props;
 
   return <div className={classes.content}>{children}</div>;
 };
 
-const Wrapper: React.FC = (props) => {
-  const { children } = props;
+const Wrapper = ({ children }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

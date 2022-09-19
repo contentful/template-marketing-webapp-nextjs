@@ -1,4 +1,5 @@
 import gql from 'graphql-tag';
+
 import { assetFragment } from '../ctf-asset/ctf-asset-query';
 import { productFeatureFragment } from '../ctf-product-feature/ctf-product-feature-query';
 
