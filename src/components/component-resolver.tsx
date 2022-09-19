@@ -1,11 +1,13 @@
-import React, { useContext, useMemo } from 'react';
-import clsx from 'clsx';
 import { Box, Theme, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
-import { ContentfulContext } from '@pages/_app';
-import { WrapIf } from '@src/jsx-utils';
+import clsx from 'clsx';
+import React, { useContext, useMemo } from 'react';
+
 import { componentGqlMap, componentMap } from '../mappings';
 import XrayFrame from './xray-frame';
+
+import { ContentfulContext } from '@src/contentful-context';
+import { WrapIf } from '@src/jsx-utils';
 
 let previousComponent: string | null = null;
 
@@ -56,17 +58,14 @@ const ComponentResolver = (props: Props) => {
       return false;
     }
 
-    if (
-      componentProps.__typename === undefined ||
-      componentProps.sys === undefined
-    ) {
+    if (componentProps.__typename === undefined || componentProps.sys === undefined) {
       // We expect exactly these keys to be present in the returned props if the
       // fragment was not specified for this component
       return false;
     }
 
     return true;
-  }, [props.forceGql]);
+  }, [ComponentGql, componentProps, props.forceGql]);
 
   const Component = !shouldForceGql && componentMap[componentProps.__typename];
 
@@ -74,8 +73,7 @@ const ComponentResolver = (props: Props) => {
     return (
       <div className={clsx(classes.missingComponent, props.className)}>
         <Typography variant="body1">
-          Component <strong>{componentProps.__typename}</strong> not implemented
-          yet.
+          Component <strong>{componentProps.__typename}</strong> not implemented yet.
         </Typography>
       </div>
     );
@@ -88,20 +86,15 @@ const ComponentResolver = (props: Props) => {
   return (
     <WrapIf
       when={xrayActive && componentProps.__typename !== 'NtMergetag'}
-      wrap={(children) => (
-        <XrayFrame
-          {...componentProps}
-          className={`xray-${componentProps.__typename}`}
-        >
+      wrap={children => (
+        <XrayFrame {...componentProps} className={`xray-${componentProps.__typename}`}>
           {children}
         </XrayFrame>
-      )}
-    >
+      )}>
       <Box
         position="relative"
         component={inline ? 'span' : 'div'}
-        className={componentProps.__typename}
-      >
+        className={componentProps.__typename}>
         {Component ? (
           <Component
             {...componentProps}

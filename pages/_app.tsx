@@ -1,58 +1,26 @@
-import React, { useEffect } from 'react';
-import Head from 'next/head';
-import App, { AppContext, AppProps } from 'next/app';
-import { ThemeProvider } from '@material-ui/styles';
-import Layout from '@src/components/layout/layout';
-import colorfulTheme from '@src/theme';
 import { config as fontawesomeConfig } from '@fortawesome/fontawesome-svg-core';
+import { ThemeProvider } from '@material-ui/styles';
 import '@fortawesome/fontawesome-svg-core/styles.css';
-import getContentfulConfig from '@src/get-contentful-config';
-import { getLocaleConfig } from '@src/locales-map';
 import '@src/components/layout/layout.css';
 import { NinetailedProvider } from '@ninetailed/experience.js-next';
 import { NinetailedPreviewPlugin } from '@ninetailed/experience.js-plugin-preview';
+import App, { AppContext, AppProps } from 'next/app';
+import Head from 'next/head';
+import React, { useEffect } from 'react';
 
+import Layout from '@src/components/layout/layout';
 import Settings from '@src/components/settings/settings';
-
-const contentfulConfig = getContentfulConfig();
+import {
+  contentfulConfig,
+  ContentfulContext,
+  contentfulContextValue,
+} from '@src/contentful-context';
+import { getLocaleConfig } from '@src/locales-map';
+import colorfulTheme from '@src/theme';
 
 fontawesomeConfig.autoAddCss = false;
 
-interface ContentfulContextInterface {
-  locale: string;
-  defaultLocale: string;
-  spaceIds: {
-    main: string;
-    legal: string;
-  };
-  previewActive: boolean;
-  xrayActive: boolean;
-  appUrl: string;
-  spaceEnv: string;
-  availableLocales: string[];
-  personalizationAudience: string | null;
-}
-
-const contentfulContextValue: ContentfulContextInterface = {
-  locale: contentfulConfig.contentful.default_locale,
-  defaultLocale: contentfulConfig.contentful.default_locale,
-  spaceIds: {
-    main: contentfulConfig.contentful.main_space_id,
-    legal: contentfulConfig.contentful.legal_space_id,
-  },
-  previewActive: false,
-  xrayActive: false,
-  appUrl: contentfulConfig.meta.url,
-  spaceEnv: 'default',
-  availableLocales: contentfulConfig.contentful.available_locales,
-  personalizationAudience: null,
-};
-
-export const ContentfulContext = React.createContext(contentfulContextValue);
-
-const CustomApp = (
-  props: AppProps,
-) => {
+const CustomApp = (props: AppProps) => {
   const { Component, pageProps, router } = props;
 
   useEffect(() => {
@@ -110,11 +78,7 @@ const CustomApp = (
               content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
             />
             <title key="title">{contentfulConfig.meta.title}</title>
-            <meta
-              key="og:title"
-              property="og:title"
-              content={contentfulConfig.meta.title}
-            />
+            <meta key="og:title" property="og:title" content={contentfulConfig.meta.title} />
             <meta
               key="description"
               name="description"
@@ -125,27 +89,14 @@ const CustomApp = (
               property="og:description"
               content={contentfulConfig.meta.description}
             />
-            <meta
-              key="og:image"
-              property="og:image"
-              content={contentfulConfig.meta.image}
-            />
-            <meta
-              key="og:image:width"
-              property="og:image:width"
-              content="1200"
-            />
-            <meta
-              key="og:image:height"
-              property="og:image:height"
-              content="630"
-            />
+            <meta key="og:image" property="og:image" content={contentfulConfig.meta.image} />
+            <meta key="og:image:width" property="og:image:width" content="1200" />
+            <meta key="og:image:height" property="og:image:height" content="630" />
             <meta key="og:type" property="og:type" content="website" />
           </Head>
           <Layout
             locale={contentfulContextValue.locale}
-            preview={contentfulContextValue.previewActive}
-          >
+            preview={contentfulContextValue.previewActive}>
             <Component {...pageProps} err={(props as any).err} />
             <Settings />
           </Layout>

@@ -1,12 +1,13 @@
-import React, { useContext, useMemo } from 'react';
-import gql from 'graphql-tag';
-
 import { Box, makeStyles, Theme, Typography } from '@material-ui/core';
-import clsx from 'clsx';
-import { ContentfulContext } from '@pages/_app';
-import { useQuery } from 'react-apollo';
 import { Face } from '@material-ui/icons';
+import clsx from 'clsx';
+import gql from 'graphql-tag';
+import React, { useContext, useMemo } from 'react';
+import { useQuery } from 'react-apollo';
+
 import { CtfPersonalizationFrameQuery } from './__generated__/CtfPersonalizationFrameQuery';
+
+import { ContentfulContext } from '@src/contentful-context';
 
 const useStyles = makeStyles((theme: Theme) => ({
   xframeRoot: {
@@ -73,18 +74,14 @@ const PersonalizationFrame = (props: Props) => {
     spaceIds: { main: spaceId },
   } = contentfulContext;
   const classes = useStyles();
-  const environmentsUrlFragment =
-    spaceEnv === 'default' ? '' : `environments/${spaceEnv}/`;
+  const environmentsUrlFragment = spaceEnv === 'default' ? '' : `environments/${spaceEnv}/`;
   const contentfulUrl = `https://app.contentful.com/spaces/${spaceId}/${environmentsUrlFragment}entries/${props.audienceId}`;
-  const queryResult = useQuery<CtfPersonalizationFrameQuery>(
-    personalizationFrameQuery,
-    {
-      variables: {
-        id: props.audienceId,
-      },
-      skip: props.audienceId === null,
+  const queryResult = useQuery<CtfPersonalizationFrameQuery>(personalizationFrameQuery, {
+    variables: {
+      id: props.audienceId,
     },
-  );
+    skip: props.audienceId === null,
+  });
 
   const audienceName = useMemo(() => {
     if (queryResult.data === undefined) {
@@ -101,8 +98,7 @@ const PersonalizationFrame = (props: Props) => {
         {props.audienceId === null ? (
           <div className={classes.label}>
             <Typography className={classes.labelWithIcon}>
-              <Face fontSize="small" /> Audience: &quot;All visitors
-              (default)&quot;
+              <Face fontSize="small" /> Audience: &quot;All visitors (default)&quot;
             </Typography>
           </div>
         ) : (
@@ -110,8 +106,7 @@ const PersonalizationFrame = (props: Props) => {
             href={contentfulUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className={classes.label}
-          >
+            className={classes.label}>
             <Typography className={classes.labelWithIcon}>
               <Face fontSize="small" /> Audience: &quot;{audienceName}&quot;
             </Typography>

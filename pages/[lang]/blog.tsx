@@ -1,22 +1,22 @@
-import React, { useContext } from 'react';
-import Head from 'next/head';
-import { NextPage, GetServerSideProps } from 'next';
-import { useQuery } from 'react-apollo';
-import gql from 'graphql-tag';
 import { Container, Typography, makeStyles, Theme } from '@material-ui/core';
-import { ContentfulContext } from '@pages/_app';
-import CategoryContainer from '@src/components/layout/category-container';
-import EntryNotFound from '@src/components/errors/entry-not-found';
-import CardPostExtended from '@src/components/card-post-extended/card-post-extended';
-import CategoriesMenu from '@ctf-components/ctf-categories-menu/ctf-categories-menu';
-import { useDataForPreview } from '@src/lib/apollo-hooks';
-import { postFragmentBase } from '@ctf-components/ctf-post/ctf-post-query';
-import withProviders, {
-  generateGetServerSideProps,
-} from '@src/lib/with-providers';
-import { getLocaleConfig } from '@src/locales-map';
-import getContentfulConfig from '@src/get-contentful-config';
+import gql from 'graphql-tag';
+import { NextPage, GetServerSideProps } from 'next';
+import Head from 'next/head';
+import React, { useContext } from 'react';
+import { useQuery } from 'react-apollo';
+
 import { CtfBlogQuery } from './__generated__/CtfBlogQuery';
+
+import CategoriesMenu from '@ctf-components/ctf-categories-menu/ctf-categories-menu';
+import { postFragmentBase } from '@ctf-components/ctf-post/ctf-post-query';
+import CardPostExtended from '@src/components/card-post-extended/card-post-extended';
+import EntryNotFound from '@src/components/errors/entry-not-found';
+import CategoryContainer from '@src/components/layout/category-container';
+import { ContentfulContext } from '@src/contentful-context';
+import getContentfulConfig from '@src/get-contentful-config';
+import { useDataForPreview } from '@src/lib/apollo-hooks';
+import withProviders, { generateGetServerSideProps } from '@src/lib/with-providers';
+import { getLocaleConfig } from '@src/locales-map';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -58,12 +58,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const query = gql`
   query CtfBlogQuery($locale: String, $preview: Boolean) {
-    postCollection(
-      locale: $locale
-      preview: $preview
-      limit: 10
-      order: publishedDate_DESC
-    ) {
+    postCollection(locale: $locale, preview: $preview, limit: 10, order: publishedDate_DESC) {
       items {
         ...PostFragmentBase
       }
@@ -73,9 +68,7 @@ const query = gql`
 `;
 
 const BlogPage: NextPage = () => {
-  const { locale, defaultLocale, previewActive } = useContext(
-    ContentfulContext,
-  );
+  const { locale, defaultLocale, previewActive } = useContext(ContentfulContext);
   const { locale: realLocale, lang } = getLocaleConfig(locale || defaultLocale);
   const queryResult = useQuery<CtfBlogQuery>(query, {
     variables: { locale, preview: previewActive },
@@ -96,11 +89,7 @@ const BlogPage: NextPage = () => {
       <Head>
         <title key="title">Blog</title>
         <meta key="og:title" property="og:title" content="Blog" />
-        <meta
-          key="description"
-          name="description"
-          content={contentfulConfig.meta.description}
-        />
+        <meta key="description" name="description" content={contentfulConfig.meta.description} />
         <meta
           key="og:description"
           property="og:description"
@@ -111,11 +100,7 @@ const BlogPage: NextPage = () => {
           property="og:url"
           content={`${contentfulConfig.meta.url}/${lang}/blog`}
         />
-        <meta
-          key="og:locale"
-          property="og:locale"
-          content={locale.replace('-', '_')}
-        />
+        <meta key="og:locale" property="og:locale" content={locale.replace('-', '_')} />
       </Head>
     );
   };
@@ -155,8 +140,8 @@ const BlogPage: NextPage = () => {
 
             <div className={classes.containerNarrow}>
               {queryResult.data.postCollection.items
-                .filter((post) => post !== null)
-                .map((post) => (
+                .filter(post => post !== null)
+                .map(post => (
                   <div className={classes.postWrap} key={post!.sys.id}>
                     <CardPostExtended {...post!} />
                   </div>
@@ -171,10 +156,8 @@ const BlogPage: NextPage = () => {
 
 const BlogPageWithProviders = withProviders()(BlogPage);
 
-export const getServerSideProps: GetServerSideProps = generateGetServerSideProps(
-  {
-    Page: BlogPageWithProviders,
-  },
-);
+export const getServerSideProps: GetServerSideProps = generateGetServerSideProps({
+  Page: BlogPageWithProviders,
+});
 
 export default BlogPageWithProviders;

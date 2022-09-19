@@ -1,11 +1,10 @@
-import React, { useContext } from 'react';
 import { NextPage, GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
+import React, { useContext } from 'react';
+
+import { ContentfulContext } from '@src/contentful-context';
 import CtfCategoryGgl from '@src/ctf-components/ctf-category/ctf-category-gql';
-import { ContentfulContext } from '@pages/_app';
-import withProviders, {
-  generateGetServerSideProps,
-} from '@src/lib/with-providers';
+import withProviders, { generateGetServerSideProps } from '@src/lib/with-providers';
 
 interface CategoryPagePropsInterface {
   ssrQuery?: {
@@ -13,7 +12,7 @@ interface CategoryPagePropsInterface {
   };
 }
 
-const CategoryPage: NextPage<CategoryPagePropsInterface> = (props) => {
+const CategoryPage: NextPage<CategoryPagePropsInterface> = props => {
   const router = useRouter();
   const query = router ? router.query : props.ssrQuery;
   const { locale, previewActive } = useContext(ContentfulContext);
@@ -24,10 +23,8 @@ const CategoryPage: NextPage<CategoryPagePropsInterface> = (props) => {
 
 const CategoryPageWithProviders = withProviders()(CategoryPage);
 
-export const getServerSideProps: GetServerSideProps = generateGetServerSideProps(
-  {
-    Page: CategoryPageWithProviders,
-  },
-);
+export const getServerSideProps: GetServerSideProps = generateGetServerSideProps({
+  Page: CategoryPageWithProviders,
+});
 
 export default CategoryPageWithProviders;

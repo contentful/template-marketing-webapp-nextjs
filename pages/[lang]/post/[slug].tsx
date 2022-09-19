@@ -1,11 +1,10 @@
-import React, { useContext } from 'react';
 import { NextPage, GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
+import React, { useContext } from 'react';
+
+import { ContentfulContext } from '@src/contentful-context';
 import CtfPostGgl from '@src/ctf-components/ctf-post/ctf-post-gql';
-import { ContentfulContext } from '@pages/_app';
-import withProviders, {
-  generateGetServerSideProps,
-} from '@src/lib/with-providers';
+import withProviders, { generateGetServerSideProps } from '@src/lib/with-providers';
 
 interface PostPagePropsInterface {
   ssrQuery?: {
@@ -13,7 +12,7 @@ interface PostPagePropsInterface {
   };
 }
 
-const PostPage: NextPage<PostPagePropsInterface> = (props) => {
+const PostPage: NextPage<PostPagePropsInterface> = props => {
   const router = useRouter();
   const query = router ? router.query : props.ssrQuery;
   const { locale, previewActive } = useContext(ContentfulContext);
@@ -24,10 +23,8 @@ const PostPage: NextPage<PostPagePropsInterface> = (props) => {
 
 const PostPageWithProviders = withProviders()(PostPage);
 
-export const getServerSideProps: GetServerSideProps = generateGetServerSideProps(
-  {
-    Page: PostPageWithProviders,
-  },
-);
+export const getServerSideProps: GetServerSideProps = generateGetServerSideProps({
+  Page: PostPageWithProviders,
+});
 
 export default PostPageWithProviders;

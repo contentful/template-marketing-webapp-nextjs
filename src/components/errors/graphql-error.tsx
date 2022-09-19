@@ -1,7 +1,8 @@
 import { Box, Theme, Typography } from '@material-ui/core'
 import { useTheme } from '@material-ui/styles'
-import { tryget } from '@src/utils'
 import React, { useMemo } from 'react'
+
+import { tryget } from '@src/utils'
 
 // TODO add other errors than only `NetworkError`
 

@@ -1,5 +1,6 @@
-import React from 'react';
 import { Story, Meta } from '@storybook/react';
+import React from 'react';
+
 import CtfProductTable, {
   CtfProductTablePropsInterface,
 } from '@ctf-components/ctf-product-table/ctf-product-table';

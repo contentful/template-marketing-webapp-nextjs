@@ -1,18 +1,13 @@
-import React, { useContext } from 'react';
-import Head from 'next/head';
+import { Container, Typography, makeStyles, Theme, Button } from '@material-ui/core';
 import { NextPage } from 'next';
-import {
-  Container,
-  Typography,
-  makeStyles,
-  Theme,
-  Button,
-} from '@material-ui/core';
-import { ContentfulContext } from '@pages/_app';
+import Head from 'next/head';
+import React, { useContext } from 'react';
+
 import PageContainer from '@src/components/layout/page-container';
 import Link from '@src/components/link/link';
-import { getLocaleConfig } from '@src/locales-map';
+import { ContentfulContext } from '@src/contentful-context';
 import getContentfulConfig from '@src/get-contentful-config';
+import { getLocaleConfig } from '@src/locales-map';
 
 let contentfulConfig = getContentfulConfig();
 
@@ -104,11 +99,7 @@ const SignUpPage: NextPage = () => {
       <Head>
         <title key="title">Sign Up</title>
         <meta key="og:title" property="og:title" content="Sign Up" />
-        <meta
-          key="description"
-          name="description"
-          content={contentfulConfig.meta.description}
-        />
+        <meta key="description" name="description" content={contentfulConfig.meta.description} />
         <meta
           key="og:description"
           property="og:description"
@@ -119,11 +110,7 @@ const SignUpPage: NextPage = () => {
           property="og:url"
           content={`${contentfulConfig.meta.url}/${lang}/sign-up`}
         />
-        <meta
-          key="og:locale"
-          property="og:locale"
-          content={locale.replace('-', '_')}
-        />
+        <meta key="og:locale" property="og:locale" content={locale.replace('-', '_')} />
       </Head>
       <PageContainer className={classes.page}>
         <Container maxWidth={false}>
@@ -149,24 +136,14 @@ const SignUpPage: NextPage = () => {
                     {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                     <label htmlFor="sign-up-name">Name</label>
                   </div>
-                  <input
-                    id="sign-up-name"
-                    name="name"
-                    type="text"
-                    className={classes.input}
-                  />
+                  <input id="sign-up-name" name="name" type="text" className={classes.input} />
                 </div>
                 <div className={classes.formField}>
                   <div className={classes.formFieldLabel}>
                     {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                     <label htmlFor="sign-up-email">E-Mail</label>
                   </div>
-                  <input
-                    id="sign-up-email"
-                    name="email"
-                    type="email"
-                    className={classes.input}
-                  />
+                  <input id="sign-up-email" name="email" type="email" className={classes.input} />
                 </div>
                 <div className={classes.formField}>
                   <div className={classes.formFieldLabel}>
@@ -182,11 +159,7 @@ const SignUpPage: NextPage = () => {
                   />
                 </div>
                 <div className={classes.formField}>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    className={classes.signUp}
-                  >
+                  <Button variant="contained" color="primary" className={classes.signUp}>
                     {realLocale === 'de-DE' ? 'Anmelden' : 'Sign Up'}
                   </Button>
                   <Typography className={classes.signUpText}>
@@ -199,8 +172,7 @@ const SignUpPage: NextPage = () => {
                       variant="text"
                       color="primary"
                       underline
-                      className={classes.signIn}
-                    >
+                      className={classes.signIn}>
                       {realLocale === 'de-DE' ? 'Einloggen' : 'Sign In'}
                     </Link>
                   </Typography>

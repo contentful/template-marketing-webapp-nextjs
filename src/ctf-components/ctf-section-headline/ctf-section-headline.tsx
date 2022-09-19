@@ -1,9 +1,10 @@
 import { Theme, Typography } from '@material-ui/core';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { makeStyles } from '@material-ui/styles';
-import Markdown from '@src/components/markdown';
 import clsx from 'clsx';
 import React from 'react';
+
+import Markdown from '@src/components/markdown';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {

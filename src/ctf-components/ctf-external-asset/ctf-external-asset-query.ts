@@ -1,5 +1,6 @@
-import { ninetailedAudienceFragment } from '@ctf-components/ctf-ninetailed-audience/ctf-ninetailed-audience-query';
 import gql from 'graphql-tag';
+
+import { ninetailedAudienceFragment } from '@ctf-components/ctf-ninetailed-audience/ctf-ninetailed-audience-query';
 
 export const externalAssetFragment = gql`
   fragment ExternalAssetFragment on WrapperExternalAsset {

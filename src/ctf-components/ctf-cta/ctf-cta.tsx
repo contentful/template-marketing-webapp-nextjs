@@ -1,16 +1,18 @@
-import React, { useContext } from 'react';
 import { Container, Theme, makeStyles, Typography } from '@material-ui/core';
-import LayoutContext, { defaultLayout } from '@src/layout-context';
+import { PersonalizedComponent } from '@ninetailed/experience.js-next';
+import React, { useContext } from 'react';
+
+import { CtaFragment } from './__generated__/CtaFragment';
+
+import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
 import PageLink from '@src/components/link/page-link';
 import PostLink from '@src/components/link/post-link';
-import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
-import optimizeLineBreak from '@src/typography/optimize-line-break';
-import { getColorConfigFromPalette } from '@src/theme';
-import { PersonalizedComponent } from '@ninetailed/experience.js-next';
-import { WrapIf } from '@src/jsx-utils';
-import { ContentfulContext } from '@pages/_app';
 import PersonalizationFrame from '@src/components/personalization-frame';
-import { CtaFragment } from './__generated__/CtaFragment';
+import { ContentfulContext } from '@src/contentful-context';
+import { WrapIf } from '@src/jsx-utils';
+import LayoutContext, { defaultLayout } from '@src/layout-context';
+import { getColorConfigFromPalette } from '@src/theme';
+import optimizeLineBreak from '@src/typography/optimize-line-break';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -37,7 +39,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export interface CtfCtaPropsInterface extends CtaFragment {}
 
-const CtfCta: PersonalizedComponent<CtfCtaPropsInterface> = (props) => {
+const CtfCta: PersonalizedComponent<CtfCtaPropsInterface> = props => {
   const {
     headline,
     subline,
@@ -53,40 +55,34 @@ const CtfCta: PersonalizedComponent<CtfCtaPropsInterface> = (props) => {
   const { xrayActive } = useContext(ContentfulContext);
 
   const isPersonalized =
-    ntVariantsCollection?.items !== undefined &&
-    ntVariantsCollection.items.length > 0;
+    ntVariantsCollection?.items !== undefined && ntVariantsCollection.items.length > 0;
 
   return (
     <WrapIf
       when={xrayActive === true && isPersonalized === true}
-      wrap={(children) => (
+      wrap={children => (
         <PersonalizationFrame audienceId={ninetailed?.audience.id ?? null}>
           {children}
         </PersonalizationFrame>
-      )}
-    >
+      )}>
       <Container
         maxWidth={false}
         className={classes.root}
         style={{
           backgroundColor: colorConfig.backgroundColor,
-        }}
-      >
+        }}>
         <div className={classes.innerContainer}>
           {headline && (
             <Typography
               variant="h1"
               component="h2"
               className={classes.headline}
-              style={{ color: colorConfig.headlineColor }}
-            >
+              style={{ color: colorConfig.headlineColor }}>
               {optimizeLineBreak(headline)}
             </Typography>
           )}
           {subline && (
-            <LayoutContext.Provider
-              value={{ ...defaultLayout, parent: 'cta-subline' }}
-            >
+            <LayoutContext.Provider value={{ ...defaultLayout, parent: 'cta-subline' }}>
               <div style={{ color: colorConfig.textColor }}>
                 <CtfRichtext {...subline} className={classes.subline} />
               </div>
@@ -100,8 +96,7 @@ const CtfCta: PersonalizedComponent<CtfCtaPropsInterface> = (props) => {
                   variant="contained"
                   color={colorConfig.buttonColor}
                   isButton
-                  urlParams={urlParameters ?? ''}
-                >
+                  urlParams={urlParameters ?? ''}>
                   {ctaText}
                 </PageLink>
               )}
@@ -111,8 +106,7 @@ const CtfCta: PersonalizedComponent<CtfCtaPropsInterface> = (props) => {
                   variant="contained"
                   color={colorConfig.buttonColor}
                   isButton
-                  urlParams={urlParameters ?? ''}
-                >
+                  urlParams={urlParameters ?? ''}>
                   {ctaText}
                 </PostLink>
               )}

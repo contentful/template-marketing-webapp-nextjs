@@ -1,5 +1,6 @@
-import React from 'react';
 import { Story, Meta } from '@storybook/react';
+import React from 'react';
+
 import CtfCta, { CtfCtaPropsInterface } from '@ctf-components/ctf-cta/ctf-cta';
 import Wrapper from '@src/stories/Wrapper'
 

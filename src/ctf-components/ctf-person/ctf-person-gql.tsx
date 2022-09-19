@@ -1,9 +1,11 @@
 import React from 'react';
 import { useQuery } from 'react-apollo';
-import { useDataForPreview } from '@src/lib/apollo-hooks';
+
+import { CtfPersonQuery } from './__generated__/CtfPersonQuery';
 import CtfPerson from './ctf-person';
 import { query } from './ctf-person-query';
-import { CtfPersonQuery } from './__generated__/CtfPersonQuery';
+
+import { useDataForPreview } from '@src/lib/apollo-hooks';
 
 interface CtfPersonGqlPropsInterface {
   id: string;

@@ -1,10 +1,11 @@
-import React, { useMemo } from 'react';
-import { Avatar as MuiAvatar, Theme, Box } from '@material-ui/core';
+import { Avatar as MuiAvatar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
+import React, { useMemo } from 'react';
+
 import { AssetFragment } from '@src/ctf-components/ctf-asset/__generated__/AssetFragment';
 import { PropsFromFragment } from '@src/utils';
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   avatarRoot: {
     width: `100%`,
     height: 0,
@@ -27,7 +28,7 @@ interface AvatarPropsInterface {
 
 const Avatar = (props: AvatarPropsInterface) => {
   const { asset, widthPx = 250 } = props;
-  const url = useMemo(() => `${asset.url}?w=${widthPx}`, [asset]);
+  const url = useMemo(() => `${asset.url}?w=${widthPx}`, [asset.url, widthPx]);
   const classes = useStyles();
   return (
     <div className={classes.avatarRoot}>

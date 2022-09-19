@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
-import { ContentfulContext } from '@pages/_app';
+
 import Link from '@src/components/link/link';
+import { ContentfulContext } from '@src/contentful-context';
 import { getLocaleConfig } from '@src/locales-map';
 
 interface CategoryLinkPropsInterface {
@@ -47,11 +48,7 @@ const CategoryLink = (props: CategoryLinkPropsInterface) => {
     color: props.color,
   };
 
-  return (
-    <Link {...linkProps}>
-      {props.render ? props.render(as) : props.children}
-    </Link>
-  );
+  return <Link {...linkProps}>{props.render ? props.render(as) : props.children}</Link>;
 };
 
 export default CategoryLink;

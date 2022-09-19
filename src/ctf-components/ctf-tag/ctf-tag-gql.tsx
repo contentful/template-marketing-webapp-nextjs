@@ -1,20 +1,19 @@
-import React, { useContext, useMemo } from 'react';
 import Head from 'next/head';
+import React, { useContext, useMemo } from 'react';
 import { useQuery } from 'react-apollo';
-import { Container } from '@material-ui/core';
-import EntryNotFound from '@src/components/errors/entry-not-found';
-import { useDataForPreview } from '@src/lib/apollo-hooks';
-import { getLocaleConfig } from '@src/locales-map';
-import getContentfulConfig from '@src/get-contentful-config';
-import { ContentfulContext } from '@pages/_app';
+
+import { CtfTagQuery } from './__generated__/CtfTagQuery';
 import CtfTag from './ctf-tag';
 import { query } from './ctf-tag-query';
-import { CtfTagQuery } from './__generated__/CtfTagQuery';
+
+import { ContentfulContext } from '@src/contentful-context';
+import getContentfulConfig from '@src/get-contentful-config';
+import { useDataForPreview } from '@src/lib/apollo-hooks';
+import { getLocaleConfig } from '@src/locales-map';
 
 interface Props {
   id: string;
   locale?: string;
-  // eslint-disable-next-line react/no-unused-prop-types
   preview?: boolean;
 }
 
@@ -34,7 +33,7 @@ const CtfTagGql = (props: Props) => {
 
     const tagFromPost =
       queryResult.data.postCollection?.items[0]?.contentfulMetadata.tags.find(
-        (metaTag) => metaTag?.id === props.id,
+        metaTag => metaTag?.id === props.id,
       ) ?? null;
 
     if (tagFromPost === null) {
@@ -43,12 +42,9 @@ const CtfTagGql = (props: Props) => {
 
     return {
       ...tagFromPost,
-      name:
-        tagFromPost.name === null
-          ? null
-          : tagFromPost.name.split(': ').slice(-1)[0],
+      name: tagFromPost.name === null ? null : tagFromPost.name.split(': ').slice(-1)[0],
     };
-  }, [queryResult.data]);
+  }, [props.id, queryResult.data]);
 
   if (queryResult.data === undefined || queryResult.loading === true) {
     return null;
@@ -75,11 +71,7 @@ const CtfTagGql = (props: Props) => {
           />
         )}
         {props.locale && props.locale !== 'en-US' && (
-          <meta
-            key="og:locale"
-            property="og:locale"
-            content={props.locale.replace('-', '_')}
-          />
+          <meta key="og:locale" property="og:locale" content={props.locale.replace('-', '_')} />
         )}
       </Head>
       <CtfTag posts={queryResult.data.postCollection?.items || []} tag={tag} />

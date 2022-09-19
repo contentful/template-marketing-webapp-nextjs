@@ -1,10 +1,10 @@
-import React from 'react';
-import clsx from 'clsx';
 import { Theme, makeStyles } from '@material-ui/core';
-import { unified } from 'unified';
+import clsx from 'clsx';
+import React from 'react';
 import parse from 'rehype-parse';
-import breaks from 'remark-breaks';
 import rehypeReact from 'rehype-react'
+import breaks from 'remark-breaks';
+import { unified } from 'unified';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {

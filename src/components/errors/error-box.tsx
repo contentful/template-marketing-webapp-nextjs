@@ -1,6 +1,6 @@
-import React from 'react'
 import { makeStyles, Theme, Typography } from '@material-ui/core'
 import clsx from 'clsx'
+import React from 'react'
 
 interface Props {
   className?: string

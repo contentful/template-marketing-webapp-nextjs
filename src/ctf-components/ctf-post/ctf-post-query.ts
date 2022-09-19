@@ -1,4 +1,5 @@
 import gql from 'graphql-tag';
+
 import { assetFragment } from '@ctf-components/ctf-asset/ctf-asset-query';
 import { personFragment } from '@ctf-components/ctf-person/ctf-person-query';
 import { componentReferenceFragment } from '@ctf-components/fragments';

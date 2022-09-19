@@ -1,24 +1,16 @@
-import React from 'react';
-import Head from 'next/head';
-import { NextPage, GetServerSideProps } from 'next';
-import {
-  ApolloClient,
-  IntrospectionResultData,
-  NormalizedCacheObject,
-} from 'apollo-boost';
-import { ApolloProvider, getDataFromTree } from 'react-apollo';
 import { ThemeProvider } from '@material-ui/styles';
-import colorfulTheme from '@src/theme';
-import {
-  createCfulUrl,
-  createClientWithLink,
-  createLink,
-} from '@src/lib/init-apollo';
-import getContentfulConfig from '@src/get-contentful-config';
 import { NinetailedProvider } from '@ninetailed/experience.js-next';
+import { ApolloClient, IntrospectionResultData, NormalizedCacheObject } from 'apollo-boost';
+import { NextPage, GetServerSideProps } from 'next';
+import React from 'react';
+import { ApolloProvider, getDataFromTree } from 'react-apollo';
 
-const mainIntrospection = require('../../introspection/main-introspection.json');
+import getContentfulConfig from '@src/get-contentful-config';
+import { createCfulUrl, createClientWithLink, createLink } from '@src/lib/init-apollo';
+import colorfulTheme from '@src/theme';
+
 const legalIntrospection = require('../../introspection/legal-introspection.json');
+const mainIntrospection = require('../../introspection/main-introspection.json');
 
 interface CfulApolloConfig {
   url: string;
@@ -43,10 +35,7 @@ interface WithProvidersPropsInterface {
 
 const contentfulConfig = getContentfulConfig();
 
-function initApolloClient(
-  config: CfulApolloConfig,
-  connectToDevTools?: boolean,
-) {
+function initApolloClient(config: CfulApolloConfig, connectToDevTools?: boolean) {
   return createClientWithLink(
     createLink(config.url),
     config.introspection,
@@ -67,9 +56,7 @@ export const ApolloContext = React.createContext<ApolloContextInterface>({
 
 const withProviders = () => {
   return (Page: any): NextPage<WithProvidersPropsInterface> => {
-    const PageWithProviders: NextPage<WithProvidersPropsInterface> = (
-      props,
-    ) => {
+    const PageWithProviders: NextPage<WithProvidersPropsInterface> = props => {
       const { pageProps, apolloConfigs, apolloClients, ssrQuery } = props;
 
       const mainApolloClient =
@@ -111,7 +98,7 @@ export const generateGetServerSideProps =
     customGetServerSideProps?: GetServerSideProps;
     Page: any;
   }): GetServerSideProps =>
-  async (ctx) => {
+  async ctx => {
     const error: null | { code: number; message?: string } = null;
     const pageProps = customGetServerSideProps
       ? await customGetServerSideProps(ctx)

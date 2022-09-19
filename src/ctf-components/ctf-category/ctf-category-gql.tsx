@@ -1,15 +1,17 @@
-import React, { useContext } from 'react';
-import Head from 'next/head';
-import { useQuery } from 'react-apollo';
 import { Container } from '@material-ui/core';
-import EntryNotFound from '@src/components/errors/entry-not-found';
-import { useDataForPreview } from '@src/lib/apollo-hooks';
-import { getLocaleConfig } from '@src/locales-map';
-import getContentfulConfig from '@src/get-contentful-config';
-import { ContentfulContext } from '@pages/_app';
+import Head from 'next/head';
+import React, { useContext } from 'react';
+import { useQuery } from 'react-apollo';
+
+import { CtfCategoryQuery } from './__generated__/CtfCategoryQuery';
 import CtfCategory from './ctf-category';
 import { query } from './ctf-category-query';
-import { CtfCategoryQuery } from './__generated__/CtfCategoryQuery';
+
+import EntryNotFound from '@src/components/errors/entry-not-found';
+import { ContentfulContext } from '@src/contentful-context';
+import getContentfulConfig from '@src/get-contentful-config';
+import { useDataForPreview } from '@src/lib/apollo-hooks';
+import { getLocaleConfig } from '@src/locales-map';
 
 interface Props {
   slug: string;
@@ -70,21 +72,11 @@ const CtfCategoryGql = (props: Props) => {
         )}
         {metaTags.description && (
           <>
-            <meta
-              key="description"
-              name="description"
-              content={metaTags.description}
-            />
-            <meta
-              key="og:description"
-              property="og:description"
-              content={metaTags.description}
-            />
+            <meta key="description" name="description" content={metaTags.description} />
+            <meta key="og:description" property="og:description" content={metaTags.description} />
           </>
         )}
-        {robots.length > 0 && (
-          <meta key="robots" name="robots" content={robots.join(', ')} />
-        )}
+        {robots.length > 0 && <meta key="robots" name="robots" content={robots.join(', ')} />}
         {metaTags.image && (
           <meta
             key="og:image"
@@ -100,17 +92,10 @@ const CtfCategoryGql = (props: Props) => {
           />
         )}
         {props.locale && props.locale !== 'en-US' && (
-          <meta
-            key="og:locale"
-            property="og:locale"
-            content={props.locale.replace('-', '_')}
-          />
+          <meta key="og:locale" property="og:locale" content={props.locale.replace('-', '_')} />
         )}
       </Head>
-      <CtfCategory
-        posts={queryResult.data.postCollection?.items || []}
-        {...category}
-      />
+      <CtfCategory posts={queryResult.data.postCollection?.items || []} {...category} />
     </>
   );
 };

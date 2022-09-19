@@ -1,8 +1,9 @@
-import React from 'react';
 import { Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
-import Avatar from '@src/components/avatar/avatar';
+import React from 'react';
+
 import { PersonFragment } from '@ctf-components/ctf-person/__generated__/PersonFragment';
+import Avatar from '@src/components/avatar/avatar';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {},

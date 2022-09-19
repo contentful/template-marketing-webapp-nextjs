@@ -1,24 +1,15 @@
-import React, { useContext } from 'react';
-import { NextPage, GetServerSideProps } from 'next';
-import gql from 'graphql-tag';
-import { useQuery } from 'react-apollo';
 import { Container, Typography } from '@material-ui/core';
-import { useDataForPreview } from '@src/lib/apollo-hooks';
-import { ContentfulContext } from '@pages/_app';
-import LayoutContext, { defaultLayout } from '@src/layout-context';
-import { categoryFragment } from '@ctf-components/ctf-category/ctf-category-query';
+import gql from 'graphql-tag';
+import { NextPage, GetServerSideProps } from 'next';
+import React, { useContext } from 'react';
+import { useQuery } from 'react-apollo';
+
 import CtfCategory from '@ctf-components/ctf-category/ctf-category';
-import { postFragment } from '@ctf-components/ctf-post/ctf-post-query';
-import CtfPost from '@ctf-components/ctf-post/ctf-post';
-import { personFragment } from '@ctf-components/ctf-person/ctf-person-query';
-import CtfPerson from '@ctf-components/ctf-person/ctf-person';
-import { ctaFragment } from '@ctf-components/ctf-cta/ctf-cta-query';
+import { categoryFragment } from '@ctf-components/ctf-category/ctf-category-query';
 import CtfCta from '@ctf-components/ctf-cta/ctf-cta';
-import { duplexFragment } from '@ctf-components/ctf-duplex/ctf-duplex-query';
+import { ctaFragment } from '@ctf-components/ctf-cta/ctf-cta-query';
 import CtfDuplex from '@ctf-components/ctf-duplex/ctf-duplex';
-import { featuredCardsFragment } from '@ctf-components/ctf-featured-cards/ctf-featured-cards-query';
-import CtfFeaturedCards from '@ctf-components/ctf-featured-cards/ctf-featured-cards';
-import { heroBannerFragment } from '@ctf-components/ctf-hero-banner/ctf-hero-banner-query';
+import { duplexFragment } from '@ctf-components/ctf-duplex/ctf-duplex-query';
 import CtfHeroBanner from '@ctf-components/ctf-hero-banner/ctf-hero-banner';
 import { infoBlockFragment } from '@ctf-components/ctf-info-block/ctf-info-block-query';
 import CtfInfoBlock from '@ctf-components/ctf-info-block/ctf-info-block';
@@ -30,9 +21,17 @@ import { productFragment } from '@ctf-components/ctf-product/ctf-product-query';
 import CtfProduct from '@ctf-components/ctf-product/ctf-product';
 import { externalAssetFragment } from '@ctf-components/ctf-external-asset/ctf-external-asset-query';
 import CtfExternalAsset from '@ctf-components/ctf-external-asset/ctf-external-asset';
-import withProviders, {
-  generateGetServerSideProps,
-} from '@src/lib/with-providers';
+import CtfFeaturedCards from '@ctf-components/ctf-featured-cards/ctf-featured-cards';
+import { featuredCardsFragment } from '@ctf-components/ctf-featured-cards/ctf-featured-cards-query';
+import { heroBannerFragment } from '@ctf-components/ctf-hero-banner/ctf-hero-banner-query';
+import CtfPerson from '@ctf-components/ctf-person/ctf-person';
+import { personFragment } from '@ctf-components/ctf-person/ctf-person-query';
+import CtfPost from '@ctf-components/ctf-post/ctf-post';
+import { postFragment } from '@ctf-components/ctf-post/ctf-post-query';
+import { ContentfulContext } from '@src/contentful-context';
+import LayoutContext, { defaultLayout } from '@src/layout-context';
+import { useDataForPreview } from '@src/lib/apollo-hooks';
+import withProviders, { generateGetServerSideProps } from '@src/lib/with-providers';
 
 const postsQuery = gql`
   query AllPostsQuery($locale: String, $preview: Boolean) {
@@ -76,11 +75,7 @@ const duplexQuery = gql`
 `;
 const featuredCardsQuery = gql`
   query AllFeaturedCardsQuery($locale: String, $preview: Boolean) {
-    componentFeaturedCardsCollection(
-      locale: $locale
-      preview: $preview
-      limit: 10
-    ) {
+    componentFeaturedCardsCollection(locale: $locale, preview: $preview, limit: 10) {
       items {
         ...FeaturedCardsFragment
       }
@@ -90,11 +85,7 @@ const featuredCardsQuery = gql`
 `;
 const heroBannersQuery = gql`
   query AllHeroBannersQuery($locale: String, $preview: Boolean) {
-    componentHeroBannerCollection(
-      locale: $locale
-      preview: $preview
-      limit: 10
-    ) {
+    componentHeroBannerCollection(locale: $locale, preview: $preview, limit: 10) {
       items {
         ...HeroBannerFragment
       }
@@ -104,11 +95,7 @@ const heroBannersQuery = gql`
 `;
 const infoBlocksQuery = gql`
   query AllInfoBlocksQuery($locale: String, $preview: Boolean) {
-    componentInfoBlockCollection(
-      locale: $locale
-      preview: $preview
-      limit: 10
-    ) {
+    componentInfoBlockCollection(locale: $locale, preview: $preview, limit: 10) {
       items {
         ...InfoBlockFragment
       }
@@ -148,11 +135,7 @@ const productsQuery = gql`
 `;
 const externalAssetsQuery = gql`
   query AllExternalAssetsQuery($locale: String, $preview: Boolean) {
-    wrapperExternalAssetCollection(
-      locale: $locale
-      preview: $preview
-      limit: 10
-    ) {
+    wrapperExternalAssetCollection(locale: $locale, preview: $preview, limit: 10) {
       items {
         ...ExternalAssetFragment
       }
@@ -162,11 +145,7 @@ const externalAssetsQuery = gql`
 `;
 const productTablesQuery = gql`
   query AllProductTablesQuery($locale: String, $preview: Boolean) {
-    componentProductTableCollection(
-      locale: $locale
-      preview: $preview
-      limit: 10
-    ) {
+    componentProductTableCollection(locale: $locale, preview: $preview, limit: 10) {
       items {
         ...ProductTableFragment
       }
@@ -175,14 +154,7 @@ const productTablesQuery = gql`
   ${productTableFragment}
 `;
 
-const renderAllEntries = ({
-  locale,
-  previewActive,
-  query,
-  collectionKey,
-  plural,
-  Component,
-}) => {
+const renderAllEntries = ({ locale, previewActive, query, collectionKey, plural, Component }) => {
   const queryResult = useQuery(query, {
     variables: { locale, preview: previewActive },
   });
@@ -214,8 +186,7 @@ const renderAllEntries = ({
             color: '#fff',
             backgroundColor: '#427ecf',
             padding: '1rem',
-          }}
-        >
+          }}>
           {plural}:
         </Typography>
       </Container>
@@ -358,10 +329,8 @@ const AllPage: NextPage = () => {
 
 const AllPageWithProviders = withProviders()(AllPage);
 
-export const getServerSideProps: GetServerSideProps = generateGetServerSideProps(
-  {
-    Page: AllPageWithProviders,
-  },
-);
+export const getServerSideProps: GetServerSideProps = generateGetServerSideProps({
+  Page: AllPageWithProviders,
+});
 
 export default AllPageWithProviders;

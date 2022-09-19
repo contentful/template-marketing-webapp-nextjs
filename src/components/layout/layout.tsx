@@ -1,12 +1,14 @@
-import React, { useState, useCallback, useEffect, ReactElement } from 'react';
-import queryString from 'query-string';
-import { useRouter } from 'next/router';
 import { CssBaseline, Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
-import { getLocaleConfig } from '@src/locales-map';
-import MobileMenu from './mobile-menu';
-import Header from './header';
+import { useRouter } from 'next/router';
+import queryString from 'query-string';
+import React, { useState, useCallback, useEffect, ReactElement } from 'react';
+
 import Footer from './footer';
+import Header from './header';
+import MobileMenu from './mobile-menu';
+
+import { getLocaleConfig } from '@src/locales-map';
 
 const useStyles = makeStyles((theme: Theme) => ({
   content: {
@@ -24,7 +26,7 @@ interface LayoutPropsInterface {
   children: ReactElement[];
 }
 
-const Layout: React.FC<LayoutPropsInterface> = (props) => {
+const Layout: React.FC<LayoutPropsInterface> = props => {
   const { locale, children } = props;
   const [isMenuOpen, setMenuOpen] = useState(false);
   const classes = useStyles();
@@ -37,7 +39,7 @@ const Layout: React.FC<LayoutPropsInterface> = (props) => {
       }
 
       const { lang } = getLocaleConfig(l);
-      const segments = router.asPath.split('/').filter((a) => !!a);
+      const segments = router.asPath.split('/').filter(a => !!a);
 
       segments.shift();
       segments.unshift(lang);
@@ -52,13 +54,11 @@ const Layout: React.FC<LayoutPropsInterface> = (props) => {
       router.push(
         `${router.pathname}?${queryString.stringify(query)}`,
         queryString.stringify(query)
-          ? `/${segments.join('/').split('?')[0]}?${queryString.stringify(
-              query,
-            )}`
+          ? `/${segments.join('/').split('?')[0]}?${queryString.stringify(query)}`
           : `/${segments.join('/').split('?')[0]}`,
       );
     },
-    [router.asPath, router.query],
+    [router],
   );
 
   useEffect(() => {
@@ -75,7 +75,7 @@ const Layout: React.FC<LayoutPropsInterface> = (props) => {
         document.activeElement.blur();
       }
     });
-  }, []);
+  }, [router.events]);
 
   return (
     <>

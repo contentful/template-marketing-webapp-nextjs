@@ -1,6 +1,7 @@
 import { useEffect, useContext } from 'react';
 import { DataValue } from 'react-apollo';
-import { ContentfulContext } from '@pages/_app';
+
+import { ContentfulContext } from '@src/contentful-context';
 
 export const useDataForPreview = (data?: DataValue<any, any>) => {
   const { previewActive } = useContext(ContentfulContext);

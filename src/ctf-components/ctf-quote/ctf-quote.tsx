@@ -1,14 +1,16 @@
-import React, { useContext, useMemo } from 'react';
-import clsx from 'clsx';
 import { Container, Theme, makeStyles } from '@material-ui/core';
-import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
-import { getColorConfigFromPalette } from '@src/theme';
-import LayoutContext, { defaultLayout } from '@src/layout-context';
-import PersonalizationFrame from '@src/components/personalization-frame';
 import { PersonalizedComponent } from '@ninetailed/experience.js-next';
-import { ContentfulContext } from '@pages/_app';
-import { WrapIf } from '@src/jsx-utils';
+import clsx from 'clsx';
+import React, { useContext, useMemo } from 'react';
+
 import { QuoteFragment } from './__generated__/QuoteFragment';
+
+import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
+import PersonalizationFrame from '@src/components/personalization-frame';
+import { ContentfulContext } from '@src/contentful-context';
+import { WrapIf } from '@src/jsx-utils';
+import LayoutContext, { defaultLayout } from '@src/layout-context';
+import { getColorConfigFromPalette } from '@src/theme';
 
 export interface CtfQuotePropsInterface extends QuoteFragment {}
 
@@ -19,8 +21,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginLeft: 'auto',
     marginRight: 'auto',
     // maxWidth: '126rem',
-    maxWidth: (props: CtfQuotePropsInterface) =>
-      !props.image ? '93.4rem' : '126rem',
+    maxWidth: (props: CtfQuotePropsInterface) => (!props.image ? '93.4rem' : '126rem'),
     padding: theme.spacing(19, 0, 19),
     [theme.breakpoints.up('md')]: {
       alignItems: 'center',
@@ -106,7 +107,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const CtfQuote: PersonalizedComponent<CtfQuotePropsInterface> = (props) => {
+const CtfQuote: PersonalizedComponent<CtfQuotePropsInterface> = props => {
   const {
     imagePosition,
     image,
@@ -119,48 +120,40 @@ const CtfQuote: PersonalizedComponent<CtfQuotePropsInterface> = (props) => {
   const colorConfig = getColorConfigFromPalette(colorPalette || '');
   const containerLayout = imagePosition === true ? 'imageLeft' : 'imageRight';
   const quoteAlignment = quoteAlignmentBoolean === true ? 'center' : 'left';
-  const backgroundImage = useMemo(
-    () => (image ? `${image.url}?w=${600 * 2}` : undefined),
-    [image],
-  );
+  const backgroundImage = useMemo(() => (image ? `${image.url}?w=${600 * 2}` : undefined), [image]);
   const classes = useStyles(props);
   const { xrayActive } = useContext(ContentfulContext);
 
   const isPersonalized =
-    ntVariantsCollection?.items !== undefined &&
-    ntVariantsCollection.items.length > 0;
+    ntVariantsCollection?.items !== undefined && ntVariantsCollection.items.length > 0;
 
   return (
     <WrapIf
       when={xrayActive === true && isPersonalized === true}
-      wrap={(children) => (
+      wrap={children => (
         <PersonalizationFrame audienceId={ninetailed?.audience.id ?? null}>
           {children}
         </PersonalizationFrame>
-      )}
-    >
+      )}>
       <LayoutContext.Provider value={{ ...defaultLayout, parent: 'quote' }}>
         <Container
           maxWidth={false}
           style={{
             backgroundColor: colorConfig.backgroundColor,
-          }}
-        >
+          }}>
           <div className={classes.innerContainer}>
             <div
               className={clsx(
                 classes.innerBody,
                 classes[`innerBody-${containerLayout}`],
                 backgroundImage ? undefined : classes.innerBodyFull,
-              )}
-            >
+              )}>
               {quote && (
                 <div
                   style={{
                     color: colorConfig.textColor,
                     textAlign: quoteAlignment,
-                  }}
-                >
+                  }}>
                   <CtfRichtext {...quote} />
                 </div>
               )}

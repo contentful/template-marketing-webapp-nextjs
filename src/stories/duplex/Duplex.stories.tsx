@@ -1,5 +1,6 @@
-import React from 'react';
 import { Story, Meta } from '@storybook/react';
+import React from 'react';
+
 import CtfDuplex, {
   CtfDuplexPropsInterface,
 } from '@ctf-components/ctf-duplex/ctf-duplex';

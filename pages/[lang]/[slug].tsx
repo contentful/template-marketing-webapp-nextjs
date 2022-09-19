@@ -1,11 +1,10 @@
-import React, { useContext } from 'react';
 import { NextPage, GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
+import React, { useContext } from 'react';
+
+import { ContentfulContext } from '@src/contentful-context';
 import CtfPageGgl from '@src/ctf-components/ctf-page/ctf-page-qgl';
-import { ContentfulContext } from '@pages/_app';
-import withProviders, {
-  generateGetServerSideProps,
-} from '@src/lib/with-providers';
+import withProviders, { generateGetServerSideProps } from '@src/lib/with-providers';
 
 interface SlugPagePropsInterface {
   ssrQuery?: {
@@ -13,7 +12,7 @@ interface SlugPagePropsInterface {
   };
 }
 
-const SlugPage: NextPage<SlugPagePropsInterface> = (props) => {
+const SlugPage: NextPage<SlugPagePropsInterface> = props => {
   const router = useRouter();
   const query = router ? router.query : props.ssrQuery;
   const { locale } = useContext(ContentfulContext);
@@ -24,10 +23,8 @@ const SlugPage: NextPage<SlugPagePropsInterface> = (props) => {
 
 const SlugPageWithProviders = withProviders()(SlugPage);
 
-export const getServerSideProps: GetServerSideProps = generateGetServerSideProps(
-  {
-    Page: SlugPageWithProviders,
-  },
-);
+export const getServerSideProps: GetServerSideProps = generateGetServerSideProps({
+  Page: SlugPageWithProviders,
+});
 
 export default SlugPageWithProviders;

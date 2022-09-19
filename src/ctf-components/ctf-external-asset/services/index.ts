@@ -1,6 +1,6 @@
-import * as YouTubeTransformer from './youtube';
 import * as SpotifyTransformer from './spotify';
 import * as TypeformTransformer from './typeform';
+import * as YouTubeTransformer from './youtube';
 
 interface Transformer {
   id: string;

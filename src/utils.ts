@@ -1,17 +1,11 @@
 import { GridSize } from '@material-ui/core/Grid';
+
 import { CONTAINER_WIDTH } from './theme';
 
 export type Echo<T> = T;
 export type PartialNullable<T> = Partial<{ [K in keyof T]: T[K] | null }>;
-export type ArgumentTypes<F extends Function> = F extends (
-  ...args: infer A
-) => any
-  ? A
-  : never;
-export type ArrayWithoutNulls<T extends any[]> = Exclude<
-  T[0],
-  null | undefined
->[];
+export type ArgumentTypes<F extends () => void> = F extends (...args: infer A) => any ? A : never;
+export type ArrayWithoutNulls<T extends any[]> = Exclude<T[0], null | undefined>[];
 export type NonNullValues<T> = {
   [P in keyof T]: Exclude<T[P], null | undefined>;
 };
@@ -29,26 +23,19 @@ export type OmitDistributive<T, K> = T extends any
     ? Id<OmitRecursive<T, K>>
     : T
   : never;
-export type Id<T> = {} & { [P in keyof T]: T[P] }; // Cosmetic use only makes the tooltips expad the type can be removed
-export type OmitRecursive<T extends any, K> = OmitCustom<
-  { [P in keyof T]: OmitDistributive<T[P], K> },
-  K
->;
+export type Id<T> = Record<string, never> & { [P in keyof T]: T[P] }; // Cosmetic use only makes the tooltips expad the type can be removed
+export type OmitRecursive<T, K> = OmitCustom<{ [P in keyof T]: OmitDistributive<T[P], K> }, K>;
 
-export type PartialFields<T, F extends keyof T> = Omit<T, F> &
-  Partial<Pick<T, F>>;
-export type OptionalTypeFields<
-  T,
-  S extends Partial<Record<keyof T, any>>
-> = Partial<{ [K in keyof S]: S[K] }> & Omit<T, keyof S>;
+export type PartialFields<T, F extends keyof T> = Omit<T, F> & Partial<Pick<T, F>>;
+export type OptionalTypeFields<T, S extends Partial<Record<keyof T, any>>> = Partial<{
+  [K in keyof S]: S[K];
+}> &
+  Omit<T, keyof S>;
 
 export const tuple = <T extends unknown[]>(...args: T) => args;
 
 // eslint-disable-next-line arrow-parens
-export const tryget = <T>(
-  exp: () => T,
-  d: T | undefined | null = undefined,
-) => {
+export const tryget = <T>(exp: () => T, d: T | undefined | null = undefined) => {
   try {
     const val = exp();
     if (val != null) {
@@ -61,10 +48,10 @@ export const tryget = <T>(
 };
 
 // Apollo -------------------------------------------
-export type PropsFromQuery<
-  T extends { [k: string]: any },
-  F extends keyof T
-> = Omit<NonNullable<T[F]>, '__typename'>;
+export type PropsFromQuery<T extends { [k: string]: any }, F extends keyof T> = Omit<
+  NonNullable<T[F]>,
+  '__typename'
+>;
 export type PropsFromFragment<T> = OmitRecursive<T, '__typename'>;
 
 // export function printApolloGueryError(data?: {error?: ApolloError}) {
@@ -73,11 +60,7 @@ export type PropsFromFragment<T> = OmitRecursive<T, '__typename'>;
 // }
 
 // TODO WIP
-export function formatPrice(
-  value: number,
-  currency = '$',
-  locale: string = 'en-US',
-) {
+export function formatPrice(value: number, currency = '$') {
   switch (currency) {
     case '$':
       return `${currency}${Math.round(value * 100) / 100} USD`;
@@ -96,7 +79,7 @@ export function clamp(val, min, max) {
 /**
  * Calculates the width of given amount of cols in pixels
  */
-export function useColPxWidth(colCount: GridSize, spacing = 4) {
+export function useColPxWidth(colCount: GridSize) {
   if (!colCount || colCount === 'auto') return CONTAINER_WIDTH / 2;
   return (CONTAINER_WIDTH / 12) * colCount;
 }

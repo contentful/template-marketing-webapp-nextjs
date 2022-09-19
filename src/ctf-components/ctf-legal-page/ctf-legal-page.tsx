@@ -1,11 +1,13 @@
 import React from 'react';
-import PageContainer from '@src/components/layout/page-container';
-import LayoutContext, { defaultLayout } from '@src/layout-context';
-import CtfBusinessInfo from '@ctf-components/ctf-business-info/ctf-business-info';
+
 import {
   LegalPageFragment,
   LegalPageFragment_pageContent_TopicBusinessInfo,
 } from './__generated__/LegalPageFragment';
+
+import CtfBusinessInfo from '@ctf-components/ctf-business-info/ctf-business-info';
+import PageContainer from '@src/components/layout/page-container';
+import LayoutContext, { defaultLayout } from '@src/layout-context';
 
 interface CtfLegalPagePropsInterface extends LegalPageFragment {
   locale: string;

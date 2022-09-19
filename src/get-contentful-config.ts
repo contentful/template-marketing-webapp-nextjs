@@ -1,5 +1,6 @@
-import merge from 'lodash/merge';
 import cloneDeep from 'lodash/cloneDeep';
+import merge from 'lodash/merge';
+
 import config from '../contentful.config';
 
 export type CfulConfig = typeof config;

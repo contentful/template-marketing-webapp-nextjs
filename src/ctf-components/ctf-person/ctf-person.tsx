@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
 import { makeStyles, Theme, Container } from '@material-ui/core';
-import LayoutContext from '@src/layout-context';
+import React, { useContext } from 'react';
+
 import { PersonFragment } from '@ctf-components/ctf-person/__generated__/PersonFragment';
-import CardPerson from '@src/components/card-person/card-person';
-import CardLeadership from '@src/components/card-leadership/card-leadership';
 import Author from '@src/components/author/author';
+import CardLeadership from '@src/components/card-leadership/card-leadership';
+import CardPerson from '@src/components/card-person/card-person';
+import LayoutContext from '@src/layout-context';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {

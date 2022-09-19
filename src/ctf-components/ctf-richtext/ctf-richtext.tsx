@@ -1,29 +1,23 @@
-import React, { useMemo, useContext } from 'react';
-import clsx from 'clsx';
-import gql from 'graphql-tag';
-import { useQuery } from 'react-apollo';
-import {
-  documentToReactComponents,
-  Options,
-} from '@contentful/rich-text-react-renderer';
-import {
-  Block as RichtextBlock,
-  BLOCKS,
-  INLINES,
-  Inline,
-} from '@contentful/rich-text-types';
+import { documentToReactComponents, Options } from '@contentful/rich-text-react-renderer';
+import { Block as RichtextBlock, BLOCKS, INLINES } from '@contentful/rich-text-types';
 import { makeStyles, Theme, Typography, Container } from '@material-ui/core';
 import { Variant } from '@material-ui/core/styles/createTypography';
-import { useDataForPreview } from '@src/lib/apollo-hooks';
+import clsx from 'clsx';
+import gql from 'graphql-tag';
+import React, { useMemo, useContext, useCallback } from 'react';
+import { useQuery } from 'react-apollo';
+
+import { AssetFragment } from '../ctf-asset/__generated__/AssetFragment';
+import CtfAsset from '../ctf-asset/ctf-asset';
+import { RichTextEntryHyperlinkQuery } from './__generated__/RichTextEntryHyperlinkQuery';
+
 import ComponentResolver from '@src/components/component-resolver';
 import PageLink from '@src/components/link/page-link';
 import PostLink from '@src/components/link/post-link';
-import { OmitRecursive, tryget } from '@src/utils';
+import { ContentfulContext } from '@src/contentful-context';
 import LayoutContext from '@src/layout-context';
-import { ContentfulContext } from '@pages/_app';
-import CtfAsset from '../ctf-asset/ctf-asset';
-import { AssetFragment } from '../ctf-asset/__generated__/AssetFragment';
-import { RichTextEntryHyperlinkQuery } from './__generated__/RichTextEntryHyperlinkQuery';
+import { useDataForPreview } from '@src/lib/apollo-hooks';
+import { OmitRecursive, tryget } from '@src/utils';
 
 const useStyles = makeStyles((theme: Theme) => ({
   paragrahGridListItem: {},
@@ -191,30 +185,80 @@ interface CtfRichtextPropsInterface {
   gridClassName?: string;
 }
 
+const EntryHyperlink = node => {
+  const { previewActive } = useContext(ContentfulContext);
+  const queryResult = useQuery<RichTextEntryHyperlinkQuery>(
+    gql`
+      query RichTextEntryHyperlinkQuery($id: String!, $preview: Boolean) {
+        page(id: $id, preview: $preview) {
+          sys {
+            id
+          }
+          slug
+        }
+        post(id: $id, preview: $preview) {
+          sys {
+            id
+          }
+          slug
+        }
+      }
+    `,
+    {
+      variables: {
+        id: node.data?.target.sys.id,
+        preview: previewActive,
+      },
+    },
+  );
+
+  useDataForPreview(queryResult);
+
+  const { loading, data } = queryResult;
+
+  if (!data || loading) return null;
+
+  if (data.page !== null) {
+    return (
+      <PageLink page={data.page} variant="contained" underline>
+        {(node.content[0] as any).value}
+      </PageLink>
+    );
+  }
+
+  if (data.post !== null) {
+    return (
+      <PostLink post={data.post} variant="contained" underline>
+        {(node.content[0] as any).value}
+      </PostLink>
+    );
+  }
+
+  return null;
+};
+
 const CtfRichtext = (props: CtfRichtextPropsInterface) => {
   const { json, links, containerClassName, gridClassName } = props;
   const layout = useContext(LayoutContext);
 
   const entryBlocks = useMemo(
-    () =>
-      tryget(() => links!.entries!.block!.filter((b) => !!b), [] as Block[])!,
+    () => tryget(() => links!.entries!.block!.filter(b => !!b), [] as Block[])!,
     [links],
   );
 
   const assetBlocks = useMemo(
-    () =>
-      tryget(() => links!.assets!.block!.filter((b) => !!b), [] as Asset[])!,
+    () => tryget(() => links!.assets!.block!.filter(b => !!b), [] as Asset[])!,
     [links],
   );
 
   const classes = useStyles();
 
-  const ParagraphGridContainer = (containerProps: { children?: any }) => {
-    return (
-      <Container
-        maxWidth={false}
-        disableGutters={
-          [
+  const ParagraphGridContainer = useCallback(
+    (containerProps: { children?: any }) => {
+      return (
+        <Container
+          maxWidth={false}
+          disableGutters={[
             'quote',
             'product-table',
             'info-block',
@@ -225,22 +269,22 @@ const CtfRichtext = (props: CtfRichtextPropsInterface) => {
             'cta-subline',
             'hero-banner-body',
             'post-intro',
-          ].includes(layout.parent) === true
-        }
-      >
-        <div className={containerClassName}>
-          <div className={clsx(classes.paragraphGridContainer, gridClassName)}>
-            {containerProps.children}
+          ].includes(layout.parent)}>
+          <div className={containerClassName}>
+            <div className={clsx(classes.paragraphGridContainer, gridClassName)}>
+              {containerProps.children}
+            </div>
           </div>
-        </div>
-      </Container>
-    );
-  };
+        </Container>
+      );
+    },
+    [classes.paragraphGridContainer, containerClassName, gridClassName, layout.parent],
+  );
 
   const options = useMemo(() => {
     const opts: Options = {};
     opts.renderNode = {
-      [INLINES.EMBEDDED_ENTRY]: (node) => {
+      [INLINES.EMBEDDED_ENTRY]: node => {
         const id = tryget(() => node.data.target.sys.id);
         if (id) {
           // NOTE: As the Ninetailed mergetag is the only inline entry used on the content model we don't have to setup the check through the links array.
@@ -256,26 +300,21 @@ const CtfRichtext = (props: CtfRichtextPropsInterface) => {
         }
         return <>{`${node.nodeType} ${id}`}</>;
       },
-      [BLOCKS.EMBEDDED_ENTRY]: (node) => {
+      [BLOCKS.EMBEDDED_ENTRY]: node => {
         const id = tryget(() => node.data.target.sys.id);
         if (id) {
-          const entry = entryBlocks.find((block) => block!.sys.id === id);
+          const entry = entryBlocks.find(block => block!.sys.id === id);
 
           if (entry) {
-            return (
-              <ComponentResolver
-                componentProps={entry}
-                className={classes.embeddedEntry}
-              />
-            );
+            return <ComponentResolver componentProps={entry} className={classes.embeddedEntry} />;
           }
         }
         return <>{`${node.nodeType} ${id}`}</>;
       },
-      [BLOCKS.EMBEDDED_ASSET]: (node) => {
+      [BLOCKS.EMBEDDED_ASSET]: node => {
         const id = tryget(() => node.data.target.sys.id);
         if (id) {
-          const asset = assetBlocks.find((block) => block!.sys.id === id);
+          const asset = assetBlocks.find(block => block!.sys.id === id);
 
           return (
             <ParagraphGridContainer>
@@ -286,56 +325,8 @@ const CtfRichtext = (props: CtfRichtextPropsInterface) => {
 
         return <>{`${node.nodeType} ${id}`}</>;
       },
-      'entry-hyperlink': (node) => {
-        const { previewActive } = useContext(ContentfulContext);
-        const queryResult = useQuery<RichTextEntryHyperlinkQuery>(
-          gql`
-            query RichTextEntryHyperlinkQuery($id: String!, $preview: Boolean) {
-              page(id: $id, preview: $preview) {
-                sys {
-                  id
-                }
-                slug
-              }
-              post(id: $id, preview: $preview) {
-                sys {
-                  id
-                }
-                slug
-              }
-            }
-          `,
-          {
-            variables: {
-              id: node.data.target.sys.id,
-              preview: previewActive,
-            },
-          },
-        );
-
-        useDataForPreview(queryResult);
-
-        const { loading, data } = queryResult;
-
-        if (!data || loading) return null;
-
-        if (data.page !== null) {
-          return (
-            <PageLink page={data.page} variant="contained" underline>
-              {(node.content[0] as any).value}
-            </PageLink>
-          );
-        }
-
-        if (data.post !== null) {
-          return (
-            <PostLink post={data.post} variant="contained" underline>
-              {(node.content[0] as any).value}
-            </PostLink>
-          );
-        }
-
-        return null;
+      'entry-hyperlink': node => {
+        return <EntryHyperlink node={node} />;
       },
     };
 
@@ -365,11 +356,7 @@ const CtfRichtext = (props: CtfRichtextPropsInterface) => {
         if (component) {
           return (
             <ParagraphGridContainer>
-              <Typography
-                variant={variant}
-                className={className}
-                component={component}
-              >
+              <Typography variant={variant} className={className} component={component}>
                 {children}
               </Typography>
             </ParagraphGridContainer>
@@ -404,8 +391,7 @@ const CtfRichtext = (props: CtfRichtextPropsInterface) => {
           <div
             style={{
               overflow: 'auto',
-            }}
-          >
+            }}>
             <table>{children}</table>
           </div>
         </ParagraphGridContainer>
@@ -416,18 +402,20 @@ const CtfRichtext = (props: CtfRichtextPropsInterface) => {
       <li className={classes.paragrahGridListItem}>{children}</li>
     );
 
-    opts.renderText = (text) => {
+    opts.renderText = text => {
       return text.split('\n').reduce((children, textSegment, index) => {
-        return [
-          ...children,
-          index > 0 && <br key={textSegment} />,
-          textSegment,
-        ];
+        return [...children, index > 0 && <br key={textSegment} />, textSegment];
       }, [] as any[]);
     };
 
     return opts;
-  }, [json]);
+  }, [
+    ParagraphGridContainer,
+    assetBlocks,
+    classes.embeddedEntry,
+    classes.paragrahGridListItem,
+    entryBlocks,
+  ]);
 
   return (
     <div className={clsx(props.className, classes.root)}>

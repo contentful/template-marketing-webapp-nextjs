@@ -1,7 +1,8 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/styles';
 import { Theme, Container, Grid, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
+import React from 'react';
 import { File } from 'react-kawaii';
+
 import PageContainer from '@src/components/layout/page-container';
 import colorfulTheme from '@src/theme';
 

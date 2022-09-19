@@ -1,6 +1,8 @@
 import gql from 'graphql-tag';
-import { assetFragment } from '@ctf-components/ctf-asset/ctf-asset-query';
+
 import { postFragmentBase } from '../ctf-post/ctf-post-query';
+
+import { assetFragment } from '@ctf-components/ctf-asset/ctf-asset-query';
 
 export const categoryFragment = gql`
   fragment CategoryFragment on Category {

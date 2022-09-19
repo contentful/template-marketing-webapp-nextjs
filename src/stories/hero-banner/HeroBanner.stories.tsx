@@ -1,5 +1,6 @@
-import React from 'react';
 import { Story, Meta } from '@storybook/react';
+import React from 'react';
+
 import CtfHeroBanner, {
   CtfHeroBannerInterface,
 } from '@ctf-components/ctf-hero-banner/ctf-hero-banner';

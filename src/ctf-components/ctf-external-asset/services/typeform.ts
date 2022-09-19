@@ -1,5 +1,5 @@
-import React from 'react';
 import * as typeformEmbed from '@typeform/embed';
+import React from 'react';
 
 export const id = 'typeform';
 

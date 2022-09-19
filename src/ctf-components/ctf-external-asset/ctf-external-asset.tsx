@@ -1,6 +1,3 @@
-import React, { useContext } from 'react';
-import { makeStyles, Theme, Grid, Paper, Container } from '@material-ui/core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import {
   faFilePdf,
@@ -14,9 +11,15 @@ import {
   faFileAudio,
   faFileVideo,
 } from '@fortawesome/free-regular-svg-icons';
-import LayoutContext from '@src/layout-context';
-import CtfExternalAssetUrl from './ctf-external-asset-url';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { makeStyles, Theme, Grid, Paper, Container } from '@material-ui/core';
+import React, { useContext } from 'react';
+
+
 import { ExternalAssetFragment } from './__generated__/ExternalAssetFragment';
+import CtfExternalAssetUrl from './ctf-external-asset-url';
+
+import LayoutContext from '@src/layout-context';
 
 interface ExternalAssetInterface {
   bytes: number;
@@ -107,7 +110,7 @@ const getSrc = (
 ): { src: string | undefined; type: string } => {
   // Bynder
   let { src } = asset;
-  let type: string = 'bynder';
+  let type = 'bynder';
 
   if (!src && asset.link) {
     // Dropbox

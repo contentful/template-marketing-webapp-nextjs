@@ -1,7 +1,8 @@
-import React, { useContext } from 'react';
 import { Box, makeStyles, Theme, Typography } from '@material-ui/core';
 import clsx from 'clsx';
-import { ContentfulContext } from '@pages/_app';
+import React, { useContext } from 'react';
+
+import { ContentfulContext } from '@src/contentful-context';
 
 const useStyles = makeStyles((theme: Theme) => ({
   xframeRoot: {
@@ -57,20 +58,14 @@ const XrayFrame = (props: Props) => {
     spaceIds: { main: spaceId },
   } = contentfulContext;
   const classes = useStyles();
-  const environmentsUrlFragment =
-    spaceEnv === 'default' ? '' : `environments/${spaceEnv}/`;
+  const environmentsUrlFragment = spaceEnv === 'default' ? '' : `environments/${spaceEnv}/`;
   const contentfulUrl = `https://app.contentful.com/spaces/${spaceId}/${environmentsUrlFragment}entries/${props.sys.id}`;
   console.log(contentfulUrl);
   return (
     <Box className={clsx(classes.xframeRoot, props.className)}>
       {props.children}
       <Box className={classes.frame}>
-        <a
-          href={contentfulUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={classes.label}
-        >
+        <a href={contentfulUrl} target="_blank" rel="noopener noreferrer" className={classes.label}>
           <Typography>
             <strong>{props.__typename}</strong>
             {props.internalName && <span> | {props.internalName}</span>}

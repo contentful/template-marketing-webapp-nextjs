@@ -1,9 +1,12 @@
-import React, { useMemo } from 'react';
-import clsx from 'clsx';
 import { makeStyles, Theme, Container } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
-import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
+import clsx from 'clsx';
+import React, { useMemo } from 'react';
+
+
 import { BusinessInfoFragment } from './__generated__/BusinessInfoFragment';
+
+import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
 
 interface CtfBusinessInfoPropsInterface extends Partial<BusinessInfoFragment> {
   body: any;

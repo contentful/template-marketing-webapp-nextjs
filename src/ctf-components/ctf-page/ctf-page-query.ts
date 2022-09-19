@@ -1,6 +1,8 @@
 import gql from 'graphql-tag';
-import { assetFragment } from '@ctf-components/ctf-asset/ctf-asset-query';
+
 import { componentReferenceFragment } from '../fragments';
+
+import { assetFragment } from '@ctf-components/ctf-asset/ctf-asset-query';
 
 export const pageFragment = gql`
   fragment PageFragmentBase on Page {

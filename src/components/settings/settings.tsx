@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
 import { Theme, makeStyles, useTheme } from '@material-ui/core';
+import React, { useState, useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
+
 import SettingsForm from '@src/components/settings/settings-form';
 import SettingsIcon from '@src/icons/settings-icon.svg';
 
@@ -63,15 +64,12 @@ const Settings = () => {
       return;
     }
 
-    if (
-      window.matchMedia(theme.breakpoints.up('md').replace('@media ', ''))
-        .matches === true
-    ) {
+    if (window.matchMedia(theme.breakpoints.up('md').replace('@media ', '')).matches === true) {
       return;
     }
 
     document.body.classList.add('is-scroll-locked');
-  }, [settingsOpen]);
+  }, [settingsOpen, theme.breakpoints]);
 
   return (
     <>
@@ -84,8 +82,7 @@ const Settings = () => {
           enterActive: classes.animationEnterActive,
           exit: classes.animationExit,
           exitActive: classes.animationExitActive,
-        }}
-      >
+        }}>
         <SettingsForm
           onClose={() => {
             setSettingsOpen(false);
@@ -96,10 +93,9 @@ const Settings = () => {
         className={classes.toggle}
         type="button"
         onClick={() => {
-          setSettingsOpen((open) => !open);
+          setSettingsOpen(open => !open);
         }}
-        title="Toggle editorial toolbox"
-      >
+        title="Toggle editorial toolbox">
         <SettingsIcon className={classes.toggleImage} />
       </button>
     </>

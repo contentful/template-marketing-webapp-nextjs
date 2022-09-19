@@ -1,8 +1,10 @@
 import React from 'react';
+
+import { PageFragment } from './__generated__/PageFragment';
+
 import ComponentResolver from '@src/components/component-resolver';
 import PageContainer from '@src/components/layout/page-container';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
-import { PageFragment } from './__generated__/PageFragment';
 
 export interface CtfPagePropsInterface extends PageFragment {}
 

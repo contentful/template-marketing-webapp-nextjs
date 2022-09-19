@@ -1,6 +1,8 @@
 import gql from 'graphql-tag';
-import { ninetailedAudienceFragment } from '@ctf-components/ctf-ninetailed-audience/ctf-ninetailed-audience-query';
+
 import { productFragment } from '../ctf-product/ctf-product-query';
+
+import { ninetailedAudienceFragment } from '@ctf-components/ctf-ninetailed-audience/ctf-ninetailed-audience-query';
 
 export const productTableFragment = gql`
   fragment ProductTableFragmentBase on ComponentProductTable {
