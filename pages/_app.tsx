@@ -1,13 +1,12 @@
-import React, { useEffect } from 'react';
-import Head from 'next/head';
 import { config as fontawesomeConfig } from '@fortawesome/fontawesome-svg-core';
 import { ThemeProvider } from '@material-ui/styles';
-
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import '@src/components/layout/layout.css';
 import { NinetailedProvider } from '@ninetailed/experience.js-next';
 import { NinetailedPreviewPlugin } from '@ninetailed/experience.js-plugin-preview';
 import App, { AppContext, AppProps } from 'next/app';
+import Head from 'next/head';
+import React, { useEffect } from 'react';
 
 import Layout from '@src/components/layout/layout';
 import Settings from '@src/components/settings/settings';
