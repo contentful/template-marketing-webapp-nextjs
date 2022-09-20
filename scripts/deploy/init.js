@@ -7,8 +7,6 @@ const createEmptyEnvironment = require('./createEmptyEnvironment');
 const importContent = require('./importContent');
 const deployToVercel = require('./deployToVercel');
 const setPreviewUrls = require('./setPreviewUrls');
-const createBackupEnvironment = require('./createBackupEnvironment');
-const createPartialBackupEnvironment = require('./createPartialBackupEnvironment');
 const inviteToSpace = require('./inviteToSpace');
 const logToZapier = require('./logToZapier');
 const installTypeformApp = require('./installTypeformApp');
@@ -206,37 +204,6 @@ const init = async input => {
     console.info('Skipping content import - reusing existing space');
   }
 
-  // Create a partial backup environment
-  if (inputSpaceId === undefined) {
-    const createPartialBackupEnvironmentStartTime = new Date();
-    console.info('Creating partial backup environment...');
-
-    const createPartialBackupEnvironmentResult = await createPartialBackupEnvironment({
-      spaceId,
-      cmaToken,
-    });
-
-    if (createPartialBackupEnvironmentResult.state === 'error') {
-      await cleanupSpaceOnError();
-      return {
-        state: 'error',
-        error: createPartialBackupEnvironmentResult.error,
-      };
-    }
-
-    const createPartialBackupEnvironmentEndTime = new Date();
-
-    console.info(
-      `Partial backup environment created. Done in ${Math.round(
-        (createPartialBackupEnvironmentEndTime.getTime() -
-          createPartialBackupEnvironmentStartTime.getTime()) /
-          1000,
-      )}s`,
-    );
-  } else {
-    console.info('Skipping partial backup environment creation - reusing existing space');
-  }
-
   // Install the Typeform app
   if (inputSpaceId === undefined) {
     const installTypeformAppStartTime = new Date();
@@ -295,36 +262,6 @@ const init = async input => {
     );
   } else {
     console.info('Skipping Ninetailed app installation - reusing existing space');
-  }
-
-  // Create a backup environment
-  if (inputSpaceId === undefined) {
-    const createBackupEnvironmentStartTime = new Date();
-    console.info('Creating backup environment...');
-
-    const createBackupEnvironmentResult = await createBackupEnvironment({
-      spaceId,
-      cmaToken,
-    });
-
-    if (createBackupEnvironmentResult.state === 'error') {
-      await cleanupSpaceOnError();
-      return {
-        state: 'error',
-        error: createBackupEnvironmentResult.error,
-      };
-    }
-
-    const createBackupEnvironmentEndTime = new Date();
-
-    console.info(
-      `Backup environment created. Done in ${Math.round(
-        (createBackupEnvironmentEndTime.getTime() - createBackupEnvironmentStartTime.getTime()) /
-          1000,
-      )}s`,
-    );
-  } else {
-    console.info('Skipping backup environment creation - reusing existing space');
   }
 
   // Deploy to Vercel
