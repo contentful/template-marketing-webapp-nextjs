@@ -135,3 +135,17 @@ Stories are defined in the `/src/stories` folder. You can follow an example ther
 - Import the component that you are tryign to document from `/src/ctf-components`
 - Wrap it into the `Wrapper` component
 - Pass the correct props that the component expects
+
+# Developer Docs
+
+## Importing / exporting space contents
+
+Importing space contents (Models, Entries, Environments, App Integrations etc) is done as part of the `init` script. When developing, we often want to make changes to what will become our internal CF test space, for example removing an entry or renaming an environment. To make sure that the `content-backups` file stays up to date, after making changes in our contentful internal test space, we should _re-export_ the updated space contents.
+
+This can be done using the Contentful CLI tool, by running the following command:
+
+`contentful space export --space-id {{spaceId}}`
+
+Where spaceId is the space id of the test contentful space. see here https://www.contentful.com/developers/docs/tutorials/cli/import-and-export for installation and authentication information.
+
+See the above section, `Content model changes`, for information about generating new GraphQl introspection files when making changes to the content model.
