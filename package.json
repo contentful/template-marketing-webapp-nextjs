@@ -33,7 +33,7 @@
     "src/**/*.{js,jsx,ts,tsx}": [
         "eslint --quiet --fix"
     ],
-    "src/**/*.{json,js,ts,jsx,tsx,html}": [
+    "src/**/*.{json,js,ts,jsx,tsx}": [
         "prettier --write"
     ]
   },
