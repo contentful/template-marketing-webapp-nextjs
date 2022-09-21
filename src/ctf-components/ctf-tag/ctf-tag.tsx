@@ -1,5 +1,4 @@
 import { Theme, makeStyles, Typography, Container } from '@material-ui/core';
-import React, { useContext } from 'react';
 
 import {
   CtfTagQuery_postCollection_items,
@@ -9,9 +8,7 @@ import {
 import CardPostExtended from '@src/components/card-post-extended/card-post-extended';
 import TagContainer from '@src/components/layout/category-container';
 import Link from '@src/components/link/link';
-import { ContentfulContext } from '@src/contentful-context';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
-import { getLocaleConfig } from '@src/locales-map';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -70,8 +67,6 @@ interface CtfTagPropsInterface {
 
 const CtfTag = (props: CtfTagPropsInterface) => {
   const { posts, tag } = props;
-  const { locale } = useContext(ContentfulContext);
-  const { lang } = getLocaleConfig(locale);
 
   const classes = useStyles();
 
@@ -83,11 +78,8 @@ const CtfTag = (props: CtfTagPropsInterface) => {
             <div>
               <div className={classes.containerNarrow}>
                 <div className={classes.titleContainer}>
-                  <Link
-                    href="/[lang]/blog"
-                    as={`/${lang}/blog`}
-                    withoutMaterial
-                    className={classes.title}>
+                  <Link href="/blog" withoutMaterial className={classes.title}>
+                    FOO
                     <Typography variant="h1">
                       {tag === null ? 'Blog' : `Tagged with: ${tag.name}`}
                     </Typography>

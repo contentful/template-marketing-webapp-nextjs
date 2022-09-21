@@ -5,26 +5,20 @@ const url = !process.env.CONFIG_CONTENTFUL_META_URL
     : `https://${process.env.VERCEL_URL}`
   : process.env.CONFIG_CONTENTFUL_META_URL;
 
-const config = {
+export const contentfulConfig = {
   contentful: {
     // main_space_id: Contentful Space ID
     main_space_id: process.env.CONFIG_CONTENTFUL_MAIN_SPACE_ID || '',
     // main_space_token: Contentful Space Delivery API - access token
     main_space_token: process.env.CONFIG_CONTENTFUL_MAIN_SPACE_TOKEN || '',
     // main_space_preview_token: Contentful Space Preview API - access token
-    main_space_preview_token:
-      process.env.CONFIG_CONTENTFUL_MAIN_SPACE_PREVIEW_TOKEN || '',
+    main_space_preview_token: process.env.CONFIG_CONTENTFUL_MAIN_SPACE_PREVIEW_TOKEN || '',
     // main_space_management_token: Contentful Content Management token
-    main_space_management_token:
-      process.env.CONFIG_CONTENTFUL_MAIN_SPACE_MANAGEMENT_TOKEN || '',
+    main_space_management_token: process.env.CONFIG_CONTENTFUL_MAIN_SPACE_MANAGEMENT_TOKEN || '',
     // legal_space_id: Contentful Space ID
     legal_space_id: process.env.CONFIG_CONTENTFUL_LEGAL_SPACE_ID || '',
     // legal_space_token: Contentful Space Delivery API - access token
     legal_space_token: process.env.CONFIG_CONTENTFUL_LEGAL_SPACE_TOKEN || '',
-    default_locale: process.env.CONFIG_CONTENTFUL_DEFAULT_LOCALE || 'en-US',
-    available_locales: process.env.CONFIG_CONTENTFUL_AVAILABLE_LOCALES
-      ? JSON.parse(process.env.CONFIG_CONTENTFUL_AVAILABLE_LOCALES)
-      : ['en-US', 'de-DE'],
   },
   meta: {
     title:
@@ -199,8 +193,7 @@ const config = {
             location: 'https://dalia.colorfuldemo.com',
           },
         ],
-    copyright:
-      process.env.CONFIG_CONTENTFUL_FOOTER_COPYRIGHT || '© Copyright 2020',
+    copyright: process.env.CONFIG_CONTENTFUL_FOOTER_COPYRIGHT || '© Copyright 2020',
     disclaimer:
       process.env.CONFIG_CONTENTFUL_FOOTER_DISCLAIMER ||
       'Colorful Coin is not authorised by the Financial Conduct Authority under the Electronic Money Regulations 2011, Firm Reference 000001, for the issuing of electronic money. Please be aware that this is a demo website intended for internal use only and not a real service/product.',
@@ -219,149 +212,4 @@ const config = {
       ? parseInt(process.env.CONFIG_CONTENTFUL_ICON_HEIGHT, 10)
       : 64,
   },
-  'de-DE': {
-    meta: {
-      title:
-        process.env.CONFIG_CONTENTFUL_DE_META_TITLE ||
-        'Digitales Banking für die neue Generation | Colorful Coin',
-      description:
-        process.env.CONFIG_CONTENTFUL_DE_META_DESCRIPTION ||
-        `Genießen Sie erstklassige Bankdienstleistungen, wo immer Sie hingehen: sofortige Überweisungen und beste Wechselkurse, exklusive Angebote und bevorzugte Kundenbetreuung. Bewerben Sie sich online bei ${url
-          .replace('https://', '')
-          .replace('http://', '')}`,
-    },
-    header: {
-      menu: process.env.CONFIG_CONTENTFUL_DE_HEADER_MENU
-        ? JSON.parse(process.env.CONFIG_CONTENTFUL_DE_HEADER_MENU)
-        : [
-            {
-              label: 'Produkte',
-              children: [
-                {
-                  label: 'Classic',
-                  location: '/classic-card',
-                },
-                {
-                  label: 'Black',
-                  location: '/black-card',
-                },
-                {
-                  label: 'Corporate',
-                  location: '/corporate-card',
-                },
-              ],
-            },
-            {
-              label: 'Preise',
-              location: '/pricing',
-            },
-            {
-              label: 'Über uns',
-              location: '/about-us',
-            },
-            {
-              label: 'Blog',
-              location: '/blog',
-            },
-          ],
-    },
-    footer: {
-      menu: process.env.CONFIG_CONTENTFUL_DE_FOOTER_MENU
-        ? JSON.parse(process.env.CONFIG_CONTENTFUL_DE_FOOTER_MENU)
-        : [
-            {
-              label: 'Produkte',
-              children: [
-                {
-                  label: 'Classic',
-                  location: '/classic-card',
-                },
-                {
-                  label: 'Black',
-                  location: '/black-card',
-                },
-                {
-                  label: 'Corporate',
-                  location: '/corporate-card',
-                },
-                {
-                  label: 'Preise',
-                  location: '/pricing',
-                },
-              ],
-            },
-            {
-              label: 'Kunden',
-              children: [
-                {
-                  label: 'Freunde einladen',
-                  location: '/about-us',
-                },
-                {
-                  label: 'Hilfe',
-                  location: '/about-us',
-                },
-                {
-                  label: 'Rückblick',
-                  location: '/about-us',
-                },
-                {
-                  label: 'Kontakt',
-                  location: '/about-us',
-                },
-              ],
-            },
-            {
-              label: 'Unternehmen',
-              children: [
-                {
-                  label: 'Über uns',
-                  location: '/about-us',
-                },
-                {
-                  label: 'Blog',
-                  location: '/blog',
-                },
-                {
-                  label: 'Karrieren',
-                  location: '/about-us',
-                },
-                {
-                  label: 'Presse',
-                  location: '/blog',
-                },
-              ],
-            },
-          ],
-      legal: process.env.CONFIG_CONTENTFUL_DE_FOOTER_LEGAL
-        ? JSON.parse(process.env.CONFIG_CONTENTFUL_DE_FOOTER_LEGAL)
-        : [
-            {
-              label: 'Zugänglichkeit',
-              location: '/legal/accessibility',
-            },
-            {
-              label: 'CA-Benachrichtigung',
-              location: '/legal/ca-notice',
-            },
-            {
-              label: 'Datenschutzerklärung',
-              location: '/legal/privacy-policy',
-            },
-            {
-              label: 'Nutzungsbedingungen',
-              location: '/legal/terms-of-use',
-            },
-            {
-              label: 'Sitemap',
-              location: '/sitemap',
-            },
-          ],
-      disclaimer:
-        process.env.CONFIG_CONTENTFUL_DE_FOOTER_DISCLAIMER ||
-        'Colorful Coin ist von der Financial Conduct Authority nach den Electronic Money Regulations 2011, Firm Reference 000001, für die Ausgabe von elektronischem Geld nicht zugelassen. Bitte beachten Sie, dass es sich hierbei um eine Demo-Website handelt, die nur für den internen Gebrauch bestimmt ist, und nicht um eine echte Dienstleistung/ein echtes Produkt.',
-    },
-  },
 };
-
-module.exports = config;

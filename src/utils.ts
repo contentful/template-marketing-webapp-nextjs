@@ -59,16 +59,6 @@ export type PropsFromFragment<T> = OmitRecursive<T, '__typename'>;
 //   return tryget(data.error!.)
 // }
 
-// TODO WIP
-export function formatPrice(value: number, currency = '$') {
-  switch (currency) {
-    case '$':
-      return `${currency}${Math.round(value * 100) / 100} USD`;
-    default:
-      return `${Math.round(value * 100) / 100} ${currency}`;
-  }
-}
-
 // Math stuff
 export function clamp(val, min, max) {
   return Math.max(min, Math.min(max, val));

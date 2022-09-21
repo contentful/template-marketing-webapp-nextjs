@@ -60,7 +60,6 @@ const XrayFrame = (props: Props) => {
   const classes = useStyles();
   const environmentsUrlFragment = spaceEnv === 'default' ? '' : `environments/${spaceEnv}/`;
   const contentfulUrl = `https://app.contentful.com/spaces/${spaceId}/${environmentsUrlFragment}entries/${props.sys.id}`;
-  console.log(contentfulUrl);
   return (
     <Box className={clsx(classes.xframeRoot, props.className)}>
       {props.children}

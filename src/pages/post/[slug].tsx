@@ -2,29 +2,29 @@ import { NextPage, GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import React, { useContext } from 'react';
 
+import CtfPostGgl from '@ctf-components/ctf-post/ctf-post-gql';
 import { ContentfulContext } from '@src/contentful-context';
-import CtfLegalPageGgl from '@src/ctf-components/ctf-legal-page/ctf-legal-page-gql';
 import withProviders, { generateGetServerSideProps } from '@src/lib/with-providers';
 
-interface LegalPagePropsInterface {
+interface PostPagePropsInterface {
   ssrQuery?: {
     [key: string]: string;
   };
 }
 
-const LegalPage: NextPage<LegalPagePropsInterface> = props => {
+const PostPage: NextPage<PostPagePropsInterface> = props => {
   const router = useRouter();
   const query = router ? router.query : props.ssrQuery;
-  const { locale } = useContext(ContentfulContext);
+  const { previewActive } = useContext(ContentfulContext);
   const slug = query ? (query.slug as string) : '';
 
-  return <CtfLegalPageGgl locale={locale} slug={slug} />;
+  return <CtfPostGgl slug={slug} preview={previewActive} />;
 };
 
-const LegalPageWithProviders = withProviders()(LegalPage);
+const PostPageWithProviders = withProviders()(PostPage);
 
 export const getServerSideProps: GetServerSideProps = generateGetServerSideProps({
-  Page: LegalPageWithProviders,
+  Page: PostPageWithProviders,
 });
 
-export default LegalPageWithProviders;
+export default PostPageWithProviders;

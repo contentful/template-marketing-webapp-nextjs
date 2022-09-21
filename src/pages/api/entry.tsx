@@ -1,11 +1,13 @@
-import getContentfulConfig from '@src/get-contentful-config';
 import { createClient } from 'contentful-management';
-import catchify from 'catchify';
-import { NextApiRequest, NextApiResponse } from 'next';
-// eslint-disable-next-line import/no-unresolved
 import { Environment } from 'contentful-management/dist/typings/export-types';
+import { NextApiRequest, NextApiResponse } from 'next';
 
-const contentfulConfig = getContentfulConfig();
+import { contentfulConfig } from '../../../contentful.config.mjs';
+
+import catchify from 'catchify';
+
+// eslint-disable-next-line import/no-unresolved
+
 const client = createClient({
   accessToken: contentfulConfig.contentful.main_space_management_token,
 });
@@ -15,9 +17,7 @@ async function getAudiences(req: NextApiRequest, res: NextApiResponse) {
     query: { environmentId },
   } = req;
 
-  const space = await client.getSpace(
-    contentfulConfig.contentful.main_space_id,
-  );
+  const space = await client.getSpace(contentfulConfig.contentful.main_space_id);
 
   if (!space) {
     res.json([]);
@@ -40,9 +40,7 @@ async function getAudiences(req: NextApiRequest, res: NextApiResponse) {
     environment = fetchedEnvironment;
   } else {
     // No environment was specified, we need to find the default one
-    const [aliasError, alias] = await catchify(
-      space.getEnvironmentAlias('master'),
-    );
+    const [aliasError, alias] = await catchify(space.getEnvironmentAlias('master'));
 
     if (!alias || aliasError) {
       // Looks like the aliases are not set up yet, we just default to the
@@ -94,7 +92,7 @@ async function getAudiences(req: NextApiRequest, res: NextApiResponse) {
     return;
   }
 
-  audienceEntries.items.forEach((audienceEntry) => {
+  audienceEntries.items.forEach(audienceEntry => {
     const audience = {
       id: '',
       name: '',
@@ -124,9 +122,7 @@ async function getAudiences(req: NextApiRequest, res: NextApiResponse) {
 async function getEnvironments(_req: NextApiRequest, res: NextApiResponse) {
   const environmentNames = [] as string[];
 
-  const space = await client.getSpace(
-    contentfulConfig.contentful.main_space_id,
-  );
+  const space = await client.getSpace(contentfulConfig.contentful.main_space_id);
 
   if (!space) {
     res.json([]);
@@ -144,14 +140,9 @@ async function getEnvironments(_req: NextApiRequest, res: NextApiResponse) {
     return;
   }
 
-  const [aliasError, alias] = await catchify(
-    space.getEnvironmentAlias('master'),
-  );
+  const [aliasError, alias] = await catchify(space.getEnvironmentAlias('master'));
 
-  if (
-    aliasError !== null &&
-    aliasError.message.includes('Not Found') === false
-  ) {
+  if (aliasError !== null && aliasError.message.includes('Not Found') === false) {
     res.json([]);
     return;
   }
@@ -173,14 +164,14 @@ async function getEnvironments(_req: NextApiRequest, res: NextApiResponse) {
 
   const environmentsList = new Set(
     environments.items
-      .map((environment) => ({
+      .map(environment => ({
         name:
           environment.name === defaultEnvironment
             ? `${defaultEnvironment} (default)`
             : environment.name,
         createdAt: environment.sys.createdAt,
       }))
-      .filter((environment) => {
+      .filter(environment => {
         if (environmentNames.includes(environment.name)) {
           return false;
         }
@@ -214,9 +205,7 @@ async function getLocales(req: NextApiRequest, res: NextApiResponse) {
     query: { environmentId },
   } = req;
 
-  const space = await client.getSpace(
-    contentfulConfig.contentful.main_space_id,
-  );
+  const space = await client.getSpace(contentfulConfig.contentful.main_space_id);
 
   if (!space) {
     res.json([]);
@@ -238,9 +227,7 @@ async function getLocales(req: NextApiRequest, res: NextApiResponse) {
     environment = fetchedEnvironment;
   } else {
     // No environment was specified, we need to find the default one
-    const [aliasError, alias] = await catchify(
-      space.getEnvironmentAlias('master'),
-    );
+    const [aliasError, alias] = await catchify(space.getEnvironmentAlias('master'));
 
     if (!alias || aliasError) {
       // Looks like the aliases are not set up yet, we just default to the
@@ -275,7 +262,7 @@ async function getLocales(req: NextApiRequest, res: NextApiResponse) {
     return;
   }
 
-  const localesList = new Set(locales.items.map((locale) => locale.code));
+  const localesList = new Set(locales.items.map(locale => locale.code));
 
   res.json(Array.from(localesList));
 }

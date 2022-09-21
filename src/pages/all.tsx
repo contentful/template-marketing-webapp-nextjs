@@ -1,6 +1,7 @@
 import { Container, Typography } from '@material-ui/core';
 import gql from 'graphql-tag';
 import { NextPage, GetServerSideProps } from 'next';
+import { useRouter } from 'next/router';
 import React, { useContext } from 'react';
 import { useQuery } from 'react-apollo';
 
@@ -10,24 +11,24 @@ import CtfCta from '@ctf-components/ctf-cta/ctf-cta';
 import { ctaFragment } from '@ctf-components/ctf-cta/ctf-cta-query';
 import CtfDuplex from '@ctf-components/ctf-duplex/ctf-duplex';
 import { duplexFragment } from '@ctf-components/ctf-duplex/ctf-duplex-query';
-import CtfHeroBanner from '@ctf-components/ctf-hero-banner/ctf-hero-banner';
-import { infoBlockFragment } from '@ctf-components/ctf-info-block/ctf-info-block-query';
-import CtfInfoBlock from '@ctf-components/ctf-info-block/ctf-info-block';
-import { quoteFragment } from '@ctf-components/ctf-quote/ctf-quote-query';
-import CtfQuote from '@ctf-components/ctf-quote/ctf-quote';
-import { productTableFragment } from '@src/ctf-components/ctf-product-table/ctf-product-table-query';
-import CtfProductTable from '@src/ctf-components/ctf-product-table/ctf-product-table';
-import { productFragment } from '@ctf-components/ctf-product/ctf-product-query';
-import CtfProduct from '@ctf-components/ctf-product/ctf-product';
-import { externalAssetFragment } from '@ctf-components/ctf-external-asset/ctf-external-asset-query';
 import CtfExternalAsset from '@ctf-components/ctf-external-asset/ctf-external-asset';
+import { externalAssetFragment } from '@ctf-components/ctf-external-asset/ctf-external-asset-query';
 import CtfFeaturedCards from '@ctf-components/ctf-featured-cards/ctf-featured-cards';
 import { featuredCardsFragment } from '@ctf-components/ctf-featured-cards/ctf-featured-cards-query';
+import CtfHeroBanner from '@ctf-components/ctf-hero-banner/ctf-hero-banner';
 import { heroBannerFragment } from '@ctf-components/ctf-hero-banner/ctf-hero-banner-query';
+import CtfInfoBlock from '@ctf-components/ctf-info-block/ctf-info-block';
+import { infoBlockFragment } from '@ctf-components/ctf-info-block/ctf-info-block-query';
 import CtfPerson from '@ctf-components/ctf-person/ctf-person';
 import { personFragment } from '@ctf-components/ctf-person/ctf-person-query';
 import CtfPost from '@ctf-components/ctf-post/ctf-post';
 import { postFragment } from '@ctf-components/ctf-post/ctf-post-query';
+import CtfProductTable from '@ctf-components/ctf-product-table/ctf-product-table';
+import { productTableFragment } from '@ctf-components/ctf-product-table/ctf-product-table-query';
+import CtfProduct from '@ctf-components/ctf-product/ctf-product';
+import { productFragment } from '@ctf-components/ctf-product/ctf-product-query';
+import CtfQuote from '@ctf-components/ctf-quote/ctf-quote';
+import { quoteFragment } from '@ctf-components/ctf-quote/ctf-quote-query';
 import { ContentfulContext } from '@src/contentful-context';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 import { useDataForPreview } from '@src/lib/apollo-hooks';
@@ -212,11 +213,12 @@ const renderAllEntries = ({ locale, previewActive, query, collectionKey, plural,
 };
 
 const AllPage: NextPage = () => {
+  const { previewActive } = useContext(ContentfulContext);
+  const { locale } = useRouter();
+
   if (typeof window === 'undefined') {
     return null;
   }
-
-  const { locale, previewActive } = useContext(ContentfulContext);
 
   const layoutConfig = {
     ...defaultLayout,

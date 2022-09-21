@@ -12,7 +12,6 @@ import { useDataForPreview } from '@src/lib/apollo-hooks';
 
 interface CtfBusinessInfoGqlPropsInterface {
   slug: string;
-  locale?: string;
   preview?: boolean;
 }
 

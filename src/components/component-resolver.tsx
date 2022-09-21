@@ -38,7 +38,7 @@ interface Props {
 
 const ComponentResolver = (props: Props) => {
   const { componentProps, inline = false } = props;
-  const { locale, xrayActive, previewActive } = useContext(ContentfulContext);
+  const { xrayActive, previewActive } = useContext(ContentfulContext);
   const classes = useStyles();
 
   const ComponentGql = componentGqlMap[componentProps.__typename];
@@ -107,7 +107,6 @@ const ComponentResolver = (props: Props) => {
             __typename={componentProps.__typename}
             className={props.className}
             preview={previewActive}
-            locale={locale}
             previousComponent={previousComponentProp}
           />
         )}

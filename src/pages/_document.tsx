@@ -1,17 +1,12 @@
 /* eslint-disable react/no-danger */
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ServerStyleSheets } from '@material-ui/styles';
-import colorfulTheme from '@src/theme';
-import Document, {
-  DocumentContext,
-  Head,
-  Main,
-  NextScript,
-  Html,
-} from 'next/document';
+import Document, { DocumentContext, Head, Main, NextScript, Html } from 'next/document';
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import flush from 'styled-jsx';
+
+import colorfulTheme from '@src/theme';
 
 export default class CustomDocument extends Document {
   render() {
@@ -22,34 +17,17 @@ export default class CustomDocument extends Document {
 
           <meta charSet="utf-8" />
           {/* PWA primary color */}
-          <meta
-            name="theme-color"
-            content={colorfulTheme.palette.primary.main}
-          />
+          <meta name="theme-color" content={colorfulTheme.palette.primary.main} />
 
           <link
             href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;1,400;1,600&display=swap"
             rel="stylesheet"
           />
 
-          <link
-            rel="apple-touch-icon"
-            sizes="180x180"
-            href="/apple-touch-icon.png"
-          />
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="32x32"
-            href="/favicon-32x32.png"
-          />
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="16x16"
-            href="/favicon-16x16.png"
-          />
-          <link rel="manifest" href="/site.webmanifest" />
+          <link rel="apple-touch-icon" sizes="180x180" href="/public/apple-touch-icon.png" />
+          <link rel="icon" type="image/png" sizes="32x32" href="/public/favicon-32x32.png" />
+          <link rel="icon" type="image/png" sizes="16x16" href="/public/favicon-16x16.png" />
+          <link rel="manifest" href="/public/site.webmanifest" />
         </Head>
         <body>
           <Main />
@@ -90,13 +68,14 @@ CustomDocument.getInitialProps = async function (ctx: DocumentContext) {
 
   ctx.renderPage = () =>
     originalRenderPage({
-      enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
+      enhanceApp: App => props => sheets.collect(<App {...props} />),
     });
 
   const initialProps = await Document.getInitialProps(ctx);
 
   return {
     ...initialProps,
+    locale: ctx.locale,
     styles: (
       <>
         {sheets.getStyleElement()}

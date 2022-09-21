@@ -1,6 +1,7 @@
 import { makeStyles, Theme, Typography, Container } from '@material-ui/core';
 import { PersonalizedComponent } from '@ninetailed/experience.js-next';
 import throttle from 'lodash/throttle';
+import { useTranslation } from 'next-i18next';
 import Image, { ImageLoader } from 'next/image';
 import queryString from 'query-string';
 import React, { useState, useMemo, useRef, useEffect, useCallback, useContext } from 'react';
@@ -8,13 +9,13 @@ import React, { useState, useMemo, useRef, useEffect, useCallback, useContext } 
 import { ProductTableFragment } from './__generated__/ProductTableFragment';
 
 import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
+import { FormatCurrency } from '@src/components/format-currency';
 import Link from '@src/components/link/link';
 import PersonalizationFrame from '@src/components/personalization-frame';
 import SectionHeadlines from '@src/components/section-headlines/section-headlines';
 import { ContentfulContext } from '@src/contentful-context';
 import { WrapIf } from '@src/jsx-utils';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
-import { getLocaleConfig } from '@src/locales-map';
 
 const contentfulLoader: ImageLoader = ({ src, width, quality }) => {
   const params: Record<string, string | number> = {};
@@ -131,9 +132,8 @@ const useStyles = makeStyles((theme: Theme) => ({
 export interface CtfProductTablePropsInterface extends ProductTableFragment {}
 
 const CtfProductTable: PersonalizedComponent<CtfProductTablePropsInterface> = props => {
+  const { t } = useTranslation();
   const { headline, subline, productsCollection, ninetailed, ntVariantsCollection } = props;
-  const { locale } = useContext(ContentfulContext);
-  const { lang, locale: realLocale } = getLocaleConfig(locale);
 
   const classes = useStyles();
   const { xrayActive } = useContext(ContentfulContext);
@@ -347,25 +347,18 @@ const CtfProductTable: PersonalizedComponent<CtfProductTablePropsInterface> = pr
                           }}>
                           {product.price === null || product.price === 0 ? (
                             <Typography variant="h2" component="h4" className={classes.priceUpper}>
-                              {realLocale === 'de-DE' ? 'Kostenlos' : 'Free'}
+                              {t('price.free')}
                             </Typography>
                           ) : (
                             <Typography variant="h2" component="h4" className={classes.priceUpper}>
-                              {realLocale === 'de-DE' ? `${product.price}€` : `$${product.price}`}
-                              <span className={classes.priceAddition}>
-                                /{realLocale === 'de-DE' ? `Monat` : `month`}
-                              </span>
+                              <FormatCurrency value={product.price} />
+                              <span className={classes.priceAddition}>/{t('time.month')}</span>
                             </Typography>
                           )}
                         </div>
                         <div className={classes.signUp}>
-                          <Link
-                            href="/[lang]/sign-up"
-                            as={`/${lang}/sign-up`}
-                            isButton
-                            color="primary"
-                            variant="contained">
-                            {realLocale === 'de-DE' ? 'Anmelden' : 'Sign Up'}
+                          <Link href="/sign-up" isButton color="primary" variant="contained">
+                            {t('common.signUp')}
                           </Link>
                         </div>
                         {featureNames && featuresGrid && (
@@ -411,25 +404,18 @@ const CtfProductTable: PersonalizedComponent<CtfProductTablePropsInterface> = pr
                           }}>
                           {product.price === null || product.price === 0 ? (
                             <Typography variant="h2" component="h4">
-                              {realLocale === 'de-DE' ? `Kostenlos` : `Free`}
+                              {t('price.free')}
                             </Typography>
                           ) : (
                             <Typography variant="h2" component="h4">
-                              {realLocale === 'de-DE' ? `${product.price}€` : `$${product.price}`}
-                              <span className={classes.priceAddition}>
-                                /{realLocale === 'de-DE' ? `Monat` : `month`}
-                              </span>
+                              <FormatCurrency value={product.price} />
+                              <span className={classes.priceAddition}>/{t('time.month')}</span>
                             </Typography>
                           )}
                         </div>
                         <div className={classes.signUp}>
-                          <Link
-                            href="/[lang]/sign-up"
-                            as={`/${lang}/sign-up`}
-                            isButton
-                            color="primary"
-                            variant="contained">
-                            {realLocale === 'de-DE' ? 'Anmelden' : 'Sign Up'}
+                          <Link href="/sign-up" isButton color="primary" variant="contained">
+                            {t('common.signUp')}
                           </Link>
                         </div>
                       </div>

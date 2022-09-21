@@ -1,10 +1,8 @@
 import React from 'react';
 
-import getContentfulConfig from '@src/get-contentful-config';
+import { contentfulConfig } from 'contentful.config.mjs';
 
 export interface ContentfulContextInterface {
-  locale: string;
-  defaultLocale: string;
   spaceIds: {
     main: string;
     legal: string;
@@ -17,11 +15,7 @@ export interface ContentfulContextInterface {
   personalizationAudience: string | null;
 }
 
-export const contentfulConfig = getContentfulConfig();
-
 export const contentfulContextValue: ContentfulContextInterface = {
-  locale: contentfulConfig.contentful.default_locale,
-  defaultLocale: contentfulConfig.contentful.default_locale,
   spaceIds: {
     main: contentfulConfig.contentful.main_space_id,
     legal: contentfulConfig.contentful.legal_space_id,

@@ -1,9 +1,11 @@
-import React from 'react';
 import { IncomingMessage } from 'http';
+
 import { NextPage, NextPageContext } from 'next';
 import NextErrorComponent, { ErrorProps } from 'next/error';
-import { tryget } from '@src/utils';
+import React from 'react';
+
 import PageError from '@src/components/errors/page-error';
+import { tryget } from '@src/utils';
 
 export interface NextPageErrorRequest extends IncomingMessage {
   query: {
@@ -21,40 +23,28 @@ interface ErrorPagePropsInterface {
   err?: Error;
   code?: number;
   message?: string;
-  req?: Pick<
-    NextPageErrorRequest,
-    'url' | 'method' | 'query' | 'cookies' | 'body' | 'headers'
-  >;
+  req?: Pick<NextPageErrorRequest, 'url' | 'method' | 'query' | 'cookies' | 'body' | 'headers'>;
 }
 
 const getStatusAndMessageFromError = (
   err: Error,
-  statusCode: number = 500,
+  statusCode = 500,
 ): { code: number; message: string } => {
   let error = {
     code: statusCode,
     message: '',
   };
 
-  const errorMessage = tryget(
-    () => (err as any).networkError.result.errors[0].message,
-    '',
-  );
+  const errorMessage = tryget(() => (err as any).networkError.result.errors[0].message, '');
 
-  const errorStatus = tryget(
-    () => (err as any).networkError.statusCode,
-    statusCode,
-  );
+  const errorStatus = tryget(() => (err as any).networkError.statusCode, statusCode);
 
   const isEnvironmentNotFoundError = tryget(
     () => errorMessage.includes('The access token you provided is invalid'),
     false,
   );
 
-  const isMissingContentTypeError = tryget(
-    () => errorMessage.includes('Unknown type "'),
-    false,
-  );
+  const isMissingContentTypeError = tryget(() => errorMessage.includes('Unknown type "'), false);
 
   if (isEnvironmentNotFoundError) {
     error = {
@@ -84,14 +74,7 @@ const getStatusAndMessageFromError = (
   return error;
 };
 
-const ErrorPage: NextPage<ErrorPagePropsInterface> = ({
-  statusCode,
-  hasGetInitialPropsRun,
-  err,
-  code,
-  message,
-  req,
-}) => {
+const ErrorPage: NextPage<ErrorPagePropsInterface> = ({ statusCode, err, code, message, req }) => {
   if (code !== undefined && message !== undefined) {
     return <PageError error={{ code, message }} />;
   }
@@ -107,7 +90,6 @@ ErrorPage.getInitialProps = async ({
   req,
   res,
   err,
-  asPath,
   pathname,
   query,
   AppTree,

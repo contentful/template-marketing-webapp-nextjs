@@ -1,11 +1,9 @@
 import { makeStyles, Theme, Typography } from '@material-ui/core';
-import React, { useContext } from 'react';
+import React from 'react';
 
 import CtfAsset from '@ctf-components/ctf-asset/ctf-asset';
 import { PostFragmentBase } from '@ctf-components/ctf-post/__generated__/PostFragmentBase';
 import Link from '@src/components/link/link';
-import { ContentfulContext } from '@src/contentful-context';
-import { getLocaleConfig } from '@src/locales-map';
 
 interface CtfCardPostPropsInterface extends PostFragmentBase {
   linkToPost?: boolean;
@@ -32,8 +30,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const CtfCardPost = (props: CtfCardPostPropsInterface) => {
   const { postName, featuredImage, slug, linkToPost = false, author } = props;
-  const { locale } = useContext(ContentfulContext);
-  const { lang } = getLocaleConfig(locale);
   const classes = useStyles();
 
   const postNameBlock = () => {
@@ -50,7 +46,7 @@ const CtfCardPost = (props: CtfCardPostPropsInterface) => {
     }
 
     return (
-      <Link href="/[lang]/post/[slug]" as={`/${lang}/post/${slug}`}>
+      <Link href={`/post/${slug}`}>
         <Typography variant="body1" component="h3" className={classes.title}>
           {postName}
         </Typography>
@@ -75,7 +71,7 @@ const CtfCardPost = (props: CtfCardPostPropsInterface) => {
     }
 
     return (
-      <Link href="/[lang]/post/[slug]" as={`/${lang}/post/${slug}`}>
+      <Link href={`/post/${slug}`}>
         <CtfAsset
           {...featuredImage}
           showDescription={false}

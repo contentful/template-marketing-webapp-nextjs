@@ -24,10 +24,7 @@ type Props = {
 const PageContainer = (props: Props) => {
   const classes = useStyles();
   return (
-    <div
-      style={props.style}
-      className={clsx(classes.pageContainerRoot, props.className)}
-    >
+    <div style={props.style} className={clsx(classes.pageContainerRoot, props.className)}>
       {props.children}
     </div>
   );

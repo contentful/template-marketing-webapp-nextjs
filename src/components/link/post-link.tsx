@@ -1,8 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 import Link from '@src/components/link/link';
-import { ContentfulContext } from '@src/contentful-context';
-import { getLocaleConfig } from '@src/locales-map';
 
 interface PostLinkPropsInterface {
   post: {
@@ -31,14 +29,9 @@ interface PostLinkPropsInterface {
 }
 
 const PostLink = (props: PostLinkPropsInterface) => {
-  const { locale, defaultLocale } = useContext(ContentfulContext);
-  const { lang } = getLocaleConfig(locale || defaultLocale);
-
-  const pathname = `/[lang]/post/[slug]`;
-  const as = `/${lang}/post/${props.post.slug || ''}`;
+  const pathname = `/post/${props.post.slug || ''}`;
   const linkProps = {
     href: pathname,
-    as,
     className: props.className,
     onClick: props.onClick,
     withoutMaterial: props.withoutMaterial,
@@ -50,7 +43,7 @@ const PostLink = (props: PostLinkPropsInterface) => {
     urlParams: props.urlParams,
   };
 
-  return <Link {...linkProps}>{props.render ? props.render(as) : props.children}</Link>;
+  return <Link {...linkProps}>{props.render ? props.render(pathname) : props.children}</Link>;
 };
 
 export default PostLink;

@@ -12,7 +12,6 @@ import XrayFrame from '@src/components/xray-frame';
 import { ContentfulContext } from '@src/contentful-context';
 import { WrapIf } from '@src/jsx-utils';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
-import { getLocaleConfig } from '@src/locales-map';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -70,8 +69,7 @@ interface CtfCategoryPropsInterface extends CategoryFragment {
 
 const CtfCategory = (props: CtfCategoryPropsInterface) => {
   const { posts, slug } = props;
-  const { locale, xrayActive } = useContext(ContentfulContext);
-  const { lang } = getLocaleConfig(locale);
+  const { xrayActive } = useContext(ContentfulContext);
 
   const classes = useStyles();
 
@@ -94,11 +92,7 @@ const CtfCategory = (props: CtfCategoryPropsInterface) => {
               <div>
                 <div className={classes.containerNarrow}>
                   <div className={classes.titleContainer}>
-                    <Link
-                      href="/[lang]/blog"
-                      as={`/${lang}/blog`}
-                      withoutMaterial
-                      className={classes.title}>
+                    <Link href="/blog" withoutMaterial className={classes.title}>
                       <Typography variant="h1">Blog</Typography>
                     </Link>
                     <CategoriesMenu slug={slug ?? undefined} />

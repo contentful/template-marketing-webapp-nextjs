@@ -1,6 +1,7 @@
 import { makeStyles, Theme } from '@material-ui/core';
 import clsx from 'clsx';
 import gql from 'graphql-tag';
+import { useRouter } from 'next/router';
 import React, { useContext } from 'react';
 import { useQuery } from 'react-apollo';
 
@@ -9,7 +10,6 @@ import { CtfBlogCategoriesQuery } from './__generated__/CtfBlogCategoriesQuery';
 import Link from '@src/components/link/link';
 import { ContentfulContext } from '@src/contentful-context';
 import { useDataForPreview } from '@src/lib/apollo-hooks';
-import { getLocaleConfig } from '@src/locales-map';
 
 const categoriesQuery = gql`
   query CtfBlogCategoriesQuery($locale: String, $preview: Boolean) {
@@ -64,9 +64,9 @@ interface CtfCategoriesMenuPropsInterface {
 
 const CtfCategoriesMenu: React.FC<CtfCategoriesMenuPropsInterface> = props => {
   const { slug } = props;
+  const { locale } = useRouter();
 
-  const { locale, previewActive } = useContext(ContentfulContext);
-  const { lang } = getLocaleConfig(locale);
+  const { previewActive } = useContext(ContentfulContext);
 
   const categoriesQueryResult = useQuery<CtfBlogCategoriesQuery>(categoriesQuery, {
     variables: { locale, preview: previewActive },
@@ -93,8 +93,7 @@ const CtfCategoriesMenu: React.FC<CtfCategoriesMenuPropsInterface> = props => {
               category && (
                 <Link
                   key={category.sys.id}
-                  href="/[lang]/category/[slug]"
-                  as={`/${lang}/category/${category.slug}`}
+                  href={`/category/${category.slug}`}
                   className={clsx(
                     classes.categoryLink,
                     slug === category.slug ? classes.categoryLinkActive : undefined,
