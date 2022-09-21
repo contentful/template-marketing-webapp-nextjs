@@ -2,7 +2,6 @@ import gql from 'graphql-tag';
 
 import { assetFragment } from '../ctf-asset/ctf-asset-query';
 
-import { ninetailedAudienceFragment } from '@ctf-components/ctf-ninetailed-audience/ctf-ninetailed-audience-query';
 import { pageForPageLinkFragment } from '@src/components/link/page-link-query';
 import { postForPostLinkFragment } from '@src/components/link/post-link-query';
 
@@ -32,17 +31,8 @@ export const heroBannerFragment = gql`
 
   fragment HeroBannerFragment on ComponentHeroBanner {
     ...HeroBannerFragmentBase
-    ntVariantsCollection(limit: 10) {
-      items {
-        ...HeroBannerFragmentBase
-        ntAudience {
-          ...NinetailedAudienceFragment
-        }
-      }
-    }
   }
 
-  ${ninetailedAudienceFragment}
   ${assetFragment}
   ${pageForPageLinkFragment}
   ${postForPostLinkFragment}

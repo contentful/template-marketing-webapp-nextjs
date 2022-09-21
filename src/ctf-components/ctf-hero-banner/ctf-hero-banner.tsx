@@ -8,9 +8,6 @@ import { HeroBannerFragment } from './__generated__/HeroBannerFragment';
 import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
 import PageLink from '@src/components/link/page-link';
 import PostLink from '@src/components/link/post-link';
-import PersonalizationFrame from '@src/components/personalization-frame';
-import { ContentfulContext } from '@src/contentful-context';
-import { WrapIf } from '@src/jsx-utils';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 import { getColorConfigFromPalette, HEADER_HEIGHT_MD, HEADER_HEIGHT } from '@src/theme';
 
@@ -95,7 +92,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export interface CtfHeroBannerInterface extends HeroBannerFragment {}
+export interface CtfHeroBannerInterface extends HeroBannerFragment { }
 
 const CtfHeroBanner: PersonalizedComponent<CtfHeroBannerInterface> = props => {
   const {
@@ -107,11 +104,8 @@ const CtfHeroBanner: PersonalizedComponent<CtfHeroBannerInterface> = props => {
     targetPage,
     colorPalette,
     heroSize: heroSizeBoolean,
-    ninetailed,
-    ntVariantsCollection,
   } = props;
   const layout = useContext(LayoutContext);
-  const { xrayActive } = useContext(ContentfulContext);
   const colorConfig = getColorConfigFromPalette(colorPalette || '');
   const imageStyle = imageStyleBoolean ? 'partial' : 'full';
   const heroSize =
@@ -124,77 +118,65 @@ const CtfHeroBanner: PersonalizedComponent<CtfHeroBannerInterface> = props => {
     [image, imageStyle, layout.containerWidth],
   );
   const classes = useStyles();
-
-  const isPersonalized =
-    ntVariantsCollection?.items !== undefined && ntVariantsCollection.items.length > 0;
-
   return (
-    <WrapIf
-      when={xrayActive === true && isPersonalized === true}
-      wrap={children => (
-        <PersonalizationFrame audienceId={ninetailed?.audience.id ?? null}>
-          {children}
-        </PersonalizationFrame>
-      )}>
-      <Container
-        maxWidth={false}
-        className={clsx(classes.root, heroSize === 'full_screen' ? classes.fullScreen : null)}
-        style={{
-          backgroundImage:
-            imageStyle === 'full' && backgroundImage ? `url(${backgroundImage!})` : undefined,
-          backgroundColor: colorConfig.backgroundColor,
-        }}>
-        {imageStyle === 'partial' && backgroundImage && (
-          <div className={classes.partialBgContainer}>
-            <div
-              className={classes.partialBg}
-              style={{
-                backgroundImage: `url(${backgroundImage!})`,
-              }}
-            />
+    <Container
+      maxWidth={false}
+      className={clsx(classes.root, heroSize === 'full_screen' ? classes.fullScreen : null)}
+      style={{
+        backgroundImage:
+          imageStyle === 'full' && backgroundImage ? `url(${backgroundImage!})` : undefined,
+        backgroundColor: colorConfig.backgroundColor,
+      }}>
+      {imageStyle === 'partial' && backgroundImage && (
+        <div className={classes.partialBgContainer}>
+          <div
+            className={classes.partialBg}
+            style={{
+              backgroundImage: `url(${backgroundImage!})`,
+            }}
+          />
+        </div>
+      )}
+      <div className={classes.innerContainer}>
+        {headline && (
+          <Typography
+            variant="h1"
+            className={classes.headline}
+            style={{ color: colorConfig.headlineColor }}>
+            {headline}
+          </Typography>
+        )}
+        {bodyText && (
+          <LayoutContext.Provider value={{ ...defaultLayout, parent: 'hero-banner-body' }}>
+            <div style={{ color: colorConfig.textColor }}>
+              <CtfRichtext {...bodyText} className={classes.body} />
+            </div>
+          </LayoutContext.Provider>
+        )}
+        {targetPage && ctaText && (
+          <div className={classes.ctaContainer}>
+            {targetPage.__typename === 'Page' && (
+              <PageLink
+                page={targetPage}
+                variant="contained"
+                color={colorConfig.buttonColor}
+                isButton>
+                {ctaText}
+              </PageLink>
+            )}
+            {targetPage.__typename === 'Post' && (
+              <PostLink
+                post={targetPage}
+                variant="contained"
+                color={colorConfig.buttonColor}
+                isButton>
+                {ctaText}
+              </PostLink>
+            )}
           </div>
         )}
-        <div className={classes.innerContainer}>
-          {headline && (
-            <Typography
-              variant="h1"
-              className={classes.headline}
-              style={{ color: colorConfig.headlineColor }}>
-              {headline}
-            </Typography>
-          )}
-          {bodyText && (
-            <LayoutContext.Provider value={{ ...defaultLayout, parent: 'hero-banner-body' }}>
-              <div style={{ color: colorConfig.textColor }}>
-                <CtfRichtext {...bodyText} className={classes.body} />
-              </div>
-            </LayoutContext.Provider>
-          )}
-          {targetPage && ctaText && (
-            <div className={classes.ctaContainer}>
-              {targetPage.__typename === 'Page' && (
-                <PageLink
-                  page={targetPage}
-                  variant="contained"
-                  color={colorConfig.buttonColor}
-                  isButton>
-                  {ctaText}
-                </PageLink>
-              )}
-              {targetPage.__typename === 'Post' && (
-                <PostLink
-                  post={targetPage}
-                  variant="contained"
-                  color={colorConfig.buttonColor}
-                  isButton>
-                  {ctaText}
-                </PostLink>
-              )}
-            </div>
-          )}
-        </div>
-      </Container>
-    </WrapIf>
+      </div>
+    </Container>
   );
 };
 
