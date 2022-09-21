@@ -1,14 +1,13 @@
 import { makeStyles, Theme } from '@material-ui/core';
 import clsx from 'clsx';
 import gql from 'graphql-tag';
-import { useRouter } from 'next/router';
-import React, { useContext } from 'react';
+import React from 'react';
 import { useQuery } from 'react-apollo';
 
 import { CtfBlogCategoriesQuery } from './__generated__/CtfBlogCategoriesQuery';
 
 import Link from '@src/components/link/link';
-import { ContentfulContext } from '@src/contentful-context';
+import { useContentfulContext } from '@src/contentful-context';
 import { useDataForPreview } from '@src/lib/apollo-hooks';
 
 const categoriesQuery = gql`
@@ -64,9 +63,9 @@ interface CtfCategoriesMenuPropsInterface {
 
 const CtfCategoriesMenu: React.FC<CtfCategoriesMenuPropsInterface> = props => {
   const { slug } = props;
-  const { locale } = useRouter();
+  const { locale } = useContentfulContext();
 
-  const { previewActive } = useContext(ContentfulContext);
+  const { previewActive } = useContentfulContext();
 
   const categoriesQueryResult = useQuery<CtfBlogCategoriesQuery>(categoriesQuery, {
     variables: { locale, preview: previewActive },

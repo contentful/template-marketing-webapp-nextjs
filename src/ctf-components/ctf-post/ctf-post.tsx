@@ -3,7 +3,7 @@ import { LocalOffer } from '@material-ui/icons';
 import clsx from 'clsx';
 import formatDate from 'date-fns/format';
 import { useTranslation } from 'next-i18next';
-import React, { useMemo, useContext } from 'react';
+import React, { useMemo } from 'react';
 
 import { PostFragment, PostFragment_contentfulMetadata_tags } from './__generated__/PostFragment';
 
@@ -14,7 +14,7 @@ import ComponentResolver from '@src/components/component-resolver';
 import PostContainer from '@src/components/layout/post-container';
 import Link from '@src/components/link/link';
 import XrayFrame from '@src/components/xray-frame';
-import { ContentfulContext } from '@src/contentful-context';
+import { useContentfulContext } from '@src/contentful-context';
 import { WrapIf } from '@src/jsx-utils';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 
@@ -99,7 +99,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const CtfPost = (props: CtfPostPropsInterface) => {
   const { t } = useTranslation();
-  const { xrayActive } = useContext(ContentfulContext);
+  const { xrayActive } = useContentfulContext();
   const {
     body,
     postName,

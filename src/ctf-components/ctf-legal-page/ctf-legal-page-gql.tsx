@@ -1,6 +1,5 @@
 import { gql } from 'apollo-boost';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 import React, { useContext } from 'react';
 import { useQuery } from 'react-apollo';
 
@@ -9,6 +8,7 @@ import CtfLegalPage from './ctf-legal-page';
 import { legalPageFragment } from './ctf-legal-page-query';
 
 import PageError from '@src/components/errors/page-error';
+import { useContentfulContext } from '@src/contentful-context';
 import { useDataForPreview } from '@src/lib/apollo-hooks';
 import { ApolloContext } from '@src/lib/with-providers';
 import { tryget } from '@src/utils';
@@ -31,7 +31,7 @@ const query = gql`
 
 const CtfLegalPageGgl = (props: Props) => {
   const { legalClient } = useContext(ApolloContext);
-  const { locale } = useRouter();
+  const { locale } = useContentfulContext();
 
   const slug = !props.slug || props.slug === '/' ? 'home' : props.slug;
 

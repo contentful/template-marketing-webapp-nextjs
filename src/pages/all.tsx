@@ -1,8 +1,7 @@
 import { Container, Typography } from '@material-ui/core';
 import gql from 'graphql-tag';
 import { NextPage, GetServerSideProps } from 'next';
-import { useRouter } from 'next/router';
-import React, { useContext } from 'react';
+import React from 'react';
 import { useQuery } from 'react-apollo';
 
 import CtfCategory from '@ctf-components/ctf-category/ctf-category';
@@ -29,7 +28,7 @@ import CtfProduct from '@ctf-components/ctf-product/ctf-product';
 import { productFragment } from '@ctf-components/ctf-product/ctf-product-query';
 import CtfQuote from '@ctf-components/ctf-quote/ctf-quote';
 import { quoteFragment } from '@ctf-components/ctf-quote/ctf-quote-query';
-import { ContentfulContext } from '@src/contentful-context';
+import { useContentfulContext } from '@src/contentful-context';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 import { useDataForPreview } from '@src/lib/apollo-hooks';
 import withProviders, { generateGetServerSideProps } from '@src/lib/with-providers';
@@ -155,7 +154,82 @@ const productTablesQuery = gql`
   ${productTableFragment}
 `;
 
-const renderAllEntries = ({ locale, previewActive, query, collectionKey, plural, Component }) => {
+const entries = [
+  {
+    query: postsQuery,
+    collectionKey: 'postCollection',
+    plural: 'posts',
+    Component: CtfPost,
+  },
+  {
+    query: categoriesQuery,
+    collectionKey: 'categoryCollection',
+    plural: 'categories',
+    Component: CtfCategory,
+  },
+  {
+    query: ctasQuery,
+    collectionKey: 'componentCtaCollection',
+    plural: "cta's",
+    Component: CtfCta,
+  },
+  {
+    query: duplexQuery,
+    collectionKey: 'componentDuplexCollection',
+    plural: 'duplexes',
+    Component: CtfDuplex,
+  },
+  {
+    query: externalAssetsQuery,
+    collectionKey: 'wrapperExternalAssetCollection',
+    plural: 'external assets',
+    Component: CtfExternalAsset,
+  },
+  {
+    query: featuredCardsQuery,
+    collectionKey: 'componentFeaturedCardsCollection',
+    plural: 'featured cards',
+    Component: CtfFeaturedCards,
+  },
+  {
+    query: heroBannersQuery,
+    collectionKey: 'componentHeroBannerCollection',
+    plural: 'hero banners',
+    Component: CtfHeroBanner,
+  },
+  {
+    query: infoBlocksQuery,
+    collectionKey: 'componentInfoBlockCollection',
+    plural: 'info blocks',
+    Component: CtfInfoBlock,
+  },
+  {
+    query: productTablesQuery,
+    collectionKey: 'componentProductTableCollection',
+    plural: 'product comparison tables',
+    Component: CtfProductTable,
+  },
+  {
+    query: personsQuery,
+    collectionKey: 'topicPersonCollection',
+    plural: 'persons',
+    Component: CtfPerson,
+  },
+  {
+    query: productsQuery,
+    collectionKey: 'topicProductCollection',
+    plural: 'products',
+    Component: CtfProduct,
+  },
+  {
+    query: quotesQuery,
+    collectionKey: 'componentQuoteCollection',
+    plural: 'quotes',
+    Component: CtfQuote,
+  },
+];
+
+const RenderEntry = ({ locale, previewActive, query, collectionKey, plural, Component }) => {
   const queryResult = useQuery(query, {
     variables: { locale, preview: previewActive },
   });
@@ -213,8 +287,8 @@ const renderAllEntries = ({ locale, previewActive, query, collectionKey, plural,
 };
 
 const AllPage: NextPage = () => {
-  const { previewActive } = useContext(ContentfulContext);
-  const { locale } = useRouter();
+  const { previewActive } = useContentfulContext();
+  const { locale } = useContentfulContext();
 
   if (typeof window === 'undefined') {
     return null;
@@ -228,101 +302,15 @@ const AllPage: NextPage = () => {
   return (
     <LayoutContext.Provider value={layoutConfig}>
       <div style={{ marginTop: '12rem' }}>
-        {renderAllEntries({
-          locale,
-          previewActive,
-          query: postsQuery,
-          collectionKey: 'postCollection',
-          plural: 'posts',
-          Component: CtfPost,
-        })}
-        {renderAllEntries({
-          locale,
-          previewActive,
-          query: categoriesQuery,
-          collectionKey: 'categoryCollection',
-          plural: 'categories',
-          Component: CtfCategory,
-        })}
-        {renderAllEntries({
-          locale,
-          previewActive,
-          query: ctasQuery,
-          collectionKey: 'componentCtaCollection',
-          plural: "cta's",
-          Component: CtfCta,
-        })}
-        {renderAllEntries({
-          locale,
-          previewActive,
-          query: duplexQuery,
-          collectionKey: 'componentDuplexCollection',
-          plural: 'duplexes',
-          Component: CtfDuplex,
-        })}
-        {renderAllEntries({
-          locale,
-          previewActive,
-          query: externalAssetsQuery,
-          collectionKey: 'wrapperExternalAssetCollection',
-          plural: 'external assets',
-          Component: CtfExternalAsset,
-        })}
-        {renderAllEntries({
-          locale,
-          previewActive,
-          query: featuredCardsQuery,
-          collectionKey: 'componentFeaturedCardsCollection',
-          plural: 'featured cards',
-          Component: CtfFeaturedCards,
-        })}
-        {renderAllEntries({
-          locale,
-          previewActive,
-          query: heroBannersQuery,
-          collectionKey: 'componentHeroBannerCollection',
-          plural: 'hero banners',
-          Component: CtfHeroBanner,
-        })}
-        {renderAllEntries({
-          locale,
-          previewActive,
-          query: infoBlocksQuery,
-          collectionKey: 'componentInfoBlockCollection',
-          plural: 'info blocks',
-          Component: CtfInfoBlock,
-        })}
-        {renderAllEntries({
-          locale,
-          previewActive,
-          query: productTablesQuery,
-          collectionKey: 'componentProductTableCollection',
-          plural: 'product comparison tables',
-          Component: CtfProductTable,
-        })}
-        {renderAllEntries({
-          locale,
-          previewActive,
-          query: personsQuery,
-          collectionKey: 'topicPersonCollection',
-          plural: 'persons',
-          Component: CtfPerson,
-        })}
-        {renderAllEntries({
-          locale,
-          previewActive,
-          query: productsQuery,
-          collectionKey: 'topicProductCollection',
-          plural: 'products',
-          Component: CtfProduct,
-        })}
-        {renderAllEntries({
-          locale,
-          previewActive,
-          query: quotesQuery,
-          collectionKey: 'componentQuoteCollection',
-          plural: 'quotes',
-          Component: CtfQuote,
+        {entries.map(entry => {
+          return (
+            <RenderEntry
+              key={entry.collectionKey}
+              {...entry}
+              locale={locale}
+              previewActive={previewActive}
+            />
+          );
         })}
       </div>
     </LayoutContext.Provider>

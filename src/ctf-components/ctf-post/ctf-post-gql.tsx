@@ -1,6 +1,5 @@
 import { Container } from '@material-ui/core';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 import React from 'react';
 import { useQuery } from 'react-apollo';
 
@@ -9,6 +8,7 @@ import CtfPost from './ctf-post';
 import { query } from './ctf-post-query';
 
 import EntryNotFound from '@src/components/errors/entry-not-found';
+import { useContentfulContext } from '@src/contentful-context';
 import { useDataForPreview } from '@src/lib/apollo-hooks';
 import { contentfulConfig } from 'contentful.config.mjs';
 
@@ -18,7 +18,7 @@ interface Props {
 }
 
 const CtfPostGql = (props: Props) => {
-  const { locale } = useRouter();
+  const { locale } = useContentfulContext();
   const queryResult = useQuery<CtfPostQuery>(query, {
     variables: { ...props },
   });

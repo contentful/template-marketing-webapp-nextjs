@@ -2,8 +2,7 @@ import { Container, makeStyles } from '@material-ui/core';
 import gql from 'graphql-tag';
 import { NextPage, GetServerSideProps } from 'next';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
-import React, { useContext } from 'react';
+import React from 'react';
 import { useQuery } from 'react-apollo';
 
 import { contentfulConfig } from '../../contentful.config.mjs';
@@ -14,7 +13,7 @@ import PageContainer from '@src/components/layout/page-container';
 import CategoryLink from '@src/components/link/category-link';
 import PageLink from '@src/components/link/page-link';
 import PostLink from '@src/components/link/post-link';
-import { ContentfulContext } from '@src/contentful-context';
+import { useContentfulContext } from '@src/contentful-context';
 import { useDataForPreview } from '@src/lib/apollo-hooks';
 import withProviders, { generateGetServerSideProps } from '@src/lib/with-providers';
 
@@ -78,9 +77,9 @@ const query = gql`
 `;
 
 const SitemapPage: NextPage = () => {
-  const { locale } = useRouter();
+  const { locale } = useContentfulContext();
 
-  const { appUrl, previewActive } = useContext(ContentfulContext);
+  const { appUrl, previewActive } = useContentfulContext();
   const queryResult = useQuery<SitemapQuery>(query, {
     variables: {
       locale,

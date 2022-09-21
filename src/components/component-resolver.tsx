@@ -1,12 +1,12 @@
 import { Box, Theme, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import clsx from 'clsx';
-import React, { useContext, useMemo } from 'react';
+import React, { useMemo } from 'react';
 
 import { componentGqlMap, componentMap } from '../mappings';
 import XrayFrame from './xray-frame';
 
-import { ContentfulContext } from '@src/contentful-context';
+import { useContentfulContext } from '@src/contentful-context';
 import { WrapIf } from '@src/jsx-utils';
 
 let previousComponent: string | null = null;
@@ -38,8 +38,10 @@ interface Props {
 
 const ComponentResolver = (props: Props) => {
   const { componentProps, inline = false } = props;
-  const { xrayActive, previewActive } = useContext(ContentfulContext);
+  const { xrayActive, previewActive } = useContentfulContext();
   const classes = useStyles();
+
+  const { locale } = useContentfulContext();
 
   const ComponentGql = componentGqlMap[componentProps.__typename];
 
@@ -98,6 +100,7 @@ const ComponentResolver = (props: Props) => {
         {Component ? (
           <Component
             {...componentProps}
+            locale={locale}
             className={props.className}
             previousComponent={previousComponentProp}
           />
@@ -107,6 +110,7 @@ const ComponentResolver = (props: Props) => {
             __typename={componentProps.__typename}
             className={props.className}
             preview={previewActive}
+            locale={locale}
             previousComponent={previousComponentProp}
           />
         )}

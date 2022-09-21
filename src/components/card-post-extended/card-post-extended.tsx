@@ -70,10 +70,10 @@ const CtfCardPostExtended = (props: CtfCardPostExtendedPropsInterface) => {
 
     return (
       <span className={classes.metaDate}>
-        {t('publishedByAuthorOnDate', {
-          author,
-          date: formatDate(new Date(publishedDate), 'MMM dd, yyyy'),
-        })}
+        {author &&
+          t('content.publishedByAuthorOnDate', {
+            date: formatDate(new Date(publishedDate), 'MMM dd, yyyy'),
+          })}
       </span>
     );
   }, [author, classes.metaDate, publishedDate, t]);

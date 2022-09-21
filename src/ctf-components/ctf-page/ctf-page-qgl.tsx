@@ -1,7 +1,6 @@
 import { gql } from 'apollo-boost';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
-import React, { useContext } from 'react';
+import React from 'react';
 import { useQuery } from 'react-apollo';
 
 import { contentfulConfig } from '../../../contentful.config.mjs';
@@ -10,7 +9,7 @@ import CtfPage from './ctf-page';
 import { pageFragment } from './ctf-page-query';
 
 import PageError from '@src/components/errors/page-error';
-import { ContentfulContext } from '@src/contentful-context';
+import { useContentfulContext } from '@src/contentful-context';
 import { useDataForPreview } from '@src/lib/apollo-hooks';
 import { tryget } from '@src/utils';
 
@@ -31,9 +30,10 @@ const query = gql`
 `;
 
 const CtfPageGgl = ({ slug: slugFromProps }: Props) => {
-  const { locale } = useRouter();
+  const { locale } = useContentfulContext();
+
   const slug = !slugFromProps || slugFromProps === '/' ? 'home' : slugFromProps;
-  const { previewActive } = useContext(ContentfulContext);
+  const { previewActive } = useContentfulContext();
 
   const queryResult = useQuery<CtfPageQuery>(query, {
     variables: { slug, locale, preview: previewActive },

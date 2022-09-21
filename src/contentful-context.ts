@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { contentfulConfig } from 'contentful.config.mjs';
+import i18nConfig from 'next-i18next.config.js';
+const { i18n } = i18nConfig;
 
 export interface ContentfulContextInterface {
+  locale: string;
   spaceIds: {
     main: string;
     legal: string;
@@ -16,6 +19,7 @@ export interface ContentfulContextInterface {
 }
 
 export const contentfulContextValue: ContentfulContextInterface = {
+  locale: i18n.defaultLocale,
   spaceIds: {
     main: contentfulConfig.contentful.main_space_id,
     legal: contentfulConfig.contentful.legal_space_id,
@@ -29,3 +33,5 @@ export const contentfulContextValue: ContentfulContextInterface = {
 };
 
 export const ContentfulContext = React.createContext(contentfulContextValue);
+
+export const useContentfulContext = () => useContext(ContentfulContext);

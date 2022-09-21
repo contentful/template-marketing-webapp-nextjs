@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router';
+import { useContentfulContext } from '@src/contentful-context';
 
 interface FormatCurrencyProps {
   value: number;
@@ -13,7 +13,7 @@ export const FormatCurrency = ({
   style = 'currency',
   currency = 'EUR',
 }: FormatCurrencyProps) => {
-  const { locale: localeFromRouter } = useRouter();
+  const { locale: localeFromRouter } = useContentfulContext();
 
   return (
     <>{new Intl.NumberFormat(locale || localeFromRouter, { style, currency }).format(value)}</>

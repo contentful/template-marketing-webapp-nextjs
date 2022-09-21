@@ -2,8 +2,7 @@ import { Container, Typography, makeStyles, Theme } from '@material-ui/core';
 import gql from 'graphql-tag';
 import { NextPage, GetServerSideProps } from 'next';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
-import React, { useContext } from 'react';
+import React from 'react';
 import { useQuery } from 'react-apollo';
 
 import { contentfulConfig } from '../../contentful.config.mjs';
@@ -14,7 +13,7 @@ import { postFragmentBase } from '@ctf-components/ctf-post/ctf-post-query';
 import CardPostExtended from '@src/components/card-post-extended/card-post-extended';
 import EntryNotFound from '@src/components/errors/entry-not-found';
 import CategoryContainer from '@src/components/layout/category-container';
-import { ContentfulContext } from '@src/contentful-context';
+import { useContentfulContext } from '@src/contentful-context';
 import { useDataForPreview } from '@src/lib/apollo-hooks';
 import withProviders, { generateGetServerSideProps } from '@src/lib/with-providers';
 
@@ -68,8 +67,8 @@ const query = gql`
 `;
 
 const BlogPage: NextPage = () => {
-  const { locale } = useRouter();
-  const { previewActive } = useContext(ContentfulContext);
+  const { locale, previewActive } = useContentfulContext();
+
   const queryResult = useQuery<CtfBlogQuery>(query, {
     variables: { locale, preview: previewActive },
   });

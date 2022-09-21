@@ -1,14 +1,15 @@
 import { Container, Typography, makeStyles, Theme, Button } from '@material-ui/core';
-import { NextPage } from 'next';
+import { GetServerSideProps, NextPage } from 'next';
 import { useTranslation } from 'next-i18next';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 import React from 'react';
 
 import { contentfulConfig } from '../../contentful.config.mjs';
 
 import PageContainer from '@src/components/layout/page-container';
 import Link from '@src/components/link/link';
+import { useContentfulContext } from '@src/contentful-context';
+import { generateGetServerSideProps } from '@src/lib/with-providers';
 
 const logoRatio = contentfulConfig.icon.height / contentfulConfig.icon.width;
 
@@ -87,7 +88,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 const SignUpPage: NextPage = () => {
-  const { locale } = useRouter();
+  const { locale } = useContentfulContext();
   const { t } = useTranslation();
   const classes = useStyles();
 
@@ -138,7 +139,7 @@ const SignUpPage: NextPage = () => {
                 </div>
                 <div className={classes.formField}>
                   <div className={classes.formFieldLabel}>
-                    <label htmlFor="sign-up-password">{t('generic.password')}</label>
+                    <label htmlFor="sign-up-password">{t('common.password')}</label>
                   </div>
                   <input
                     id="sign-up-password"
@@ -172,5 +173,9 @@ const SignUpPage: NextPage = () => {
     </>
   );
 };
+
+export const getServerSideProps: GetServerSideProps = generateGetServerSideProps({
+  Page: SignUpPage,
+});
 
 export default SignUpPage;

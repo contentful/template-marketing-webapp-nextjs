@@ -4,7 +4,7 @@ import throttle from 'lodash/throttle';
 import { useTranslation } from 'next-i18next';
 import Image, { ImageLoader } from 'next/image';
 import queryString from 'query-string';
-import React, { useState, useMemo, useRef, useEffect, useCallback, useContext } from 'react';
+import React, { useState, useMemo, useRef, useEffect, useCallback } from 'react';
 
 import { ProductTableFragment } from './__generated__/ProductTableFragment';
 
@@ -13,7 +13,7 @@ import { FormatCurrency } from '@src/components/format-currency';
 import Link from '@src/components/link/link';
 import PersonalizationFrame from '@src/components/personalization-frame';
 import SectionHeadlines from '@src/components/section-headlines/section-headlines';
-import { ContentfulContext } from '@src/contentful-context';
+import { useContentfulContext } from '@src/contentful-context';
 import { WrapIf } from '@src/jsx-utils';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 
@@ -136,7 +136,7 @@ const CtfProductTable: PersonalizedComponent<CtfProductTablePropsInterface> = pr
   const { headline, subline, productsCollection, ninetailed, ntVariantsCollection } = props;
 
   const classes = useStyles();
-  const { xrayActive } = useContext(ContentfulContext);
+  const { xrayActive } = useContentfulContext();
 
   const isPersonalized =
     ntVariantsCollection?.items !== undefined && ntVariantsCollection.items.length > 0;

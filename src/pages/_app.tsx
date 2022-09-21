@@ -35,6 +35,9 @@ const CustomApp = (props: AppProps) => {
     };
   }, [router.events]);
 
+  if (typeof router.locale === 'string') {
+    contentfulContextValue.locale = router.locale;
+  }
   contentfulContextValue.previewActive = !!router.query.preview;
   contentfulContextValue.xrayActive = !!router.query.xray;
 

@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 import React, { useMemo } from 'react';
 import { useQuery } from 'react-apollo';
 
@@ -7,6 +6,7 @@ import { CtfTagQuery } from './__generated__/CtfTagQuery';
 import CtfTag from './ctf-tag';
 import { query } from './ctf-tag-query';
 
+import { useContentfulContext } from '@src/contentful-context';
 import { useDataForPreview } from '@src/lib/apollo-hooks';
 import { contentfulConfig } from 'contentful.config.mjs';
 
@@ -16,7 +16,7 @@ interface Props {
 }
 
 const CtfTagGql = (props: Props) => {
-  const { locale } = useRouter();
+  const { locale } = useContentfulContext();
   const queryResult = useQuery<CtfTagQuery>(query, {
     variables: { ...props },
   });

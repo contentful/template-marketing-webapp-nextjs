@@ -1,8 +1,8 @@
 import { Box, makeStyles, Theme, Typography } from '@material-ui/core';
 import clsx from 'clsx';
-import React, { useContext } from 'react';
+import React from 'react';
 
-import { ContentfulContext } from '@src/contentful-context';
+import { useContentfulContext } from '@src/contentful-context';
 
 const useStyles = makeStyles((theme: Theme) => ({
   xframeRoot: {
@@ -52,7 +52,7 @@ interface Props {
 }
 
 const XrayFrame = (props: Props) => {
-  const contentfulContext = useContext(ContentfulContext);
+  const contentfulContext = useContentfulContext();
   const {
     spaceEnv,
     spaceIds: { main: spaceId },

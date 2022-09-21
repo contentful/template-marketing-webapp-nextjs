@@ -1,7 +1,7 @@
 import { makeStyles, Theme, Container } from '@material-ui/core';
 import { PersonalizedComponent } from '@ninetailed/experience.js-next';
 import clsx from 'clsx';
-import React, { useContext } from 'react';
+import React from 'react';
 
 import { InfoBlockFragment } from './__generated__/InfoBlockFragment';
 
@@ -9,7 +9,7 @@ import CtfAsset from '@ctf-components/ctf-asset/ctf-asset';
 import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
 import PersonalizationFrame from '@src/components/personalization-frame';
 import SectionHeadlines from '@src/components/section-headlines/section-headlines';
-import { ContentfulContext } from '@src/contentful-context';
+import { useContentfulContext } from '@src/contentful-context';
 import { WrapIf } from '@src/jsx-utils';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 import { getColorConfigFromPalette } from '@src/theme';
@@ -97,7 +97,7 @@ const CtfInfoBlock: PersonalizedComponent<CtfInfoBlockPropsInterface> = props =>
   } = props;
   const colorConfig = getColorConfigFromPalette(colorPalette || '');
   const classes = useStyles();
-  const { xrayActive } = useContext(ContentfulContext);
+  const { xrayActive } = useContentfulContext();
 
   const isPersonalized =
     ntVariantsCollection?.items !== undefined && ntVariantsCollection.items.length > 0;

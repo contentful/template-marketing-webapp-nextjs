@@ -17,7 +17,7 @@
   },
   "content": {
     "published": "Published",
-    "publishedByAuthorOnDate": "{{ author }} on {{ date }}"
+    "publishedByAuthorOnDate": " on {{ date }}"
   },
   "socials": {
     "findUsOn": "Find us on"

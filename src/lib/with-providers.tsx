@@ -6,10 +6,10 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React from 'react';
 import { ApolloProvider, getDataFromTree } from 'react-apollo';
 
-import { contentfulConfig } from '../../contentful.config.mjs';
-
+import { ContentfulContext, contentfulContextValue } from '@src/contentful-context';
 import { createCfulUrl, createClientWithLink, createLink } from '@src/lib/init-apollo';
 import colorfulTheme from '@src/theme';
+import { contentfulConfig } from 'contentful.config.mjs';
 import i18nConfig from 'next-i18next.config.js';
 
 const legalIntrospection = require('../../introspection/legal-introspection.json');
@@ -92,6 +92,7 @@ const withProviders = () => {
 };
 
 export default withProviders;
+
 export const generateGetServerSideProps =
   ({
     customGetServerSideProps,
@@ -142,30 +143,37 @@ export const generateGetServerSideProps =
     };
 
     try {
+      if (ctx.locale) {
+        contentfulContextValue.locale = ctx.locale;
+      }
+
       await getDataFromTree(
-        <NinetailedProvider
-          clientId={process.env.NEXT_PUBLIC_NINETAILED_API_KEY ?? ''}
-          environment="main"
-          plugins={[]}
-          // profile={ninetailed.profile}
-        >
-          <ApolloProvider client={mainApolloClient}>
-            <ApolloContext.Provider value={apolloContextValue}>
-              <ThemeProvider theme={colorfulTheme}>
-                <Page
-                  pageProps={{ props: newProps }}
-                  apolloConfigs={apolloConfigs}
-                  apolloClients={{
-                    main: mainApolloClient,
-                    legal: legalApolloClient,
-                  }}
-                  error={error}
-                  ssrQuery={ctx.query}
-                />
-              </ThemeProvider>
-            </ApolloContext.Provider>
-          </ApolloProvider>
-        </NinetailedProvider>,
+        <ContentfulContext.Provider value={contentfulContextValue}>
+          <NinetailedProvider
+            clientId={process.env.NEXT_PUBLIC_NINETAILED_API_KEY ?? ''}
+            environment="main"
+            plugins={[]}
+            // profile={ninetailed.profile}
+          >
+            <ApolloProvider client={mainApolloClient}>
+              <ApolloContext.Provider value={apolloContextValue}>
+                <ThemeProvider theme={colorfulTheme}>
+                  <Page
+                    locale={ctx.locale}
+                    pageProps={{ props: newProps }}
+                    apolloConfigs={apolloConfigs}
+                    apolloClients={{
+                      main: mainApolloClient,
+                      legal: legalApolloClient,
+                    }}
+                    error={error}
+                    ssrQuery={ctx.query}
+                  />
+                </ThemeProvider>
+              </ApolloContext.Provider>
+            </ApolloProvider>
+          </NinetailedProvider>
+        </ContentfulContext.Provider>,
       );
     } catch (e) {
       console.log('Pre-render error:', e);
