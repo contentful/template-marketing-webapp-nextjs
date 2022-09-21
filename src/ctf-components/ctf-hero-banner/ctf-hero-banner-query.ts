@@ -6,7 +6,7 @@ import { pageForPageLinkFragment } from '@src/components/link/page-link-query';
 import { postForPostLinkFragment } from '@src/components/link/post-link-query';
 
 export const heroBannerFragment = gql`
-  fragment HeroBannerFragmentBase on ComponentHeroBanner {
+  fragment HeroBannerFragment on ComponentHeroBanner {
     sys {
       id
     }
@@ -27,10 +27,6 @@ export const heroBannerFragment = gql`
     imageStyle
     heroSize
     colorPalette
-  }
-
-  fragment HeroBannerFragment on ComponentHeroBanner {
-    ...HeroBannerFragmentBase
   }
 
   ${assetFragment}
