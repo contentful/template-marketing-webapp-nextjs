@@ -63,9 +63,4 @@ export const componentGqlMap = {
   WrapperExternalAsset: dynamic(() =>
     import('./ctf-components/ctf-external-asset/ctf-external-asset-gql'),
   ),
-  NtMergetag: dynamic(() =>
-    import(
-      './ctf-components/ctf-ninetailed-merge-tag/ctf-ninetailed-merge-tag-gql'
-    ),
-  ),
 };
