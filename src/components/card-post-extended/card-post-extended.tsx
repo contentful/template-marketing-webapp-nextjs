@@ -1,15 +1,14 @@
 import { makeStyles, Theme, Typography } from '@material-ui/core';
 import formatDate from 'date-fns/format';
-import React, { useContext, useMemo } from 'react';
+import { useTranslation } from 'next-i18next';
+import React, { useMemo } from 'react';
 
 import CtfAsset from '@ctf-components/ctf-asset/ctf-asset';
 import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
 import Avatar from '@src/components/avatar/avatar';
 import Link from '@src/components/link/link';
-import { ContentfulContext } from '@src/contentful-context';
 import { PostFragmentBase } from '@src/ctf-components/ctf-post/__generated__/PostFragmentBase';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
-import { getLocaleConfig } from '@src/locales-map';
 
 interface CtfCardPostExtendedPropsInterface extends PostFragmentBase {}
 
@@ -59,9 +58,8 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 const CtfCardPostExtended = (props: CtfCardPostExtendedPropsInterface) => {
+  const { t } = useTranslation();
   const { postName, featuredImage, slug, introText, author, publishedDate } = props;
-  const { locale } = useContext(ContentfulContext);
-  const { lang, locale: realLocale } = getLocaleConfig(locale);
 
   const classes = useStyles();
 
@@ -72,15 +70,17 @@ const CtfCardPostExtended = (props: CtfCardPostExtendedPropsInterface) => {
 
     return (
       <span className={classes.metaDate}>
-        {author && <>{realLocale === 'de-DE' ? ', am ' : ', on '}</>}
-        {formatDate(new Date(publishedDate), 'MMM dd, yyyy')}
+        {author &&
+          t('content.publishedByAuthorOnDate', {
+            date: formatDate(new Date(publishedDate), 'MMM dd, yyyy'),
+          })}
       </span>
     );
-  }, [author, classes.metaDate, publishedDate, realLocale]);
+  }, [author, classes.metaDate, publishedDate, t]);
 
   return (
     <article className={classes.root}>
-      <Link href="/[lang]/post/[slug]" as={`/${lang}/post/${slug}`}>
+      <Link href={`/post/${slug}`}>
         {featuredImage && (
           <CtfAsset
             {...featuredImage}

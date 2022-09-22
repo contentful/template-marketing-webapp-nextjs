@@ -2,7 +2,7 @@ import { Container, Typography, makeStyles, Theme } from '@material-ui/core';
 import gql from 'graphql-tag';
 import { NextPage, GetServerSideProps } from 'next';
 import Head from 'next/head';
-import React, { useContext } from 'react';
+import React from 'react';
 import { useQuery } from 'react-apollo';
 
 import { CtfBlogQuery } from './__generated__/CtfBlogQuery';
@@ -12,11 +12,10 @@ import { postFragmentBase } from '@ctf-components/ctf-post/ctf-post-query';
 import CardPostExtended from '@src/components/card-post-extended/card-post-extended';
 import EntryNotFound from '@src/components/errors/entry-not-found';
 import CategoryContainer from '@src/components/layout/category-container';
-import { ContentfulContext } from '@src/contentful-context';
-import getContentfulConfig from '@src/get-contentful-config';
+import { useContentfulContext } from '@src/contentful-context';
 import { useDataForPreview } from '@src/lib/apollo-hooks';
 import withProviders, { generateGetServerSideProps } from '@src/lib/with-providers';
-import { getLocaleConfig } from '@src/locales-map';
+import { contentfulConfig } from 'contentful.config.mjs';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -68,13 +67,11 @@ const query = gql`
 `;
 
 const BlogPage: NextPage = () => {
-  const { locale, defaultLocale, previewActive } = useContext(ContentfulContext);
-  const { locale: realLocale, lang } = getLocaleConfig(locale || defaultLocale);
+  const { locale, previewActive } = useContentfulContext();
+
   const queryResult = useQuery<CtfBlogQuery>(query, {
     variables: { locale, preview: previewActive },
   });
-
-  const contentfulConfig = getContentfulConfig(realLocale);
 
   useDataForPreview(queryResult);
 
@@ -95,11 +92,7 @@ const BlogPage: NextPage = () => {
           property="og:description"
           content={contentfulConfig.meta.description}
         />
-        <meta
-          key="og:url"
-          property="og:url"
-          content={`${contentfulConfig.meta.url}/${lang}/blog`}
-        />
+        <meta key="og:url" property="og:url" content={`${contentfulConfig.meta.url}/blog`} />
         <meta key="og:locale" property="og:locale" content={locale.replace('-', '_')} />
       </Head>
     );

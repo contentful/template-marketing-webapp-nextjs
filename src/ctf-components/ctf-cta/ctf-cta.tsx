@@ -1,6 +1,6 @@
 import { Container, Theme, makeStyles, Typography } from '@material-ui/core';
 import { PersonalizedComponent } from '@ninetailed/experience.js-next';
-import React, { useContext } from 'react';
+import React from 'react';
 
 import { CtaFragment } from './__generated__/CtaFragment';
 
@@ -8,7 +8,7 @@ import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
 import PageLink from '@src/components/link/page-link';
 import PostLink from '@src/components/link/post-link';
 import PersonalizationFrame from '@src/components/personalization-frame';
-import { ContentfulContext } from '@src/contentful-context';
+import { useContentfulContext } from '@src/contentful-context';
 import { WrapIf } from '@src/jsx-utils';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 import { getColorConfigFromPalette } from '@src/theme';
@@ -52,7 +52,7 @@ const CtfCta: PersonalizedComponent<CtfCtaPropsInterface> = props => {
   } = props;
   const colorConfig = getColorConfigFromPalette(colorPalette || '');
   const classes = useStyles();
-  const { xrayActive } = useContext(ContentfulContext);
+  const { xrayActive } = useContentfulContext();
 
   const isPersonalized =
     ntVariantsCollection?.items !== undefined && ntVariantsCollection.items.length > 0;

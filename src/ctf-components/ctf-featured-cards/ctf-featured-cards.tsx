@@ -1,13 +1,13 @@
 import { makeStyles, Theme, Container } from '@material-ui/core';
 import { PersonalizedComponent } from '@ninetailed/experience.js-next';
-import React, { useContext } from 'react';
+import React from 'react';
 
 import { FeaturedCardsFragment } from './__generated__/FeaturedCardsFragment';
 
 import CardPost from '@src/components/card-post/card-post';
 import PersonalizationFrame from '@src/components/personalization-frame';
 import SectionHeadlines from '@src/components/section-headlines/section-headlines';
-import { ContentfulContext } from '@src/contentful-context';
+import { useContentfulContext } from '@src/contentful-context';
 import { WrapIf } from '@src/jsx-utils';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -50,7 +50,7 @@ export interface CtfFeaturedCardsPropsType extends FeaturedCardsFragment {}
 const CtfFeaturedCards: PersonalizedComponent<CtfFeaturedCardsPropsType> = props => {
   const { headline, featuredPostsCollection, ninetailed, ntVariantsCollection } = props;
   const classes = useStyles();
-  const { xrayActive } = useContext(ContentfulContext);
+  const { xrayActive } = useContentfulContext();
 
   const isPersonalized =
     ntVariantsCollection?.items !== undefined && ntVariantsCollection.items.length > 0;

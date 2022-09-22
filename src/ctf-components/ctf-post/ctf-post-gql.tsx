@@ -1,6 +1,6 @@
 import { Container } from '@material-ui/core';
 import Head from 'next/head';
-import React, { useContext } from 'react';
+import React from 'react';
 import { useQuery } from 'react-apollo';
 
 import { CtfPostQuery } from './__generated__/CtfPostQuery';
@@ -8,21 +8,17 @@ import CtfPost from './ctf-post';
 import { query } from './ctf-post-query';
 
 import EntryNotFound from '@src/components/errors/entry-not-found';
-import { ContentfulContext } from '@src/contentful-context';
-import getContentfulConfig from '@src/get-contentful-config';
+import { useContentfulContext } from '@src/contentful-context';
 import { useDataForPreview } from '@src/lib/apollo-hooks';
-import { getLocaleConfig } from '@src/locales-map';
+import { contentfulConfig } from 'contentful.config.mjs';
 
 interface Props {
   slug: string;
-  locale?: string;
   preview?: boolean;
 }
 
 const CtfPostGql = (props: Props) => {
-  const { defaultLocale, locale } = useContext(ContentfulContext);
-  const { lang, locale: realLocale } = getLocaleConfig(locale || defaultLocale);
-  const contentfulConfig = getContentfulConfig(realLocale);
+  const { locale } = useContentfulContext();
   const queryResult = useQuery<CtfPostQuery>(query, {
     variables: { ...props },
   });
@@ -87,13 +83,11 @@ const CtfPostGql = (props: Props) => {
           <meta
             key="og:url"
             property="og:url"
-            content={`${contentfulConfig.meta.url}/${lang}/post/${post.slug}`}
+            content={`${contentfulConfig.meta.url}/post/${post.slug}`}
           />
         )}
         <meta key="og:type" property="og:type" content="article" />
-        {props.locale && props.locale !== 'en-US' && (
-          <meta key="og:locale" property="og:locale" content={props.locale.replace('-', '_')} />
-        )}
+        <meta key="og:locale" property="og:locale" content={locale} />
       </Head>
       <CtfPost {...post} />
     </>

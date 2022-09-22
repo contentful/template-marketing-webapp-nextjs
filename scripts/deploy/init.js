@@ -9,7 +9,6 @@ const deployToVercel = require('./deployToVercel');
 const setPreviewUrls = require('./setPreviewUrls');
 const inviteToSpace = require('./inviteToSpace');
 const logToZapier = require('./logToZapier');
-const installNinetailedApp = require('./installNinetailedApp');
 const updateTranslatorRole = require('./updateTranslatorRole');
 
 const init = async input => {
@@ -201,37 +200,6 @@ const init = async input => {
     );
   } else {
     console.info('Skipping content import - reusing existing space');
-  }
-
-  // Install the Ninetailed app
-  if (inputSpaceId === undefined) {
-    const installNinetailedAppStartTime = new Date();
-    console.info('Installing the Ninetailed app...');
-
-    const installNinetailedAppResult = await installNinetailedApp({
-      spaceId,
-      cmaToken,
-      spaceName: createdSpaceName,
-      organizationId,
-    });
-
-    if (installNinetailedAppResult.state === 'error') {
-      await cleanupSpaceOnError();
-      return {
-        state: 'error',
-        error: installNinetailedAppResult.error,
-      };
-    }
-
-    const installNinetailedAppEndTime = new Date();
-
-    console.info(
-      `Ninetailed app installed. Done in ${Math.round(
-        (installNinetailedAppEndTime.getTime() - installNinetailedAppStartTime.getTime()) / 1000,
-      )}s`,
-    );
-  } else {
-    console.info('Skipping Ninetailed app installation - reusing existing space');
   }
 
   // Deploy to Vercel

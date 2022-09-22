@@ -9,11 +9,7 @@ import CtfBusinessInfo from '@ctf-components/ctf-business-info/ctf-business-info
 import PageContainer from '@src/components/layout/page-container';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 
-interface CtfLegalPagePropsInterface extends LegalPageFragment {
-  locale: string;
-}
-
-const CtfLegalPage = (props: CtfLegalPagePropsInterface) => {
+const CtfLegalPage = (props: LegalPageFragment) => {
   const { pageContent } = props;
 
   return (
@@ -21,17 +17,10 @@ const CtfLegalPage = (props: CtfLegalPagePropsInterface) => {
       {pageContent && (
         <LayoutContext.Provider value={defaultLayout} key={pageContent.sys.id}>
           <CtfBusinessInfo
-            body={
-              (pageContent as LegalPageFragment_pageContent_TopicBusinessInfo)
-                .body!
-            }
-            name={
-              (pageContent as LegalPageFragment_pageContent_TopicBusinessInfo)
-                .title
-            }
+            body={(pageContent as LegalPageFragment_pageContent_TopicBusinessInfo).body!}
+            name={(pageContent as LegalPageFragment_pageContent_TopicBusinessInfo).title}
             featuredImage={
-              (pageContent as LegalPageFragment_pageContent_TopicBusinessInfo)
-                .featuredImage
+              (pageContent as LegalPageFragment_pageContent_TopicBusinessInfo).featuredImage
             }
           />
         </LayoutContext.Provider>

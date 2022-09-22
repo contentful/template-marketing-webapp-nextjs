@@ -1,26 +1,22 @@
 import Head from 'next/head';
-import React, { useContext, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { useQuery } from 'react-apollo';
 
 import { CtfTagQuery } from './__generated__/CtfTagQuery';
 import CtfTag from './ctf-tag';
 import { query } from './ctf-tag-query';
 
-import { ContentfulContext } from '@src/contentful-context';
-import getContentfulConfig from '@src/get-contentful-config';
+import { useContentfulContext } from '@src/contentful-context';
 import { useDataForPreview } from '@src/lib/apollo-hooks';
-import { getLocaleConfig } from '@src/locales-map';
+import { contentfulConfig } from 'contentful.config.mjs';
 
 interface Props {
   id: string;
-  locale?: string;
   preview?: boolean;
 }
 
 const CtfTagGql = (props: Props) => {
-  const { defaultLocale, locale } = useContext(ContentfulContext);
-  const { lang, locale: realLocale } = getLocaleConfig(locale || defaultLocale);
-  const contentfulConfig = getContentfulConfig(realLocale);
+  const { locale } = useContentfulContext();
   const queryResult = useQuery<CtfTagQuery>(query, {
     variables: { ...props },
   });
@@ -67,12 +63,10 @@ const CtfTagGql = (props: Props) => {
           <meta
             key="og:url"
             property="og:url"
-            content={`${contentfulConfig.meta.url}/${lang}/tag/${tag.id}`}
+            content={`${contentfulConfig.meta.url}/tag/${tag.id}`}
           />
         )}
-        {props.locale && props.locale !== 'en-US' && (
-          <meta key="og:locale" property="og:locale" content={props.locale.replace('-', '_')} />
-        )}
+        <meta key="og:locale" property="og:locale" content={locale} />
       </Head>
       <CtfTag posts={queryResult.data.postCollection?.items || []} tag={tag} />
     </>

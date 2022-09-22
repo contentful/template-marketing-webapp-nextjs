@@ -10,14 +10,11 @@ import {
 } from '@material-ui/core';
 import { Menu } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/styles';
-import React, { useContext, useMemo } from 'react';
+import { useTranslation } from 'next-i18next';
 
 import Link from '@src/components/link/link';
-import { ContentfulContext } from '@src/contentful-context';
-import getContentfulConfig from '@src/get-contentful-config';
-import { getLocaleConfig } from '@src/locales-map';
-import pathToNextLinkHref from '@src/routing/path-to-next-link-href';
 import { HEADER_HEIGHT, HEADER_HEIGHT_MD, CONTAINER_WIDTH } from '@src/theme';
+import { contentfulConfig } from 'contentful.config.mjs';
 
 const useStyles = makeStyles((theme: Theme) => ({
   appbar: {
@@ -130,38 +127,16 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 interface HeaderPropsInterface {
-  locale?: string;
   onMenuClick?: () => any;
 }
 
 const Header = (props: HeaderPropsInterface) => {
-  const { defaultLocale } = useContext(ContentfulContext);
-  const { onMenuClick, locale } = props;
+  const { t } = useTranslation();
+  const { onMenuClick } = props;
   const classes = useStyles();
-  const { lang, locale: realLocale } = getLocaleConfig(locale || defaultLocale);
-
-  const contentfulConfig = useMemo(() => {
-    return getContentfulConfig(realLocale);
-  }, [realLocale]);
 
   const renderMenuItem = (menuItem: { label: string; location?: string }): string | JSX.Element => {
-    if (menuItem.location === undefined) {
-      return menuItem.label;
-    }
-
-    const internalHref = pathToNextLinkHref(menuItem.location);
-
-    if (internalHref === null) {
-      // It looks like this is not an internal link, at least not one that we
-      // recognize, just render a regular anchor
-      return <a href={menuItem.location}>{menuItem.label}</a>;
-    }
-
-    return (
-      <Link href={internalHref} as={`/${lang}${menuItem.location}`}>
-        {menuItem.label}
-      </Link>
-    );
+    return <Link href={menuItem.location}>{menuItem.label}</Link>;
   };
 
   const renderMenuItemChildren = (menuItem: {
@@ -192,7 +167,7 @@ const Header = (props: HeaderPropsInterface) => {
           style={{
             maxWidth: `${CONTAINER_WIDTH / 10}rem`,
           }}>
-          <Link href="/[lang]" as={`/${lang}`} withoutMaterial>
+          <Link href="/" withoutMaterial>
             <img
               src={contentfulConfig.header.logo}
               className={classes.logo}
@@ -220,13 +195,12 @@ const Header = (props: HeaderPropsInterface) => {
                   <ul className={classes.accountMenu}>
                     <li className={classes.accountMenuItem}>
                       <Link
-                        href="/[lang]/sign-up"
-                        as={`/${lang}/sign-up`}
+                        href="/sign-up"
                         isButton
                         variant="contained"
                         color="primary"
                         size="small">
-                        {realLocale === 'de-DE' ? 'Anmelden' : 'Sign Up'}
+                        {t('common.signUp')}
                       </Link>
                     </li>
                     <li className={classes.accountMenuItem}>
@@ -251,7 +225,7 @@ const Header = (props: HeaderPropsInterface) => {
                             </defs>
                           </SvgIcon>
                         }>
-                        {realLocale === 'de-DE' ? 'Einloggen' : 'Sign In'}
+                        {t('common.signIn')}
                       </Link>
                     </li>
                   </ul>
