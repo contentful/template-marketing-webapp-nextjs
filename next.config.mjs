@@ -6,11 +6,14 @@ import nextComposePlugins from 'next-compose-plugins';
 import { headers } from './config/headers.mjs';
 import { includePolyfills } from './config/includePolyfills.mjs';
 import { plugins } from './config/plugins.mjs';
+import i18nConfig from './next-i18next.config.js';
+
+const { i18n } = i18nConfig;
 
 /**
  * https://github.com/cyrilwanner/next-compose-plugins/issues/59
  */
-const { withPlugins } = nextComposePlugins.extend(() => ({}))
+const { withPlugins } = nextComposePlugins.extend(() => ({}));
 
 dotenv.config();
 
@@ -19,6 +22,7 @@ dotenv.config();
  * documentation: https://nextjs.org/docs/api-reference/next.config.js/introduction
  */
 export default withPlugins(plugins, {
+  i18n,
   /**
    * add the environment variables you would like exposed to the client here
    * documentation: https://nextjs.org/docs/api-reference/next.config.js/environment-variables
@@ -68,24 +72,24 @@ export default withPlugins(plugins, {
 
   webpack(config, options) {
     if (!options.isServer) {
-      import('circular-dependency-plugin').then(
-        ({ default: CircularDependencyPlugin }) => {
-          config.plugins.push(
-            new CircularDependencyPlugin({
-              exclude: /a\.js|node_modules/,
-              failOnError: false,
-              allowAsyncCycles: false,
-              cwd: process.cwd(),
-            }),
-          );
-        },
-      );
+      import('circular-dependency-plugin').then(({ default: CircularDependencyPlugin }) => {
+        config.plugins.push(
+          new CircularDependencyPlugin({
+            exclude: /a\.js|node_modules/,
+            failOnError: false,
+            allowAsyncCycles: false,
+            cwd: process.cwd(),
+          }),
+        );
+      });
     }
 
     config.module.rules.push({
       test: /\.svg$/,
-      use: ["@svgr/webpack"]
+      use: ['@svgr/webpack'],
     });
+
+    config.resolve.fallback = { ...config.resolve.fallback, fs: false }; // https://stackoverflow.com/questions/64926174/module-not-found-cant-resolve-fs-in-next-js-application
 
     includePolyfills(config);
 

@@ -1,5 +1,5 @@
 import { Theme, makeStyles, Typography, Container } from '@material-ui/core';
-import React, { useContext } from 'react';
+import React from 'react';
 
 import { CategoryFragment } from './__generated__/CategoryFragment';
 import { CtfCategoryQuery_postCollection_items } from './__generated__/CtfCategoryQuery';
@@ -9,10 +9,9 @@ import CardPostExtended from '@src/components/card-post-extended/card-post-exten
 import CategoryContainer from '@src/components/layout/category-container';
 import Link from '@src/components/link/link';
 import XrayFrame from '@src/components/xray-frame';
-import { ContentfulContext } from '@src/contentful-context';
+import { useContentfulContext } from '@src/contentful-context';
 import { WrapIf } from '@src/jsx-utils';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
-import { getLocaleConfig } from '@src/locales-map';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -70,8 +69,7 @@ interface CtfCategoryPropsInterface extends CategoryFragment {
 
 const CtfCategory = (props: CtfCategoryPropsInterface) => {
   const { posts, slug } = props;
-  const { locale, xrayActive } = useContext(ContentfulContext);
-  const { lang } = getLocaleConfig(locale);
+  const { xrayActive } = useContentfulContext();
 
   const classes = useStyles();
 
@@ -94,11 +92,7 @@ const CtfCategory = (props: CtfCategoryPropsInterface) => {
               <div>
                 <div className={classes.containerNarrow}>
                   <div className={classes.titleContainer}>
-                    <Link
-                      href="/[lang]/blog"
-                      as={`/${lang}/blog`}
-                      withoutMaterial
-                      className={classes.title}>
+                    <Link href="/blog" withoutMaterial className={classes.title}>
                       <Typography variant="h1">Blog</Typography>
                     </Link>
                     <CategoriesMenu slug={slug ?? undefined} />

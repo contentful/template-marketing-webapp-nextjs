@@ -2,21 +2,20 @@ import { Container, makeStyles } from '@material-ui/core';
 import gql from 'graphql-tag';
 import { NextPage, GetServerSideProps } from 'next';
 import Head from 'next/head';
-import React, { useContext } from 'react';
+import React from 'react';
 import { useQuery } from 'react-apollo';
 
 import { SitemapQuery } from './__generated__/SitemapQuery';
 
+import CtfSectionHeadline from '@ctf-components/ctf-section-headline/ctf-section-headline';
 import PageContainer from '@src/components/layout/page-container';
 import CategoryLink from '@src/components/link/category-link';
 import PageLink from '@src/components/link/page-link';
 import PostLink from '@src/components/link/post-link';
-import { ContentfulContext } from '@src/contentful-context';
-import CtfSectionHeadline from '@src/ctf-components/ctf-section-headline/ctf-section-headline';
-import getContentfulConfig from '@src/get-contentful-config';
+import { useContentfulContext } from '@src/contentful-context';
 import { useDataForPreview } from '@src/lib/apollo-hooks';
 import withProviders, { generateGetServerSideProps } from '@src/lib/with-providers';
-import { getLocaleConfig } from '@src/locales-map';
+import { contentfulConfig } from 'contentful.config.mjs';
 
 const useStyles = makeStyles(theme => ({
   sitemapRoot: {
@@ -78,16 +77,15 @@ const query = gql`
 `;
 
 const SitemapPage: NextPage = () => {
-  const { appUrl, locale, previewActive, defaultLocale } = useContext(ContentfulContext);
-  const { locale: realLocale, lang } = getLocaleConfig(locale || defaultLocale);
+  const { locale } = useContentfulContext();
+
+  const { appUrl, previewActive } = useContentfulContext();
   const queryResult = useQuery<SitemapQuery>(query, {
     variables: {
       locale,
       preview: previewActive,
     },
   });
-
-  const contentfulConfig = getContentfulConfig(realLocale);
 
   const classes = useStyles();
 
@@ -139,7 +137,7 @@ const SitemapPage: NextPage = () => {
         <meta
           key="og:url"
           property="og:url"
-          content={`${contentfulConfig.meta.url}/${lang}/sitemap`}
+          content={`${contentfulConfig.meta.url}/${locale}/sitemap`}
         />
         <meta key="og:locale" property="og:locale" content={locale.replace('-', '_')} />
       </Head>

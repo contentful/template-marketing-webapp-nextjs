@@ -4,19 +4,16 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 import '@src/components/layout/layout.css';
 import { NinetailedProvider } from '@ninetailed/experience.js-next';
 import { NinetailedPreviewPlugin } from '@ninetailed/experience.js-plugin-preview';
-import App, { AppContext, AppProps } from 'next/app';
+import { appWithTranslation } from 'next-i18next';
+import { AppProps } from 'next/app';
 import Head from 'next/head';
 import React, { useEffect } from 'react';
 
 import Layout from '@src/components/layout/layout';
 import Settings from '@src/components/settings/settings';
-import {
-  contentfulConfig,
-  ContentfulContext,
-  contentfulContextValue,
-} from '@src/contentful-context';
-import { getLocaleConfig } from '@src/locales-map';
+import { ContentfulContext, contentfulContextValue } from '@src/contentful-context';
 import colorfulTheme from '@src/theme';
+import { contentfulConfig } from 'contentful.config.mjs';
 
 fontawesomeConfig.autoAddCss = false;
 
@@ -35,11 +32,11 @@ const CustomApp = (props: AppProps) => {
     return () => {
       router.events.off('routeChangeComplete', () => null);
     };
-  }, []);
+  }, [router.events]);
 
-  contentfulContextValue.locale = getLocaleConfig(
-    (router.query.lang as string) || contentfulConfig.contentful.default_locale,
-  ).locale;
+  if (typeof router.locale === 'string') {
+    contentfulContextValue.locale = router.locale;
+  }
   contentfulContextValue.previewActive = !!router.query.preview;
   contentfulContextValue.xrayActive = !!router.query.xray;
 
@@ -94,9 +91,7 @@ const CustomApp = (props: AppProps) => {
             <meta key="og:image:height" property="og:image:height" content="630" />
             <meta key="og:type" property="og:type" content="website" />
           </Head>
-          <Layout
-            locale={contentfulContextValue.locale}
-            preview={contentfulContextValue.previewActive}>
+          <Layout preview={contentfulContextValue.previewActive}>
             <Component {...pageProps} err={(props as any).err} />
             <Settings />
           </Layout>
@@ -106,27 +101,4 @@ const CustomApp = (props: AppProps) => {
   );
 };
 
-CustomApp.getInitialProps = async (appContext: AppContext) => {
-  const pageProps = await App.getInitialProps(appContext);
-
-  // const profile =
-  //   typeof window === 'undefined'
-  //     ? await getServerSideProfile(
-  //         appContext.ctx as unknown as GetServerSidePropsContext,
-  //         {
-  //           apiKey: process.env.NEXT_PUBLIC_NINETAILED_API_KEY ?? '',
-  //         },
-  //       )
-  //     : undefined;
-
-  const previewAudiences = appContext.ctx.query.nt_preview_audience
-    ? [appContext.ctx.query.nt_preview_audience]
-    : [];
-
-  return {
-    ...pageProps,
-    // ninetailed: { profile, preview: { audiences: previewAudiences.flat() } },
-  };
-};
-
-export default CustomApp;
+export default appWithTranslation(CustomApp);

@@ -1,15 +1,13 @@
 import { Container, Typography, makeStyles, Theme, Button } from '@material-ui/core';
-import { NextPage } from 'next';
+import { GetServerSideProps, NextPage } from 'next';
+import { useTranslation } from 'next-i18next';
 import Head from 'next/head';
-import React, { useContext } from 'react';
 
 import PageContainer from '@src/components/layout/page-container';
 import Link from '@src/components/link/link';
-import { ContentfulContext } from '@src/contentful-context';
-import getContentfulConfig from '@src/get-contentful-config';
-import { getLocaleConfig } from '@src/locales-map';
-
-let contentfulConfig = getContentfulConfig();
+import { useContentfulContext } from '@src/contentful-context';
+import { generateGetServerSideProps } from '@src/lib/with-providers';
+import { contentfulConfig } from 'contentful.config.mjs';
 
 const logoRatio = contentfulConfig.icon.height / contentfulConfig.icon.width;
 
@@ -88,11 +86,10 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 const SignInPage: NextPage = () => {
-  const { defaultLocale, locale } = useContext(ContentfulContext);
-  const { lang, locale: realLocale } = getLocaleConfig(locale || defaultLocale);
-  const classes = useStyles();
+  const { t } = useTranslation();
 
-  contentfulConfig = getContentfulConfig(realLocale);
+  const { locale } = useContentfulContext();
+  const classes = useStyles();
 
   return (
     <>
@@ -105,11 +102,7 @@ const SignInPage: NextPage = () => {
           property="og:description"
           content={contentfulConfig.meta.description}
         />
-        <meta
-          key="og:url"
-          property="og:url"
-          content={`${contentfulConfig.meta.url}/${lang}/sign-in`}
-        />
+        <meta key="og:url" property="og:url" content={`${contentfulConfig.meta.url}/sign-in`} />
         <meta key="og:locale" property="og:locale" content={locale.replace('-', '_')} />
       </Head>
       <PageContainer className={classes.page}>
@@ -126,9 +119,7 @@ const SignInPage: NextPage = () => {
             </header>
             <form className={classes.form}>
               <Typography variant="h3" component="h1">
-                {realLocale === 'de-DE'
-                  ? 'Melden Sie sich bei Ihrem GoCoin-Konto an'
-                  : 'Sign into your GoCoin account'}
+                {t('common.signInAccount')}
               </Typography>
               <div className={classes.formFields}>
                 <div className={classes.formField}>
@@ -140,11 +131,9 @@ const SignInPage: NextPage = () => {
                 </div>
                 <div className={classes.formField}>
                   <div className={classes.formFieldLabel}>
-                    <label htmlFor="sign-in-password">
-                      {realLocale === 'de-DE' ? 'Kennwort' : 'Password'}
-                    </label>
-                    <a href="#" className={classes.forgotPassword}>
-                      {realLocale === 'de-DE' ? 'Kennwort vergessen?' : 'Forgot Password?'}
+                    <label htmlFor="sign-in-password">{t('common.password')}</label>
+                    <a href="/src/pages/sign-in#" className={classes.forgotPassword}>
+                      {t('common.forgotPassword')}
                     </a>
                   </div>
                   <input
@@ -156,18 +145,17 @@ const SignInPage: NextPage = () => {
                 </div>
                 <div className={classes.formField}>
                   <Button variant="contained" color="primary" className={classes.signIn}>
-                    {realLocale === 'de-DE' ? 'Einloggen' : 'Sign In'}
+                    {t('common.signIn')}
                   </Button>
                   <Typography className={classes.signUpText}>
-                    {realLocale === 'de-DE' ? 'Sie haben kein Konto?' : "Don't have an account?"}{' '}
+                    {t('common.noAccount')}
                     <Link
-                      href="/[lang]/sign-up"
-                      as={`/${lang}/sign-up`}
+                      href="/sign-up"
                       variant="text"
                       color="primary"
                       underline
                       className={classes.signUp}>
-                      {realLocale === 'de-DE' ? 'Anmelden' : 'Sign Up'}
+                      {t('common.signUp')}
                     </Link>
                   </Typography>
                 </div>
@@ -179,5 +167,9 @@ const SignInPage: NextPage = () => {
     </>
   );
 };
+
+export const getServerSideProps: GetServerSideProps = generateGetServerSideProps({
+  Page: SignInPage,
+});
 
 export default SignInPage;

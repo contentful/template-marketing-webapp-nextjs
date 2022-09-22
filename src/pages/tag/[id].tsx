@@ -1,9 +1,9 @@
 import { NextPage, GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
-import React, { useContext } from 'react';
+import React from 'react';
 
-import { ContentfulContext } from '@src/contentful-context';
-import CtfTagGgl from '@src/ctf-components/ctf-tag/ctf-tag-gql';
+import CtfTagGgl from '@ctf-components/ctf-tag/ctf-tag-gql';
+import { useContentfulContext } from '@src/contentful-context';
 import withProviders, { generateGetServerSideProps } from '@src/lib/with-providers';
 
 interface TagPagePropsInterface {
@@ -15,10 +15,10 @@ interface TagPagePropsInterface {
 const TagPage: NextPage<TagPagePropsInterface> = props => {
   const router = useRouter();
   const query = router ? router.query : props.ssrQuery;
-  const { locale, previewActive } = useContext(ContentfulContext);
+  const { previewActive } = useContentfulContext();
   const id = query ? (query.id as string) : '';
 
-  return <CtfTagGgl locale={locale} id={id} preview={previewActive} />;
+  return <CtfTagGgl id={id} preview={previewActive} />;
 };
 
 const TagPageWithProviders = withProviders()(TagPage);

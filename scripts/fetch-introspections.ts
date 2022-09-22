@@ -1,14 +1,13 @@
-/* eslint-disable no-console */
 require('dotenv').config();
 
 import fs from 'fs';
 import path from 'path';
-import getContentfulConfig from '../src/get-contentful-config';
+
 import { createCfulUrl, introspect } from '../src/lib/init-apollo';
 
-const OUT = 'introspection';
+import { contentfulConfig } from 'contentful.config.mjs';
 
-const contentfulConfig = getContentfulConfig();
+const OUT = 'introspection';
 
 async function start() {
   const items = [

@@ -2,12 +2,12 @@ import { Box, makeStyles, Theme, Typography } from '@material-ui/core';
 import { Face } from '@material-ui/icons';
 import clsx from 'clsx';
 import gql from 'graphql-tag';
-import React, { useContext, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { useQuery } from 'react-apollo';
 
 import { CtfPersonalizationFrameQuery } from './__generated__/CtfPersonalizationFrameQuery';
 
-import { ContentfulContext } from '@src/contentful-context';
+import { useContentfulContext } from '@src/contentful-context';
 
 const useStyles = makeStyles((theme: Theme) => ({
   xframeRoot: {
@@ -68,7 +68,7 @@ interface Props {
 }
 
 const PersonalizationFrame = (props: Props) => {
-  const contentfulContext = useContext(ContentfulContext);
+  const contentfulContext = useContentfulContext();
   const {
     spaceEnv,
     spaceIds: { main: spaceId },

@@ -1,9 +1,7 @@
 import { NextPage, GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
-import React, { useContext } from 'react';
 
-import { ContentfulContext } from '@src/contentful-context';
-import CtfPageGgl from '@src/ctf-components/ctf-page/ctf-page-qgl';
+import CtfPageGgl from '@ctf-components/ctf-page/ctf-page-qgl';
 import withProviders, { generateGetServerSideProps } from '@src/lib/with-providers';
 
 interface SlugPagePropsInterface {
@@ -12,13 +10,12 @@ interface SlugPagePropsInterface {
   };
 }
 
-const SlugPage: NextPage<SlugPagePropsInterface> = props => {
+const SlugPage: NextPage<SlugPagePropsInterface> = ({ ssrQuery }) => {
   const router = useRouter();
-  const query = router ? router.query : props.ssrQuery;
-  const { locale } = useContext(ContentfulContext);
+  const query = router ? router.query : ssrQuery;
   const slug = query ? (query.slug as string) : '';
 
-  return <CtfPageGgl locale={locale} slug={slug} />;
+  return <CtfPageGgl slug={slug} />;
 };
 
 const SlugPageWithProviders = withProviders()(SlugPage);

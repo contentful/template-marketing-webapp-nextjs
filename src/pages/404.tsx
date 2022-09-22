@@ -1,4 +1,5 @@
 import React from 'react';
+
 import PageError from '@src/components/errors/page-error';
 
 const ErrorPage404 = () => {

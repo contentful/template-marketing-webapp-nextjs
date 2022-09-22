@@ -1,8 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 import Link from '@src/components/link/link';
-import { ContentfulContext } from '@src/contentful-context';
-import { getLocaleConfig } from '@src/locales-map';
 
 export type PageLinkPage = {
   sys: { id: string };
@@ -36,21 +34,10 @@ interface Props {
 export type PageLinkProps = Props;
 
 const PageLink = (props: Props) => {
-  const { locale, defaultLocale } = useContext(ContentfulContext);
-  const { lang } = getLocaleConfig(locale || defaultLocale);
-
-  let pathname = `/[lang]/[slug]`;
-  const as = props.page.slug ? `/${lang}/${props.page.slug}` : `/${lang}`;
-
-  if (as.endsWith('/sign-up')) {
-    pathname = `/[lang]/sign-up`;
-  } else if (as.endsWith('/sign-in')) {
-    pathname = `/[lang]/sign-in`;
-  }
+  const pathname = props.page.slug ? `/${props.page.slug}` : ``;
 
   const linkProps = {
     href: pathname,
-    as,
     className: props.className,
     onClick: props.onClick,
     withoutMaterial: props.withoutMaterial,
@@ -63,7 +50,7 @@ const PageLink = (props: Props) => {
     urlParams: props.urlParams,
   };
 
-  return <Link {...linkProps}>{props.render ? props.render(as) : props.children}</Link>;
+  return <Link {...linkProps}>{props.render ? props.render(pathname) : props.children}</Link>;
 };
 
 export default PageLink;

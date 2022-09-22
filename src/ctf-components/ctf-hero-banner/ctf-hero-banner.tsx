@@ -9,7 +9,7 @@ import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
 import PageLink from '@src/components/link/page-link';
 import PostLink from '@src/components/link/post-link';
 import PersonalizationFrame from '@src/components/personalization-frame';
-import { ContentfulContext } from '@src/contentful-context';
+import { useContentfulContext } from '@src/contentful-context';
 import { WrapIf } from '@src/jsx-utils';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 import { getColorConfigFromPalette, HEADER_HEIGHT_MD, HEADER_HEIGHT } from '@src/theme';
@@ -111,7 +111,7 @@ const CtfHeroBanner: PersonalizedComponent<CtfHeroBannerInterface> = props => {
     ntVariantsCollection,
   } = props;
   const layout = useContext(LayoutContext);
-  const { xrayActive } = useContext(ContentfulContext);
+  const { xrayActive } = useContentfulContext();
   const colorConfig = getColorConfigFromPalette(colorPalette || '');
   const imageStyle = imageStyleBoolean ? 'partial' : 'full';
   const heroSize =

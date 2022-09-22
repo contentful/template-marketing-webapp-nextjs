@@ -10,12 +10,10 @@ export interface CtfPagePropsInterface extends PageFragment {}
 
 const CtfPage = (props: CtfPagePropsInterface) => {
   const topSection =
-    props.topSectionCollection &&
-    props.topSectionCollection.items.filter((it) => !!it);
+    props.topSectionCollection && props.topSectionCollection.items.filter(it => !!it);
   const content = props.pageContent;
   const extraSection =
-    props.extraSectionCollection &&
-    props.extraSectionCollection.items.filter((it) => !!it);
+    props.extraSectionCollection && props.extraSectionCollection.items.filter(it => !!it);
 
   const layoutConfig = {
     ...defaultLayout,
@@ -25,7 +23,7 @@ const CtfPage = (props: CtfPagePropsInterface) => {
   return (
     <PageContainer>
       {topSection &&
-        topSection.map((entry) => (
+        topSection.map(entry => (
           <LayoutContext.Provider value={layoutConfig} key={entry!.sys.id}>
             <ComponentResolver componentProps={entry!} />
           </LayoutContext.Provider>
@@ -38,7 +36,7 @@ const CtfPage = (props: CtfPagePropsInterface) => {
       )}
 
       {extraSection &&
-        extraSection.map((entry) => (
+        extraSection.map(entry => (
           <LayoutContext.Provider value={layoutConfig} key={entry!.sys.id}>
             <ComponentResolver componentProps={entry!} />
           </LayoutContext.Provider>

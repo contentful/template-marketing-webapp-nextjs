@@ -1,14 +1,12 @@
 import { makeStyles, Theme, Container, Typography } from '@material-ui/core';
-import React, { useContext } from 'react';
+import React from 'react';
 
 import { ProductFragment } from './__generated__/ProductFragment';
 
 import CtfAsset from '@ctf-components/ctf-asset/ctf-asset';
 import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
 import Link from '@src/components/link/link';
-import { ContentfulContext } from '@src/contentful-context';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
-import { getLocaleConfig } from '@src/locales-map';
 
 const useStyles = makeStyles((theme: Theme) => ({
   innerIntroContainer: {
@@ -128,8 +126,6 @@ interface CtfProductPropsInterface extends ProductFragment {}
 
 const CtfProduct = (props: CtfProductPropsInterface) => {
   const { name, featuredImage, description, featuresCollection } = props;
-  const { locale } = useContext(ContentfulContext);
-  const { lang } = getLocaleConfig(locale);
 
   const classes = useStyles();
 
@@ -149,12 +145,7 @@ const CtfProduct = (props: CtfProductPropsInterface) => {
               </LayoutContext.Provider>
             )}
             <div className={classes.ctaContainer}>
-              <Link
-                href="/[lang]/sign-in"
-                as={`/${lang}/sign-in`}
-                isButton
-                color="primary"
-                variant="contained">
+              <Link href="/sign-in" isButton color="primary" variant="contained">
                 Sign Up
               </Link>
             </div>
