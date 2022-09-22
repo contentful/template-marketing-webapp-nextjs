@@ -129,7 +129,7 @@ const MobileMenu = (props: MobileMenuPropsInterface) => {
                   </defs>
                 </SvgIcon>
               }>
-              {t('common.signIN')}
+              {t('common.signIn')}
             </Link>
           </li>
         </ul>

@@ -323,9 +323,9 @@ const Footer = () => {
             </div>
 
             <section className={classes.copyrightAndLegal}>
-              {contentfulConfig.footer.copyright && (
-                <p className={classes.copyright}>{contentfulConfig.footer.copyright}</p>
-              )}
+              <p className={classes.copyright}>
+                {t('legal.copyright', { year: new Date().getFullYear() })}
+              </p>
               {contentfulConfig.footer.legal.length > 0 && (
                 <nav role="navigation" className={classes.legalMenuWrapper}>
                   <ul className={classes.legalMenu}>
@@ -343,9 +343,7 @@ const Footer = () => {
           </div>
 
           <div className={classes.socialDisclaimer}>
-            {contentfulConfig.footer.disclaimer && (
-              <p className={classes.disclaimer}>{contentfulConfig.footer.disclaimer}</p>
-            )}
+            <p className={classes.disclaimer}>{t('legal.disclaimer')}</p>
 
             <div className={classes.socialWrapper}>
               <Typography className={classes.socialTitle}>{t('socials.findUsOn')}</Typography>

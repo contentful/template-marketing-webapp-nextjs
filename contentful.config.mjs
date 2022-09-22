@@ -193,10 +193,6 @@ export const contentfulConfig = {
             location: 'https://dalia.colorfuldemo.com',
           },
         ],
-    copyright: process.env.CONFIG_CONTENTFUL_FOOTER_COPYRIGHT || '© Copyright 2020',
-    disclaimer:
-      process.env.CONFIG_CONTENTFUL_FOOTER_DISCLAIMER ||
-      'Colorful Coin is not authorised by the Financial Conduct Authority under the Electronic Money Regulations 2011, Firm Reference 000001, for the issuing of electronic money. Please be aware that this is a demo website intended for internal use only and not a real service/product.',
   },
   icon: {
     light:
