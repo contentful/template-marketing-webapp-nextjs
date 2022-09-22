@@ -5,7 +5,6 @@ import Head from 'next/head';
 import React from 'react';
 import { useQuery } from 'react-apollo';
 
-import { contentfulConfig } from '../../contentful.config.mjs';
 import { SitemapQuery } from './__generated__/SitemapQuery';
 
 import CtfSectionHeadline from '@ctf-components/ctf-section-headline/ctf-section-headline';
@@ -16,6 +15,7 @@ import PostLink from '@src/components/link/post-link';
 import { useContentfulContext } from '@src/contentful-context';
 import { useDataForPreview } from '@src/lib/apollo-hooks';
 import withProviders, { generateGetServerSideProps } from '@src/lib/with-providers';
+import { contentfulConfig } from 'contentful.config.mjs';
 
 const useStyles = makeStyles(theme => ({
   sitemapRoot: {

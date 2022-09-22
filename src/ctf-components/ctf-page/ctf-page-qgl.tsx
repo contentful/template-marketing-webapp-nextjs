@@ -3,7 +3,6 @@ import Head from 'next/head';
 import React from 'react';
 import { useQuery } from 'react-apollo';
 
-import { contentfulConfig } from '../../../contentful.config.mjs';
 import { CtfPageQuery } from './__generated__/CtfPageQuery';
 import CtfPage from './ctf-page';
 import { pageFragment } from './ctf-page-query';
@@ -12,6 +11,7 @@ import PageError from '@src/components/errors/page-error';
 import { useContentfulContext } from '@src/contentful-context';
 import { useDataForPreview } from '@src/lib/apollo-hooks';
 import { tryget } from '@src/utils';
+import { contentfulConfig } from 'contentful.config.mjs';
 
 interface Props {
   topic?: string;

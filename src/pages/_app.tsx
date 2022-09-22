@@ -9,12 +9,11 @@ import { AppProps } from 'next/app';
 import Head from 'next/head';
 import React, { useEffect } from 'react';
 
-import { contentfulConfig } from '../../contentful.config.mjs';
-
 import Layout from '@src/components/layout/layout';
 import Settings from '@src/components/settings/settings';
 import { ContentfulContext, contentfulContextValue } from '@src/contentful-context';
 import colorfulTheme from '@src/theme';
+import { contentfulConfig } from 'contentful.config.mjs';
 
 fontawesomeConfig.autoAddCss = false;
 

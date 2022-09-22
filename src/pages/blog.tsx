@@ -5,7 +5,6 @@ import Head from 'next/head';
 import React from 'react';
 import { useQuery } from 'react-apollo';
 
-import { contentfulConfig } from '../../contentful.config.mjs';
 import { CtfBlogQuery } from './__generated__/CtfBlogQuery';
 
 import CategoriesMenu from '@ctf-components/ctf-categories-menu/ctf-categories-menu';
@@ -16,6 +15,7 @@ import CategoryContainer from '@src/components/layout/category-container';
 import { useContentfulContext } from '@src/contentful-context';
 import { useDataForPreview } from '@src/lib/apollo-hooks';
 import withProviders, { generateGetServerSideProps } from '@src/lib/with-providers';
+import { contentfulConfig } from 'contentful.config.mjs';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {

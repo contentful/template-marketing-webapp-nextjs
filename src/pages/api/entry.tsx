@@ -2,11 +2,8 @@ import { createClient } from 'contentful-management';
 import { Environment } from 'contentful-management/dist/typings/export-types';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import { contentfulConfig } from '../../../contentful.config.mjs';
-
 import catchify from 'catchify';
-
-// eslint-disable-next-line import/no-unresolved
+import { contentfulConfig } from 'contentful.config.mjs';
 
 const client = createClient({
   accessToken: contentfulConfig.contentful.main_space_management_token,

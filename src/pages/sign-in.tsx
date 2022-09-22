@@ -3,12 +3,11 @@ import { GetServerSideProps, NextPage } from 'next';
 import { useTranslation } from 'next-i18next';
 import Head from 'next/head';
 
-import { contentfulConfig } from '../../contentful.config.mjs';
-
 import PageContainer from '@src/components/layout/page-container';
 import Link from '@src/components/link/link';
 import { useContentfulContext } from '@src/contentful-context';
 import { generateGetServerSideProps } from '@src/lib/with-providers';
+import { contentfulConfig } from 'contentful.config.mjs';
 
 const logoRatio = contentfulConfig.icon.height / contentfulConfig.icon.width;
 
