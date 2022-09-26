@@ -1,18 +1,14 @@
 import { Container, Theme, makeStyles } from '@material-ui/core';
-import { PersonalizedComponent } from '@ninetailed/experience.js-next';
 import clsx from 'clsx';
 import React, { useMemo } from 'react';
 
 import { QuoteFragment } from './__generated__/QuoteFragment';
 
 import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
-import PersonalizationFrame from '@src/components/personalization-frame';
-import { useContentfulContext } from '@src/contentful-context';
-import { WrapIf } from '@src/jsx-utils';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 import { getColorConfigFromPalette } from '@src/theme';
 
-export interface CtfQuotePropsInterface extends QuoteFragment {}
+export interface CtfQuotePropsInterface extends QuoteFragment { }
 
 const useStyles = makeStyles((theme: Theme) => ({
   innerContainer: {
@@ -107,71 +103,57 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const CtfQuote: PersonalizedComponent<CtfQuotePropsInterface> = props => {
+const CtfQuote = (props: CtfQuotePropsInterface) => {
   const {
     imagePosition,
     image,
     quote,
     colorPalette,
     quoteAlignment: quoteAlignmentBoolean,
-    ninetailed,
-    ntVariantsCollection,
   } = props;
   const colorConfig = getColorConfigFromPalette(colorPalette || '');
   const containerLayout = imagePosition === true ? 'imageLeft' : 'imageRight';
   const quoteAlignment = quoteAlignmentBoolean === true ? 'center' : 'left';
   const backgroundImage = useMemo(() => (image ? `${image.url}?w=${600 * 2}` : undefined), [image]);
   const classes = useStyles(props);
-  const { xrayActive } = useContentfulContext();
-
-  const isPersonalized =
-    ntVariantsCollection?.items !== undefined && ntVariantsCollection.items.length > 0;
 
   return (
-    <WrapIf
-      when={xrayActive === true && isPersonalized === true}
-      wrap={children => (
-        <PersonalizationFrame audienceId={ninetailed?.audience.id ?? null}>
-          {children}
-        </PersonalizationFrame>
-      )}>
-      <LayoutContext.Provider value={{ ...defaultLayout, parent: 'quote' }}>
-        <Container
-          maxWidth={false}
-          style={{
-            backgroundColor: colorConfig.backgroundColor,
-          }}>
-          <div className={classes.innerContainer}>
-            <div
-              className={clsx(
-                classes.innerBody,
-                classes[`innerBody-${containerLayout}`],
-                backgroundImage ? undefined : classes.innerBodyFull,
-              )}>
-              {quote && (
-                <div
-                  style={{
-                    color: colorConfig.textColor,
-                    textAlign: quoteAlignment,
-                  }}>
-                  <CtfRichtext {...quote} />
-                </div>
-              )}
-            </div>
-            <div className={classes.imageContainer}>
-              {backgroundImage && (
-                <div
-                  className={classes.imageFixed}
-                  style={{
-                    backgroundImage: `url('${backgroundImage}')`,
-                  }}
-                />
-              )}
-            </div>
+    <LayoutContext.Provider value={{ ...defaultLayout, parent: 'quote' }}>
+      <Container
+        maxWidth={false}
+        style={{
+          backgroundColor: colorConfig.backgroundColor,
+        }}>
+        <div className={classes.innerContainer}>
+          <div
+            className={clsx(
+              classes.innerBody,
+              classes[`innerBody-${containerLayout}`],
+              backgroundImage ? undefined : classes.innerBodyFull,
+            )}>
+            {quote && (
+              <div
+                style={{
+                  color: colorConfig.textColor,
+                  textAlign: quoteAlignment,
+                }}>
+                <CtfRichtext {...quote} />
+              </div>
+            )}
           </div>
-        </Container>
-      </LayoutContext.Provider>
-    </WrapIf>
+          <div className={classes.imageContainer}>
+            {backgroundImage && (
+              <div
+                className={classes.imageFixed}
+                style={{
+                  backgroundImage: `url('${backgroundImage}')`,
+                }}
+              />
+            )}
+          </div>
+        </div>
+      </Container>
+    </LayoutContext.Provider>
   );
 };
 
