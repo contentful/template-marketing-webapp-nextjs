@@ -185,7 +185,7 @@ interface CtfRichtextPropsInterface {
   gridClassName?: string;
 }
 
-const EntryHyperlink = node => {
+const EntryHyperlink = ({ node }) => {
   const { previewActive } = useContentfulContext();
   const queryResult = useQuery<RichTextEntryHyperlinkQuery>(
     gql`
@@ -269,7 +269,8 @@ const CtfRichtext = (props: CtfRichtextPropsInterface) => {
             'cta-subline',
             'hero-banner-body',
             'post-intro',
-          ].includes(layout.parent)}>
+          ].includes(layout.parent)}
+        >
           <div className={containerClassName}>
             <div className={clsx(classes.paragraphGridContainer, gridClassName)}>
               {containerProps.children}
@@ -391,7 +392,8 @@ const CtfRichtext = (props: CtfRichtextPropsInterface) => {
           <div
             style={{
               overflow: 'auto',
-            }}>
+            }}
+          >
             <table>{children}</table>
           </div>
         </ParagraphGridContainer>
