@@ -5,7 +5,6 @@ import { assetFragment } from '../ctf-asset/ctf-asset-query';
 import { pageForPageLinkFragment } from '@src/components/link/page-link-query';
 import { postForPostLinkFragment } from '@src/components/link/post-link-query';
 
-
 export const duplexFragment = gql`
   fragment DuplexFragment on ComponentDuplex {
     sys {

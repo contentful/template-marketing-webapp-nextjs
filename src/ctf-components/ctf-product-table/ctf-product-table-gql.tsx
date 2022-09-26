@@ -2,10 +2,7 @@ import { Container } from '@material-ui/core';
 import React from 'react';
 import { useQuery } from 'react-apollo';
 
-import {
-  CtfProductTableQuery,
-
-} from './__generated__/CtfProductTableQuery';
+import { CtfProductTableQuery } from './__generated__/CtfProductTableQuery';
 import CtfProductTable from './ctf-product-table';
 import { query } from './ctf-product-table-query';
 
@@ -37,11 +34,7 @@ const CtfProductTableGql = (props: CtfProductTableGqlPropsInterface) => {
 
   const { componentProductTable } = queryResult.data;
 
-  return (
-    <CtfProductTable
-      {...componentProductTable}
-    />
-  );
+  return <CtfProductTable {...componentProductTable} />;
 };
 
 export default CtfProductTableGql;

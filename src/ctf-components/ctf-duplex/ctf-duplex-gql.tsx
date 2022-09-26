@@ -1,9 +1,7 @@
 import React from 'react';
 import { useQuery } from 'react-apollo';
 
-import {
-  CtfDuplexQuery,
-} from './__generated__/CtfDuplexQuery';
+import { CtfDuplexQuery } from './__generated__/CtfDuplexQuery';
 import CtfDuplex from './ctf-duplex';
 import { query } from './ctf-duplex-query';
 
@@ -34,9 +32,7 @@ const CtfDuplexGql = ({ id, locale, preview }: CtfDuplexGqlPropsInterface) => {
     return null;
   }
 
-  return (
-    <CtfDuplex {...queryResult.data.componentDuplex} />
-  );
+  return <CtfDuplex {...queryResult.data.componentDuplex} />;
 };
 
 export default CtfDuplexGql;

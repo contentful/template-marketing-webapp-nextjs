@@ -39,10 +39,7 @@ const CtfInfoBlockGql = ({
   }
 
   return (
-    <CtfInfoBlock
-      {...queryResult.data.componentInfoBlock}
-      previousComponent={previousComponent}
-    />
+    <CtfInfoBlock {...queryResult.data.componentInfoBlock} previousComponent={previousComponent} />
   );
 };
 

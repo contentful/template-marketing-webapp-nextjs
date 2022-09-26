@@ -18,11 +18,7 @@ export const featuredCardsFragment = gql`
 `;
 
 export const query = gql`
-  query CtfFeaturedCardsQuery(
-    $id: String!
-    $locale: String
-    $preview: Boolean
-  ) {
+  query CtfFeaturedCardsQuery($id: String!, $locale: String, $preview: Boolean) {
     componentFeaturedCards(id: $id, preview: $preview, locale: $locale) {
       ...FeaturedCardsFragment
     }

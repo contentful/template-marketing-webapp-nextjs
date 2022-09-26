@@ -1,9 +1,7 @@
 import React from 'react';
 import { useQuery } from 'react-apollo';
 
-import {
-  CtfHeroBannerQuery
-} from './__generated__/CtfHeroBannerQuery';
+import { CtfHeroBannerQuery } from './__generated__/CtfHeroBannerQuery';
 import CtfHeroBanner from './ctf-hero-banner';
 import { query } from './ctf-hero-banner-query';
 
@@ -31,9 +29,7 @@ const CtfHeroGql = (props: CtfHeroGqlPropsInterface) => {
 
   if (!data || loading) return null;
 
-  return (
-    <CtfHeroBanner {...data.componentHeroBanner!} />
-  );
+  return <CtfHeroBanner {...data.componentHeroBanner!} />;
 };
 
 export default CtfHeroGql;

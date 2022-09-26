@@ -13,11 +13,7 @@ interface CtfFeaturedCardsGqlPropsInterface {
   preview: boolean;
 }
 
-const CtfFeaturedCardsGql = ({
-  id,
-  locale,
-  preview,
-}: CtfFeaturedCardsGqlPropsInterface) => {
+const CtfFeaturedCardsGql = ({ id, locale, preview }: CtfFeaturedCardsGqlPropsInterface) => {
   const queryResult = useQuery<CtfFeaturedCardsQuery>(query, {
     variables: {
       id,
@@ -36,9 +32,7 @@ const CtfFeaturedCardsGql = ({
     return null;
   }
 
-  return (
-    <CtfFeaturedCards {...queryResult.data.componentFeaturedCards} />
-  );
+  return <CtfFeaturedCards {...queryResult.data.componentFeaturedCards} />;
 };
 
 export default CtfFeaturedCardsGql;

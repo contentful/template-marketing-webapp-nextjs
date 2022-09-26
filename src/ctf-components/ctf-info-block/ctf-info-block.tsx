@@ -97,14 +97,16 @@ const CtfInfoBlock = (props: CtfInfoBlockPropsInterface) => {
       maxWidth={false}
       style={{
         backgroundColor: colorConfig.backgroundColor,
-      }}>
+      }}
+    >
       <div
         className={clsx(
           classes.innerContainer,
           previousComponent === 'ComponentInfoBlock' && !headline && !subline
             ? classes.innerContainerAfterInfoBlock
             : null,
-        )}>
+        )}
+      >
         <SectionHeadlines
           headline={headline}
           headlineProps={{

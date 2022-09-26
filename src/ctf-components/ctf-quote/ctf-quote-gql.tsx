@@ -1,9 +1,7 @@
 import React from 'react';
 import { useQuery } from 'react-apollo';
 
-import {
-  CtfQuoteQuery,
-} from './__generated__/CtfQuoteQuery';
+import { CtfQuoteQuery } from './__generated__/CtfQuoteQuery';
 import CtfQuote from './ctf-quote';
 import { query } from './ctf-quote-query';
 
@@ -35,11 +33,7 @@ const CtfQuoteGql = (props: CtfQuoteGqlPropsInterface) => {
     return null;
   }
 
-  return (
-    <CtfQuote
-      {...queryResult.data.componentQuote}
-    />
-  );
+  return <CtfQuote {...queryResult.data.componentQuote} />;
 };
 
 export default CtfQuoteGql;

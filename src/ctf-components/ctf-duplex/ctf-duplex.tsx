@@ -142,7 +142,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export interface CtfDuplexPropsInterface extends DuplexFragment { }
+export interface CtfDuplexPropsInterface extends DuplexFragment {}
 
 const CtfDuplex = (props: CtfDuplexPropsInterface) => {
   const {
@@ -183,19 +183,22 @@ const CtfDuplex = (props: CtfDuplexPropsInterface) => {
       maxWidth={false}
       style={{
         backgroundColor: colorConfig.backgroundColor,
-      }}>
+      }}
+    >
       <div
         className={clsx(
           classes.innerContainer,
           imageStyle === 'full' ? classes.innerContainerFull : undefined,
-        )}>
+        )}
+      >
         <div className={clsx(classes.innerBody, classes[`innerBody-${containerLayout}`])}>
           {headline && (
             <Typography
               variant="h1"
               component="h2"
               className={classes.headline}
-              style={{ color: colorConfig.headlineColor }}>
+              style={{ color: colorConfig.headlineColor }}
+            >
               {optimizeLineBreak(headline)}
             </Typography>
           )}
@@ -213,7 +216,8 @@ const CtfDuplex = (props: CtfDuplexPropsInterface) => {
                   page={targetPage}
                   variant="contained"
                   color={colorConfig.buttonColor}
-                  isButton>
+                  isButton
+                >
                   {ctaText}
                 </PageLink>
               )}
@@ -222,7 +226,8 @@ const CtfDuplex = (props: CtfDuplexPropsInterface) => {
                   post={targetPage}
                   variant="contained"
                   color={colorConfig.buttonColor}
-                  isButton>
+                  isButton
+                >
                   {ctaText}
                 </PostLink>
               )}
@@ -233,7 +238,8 @@ const CtfDuplex = (props: CtfDuplexPropsInterface) => {
           className={clsx(
             classes.imageContainer,
             imageStyle === 'full' ? classes.imageContainerFull : undefined,
-          )}>
+          )}
+        >
           {imageStyle === 'fixed' && backgroundImage && (
             <div
               className={classes.imageFixed}
@@ -247,7 +253,8 @@ const CtfDuplex = (props: CtfDuplexPropsInterface) => {
               className={clsx(
                 classes.imageFull,
                 classes[`imageFull-${containerLayout}${imageAlignment}`],
-              )}>
+              )}
+            >
               <img
                 className={classes.imageFullImage}
                 alt={image.description || undefined}

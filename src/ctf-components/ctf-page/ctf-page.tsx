@@ -1,14 +1,11 @@
 import React from 'react';
 
-import { PageFragment } from './__generated__/PageFragment';
-
+import { CtfPageFieldsFragment } from '@ctf-components/ctf-page/__generated/ctf-page.generated';
 import ComponentResolver from '@src/components/component-resolver';
 import PageContainer from '@src/components/layout/page-container';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 
-export interface CtfPagePropsInterface extends PageFragment {}
-
-const CtfPage = (props: CtfPagePropsInterface) => {
+const CtfPage = (props: CtfPageFieldsFragment) => {
   const topSection =
     props.topSectionCollection && props.topSectionCollection.items.filter(it => !!it);
   const content = props.pageContent;

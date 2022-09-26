@@ -8,7 +8,7 @@ import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 import { getColorConfigFromPalette } from '@src/theme';
 
-export interface CtfQuotePropsInterface extends QuoteFragment { }
+export interface CtfQuotePropsInterface extends QuoteFragment {}
 
 const useStyles = makeStyles((theme: Theme) => ({
   innerContainer: {
@@ -123,20 +123,23 @@ const CtfQuote = (props: CtfQuotePropsInterface) => {
         maxWidth={false}
         style={{
           backgroundColor: colorConfig.backgroundColor,
-        }}>
+        }}
+      >
         <div className={classes.innerContainer}>
           <div
             className={clsx(
               classes.innerBody,
               classes[`innerBody-${containerLayout}`],
               backgroundImage ? undefined : classes.innerBodyFull,
-            )}>
+            )}
+          >
             {quote && (
               <div
                 style={{
                   color: colorConfig.textColor,
                   textAlign: quoteAlignment,
-                }}>
+                }}
+              >
                 <CtfRichtext {...quote} />
               </div>
             )}

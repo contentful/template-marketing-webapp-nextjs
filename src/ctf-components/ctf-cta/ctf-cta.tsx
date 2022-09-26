@@ -33,17 +33,10 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export interface CtfCtaPropsInterface extends CtaFragment { }
+export interface CtfCtaPropsInterface extends CtaFragment {}
 
 const CtfCta = (props: CtfCtaPropsInterface) => {
-  const {
-    headline,
-    subline,
-    targetPage,
-    ctaText,
-    colorPalette,
-    urlParameters,
-  } = props;
+  const { headline, subline, targetPage, ctaText, colorPalette, urlParameters } = props;
   const colorConfig = getColorConfigFromPalette(colorPalette || '');
   const classes = useStyles();
 
@@ -53,14 +46,16 @@ const CtfCta = (props: CtfCtaPropsInterface) => {
       className={classes.root}
       style={{
         backgroundColor: colorConfig.backgroundColor,
-      }}>
+      }}
+    >
       <div className={classes.innerContainer}>
         {headline && (
           <Typography
             variant="h1"
             component="h2"
             className={classes.headline}
-            style={{ color: colorConfig.headlineColor }}>
+            style={{ color: colorConfig.headlineColor }}
+          >
             {optimizeLineBreak(headline)}
           </Typography>
         )}
@@ -79,7 +74,8 @@ const CtfCta = (props: CtfCtaPropsInterface) => {
                 variant="contained"
                 color={colorConfig.buttonColor}
                 isButton
-                urlParams={urlParameters ?? ''}>
+                urlParams={urlParameters ?? ''}
+              >
                 {ctaText}
               </PageLink>
             )}
@@ -89,7 +85,8 @@ const CtfCta = (props: CtfCtaPropsInterface) => {
                 variant="contained"
                 color={colorConfig.buttonColor}
                 isButton
-                urlParams={urlParameters ?? ''}>
+                urlParams={urlParameters ?? ''}
+              >
                 {ctaText}
               </PostLink>
             )}

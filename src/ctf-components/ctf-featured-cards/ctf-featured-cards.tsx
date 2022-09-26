@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export interface CtfFeaturedCardsPropsType extends FeaturedCardsFragment { }
+export interface CtfFeaturedCardsPropsType extends FeaturedCardsFragment {}
 
 const CtfFeaturedCards = (props: CtfFeaturedCardsPropsType) => {
   const { headline, featuredPostsCollection } = props;

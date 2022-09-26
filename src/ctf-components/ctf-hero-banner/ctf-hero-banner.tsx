@@ -91,7 +91,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export interface CtfHeroBannerInterface extends HeroBannerFragment { }
+export interface CtfHeroBannerInterface extends HeroBannerFragment {}
 
 const CtfHeroBanner = (props: CtfHeroBannerInterface) => {
   const {
@@ -126,7 +126,8 @@ const CtfHeroBanner = (props: CtfHeroBannerInterface) => {
         backgroundImage:
           imageStyle === 'full' && backgroundImage ? `url(${backgroundImage!})` : undefined,
         backgroundColor: colorConfig.backgroundColor,
-      }}>
+      }}
+    >
       {imageStyle === 'partial' && backgroundImage && (
         <div className={classes.partialBgContainer}>
           <div
@@ -142,7 +143,8 @@ const CtfHeroBanner = (props: CtfHeroBannerInterface) => {
           <Typography
             variant="h1"
             className={classes.headline}
-            style={{ color: colorConfig.headlineColor }}>
+            style={{ color: colorConfig.headlineColor }}
+          >
             {headline}
           </Typography>
         )}
@@ -160,7 +162,8 @@ const CtfHeroBanner = (props: CtfHeroBannerInterface) => {
                 page={targetPage}
                 variant="contained"
                 color={colorConfig.buttonColor}
-                isButton>
+                isButton
+              >
                 {ctaText}
               </PageLink>
             )}
@@ -169,7 +172,8 @@ const CtfHeroBanner = (props: CtfHeroBannerInterface) => {
                 post={targetPage}
                 variant="contained"
                 color={colorConfig.buttonColor}
-                isButton>
+                isButton
+              >
                 {ctaText}
               </PostLink>
             )}

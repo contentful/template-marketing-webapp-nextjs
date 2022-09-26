@@ -125,7 +125,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export interface CtfProductTablePropsInterface extends ProductTableFragment { }
+export interface CtfProductTablePropsInterface extends ProductTableFragment {}
 
 const CtfProductTable = (props: CtfProductTablePropsInterface) => {
   const { t } = useTranslation();
@@ -268,7 +268,8 @@ const CtfProductTable = (props: CtfProductTablePropsInterface) => {
                       className={classes.comparisonTableColumn}
                       ref={el => {
                         gridColumnElements.current[j] = el;
-                      }}>
+                      }}
+                    >
                       <div className={classes.featuredImage}>
                         <div
                           data-equal-size="0"
@@ -277,7 +278,8 @@ const CtfProductTable = (props: CtfProductTablePropsInterface) => {
                               gridSizes[`index-0`] === undefined
                                 ? undefined
                                 : `${gridSizes[`index-0`]}px`,
-                          }}>
+                          }}
+                        >
                           {product.featuredImage && (
                             <Image
                               src={product.featuredImage.url as string}
@@ -298,7 +300,8 @@ const CtfProductTable = (props: CtfProductTablePropsInterface) => {
                             gridSizes[`index-1`] === undefined
                               ? undefined
                               : `${gridSizes[`index-1`]}px`,
-                        }}>
+                        }}
+                      >
                         <Typography variant="h2">{product.name}</Typography>
                       </div>
                       <div
@@ -308,13 +311,15 @@ const CtfProductTable = (props: CtfProductTablePropsInterface) => {
                             gridSizes['index-2'] === undefined
                               ? undefined
                               : `${gridSizes['index-2']}px`,
-                        }}>
+                        }}
+                      >
                         {product.description && (
                           <LayoutContext.Provider
                             value={{
                               ...defaultLayout,
                               parent: 'product-description',
-                            }}>
+                            }}
+                          >
                             <CtfRichtext
                               {...product.description}
                               className={classes.shortDescription}
@@ -329,7 +334,8 @@ const CtfProductTable = (props: CtfProductTablePropsInterface) => {
                             featureNames === null || gridSizes['index-3'] === undefined
                               ? undefined
                               : `${gridSizes['index-3']}px`,
-                        }}>
+                        }}
+                      >
                         {product.price === null || product.price === 0 ? (
                           <Typography variant="h2" component="h4" className={classes.priceUpper}>
                             {t('price.free')}
@@ -351,7 +357,8 @@ const CtfProductTable = (props: CtfProductTablePropsInterface) => {
                           value={{
                             ...defaultLayout,
                             parent: 'product-table',
-                          }}>
+                          }}
+                        >
                           <div className={classes.comparisonFeaturesBreak} />
                           {featureNames.map((featureName, i) => (
                             <div
@@ -361,7 +368,8 @@ const CtfProductTable = (props: CtfProductTablePropsInterface) => {
                                 featuresGrid[featureName][product.sys.id] === undefined
                                   ? 'true'
                                   : 'false'
-                              }>
+                              }
+                            >
                               <div
                                 data-equal-size={i + 4}
                                 className={classes.featureInner}
@@ -370,7 +378,8 @@ const CtfProductTable = (props: CtfProductTablePropsInterface) => {
                                     gridSizes[`index-${i + 4}`] === undefined
                                       ? undefined
                                       : `${gridSizes[`index-${i + 4}`]}px`,
-                                }}>
+                                }}
+                              >
                                 <CtfRichtext {...featuresGrid[featureName][product.sys.id]} />
                               </div>
                             </div>
@@ -383,10 +392,11 @@ const CtfProductTable = (props: CtfProductTablePropsInterface) => {
                         style={{
                           height:
                             featureNames === null ||
-                              gridSizes[`index-${featureNames.length + 4}`] === undefined
+                            gridSizes[`index-${featureNames.length + 4}`] === undefined
                               ? undefined
                               : `${gridSizes[`index-${featureNames.length + 4}`]}px`,
-                        }}>
+                        }}
+                      >
                         {product.price === null || product.price === 0 ? (
                           <Typography variant="h2" component="h4">
                             {t('price.free')}
