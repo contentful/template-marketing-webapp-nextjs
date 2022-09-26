@@ -87,16 +87,18 @@ const ComponentResolver = (props: Props) => {
 
   return (
     <WrapIf
-      when={xrayActive && componentProps.__typename !== 'NtMergetag'}
+      when={xrayActive}
       wrap={children => (
         <XrayFrame {...componentProps} className={`xray-${componentProps.__typename}`}>
           {children}
         </XrayFrame>
-      )}>
+      )}
+    >
       <Box
         position="relative"
         component={inline ? 'span' : 'div'}
-        className={componentProps.__typename}>
+        className={componentProps.__typename}
+      >
         {Component ? (
           <Component
             {...componentProps}
