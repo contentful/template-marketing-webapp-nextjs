@@ -1,6 +1,4 @@
-import { Box, Theme, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
-import clsx from 'clsx';
+import { Box } from '@material-ui/core';
 import React, { useMemo } from 'react';
 
 import { componentGqlMap, componentMap } from '../mappings';
@@ -10,15 +8,6 @@ import { useContentfulContext } from '@src/contentful-context';
 import { WrapIf } from '@src/jsx-utils';
 
 let previousComponent: string | null = null;
-
-const useStyles = makeStyles((theme: Theme) => ({
-  missingComponent: {
-    color: theme.palette.error.dark,
-    border: `1px solid ${theme.palette.error.dark}`,
-    padding: theme.spacing(1),
-  },
-}));
-
 interface Props {
   componentProps: {
     sys: { id: string };
@@ -39,7 +28,6 @@ interface Props {
 const ComponentResolver = (props: Props) => {
   const { componentProps, inline = false } = props;
   const { xrayActive, previewActive } = useContentfulContext();
-  const classes = useStyles();
 
   const { locale } = useContentfulContext();
 
@@ -71,19 +59,13 @@ const ComponentResolver = (props: Props) => {
 
   const Component = !shouldForceGql && componentMap[componentProps.__typename];
 
-  if (!Component && !ComponentGql) {
-    return (
-      <div className={clsx(classes.missingComponent, props.className)}>
-        <Typography variant="body1">
-          Component <strong>{componentProps.__typename}</strong> not implemented yet.
-        </Typography>
-      </div>
-    );
-  }
-
   const previousComponentProp = previousComponent;
 
   previousComponent = componentProps.__typename;
+
+  if (!Component && !ComponentGql) {
+    return null;
+  }
 
   return (
     <WrapIf
