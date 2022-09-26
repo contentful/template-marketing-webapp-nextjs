@@ -10,8 +10,6 @@ import CtfCta from '@ctf-components/ctf-cta/ctf-cta';
 import { ctaFragment } from '@ctf-components/ctf-cta/ctf-cta-query';
 import CtfDuplex from '@ctf-components/ctf-duplex/ctf-duplex';
 import { duplexFragment } from '@ctf-components/ctf-duplex/ctf-duplex-query';
-import CtfExternalAsset from '@ctf-components/ctf-external-asset/ctf-external-asset';
-import { externalAssetFragment } from '@ctf-components/ctf-external-asset/ctf-external-asset-query';
 import CtfFeaturedCards from '@ctf-components/ctf-featured-cards/ctf-featured-cards';
 import { featuredCardsFragment } from '@ctf-components/ctf-featured-cards/ctf-featured-cards-query';
 import CtfHeroBanner from '@ctf-components/ctf-hero-banner/ctf-hero-banner';
@@ -133,16 +131,7 @@ const productsQuery = gql`
   }
   ${productFragment}
 `;
-const externalAssetsQuery = gql`
-  query AllExternalAssetsQuery($locale: String, $preview: Boolean) {
-    wrapperExternalAssetCollection(locale: $locale, preview: $preview, limit: 10) {
-      items {
-        ...ExternalAssetFragment
-      }
-    }
-  }
-  ${externalAssetFragment}
-`;
+
 const productTablesQuery = gql`
   query AllProductTablesQuery($locale: String, $preview: Boolean) {
     componentProductTableCollection(locale: $locale, preview: $preview, limit: 10) {
@@ -178,12 +167,6 @@ const entries = [
     collectionKey: 'componentDuplexCollection',
     plural: 'duplexes',
     Component: CtfDuplex,
-  },
-  {
-    query: externalAssetsQuery,
-    collectionKey: 'wrapperExternalAssetCollection',
-    plural: 'external assets',
-    Component: CtfExternalAsset,
   },
   {
     query: featuredCardsQuery,
@@ -261,7 +244,8 @@ const RenderEntry = ({ locale, previewActive, query, collectionKey, plural, Comp
             color: '#fff',
             backgroundColor: '#427ecf',
             padding: '1rem',
-          }}>
+          }}
+        >
           {plural}:
         </Typography>
       </Container>
