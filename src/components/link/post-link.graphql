@@ -1,0 +1,7 @@
+fragment PostLinkFields on Post {
+  __typename
+  slug
+  sys {
+    id
+  }
+}

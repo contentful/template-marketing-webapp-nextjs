@@ -1,39 +1,15 @@
-import React from 'react';
+import { ReactNode } from 'react';
 
-import Link from '@src/components/link/link';
+import { PageLinkFieldsFragment } from '@src/components/link/__generated/page-link.generated';
+import Link, { LinkProps } from '@src/components/link/link';
 
-export type PageLinkPage = {
-  sys: { id: string };
-  slug?: string | null;
+export type PageLinkProps = Omit<LinkProps, 'children'> & {
+  page: PageLinkFieldsFragment;
+  render?: (pathname?: string) => ReactNode;
+  children?: ReactNode;
 };
 
-interface Props {
-  page: PageLinkPage;
-  lang?: string;
-  withoutMaterial?: boolean;
-  underline?: boolean;
-  children?: any;
-  className?: string;
-  render?: (pathname?: string) => any;
-  onClick?: () => any;
-  isButton?: boolean;
-  variant?: 'text' | 'outlined' | 'contained' | undefined;
-  size?: 'small' | 'medium' | 'large' | undefined;
-  color?:
-    | 'inherit'
-    | 'default'
-    | 'initial'
-    | 'primary'
-    | 'secondary'
-    | 'textPrimary'
-    | 'textSecondary'
-    | 'error';
-  endIcon?: any;
-  urlParams?: string;
-}
-export type PageLinkProps = Props;
-
-const PageLink = (props: Props) => {
+const PageLink = (props: PageLinkProps) => {
   const pathname = props.page.slug ? `/${props.page.slug}` : ``;
 
   const linkProps = {

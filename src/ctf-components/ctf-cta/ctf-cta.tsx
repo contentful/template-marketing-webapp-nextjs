@@ -1,8 +1,7 @@
 import { Container, Theme, makeStyles, Typography } from '@material-ui/core';
 import React from 'react';
 
-import { CtaFragment } from './__generated__/CtaFragment';
-
+import { CtaFieldsFragment } from '@ctf-components/ctf-cta/__generated/ctf-cta.generated';
 import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
 import PageLink from '@src/components/link/page-link';
 import PostLink from '@src/components/link/post-link';
@@ -33,9 +32,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export interface CtfCtaPropsInterface extends CtaFragment {}
-
-const CtfCta = (props: CtfCtaPropsInterface) => {
+export const CtfCta = (props: CtaFieldsFragment) => {
   const { headline, subline, targetPage, ctaText, colorPalette, urlParameters } = props;
   const colorConfig = getColorConfigFromPalette(colorPalette || '');
   const classes = useStyles();
@@ -96,5 +93,3 @@ const CtfCta = (props: CtfCtaPropsInterface) => {
     </Container>
   );
 };
-
-export default CtfCta;

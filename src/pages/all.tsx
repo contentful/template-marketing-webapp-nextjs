@@ -6,14 +6,11 @@ import { useQuery } from 'react-apollo';
 
 import CtfCategory from '@ctf-components/ctf-category/ctf-category';
 import { categoryFragment } from '@ctf-components/ctf-category/ctf-category-query';
-import CtfCta from '@ctf-components/ctf-cta/ctf-cta';
-import { ctaFragment } from '@ctf-components/ctf-cta/ctf-cta-query';
-import CtfDuplex from '@ctf-components/ctf-duplex/ctf-duplex';
-import { duplexFragment } from '@ctf-components/ctf-duplex/ctf-duplex-query';
+import { CtfCta } from '@ctf-components/ctf-cta/ctf-cta';
+import { CtfDuplex } from '@ctf-components/ctf-duplex/ctf-duplex';
 import CtfFeaturedCards from '@ctf-components/ctf-featured-cards/ctf-featured-cards';
 import { featuredCardsFragment } from '@ctf-components/ctf-featured-cards/ctf-featured-cards-query';
-import CtfHeroBanner from '@ctf-components/ctf-hero-banner/ctf-hero-banner';
-import { heroBannerFragment } from '@ctf-components/ctf-hero-banner/ctf-hero-banner-query';
+import { CtfHeroBanner } from '@ctf-components/ctf-hero-banner/ctf-hero-banner';
 import CtfInfoBlock from '@ctf-components/ctf-info-block/ctf-info-block';
 import { infoBlockFragment } from '@ctf-components/ctf-info-block/ctf-info-block-query';
 import CtfPerson from '@ctf-components/ctf-person/ctf-person';
@@ -55,21 +52,19 @@ const ctasQuery = gql`
   query AllCtasQuery($locale: String, $preview: Boolean) {
     componentCtaCollection(locale: $locale, preview: $preview, limit: 10) {
       items {
-        ...CtaFragment
+        ...CtaFields
       }
     }
   }
-  ${ctaFragment}
 `;
 const duplexQuery = gql`
   query AllDuplexesQuery($locale: String, $preview: Boolean) {
     componentDuplexCollection(locale: $locale, preview: $preview, limit: 10) {
       items {
-        ...DuplexFragment
+        ...DuplexFields
       }
     }
   }
-  ${duplexFragment}
 `;
 const featuredCardsQuery = gql`
   query AllFeaturedCardsQuery($locale: String, $preview: Boolean) {
@@ -85,11 +80,10 @@ const heroBannersQuery = gql`
   query AllHeroBannersQuery($locale: String, $preview: Boolean) {
     componentHeroBannerCollection(locale: $locale, preview: $preview, limit: 10) {
       items {
-        ...HeroBannerFragment
+        ...HeroBannerFields
       }
     }
   }
-  ${heroBannerFragment}
 `;
 const infoBlocksQuery = gql`
   query AllInfoBlocksQuery($locale: String, $preview: Boolean) {

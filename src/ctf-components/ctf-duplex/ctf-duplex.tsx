@@ -1,9 +1,8 @@
 import { Container, Theme, makeStyles, Typography } from '@material-ui/core';
 import clsx from 'clsx';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 
-import { DuplexFragment } from './__generated__/DuplexFragment';
-
+import { DuplexFieldsFragment } from '@ctf-components/ctf-duplex/__generated/ctf-duplex.generated';
 import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
 import PageLink from '@src/components/link/page-link';
 import PostLink from '@src/components/link/post-link';
@@ -142,9 +141,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export interface CtfDuplexPropsInterface extends DuplexFragment {}
-
-const CtfDuplex = (props: CtfDuplexPropsInterface) => {
+export const CtfDuplex = (props: DuplexFieldsFragment) => {
   const {
     containerLayout: containerLayoutBoolean,
     image,
@@ -268,5 +265,3 @@ const CtfDuplex = (props: CtfDuplexPropsInterface) => {
     </Container>
   );
 };
-
-export default CtfDuplex;

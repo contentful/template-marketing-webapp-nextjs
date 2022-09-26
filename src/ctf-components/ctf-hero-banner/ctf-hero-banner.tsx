@@ -2,8 +2,7 @@ import { Container, makeStyles, Theme, Typography } from '@material-ui/core';
 import clsx from 'clsx';
 import React, { useMemo, useContext } from 'react';
 
-import { HeroBannerFragment } from './__generated__/HeroBannerFragment';
-
+import { HeroBannerFieldsFragment } from '@ctf-components/ctf-hero-banner/__generated/ctf-hero-banner.generated';
 import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
 import PageLink from '@src/components/link/page-link';
 import PostLink from '@src/components/link/post-link';
@@ -91,9 +90,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export interface CtfHeroBannerInterface extends HeroBannerFragment {}
-
-const CtfHeroBanner = (props: CtfHeroBannerInterface) => {
+export const CtfHeroBanner = (props: HeroBannerFieldsFragment) => {
   const {
     image,
     imageStyle: imageStyleBoolean,
@@ -183,5 +180,3 @@ const CtfHeroBanner = (props: CtfHeroBannerInterface) => {
     </Container>
   );
 };
-
-export default CtfHeroBanner;

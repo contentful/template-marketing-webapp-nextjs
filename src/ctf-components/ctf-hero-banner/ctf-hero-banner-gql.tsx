@@ -1,11 +1,8 @@
 import React from 'react';
-import { useQuery } from 'react-apollo';
 
-import { CtfHeroBannerQuery } from './__generated__/CtfHeroBannerQuery';
-import CtfHeroBanner from './ctf-hero-banner';
-import { query } from './ctf-hero-banner-query';
+import { CtfHeroBanner } from './ctf-hero-banner';
 
-import { useDataForPreview } from '@src/lib/apollo-hooks';
+import { useHeroBannerQuery } from '@ctf-components/ctf-hero-banner/__generated/ctf-hero-banner.generated';
 
 interface CtfHeroGqlPropsInterface {
   id: string;
@@ -15,21 +12,17 @@ interface CtfHeroGqlPropsInterface {
 
 const CtfHeroGql = (props: CtfHeroGqlPropsInterface) => {
   const { id, locale, preview } = props;
-  const queryResult = useQuery<CtfHeroBannerQuery>(query, {
-    variables: {
-      id,
-      locale,
-      preview,
-    },
+  const { data, isLoading } = useHeroBannerQuery({
+    id,
+    locale,
+    preview,
   });
 
-  useDataForPreview(queryResult);
+  // useDataForPreview(queryResult);
 
-  const { loading, data } = queryResult;
+  if (!data?.componentHeroBanner || isLoading) return null;
 
-  if (!data || loading) return null;
-
-  return <CtfHeroBanner {...data.componentHeroBanner!} />;
+  return <CtfHeroBanner {...data.componentHeroBanner} />;
 };
 
 export default CtfHeroGql;
