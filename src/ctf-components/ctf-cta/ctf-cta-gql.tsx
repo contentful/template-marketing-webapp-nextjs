@@ -38,12 +38,7 @@ const CtfCtaGql = ({ id, locale, preview }: CtfCtaGqlPropsInterface) => {
   }
 
   return (
-    <Personalize<CtfCtaPropsInterface>
-      component={CtfCta}
-      {...unwrapVariants<CtfCtaQuery_componentCta>(
-        queryResult.data.componentCta,
-      )}
-    />
+    <CtfCta {...queryResult.data.componentCta} />
   );
 };
 

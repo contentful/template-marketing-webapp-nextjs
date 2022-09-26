@@ -1,5 +1,4 @@
 import { Container, makeStyles, Theme, Typography } from '@material-ui/core';
-import { PersonalizedComponent } from '@ninetailed/experience.js-next';
 import clsx from 'clsx';
 import React, { useMemo, useContext } from 'react';
 
@@ -94,7 +93,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export interface CtfHeroBannerInterface extends HeroBannerFragment { }
 
-const CtfHeroBanner: PersonalizedComponent<CtfHeroBannerInterface> = props => {
+const CtfHeroBanner = (props: CtfHeroBannerInterface) => {
   const {
     image,
     imageStyle: imageStyleBoolean,
