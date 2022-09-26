@@ -1,13 +1,8 @@
-import { Personalize } from '@ninetailed/experience.js-next';
 import React from 'react';
 import { useQuery } from 'react-apollo';
 
-import { unwrapVariants } from '../ctf-helpers';
-import {
-  CtfQuoteQuery,
-  CtfQuoteQuery_componentQuote,
-} from './__generated__/CtfQuoteQuery';
-import CtfQuote, { CtfQuotePropsInterface } from './ctf-quote';
+import { CtfQuoteQuery } from './__generated__/CtfQuoteQuery';
+import CtfQuote from './ctf-quote';
 import { query } from './ctf-quote-query';
 
 import { useDataForPreview } from '@src/lib/apollo-hooks';
@@ -38,14 +33,7 @@ const CtfQuoteGql = (props: CtfQuoteGqlPropsInterface) => {
     return null;
   }
 
-  return (
-    <Personalize<CtfQuotePropsInterface>
-      component={CtfQuote}
-      {...unwrapVariants<CtfQuoteQuery_componentQuote>(
-        queryResult.data.componentQuote,
-      )}
-    />
-  );
+  return <CtfQuote {...queryResult.data.componentQuote} />;
 };
 
 export default CtfQuoteGql;

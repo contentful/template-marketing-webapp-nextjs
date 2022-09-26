@@ -1,13 +1,8 @@
-import { Personalize } from '@ninetailed/experience.js-next';
 import React from 'react';
 import { useQuery } from 'react-apollo';
 
-import { unwrapVariants } from '../ctf-helpers';
-import {
-  CtfInfoBlockQuery,
-  CtfInfoBlockQuery_componentInfoBlock,
-} from './__generated__/CtfInfoBlockQuery';
-import CtfInfoBlock, { CtfInfoBlockPropsInterface } from './ctf-info-block';
+import { CtfInfoBlockQuery } from './__generated__/CtfInfoBlockQuery';
+import CtfInfoBlock from './ctf-info-block';
 import { query } from './ctf-info-block-query';
 
 import { useDataForPreview } from '@src/lib/apollo-hooks';
@@ -43,24 +38,8 @@ const CtfInfoBlockGql = ({
     return null;
   }
 
-  let componentWithVariants =
-    unwrapVariants<CtfInfoBlockQuery_componentInfoBlock>(
-      queryResult.data.componentInfoBlock,
-    );
-
-  componentWithVariants = {
-    ...componentWithVariants,
-    variants: componentWithVariants.variants.map((variant) => ({
-      ...variant,
-      previousComponent,
-    })),
-  };
   return (
-    <Personalize<CtfInfoBlockPropsInterface>
-      component={CtfInfoBlock}
-      {...componentWithVariants}
-      previousComponent={previousComponent}
-    />
+    <CtfInfoBlock {...queryResult.data.componentInfoBlock} previousComponent={previousComponent} />
   );
 };
 

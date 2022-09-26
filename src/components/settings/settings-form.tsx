@@ -432,7 +432,8 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
                     height="12"
                     viewBox="0 0 12 12"
                     fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
                     <path
                       d="M12 7.49l-1.69 1.69-2.186-2.087-.994.994 2.187 2.186-1.79 1.69H12V7.49zm0-2.98V.036H7.528l1.69 1.69-3.479 3.478H.075v1.49h6.26l3.976-3.975L12 4.51z"
                       fill="#2A3039"
@@ -464,7 +465,8 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
                   height="22"
                   viewBox="0 0 12 12"
                   fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     d="M12 7.49l-1.69 1.69-2.186-2.087-.994.994 2.187 2.186-1.79 1.69H12V7.49zm0-2.98V.036H7.528l1.69 1.69-3.479 3.478H.075v1.49h6.26l3.976-3.975L12 4.51z"
                     fill={newSpaceEnv === environment.name ? '#2A3039' : '#B5C3C9'}
@@ -476,7 +478,8 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
                   {environment.name}
                 </Typography>
                 <Typography
-                  className={clsx(classes.envOptionDescription, classes.autocompleteOptionFont)}>
+                  className={clsx(classes.envOptionDescription, classes.autocompleteOptionFont)}
+                >
                   {`Created on ${format(
                     new Date(environment.createdAt),
                     'MMM d, yyyy',
@@ -557,31 +560,6 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
             <FormControl margin="normal" fullWidth>
               {environmentsField()}
             </FormControl>
-
-            <FormControl margin="dense" fullWidth>
-              <FormControlLabel
-                className={classes.formControlLabel}
-                labelPlacement="start"
-                control={
-                  <Button
-                    type="button"
-                    color="primary"
-                    size="small"
-                    className={classes.personalizationPreviewButton}
-                    onClick={() => {
-                      (window as any).ninetailed.plugins.preview.open();
-                      onClose();
-                    }}>
-                    Preview
-                  </Button>
-                }
-                label="Personalization"
-              />
-              <FormHelperText>
-                Instantly preview different <br />
-                Ninetailed audiences.
-              </FormHelperText>
-            </FormControl>
           </div>
           <footer className={classes.footer}>
             <Button
@@ -589,7 +567,8 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
               type="button"
               variant="text"
               color="primary"
-              onClick={onClose}>
+              onClick={onClose}
+            >
               Close
             </Button>
             <Button
@@ -598,7 +577,8 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
               variant="text"
               color="primary"
               onClick={onClose}
-              disabled={!isDirty}>
+              disabled={!isDirty}
+            >
               Apply changes
             </Button>
           </footer>

@@ -38,9 +38,6 @@ CONTENTFUL_DEPLOY_TOKEN=
 CONTENTFUL_DEPLOY_ORG=
 
 VERCEL_DEPLOY_TOKEN=
-
-NEXT_PUBLIC_NINETAILED_API_KEY=
-NEXT_PUBLIC_NINETAILED_ENVIRONMENT=
 ```
 
 You can find the values for the legal space environment variables by checking out the `.env` file linked here [Installation guide](https://contentful.atlassian.net/wiki/spaces/MAR/pages/2080309537/Colorful+Coin+setup+guide#Installing)
@@ -142,7 +139,7 @@ Stories are defined in the `/src/stories` folder. You can follow an example ther
 
 Importing space contents (Models, Entries, Environments, App Integrations etc) is done as part of the `init` script. When developing, we often want to make changes to what will become our internal CF test space, for example removing an entry or renaming an environment. To make sure that the `content-backups` file stays up to date, after making changes in our contentful internal test space, we should _re-export_ the updated space contents.
 
-This can be done using the Contentful CLI tool, by running the following command:
+This can be done using the [Contentful CLI](https://www.contentful.com/developers/docs/tutorials/cli/installation/) tool, by running the following command:
 
 `contentful space export --space-id {{spaceId}}`
 

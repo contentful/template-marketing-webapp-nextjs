@@ -1,14 +1,9 @@
 import { Container } from '@material-ui/core';
-import { Personalize } from '@ninetailed/experience.js-next';
 import React from 'react';
 import { useQuery } from 'react-apollo';
 
-import { unwrapVariants } from '../ctf-helpers';
-import {
-  CtfProductTableQuery,
-  CtfProductTableQuery_componentProductTable,
-} from './__generated__/CtfProductTableQuery';
-import CtfProductTable, { CtfProductTablePropsInterface } from './ctf-product-table';
+import { CtfProductTableQuery } from './__generated__/CtfProductTableQuery';
+import CtfProductTable from './ctf-product-table';
 import { query } from './ctf-product-table-query';
 
 import EntryNotFound from '@src/components/errors/entry-not-found';
@@ -39,12 +34,7 @@ const CtfProductTableGql = (props: CtfProductTableGqlPropsInterface) => {
 
   const { componentProductTable } = queryResult.data;
 
-  return (
-    <Personalize<CtfProductTablePropsInterface>
-      component={CtfProductTable}
-      {...unwrapVariants<CtfProductTableQuery_componentProductTable>(componentProductTable)}
-    />
-  );
+  return <CtfProductTable {...componentProductTable} />;
 };
 
 export default CtfProductTableGql;

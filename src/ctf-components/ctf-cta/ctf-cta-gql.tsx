@@ -1,13 +1,8 @@
-import { Personalize } from '@ninetailed/experience.js-next';
 import React from 'react';
 import { useQuery } from 'react-apollo';
 
-import { unwrapVariants } from '../ctf-helpers';
-import {
-  CtfCtaQuery,
-  CtfCtaQuery_componentCta,
-} from './__generated__/CtfCtaQuery';
-import CtfCta, { CtfCtaPropsInterface } from './ctf-cta';
+import { CtfCtaQuery } from './__generated__/CtfCtaQuery';
+import CtfCta from './ctf-cta';
 import { query } from './ctf-cta-query';
 
 import { useDataForPreview } from '@src/lib/apollo-hooks';
@@ -37,14 +32,7 @@ const CtfCtaGql = ({ id, locale, preview }: CtfCtaGqlPropsInterface) => {
     return null;
   }
 
-  return (
-    <Personalize<CtfCtaPropsInterface>
-      component={CtfCta}
-      {...unwrapVariants<CtfCtaQuery_componentCta>(
-        queryResult.data.componentCta,
-      )}
-    />
-  );
+  return <CtfCta {...queryResult.data.componentCta} />;
 };
 
 export default CtfCtaGql;

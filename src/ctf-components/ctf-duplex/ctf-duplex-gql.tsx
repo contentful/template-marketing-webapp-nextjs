@@ -1,13 +1,8 @@
-import { Personalize } from '@ninetailed/experience.js-next';
 import React from 'react';
 import { useQuery } from 'react-apollo';
 
-import { unwrapVariants } from '../ctf-helpers';
-import {
-  CtfDuplexQuery,
-  CtfDuplexQuery_componentDuplex,
-} from './__generated__/CtfDuplexQuery';
-import CtfDuplex, { CtfDuplexPropsInterface } from './ctf-duplex';
+import { CtfDuplexQuery } from './__generated__/CtfDuplexQuery';
+import CtfDuplex from './ctf-duplex';
 import { query } from './ctf-duplex-query';
 
 import { useDataForPreview } from '@src/lib/apollo-hooks';
@@ -37,14 +32,7 @@ const CtfDuplexGql = ({ id, locale, preview }: CtfDuplexGqlPropsInterface) => {
     return null;
   }
 
-  return (
-    <Personalize<CtfDuplexPropsInterface>
-      component={CtfDuplex}
-      {...unwrapVariants<CtfDuplexQuery_componentDuplex>(
-        queryResult.data.componentDuplex,
-      )}
-    />
-  );
+  return <CtfDuplex {...queryResult.data.componentDuplex} />;
 };
 
 export default CtfDuplexGql;

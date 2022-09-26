@@ -1,11 +1,10 @@
 import gql from 'graphql-tag';
 
 import { assetFragment } from '@ctf-components/ctf-asset/ctf-asset-query';
-import { ninetailedAudienceFragment } from '@ctf-components/ctf-ninetailed-audience/ctf-ninetailed-audience-query';
 import { componentReferenceFragment } from '@ctf-components/fragments';
 
 export const quoteFragment = gql`
-  fragment QuoteFragmentBase on ComponentQuote {
+  fragment QuoteFragment on ComponentQuote {
     __typename
     sys {
       id
@@ -34,19 +33,6 @@ export const quoteFragment = gql`
     colorPalette
   }
 
-  fragment QuoteFragment on ComponentQuote {
-    ...QuoteFragmentBase
-    ntVariantsCollection(limit: 3) {
-      items {
-        ...QuoteFragmentBase
-        ntAudience {
-          ...NinetailedAudienceFragment
-        }
-      }
-    }
-  }
-
-  ${ninetailedAudienceFragment}
   ${componentReferenceFragment}
   ${assetFragment}
 `;

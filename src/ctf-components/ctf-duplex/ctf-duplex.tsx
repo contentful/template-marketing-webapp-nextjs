@@ -1,5 +1,4 @@
 import { Container, Theme, makeStyles, Typography } from '@material-ui/core';
-import { PersonalizedComponent } from '@ninetailed/experience.js-next';
 import clsx from 'clsx';
 import React, { useMemo } from 'react';
 
@@ -8,9 +7,6 @@ import { DuplexFragment } from './__generated__/DuplexFragment';
 import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
 import PageLink from '@src/components/link/page-link';
 import PostLink from '@src/components/link/post-link';
-import PersonalizationFrame from '@src/components/personalization-frame';
-import { useContentfulContext } from '@src/contentful-context';
-import { WrapIf } from '@src/jsx-utils';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 import { getColorConfigFromPalette } from '@src/theme';
 import optimizeLineBreak from '@src/typography/optimize-line-break';
@@ -148,7 +144,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export interface CtfDuplexPropsInterface extends DuplexFragment {}
 
-const CtfDuplex: PersonalizedComponent<CtfDuplexPropsInterface> = props => {
+const CtfDuplex = (props: CtfDuplexPropsInterface) => {
   const {
     containerLayout: containerLayoutBoolean,
     image,
@@ -159,8 +155,6 @@ const CtfDuplex: PersonalizedComponent<CtfDuplexPropsInterface> = props => {
     ctaText,
     colorPalette,
     imageAlignment: imageAlignmentParam,
-    ninetailed,
-    ntVariantsCollection,
   } = props;
 
   const colorConfig = getColorConfigFromPalette(colorPalette || '');
@@ -183,100 +177,95 @@ const CtfDuplex: PersonalizedComponent<CtfDuplexPropsInterface> = props => {
     return 'center';
   }, [imageAlignmentParam]);
   const classes = useStyles();
-  const { xrayActive } = useContentfulContext();
-
-  const isPersonalized =
-    ntVariantsCollection?.items !== undefined && ntVariantsCollection.items.length > 0;
 
   return (
-    <WrapIf
-      when={xrayActive === true && isPersonalized === true}
-      wrap={children => (
-        <PersonalizationFrame audienceId={ninetailed?.audience.id ?? null}>
-          {children}
-        </PersonalizationFrame>
-      )}>
-      <Container
-        maxWidth={false}
-        style={{
-          backgroundColor: colorConfig.backgroundColor,
-        }}>
+    <Container
+      maxWidth={false}
+      style={{
+        backgroundColor: colorConfig.backgroundColor,
+      }}
+    >
+      <div
+        className={clsx(
+          classes.innerContainer,
+          imageStyle === 'full' ? classes.innerContainerFull : undefined,
+        )}
+      >
+        <div className={clsx(classes.innerBody, classes[`innerBody-${containerLayout}`])}>
+          {headline && (
+            <Typography
+              variant="h1"
+              component="h2"
+              className={classes.headline}
+              style={{ color: colorConfig.headlineColor }}
+            >
+              {optimizeLineBreak(headline)}
+            </Typography>
+          )}
+          {bodyText && (
+            <LayoutContext.Provider value={{ ...defaultLayout, parent: 'duplex' }}>
+              <div style={{ color: colorConfig.textColor }}>
+                <CtfRichtext {...bodyText} className={classes.body} />
+              </div>
+            </LayoutContext.Provider>
+          )}
+          {targetPage && targetPage.slug && (
+            <div className={classes.ctaContainer}>
+              {targetPage.__typename === 'Page' && (
+                <PageLink
+                  page={targetPage}
+                  variant="contained"
+                  color={colorConfig.buttonColor}
+                  isButton
+                >
+                  {ctaText}
+                </PageLink>
+              )}
+              {targetPage.__typename === 'Post' && (
+                <PostLink
+                  post={targetPage}
+                  variant="contained"
+                  color={colorConfig.buttonColor}
+                  isButton
+                >
+                  {ctaText}
+                </PostLink>
+              )}
+            </div>
+          )}
+        </div>
         <div
           className={clsx(
-            classes.innerContainer,
-            imageStyle === 'full' ? classes.innerContainerFull : undefined,
-          )}>
-          <div className={clsx(classes.innerBody, classes[`innerBody-${containerLayout}`])}>
-            {headline && (
-              <Typography
-                variant="h1"
-                component="h2"
-                className={classes.headline}
-                style={{ color: colorConfig.headlineColor }}>
-                {optimizeLineBreak(headline)}
-              </Typography>
-            )}
-            {bodyText && (
-              <LayoutContext.Provider value={{ ...defaultLayout, parent: 'duplex' }}>
-                <div style={{ color: colorConfig.textColor }}>
-                  <CtfRichtext {...bodyText} className={classes.body} />
-                </div>
-              </LayoutContext.Provider>
-            )}
-            {targetPage && targetPage.slug && (
-              <div className={classes.ctaContainer}>
-                {targetPage.__typename === 'Page' && (
-                  <PageLink
-                    page={targetPage}
-                    variant="contained"
-                    color={colorConfig.buttonColor}
-                    isButton>
-                    {ctaText}
-                  </PageLink>
-                )}
-                {targetPage.__typename === 'Post' && (
-                  <PostLink
-                    post={targetPage}
-                    variant="contained"
-                    color={colorConfig.buttonColor}
-                    isButton>
-                    {ctaText}
-                  </PostLink>
-                )}
-              </div>
-            )}
-          </div>
-          <div
-            className={clsx(
-              classes.imageContainer,
-              imageStyle === 'full' ? classes.imageContainerFull : undefined,
-            )}>
-            {imageStyle === 'fixed' && backgroundImage && (
-              <div
-                className={classes.imageFixed}
-                style={{
-                  backgroundImage: `url('${backgroundImage}')`,
-                }}
+            classes.imageContainer,
+            imageStyle === 'full' ? classes.imageContainerFull : undefined,
+          )}
+        >
+          {imageStyle === 'fixed' && backgroundImage && (
+            <div
+              className={classes.imageFixed}
+              style={{
+                backgroundImage: `url('${backgroundImage}')`,
+              }}
+            />
+          )}
+          {imageStyle === 'full' && image && (
+            <div
+              className={clsx(
+                classes.imageFull,
+                classes[`imageFull-${containerLayout}${imageAlignment}`],
+              )}
+            >
+              <img
+                className={classes.imageFullImage}
+                alt={image.description || undefined}
+                src={`${image.url}?w=600`}
+                srcSet={`${image.url}?w=600 600w, ${image.url}?w=1200 1200w`}
               />
-            )}
-            {imageStyle === 'full' && image && (
-              <div
-                className={clsx(
-                  classes.imageFull,
-                  classes[`imageFull-${containerLayout}${imageAlignment}`],
-                )}>
-                <img
-                  className={classes.imageFullImage}
-                  alt={image.description || undefined}
-                  src={`${image.url}?w=600`}
-                  srcSet={`${image.url}?w=600 600w, ${image.url}?w=1200 1200w`}
-                />
-              </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
-      </Container>
-    </WrapIf>
+      </div>
+    </Container>
   );
 };
 

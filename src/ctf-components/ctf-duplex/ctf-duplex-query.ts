@@ -2,13 +2,11 @@ import gql from 'graphql-tag';
 
 import { assetFragment } from '../ctf-asset/ctf-asset-query';
 
-import { ninetailedAudienceFragment } from '@ctf-components/ctf-ninetailed-audience/ctf-ninetailed-audience-query';
 import { pageForPageLinkFragment } from '@src/components/link/page-link-query';
 import { postForPostLinkFragment } from '@src/components/link/post-link-query';
 
-
 export const duplexFragment = gql`
-  fragment DuplexFragmentBase on ComponentDuplex {
+  fragment DuplexFragment on ComponentDuplex {
     sys {
       id
     }
@@ -32,19 +30,6 @@ export const duplexFragment = gql`
     colorPalette
   }
 
-  fragment DuplexFragment on ComponentDuplex {
-    ...DuplexFragmentBase
-    ntVariantsCollection(limit: 3) {
-      items {
-        ...DuplexFragmentBase
-        ntAudience {
-          ...NinetailedAudienceFragment
-        }
-      }
-    }
-  }
-
-  ${ninetailedAudienceFragment}
   ${pageForPageLinkFragment}
   ${assetFragment}
   ${postForPostLinkFragment}

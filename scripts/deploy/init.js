@@ -9,7 +9,6 @@ const deployToVercel = require('./deployToVercel');
 const setPreviewUrls = require('./setPreviewUrls');
 const inviteToSpace = require('./inviteToSpace');
 const logToZapier = require('./logToZapier');
-const installTypeformApp = require('./installTypeformApp');
 const updateTranslatorRole = require('./updateTranslatorRole');
 
 const init = async input => {
@@ -24,7 +23,6 @@ const init = async input => {
     legalSpaceId,
     legalSpaceToken,
     vercelDeployToken,
-    ninetailedAPIKey,
     source = 'script',
   } = input;
   const client = createClient({
@@ -203,35 +201,6 @@ const init = async input => {
     console.info('Skipping content import - reusing existing space');
   }
 
-  // Install the Typeform app
-  if (inputSpaceId === undefined) {
-    const installTypeformAppStartTime = new Date();
-    console.info('Installing the Typeform app...');
-
-    const installTypeformAppResult = await installTypeformApp({
-      spaceId,
-      cmaToken,
-    });
-
-    if (installTypeformAppResult.state === 'error') {
-      await cleanupSpaceOnError();
-      return {
-        state: 'error',
-        error: installTypeformAppResult.error,
-      };
-    }
-
-    const installTypeformAppEndTime = new Date();
-
-    console.info(
-      `Typeform app installed. Done in ${Math.round(
-        (installTypeformAppEndTime.getTime() - installTypeformAppStartTime.getTime()) / 1000,
-      )}s`,
-    );
-  } else {
-    console.info('Skipping Typeform app installation - reusing existing space');
-  }
-
   // Deploy to Vercel
   const deployToVercelStartTime = new Date();
   console.info('Deploying to Vercel...');
@@ -244,7 +213,6 @@ const init = async input => {
     legalSpaceId,
     legalSpaceToken,
     vercelDeployToken,
-    ninetailedAPIKey,
   });
 
   if (deployToVercelResult.state === 'error') {

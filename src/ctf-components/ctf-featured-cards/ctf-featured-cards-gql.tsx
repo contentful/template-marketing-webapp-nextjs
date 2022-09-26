@@ -1,15 +1,8 @@
-import { Personalize } from '@ninetailed/experience.js-next';
 import React from 'react';
 import { useQuery } from 'react-apollo';
 
-import { unwrapVariants } from '../ctf-helpers';
-import {
-  CtfFeaturedCardsQuery,
-  CtfFeaturedCardsQuery_componentFeaturedCards,
-} from './__generated__/CtfFeaturedCardsQuery';
-import CtfFeaturedCards, {
-  CtfFeaturedCardsPropsType,
-} from './ctf-featured-cards';
+import { CtfFeaturedCardsQuery } from './__generated__/CtfFeaturedCardsQuery';
+import CtfFeaturedCards from './ctf-featured-cards';
 import { query } from './ctf-featured-cards-query';
 
 import { useDataForPreview } from '@src/lib/apollo-hooks';
@@ -20,11 +13,7 @@ interface CtfFeaturedCardsGqlPropsInterface {
   preview: boolean;
 }
 
-const CtfFeaturedCardsGql = ({
-  id,
-  locale,
-  preview,
-}: CtfFeaturedCardsGqlPropsInterface) => {
+const CtfFeaturedCardsGql = ({ id, locale, preview }: CtfFeaturedCardsGqlPropsInterface) => {
   const queryResult = useQuery<CtfFeaturedCardsQuery>(query, {
     variables: {
       id,
@@ -43,14 +32,7 @@ const CtfFeaturedCardsGql = ({
     return null;
   }
 
-  return (
-    <Personalize<CtfFeaturedCardsPropsType>
-      component={CtfFeaturedCards}
-      {...unwrapVariants<CtfFeaturedCardsQuery_componentFeaturedCards>(
-        queryResult.data.componentFeaturedCards,
-      )}
-    />
-  );
+  return <CtfFeaturedCards {...queryResult.data.componentFeaturedCards} />;
 };
 
 export default CtfFeaturedCardsGql;

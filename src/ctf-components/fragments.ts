@@ -39,8 +39,5 @@ export const componentReferenceFragment = gql`
     ... on TopicProduct {
       internalName
     }
-    ... on WrapperExternalAsset {
-      internalName
-    }
   }
 `;

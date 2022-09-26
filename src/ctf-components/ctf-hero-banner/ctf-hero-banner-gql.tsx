@@ -1,12 +1,7 @@
-import { Personalize } from '@ninetailed/experience.js-next';
 import React from 'react';
 import { useQuery } from 'react-apollo';
 
-import { unwrapVariants } from '../ctf-helpers';
-import {
-  CtfHeroBannerQuery,
-  CtfHeroBannerQuery_componentHeroBanner
-} from './__generated__/CtfHeroBannerQuery';
+import { CtfHeroBannerQuery } from './__generated__/CtfHeroBannerQuery';
 import CtfHeroBanner from './ctf-hero-banner';
 import { query } from './ctf-hero-banner-query';
 
@@ -34,14 +29,7 @@ const CtfHeroGql = (props: CtfHeroGqlPropsInterface) => {
 
   if (!data || loading) return null;
 
-  return (
-    <Personalize
-      component={CtfHeroBanner}
-      {...unwrapVariants<CtfHeroBannerQuery_componentHeroBanner>(
-        data.componentHeroBanner!,
-      )}
-    />
-  );
+  return <CtfHeroBanner {...data.componentHeroBanner!} />;
 };
 
 export default CtfHeroGql;
