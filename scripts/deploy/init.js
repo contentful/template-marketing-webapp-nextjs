@@ -7,16 +7,11 @@ const createEmptyEnvironment = require('./createEmptyEnvironment');
 const importContent = require('./importContent');
 const deployToVercel = require('./deployToVercel');
 const setPreviewUrls = require('./setPreviewUrls');
-const createBackupEnvironment = require('./createBackupEnvironment');
-const createPartialBackupEnvironment = require('./createPartialBackupEnvironment');
 const inviteToSpace = require('./inviteToSpace');
 const logToZapier = require('./logToZapier');
-const installTypeformApp = require('./installTypeformApp');
-const installCloudinaryApp = require('./installCloudinaryApp');
-const installNinetailedApp = require('./installNinetailedApp');
 const updateTranslatorRole = require('./updateTranslatorRole');
 
-const init = async (input) => {
+const init = async input => {
   const {
     organizationId,
     cmaToken,
@@ -141,9 +136,7 @@ const init = async (input) => {
 
     console.info(
       `Content model imported. Done in ${Math.round(
-        (importContentModelEndTime.getTime() -
-          importContentModelStartTime.getTime()) /
-          1000,
+        (importContentModelEndTime.getTime() - importContentModelStartTime.getTime()) / 1000,
       )}s`,
     );
   } else {
@@ -172,15 +165,12 @@ const init = async (input) => {
 
     console.info(
       `Empty environment created. Done in ${Math.round(
-        (createEmptyEnvironmentEndTime.getTime() -
-          createEmptyEnvironmentStartTime.getTime()) /
+        (createEmptyEnvironmentEndTime.getTime() - createEmptyEnvironmentStartTime.getTime()) /
           1000,
       )}s`,
     );
   } else {
-    console.info(
-      'Skipping empty environment creation - reusing existing space',
-    );
+    console.info('Skipping empty environment creation - reusing existing space');
   }
 
   // Import content
@@ -205,178 +195,11 @@ const init = async (input) => {
 
     console.info(
       `Content imported. Done in ${Math.round(
-        (importContentEndTime.getTime() - importContentStartTime.getTime()) /
-          1000,
+        (importContentEndTime.getTime() - importContentStartTime.getTime()) / 1000,
       )}s`,
     );
   } else {
     console.info('Skipping content import - reusing existing space');
-  }
-
-  // Create a partial backup environment
-  if (inputSpaceId === undefined) {
-    const createPartialBackupEnvironmentStartTime = new Date();
-    console.info('Creating partial backup environment...');
-
-    const createPartialBackupEnvironmentResult =
-      await createPartialBackupEnvironment({
-        spaceId,
-        cmaToken,
-      });
-
-    if (createPartialBackupEnvironmentResult.state === 'error') {
-      await cleanupSpaceOnError();
-      return {
-        state: 'error',
-        error: createPartialBackupEnvironmentResult.error,
-      };
-    }
-
-    const createPartialBackupEnvironmentEndTime = new Date();
-
-    console.info(
-      `Partial backup environment created. Done in ${Math.round(
-        (createPartialBackupEnvironmentEndTime.getTime() -
-          createPartialBackupEnvironmentStartTime.getTime()) /
-          1000,
-      )}s`,
-    );
-  } else {
-    console.info(
-      'Skipping partial backup environment creation - reusing existing space',
-    );
-  }
-
-  // Install the Typeform app
-  if (inputSpaceId === undefined) {
-    const installTypeformAppStartTime = new Date();
-    console.info('Installing the Typeform app...');
-
-    const installTypeformAppResult = await installTypeformApp({
-      spaceId,
-      cmaToken,
-    });
-
-    if (installTypeformAppResult.state === 'error') {
-      await cleanupSpaceOnError();
-      return {
-        state: 'error',
-        error: installTypeformAppResult.error,
-      };
-    }
-
-    const installTypeformAppEndTime = new Date();
-
-    console.info(
-      `Typeform app installed. Done in ${Math.round(
-        (installTypeformAppEndTime.getTime() -
-          installTypeformAppStartTime.getTime()) /
-          1000,
-      )}s`,
-    );
-  } else {
-    console.info('Skipping Typeform app installation - reusing existing space');
-  }
-
-  // Install the Cloudinary app
-  if (inputSpaceId === undefined) {
-    const installCloudinaryAppStartTime = new Date();
-    console.info('Installing the Cloudinary app...');
-
-    const installCloudinaryAppResult = await installCloudinaryApp({
-      spaceId,
-      cmaToken,
-    });
-
-    if (installCloudinaryAppResult.state === 'error') {
-      await cleanupSpaceOnError();
-      return {
-        state: 'error',
-        error: installCloudinaryAppResult.error,
-      };
-    }
-
-    const installCloudinaryAppEndTime = new Date();
-
-    console.info(
-      `Cloudinary app installed. Done in ${Math.round(
-        (installCloudinaryAppEndTime.getTime() -
-          installCloudinaryAppStartTime.getTime()) /
-          1000,
-      )}s`,
-    );
-  } else {
-    console.info(
-      'Skipping Cloudinary app installation - reusing existing space',
-    );
-  }
-
-  // Install the Ninetailed app
-  if (inputSpaceId === undefined) {
-    const installNinetailedAppStartTime = new Date();
-    console.info('Installing the Ninetailed app...');
-
-    const installNinetailedAppResult = await installNinetailedApp({
-      spaceId,
-      cmaToken,
-      spaceName: createdSpaceName,
-      organizationId,
-    });
-
-    if (installNinetailedAppResult.state === 'error') {
-      await cleanupSpaceOnError();
-      return {
-        state: 'error',
-        error: installNinetailedAppResult.error,
-      };
-    }
-
-    const installNinetailedAppEndTime = new Date();
-
-    console.info(
-      `Ninetailed app installed. Done in ${Math.round(
-        (installNinetailedAppEndTime.getTime() -
-          installNinetailedAppStartTime.getTime()) /
-          1000,
-      )}s`,
-    );
-  } else {
-    console.info(
-      'Skipping Ninetailed app installation - reusing existing space',
-    );
-  }
-
-  // Create a backup environment
-  if (inputSpaceId === undefined) {
-    const createBackupEnvironmentStartTime = new Date();
-    console.info('Creating backup environment...');
-
-    const createBackupEnvironmentResult = await createBackupEnvironment({
-      spaceId,
-      cmaToken,
-    });
-
-    if (createBackupEnvironmentResult.state === 'error') {
-      await cleanupSpaceOnError();
-      return {
-        state: 'error',
-        error: createBackupEnvironmentResult.error,
-      };
-    }
-
-    const createBackupEnvironmentEndTime = new Date();
-
-    console.info(
-      `Backup environment created. Done in ${Math.round(
-        (createBackupEnvironmentEndTime.getTime() -
-          createBackupEnvironmentStartTime.getTime()) /
-          1000,
-      )}s`,
-    );
-  } else {
-    console.info(
-      'Skipping backup environment creation - reusing existing space',
-    );
   }
 
   // Deploy to Vercel
@@ -408,8 +231,7 @@ const init = async (input) => {
 
   console.info(
     `Deployed to Vercel. Done in ${Math.round(
-      (deployToVercelEndTime.getTime() - deployToVercelStartTime.getTime()) /
-        1000,
+      (deployToVercelEndTime.getTime() - deployToVercelStartTime.getTime()) / 1000,
     )}s`,
   );
 
@@ -435,8 +257,7 @@ const init = async (input) => {
 
   console.info(
     `Preview urls set. Done in ${Math.round(
-      (setPreviewUrlsEndTime.getTime() - setPreviewUrlsStartTime.getTime()) /
-        1000,
+      (setPreviewUrlsEndTime.getTime() - setPreviewUrlsStartTime.getTime()) / 1000,
     )}s`,
   );
 
@@ -471,8 +292,7 @@ const init = async (input) => {
 
     console.info(
       `Invited to space. Done in ${Math.round(
-        (inviteToSpaceEndTime.getTime() - inviteToSpaceStartTime.getTime()) /
-          1000,
+        (inviteToSpaceEndTime.getTime() - inviteToSpaceStartTime.getTime()) / 1000,
       )}s`,
     );
   } else {
@@ -500,9 +320,7 @@ const init = async (input) => {
 
     console.info(
       `Translator role updated. Done in ${Math.round(
-        (updateTranslatorRoleEndTime.getTime() -
-          updateTranslatorRoleStartTime.getTime()) /
-          1000,
+        (updateTranslatorRoleEndTime.getTime() - updateTranslatorRoleStartTime.getTime()) / 1000,
       )}s`,
     );
   } else {

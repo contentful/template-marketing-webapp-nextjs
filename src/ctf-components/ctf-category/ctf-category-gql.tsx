@@ -1,6 +1,6 @@
 import { Container } from '@material-ui/core';
 import Head from 'next/head';
-import React, { useContext } from 'react';
+import React from 'react';
 import { useQuery } from 'react-apollo';
 
 import { CtfCategoryQuery } from './__generated__/CtfCategoryQuery';
@@ -8,21 +8,18 @@ import CtfCategory from './ctf-category';
 import { query } from './ctf-category-query';
 
 import EntryNotFound from '@src/components/errors/entry-not-found';
-import { ContentfulContext } from '@src/contentful-context';
-import getContentfulConfig from '@src/get-contentful-config';
+import { useContentfulContext } from '@src/contentful-context';
 import { useDataForPreview } from '@src/lib/apollo-hooks';
-import { getLocaleConfig } from '@src/locales-map';
+import { contentfulConfig } from 'contentful.config.mjs';
 
 interface Props {
   slug: string;
-  locale?: string;
   preview?: boolean;
 }
 
 const CtfCategoryGql = (props: Props) => {
-  const { defaultLocale, locale } = useContext(ContentfulContext);
-  const { lang, locale: realLocale } = getLocaleConfig(locale || defaultLocale);
-  const contentfulConfig = getContentfulConfig(realLocale);
+  const { locale } = useContentfulContext();
+
   const queryResult = useQuery<CtfCategoryQuery>(query, {
     variables: { ...props },
   });
@@ -88,12 +85,10 @@ const CtfCategoryGql = (props: Props) => {
           <meta
             key="og:url"
             property="og:url"
-            content={`${contentfulConfig.meta.url}/${lang}/category/${category.slug}`}
+            content={`${contentfulConfig.meta.url}/category/${category.slug}`}
           />
         )}
-        {props.locale && props.locale !== 'en-US' && (
-          <meta key="og:locale" property="og:locale" content={props.locale.replace('-', '_')} />
-        )}
+        <meta key="og:locale" property="og:locale" content={locale} />
       </Head>
       <CtfCategory posts={queryResult.data.postCollection?.items || []} {...category} />
     </>

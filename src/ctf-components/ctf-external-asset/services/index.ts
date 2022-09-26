@@ -1,5 +1,4 @@
 import * as SpotifyTransformer from './spotify';
-import * as TypeformTransformer from './typeform';
 import * as YouTubeTransformer from './youtube';
 
 interface Transformer {
@@ -9,8 +8,4 @@ interface Transformer {
   getHTML: (url: string) => string;
 }
 
-export default [
-  YouTubeTransformer,
-  SpotifyTransformer,
-  TypeformTransformer,
-] as Transformer[];
+export default [YouTubeTransformer, SpotifyTransformer] as Transformer[];

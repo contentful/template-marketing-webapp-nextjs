@@ -1,6 +1,6 @@
 import { gql } from 'apollo-boost';
 import Head from 'next/head';
-import React, { useContext } from 'react';
+import React from 'react';
 import { useQuery } from 'react-apollo';
 
 import { CtfPageQuery } from './__generated__/CtfPageQuery';
@@ -8,16 +8,14 @@ import CtfPage from './ctf-page';
 import { pageFragment } from './ctf-page-query';
 
 import PageError from '@src/components/errors/page-error';
-import { ContentfulContext } from '@src/contentful-context';
-import getContentfulConfig from '@src/get-contentful-config';
+import { useContentfulContext } from '@src/contentful-context';
 import { useDataForPreview } from '@src/lib/apollo-hooks';
-import { getLocaleConfig } from '@src/locales-map';
 import { tryget } from '@src/utils';
+import { contentfulConfig } from 'contentful.config.mjs';
 
 interface Props {
   topic?: string;
   slug: string;
-  locale: string;
 }
 
 const query = gql`
@@ -31,14 +29,14 @@ const query = gql`
   ${pageFragment}
 `;
 
-const CtfPageGgl = (props: Props) => {
-  const slug = !props.slug || props.slug === '/' ? 'home' : props.slug;
-  const { defaultLocale, previewActive } = useContext(ContentfulContext);
-  const { locale: realLocale, lang } = getLocaleConfig(props.locale || defaultLocale);
-  const contentfulConfig = getContentfulConfig(realLocale);
+const CtfPageGgl = ({ slug: slugFromProps }: Props) => {
+  const { locale } = useContentfulContext();
+
+  const slug = !slugFromProps || slugFromProps === '/' ? 'home' : slugFromProps;
+  const { previewActive } = useContentfulContext();
 
   const queryResult = useQuery<CtfPageQuery>(query, {
-    variables: { slug, locale: props.locale, preview: previewActive },
+    variables: { slug, locale, preview: previewActive },
   });
 
   useDataForPreview(queryResult);
@@ -55,7 +53,7 @@ const CtfPageGgl = (props: Props) => {
     return <PageError error={error} />;
   }
 
-  const { seo } = page;
+  const { seo } = page || {};
 
   const metaTags = {
     title: seo?.title ?? page.pageName,
@@ -97,14 +95,10 @@ const CtfPageGgl = (props: Props) => {
           <meta
             key="og:url"
             property="og:url"
-            content={`${contentfulConfig.meta.url}/${lang}${
-              page.slug === 'home' ? '' : `/${page.slug}`
-            }`}
+            content={`${contentfulConfig.meta.url}/${page.slug === 'home' ? '' : `/${page.slug}`}`}
           />
         )}
-        {props.locale && props.locale !== 'en-US' && (
-          <meta key="og:locale" property="og:locale" content={props.locale.replace('-', '_')} />
-        )}
+        <meta key="og:locale" property="og:locale" content={locale} />
       </Head>
       <CtfPage {...page} />
     </>

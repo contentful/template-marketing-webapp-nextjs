@@ -16,9 +16,9 @@ import clsx from 'clsx';
 import format from 'date-fns/format';
 import { useRouter } from 'next/router';
 import queryString from 'query-string';
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import { ContentfulContext } from '@src/contentful-context';
+import { useContentfulContext } from '@src/contentful-context';
 import SettingsIcon from '@src/icons/settings-icon.svg';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -311,7 +311,7 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
   const router = useRouter();
 
   const classes = useStyles();
-  const { spaceEnv, appUrl, xrayActive, previewActive } = useContext(ContentfulContext);
+  const { spaceEnv, appUrl, xrayActive, previewActive } = useContentfulContext();
   const [environments, setEnvironments] = useState([] as { name: string; createdAt: string }[]);
   const [defaultEnv, setDefaultEnv] = useState('');
   const [newSpaceEnv, setNewSpaceEnv] = useState(spaceEnv !== 'default' ? spaceEnv : '');

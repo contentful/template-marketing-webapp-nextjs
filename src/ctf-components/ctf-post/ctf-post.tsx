@@ -2,7 +2,8 @@ import { Theme, makeStyles, Container, Typography } from '@material-ui/core';
 import { LocalOffer } from '@material-ui/icons';
 import clsx from 'clsx';
 import formatDate from 'date-fns/format';
-import React, { useMemo, useContext } from 'react';
+import { useTranslation } from 'next-i18next';
+import React, { useMemo } from 'react';
 
 import { PostFragment, PostFragment_contentfulMetadata_tags } from './__generated__/PostFragment';
 
@@ -13,10 +14,9 @@ import ComponentResolver from '@src/components/component-resolver';
 import PostContainer from '@src/components/layout/post-container';
 import Link from '@src/components/link/link';
 import XrayFrame from '@src/components/xray-frame';
-import { ContentfulContext } from '@src/contentful-context';
+import { useContentfulContext } from '@src/contentful-context';
 import { WrapIf } from '@src/jsx-utils';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
-import { getLocaleConfig } from '@src/locales-map';
 
 interface CtfPostPropsInterface extends PostFragment {}
 
@@ -98,8 +98,8 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 const CtfPost = (props: CtfPostPropsInterface) => {
-  const { locale, xrayActive } = useContext(ContentfulContext);
-  const { lang, locale: realLocale } = getLocaleConfig(locale);
+  const { t } = useTranslation();
+  const { xrayActive } = useContentfulContext();
   const {
     body,
     postName,
@@ -123,11 +123,10 @@ const CtfPost = (props: CtfPostPropsInterface) => {
 
     return (
       <span>
-        {realLocale === 'de-DE' ? 'Veröffentlicht am' : 'Published'}{' '}
-        {formatDate(new Date(publishedDate), 'MMM dd, yyyy')}
+        {t('content.published')} {formatDate(new Date(publishedDate), 'MMM dd, yyyy')}
       </span>
     );
-  }, [publishedDate, realLocale]);
+  }, [publishedDate, t]);
 
   const categoryLink = useMemo(() => {
     if (category === null) {
@@ -138,12 +137,12 @@ const CtfPost = (props: CtfPostPropsInterface) => {
       <span>
         {' '}
         in{' '}
-        <Link href="/[lang]/category/[slug]" as={`/${lang}/category/${category.slug}`} underline>
+        <Link href={`/category/${category.slug}`} underline>
           {category.categoryName}
         </Link>
       </span>
     );
-  }, [category, lang]);
+  }, [category]);
 
   const tags: null | JSX.Element = useMemo(() => {
     const nonNullTags = contentfulMetadata.tags
@@ -162,7 +161,7 @@ const CtfPost = (props: CtfPostPropsInterface) => {
         <LocalOffer />
         {nonNullTags.map((tag, i) => (
           <span key={tag.id ?? ''}>
-            <Link href="/[lang]/tag/[id]" as={`/${lang}/tag/${tag.id}`} underline>
+            <Link href={`/tag/${tag.id}`} underline>
               {tag.name}
             </Link>
             {i === nonNullTags.length - 1 ? '' : ','}
@@ -170,7 +169,7 @@ const CtfPost = (props: CtfPostPropsInterface) => {
         ))}
       </div>
     );
-  }, [classes.tags, contentfulMetadata.tags, lang]);
+  }, [classes.tags, contentfulMetadata.tags]);
 
   return (
     <LayoutContext.Provider value={defaultLayout}>

@@ -62,12 +62,7 @@ const CtfExternalAssetUrl = (props: CtfExternalAssetUrlPropsInterface) => {
 
   return (
     <Container>
-      <div
-        className={clsx(
-          classes.container,
-          transformer.id === 'typeform' ? classes.containerNoMargins : null,
-        )}
-        style={{ maxWidth: layout.containerWidth }}>
+      <div className={clsx(classes.container)} style={{ maxWidth: layout.containerWidth }}>
         <div
           className={classes.content}
           // eslint-disable-next-line react/no-danger

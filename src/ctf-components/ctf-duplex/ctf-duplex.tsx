@@ -1,7 +1,7 @@
 import { Container, Theme, makeStyles, Typography } from '@material-ui/core';
 import { PersonalizedComponent } from '@ninetailed/experience.js-next';
 import clsx from 'clsx';
-import React, { useContext, useMemo } from 'react';
+import React, { useMemo } from 'react';
 
 import { DuplexFragment } from './__generated__/DuplexFragment';
 
@@ -9,7 +9,7 @@ import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
 import PageLink from '@src/components/link/page-link';
 import PostLink from '@src/components/link/post-link';
 import PersonalizationFrame from '@src/components/personalization-frame';
-import { ContentfulContext } from '@src/contentful-context';
+import { useContentfulContext } from '@src/contentful-context';
 import { WrapIf } from '@src/jsx-utils';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 import { getColorConfigFromPalette } from '@src/theme';
@@ -183,7 +183,7 @@ const CtfDuplex: PersonalizedComponent<CtfDuplexPropsInterface> = props => {
     return 'center';
   }, [imageAlignmentParam]);
   const classes = useStyles();
-  const { xrayActive } = useContext(ContentfulContext);
+  const { xrayActive } = useContentfulContext();
 
   const isPersonalized =
     ntVariantsCollection?.items !== undefined && ntVariantsCollection.items.length > 0;

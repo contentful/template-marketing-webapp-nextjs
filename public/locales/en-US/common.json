@@ -1,0 +1,29 @@
+{
+  "common": {
+    "password": "Password",
+    "forgotPassword": "Forgot password?",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "createAccount": "Create your GoCoin account",
+    "signInAccount": "Sign into your GoCoin account",
+    "noAccount": "Don't have an account?",
+    "existingAccount": "Already have an account?"
+  },
+  "price": {
+    "free": "Free"
+  },
+  "time": {
+    "month": "Month"
+  },
+  "content": {
+    "published": "Published",
+    "publishedByAuthorOnDate": " on {{ date }}"
+  },
+  "socials": {
+    "findUsOn": "Find us on"
+  },
+  "legal": {
+    "copyright": "© Copyright {{ year }}",
+    "disclaimer": "Colorful Coin is not authorised by the Financial Conduct Authority under the Electronic Money Regulations 2011, Firm Reference 000001, for the issuing of electronic money. Please be aware that this is a demo website intended for internal use only and not a real service/product."
+  }
+}

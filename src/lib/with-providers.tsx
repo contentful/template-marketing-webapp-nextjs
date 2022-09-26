@@ -2,12 +2,15 @@ import { ThemeProvider } from '@material-ui/styles';
 import { NinetailedProvider } from '@ninetailed/experience.js-next';
 import { ApolloClient, IntrospectionResultData, NormalizedCacheObject } from 'apollo-boost';
 import { NextPage, GetServerSideProps } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React from 'react';
 import { ApolloProvider, getDataFromTree } from 'react-apollo';
 
-import getContentfulConfig from '@src/get-contentful-config';
+import { ContentfulContext, contentfulContextValue } from '@src/contentful-context';
 import { createCfulUrl, createClientWithLink, createLink } from '@src/lib/init-apollo';
 import colorfulTheme from '@src/theme';
+import { contentfulConfig } from 'contentful.config.mjs';
+import i18nConfig from 'next-i18next.config.js';
 
 const legalIntrospection = require('../../introspection/legal-introspection.json');
 const mainIntrospection = require('../../introspection/main-introspection.json');
@@ -33,7 +36,7 @@ interface WithProvidersPropsInterface {
   };
 }
 
-const contentfulConfig = getContentfulConfig();
+const { i18n } = i18nConfig;
 
 function initApolloClient(config: CfulApolloConfig, connectToDevTools?: boolean) {
   return createClientWithLink(
@@ -57,7 +60,7 @@ export const ApolloContext = React.createContext<ApolloContextInterface>({
 const withProviders = () => {
   return (Page: any): NextPage<WithProvidersPropsInterface> => {
     const PageWithProviders: NextPage<WithProvidersPropsInterface> = props => {
-      const { pageProps, apolloConfigs, apolloClients, ssrQuery } = props;
+      const { apolloConfigs, apolloClients, ...rest } = props;
 
       const mainApolloClient =
         apolloClients === undefined
@@ -76,7 +79,7 @@ const withProviders = () => {
       return (
         <ApolloProvider client={mainApolloClient}>
           <ApolloContext.Provider value={apolloContextValue}>
-            <Page {...pageProps} ssrQuery={ssrQuery} />
+            <Page {...rest} />
           </ApolloContext.Provider>
         </ApolloProvider>
       );
@@ -140,30 +143,37 @@ export const generateGetServerSideProps =
     };
 
     try {
+      if (ctx.locale) {
+        contentfulContextValue.locale = ctx.locale;
+      }
+
       await getDataFromTree(
-        <NinetailedProvider
-          clientId={process.env.NEXT_PUBLIC_NINETAILED_API_KEY ?? ''}
-          environment="main"
-          plugins={[]}
-          // profile={ninetailed.profile}
-        >
-          <ApolloProvider client={mainApolloClient}>
-            <ApolloContext.Provider value={apolloContextValue}>
-              <ThemeProvider theme={colorfulTheme}>
-                <Page
-                  pageProps={{ props: newProps }}
-                  apolloConfigs={apolloConfigs}
-                  apolloClients={{
-                    main: mainApolloClient,
-                    legal: legalApolloClient,
-                  }}
-                  error={error}
-                  ssrQuery={ctx.query}
-                />
-              </ThemeProvider>
-            </ApolloContext.Provider>
-          </ApolloProvider>
-        </NinetailedProvider>,
+        <ContentfulContext.Provider value={contentfulContextValue}>
+          <NinetailedProvider
+            clientId={process.env.NEXT_PUBLIC_NINETAILED_API_KEY ?? ''}
+            environment="main"
+            plugins={[]}
+            // profile={ninetailed.profile}
+          >
+            <ApolloProvider client={mainApolloClient}>
+              <ApolloContext.Provider value={apolloContextValue}>
+                <ThemeProvider theme={colorfulTheme}>
+                  <Page
+                    locale={ctx.locale}
+                    pageProps={{ props: newProps }}
+                    apolloConfigs={apolloConfigs}
+                    apolloClients={{
+                      main: mainApolloClient,
+                      legal: legalApolloClient,
+                    }}
+                    error={error}
+                    ssrQuery={ctx.query}
+                  />
+                </ThemeProvider>
+              </ApolloContext.Provider>
+            </ApolloProvider>
+          </NinetailedProvider>
+        </ContentfulContext.Provider>,
       );
     } catch (e) {
       console.log('Pre-render error:', e);
@@ -172,10 +182,9 @@ export const generateGetServerSideProps =
     apolloConfigs.main.state = mainApolloClient.extract();
     apolloConfigs.legal.state = legalApolloClient.extract();
 
-    // Head.rewind();
-
     return {
       props: {
+        ...(await serverSideTranslations(ctx.locale || i18n.defaultLocale)),
         pageProps: {
           ...pageProps,
           props: newProps,

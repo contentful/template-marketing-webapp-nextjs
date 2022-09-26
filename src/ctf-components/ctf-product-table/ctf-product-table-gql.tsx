@@ -8,19 +8,14 @@ import {
   CtfProductTableQuery,
   CtfProductTableQuery_componentProductTable,
 } from './__generated__/CtfProductTableQuery';
-import CtfProductTable, {
-  CtfProductTablePropsInterface,
-} from './ctf-product-table';
+import CtfProductTable, { CtfProductTablePropsInterface } from './ctf-product-table';
 import { query } from './ctf-product-table-query';
 
 import EntryNotFound from '@src/components/errors/entry-not-found';
 import { useDataForPreview } from '@src/lib/apollo-hooks';
 
-
-
 interface CtfProductTableGqlPropsInterface {
   id: string;
-  locale?: string;
   preview?: boolean;
 }
 
@@ -47,9 +42,7 @@ const CtfProductTableGql = (props: CtfProductTableGqlPropsInterface) => {
   return (
     <Personalize<CtfProductTablePropsInterface>
       component={CtfProductTable}
-      {...unwrapVariants<CtfProductTableQuery_componentProductTable>(
-        componentProductTable,
-      )}
+      {...unwrapVariants<CtfProductTableQuery_componentProductTable>(componentProductTable)}
     />
   );
 };

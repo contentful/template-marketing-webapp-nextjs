@@ -1,11 +1,8 @@
 import { Drawer, SvgIcon, makeStyles } from '@material-ui/core';
-import React, { useContext, useMemo } from 'react';
+import { useTranslation } from 'next-i18next';
 
 import Link from '@src/components/link/link';
-import { ContentfulContext } from '@src/contentful-context';
-import getContentfulConfig from '@src/get-contentful-config';
-import { getLocaleConfig } from '@src/locales-map';
-import pathToNextLinkHref from '@src/routing/path-to-next-link-href';
+import { contentfulConfig } from 'contentful.config.mjs';
 
 const useStyles = makeStyles(theme => ({
   menu: {
@@ -50,44 +47,25 @@ const useStyles = makeStyles(theme => ({
 }));
 
 interface MobileMenuPropsInterface {
-  locale?: string;
   isOpen?: boolean;
   onOpenChange: (isOpen: boolean) => any;
 }
 
 const MobileMenu = (props: MobileMenuPropsInterface) => {
-  const { isOpen, onOpenChange, locale } = props;
+  const { isOpen, onOpenChange } = props;
+  const { t } = useTranslation();
   const onCloseClick = (e, reason) => {
     if (reason === 'backdropClick') {
       onOpenChange(false);
     }
   };
 
-  const { defaultLocale } = useContext(ContentfulContext);
-  const { lang, locale: realLocale } = getLocaleConfig(locale || defaultLocale);
-
-  const contentfulConfig = useMemo(() => {
-    return getContentfulConfig(realLocale);
-  }, [realLocale]);
-
   const renderMenuItem = (menuItem: { label: string; location?: string }): string | JSX.Element => {
     if (menuItem.location === undefined) {
       return menuItem.label;
     }
 
-    const internalHref = pathToNextLinkHref(menuItem.location);
-
-    if (internalHref === null) {
-      // It looks like this is not an internal link, at least not one that we
-      // recognize, just render a regular anchor
-      return <a href={menuItem.location}>{menuItem.label}</a>;
-    }
-
-    return (
-      <Link href={internalHref} as={`/${lang}${menuItem.location}`}>
-        {menuItem.label}
-      </Link>
-    );
+    return <Link href={menuItem.location}>{menuItem.label}</Link>;
   };
 
   const renderMenuItemChildren = (menuItem: {
@@ -125,14 +103,8 @@ const MobileMenu = (props: MobileMenuPropsInterface) => {
       <nav>
         <ul className={classes.accountMenu}>
           <li className={classes.accountMenuItem}>
-            <Link
-              href="/[lang]/sign-up"
-              as={`/${lang}/sign-up`}
-              isButton
-              variant="contained"
-              color="primary"
-              size="small">
-              {realLocale === 'de-DE' ? 'Anmelden' : 'Sign Up'}
+            <Link href="/sign-up" isButton variant="contained" color="primary" size="small">
+              {t('common.signUp')}
             </Link>
           </li>
           <li className={classes.accountMenuItem}>
@@ -157,7 +129,7 @@ const MobileMenu = (props: MobileMenuPropsInterface) => {
                   </defs>
                 </SvgIcon>
               }>
-              {realLocale === 'de-DE' ? 'Einloggen' : 'Sign In'}
+              {t('common.signIn')}
             </Link>
           </li>
         </ul>

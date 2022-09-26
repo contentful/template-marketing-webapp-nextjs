@@ -14,7 +14,7 @@ import { RichTextEntryHyperlinkQuery } from './__generated__/RichTextEntryHyperl
 import ComponentResolver from '@src/components/component-resolver';
 import PageLink from '@src/components/link/page-link';
 import PostLink from '@src/components/link/post-link';
-import { ContentfulContext } from '@src/contentful-context';
+import { useContentfulContext } from '@src/contentful-context';
 import LayoutContext from '@src/layout-context';
 import { useDataForPreview } from '@src/lib/apollo-hooks';
 import { OmitRecursive, tryget } from '@src/utils';
@@ -186,7 +186,7 @@ interface CtfRichtextPropsInterface {
 }
 
 const EntryHyperlink = node => {
-  const { previewActive } = useContext(ContentfulContext);
+  const { previewActive } = useContentfulContext();
   const queryResult = useQuery<RichTextEntryHyperlinkQuery>(
     gql`
       query RichTextEntryHyperlinkQuery($id: String!, $preview: Boolean) {

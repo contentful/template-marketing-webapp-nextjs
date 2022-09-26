@@ -106,6 +106,7 @@ const CtfHeroBanner: PersonalizedComponent<CtfHeroBannerInterface> = props => {
     heroSize: heroSizeBoolean,
   } = props;
   const layout = useContext(LayoutContext);
+
   const colorConfig = getColorConfigFromPalette(colorPalette || '');
   const imageStyle = imageStyleBoolean ? 'partial' : 'full';
   const heroSize =
