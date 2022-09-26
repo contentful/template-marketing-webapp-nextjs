@@ -1,10 +1,9 @@
 import gql from 'graphql-tag';
 
-import { ninetailedAudienceFragment } from '@ctf-components/ctf-ninetailed-audience/ctf-ninetailed-audience-query';
 import { postFragmentBase } from '@ctf-components/ctf-post/ctf-post-query';
 
 export const featuredCardsFragment = gql`
-  fragment FeaturedCardsFragmentBase on ComponentFeaturedCards {
+  fragment FeaturedCardsFragment on ComponentFeaturedCards {
     internalName
     headline
     subline
@@ -15,19 +14,6 @@ export const featuredCardsFragment = gql`
     }
   }
 
-  fragment FeaturedCardsFragment on ComponentFeaturedCards {
-    ...FeaturedCardsFragmentBase
-    ntVariantsCollection(limit: 0) {
-      items {
-        ...FeaturedCardsFragmentBase
-        ntAudience {
-          ...NinetailedAudienceFragment
-        }
-      }
-    }
-  }
-
-  ${ninetailedAudienceFragment}
   ${postFragmentBase}
 `;
 
