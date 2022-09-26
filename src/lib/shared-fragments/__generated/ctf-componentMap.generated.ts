@@ -73,8 +73,5 @@ export const ComponentReferenceFieldsFragmentDoc = `
   ... on TopicProduct {
     internalName
   }
-  ... on WrapperExternalAsset {
-    internalName
-  }
 }
     `;
