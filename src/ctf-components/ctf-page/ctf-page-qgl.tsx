@@ -1,15 +1,10 @@
-import { gql } from 'apollo-boost';
 import Head from 'next/head';
-import React from 'react';
-import { useQuery } from 'react-apollo';
 
-import { CtfPageQuery } from './__generated__/CtfPageQuery';
 import CtfPage from './ctf-page';
-import { pageFragment } from './ctf-page-query';
 
+import { useCtfPageQuery } from '@ctf-components/ctf-page/__generated/ctf-page.generated';
 import PageError from '@src/components/errors/page-error';
 import { useContentfulContext } from '@src/contentful-context';
-import { useDataForPreview } from '@src/lib/apollo-hooks';
 import { tryget } from '@src/utils';
 import { contentfulConfig } from 'contentful.config.mjs';
 
@@ -18,32 +13,24 @@ interface Props {
   slug: string;
 }
 
-const query = gql`
-  query CtfPageQuery($slug: String!, $locale: String, $preview: Boolean) {
-    pageCollection(where: { slug: $slug }, locale: $locale, preview: $preview, limit: 1) {
-      items {
-        ...PageFragment
-      }
-    }
-  }
-  ${pageFragment}
-`;
-
 const CtfPageGgl = ({ slug: slugFromProps }: Props) => {
   const { locale } = useContentfulContext();
 
   const slug = !slugFromProps || slugFromProps === '/' ? 'home' : slugFromProps;
   const { previewActive } = useContentfulContext();
 
-  const queryResult = useQuery<CtfPageQuery>(query, {
-    variables: { slug, locale, preview: previewActive },
+  const { isLoading, data } = useCtfPageQuery({
+    slug,
+    locale,
+    preview: previewActive,
   });
 
-  useDataForPreview(queryResult);
+  // TODO: consider adding new polling feature to RQ hooks
+  // useDataForPreview(queryResult);
 
-  const page = tryget(() => queryResult.data!.pageCollection!.items[0]);
+  const page = tryget(() => data?.pageCollection!.items[0]);
 
-  if (queryResult.loading) return <></>;
+  if (isLoading) return <></>;
   if (!page) {
     const error = {
       code: 404,
