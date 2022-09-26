@@ -23,7 +23,6 @@ const init = async input => {
     legalSpaceId,
     legalSpaceToken,
     vercelDeployToken,
-    ninetailedAPIKey,
     source = 'script',
   } = input;
   const client = createClient({
@@ -214,7 +213,6 @@ const init = async input => {
     legalSpaceId,
     legalSpaceToken,
     vercelDeployToken,
-    ninetailedAPIKey,
   });
 
   if (deployToVercelResult.state === 'error') {

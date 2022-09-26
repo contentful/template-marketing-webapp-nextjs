@@ -1,5 +1,4 @@
 import { ThemeProvider } from '@material-ui/styles';
-import { NinetailedProvider } from '@ninetailed/experience.js-next';
 import { ApolloClient, IntrospectionResultData, NormalizedCacheObject } from 'apollo-boost';
 import { NextPage, GetServerSideProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -149,30 +148,23 @@ export const generateGetServerSideProps =
 
       await getDataFromTree(
         <ContentfulContext.Provider value={contentfulContextValue}>
-          <NinetailedProvider
-            clientId={process.env.NEXT_PUBLIC_NINETAILED_API_KEY ?? ''}
-            environment="main"
-            plugins={[]}
-            // profile={ninetailed.profile}
-          >
-            <ApolloProvider client={mainApolloClient}>
-              <ApolloContext.Provider value={apolloContextValue}>
-                <ThemeProvider theme={colorfulTheme}>
-                  <Page
-                    locale={ctx.locale}
-                    pageProps={{ props: newProps }}
-                    apolloConfigs={apolloConfigs}
-                    apolloClients={{
-                      main: mainApolloClient,
-                      legal: legalApolloClient,
-                    }}
-                    error={error}
-                    ssrQuery={ctx.query}
-                  />
-                </ThemeProvider>
-              </ApolloContext.Provider>
-            </ApolloProvider>
-          </NinetailedProvider>
+          <ApolloProvider client={mainApolloClient}>
+            <ApolloContext.Provider value={apolloContextValue}>
+              <ThemeProvider theme={colorfulTheme}>
+                <Page
+                  locale={ctx.locale}
+                  pageProps={{ props: newProps }}
+                  apolloConfigs={apolloConfigs}
+                  apolloClients={{
+                    main: mainApolloClient,
+                    legal: legalApolloClient,
+                  }}
+                  error={error}
+                  ssrQuery={ctx.query}
+                />
+              </ThemeProvider>
+            </ApolloContext.Provider>
+          </ApolloProvider>
         </ContentfulContext.Provider>,
       );
     } catch (e) {
