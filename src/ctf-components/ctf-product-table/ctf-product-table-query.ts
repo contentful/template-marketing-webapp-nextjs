@@ -2,10 +2,8 @@ import gql from 'graphql-tag';
 
 import { productFragment } from '../ctf-product/ctf-product-query';
 
-import { ninetailedAudienceFragment } from '@ctf-components/ctf-ninetailed-audience/ctf-ninetailed-audience-query';
-
 export const productTableFragment = gql`
-  fragment ProductTableFragmentBase on ComponentProductTable {
+  fragment ProductTableFragment on ComponentProductTable {
     sys {
       id
     }
@@ -19,19 +17,6 @@ export const productTableFragment = gql`
     }
   }
 
-  fragment ProductTableFragment on ComponentProductTable {
-    ...ProductTableFragmentBase
-    ntVariantsCollection(limit: 3) {
-      items {
-        ...ProductTableFragmentBase
-        ntAudience {
-          ...NinetailedAudienceFragment
-        }
-      }
-    }
-  }
-
-  ${ninetailedAudienceFragment}
   ${productFragment}
 `;
 

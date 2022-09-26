@@ -1,7 +1,7 @@
 const path = require('path');
 const { createDeployment } = require('@vercel/client');
 
-const deployToVercel = async (input) => {
+const deployToVercel = async input => {
   const {
     spaceId,
     cmaToken,
@@ -10,7 +10,6 @@ const deployToVercel = async (input) => {
     legalSpaceId,
     legalSpaceToken,
     vercelDeployToken,
-    ninetailedAPIKey,
   } = input;
 
   let deployment;
@@ -36,11 +35,7 @@ const deployToVercel = async (input) => {
         CONFIG_CONTENTFUL_LEGAL_SPACE_ID:
           legalSpaceId || process.env.CONFIG_CONTENTFUL_LEGAL_SPACE_ID || '',
         CONFIG_CONTENTFUL_LEGAL_SPACE_TOKEN:
-          legalSpaceToken ||
-          process.env.CONFIG_CONTENTFUL_LEGAL_SPACE_TOKEN ||
-          '',
-        NEXT_PUBLIC_NINETAILED_API_KEY: '6207cd14-ab62-4f52-a7d2-baa5cf31ae38',
-        NEXT_PUBLIC_NINETAILED_ENVIRONMENT: spaceId,
+          legalSpaceToken || process.env.CONFIG_CONTENTFUL_LEGAL_SPACE_TOKEN || '',
       },
       build: {
         env: {
@@ -51,12 +46,7 @@ const deployToVercel = async (input) => {
           CONFIG_CONTENTFUL_LEGAL_SPACE_ID:
             legalSpaceId || process.env.CONFIG_CONTENTFUL_LEGAL_SPACE_ID || '',
           CONFIG_CONTENTFUL_LEGAL_SPACE_TOKEN:
-            legalSpaceToken ||
-            process.env.CONFIG_CONTENTFUL_LEGAL_SPACE_TOKEN ||
-            '',
-          NEXT_PUBLIC_NINETAILED_API_KEY:
-            '6207cd14-ab62-4f52-a7d2-baa5cf31ae38',
-          NEXT_PUBLIC_NINETAILED_ENVIRONMENT: spaceId,
+            legalSpaceToken || process.env.CONFIG_CONTENTFUL_LEGAL_SPACE_TOKEN || '',
         },
       },
     },

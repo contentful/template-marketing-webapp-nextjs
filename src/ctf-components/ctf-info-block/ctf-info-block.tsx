@@ -1,5 +1,4 @@
 import { makeStyles, Theme, Container } from '@material-ui/core';
-import { PersonalizedComponent } from '@ninetailed/experience.js-next';
 import clsx from 'clsx';
 import React from 'react';
 
@@ -7,10 +6,7 @@ import { InfoBlockFragment } from './__generated__/InfoBlockFragment';
 
 import CtfAsset from '@ctf-components/ctf-asset/ctf-asset';
 import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
-import PersonalizationFrame from '@src/components/personalization-frame';
 import SectionHeadlines from '@src/components/section-headlines/section-headlines';
-import { useContentfulContext } from '@src/contentful-context';
-import { WrapIf } from '@src/jsx-utils';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 import { getColorConfigFromPalette } from '@src/theme';
 
@@ -80,7 +76,7 @@ export interface CtfInfoBlockPropsInterface extends InfoBlockFragment {
   previousComponent?: string | null;
 }
 
-const CtfInfoBlock: PersonalizedComponent<CtfInfoBlockPropsInterface> = props => {
+const CtfInfoBlock = (props: CtfInfoBlockPropsInterface) => {
   const {
     headline,
     subline,
@@ -92,90 +88,76 @@ const CtfInfoBlock: PersonalizedComponent<CtfInfoBlockPropsInterface> = props =>
     block3Body,
     previousComponent,
     colorPalette,
-    ninetailed,
-    ntVariantsCollection,
   } = props;
   const colorConfig = getColorConfigFromPalette(colorPalette || '');
   const classes = useStyles();
-  const { xrayActive } = useContentfulContext();
-
-  const isPersonalized =
-    ntVariantsCollection?.items !== undefined && ntVariantsCollection.items.length > 0;
 
   return (
-    <WrapIf
-      when={xrayActive === true && isPersonalized === true}
-      wrap={children => (
-        <PersonalizationFrame audienceId={ninetailed?.audience.id ?? null}>
-          {children}
-        </PersonalizationFrame>
-      )}>
-      <Container
-        maxWidth={false}
-        style={{
-          backgroundColor: colorConfig.backgroundColor,
-        }}>
-        <div
-          className={clsx(
-            classes.innerContainer,
-            previousComponent === 'ComponentInfoBlock' && !headline && !subline
-              ? classes.innerContainerAfterInfoBlock
-              : null,
-          )}>
-          <SectionHeadlines
-            headline={headline}
-            headlineProps={{
-              style: { color: colorConfig.headlineColor },
-            }}
-            subline={subline}
-            sublineProps={{
-              style: { color: colorConfig.textColor },
-            }}
-            className={classes.sectionHeadlines}
-          />
-          <LayoutContext.Provider value={{ ...defaultLayout, parent: 'info-block' }}>
-            <div className={classes.blocksGrid}>
-              {block1Body && (
-                <div className={classes.block}>
-                  {block1Image && (
-                    <div className={classes.itemIcon}>
-                      <CtfAsset {...block1Image} showDescription={false} />
-                    </div>
-                  )}
-                  <div style={{ color: colorConfig.textColor }}>
-                    <CtfRichtext {...block1Body} className={classes.itemText} />
+    <Container
+      maxWidth={false}
+      style={{
+        backgroundColor: colorConfig.backgroundColor,
+      }}>
+      <div
+        className={clsx(
+          classes.innerContainer,
+          previousComponent === 'ComponentInfoBlock' && !headline && !subline
+            ? classes.innerContainerAfterInfoBlock
+            : null,
+        )}>
+        <SectionHeadlines
+          headline={headline}
+          headlineProps={{
+            style: { color: colorConfig.headlineColor },
+          }}
+          subline={subline}
+          sublineProps={{
+            style: { color: colorConfig.textColor },
+          }}
+          className={classes.sectionHeadlines}
+        />
+        <LayoutContext.Provider value={{ ...defaultLayout, parent: 'info-block' }}>
+          <div className={classes.blocksGrid}>
+            {block1Body && (
+              <div className={classes.block}>
+                {block1Image && (
+                  <div className={classes.itemIcon}>
+                    <CtfAsset {...block1Image} showDescription={false} />
                   </div>
+                )}
+                <div style={{ color: colorConfig.textColor }}>
+                  <CtfRichtext {...block1Body} className={classes.itemText} />
                 </div>
-              )}
-              {block2Body && (
-                <div className={classes.block}>
-                  {block2Image && (
-                    <div className={classes.itemIcon}>
-                      <CtfAsset {...block2Image} showDescription={false} />
-                    </div>
-                  )}
-                  <div style={{ color: colorConfig.textColor }}>
-                    <CtfRichtext {...block2Body} className={classes.itemText} />
+              </div>
+            )}
+            {block2Body && (
+              <div className={classes.block}>
+                {block2Image && (
+                  <div className={classes.itemIcon}>
+                    <CtfAsset {...block2Image} showDescription={false} />
                   </div>
+                )}
+                <div style={{ color: colorConfig.textColor }}>
+                  <CtfRichtext {...block2Body} className={classes.itemText} />
                 </div>
-              )}
-              {block3Body && (
-                <div className={classes.block}>
-                  {block3Image && (
-                    <div className={classes.itemIcon}>
-                      <CtfAsset {...block3Image} showDescription={false} />
-                    </div>
-                  )}
-                  <div style={{ color: colorConfig.textColor }}>
-                    <CtfRichtext {...block3Body} className={classes.itemText} />
+              </div>
+            )}
+            {block3Body && (
+              <div className={classes.block}>
+                {block3Image && (
+                  <div className={classes.itemIcon}>
+                    <CtfAsset {...block3Image} showDescription={false} />
                   </div>
+                )}
+                <div style={{ color: colorConfig.textColor }}>
+                  <CtfRichtext {...block3Body} className={classes.itemText} />
                 </div>
-              )}
-            </div>
-          </LayoutContext.Provider>
-        </div>
-      </Container>
-    </WrapIf>
+              </div>
+            )}
+          </div>
+        </LayoutContext.Provider>
+      </div>
+    </Container>
   );
 };
 

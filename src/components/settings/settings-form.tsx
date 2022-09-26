@@ -40,10 +40,10 @@ const useStyles = makeStyles((theme: Theme) => ({
       width: '42.3rem',
     },
     '& .MuiTypography-h5, & .MuiFormLabel-root, & .MuiInputBase-root, & .MuiFormHelperText-root, & .MuiTypography-body1, & .MuiButton-root':
-      {
-        fontFamily:
-          '-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol',
-      },
+    {
+      fontFamily:
+        '-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol',
+    },
   },
   header: {
     alignItems: 'center',
@@ -403,8 +403,7 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
 
     router.push(
       `${router.pathname}?${queryString.stringify(queryParams)}`,
-      `${router.asPath.split('?')[0]}${
-        queryString.stringify(queryParams) ? `?${queryString.stringify(queryParams)}` : ''
+      `${router.asPath.split('?')[0]}${queryString.stringify(queryParams) ? `?${queryString.stringify(queryParams)}` : ''
       }`,
     );
   };
@@ -556,31 +555,6 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
             </Typography>
             <FormControl margin="normal" fullWidth>
               {environmentsField()}
-            </FormControl>
-
-            <FormControl margin="dense" fullWidth>
-              <FormControlLabel
-                className={classes.formControlLabel}
-                labelPlacement="start"
-                control={
-                  <Button
-                    type="button"
-                    color="primary"
-                    size="small"
-                    className={classes.personalizationPreviewButton}
-                    onClick={() => {
-                      (window as any).ninetailed.plugins.preview.open();
-                      onClose();
-                    }}>
-                    Preview
-                  </Button>
-                }
-                label="Personalization"
-              />
-              <FormHelperText>
-                Instantly preview different <br />
-                Ninetailed audiences.
-              </FormHelperText>
             </FormControl>
           </div>
           <footer className={classes.footer}>

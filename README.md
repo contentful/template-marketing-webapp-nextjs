@@ -38,9 +38,6 @@ CONTENTFUL_DEPLOY_TOKEN=
 CONTENTFUL_DEPLOY_ORG=
 
 VERCEL_DEPLOY_TOKEN=
-
-NEXT_PUBLIC_NINETAILED_API_KEY=
-NEXT_PUBLIC_NINETAILED_ENVIRONMENT=
 ```
 
 You can find the values for the legal space environment variables by checking out the `.env` file linked here [Installation guide](https://contentful.atlassian.net/wiki/spaces/MAR/pages/2080309537/Colorful+Coin+setup+guide#Installing)
