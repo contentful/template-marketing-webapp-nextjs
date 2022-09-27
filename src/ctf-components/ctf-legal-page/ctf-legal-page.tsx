@@ -8,7 +8,7 @@ export const CtfLegalPage = (props: LegalPageFieldsFragment) => {
 
   return (
     <PageContainer>
-      {pageContent && pageContent.__typename === 'TopicBusinessInfo' && (
+      {pageContent && pageContent.__typename === 'TopicBusinessInfo' ? (
         <LayoutContext.Provider value={defaultLayout} key={pageContent.sys.id}>
           <CtfBusinessInfo
             body={pageContent.body}
@@ -16,7 +16,7 @@ export const CtfLegalPage = (props: LegalPageFieldsFragment) => {
             featuredImage={pageContent.featuredImage}
           />
         </LayoutContext.Provider>
-      )}
+      ) : null}
     </PageContainer>
   );
 };
