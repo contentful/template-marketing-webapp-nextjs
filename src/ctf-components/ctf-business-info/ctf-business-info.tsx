@@ -3,19 +3,13 @@ import Typography from '@material-ui/core/Typography';
 import clsx from 'clsx';
 import React, { useMemo } from 'react';
 
-
-import { BusinessInfoFragment } from './__generated__/BusinessInfoFragment';
-
+import { BusinessInfoFieldsFragment } from '@ctf-components/ctf-business-info/__generated/business-info.generated';
 import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
-
-interface CtfBusinessInfoPropsInterface extends Partial<BusinessInfoFragment> {
-  body: any;
-}
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     paddingBottom: theme.spacing(18),
-    paddingTop: (props: CtfBusinessInfoPropsInterface) =>
+    paddingTop: (props: BusinessInfoFieldsFragment) =>
       props.name || props.shortDescription ? 0 : theme.spacing(18),
     '& .MuiContainer-root + .ComponentInfoBlock, & .MuiContainer-root + .xray-ComponentInfoBlock': {
       marginTop: theme.spacing(18),
@@ -90,7 +84,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const CtfBusinessInfo = (props: CtfBusinessInfoPropsInterface) => {
+const CtfBusinessInfo = (props: BusinessInfoFieldsFragment) => {
   const { body, name, shortDescription, featuredImage } = props;
   const backgroundImage = useMemo(
     () => (featuredImage ? `${featuredImage.url}?w=1920` : undefined),
@@ -117,9 +111,7 @@ const CtfBusinessInfo = (props: CtfBusinessInfoPropsInterface) => {
                 </Typography>
               )}
               {shortDescription && (
-                <Typography className={classes.subtitle}>
-                  {shortDescription}
-                </Typography>
+                <Typography className={classes.subtitle}>{shortDescription}</Typography>
               )}
             </div>
           </Container>
