@@ -1,9 +1,8 @@
 import { Story, Meta } from '@storybook/react';
 import React from 'react';
 
-import CtfDuplex, {
-  CtfDuplexPropsInterface,
-} from '@ctf-components/ctf-duplex/ctf-duplex';
+import { DuplexFieldsFragment } from '@ctf-components/ctf-duplex/__generated/ctf-duplex.generated';
+import { CtfDuplex } from '@ctf-components/ctf-duplex/ctf-duplex';
 import Wrapper from '@src/stories/Wrapper';
 
 export default {
@@ -11,7 +10,7 @@ export default {
   component: CtfDuplex,
 } as Meta;
 
-const Template: Story<CtfDuplexPropsInterface> = (args) => (
+const Template: Story<DuplexFieldsFragment> = args => (
   <Wrapper>
     <CtfDuplex {...args} />
   </Wrapper>
@@ -28,8 +27,7 @@ Default.args = {
     description: null,
     width: 2184,
     height: 1458,
-    url:
-      'https://images.ctfassets.net/vcoy0j5vv99r/3WhS7USw34ORhdEQxFiXwX/bf30fdf8c038719e3677413d87919006/AdobeStock_325033979__1_.jpg',
+    url: 'https://images.ctfassets.net/vcoy0j5vv99r/3WhS7USw34ORhdEQxFiXwX/bf30fdf8c038719e3677413d87919006/AdobeStock_325033979__1_.jpg',
   },
   imageStyle: true,
   headline: 'Discover a whole new world of travel',

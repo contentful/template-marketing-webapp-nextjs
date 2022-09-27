@@ -1,9 +1,8 @@
 import { Story, Meta } from '@storybook/react';
 import React from 'react';
 
-import CtfHeroBanner, {
-  CtfHeroBannerInterface,
-} from '@ctf-components/ctf-hero-banner/ctf-hero-banner';
+import { HeroBannerFieldsFragment } from '@ctf-components/ctf-hero-banner/__generated/ctf-hero-banner.generated';
+import { CtfHeroBanner } from '@ctf-components/ctf-hero-banner/ctf-hero-banner';
 import Wrapper from '@src/stories/Wrapper';
 
 export default {
@@ -11,7 +10,7 @@ export default {
   component: CtfHeroBanner,
 } as Meta;
 
-const Template: Story<CtfHeroBannerInterface> = (args) => (
+const Template: Story<HeroBannerFieldsFragment> = args => (
   <Wrapper>
     <CtfHeroBanner {...args} />
   </Wrapper>
@@ -28,11 +27,9 @@ Default.args = {
     description: null,
     width: 2500,
     height: 971,
-    url:
-      'https://images.ctfassets.net/w8vf7dk7f259/2R3XKDFbKHNzUoZTQU2LaE/d6e8f999b3159b81e81e372c71726be0/Modern-banking.jpg',
+    url: 'https://images.ctfassets.net/w8vf7dk7f259/2R3XKDFbKHNzUoZTQU2LaE/d6e8f999b3159b81e81e372c71726be0/Modern-banking.jpg',
   },
-  headline:
-    'We wanted banking to be simple. So we rebuilt it from the ground up.',
+  headline: 'We wanted banking to be simple. So we rebuilt it from the ground up.',
   bodyText: {
     json: {
       data: {},

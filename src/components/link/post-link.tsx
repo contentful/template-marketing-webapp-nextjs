@@ -1,34 +1,15 @@
-import React from 'react';
+import { ReactNode } from 'react';
 
-import Link from '@src/components/link/link';
+import { PostLinkFieldsFragment } from '@src/components/link/__generated/post-link.generated';
+import Link, { LinkProps } from '@src/components/link/link';
 
-interface PostLinkPropsInterface {
-  post: {
-    slug: string | null;
-  };
-  lang?: string;
-  withoutMaterial?: boolean;
-  underline?: boolean;
-  children?: any;
-  className?: string;
-  render?: (pathname?: string) => any;
-  onClick?: () => any;
-  isButton?: boolean;
-  variant?: 'text' | 'outlined' | 'contained' | undefined;
-  size?: 'small' | 'medium' | 'large' | undefined;
-  color?:
-    | 'inherit'
-    | 'default'
-    | 'initial'
-    | 'primary'
-    | 'secondary'
-    | 'textPrimary'
-    | 'textSecondary'
-    | 'error';
-  urlParams?: string;
-}
-
-const PostLink = (props: PostLinkPropsInterface) => {
+const PostLink = (
+  props: Omit<LinkProps, 'children'> & {
+    post: PostLinkFieldsFragment;
+    render?: (pathname?: string) => ReactNode;
+    children?: ReactNode;
+  },
+) => {
   const pathname = `/post/${props.post.slug || ''}`;
   const linkProps = {
     href: pathname,

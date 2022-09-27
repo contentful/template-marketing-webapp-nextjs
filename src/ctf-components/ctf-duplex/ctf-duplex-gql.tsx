@@ -1,11 +1,8 @@
 import React from 'react';
-import { useQuery } from 'react-apollo';
 
-import { CtfDuplexQuery } from './__generated__/CtfDuplexQuery';
-import CtfDuplex from './ctf-duplex';
-import { query } from './ctf-duplex-query';
+import { CtfDuplex } from './ctf-duplex';
 
-import { useDataForPreview } from '@src/lib/apollo-hooks';
+import { useCtfDuplexQuery } from '@ctf-components/ctf-duplex/__generated/ctf-duplex.generated';
 
 interface CtfDuplexGqlPropsInterface {
   id: string;
@@ -14,25 +11,19 @@ interface CtfDuplexGqlPropsInterface {
 }
 
 const CtfDuplexGql = ({ id, locale, preview }: CtfDuplexGqlPropsInterface) => {
-  const queryResult = useQuery<CtfDuplexQuery>(query, {
-    variables: {
-      id,
-      locale,
-      preview,
-    },
+  const { data, isLoading } = useCtfDuplexQuery({
+    id,
+    locale,
+    preview,
   });
 
-  useDataForPreview(queryResult);
+  // useDataForPreview(queryResult);
 
-  if (
-    queryResult.data === undefined ||
-    queryResult.loading === true ||
-    queryResult.data.componentDuplex === null
-  ) {
+  if (isLoading || !data?.componentDuplex) {
     return null;
   }
 
-  return <CtfDuplex {...queryResult.data.componentDuplex} />;
+  return <CtfDuplex {...data.componentDuplex} />;
 };
 
 export default CtfDuplexGql;

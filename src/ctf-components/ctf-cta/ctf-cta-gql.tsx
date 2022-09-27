@@ -1,11 +1,8 @@
 import React from 'react';
-import { useQuery } from 'react-apollo';
 
-import { CtfCtaQuery } from './__generated__/CtfCtaQuery';
-import CtfCta from './ctf-cta';
-import { query } from './ctf-cta-query';
+import { CtfCta } from './ctf-cta';
 
-import { useDataForPreview } from '@src/lib/apollo-hooks';
+import { useCtfCtaQuery } from '@ctf-components/ctf-cta/__generated/ctf-cta.generated';
 
 interface CtfCtaGqlPropsInterface {
   id: string;
@@ -14,25 +11,19 @@ interface CtfCtaGqlPropsInterface {
 }
 
 const CtfCtaGql = ({ id, locale, preview }: CtfCtaGqlPropsInterface) => {
-  const queryResult = useQuery<CtfCtaQuery>(query, {
-    variables: {
-      id,
-      locale,
-      preview,
-    },
+  const { data, isLoading } = useCtfCtaQuery({
+    id,
+    locale,
+    preview,
   });
 
-  useDataForPreview(queryResult);
+  // useDataForPreview(queryResult);
 
-  if (
-    queryResult.data === undefined ||
-    queryResult.loading === true ||
-    queryResult.data.componentCta === null
-  ) {
+  if (isLoading || !data?.componentCta) {
     return null;
   }
 
-  return <CtfCta {...queryResult.data.componentCta} />;
+  return <CtfCta {...data.componentCta} />;
 };
 
 export default CtfCtaGql;

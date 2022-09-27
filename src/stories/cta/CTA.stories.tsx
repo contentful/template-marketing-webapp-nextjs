@@ -1,15 +1,16 @@
 import { Story, Meta } from '@storybook/react';
 import React from 'react';
 
-import CtfCta, { CtfCtaPropsInterface } from '@ctf-components/ctf-cta/ctf-cta';
-import Wrapper from '@src/stories/Wrapper'
+import { CtaFieldsFragment } from '@ctf-components/ctf-cta/__generated/ctf-cta.generated';
+import { CtfCta } from '@ctf-components/ctf-cta/ctf-cta';
+import Wrapper from '@src/stories/Wrapper';
 
 export default {
   title: 'Components/CTA',
   component: CtfCta,
 } as Meta;
 
-const Template: Story<CtfCtaPropsInterface> = (args) => (
+const Template: Story<CtaFieldsFragment> = args => (
   <Wrapper>
     <CtfCta {...args} />
   </Wrapper>
@@ -29,8 +30,7 @@ Default.args = {
             {
               data: {},
               marks: [],
-              value:
-                'The Classic card helps you manage your money and save with confidence',
+              value: 'The Classic card helps you manage your money and save with confidence',
               nodeType: 'text',
             },
           ],

@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import queryString from 'query-string';
-import React from 'react';
+import { ReactNode } from 'react';
 
 const useStyles = makeStyles(() => ({
   baseAnchor: {
@@ -16,11 +16,11 @@ const useStyles = makeStyles(() => ({
 }));
 
 interface Props {
+  children: ReactNode;
   href?: string;
   as?: string;
   target?: string;
   dropUrlParams?: boolean;
-  children: any;
   className?: string;
   withoutMaterial?: boolean;
   underline?: boolean;
@@ -108,7 +108,8 @@ const Link = (props: Props) => {
         variant={variant}
         size={size}
         startIcon={startIcon}
-        endIcon={endIcon}>
+        endIcon={endIcon}
+      >
         {children}
       </MuiButton>
     ) : (
@@ -119,7 +120,8 @@ const Link = (props: Props) => {
         href={href}
         target={props.target}
         rel="noopener noreferrer"
-        onClick={() => onClick && onClick()}>
+        onClick={() => onClick && onClick()}
+      >
         {children}
       </MuiLink>
     );
@@ -144,7 +146,8 @@ const Link = (props: Props) => {
           variant={variant}
           size={size}
           startIcon={startIcon}
-          endIcon={endIcon}>
+          endIcon={endIcon}
+        >
           {children}
         </MuiButton>
       </NextLink>
@@ -158,7 +161,8 @@ const Link = (props: Props) => {
         className={className}
         underline={underlineStyle}
         color={color}
-        onClick={() => onClick && onClick()}>
+        onClick={() => onClick && onClick()}
+      >
         {children}
       </MuiLink>
     </NextLink>

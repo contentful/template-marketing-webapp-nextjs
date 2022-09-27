@@ -14,9 +14,15 @@ export const componentMap = {
   ComponentFeaturedCards: dynamic(
     () => import('./ctf-components/ctf-featured-cards/ctf-featured-cards'),
   ),
-  ComponentCta: dynamic(() => import('./ctf-components/ctf-cta/ctf-cta')),
-  ComponentDuplex: dynamic(() => import('./ctf-components/ctf-duplex/ctf-duplex')),
-  ComponentHeroBanner: dynamic(() => import('./ctf-components/ctf-hero-banner/ctf-hero-banner')),
+  ComponentCta: dynamic(() =>
+    import('./ctf-components/ctf-cta/ctf-cta').then(module => module.CtfCta),
+  ),
+  ComponentDuplex: dynamic(() =>
+    import('./ctf-components/ctf-duplex/ctf-duplex').then(module => module.CtfDuplex),
+  ),
+  ComponentHeroBanner: dynamic(() =>
+    import('./ctf-components/ctf-hero-banner/ctf-hero-banner').then(module => module.CtfHeroBanner),
+  ),
   ComponentInfoBlock: dynamic(() => import('./ctf-components/ctf-info-block/ctf-info-block')),
   ComponentQuote: dynamic(() => import('./ctf-components/ctf-quote/ctf-quote')),
   ComponentTextBlock: dynamic(() => import('./ctf-components/ctf-text-block/ctf-text-block')),
