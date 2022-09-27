@@ -11,7 +11,6 @@ import colorfulTheme from '@src/theme';
 import { contentfulConfig } from 'contentful.config.mjs';
 import i18nConfig from 'next-i18next.config.js';
 
-const legalIntrospection = require('../../introspection/legal-introspection.json');
 const mainIntrospection = require('../../introspection/main-introspection.json');
 
 interface CfulApolloConfig {
@@ -20,13 +19,12 @@ interface CfulApolloConfig {
   state?: NormalizedCacheObject;
 }
 
-type ApolloKeys = 'main' | 'legal';
+type ApolloKeys = 'main';
 type CfulApolloConfigs = Record<ApolloKeys, CfulApolloConfig>;
 
 interface WithProvidersPropsInterface {
   apolloClients?: {
     main: ApolloClient<NormalizedCacheObject>;
-    legal: ApolloClient<NormalizedCacheObject>;
   };
   apolloConfigs: CfulApolloConfigs;
   pageProps: any;
@@ -48,12 +46,10 @@ function initApolloClient(config: CfulApolloConfig, connectToDevTools?: boolean)
 
 interface ApolloContextInterface {
   mainClient: ApolloClient<NormalizedCacheObject> | undefined;
-  legalClient: ApolloClient<NormalizedCacheObject> | undefined;
 }
 
 export const ApolloContext = React.createContext<ApolloContextInterface>({
   mainClient: undefined,
-  legalClient: undefined,
 });
 
 const withProviders = () => {
@@ -65,14 +61,9 @@ const withProviders = () => {
         apolloClients === undefined
           ? initApolloClient(apolloConfigs.main, false)
           : apolloClients.main;
-      const legalApolloClient =
-        apolloClients === undefined
-          ? initApolloClient(apolloConfigs.legal, false)
-          : apolloClients.legal;
 
       const apolloContextValue: ApolloContextInterface = {
         mainClient: mainApolloClient,
-        legalClient: legalApolloClient,
       };
 
       return (
@@ -121,20 +112,12 @@ export const generateGetServerSideProps =
         ),
         introspection: mainIntrospection,
       },
-      legal: {
-        url: createCfulUrl(
-          contentfulConfig.contentful.legal_space_id,
-          contentfulConfig.contentful.legal_space_token,
-        ),
-        introspection: legalIntrospection,
-      },
     };
 
     const mainApolloClient = initApolloClient(apolloConfigs.main, false);
-    const legalApolloClient = initApolloClient(apolloConfigs.legal, false);
+
     const apolloContextValue: ApolloContextInterface = {
       mainClient: mainApolloClient,
-      legalClient: legalApolloClient,
     };
 
     const newProps = {
@@ -157,7 +140,6 @@ export const generateGetServerSideProps =
                   apolloConfigs={apolloConfigs}
                   apolloClients={{
                     main: mainApolloClient,
-                    legal: legalApolloClient,
                   }}
                   error={error}
                   ssrQuery={ctx.query}
@@ -172,7 +154,6 @@ export const generateGetServerSideProps =
     }
 
     apolloConfigs.main.state = mainApolloClient.extract();
-    apolloConfigs.legal.state = legalApolloClient.extract();
 
     return {
       props: {

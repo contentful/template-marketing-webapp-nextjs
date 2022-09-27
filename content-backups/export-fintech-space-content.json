@@ -31065,6 +31065,2782 @@
           "en-US": "1. White (#FFFFFF)"
         }
       }
+    },
+    {
+      "metadata": {
+        "tags": []
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "vw5be3ki3sdd"
+          }
+        },
+        "id": "4OSewDgF5UsbHVwRNIIILi",
+        "type": "Entry",
+        "createdAt": "2022-09-27T12:33:45.307Z",
+        "updatedAt": "2022-09-27T12:36:08.735Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 5,
+        "publishedAt": "2022-09-27T12:36:08.735Z",
+        "firstPublishedAt": "2022-09-27T12:36:08.735Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 6,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "page"
+          }
+        }
+      },
+      "fields": {
+        "internalName": {
+          "en-US": "Accessibility Legal Page"
+        },
+        "pageName": {
+          "en-US": "Accessibility"
+        },
+        "slug": {
+          "en-US": "accessibility"
+        },
+        "pageContent": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Entry",
+              "id": "7evUFWi5oSKaGWo3ZHqiwq"
+            }
+          }
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": []
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "vw5be3ki3sdd"
+          }
+        },
+        "id": "7evUFWi5oSKaGWo3ZHqiwq",
+        "type": "Entry",
+        "createdAt": "2022-09-27T12:34:10.358Z",
+        "updatedAt": "2022-09-27T12:35:57.664Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 7,
+        "publishedAt": "2022-09-27T12:35:57.664Z",
+        "firstPublishedAt": "2022-09-27T12:35:57.664Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 8,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "topicBusinessInfo"
+          }
+        }
+      },
+      "fields": {
+        "internalName": {
+          "en-US": "Website Accessibility"
+        },
+        "name": {
+          "de-DE": "Website Accessibility",
+          "en-US": "Website Accessibility"
+        },
+        "shortDescription": {
+          "en-US": "Colorful Collective is committed to making our website accessible to all visitors. We are working to ensure colorfuldemo.com follows the Web Content Accessibility Guidelines Level A and AA Success Criteria."
+        },
+        "featuredImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "2DLLtqROfvO21s7ASUppQ"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Colorful Collective is committed to making our website accessible to all visitors. We are working to ensure colorfuldemo.com follows the Web Content Accessibility Guidelines Level A and AA Success Criteria.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-6",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Current accessibility features include:",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "unordered-list",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "list-item",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "paragraph",
+                        "data": {},
+                        "content": [
+                          {
+                            "nodeType": "text",
+                            "value": "Skip navigation links",
+                            "marks": [],
+                            "data": {}
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "list-item",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "paragraph",
+                        "data": {},
+                        "content": [
+                          {
+                            "nodeType": "text",
+                            "value": "Appropriate alternative text for images where applicable",
+                            "marks": [],
+                            "data": {}
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "list-item",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "paragraph",
+                        "data": {},
+                        "content": [
+                          {
+                            "nodeType": "text",
+                            "value": "Accurate heading structures",
+                            "marks": [],
+                            "data": {}
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "list-item",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "paragraph",
+                        "data": {},
+                        "content": [
+                          {
+                            "nodeType": "text",
+                            "value": "ARIA attributes to provide additional information for visitors using assistive technology",
+                            "marks": [],
+                            "data": {}
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "list-item",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "paragraph",
+                        "data": {},
+                        "content": [
+                          {
+                            "nodeType": "text",
+                            "value": "Table headers",
+                            "marks": [],
+                            "data": {}
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "list-item",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "paragraph",
+                        "data": {},
+                        "content": [
+                          {
+                            "nodeType": "text",
+                            "value": "Form label and input association\n",
+                            "marks": [],
+                            "data": {}
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "\n",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-4",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Accessibility for Visitors with Disabilities Act",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "We are continuously enhancing the usability of our website. To provide feedback or to receive help placing an order, please contact us by email or by phone within the US at (800) 777-555555-400.\n",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": []
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "vw5be3ki3sdd"
+          }
+        },
+        "id": "2S392TdnTG2mT7pBKiEPDL",
+        "type": "Entry",
+        "createdAt": "2022-09-27T12:37:50.226Z",
+        "updatedAt": "2022-09-27T12:40:21.106Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 8,
+        "publishedAt": "2022-09-27T12:40:21.106Z",
+        "firstPublishedAt": "2022-09-27T12:39:49.387Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "publishedCounter": 3,
+        "version": 9,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "page"
+          }
+        }
+      },
+      "fields": {
+        "internalName": {
+          "en-US": "Privacy Policy Legal Page"
+        },
+        "pageName": {
+          "en-US": "Privacy Policy"
+        },
+        "slug": {
+          "en-US": "privacy-policy"
+        },
+        "pageContent": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Entry",
+              "id": "27iZRxjts9xLHyBw76gwvL"
+            }
+          }
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": []
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "vw5be3ki3sdd"
+          }
+        },
+        "id": "27iZRxjts9xLHyBw76gwvL",
+        "type": "Entry",
+        "createdAt": "2022-09-27T12:38:06.323Z",
+        "updatedAt": "2022-09-27T12:39:30.010Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 6,
+        "publishedAt": "2022-09-27T12:39:30.010Z",
+        "firstPublishedAt": "2022-09-27T12:39:30.010Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 7,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "topicBusinessInfo"
+          }
+        }
+      },
+      "fields": {
+        "internalName": {
+          "en-US": "Privacy Policy"
+        },
+        "name": {
+          "de-DE": "Privacy Policy",
+          "en-US": "Privacy Policy"
+        },
+        "shortDescription": {
+          "en-US": "Thank you for shopping at Colorful-Collective.com. This privacy policy (“Policy”) outlines the information we collect about you on the Website, as well as information collected when you visit our stores or otherwise communicate or interact with Colorful Collective"
+        },
+        "featuredImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "40MDlWnJC0e2eEtsWp8h6u"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "heading-4",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Your Privacy",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Thank you for shopping at Colorful-Collective.com. This privacy policy (“Policy”) outlines the information we collect about you on the Website, as well as information collected when you visit our stores or otherwise communicate or interact with Colorful Collective, how we use the information and the choices you have to review, revise and/or restrict our usage of this information.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-4",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "What Information Do We Collect and How Do We Use It?",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Colorful-Group.com collects customer information in an effort to improve our customers shopping experience, to communicate with our customers about our products, services and promotions, and to enhance and improve the performance and accuracy of our operations and website. We collect information such as your name, e-mail and postal address and credit card numbers, that you provide to us when you place an order, when you save your information with us or when you participate in a sweepstakes, promotion or survey. Colorful-Group.com may use your information collected online to process and fulfill your order. We also collect e-mail addresses at various locations within the site including when you order from the site so that we can send you any necessary e-mail messages related to your order — such as an order confirmation notice, as well as send you other information that we believe may be of interest to you. In addition, we maintain a record of your product interests, purchases and whatever else might enable us to enhance and personalize your shopping experience. We also monitor site use and traffic patterns to improve our web site design, the products and services we offer and the way in which we offer them. Colorful-Group.com recognizes that it must maintain and use customer information responsibly.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "To serve you better and improve our performance, we may combine information you give us online, in our stores or through our catalogs. We may also combine that information with publicly available information and information we receive from or cross-reference with select partners and others. By combining this information we are better able to communicate with you about our products, special events and promotional purposes and to personalize your shopping experience.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-4",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Sharing Your Personal Information",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Colorful Group does share information you provide to us when you participate in a sweepstakes with those companies with whom we have joined to offer these promotions as well as other companies whose promotions we think will interest you. We may disclose information about you to other members of the Colorful Group corporate family and as required by law. In the event that a store, division, assets or part or all of Colorful Group is bought, sold or otherwise transferred, or is in the process of a potential transaction, customer information will likely be shared for evaluation purposes and included among the transferred business assets.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "In addition, we may on occasion share a portion of our postal mailing list with other reputable organizations not owned or affiliated with Colorful Group who want to market products or services to you. If you do not want your name and address shared with other organizations or you no longer wish to receive Colorful Group catalogs, please contact us at (800) 282-MMMM. You may also contact us via email (please include your exact name and mailing address as shown on your catalog) at change@colorful-group.com.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "You can always update or delete your personal information on our web site. Simply click View Your Account in the menu at the top of each page on our site, log in, and you'll be able to edit or change your information. If at any time you would like us to delete any of your personal information on file, just e-mail Colorful-Group.com customer service at service@colorful-group.com or call us at (800) 282-MMMM. Please be sure to include your e-mail address, full name and password.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "We may also use various mechanisms to track activity on our website, including cookies or web beacons, sometimes in connection with select partners. A cookie is a small data file that is placed on the hard drive of your computer when you visit a website. A web beacon is a small string of code that represents a clear graphic image and is used in conjunction with a cookie. We use the information collected by these technologies to study use of our website, to refine and improve our customer service and performance, and to detect and prevent misuse or fraud.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "We may use technologies, such as our own cookies, to provide you with personalized online display advertising tailored to your interests. To opt out of our cookies used for this online advertising click here. We may also use the services of third parties to utilize these and other technologies to allow delivery of advertising that directly relates to offers that may be of interest to you. If, however, you'd prefer not to receive relevant banner advertisements from our third party partners, you may opt out at any time by visiting www.networkadvertising.org/managing/opt_out.asp. You may also delete cookies, including those associated with web beacons, by following the directions in your browser software. If you delete your cookies, use a different browser, or buy a new computer, some functionality of the website may change, and you may need to renew an opt-out choice if you have made one.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "We or our partners may use Flash Cookies (also known as Local Stored Objects) or other similar technologies. A Flash cookie is a small data file placed on a computer using Adobe Flash or similar technology that may be built into your computer or downloaded or installed by you to your computer. We use these technologies to personalize and enhance your online experience, facilitate processes, personalize and store your settings. Flash cookies may help our website visitors to, for example, set volume preference associated with a video experience, play games and perform surveys. They help us improve our sites by measuring which areas are of greatest interest to customers. They may be recognized by other sites or by our marketing or business partners. Flash cookies are different from browser cookies and the cookie management tools provided by your browser will not remove Flash cookies. Visit www.macromedia.com/support/documentation/en/flashplayer/help/ to learn how to manage privacy and storage settings for Flash cookies. If you disable Flash cookies or other similar technologies, please be aware that you may not have access to certain features and services that make your online experience more efficient and enjoyable. We also use other methods of automatic collection to determine information about visitors to our website, including the IP address, browser, language preferences, and computer identification numbers. We use the information obtained using these tools to provide better customer service, enhance our product offerings, and detect potential misuse or fraud.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "We do not share credit card information with third parties except for the purpose of processing payment for products you've ordered and as required by law. In addition, we may disclose credit card and other information we collect from you with an outside company with which we have contracted for their services to protect against fraud and the unauthorized use of credit and gift cards.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Our retail locations are equipped with video monitoring for security purposes, so we may capture your video image in public areas while you are shopping with us. Our retail locations may also be equipped with iBeacons and Wi-Fi. An iBeacon is a device that transmits signals that can be used to detect your mobile device when you are in close proximity to the iBeacon. In addition, if your Wi-Fi is activated on your mobile device, we may detect your device and collect limited external signals sent by your device, such as the Media Access Control (MAC) address associated with your device. We use these technologies to learn about the customer shopping experience in our retail locations, including which areas of the store our customers visit, how long they spend in certain areas, general traffic patterns, the customer experience at the point of sale, and how frequently customers visit our stores. We use this information to improve the shopping experience for our customers. We also use this information to provide offers and promotions that we think may be of interest to our customers which may at times be customized depending on where the customer is in the store. We do not read or in any way access your contacts, pictures, the messages you send or receive on your device, or any data that you enter into or create on your device. You may withdraw your consent to receiving offers and promotions at any time. We use third party service providers to assist us with these technologies. You may opt out of connectivity with our iBeacons by turning off the Bluetooth on your device, adjusting your device settings for your mobile applications to prevent the use of Bluetooth. You may opt out of the collection of information by Wi-Fi by turning off the wireless functionality on your device or visiting www.axper.com/privacy/.Where required by law, notices are posted at the retail locations if we are collecting video, using iBeacons or collecting information from your Wi-Fi enabled mobile device. Only authorized personnel are permitted to review the video and any data we collect from your device broadcasts. We retain images and data only for as long as they are required to fulfill the purposes for which we collected them.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-4",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Under 13?",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "If you are under the age of 13, you are not permitted to submit any personal information to Colorful-Group.com. Colorful-Group.com is intended for users who are 13 years of age and older. We do not knowingly collect information from individuals under the age of 13 without the verifiable permission of a parent or guardian. If a parent, guardian or anyone else becomes aware of personal information we have collected from an individual under the age of 13, please contact us at (800) 282-2200 or via email at change@Colorful-Group.com.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-4",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Security",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "When ordering with us, we undertake steps to secure our customers personal information and credit card data. On Colorful-Group.com, we employ 128-bit Secure Sockets Layer (SSL) technology that encrypts all of your private information when placing an order and transmitting that information to our systems to be processed.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-4",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Your California Privacy Rights",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "This privacy policy describes how we may share your information for marketing purposes, as described above. California residents are entitled to request and obtain from us once per calendar year information about any of your personal information shared with third parties for their own direct marketing purposes, including the categories of information and the names and addresses of those businesses with which we have shared such information. To request this information and for any other questions about our privacy practices and compliance with California law, please contact us as explained below.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-4",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Policy Changes",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Colorful-Group.com may periodically update this Privacy Policy for new, unanticipated uses not previously disclosed. Any changes made will be posted here. By visiting our website you agree to accept any changes made to this policy.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Feel free to contact us with any questions about our Privacy Policy.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "change@colorful-Group.com",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "(800) 282-MMMM",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "\n",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": []
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "vw5be3ki3sdd"
+          }
+        },
+        "id": "3kTfzbaPxUcWTJpNH0aG9e",
+        "type": "Entry",
+        "createdAt": "2022-09-27T12:40:28.521Z",
+        "updatedAt": "2022-09-27T12:41:46.156Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 4,
+        "publishedAt": "2022-09-27T12:41:46.156Z",
+        "firstPublishedAt": "2022-09-27T12:41:46.156Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 5,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "page"
+          }
+        }
+      },
+      "fields": {
+        "internalName": {
+          "en-US": "Terms of Use Legal Page"
+        },
+        "pageName": {
+          "en-US": "Terms of Use"
+        },
+        "slug": {
+          "en-US": "terms-of-use"
+        },
+        "pageContent": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Entry",
+              "id": "2wenDjnW7nlmfO1uKrh3rM"
+            }
+          }
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": []
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "vw5be3ki3sdd"
+          }
+        },
+        "id": "2wenDjnW7nlmfO1uKrh3rM",
+        "type": "Entry",
+        "createdAt": "2022-09-27T12:40:53.983Z",
+        "updatedAt": "2022-09-27T12:41:38.875Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 5,
+        "publishedAt": "2022-09-27T12:41:38.875Z",
+        "firstPublishedAt": "2022-09-27T12:41:38.875Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 6,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "topicBusinessInfo"
+          }
+        }
+      },
+      "fields": {
+        "internalName": {
+          "en-US": "Terms of Use"
+        },
+        "name": {
+          "de-DE": "Terms of Use",
+          "en-US": "Terms of Use"
+        },
+        "shortDescription": {
+          "en-US": "Welcome to the Colorful Group Web Site (the \"Site\"). Colorful Group, Inc. (\"Colorful Group\") provides this Site as a service to its customers. Please review the following basic rules that govern your use of our Site (the \"Agreement\")"
+        },
+        "featuredImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "l2EoCfl3gecFe9MlX8med"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Welcome to the Colorful Group Web Site (the \"Site\"). Colorful Group, Inc. (\"Colorful Group\") provides this Site as a service to its customers. Please review the following basic rules that govern your use of our Site (the \"Agreement\"). Please note that your use of our Site constitutes your agreement to follow and be bound by these terms. If you do not agree to these terms, please do not use this Site.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Although you may \"bookmark\" a particular portion of this Site and thereby bypass this Agreement, your use of this Site still binds you to the terms. Colorful Group reserves the right to update or modify these Terms and Conditions at any time without prior notice. Your use of the Colorful Group web site following any such changes constitutes your agreement to follow and be bound by the Terms and Conditions as changed. For this reason, we encourage you to review these Terms and Conditions whenever you use this web site.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "hr",
+                "data": {},
+                "content": []
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "\n",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-4",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Usage Restrictions",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "All of the content you see and hear on the Site, including, for example, all of the page headers, images, illustrations, graphics, audio clips, video clips, and text are subject to trademark, service mark, trade dress, copyright and/or other intellectual property rights or licenses held by Colorful Group, one of its affiliates or by third parties who have licensed their materials to Colorful Group. The entire content of the Site is copyrighted as a collective work under U.S. copyright laws, and coordination, arrangement and enhancement of the content.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "The content of the Site is intended solely for the personal, noncommercial use by the users of our site. You may download, print or store selected portions of the content, provided you (1) only use these materials for your own personal, noncommercial use, (2) do not copy or post the content on any network computer or broadcast the content in any media, and (3) do not modify or alter the content in any way, or delete or change any copyright or trademark notice.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "No right, title or interest in any content or materials is transferred to you as a result of any such activities. Colorful Group reserves complete title and full intellectual property rights in any content you download, reproduce, print, redistribute or store from this web site.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Colorful Group is a federally registered trademark. Except as noted above, you may not copy, download, reproduce, modify, publish, redistribute, retransmit, publicly display, publicly perform or create derivative works from the content without first obtaining written permission from Colorful Group.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "DMCA Notice & Take-down Procedure Without limiting the foregoing, if you believe that your work has been copied and posted on the Site in a way that constitutes copyright infringement, please provide our Copyright Agent with the following information: (i) an electronic or physical signature of the person authorized to act on behalf of the owner of the copyright interest; (ii) a description of the copyrighted work that you claim has been infringed; (iii) a description of where the material that you claim is infringing is located on the Site; (iv) your address, telephone number, and e-mail address; (v) a written statement by you that you have a good faith belief that the disputed use is not authorized by the copyright owner, its agent, or the law, including the law of fair use; (vi) a statement by you, made under penalty of perjury, that the above information in your notice is accurate and that you are the copyright owner or authorized to act on the copyright owner’s behalf. The Copyright Agent for Colorful Group for notice of claims of copyright infringement is DMCA Designated Agent who can be reached as follows:",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "by e-mail at DMCA_NOTICE@colorful-group.com by telephone at (215) 454-5500 by mail at 7040 South Broad Street, Chicago, IL 19112.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-6",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "IMPORTANT! PLEASE NOTE:",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "YOUR E-MAIL MUST BE WRITTEN IN ENGLISH AND MUST HAVE THE FOLLOWING SUBJECT LINE:",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "“DMCA NOTICE OF INFRINGEMENT”",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "IF YOUR E-MAIL DOES NOT HAVE THIS SUBJECT LINE AND/OR IS NOT WRITTEN IN ENGLISH, YOUR E-MAIL WILL NOT BE READ BY OUR DMCA DESIGNATED AGENT.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-5",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "User Comments, Feedback, Postcards and Other Submissions",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "All comments, feedback, postcards, suggestions, ideas, and other submissions disclosed, submitted or offered to Colorful Group on or by this Site or otherwise disclosed, submitted or offered in connection with your use of this Site (collectively, the \"Comments\") shall be and remain Colorful Group' property. Such disclosure, submission or offer of any Comments shall constitute an assignment to Colorful Group of all worldwide rights, titles and interests and shall not be limited in any way in its use, commercial or otherwise, of any Comments. Thus, Colorful Group will own exclusively all such rights, titles and interests and shall not be limited in any way in its use, commercial or otherwise, of any Comments. Colorful Group is and shall be under no obligation (1) to maintain any Comments in confidence; (2) to pay to user any compensation for any Comments; or (3) to respond to any user Comments.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "You agree that no Comments submitted by you to the Site will violate any right of any third party, including copyright, trademark, privacy or other personal or proprietary rights(s). You further agree that no Comments submitted by you to the Site will be or contain libelous or otherwise unlawful, abusive or obscene material. You are and shall remain solely responsible for the content of any comments you make.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-5",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Pricing Policy",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "At Colorful Group, our commitment is to offer convenience, service, and product availability on-line at compelling prices every day, with certain limited time offerings of merchandise at promotional prices. While merchandise offered on-line at Colorful Group will usually be priced the same as merchandise offered at our affiliate Colorful Group stores, in some cases, Colorful Group stores may have different prices or promotional events at different times.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-5",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Colors",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "We have done our best to display as accurately as possible the colors of the products shown on the Site. However, because the colors you see will depend on your monitor, we cannot guarantee that your monitor's display of any color will be accurate.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-5",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Correction of Errors and Inaccuracies",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "The information of the Site may contain typographical errors or inaccuracies and may not be complete or current. We therefore reserve the right to correct any errors, inaccuracies or omissions and to change and update information at any time without prior notice (including after you have submitted your order). We apologize for any inconvenience this may cause you. If you are not fully satisfied with your Colorful Group purchase you may return it with the original Colorful Group packing receipt. Please see our Return Policy.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-5",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Typographical Errors",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "In the event an Colorful Group product is listed at an incorrect price due to typographical error or systems error, Colorful Group shall have the right to refuse or cancel any orders placed for product listed at the incorrect price. Colorful Group shall have the right to refuse or cancel any such orders whether or not the order has been confirmed and your credit card charged. If your credit card has already been charged for the purchase and your order is canceled, Colorful Group shall issue a credit to your credit card account in the amount of the incorrect price.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-5",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Term: Termination",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "These terms and conditions are applicable to you upon your accessing the site/ or completing the registration or shopping process. These terms and conditions, or any of them, may be terminated by Colorful Group without notice at any time for any reason. The provisions relating to Copyrights, Trademark, and Miscellaneous, shall survive any termination.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-5",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Notice",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Colorful Group may deliver notice to you by means of electronic mail, a general notice on the site, or by written communication delivered by first class U.S. mail to your address on record in Colorful Group account information.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "hr",
+                "data": {},
+                "content": []
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "\n",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-4",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Use of Site",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Harassment in any manner or form on the site, including via e-mail and chat or by obscene or abusive language is strictly forbidden. Impersonation of others, including an Colorful Group or other licensed employee, host, or representative as well as other members or visitors on the site is prohibited. You may not upload to, distribute, or otherwise publish through this site any content which is libelous, defamatory, obscene, threatening, invasive of privacy or publicity rights, abusive, illegal, or otherwise objectionable which may constitute or encourage a criminal offense, violate the rights of any party or which may otherwise give rise to liability or violate any law. You may not upload commercial content on the site or use the site to solicit others to join or become members of any other commercial online service or organization.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-4",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Indemnification",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "You agree to indemnify, defend, and hold harmless Colorful Group, its officers, directors, employees, agents, licensors and suppliers (collectively the \"Service Providers\") from and against all losses, expenses, damages and costs, including reasonable attorney's fees, resulting from any violation of these terms and conditions or any activity related to your account (including negligent or wrongful conduct) by you or any other person accessing the site using your Internet account.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-4",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Third Party Links",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "In an attempt to provide increased value to our visitors, Colorful Group may choose various third-party web sites to link to from its own site. However, even if the third party is affiliated with Colorful Group, Colorful Group has no control over these linked sites, all of which have separate privacy and data collection practices, independent of Colorful Group. Colorful Group has no responsibility or liability for these independent policies or actions and is not responsible for the privacy practices or the content of such web sites. These linked sites are only for your convenience and therefore you access them at your own risk. Nonetheless, Colorful Group seeks to protect the integrity of its web site and the links placed upon it and therefore requests any feedback on not only its site, but for sites it links to as well (including if a specific link does not work).",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-6",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "CG REWARDS",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "US LOYALTY PROGRAM TERMS AND CONDITIONS PLEASE READ THESE TERMS AND CONDITIONS CAREFULLY. BY REGISTERING FOR AND PARTICIPATING IN CG REWARDS, YOU AGREE TO BE BOUND BY THE TERMS DESCRIBED HEREIN AND ALL TERMS INCORPORATED BY REFERENCE. IF YOU DO NOT AGREE TO ALL OF THESE TERMS, DO NOT REGISTER FOR CG REWARDS.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "\n\n",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "hr",
+                "data": {},
+                "content": []
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "\n",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-4",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "1. The Program",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "1.1 ",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "The CG Reward Loyalty Program (“Program”) is a loyalty program that rewards members for all of the different ways they interact and engaged with Colorful Group. The Program is free to join and allows our members to earn rewards for everyday activities like browsing our website at www.colorful-group.com (the “Site”), making a purchase, posting about Colorful Group on social media and much more. Program members can redeem earned rewards in-store, online and in the Colorful Group’ mobile application.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-4",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "\n2. Membership Eligibility and Overview",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "2.1 ",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "The Program is offered at the sole discretion of Colorful Group, Inc., 500 South Broad Street, Chicago IL 19112-1495 (“Colorful Group,” \"CG,” “we,” “our” or “us”). We are the promoter of the Program. The Program is available to individuals for their personal use only and is limited to one account per individual. Individuals who are legal residents of the United States and who are age 18 years or older and who provide and maintain a valid email address are eligible to become members. No purchase is necessary. We may refuse to create an account for any reason. Employees and individuals employed by us or by our business partners or vendors are eligible for membership for personal use only but may be excluded from certain benefits of the Program in our sole but reasonable discretion. This Subsection 2.1 is subject to the provisions of Subsection 7.1 of this Program. 2.2 By joining the Program and becoming a Program member, you (individually and collectively, “you” or “Member”), agree that you have read, understood and agree to be bound by these Program Terms and Conditions of Participation (“Terms”) and by any changes or modifications we may make from time to time. (We will reflect the last date of any update at the top of the page of these Terms.) You also agree to be bound by our Privacy Policy and the terms and conditions of the CG App all of which are incorporated herein by this reference. This Subsection 2.2 is subject to the provisions of Subsection 7.1 of this Program.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "2.3 ",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "You should review these Terms and the related policies and our FAQs frequently to understand the terms and conditions that apply to the Program as they may change from time to time. These Terms do not alter in any way the terms or conditions of any other agreement you may have with us, including any agreement for the purchase of products. If you do not agree to these Terms, our Privacy Policy, and our Terms and Conditions, you should not participate in the Program. The Program is void where prohibited by law. This Subsection 2.3 is subject to the provisions of Subsection 7.1 of this Program.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-4",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "\n3. Program Enrollment",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "3.1 ",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "Eligible individuals may enroll in the Program using their existing CG account or by creating a new one and then providing your name, email address and creating a password.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "3.2 ",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "Once you have enrolled, you will be sent a CG Rewards ID that is unique to you and your CG account. Your CG Rewards ID is required to track in-store purchases. Members will only receive credit for in-store purchases if their CG Rewards ID has been scanned or if they have provided the in-store associate with the email address associated with their CG Rewards account.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "3.3",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " You may also enroll for the Program through the CG App. Download the CG App to your mobile device and follow the prompts to register for the Program. Use of the CG App may entail message, data and other charges from your mobile service provider. Subject to the provisions of Subsection 7.1 of this Program, we are not responsible for any data charges or other costs associated with use of the CG App. Downloading the CG App is not required to join the Program but using the CG App is the best way to get the most out of your CG Rewards membership. The CG App gives you on-the-go access to your CG Rewards dashboard and exclusive product giveaways. It also allows you to track your progress toward future rewards and to keep track of earned rewards and their expiration dates. The CG App also contains your UP Rewards ID, which can be used to track in-store purchases.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "3.4",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " You are solely responsible for maintaining the accuracy of your account information and for updating your account information as required on the Site or through the App.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "3.5",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " Only one Program account should be associated with a single member and a single email address. In the event of a dispute over the identity of the member enrolled in the Program, the member will be deemed to be the authorized account holder of the email address submitted at the time of enrolment, as determined by us in our sole discretion.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-4",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "\n4. How the Program Works and Program Benefits",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "4.1",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " The Program is the way in which we reward you for all of the different ways you interact and engage with Colorful Group. Although shopping at CG will get you closer to earning certain exclusive rewards, no purchase is necessary to enjoy many of the benefits of your Program membership. Simply joining the Program and interacting with CG will get you deeper discounts and early access during sales, chances to win prizes and more.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "4.2",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " You can earn rewards (\"CG Rewards”) in a number of ways, including: (a) making purchases in-store and scanning your CG Rewards ID, (b) making purchases online on the Site or through the CG App (and you must be logged into the CG App or logged into your account on the Site to receive credit for such purchases), (c) updating your customer profile on the Site or in the CG App, (d) downloading the CG App, (e) RSVPing for and attending an event at a CG store, (f) using the CG App to enter contests, listening to CG Music or checking your newsfeed, (g) browing the Site or reading the CG Blog (h) engaging with CG across different social media platforms including by becoming part of the conversation and sharing a post with #CGRewards or any of our hashtags. We are always looking for new ways to recognize and reward our Members, so be sure to use the CG Rewards dashboard in the CG App to track progress towards your next reward.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "4.3",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " You must be logged into the CG App or logged in to your account on the Site to receive credit for purchases made online or through the CG App. Your engagement with the Program translates into CG Rewards. Rewards can vary and may include (as determined by us in our sole discretion): (a) reward certificates with a monetary value that can be credited as part payment for purchases (as long as you spend at least $0.01 more than the amount of the reward certificate), (b) access to special offers like exclusive promotions, early access to sales and collections, and deeper discounts during sales, (c) VIP status including tickets to exclusive events, artist meet-and-greets and live performances, (d) a present on your birthday (and your half-birthday too), (e) chances to win epic prizes like signed merchandise from your favorite artists, CG gift cards and shopping sprees",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "4.4",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " Subject to the provisions of Subsection 7.1 of this Program, the Reward earned for any purchase or Program action will vary and we reserve the right to change the Rewards awarded for a Program purchase or Program action from time to time; or to delete or replace any Program purchase or Program action at any time in our sole discretion.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "4.5",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " Progress toward your next CG Reward may take up to 48 hours to be reflected in the CG Rewards dashboard. If you believe that a Program purchase or other Program activity was not properly applied to your account, you should contact Customer Service at customerservice@colorful-group.com. Your email must specify your name and email address associated with the Program, the date of the Program activity, and the issue(s) you encountered.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "4.6",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " One you have earned a CG Reward, you will be notified by email and through push notification (through the CG App) that your CG Reward is available. When you are ready to complete your next purchase, apply the CG Reward code to your order on the Site or via the CG App, or have an in-store associate apply the code during checkout. (You will need your unique CG Rewards ID for in-store purchases.)",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "4.7",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " CG Rewards will expire within 60 days from the date the CG Reward was earned or over such other time period as is specified in the particular CG Reward or as we may elect from time to time. Always check the expiration date on your CG Reward! If you do not use your CG Reward or benefit within the specified time frame, such reward or benefit shall expire. We are under no obligation to provide an alternative in the event you do not exercise your CG Reward or benefit. CG Rewards may not be combined.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "4.8",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " The easiest way to check on your CG Rewards progress is to use the CG Rewards Dashboard available in the CG App. You can also track your progress and learn more about upcoming Program actions and rewards by looking for emails from us to stay up to date or by receiving push notifications through the CG App alerting you when rewards have been earned or are close to expiring. In future, you may be able to track your progress by checking your account on the Site.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "4.9",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " CG Rewards and benefits earned through the Program have no monetary value and are non-transferable, and are awarded at our sole discretion. You have no property rights in or to CG Rewards or Program benefits. Rewards credited to your Program account may be decreased or reversed, as applicable, if part or all of a Program purchase is returned or cancelled; if a Program action is deemed abusive of the Program, offensive, untrue, libellous or illegal or fraudulent, or if the credit is obtained through other activity that violates these Terms as determined by us in our sole but reasonable discretion. Products or services received as CG Rewards or benefits cannot be exchanged or returned for other Rewards, another product or service or for a monetary refund. The sale, barter, transfer, or assignment of any Rewards or benefits offered through the Program, other than by us, is expressly prohibited. This Subsection 4.9 is subject to the provisions of Subsection 7.1 of this Program.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "4.10",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " The products and services available as CG Rewards are for personal use only and may not be sold or resold. We reserve the right, without notice, to cancel or reduce the quantity of any order to be filled and/or any products or services to be provided to you that we believe, in our sole but reasonable discretion, may result in the violation of our Terms, or which may violate English law. This Subsection 4.10 is subject to the provisions of Subsection 7.1 of this Program.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "4.11",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " We are not responsible for CG Rewards or benefits lost or redeemed due to fraudulent activity by you or any third party. This Subsection 4.11 is subject to the provisions of Subsection 7.1 of this Program.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "4.12",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " We reserve the right to change Program benefits, how you earn Rewards and how we evaluate and reward your Program purchases and/or other Program activity. We reserve the right to place limits on the number of purchases or activities that are eligible for the Program, the number or types of rewards or benefits you may receive or earn, in a given time period or for the duration of the Program, and/or any combination thereof. Changes to the Program will be set forth in these Terms and will be effective on the date the Terms are posted to the Site (with the effective date reflected at the beginning of the Terms). Continued participation in the Program following posting of updated or modified Terms constitutes your acceptance of those Terms as so updated and modified. This Subsection 4.12 is subject to the provisions of Subsection 7.1 of this Program.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-4",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "\n5. Program Communications",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "5.1",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " By enrolling in the Program, you consent to receiving Program related e-mails, including Program marketing e-mails. We also may give you the option to opt-in to receive other marketing communications from us at the time of enrolment.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "5.2",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " You may opt-out of receiving Program-related emails (including Program marketing emails) or Colorful Group marketing emails at any time by following the instructions provided in the email and as otherwise provided in the Privacy Policy. If you opt-out of Program-related emails, you will no longer receive emails regarding your Program status or the Program rewards or benefits that may be available to you and this information will only be available through your online account, through the CG App or by contacting Customer Service at customerservice@colorful-group.com. If you do not want to receive any communications from Colorful Group, please terminate your membership and stop participating in the Program.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-4",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "\n6. Termination and Modification",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "6.1",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " The Program and its benefits are offered at our sole discretion. Except where prohibited by law, we may, in our discretion, cancel, modify, restrict or terminate these Terms and/or the Program or any aspect or feature of the Program at any time without prior notice, even though such changes may affect the value of CG Rewards or benefits already accumulated or earned and/or the ability to redeem accumulated CG Rewards or benefits. Changes to the Program will be set forth in these Terms and will be effective on the date the Terms are posted to the Site (with the effective date reflected at the beginning of the Terms). Continued participation in the Program following posting of updated or modified Terms constitutes your acceptance of those Terms as so updated and modified. This Subsection 6.1 is subject to the provisions of Subsection 7.1 of this Program.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "6.2",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " We reserve the right to exclude you from or to discontinue your participation in the Program and to audit your membership account at any time, in our sole but reasonable discretion. Any suspected abuse of the Program, failure to comply with any Terms, failure to make a purchase using your Program account within 24 months, illegal activity, fraud, misrepresentation or other conduct inconsistent with these Terms and/or detrimental to us or our interests, including without limitation, any suspected illegal, fraudulent or other unauthorized use of any Program Rewards, vouchers, coupons and/or certificates (all as determined by us in our sole but reasonable discretion), may result in the revocation of your membership and make you ineligible for further participation in the Program. If your membership is revoked, any CG Rewards or benefits in your account will automatically expire and your access to the Program and features will automatically terminate. If we suspect illegal activity, fraud, misrepresentation, abuse or violation of these Terms, we reserve the right to take appropriate legal action. This Subsection 6.2 is subject to the provisions of Subsection 7.1 of this Program.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-4",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "\n7. Disclaimer of Warranties; Limitation of Liability",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "7.1",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " The laws of certain jurisdictions, do not allow the exclusion or limitation of legal warranties, conditions, representations, liability or certain damages. If these laws apply to you, some or all of the below exclusions or limitations may not apply.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "NOTICE TO NEW JERSEY RESIDENTS: Your rights are protected under the Truth-in-Consumer Contract, Warranty and Notice Act and New Jersey law generally. The following provisions in this Section 7 do not apply to you and are not intended to vary, diminish or alter your rights under New Jersey law: specifically, nothing in this Program limits, varies, diminishes, affects, or otherwise voids or alters your rights under New Jersey law as they relate to limitations of liability or exculpation (including, but not limited to, limitations on indirect, incidental, special, exemplary, consequential or similar damages), dispute resolution, indemnification, venue or jurisdiction, statutes of limitation or repose periods for bringing claims, plain language requirements, representations and warranties of any type or nature (including, but not limited to conditions of merchantability, of satisfactory quality, of fitness for a particular purpose, of accuracy, of quiet enjoyment, and non-infringement), contract remedies, personal injury, tort and negligence claims, conditions of sale, fee-shifting provisions, waiver of attorney fees and/or costs, and copyright. Your rights regarding these specific provisions will be governed by New Jersey law. In the event of any conflict between this Program and New Jersey law, New Jersey law will govern.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "7.2",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " Neither Colorful Group nor our parents, subsidiaries, affiliates, partners, or licensors make any representations, warranties or conditions of any kind whatsoever, express or implied, in connection with these terms or the program or any of the rewards or benefits associated with the program, except to the extent such representations, warranties and conditions are not legally excludable. This subsection 7.2 is subject to the provisions of subsection 7.1 of this program.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "7.3",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " You agree that, to the fullest extent permitted by applicable law, neither Colorful Group nor our parents, subsidiaries, affiliates, partners, or licensors will be responsible (whether in contract, tort (excluding negligence) pre-contract or otherwise) for any (a) interruption of business; (b) access delays or access interruptions to the program; (c) data non-delivery, loss, theft, misdelivery, corruption, destruction or other modification; (d) loss or damages of any sort incurred as a result of dealings with or the presence of third party links on the site or use of any reward or benefit of the program; (e) computer viruses, system failures or malfunctions which may occur in connection with your use of the site, including during hyperlink to or from third party websites; (f) any inaccuracies or omissions in program content; or (g) events beyond our reasonable control. We make no representations, warranties or conditions that defects or errors will be corrected. Nothing in this provision shall exclude or limit our liability for death or person injury resulting from our negligence or that of our servants, agents or employees. This subsection 7.3 is subject to the provisions of subsection 7.1 of this program.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "7.4",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " Further, to the fullest extent permitted by applicable law, neither Colorful Group nor our parents, subsidiaries, affiliates, partners, or licensors will be liable for any economic losses (such as loss of revenues, profits, contracts, business or anticipated savings), loss of goodwill or reputation or any special or indirect losses of any kind related to the program and/or your participation therein, regardless of the form of action whehter in contract, tort (including negligence) pre-contract or otherwise (other than fraudulent or negligent misrepresentations), even if we have been advised of the possibility of such damages and in no event shall our maximum aggregate liability exceed one hundred dollars ($100.00). This subsection 7.4 is subject to the provisions of subsection 7.1 of this program.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "7.5",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " If you are dissatisfied with the program for any reason, termination of your membership in the program is your sole remedy. We have no other obligation, liability, or responsibility to you except as expressly required by law. This subsection 7.5 is subject to the provisions of the subsection 7.1 of this program.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-4",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "\n8. Indemnification",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "To the maximum extent permitted by applicable law, and subject to Subsection 7.1 of this Program, you agree to defend, indemnify and hold us, our parents, subsidiaries, affiliates, partners, licensors, officers, directors, employees, and agents harmless for any loss, damages or costs, including reasonable attorneys’ fees, resulting from any third party claim, action, or demand resulting from your breach of the Program or its Terms or your violation of any law, rule or regulation.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-4",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "\n9. Governing Law and Disputes",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Unless the laws of your jurisdiction require that those laws apply, this Program and these Terms will be governed by and construed under the substantive laws of the State of Pennsylvania and you irrevocably submit to the exclusive jurisdiction of the federal and state courts of the State of Pennsylvania. This Section 9 is subject to the provisions of Subsection 7.1 of this Program.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-4",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "\n10. Privacy and Data Protection",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "The personal information collected from you in connection with the Program, including but not limited to information regarding purchases made in connection with your Program membership, will be used and disclosed to administer your participation in the Program and otherwise in accordance with the Privacy Policy.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-4",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "\n11. Entire Agreement; Waiver and Survival",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "These Terms govern our relationship with you as it relates to the Program. You confirm that, in agreeing to accept the Terms, you have not relied on any representation except as expressly set forth in these Terms and you agree that you shall have no remedy in respect of any such representation not included in these Terms. Each provision of the Terms shall be construed as separately applying and surviving even if for any reason one or other of those provisions is held to be inapplicable or unenforceable in the circumstances. No waiver by us will be construed as a waiver of any proceeding or succeeding breach of any provision in these Terms. This Section 11 is subject to the provisions of Subsection 7.1 of this Program.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-4",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "\n12. Contact Us",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "For information about the Program and your membership, contact Customer Service at customerservice@colorful-group.com. We are not responsible for requests or correspondence lost or delayed in the mail or over the Internet. You may also provide answers to helpful frequently answered questions in our FAQs. If you need to contact us, our company details are:",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-6",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Colorful Group Registered office: 7040 South Broad Street, Chicago IL 19112-1495",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " \n",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-6",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Email: ",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "customerservice@colorful-group.com",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
     }
   ],
   "assets": [
