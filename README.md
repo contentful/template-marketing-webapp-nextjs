@@ -31,8 +31,6 @@ CONFIG_CONTENTFUL_MAIN_SPACE_ID=
 CONFIG_CONTENTFUL_MAIN_SPACE_TOKEN=
 CONFIG_CONTENTFUL_MAIN_SPACE_PREVIEW_TOKEN=
 CONFIG_CONTENTFUL_MAIN_SPACE_MANAGEMENT_TOKEN=
-CONFIG_CONTENTFUL_LEGAL_SPACE_ID=
-CONFIG_CONTENTFUL_LEGAL_SPACE_TOKEN=
 
 CONTENTFUL_DEPLOY_TOKEN=
 CONTENTFUL_DEPLOY_ORG=
@@ -148,15 +146,18 @@ Where spaceId is the space id of the test contentful space. see here https://www
 See the above section, `Content model changes`, for information about generating new GraphQl introspection files when making changes to the content model.
 
 ## GraphQL implementation & code generation
-This project makes use of Contentful's GraphQL API for more info see: https://www.contentful.com/developers/docs/references/graphql/. We use graphql-codegen to generate a typesafe API client, utilising React Query as the "client".  
+
+This project makes use of Contentful's GraphQL API for more info see: https://www.contentful.com/developers/docs/references/graphql/. We use graphql-codegen to generate a typesafe API client, utilising React Query as the "client".
 
 - https://www.the-guild.dev/graphql/codegen
 - https://tanstack.com/query/v4
 
 ### Codegen
+
 Making use of `graphql-codegen`, we generate typesafe React Query hooks co-located within our component folders. With an exception for schema files and shared GraphQL fragments.
 
 To run our codegen, we have the following two scripts available. Both generate files, but the latter runs a watcher that will regenerate files on any change in .graphql files.
+
 - `yarn run graphql-generate`
 - `yarn run graphql-watch`
 
@@ -165,10 +166,13 @@ The first steps of the codegen generate files that contain the GraphQL schema, a
 Additionally, the codegen watches .graphql files in our `src` folder, if it runs successfully it generates a `__generated` folder collocated in the folder where the .graphql file was found. One exception to this rule is the `src/lib/fragments` folder that contains shared GraphQL Fragments that are used in several other queries/fragments. The TS types for these files are generated in the same location, in a `__generated` folder and like the other files ought to be committed.
 
 #### Config
+
 The config for the codegen can be found in `codegen.ts` in the root of the project.
 
 ### React Query
+
 API calls made to the Contentful GraphQL endpoint are made through React Query `useQuery` hooks. The hooks are generate from the `.graphql` files collocated within the components. The following happens:
+
 1. `[folderName]/[fileName].graphql` file, containing a query, is detected by the codegen
 2. `[folderName]/__generated/[fileName].generated.ts` is generated
 3. Within the generated file, a new hook is generated with the following pattern: `use[fileName]`

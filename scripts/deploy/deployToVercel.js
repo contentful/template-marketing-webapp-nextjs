@@ -32,10 +32,6 @@ const deployToVercel = async input => {
         CONFIG_CONTENTFUL_MAIN_SPACE_TOKEN: deliveryApiKey,
         CONFIG_CONTENTFUL_MAIN_SPACE_PREVIEW_TOKEN: previewApiKey,
         CONFIG_CONTENTFUL_MAIN_SPACE_MANAGEMENT_TOKEN: cmaToken,
-        CONFIG_CONTENTFUL_LEGAL_SPACE_ID:
-          legalSpaceId || process.env.CONFIG_CONTENTFUL_LEGAL_SPACE_ID || '',
-        CONFIG_CONTENTFUL_LEGAL_SPACE_TOKEN:
-          legalSpaceToken || process.env.CONFIG_CONTENTFUL_LEGAL_SPACE_TOKEN || '',
       },
       build: {
         env: {
@@ -43,10 +39,6 @@ const deployToVercel = async input => {
           CONFIG_CONTENTFUL_MAIN_SPACE_TOKEN: deliveryApiKey,
           CONFIG_CONTENTFUL_MAIN_SPACE_PREVIEW_TOKEN: previewApiKey,
           CONFIG_CONTENTFUL_MAIN_SPACE_MANAGEMENT_TOKEN: cmaToken,
-          CONFIG_CONTENTFUL_LEGAL_SPACE_ID:
-            legalSpaceId || process.env.CONFIG_CONTENTFUL_LEGAL_SPACE_ID || '',
-          CONFIG_CONTENTFUL_LEGAL_SPACE_TOKEN:
-            legalSpaceToken || process.env.CONFIG_CONTENTFUL_LEGAL_SPACE_TOKEN || '',
         },
       },
     },
