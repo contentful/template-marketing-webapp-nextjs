@@ -6,17 +6,17 @@ import LayoutContext, { defaultLayout } from '@src/layout-context';
 export const CtfLegalPage = (props: LegalPageFieldsFragment) => {
   const { pageContent } = props;
 
+  if (pageContent?.__typename !== 'TopicBusinessInfo') return null;
+
   return (
     <PageContainer>
-      {pageContent && pageContent.__typename === 'TopicBusinessInfo' ? (
-        <LayoutContext.Provider value={defaultLayout} key={pageContent.sys.id}>
-          <CtfBusinessInfo
-            body={pageContent.body}
-            name={pageContent.name}
-            featuredImage={pageContent.featuredImage}
-          />
-        </LayoutContext.Provider>
-      ) : null}
+      <LayoutContext.Provider value={defaultLayout} key={pageContent.sys.id}>
+        <CtfBusinessInfo
+          body={pageContent.body}
+          name={pageContent.name}
+          featuredImage={pageContent.featuredImage}
+        />
+      </LayoutContext.Provider>
     </PageContainer>
   );
 };
