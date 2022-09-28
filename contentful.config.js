@@ -5,7 +5,7 @@ const url = !process.env.CONFIG_CONTENTFUL_META_URL
     : `https://${process.env.VERCEL_URL}`
   : process.env.CONFIG_CONTENTFUL_META_URL;
 
-export const contentfulConfig = {
+module.exports = {
   contentful: {
     // main_space_id: Contentful Space ID
     main_space_id: process.env.CONFIG_CONTENTFUL_MAIN_SPACE_ID || '',

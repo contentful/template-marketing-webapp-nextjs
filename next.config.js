@@ -1,27 +1,21 @@
-/** @type {import('next').NextConfig} */
+const dotenv = require('dotenv').config();
+const nextComposePlugins = require('next-compose-plugins');
 
-import dotenv from 'dotenv';
-import nextComposePlugins from 'next-compose-plugins';
-
-import { headers } from './config/headers.mjs';
-import { includePolyfills } from './config/includePolyfills.mjs';
-import { plugins } from './config/plugins.mjs';
-import i18nConfig from './next-i18next.config.js';
-
-const { i18n } = i18nConfig;
+const headers = require('./config/headers');
+const includePolyfills = require('./config/includePolyfills');
+const plugins = require('./config/plugins');
+const { i18n } = require('./next-i18next.config.js');
 
 /**
  * https://github.com/cyrilwanner/next-compose-plugins/issues/59
  */
 const { withPlugins } = nextComposePlugins.extend(() => ({}));
 
-dotenv.config();
-
 /**
  * Next config
  * documentation: https://nextjs.org/docs/api-reference/next.config.js/introduction
  */
-export default withPlugins(plugins, {
+module.exports = withPlugins(plugins, {
   i18n,
   /**
    * add the environment variables you would like exposed to the client here
@@ -89,6 +83,7 @@ export default withPlugins(plugins, {
       use: ['@svgr/webpack'],
     });
 
+    // TODO: remove once getServerSideTranslations is properly importer in each gSSP Next.js method
     config.resolve.fallback = { ...config.resolve.fallback, fs: false }; // https://stackoverflow.com/questions/64926174/module-not-found-cant-resolve-fs-in-next-js-application
 
     includePolyfills(config);

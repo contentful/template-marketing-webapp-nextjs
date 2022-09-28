@@ -8,7 +8,7 @@ import PageContainer from '@src/components/layout/page-container';
 import Link from '@src/components/link/link';
 import { useContentfulContext } from '@src/contentful-context';
 import { generateGetServerSideProps } from '@src/lib/with-providers';
-import { contentfulConfig } from 'contentful.config.mjs';
+import contentfulConfig from 'contentful.config';
 
 const logoRatio = contentfulConfig.icon.height / contentfulConfig.icon.width;
 
@@ -159,7 +159,8 @@ const SignUpPage: NextPage = () => {
                       variant="text"
                       color="primary"
                       underline
-                      className={classes.signIn}>
+                      className={classes.signIn}
+                    >
                       {t('common.signIn')}
                     </Link>
                   </Typography>

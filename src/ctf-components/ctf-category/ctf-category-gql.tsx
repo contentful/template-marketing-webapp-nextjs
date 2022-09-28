@@ -10,7 +10,7 @@ import { query } from './ctf-category-query';
 import EntryNotFound from '@src/components/errors/entry-not-found';
 import { useContentfulContext } from '@src/contentful-context';
 import { useDataForPreview } from '@src/lib/apollo-hooks';
-import { contentfulConfig } from 'contentful.config.mjs';
+import contentfulConfig from 'contentful.config';
 
 interface Props {
   slug: string;

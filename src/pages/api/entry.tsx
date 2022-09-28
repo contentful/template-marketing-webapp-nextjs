@@ -3,7 +3,7 @@ import { Environment } from 'contentful-management/dist/typings/export-types';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import catchify from 'catchify';
-import { contentfulConfig } from 'contentful.config.mjs';
+import contentfulConfig from 'contentful.config';
 
 const client = createClient({
   accessToken: contentfulConfig.contentful.main_space_management_token,

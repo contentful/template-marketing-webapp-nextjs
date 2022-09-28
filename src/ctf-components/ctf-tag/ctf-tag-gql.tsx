@@ -8,7 +8,7 @@ import { query } from './ctf-tag-query';
 
 import { useContentfulContext } from '@src/contentful-context';
 import { useDataForPreview } from '@src/lib/apollo-hooks';
-import { contentfulConfig } from 'contentful.config.mjs';
+import contentfulConfig from 'contentful.config';
 
 interface Props {
   id: string;

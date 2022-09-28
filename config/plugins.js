@@ -1,7 +1,7 @@
-import withBundleAnalyzer from '@next/bundle-analyzer';
-import withPWA from 'next-pwa';
+const withBundleAnalyzer = require('@next/bundle-analyzer');
+const withPWA = require('next-pwa');
 
-const plugins = [
+module.exports = [
   [
     withPWA,
     {
@@ -21,5 +21,3 @@ const plugins = [
     },
   ],
 ];
-
-export { plugins };

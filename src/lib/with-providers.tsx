@@ -8,7 +8,7 @@ import { ApolloProvider, getDataFromTree } from 'react-apollo';
 import { ContentfulContext, contentfulContextValue } from '@src/contentful-context';
 import { createCfulUrl, createClientWithLink, createLink } from '@src/lib/init-apollo';
 import colorfulTheme from '@src/theme';
-import { contentfulConfig } from 'contentful.config.mjs';
+import contentfulConfig from 'contentful.config';
 import i18nConfig from 'next-i18next.config.js';
 
 const legalIntrospection = require('../../introspection/legal-introspection.json');

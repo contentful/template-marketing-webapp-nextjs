@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import { contentfulConfig } from 'contentful.config.mjs';
+import contentfulConfig from 'contentful.config';
 import i18nConfig from 'next-i18next.config.js';
 const { i18n } = i18nConfig;
 

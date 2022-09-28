@@ -4,18 +4,13 @@ import React from 'react';
 import CtfProductTable, {
   CtfProductTablePropsInterface,
 } from '@ctf-components/ctf-product-table/ctf-product-table';
-import Wrapper from '@src/stories/Wrapper';
 
 export default {
   title: 'Components/Product table',
   component: CtfProductTable,
 } as Meta;
 
-const Template: Story<CtfProductTablePropsInterface> = (args) => (
-  <Wrapper>
-    <CtfProductTable {...args} />
-  </Wrapper>
-);
+const Template: Story<CtfProductTablePropsInterface> = args => <CtfProductTable {...args} />;
 
 export const Default = Template.bind({});
 
@@ -35,8 +30,7 @@ Default.args = {
           description: null,
           width: 1200,
           height: 630,
-          url:
-            'https://images.ctfassets.net/w8vf7dk7f259/3tfemZitZGCb42qEfO1ipW/458edd56f29ca699742a29d6575d5fc9/classic.png',
+          url: 'https://images.ctfassets.net/w8vf7dk7f259/3tfemZitZGCb42qEfO1ipW/458edd56f29ca699742a29d6575d5fc9/classic.png',
         },
         description: {
           json: {
@@ -105,8 +99,7 @@ Default.args = {
                         {
                           data: {},
                           marks: [],
-                          value:
-                            'Free IBAN account with a €100,000 deposit insurance guarantee',
+                          value: 'Free IBAN account with a €100,000 deposit insurance guarantee',
                           nodeType: 'text',
                         },
                       ],
@@ -168,8 +161,7 @@ Default.args = {
                         {
                           data: {},
                           marks: [],
-                          value:
-                            'Free, instant money transfers within the Coin network',
+                          value: 'Free, instant money transfers within the Coin network',
                           nodeType: 'text',
                         },
                       ],
@@ -231,8 +223,7 @@ Default.args = {
                         {
                           data: {},
                           marks: [],
-                          value:
-                            'Currency conversion at the interbank exchange rate',
+                          value: 'Currency conversion at the interbank exchange rate',
                           nodeType: 'text',
                         },
                       ],
@@ -294,8 +285,7 @@ Default.args = {
                         {
                           data: {},
                           marks: [],
-                          value:
-                            'Receive personalized offers and discounts from Coin partners',
+                          value: 'Receive personalized offers and discounts from Coin partners',
                           nodeType: 'text',
                         },
                       ],
@@ -328,8 +318,7 @@ Default.args = {
                         {
                           data: {},
                           marks: [],
-                          value:
-                            'Contactless credit card, choose from five colorful designs',
+                          value: 'Contactless credit card, choose from five colorful designs',
                           nodeType: 'text',
                         },
                       ],
@@ -357,8 +346,7 @@ Default.args = {
                         {
                           data: {},
                           marks: [],
-                          value:
-                            'Contactless credit card, choose from five colorful designs',
+                          value: 'Contactless credit card, choose from five colorful designs',
                           nodeType: 'text',
                         },
                       ],
@@ -420,8 +408,7 @@ Default.args = {
                         {
                           data: {},
                           marks: [],
-                          value:
-                            'Up to €500/month free ATM withdrawals in the EU and N.America',
+                          value: 'Up to €500/month free ATM withdrawals in the EU and N.America',
                           nodeType: 'text',
                         },
                       ],
@@ -457,8 +444,7 @@ Default.args = {
           description: null,
           width: 1200,
           height: 630,
-          url:
-            'https://images.ctfassets.net/w8vf7dk7f259/4s8qZjpP5qBvxgMwSlqPLr/bbc2fcecdfe1ad55aeea6841584a9610/black.png',
+          url: 'https://images.ctfassets.net/w8vf7dk7f259/4s8qZjpP5qBvxgMwSlqPLr/bbc2fcecdfe1ad55aeea6841584a9610/black.png',
         },
         description: {
           json: {
@@ -526,8 +512,7 @@ Default.args = {
                         {
                           data: {},
                           marks: [],
-                          value:
-                            'Free IBAN account with a €100,000 deposit insurance guarantee',
+                          value: 'Free IBAN account with a €100,000 deposit insurance guarantee',
                           nodeType: 'text',
                         },
                       ],
@@ -588,8 +573,7 @@ Default.args = {
                         {
                           data: {},
                           marks: [],
-                          value:
-                            'Free, instant money transfers within the Coin network',
+                          value: 'Free, instant money transfers within the Coin network',
                           nodeType: 'text',
                         },
                       ],
@@ -650,8 +634,7 @@ Default.args = {
                         {
                           data: {},
                           marks: [],
-                          value:
-                            'Currency conversion at the interbank exchange rate',
+                          value: 'Currency conversion at the interbank exchange rate',
                           nodeType: 'text',
                         },
                       ],
@@ -712,8 +695,7 @@ Default.args = {
                         {
                           data: {},
                           marks: [],
-                          value:
-                            'Receive personalized offers and discounts from Coin partners',
+                          value: 'Receive personalized offers and discounts from Coin partners',
                           nodeType: 'text',
                         },
                       ],
@@ -746,8 +728,7 @@ Default.args = {
                         {
                           data: {},
                           marks: [],
-                          value:
-                            'Contactless credit card in premium, black finish',
+                          value: 'Contactless credit card in premium, black finish',
                           nodeType: 'text',
                         },
                       ],
@@ -775,8 +756,7 @@ Default.args = {
                         {
                           data: {},
                           marks: [],
-                          value:
-                            'Contactless credit card in premium, black finish',
+                          value: 'Contactless credit card in premium, black finish',
                           nodeType: 'text',
                         },
                       ],
@@ -809,8 +789,7 @@ Default.args = {
                         {
                           data: {},
                           marks: [],
-                          value:
-                            'Up to €2,000/month free ATM withdrawals in the EU and N.America',
+                          value: 'Up to €2,000/month free ATM withdrawals in the EU and N.America',
                           nodeType: 'text',
                         },
                       ],
@@ -838,8 +817,7 @@ Default.args = {
                         {
                           data: {},
                           marks: [],
-                          value:
-                            'Up to €2,000/month free ATM withdrawals in the EU and N.America',
+                          value: 'Up to €2,000/month free ATM withdrawals in the EU and N.America',
                           nodeType: 'text',
                         },
                       ],
@@ -885,8 +863,7 @@ Default.args = {
                         {
                           data: {},
                           marks: [],
-                          value:
-                            ' and register by providing your Coin card number.',
+                          value: ' and register by providing your Coin card number.',
                           nodeType: 'text',
                         },
                       ],
@@ -1101,8 +1078,7 @@ Default.args = {
                         {
                           data: {},
                           marks: [],
-                          value:
-                            'Medical, flight, and luggage delay insurance coverage',
+                          value: 'Medical, flight, and luggage delay insurance coverage',
                           nodeType: 'text',
                         },
                       ],
@@ -1135,8 +1111,7 @@ Default.args = {
                         {
                           data: {},
                           marks: [],
-                          value:
-                            '2% cashback on all purchases in the home country',
+                          value: '2% cashback on all purchases in the home country',
                           nodeType: 'text',
                         },
                       ],
@@ -1164,8 +1139,7 @@ Default.args = {
                         {
                           data: {},
                           marks: [],
-                          value:
-                            '2% cashback on all purchases in the home country',
+                          value: '2% cashback on all purchases in the home country',
                           nodeType: 'text',
                         },
                       ],

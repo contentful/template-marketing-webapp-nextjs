@@ -5,7 +5,7 @@ import { useTranslation } from 'next-i18next';
 import { LanguageSelector } from '@src/components/language-selector';
 import Link from '@src/components/link/link';
 import { CONTAINER_WIDTH } from '@src/theme';
-import { contentfulConfig } from 'contentful.config.mjs';
+import contentfulConfig from 'contentful.config';
 
 const useStyles = makeStyles((theme: Theme) => ({
   footerContainer: {
@@ -285,7 +285,8 @@ const Footer = () => {
               {contentfulConfig.footer.googlePlayLogo && (
                 <a
                   className={classes.storeLogo}
-                  href="https://play.google.com/store/apps/details?id=com.contentful.colorfulcoin">
+                  href="https://play.google.com/store/apps/details?id=com.contentful.colorfulcoin"
+                >
                   <img
                     src={contentfulConfig.footer.googlePlayLogo}
                     srcSet={`${contentfulConfig.footer.googlePlayLogo}?w=110 110w, ${contentfulConfig.footer.googlePlayLogo}?w=220 220w`}
@@ -296,7 +297,8 @@ const Footer = () => {
               {contentfulConfig.footer.appStoreLogo && (
                 <a
                   className={classes.storeLogo}
-                  href="https://apps.apple.com/de/app/colorful-coin/id1612505445?l=en">
+                  href="https://apps.apple.com/de/app/colorful-coin/id1612505445?l=en"
+                >
                   <img
                     src={contentfulConfig.footer.appStoreLogo}
                     srcSet={`${contentfulConfig.footer.appStoreLogo}?w=110 110w, ${contentfulConfig.footer.appStoreLogo}?w=220 220w`}
