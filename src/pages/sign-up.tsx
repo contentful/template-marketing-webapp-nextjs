@@ -6,6 +6,7 @@ import React from 'react';
 
 import PageContainer from '@src/components/layout/page-container';
 import Link from '@src/components/link/link';
+import { ContentfulImage } from '@src/components/contentful-image/contentful-image';
 import { useContentfulContext } from '@src/contentful-context';
 import { generateGetServerSideProps } from '@src/lib/with-providers';
 import { contentfulConfig } from 'contentful.config.mjs';
@@ -15,6 +16,10 @@ const logoRatio = contentfulConfig.icon.height / contentfulConfig.icon.width;
 const useStyles = makeStyles((theme: Theme) => ({
   page: {
     backgroundColor: '#EAEAEA',
+  },
+  header: {
+    display: 'flex',
+    justifyContent: 'center',
   },
   container: {
     marginLeft: 'auto',
@@ -108,13 +113,12 @@ const SignUpPage: NextPage = () => {
       <PageContainer className={classes.page}>
         <Container maxWidth={false}>
           <section className={classes.container}>
-            <header>
-              <img
+            <header className={classes.header}>
+              <ContentfulImage
                 src={contentfulConfig.icon.dark}
-                className={classes.logo}
                 alt="Logo"
-                width={contentfulConfig.icon.width}
-                height={contentfulConfig.icon.height}
+                width={`${contentfulConfig.icon.width}px`}
+                height={`${contentfulConfig.icon.height}px`}
               />
             </header>
             <form className={classes.form}>
@@ -159,7 +163,8 @@ const SignUpPage: NextPage = () => {
                       variant="text"
                       color="primary"
                       underline
-                      className={classes.signIn}>
+                      className={classes.signIn}
+                    >
                       {t('common.signIn')}
                     </Link>
                   </Typography>

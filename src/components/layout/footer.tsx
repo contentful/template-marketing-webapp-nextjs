@@ -4,6 +4,7 @@ import { useTranslation } from 'next-i18next';
 
 import { LanguageSelector } from '@src/components/language-selector';
 import Link from '@src/components/link/link';
+import { ContentfulImage } from '@src/components/contentful-image/contentful-image';
 import { CONTAINER_WIDTH } from '@src/theme';
 import { contentfulConfig } from 'contentful.config.mjs';
 
@@ -285,22 +286,28 @@ const Footer = () => {
               {contentfulConfig.footer.googlePlayLogo && (
                 <a
                   className={classes.storeLogo}
-                  href="https://play.google.com/store/apps/details?id=com.contentful.colorfulcoin">
-                  <img
+                  href="https://play.google.com/store/apps/details?id=com.contentful.colorfulcoin"
+                >
+                  <ContentfulImage
                     src={contentfulConfig.footer.googlePlayLogo}
-                    srcSet={`${contentfulConfig.footer.googlePlayLogo}?w=110 110w, ${contentfulConfig.footer.googlePlayLogo}?w=220 220w`}
                     alt="Google Play Store logo"
+                    layout="responsive"
+                    width={`${contentfulConfig.footer.logoWidth}px`}
+                    height={'100px'}
                   />
                 </a>
               )}
               {contentfulConfig.footer.appStoreLogo && (
                 <a
                   className={classes.storeLogo}
-                  href="https://apps.apple.com/de/app/colorful-coin/id1612505445?l=en">
-                  <img
+                  href="https://apps.apple.com/de/app/colorful-coin/id1612505445?l=en"
+                >
+                  <ContentfulImage
                     src={contentfulConfig.footer.appStoreLogo}
-                    srcSet={`${contentfulConfig.footer.appStoreLogo}?w=110 110w, ${contentfulConfig.footer.appStoreLogo}?w=220 220w`}
                     alt="Apple App Store logo"
+                    layout="responsive"
+                    width={`${contentfulConfig.footer.logoWidth}px`}
+                    height={'100px'}
                   />
                 </a>
               )}
@@ -313,7 +320,7 @@ const Footer = () => {
         <section className={classes.footerCorporate}>
           <div className={classes.corporateLogoMenu}>
             <div className={classes.corporateLogoContainer}>
-              <img
+              <ContentfulImage
                 src={contentfulConfig.footer.logo}
                 className={classes.corporateLogo}
                 alt="Logo"
