@@ -3,18 +3,13 @@ import React from 'react';
 
 import { DuplexFieldsFragment } from '@ctf-components/ctf-duplex/__generated/ctf-duplex.generated';
 import { CtfDuplex } from '@ctf-components/ctf-duplex/ctf-duplex';
-import Wrapper from '@src/stories/Wrapper';
 
 export default {
   title: 'Components/Duplex',
   component: CtfDuplex,
 } as Meta;
 
-const Template: Story<DuplexFieldsFragment> = args => (
-  <Wrapper>
-    <CtfDuplex {...args} />
-  </Wrapper>
-);
+const Template: Story<DuplexFieldsFragment> = args => <CtfDuplex {...args} />;
 
 export const Default = Template.bind({});
 

@@ -3,18 +3,13 @@ import React from 'react';
 
 import { HeroBannerFieldsFragment } from '@ctf-components/ctf-hero-banner/__generated/ctf-hero-banner.generated';
 import { CtfHeroBanner } from '@ctf-components/ctf-hero-banner/ctf-hero-banner';
-import Wrapper from '@src/stories/Wrapper';
 
 export default {
   title: 'Components/Hero banner',
   component: CtfHeroBanner,
 } as Meta;
 
-const Template: Story<HeroBannerFieldsFragment> = args => (
-  <Wrapper>
-    <CtfHeroBanner {...args} />
-  </Wrapper>
-);
+const Template: Story<HeroBannerFieldsFragment> = args => <CtfHeroBanner {...args} />;
 
 export const Default = Template.bind({});
 

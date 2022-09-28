@@ -2,19 +2,14 @@ import { Story, Meta } from '@storybook/react';
 import React from 'react';
 
 import { CtaFieldsFragment } from '@ctf-components/ctf-cta/__generated/ctf-cta.generated';
-import { CtfCta } from '@ctf-components/ctf-cta/ctf-cta';
-import Wrapper from '@src/stories/Wrapper';
+import { CtfCta } from '@src/ctf-components/ctf-cta/ctf-cta';
 
 export default {
   title: 'Components/CTA',
   component: CtfCta,
 } as Meta;
 
-const Template: Story<CtaFieldsFragment> = args => (
-  <Wrapper>
-    <CtfCta {...args} />
-  </Wrapper>
-);
+const Template: Story<CtaFieldsFragment> = args => <CtfCta {...args} />;
 
 export const Default = Template.bind({});
 

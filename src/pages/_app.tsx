@@ -13,7 +13,7 @@ import Settings from '@src/components/settings/settings';
 import { ContentfulContext, contentfulContextValue } from '@src/contentful-context';
 import { gqlQueryClient } from '@src/lib/gql-client';
 import colorfulTheme from '@src/theme';
-import { contentfulConfig } from 'contentful.config.mjs';
+import contentfulConfig from 'contentful.config';
 
 fontawesomeConfig.autoAddCss = false;
 

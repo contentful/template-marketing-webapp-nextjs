@@ -14,7 +14,7 @@ import { useTranslation } from 'next-i18next';
 
 import Link from '@src/components/link/link';
 import { HEADER_HEIGHT, HEADER_HEIGHT_MD, CONTAINER_WIDTH } from '@src/theme';
-import { contentfulConfig } from 'contentful.config.mjs';
+import contentfulConfig from 'contentful.config';
 
 const useStyles = makeStyles((theme: Theme) => ({
   appbar: {
@@ -166,7 +166,8 @@ const Header = (props: HeaderPropsInterface) => {
           maxWidth={false}
           style={{
             maxWidth: `${CONTAINER_WIDTH / 10}rem`,
-          }}>
+          }}
+        >
           <Link href="/" withoutMaterial>
             <img
               src={contentfulConfig.header.logo}
@@ -199,7 +200,8 @@ const Header = (props: HeaderPropsInterface) => {
                         isButton
                         variant="contained"
                         color="primary"
-                        size="small">
+                        size="small"
+                      >
                         {t('common.signUp')}
                       </Link>
                     </li>
@@ -224,7 +226,8 @@ const Header = (props: HeaderPropsInterface) => {
                               </clipPath>
                             </defs>
                           </SvgIcon>
-                        }>
+                        }
+                      >
                         {t('common.signIn')}
                       </Link>
                     </li>

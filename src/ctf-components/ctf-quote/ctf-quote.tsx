@@ -1,5 +1,6 @@
 import { Container, Theme, makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
+import { useTranslation } from 'next-i18next';
 import React, { useMemo } from 'react';
 
 import { QuoteFragment } from './__generated__/QuoteFragment';
@@ -104,6 +105,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 const CtfQuote = (props: CtfQuotePropsInterface) => {
+  const { t } = useTranslation();
   const {
     imagePosition,
     image,
@@ -140,6 +142,7 @@ const CtfQuote = (props: CtfQuotePropsInterface) => {
                   textAlign: quoteAlignment,
                 }}
               >
+                {t('common.signIn')}
                 <CtfRichtext {...quote} />
               </div>
             )}

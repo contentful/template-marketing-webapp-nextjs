@@ -6,7 +6,7 @@ import { useCtfPageQuery } from '@ctf-components/ctf-page/__generated/ctf-page.g
 import PageError from '@src/components/errors/page-error';
 import { useContentfulContext } from '@src/contentful-context';
 import { tryget } from '@src/utils';
-import { contentfulConfig } from 'contentful.config.mjs';
+import contentfulConfig from 'contentful.config';
 
 interface Props {
   topic?: string;

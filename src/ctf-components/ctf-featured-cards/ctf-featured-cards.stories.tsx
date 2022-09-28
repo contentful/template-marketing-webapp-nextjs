@@ -4,18 +4,13 @@ import React from 'react';
 import CtfFeaturedCards, {
   CtfFeaturedCardsPropsType,
 } from '@ctf-components/ctf-featured-cards/ctf-featured-cards';
-import Wrapper from '@src/stories/Wrapper';
 
 export default {
   title: 'Components/Featured cards',
   component: CtfFeaturedCards,
 } as Meta;
 
-const Template: Story<CtfFeaturedCardsPropsType> = (args) => (
-  <Wrapper>
-    <CtfFeaturedCards {...args} />
-  </Wrapper>
-);
+const Template: Story<CtfFeaturedCardsPropsType> = args => <CtfFeaturedCards {...args} />;
 
 export const Default = Template.bind({});
 
@@ -37,8 +32,7 @@ Default.args = {
           description: null,
           width: 1210,
           height: 807,
-          url:
-            'https://images.ctfassets.net/w8vf7dk7f259/4MtHvC2Qn9CsbKD7pDOihk/9e48b4e6a181dd8fcb0ad99ec5c335a3/AdobeStock_322589948.jpg',
+          url: 'https://images.ctfassets.net/w8vf7dk7f259/4MtHvC2Qn9CsbKD7pDOihk/9e48b4e6a181dd8fcb0ad99ec5c335a3/AdobeStock_322589948.jpg',
         },
         postName: 'Introducing the Coin mobile app',
         author: {

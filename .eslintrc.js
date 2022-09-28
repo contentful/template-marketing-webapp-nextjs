@@ -1,6 +1,9 @@
 module.exports = {
   root: true,
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
+  parserOptions: {
+    requireConfigFile: false,
+  },
   env: {
     browser: true,
     commonjs: true,
@@ -24,6 +27,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:jsx-a11y/recommended',
     'plugin:storybook/recommended',
+    'plugin:@next/next/recommended',
   ],
   rules: {
     '@typescript-eslint/no-var-requires': 'off',

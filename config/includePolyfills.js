@@ -1,4 +1,4 @@
-function includePolyfills(config) {
+module.exports = function includePolyfills(config) {
   const originalEntry = config.entry;
 
   config.entry = async () => {
@@ -10,6 +10,4 @@ function includePolyfills(config) {
 
     return entries;
   };
-}
-
-export { includePolyfills };
+};

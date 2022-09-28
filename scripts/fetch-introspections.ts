@@ -5,7 +5,7 @@ import path from 'path';
 
 import { createCfulUrl, introspect } from '../src/lib/init-apollo';
 
-import { contentfulConfig } from 'contentful.config.mjs';
+import contentfulConfig from 'contentful.config';
 
 const OUT = 'introspection';
 
