@@ -1,16 +1,10 @@
-import { gql } from 'apollo-boost';
 import Head from 'next/head';
-import React, { useContext } from 'react';
-import { useQuery } from 'react-apollo';
 
-import { CtfLegalPageQuery } from './__generated__/CtfLegalPageQuery';
-import CtfLegalPage from './ctf-legal-page';
-import { legalPageFragment } from './ctf-legal-page-query';
+import { CtfLegalPage } from './ctf-legal-page';
 
+import { useCtfLegalPageQuery } from '@ctf-components/ctf-legal-page/__generated/ctf-legal-page.generated';
 import PageError from '@src/components/errors/page-error';
 import { useContentfulContext } from '@src/contentful-context';
-import { useDataForPreview } from '@src/lib/apollo-hooks';
-import { ApolloContext } from '@src/lib/with-providers';
 import { tryget } from '@src/utils';
 
 interface Props {
@@ -18,33 +12,21 @@ interface Props {
   slug: string;
 }
 
-const query = gql`
-  query CtfLegalPageQuery($slug: String!, $locale: String) {
-    pageCollection(where: { slug: $slug }, locale: $locale, limit: 1) {
-      items {
-        ...LegalPageFragment
-      }
-    }
-  }
-  ${legalPageFragment}
-`;
-
 const CtfLegalPageGgl = (props: Props) => {
-  const { legalClient } = useContext(ApolloContext);
   const { locale } = useContentfulContext();
 
   const slug = !props.slug || props.slug === '/' ? 'home' : props.slug;
 
-  const queryResult = useQuery<CtfLegalPageQuery>(query, {
-    client: legalClient,
-    variables: { slug, locale },
+  const { data, isLoading } = useCtfLegalPageQuery({
+    slug,
+    locale,
   });
 
-  useDataForPreview(queryResult);
+  // useDataForPreview(queryResult);
 
-  const page = tryget(() => queryResult.data!.pageCollection!.items[0]);
+  const page = tryget(() => data?.pageCollection!.items[0]);
 
-  if (queryResult.loading) return <></>;
+  if (isLoading) return <></>;
   if (!page) {
     const error = {
       code: 404,

@@ -19,6 +19,5 @@ module.exports = {
       './src/ctf-components/**/*.{tsx,ts,js,jsx}',
       './src/ctf-hq-components/**/*.{tsx,ts,js,jsx}',
     ],
-    excludes: ['./src/ctf-components/ctf-legal-page/**/*.{tsx,ts,js,jsx}'],
   },
 };

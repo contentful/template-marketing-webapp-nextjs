@@ -2,8 +2,10 @@ import dynamic from 'next/dynamic';
 
 const pageTopicMap = {
   TopicProduct: dynamic(() => import('./ctf-components/ctf-product/ctf-product-gql')),
-  TopicBusinessInfo: dynamic(
-    () => import('./ctf-components/ctf-business-info/ctf-business-info-gql'),
+  TopicBusinessInfo: dynamic(() =>
+    import('./ctf-components/ctf-business-info/ctf-business-info-gql').then(
+      module => module.CtfBusinessInfoGql,
+    ),
   ),
   ComponentProductTable: dynamic(
     () => import('./ctf-components/ctf-product-table/ctf-product-table-gql'),

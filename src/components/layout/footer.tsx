@@ -6,7 +6,7 @@ import { LanguageSelector } from '@src/components/language-selector';
 import Link from '@src/components/link/link';
 import { ContentfulImage } from '@src/components/contentful-image/contentful-image';
 import { CONTAINER_WIDTH } from '@src/theme';
-import { contentfulConfig } from 'contentful.config.mjs';
+import contentfulConfig from 'contentful.config';
 
 const useStyles = makeStyles((theme: Theme) => ({
   footerContainer: {

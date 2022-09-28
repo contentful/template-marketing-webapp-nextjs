@@ -2,7 +2,7 @@ import { Drawer, SvgIcon, makeStyles } from '@material-ui/core';
 import { useTranslation } from 'next-i18next';
 
 import Link from '@src/components/link/link';
-import { contentfulConfig } from 'contentful.config.mjs';
+import contentfulConfig from 'contentful.config';
 
 const useStyles = makeStyles(theme => ({
   menu: {
@@ -128,7 +128,8 @@ const MobileMenu = (props: MobileMenuPropsInterface) => {
                     </clipPath>
                   </defs>
                 </SvgIcon>
-              }>
+              }
+            >
               {t('common.signIn')}
             </Link>
           </li>

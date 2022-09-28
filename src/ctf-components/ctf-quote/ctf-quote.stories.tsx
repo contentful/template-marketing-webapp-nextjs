@@ -1,21 +1,14 @@
 import { Story, Meta } from '@storybook/react';
 import React from 'react';
 
-import CtfQuote, {
-  CtfQuotePropsInterface,
-} from '@ctf-components/ctf-quote/ctf-quote';
-import Wrapper from '@src/stories/Wrapper';
+import CtfQuote, { CtfQuotePropsInterface } from '@ctf-components/ctf-quote/ctf-quote';
 
 export default {
   title: 'Components/Quote',
   component: CtfQuote,
 } as Meta;
 
-const Template: Story<CtfQuotePropsInterface> = (args) => (
-  <Wrapper>
-    <CtfQuote {...args} />
-  </Wrapper>
-);
+const Template: Story<CtfQuotePropsInterface> = args => <CtfQuote {...args} />;
 
 export const Default = Template.bind({});
 
@@ -28,8 +21,7 @@ Default.args = {
     description: null,
     width: 2500,
     height: 1667,
-    url:
-      'https://images.ctfassets.net/w8vf7dk7f259/5glXQfLUw22svg3imrpaQh/a7c6e9ff29b011c22c5f9b6dab949783/Got-banking-Now-you-do.jpg',
+    url: 'https://images.ctfassets.net/w8vf7dk7f259/5glXQfLUw22svg3imrpaQh/a7c6e9ff29b011c22c5f9b6dab949783/Got-banking-Now-you-do.jpg',
   },
   imagePosition: true,
   quote: {

@@ -4,18 +4,13 @@ import React from 'react';
 import CtfTextBlock, {
   CtfTextBlockPropsInterface,
 } from '@ctf-components/ctf-text-block/ctf-text-block';
-import Wrapper from '@src/stories/Wrapper';
 
 export default {
   title: 'Components/Text block',
   component: CtfTextBlock,
 } as Meta;
 
-const Template: Story<CtfTextBlockPropsInterface> = (args) => (
-  <Wrapper>
-    <CtfTextBlock {...args} />
-  </Wrapper>
-);
+const Template: Story<CtfTextBlockPropsInterface> = args => <CtfTextBlock {...args} />;
 
 export const Default = Template.bind({});
 

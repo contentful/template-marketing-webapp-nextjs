@@ -25,7 +25,7 @@ const securityHeaders = [
   },
 ];
 
-export const headers = async () => {
+module.exports = async () => {
   return [
     {
       // Apply these headers to all routes in your application.

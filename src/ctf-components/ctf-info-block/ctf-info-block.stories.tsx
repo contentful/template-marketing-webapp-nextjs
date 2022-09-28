@@ -4,18 +4,13 @@ import React from 'react';
 import CtfInfoBlock, {
   CtfInfoBlockPropsInterface,
 } from '@ctf-components/ctf-info-block/ctf-info-block';
-import Wrapper from '@src/stories/Wrapper';
 
 export default {
   title: 'Components/Info block',
   component: CtfInfoBlock,
 } as Meta;
 
-const Template: Story<CtfInfoBlockPropsInterface> = (args) => (
-  <Wrapper>
-    <CtfInfoBlock {...args} />
-  </Wrapper>
-);
+const Template: Story<CtfInfoBlockPropsInterface> = args => <CtfInfoBlock {...args} />;
 
 export const Default = Template.bind({});
 
@@ -27,9 +22,7 @@ Default.args = {
       content: [
         {
           data: {},
-          content: [
-            { data: {}, marks: [], value: 'Exchange Rates', nodeType: 'text' },
-          ],
+          content: [{ data: {}, marks: [], value: 'Exchange Rates', nodeType: 'text' }],
           nodeType: 'heading-3',
         },
         {
@@ -58,8 +51,7 @@ Default.args = {
     description: null,
     width: 377,
     height: 368,
-    url:
-      'https://images.ctfassets.net/w8vf7dk7f259/6RXhV9aCkOGHRtvkAAQhNL/4eb06486b018f620cce51de1b2d07e58/Tax_liability-estimates__1_.svg',
+    url: 'https://images.ctfassets.net/w8vf7dk7f259/6RXhV9aCkOGHRtvkAAQhNL/4eb06486b018f620cce51de1b2d07e58/Tax_liability-estimates__1_.svg',
   },
   block2Body: {
     json: {
@@ -103,8 +95,7 @@ Default.args = {
     description: null,
     width: 377,
     height: 368,
-    url:
-      'https://images.ctfassets.net/w8vf7dk7f259/7IhsDLG4vu2tVJTvWRo3SJ/a276dbd13de15e4ac4138d30ef8d6032/dashboard.svg',
+    url: 'https://images.ctfassets.net/w8vf7dk7f259/7IhsDLG4vu2tVJTvWRo3SJ/a276dbd13de15e4ac4138d30ef8d6032/dashboard.svg',
   },
   block3Body: {
     json: {
@@ -148,7 +139,6 @@ Default.args = {
     description: null,
     width: 377,
     height: 368,
-    url:
-      'https://images.ctfassets.net/w8vf7dk7f259/2U8G6vBUgwugmUq0o7ieyR/b74fae760a4cea62f59ad9ef5684f574/shopping-cart.svg',
+    url: 'https://images.ctfassets.net/w8vf7dk7f259/2U8G6vBUgwugmUq0o7ieyR/b74fae760a4cea62f59ad9ef5684f574/shopping-cart.svg',
   },
 };

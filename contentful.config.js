@@ -5,7 +5,7 @@ const url = !process.env.CONFIG_CONTENTFUL_META_URL
     : `https://${process.env.VERCEL_URL}`
   : process.env.CONFIG_CONTENTFUL_META_URL;
 
-export const contentfulConfig = {
+module.exports = {
   contentful: {
     // main_space_id: Contentful Space ID
     main_space_id: process.env.CONFIG_CONTENTFUL_MAIN_SPACE_ID || '',
@@ -15,10 +15,6 @@ export const contentfulConfig = {
     main_space_preview_token: process.env.CONFIG_CONTENTFUL_MAIN_SPACE_PREVIEW_TOKEN || '',
     // main_space_management_token: Contentful Content Management token
     main_space_management_token: process.env.CONFIG_CONTENTFUL_MAIN_SPACE_MANAGEMENT_TOKEN || '',
-    // legal_space_id: Contentful Space ID
-    legal_space_id: process.env.CONFIG_CONTENTFUL_LEGAL_SPACE_ID || '',
-    // legal_space_token: Contentful Space Delivery API - access token
-    legal_space_token: process.env.CONFIG_CONTENTFUL_LEGAL_SPACE_TOKEN || '',
   },
   meta: {
     title:

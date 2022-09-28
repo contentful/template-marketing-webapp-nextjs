@@ -15,7 +15,7 @@ import CategoryContainer from '@src/components/layout/category-container';
 import { useContentfulContext } from '@src/contentful-context';
 import { useDataForPreview } from '@src/lib/apollo-hooks';
 import withProviders, { generateGetServerSideProps } from '@src/lib/with-providers';
-import { contentfulConfig } from 'contentful.config.mjs';
+import contentfulConfig from 'contentful.config';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {

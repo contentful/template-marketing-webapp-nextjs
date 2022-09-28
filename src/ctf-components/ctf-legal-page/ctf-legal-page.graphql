@@ -1,0 +1,41 @@
+fragment LegalPageFields on Page {
+  pageName
+  pageContent {
+    __typename
+    ... on Entry {
+      __typename
+      sys {
+        id
+      }
+    }
+    ... on TopicBusinessInfo {
+      name
+      featuredImage {
+        ...AssetFields
+      }
+      body {
+        json
+        links {
+          entries {
+            block {
+              ...ComponentReferenceFields
+            }
+          }
+          assets {
+            block {
+              ...AssetFields
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+query CtfLegalPage($slug: String!, $locale: String) {
+  pageCollection(where: { slug: $slug }, locale: $locale, limit: 1) {
+    items {
+      ...LegalPageFields
+    }
+  }
+}
