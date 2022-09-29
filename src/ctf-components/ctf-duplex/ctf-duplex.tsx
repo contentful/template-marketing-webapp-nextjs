@@ -176,6 +176,11 @@ export const CtfDuplex = (props: DuplexFieldsFragment) => {
   }, [imageAlignmentParam]);
   const classes = useStyles();
 
+  const imgStyle = {
+    display: 'block',
+    maxWidth: '100%',
+  };
+
   return (
     <Container
       maxWidth={false}
@@ -253,11 +258,12 @@ export const CtfDuplex = (props: DuplexFieldsFragment) => {
                 classes[`imageFull-${containerLayout}${imageAlignment}`],
               )}
             >
-              <img
-                className={classes.imageFullImage}
-                alt={image.description || undefined}
+              <ContentfulImage
+                style={imgStyle}
                 src={`${image.url}?w=600`}
-                srcSet={`${image.url}?w=600 600w, ${image.url}?w=1200 1200w`}
+                alt={image.description || undefined}
+                width={'605px'}
+                height={'483px'}
               />
             </div>
           )}
