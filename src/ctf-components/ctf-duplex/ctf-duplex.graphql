@@ -18,7 +18,6 @@ fragment DuplexFields on ComponentDuplex {
     ...AssetFields
   }
   imageStyle
-  imageAlignment
   colorPalette
 }
 

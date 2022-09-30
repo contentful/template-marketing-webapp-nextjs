@@ -1,6 +1,5 @@
 import { Container, Theme, makeStyles, Typography } from '@material-ui/core';
 import clsx from 'clsx';
-import { useMemo } from 'react';
 
 import { DuplexFieldsFragment } from '@ctf-components/ctf-duplex/__generated/ctf-duplex.generated';
 import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
@@ -12,107 +11,25 @@ import optimizeLineBreak from '@src/typography/optimize-line-break';
 
 const useStyles = makeStyles((theme: Theme) => ({
   innerContainer: {
-    display: 'flex',
-    flexDirection: 'column',
+    display: 'grid',
     marginLeft: 'auto',
     marginRight: 'auto',
     maxWidth: '126rem',
-    padding: theme.spacing(19, 0, 19),
-    [theme.breakpoints.up('md')]: {
-      alignItems: 'center',
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-    },
-  },
-  innerContainerFull: {
-    [theme.breakpoints.up('md')]: {
-      paddingBottom: 0,
-      paddingTop: 0,
-      '& $innerBody': {
-        padding: theme.spacing(19, 0, 19),
-      },
-    },
-  },
-  innerBody: {
-    order: 2,
-    width: '100%',
+    padding: theme.spacing(8, 0, 8),
+    gap: theme.spacing(7),
 
     [theme.breakpoints.up('md')]: {
-      width: 'calc(50% - 2.5rem)',
+      gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+      gap: theme.spacing(14),
+      padding: theme.spacing(19, 0, 19),
     },
   },
-  'innerBody-imageLeft': {
-    [theme.breakpoints.up('md')]: {
-      order: 2,
-    },
-  },
-  'innerBody-imageRight': {
-    [theme.breakpoints.up('md')]: {
-      order: 0,
-    },
-  },
-  imageContainer: {
-    maxWidth: '60rem',
+  contentContainer: {
+    margin: 'auto 0',
     order: 1,
-    width: '100%',
-
     [theme.breakpoints.up('md')]: {
-      maxWidth: '100%',
-      width: 'calc(50% - 2.5rem)',
+      order: 'initial',
     },
-  },
-  imageContainerFull: {
-    [theme.breakpoints.up('md')]: {
-      alignSelf: 'flex-end',
-    },
-  },
-  imageFixed: {
-    backgroundPosition: 'center',
-    backgroundSize: 'cover',
-    marginBottom: theme.spacing(7),
-
-    [theme.breakpoints.up('md')]: {
-      marginBottom: 0,
-    },
-
-    '&::before': {
-      content: '""',
-      display: 'block',
-      paddingTop: '83.333%',
-    },
-  },
-  imageFull: {
-    marginBottom: theme.spacing(7),
-
-    [theme.breakpoints.up('md')]: {
-      marginBottom: 0,
-    },
-  },
-  'imageFull-imageLeftleft': {
-    [theme.breakpoints.up('lg')]: {
-      transform: 'translateX(-16rem)',
-    },
-  },
-  'imageFull-imageLeftcenter': {
-    [theme.breakpoints.up('lg')]: {
-      transform: 'translateX(-8rem)',
-    },
-  },
-  'imageFull-imageLeftright': {},
-  'imageFull-imageRightleft': {},
-  'imageFull-imageRightcenter': {
-    [theme.breakpoints.up('lg')]: {
-      transform: 'translateX(8rem)',
-    },
-  },
-  'imageFull-imageRightright': {
-    [theme.breakpoints.up('lg')]: {
-      transform: 'translateX(16rem)',
-    },
-  },
-  imageFullImage: {
-    display: 'block',
-    maxWidth: '100%',
   },
   headline: {
     fontSize: '3.4rem',
@@ -121,11 +38,10 @@ const useStyles = makeStyles((theme: Theme) => ({
       fontSize: '3.8rem',
     },
   },
-  body: {
+  richText: {
     fontWeight: 400,
     lineHeight: 1.52,
     marginTop: theme.spacing(7),
-    maxWidth: '51rem',
     '& .MuiTypography-body1': {
       fontSize: '2rem',
       [theme.breakpoints.up('xl')]: {
@@ -139,40 +55,104 @@ const useStyles = makeStyles((theme: Theme) => ({
       fontSize: 'inherit',
     },
   },
+  imageContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    order: 0,
+    [theme.breakpoints.up('md')]: {
+      order: 'initial',
+    },
+  },
+  image: {
+    display: 'block',
+    margin: 'auto 0',
+    maxWidth: '100%',
+  },
+  imageFull: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center center',
+  },
 }));
 
-export const CtfDuplex = (props: DuplexFieldsFragment) => {
-  const {
-    containerLayout: containerLayoutBoolean,
-    image,
-    imageStyle: imageStyleBoolean,
-    headline,
-    bodyText,
-    targetPage,
-    ctaText,
-    colorPalette,
-    imageAlignment: imageAlignmentParam,
-  } = props;
+const DuplexContent = (props: DuplexFieldsFragment) => {
+  const { headline, bodyText, targetPage, ctaText, colorPalette } = props;
 
   const colorConfig = getColorConfigFromPalette(colorPalette || '');
-  const containerLayout = containerLayoutBoolean === true ? 'imageLeft' : 'imageRight';
+  const classes = useStyles();
+
+  return (
+    <div className={classes.contentContainer}>
+      {headline && (
+        <Typography
+          variant="h1"
+          component="h2"
+          className={classes.headline}
+          style={{ color: colorConfig.headlineColor }}
+        >
+          {optimizeLineBreak(headline)}
+        </Typography>
+      )}
+      {bodyText && (
+        <LayoutContext.Provider value={{ ...defaultLayout, parent: 'duplex' }}>
+          <div style={{ color: colorConfig.textColor }}>
+            <CtfRichtext {...bodyText} className={classes.richText} />
+          </div>
+        </LayoutContext.Provider>
+      )}
+      {targetPage && targetPage.slug && (
+        <div className={classes.ctaContainer}>
+          {targetPage.__typename === 'Page' && (
+            <PageLink
+              page={targetPage}
+              variant="contained"
+              color={colorConfig.buttonColor}
+              isButton
+            >
+              {ctaText}
+            </PageLink>
+          )}
+          {targetPage.__typename === 'Post' && (
+            <PostLink
+              post={targetPage}
+              variant="contained"
+              color={colorConfig.buttonColor}
+              isButton
+            >
+              {ctaText}
+            </PostLink>
+          )}
+        </div>
+      )}
+    </div>
+  );
+};
+
+const DuplexImage = (props: DuplexFieldsFragment) => {
+  const { image, imageStyle: imageStyleBoolean } = props;
   const imageStyle = imageStyleBoolean ? 'fixed' : 'full';
-  const backgroundImage = useMemo(() => (image ? `${image.url}?w=${600 * 2}` : undefined), [image]);
-  const imageAlignment = useMemo(() => {
-    if (imageAlignmentParam === null) {
-      return 'center';
-    }
 
-    if (imageAlignmentParam === 'Left-aligned') {
-      return 'left';
-    }
+  const classes = useStyles();
 
-    if (imageAlignmentParam === 'Right-aligned') {
-      return 'right';
-    }
+  return (
+    <div className={classes.imageContainer}>
+      {image ? (
+        <img
+          className={clsx([classes.image, imageStyle === 'fixed' && classes.imageFull])}
+          alt={image.description || undefined}
+          src={`${image.url}?w=600`}
+          srcSet={`${image.url}?w=600 600w, ${image.url}?w=1200 1200w`}
+        />
+      ) : null}
+    </div>
+  );
+};
 
-    return 'center';
-  }, [imageAlignmentParam]);
+export const CtfDuplex = (props: DuplexFieldsFragment) => {
+  const { colorPalette, containerLayout: containerLayoutBoolean } = props;
+
+  const colorConfig = getColorConfigFromPalette(colorPalette || '');
   const classes = useStyles();
 
   return (
@@ -182,85 +162,18 @@ export const CtfDuplex = (props: DuplexFieldsFragment) => {
         backgroundColor: colorConfig.backgroundColor,
       }}
     >
-      <div
-        className={clsx(
-          classes.innerContainer,
-          imageStyle === 'full' ? classes.innerContainerFull : undefined,
+      <div className={classes.innerContainer}>
+        {containerLayoutBoolean ? (
+          <>
+            <DuplexImage {...props} />
+            <DuplexContent {...props} />
+          </>
+        ) : (
+          <>
+            <DuplexContent {...props} />
+            <DuplexImage {...props} />
+          </>
         )}
-      >
-        <div className={clsx(classes.innerBody, classes[`innerBody-${containerLayout}`])}>
-          {headline && (
-            <Typography
-              variant="h1"
-              component="h2"
-              className={classes.headline}
-              style={{ color: colorConfig.headlineColor }}
-            >
-              {optimizeLineBreak(headline)}
-            </Typography>
-          )}
-          {bodyText && (
-            <LayoutContext.Provider value={{ ...defaultLayout, parent: 'duplex' }}>
-              <div style={{ color: colorConfig.textColor }}>
-                <CtfRichtext {...bodyText} className={classes.body} />
-              </div>
-            </LayoutContext.Provider>
-          )}
-          {targetPage && targetPage.slug && (
-            <div className={classes.ctaContainer}>
-              {targetPage.__typename === 'Page' && (
-                <PageLink
-                  page={targetPage}
-                  variant="contained"
-                  color={colorConfig.buttonColor}
-                  isButton
-                >
-                  {ctaText}
-                </PageLink>
-              )}
-              {targetPage.__typename === 'Post' && (
-                <PostLink
-                  post={targetPage}
-                  variant="contained"
-                  color={colorConfig.buttonColor}
-                  isButton
-                >
-                  {ctaText}
-                </PostLink>
-              )}
-            </div>
-          )}
-        </div>
-        <div
-          className={clsx(
-            classes.imageContainer,
-            imageStyle === 'full' ? classes.imageContainerFull : undefined,
-          )}
-        >
-          {imageStyle === 'fixed' && backgroundImage && (
-            <div
-              className={classes.imageFixed}
-              style={{
-                backgroundImage: `url('${backgroundImage}')`,
-              }}
-            />
-          )}
-          {imageStyle === 'full' && image && (
-            <div
-              className={clsx(
-                classes.imageFull,
-                classes[`imageFull-${containerLayout}${imageAlignment}`],
-              )}
-            >
-              <img
-                className={classes.imageFullImage}
-                alt={image.description || undefined}
-                src={`${image.url}?w=600`}
-                srcSet={`${image.url}?w=600 600w, ${image.url}?w=1200 1200w`}
-              />
-            </div>
-          )}
-        </div>
       </div>
     </Container>
   );

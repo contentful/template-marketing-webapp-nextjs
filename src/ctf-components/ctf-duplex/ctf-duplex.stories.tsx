@@ -59,3 +59,18 @@ Default.args = {
   },
   ctaText: 'View details',
 };
+
+Default.argTypes = {
+  containerLayout: {
+    control: {
+      type: 'radio',
+      options: [true, false],
+    },
+  },
+  imageStyle: {
+    control: {
+      type: 'radio',
+      options: [true, false],
+    },
+  },
+};
