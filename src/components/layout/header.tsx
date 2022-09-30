@@ -12,8 +12,8 @@ import { Menu } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/styles';
 import { useTranslation } from 'next-i18next';
 
-import Link from '@src/components/link/link';
 import { ContentfulImage } from '@src/components/contentful-image/contentful-image';
+import Link from '@src/components/link/link';
 import { HEADER_HEIGHT, HEADER_HEIGHT_MD, CONTAINER_WIDTH } from '@src/theme';
 import contentfulConfig from 'contentful.config';
 

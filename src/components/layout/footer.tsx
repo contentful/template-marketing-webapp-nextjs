@@ -2,9 +2,9 @@ import { makeStyles, Theme, Container, Typography } from '@material-ui/core';
 import { Twitter, Facebook, LinkedIn, Instagram } from '@material-ui/icons';
 import { useTranslation } from 'next-i18next';
 
+import { ContentfulImage } from '@src/components/contentful-image/contentful-image';
 import { LanguageSelector } from '@src/components/language-selector';
 import Link from '@src/components/link/link';
-import { ContentfulImage } from '@src/components/contentful-image/contentful-image';
 import { CONTAINER_WIDTH } from '@src/theme';
 import contentfulConfig from 'contentful.config';
 
