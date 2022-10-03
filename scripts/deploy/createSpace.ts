@@ -1,22 +1,36 @@
-const { createClient } = require('contentful-management');
-const catchify = require('catchify');
+import { createClient, Space } from 'contentful-management';
 
-const createSpace = async (input) => {
-  const {
-    organizationId,
-    cmaToken,
-    spaceName,
-    email,
-    spaceId: inputSpaceId,
-  } = input;
+import { ProvisionStep } from './types';
 
+import catchify from 'catchify';
+
+type CreateSpaceProps = {
+  organizationId: string;
+  cmaToken: string;
+  spaceName: string;
+  email: string;
+  spaceId: string;
+};
+
+type CreateSpacePayload = {
+  spaceId: string;
+  spaceName: string;
+  deliveryApiKey: string;
+  previewApiKey: string;
+};
+
+export const createSpace: ProvisionStep<CreateSpaceProps, CreateSpacePayload> = async ({
+  organizationId,
+  cmaToken,
+  spaceName,
+  email,
+  spaceId: inputSpaceId,
+}) => {
   const client = createClient({
     accessToken: cmaToken,
   });
 
-  const [currentUserError, currentUser] = await catchify(
-    client.getCurrentUser(),
-  );
+  const [currentUserError, currentUser] = await catchify(client.getCurrentUser());
 
   if (currentUserError !== null) {
     console.error(currentUserError);
@@ -55,9 +69,7 @@ const createSpace = async (input) => {
       };
     }
 
-    const deliveryApiKey = apiKeys.items.find(
-      (apiKey) => apiKey.name === 'Colorful provisioning',
-    );
+    const deliveryApiKey = apiKeys.items.find(apiKey => apiKey.name === 'Colorful provisioning');
 
     if (deliveryApiKey === undefined) {
       return {
@@ -95,8 +107,7 @@ const createSpace = async (input) => {
   }
 
   const newSpaceName =
-    spaceName ||
-    `Fin - ${(email || currentUser.email).split('@')[0].substring(0, 23)}`;
+    spaceName || `Fin - ${(email || currentUser.email).split('@')[0].substring(0, 23)}`;
 
   const [createdSpaceError, createdSpace] = await catchify(
     client.createSpace(
@@ -169,7 +180,7 @@ const createSpace = async (input) => {
 
   // Create a German locale in the space
   const [createLocaleError, createLocale] = await catchify(
-    createdSpace.getEnvironment('master').then((environment) => {
+    createdSpace.getEnvironment('master').then(environment => {
       return environment.createLocale({
         code: 'de-DE',
         name: 'German (Germany)',
@@ -208,5 +219,3 @@ const createSpace = async (input) => {
     },
   };
 };
-
-module.exports = createSpace;

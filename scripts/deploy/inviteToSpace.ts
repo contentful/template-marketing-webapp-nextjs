@@ -1,7 +1,11 @@
-const catchify = require('catchify');
-const { createClient } = require('contentful-management');
+import { createClient } from 'contentful-management';
+import { OrganizationInvitationProps } from 'contentful-management/dist/typings/entities/organization-invitation';
 
-const isUserAlreadyInOrgError = (error) => {
+import { ProvisionStep } from './types';
+
+import catchify from 'catchify';
+
+const isUserAlreadyInOrgError = error => {
   if (error.message.startsWith('{') === false) {
     return false;
   }
@@ -12,12 +16,10 @@ const isUserAlreadyInOrgError = (error) => {
     return false;
   }
 
-  return detailedError.details.errors[0].name.includes(
-    'organization membership already exists',
-  );
+  return detailedError.details.errors[0].name.includes('organization membership already exists');
 };
 
-const isUserAlreadyInSpaceError = (error) => {
+const isUserAlreadyInSpaceError = error => {
   if (error.message.startsWith('{') === false) {
     return false;
   }
@@ -31,9 +33,18 @@ const isUserAlreadyInSpaceError = (error) => {
   return detailedError.details.errors[0].name.includes('taken');
 };
 
-const inviteToSpace = async (input) => {
-  const { organizationId, cmaToken, spaceId, email, role } = input;
+interface InviteToSpaceProps {
+  organizationId: string;
+  cmaToken: string;
+  spaceId: string;
+  role: string;
+  email?: string;
+}
 
+export const inviteToSpace: ProvisionStep<
+  InviteToSpaceProps,
+  OrganizationInvitationProps | null
+> = async ({ organizationId, cmaToken, spaceId, email, role }) => {
   if (email === undefined) {
     if (role !== 'Administrator') {
       return {
@@ -41,19 +52,13 @@ const inviteToSpace = async (input) => {
         error: 'You need to provide email when passing a non-default role',
       };
     }
-
-    return {
-      state: 'success',
-    };
   }
 
   const client = createClient({
     accessToken: cmaToken,
   });
 
-  const [currentUserError, currentUser] = await catchify(
-    client.getCurrentUser(),
-  );
+  const [currentUserError, currentUser] = await catchify(client.getCurrentUser());
 
   if (currentUserError !== null) {
     console.error(currentUserError);
@@ -119,7 +124,7 @@ const inviteToSpace = async (input) => {
     // as an admin). Thanks to how email alias works, both of these emails will
     // go to the same email inbox.
     const [rolesError, roles] = await catchify(
-      client.getSpace(spaceId).then((space) => space.getRoles()),
+      client.getSpace(spaceId).then(space => space.getRoles()),
     );
 
     if (rolesError !== null) {
@@ -130,7 +135,7 @@ const inviteToSpace = async (input) => {
       };
     }
 
-    const spaceRole = roles.items.find((x) => x.name === role);
+    const spaceRole = roles.items.find(x => x.name === role);
 
     if (spaceRole === undefined) {
       return {
@@ -169,7 +174,7 @@ const inviteToSpace = async (input) => {
       // This user will be added to space as admin automatically, we need to
       // change the role
       const [spaceMembershipsError, spaceMemberships] = await catchify(
-        client.getSpace(spaceId).then((space) => space.getSpaceMemberships()),
+        client.getSpace(spaceId).then(space => space.getSpaceMemberships()),
       );
 
       if (spaceMembershipsError !== null) {
@@ -245,7 +250,7 @@ const inviteToSpace = async (input) => {
         method: 'POST',
         url: `https://api.contentful.com/organizations/${organizationId}/invitations`,
         data: {
-          email: email.replace('@', '+admin@'),
+          email: email?.replace('@', '+admin@'),
           role: 'member',
         },
       }),
@@ -262,17 +267,16 @@ const inviteToSpace = async (input) => {
       };
     }
 
-    const [inviteAliasUserToSpaceError, inviteAliasUserToSpace] =
-      await catchify(
-        client.rawRequest({
-          method: 'POST',
-          url: `https://api.contentful.com/spaces/${spaceId}/space_memberships`,
-          data: {
-            admin: true,
-            email: email.replace('@', '+admin@'),
-          },
-        }),
-      );
+    const [inviteAliasUserToSpaceError, inviteAliasUserToSpace] = await catchify(
+      client.rawRequest({
+        method: 'POST',
+        url: `https://api.contentful.com/spaces/${spaceId}/space_memberships`,
+        data: {
+          admin: true,
+          email: email?.replace('@', '+admin@'),
+        },
+      }),
+    );
 
     if (
       (inviteAliasUserToSpaceError !== null || !inviteAliasUserToSpace) &&
@@ -288,13 +292,6 @@ const inviteToSpace = async (input) => {
 
   return {
     state: 'success',
-    meta:
-      userInvite === null
-        ? undefined
-        : {
-            invitationUrl: userInvite.sys.invitationUrl,
-          },
+    payload: userInvite,
   };
 };
-
-module.exports = inviteToSpace;

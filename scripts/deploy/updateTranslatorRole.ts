@@ -1,7 +1,15 @@
-const catchify = require('catchify');
-const { createClient } = require('contentful-management');
+import { createClient } from 'contentful-management';
 
-const updateTranslatorRole = async (input) => {
+import { ProvisionStep } from './types';
+
+import catchify from 'catchify';
+
+interface UpdateTranslatorRoleProps {
+  cmaToken: string;
+  spaceId: string;
+}
+
+export const updateTranslatorRole: ProvisionStep<UpdateTranslatorRoleProps> = async input => {
   const { cmaToken, spaceId } = input;
 
   const client = createClient({
@@ -14,7 +22,7 @@ const updateTranslatorRole = async (input) => {
   // as an admin). Thanks to how email alias works, both of these emails will
   // go to the same email inbox.
   const [rolesError, roles] = await catchify(
-    client.getSpace(spaceId).then((space) => space.getRoles()),
+    client.getSpace(spaceId).then(space => space.getRoles()),
   );
 
   if (rolesError !== null) {
@@ -25,24 +33,22 @@ const updateTranslatorRole = async (input) => {
     };
   }
 
-  const translatorRole = roles.items.find((x) => x.name === 'Translator');
+  const translatorRole = roles.items.find(x => x.name === 'Translator');
 
   if (translatorRole === undefined) {
     return {
       state: 'error',
-      error:
-        'Failed to update translator role - could not find the Translator role',
+      error: 'Failed to update translator role - could not find the Translator role',
     };
   }
 
-  const [updateRoleError] = await catchify(
+  const [updateRoleError, updateRole] = await catchify(
     client.rawRequest({
       method: 'PUT',
       url: `https://api.contentful.com/spaces/${spaceId}/roles/${translatorRole.sys.id}`,
       data: {
         name: 'Translator (de-DE)',
-        description:
-          'Allows editing of localized fields in German (Germany) language',
+        description: 'Allows editing of localized fields in German (Germany) language',
         policies: [
           {
             effect: 'allow',
@@ -145,7 +151,6 @@ const updateTranslatorRole = async (input) => {
 
   return {
     state: 'success',
+    payload: updateRole,
   };
 };
-
-module.exports = updateTranslatorRole;

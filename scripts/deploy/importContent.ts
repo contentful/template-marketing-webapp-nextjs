@@ -1,16 +1,23 @@
-const path = require('path');
-const catchify = require('catchify');
-const contentfulImport = require('contentful-import');
+import path from 'path';
 
-const importContent = async (input) => {
-  const { spaceId, cmaToken } = input;
+import contentfulImport from 'contentful-import';
 
+import { ProvisionStep } from './types';
+
+import catchify from 'catchify';
+
+interface ImportContentProps {
+  spaceId: string;
+  cmaToken: string;
+}
+
+export const importContent: ProvisionStep<ImportContentProps> = async ({ spaceId, cmaToken }) => {
   const pathToImportFile = path.resolve(
     __dirname,
     '../../content-backups/export-fintech-space-content.json',
   );
 
-  const [contentfulSpaceImportError] = await catchify(
+  const [contentfulSpaceImportError, contentfulSpaceImport] = await catchify(
     contentfulImport({
       contentFile: pathToImportFile,
       spaceId,
@@ -28,7 +35,6 @@ const importContent = async (input) => {
 
   return {
     state: 'success',
+    payload: contentfulSpaceImport as any, // TODO: fix types for the contentful-import library
   };
 };
-
-module.exports = importContent;

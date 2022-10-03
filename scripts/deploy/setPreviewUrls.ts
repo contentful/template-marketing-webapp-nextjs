@@ -1,9 +1,20 @@
-const { createClient } = require('contentful-management');
-const catchify = require('catchify');
+import { createClient } from 'contentful-management';
 
-const setPreviewUrls = async (input) => {
-  const { spaceId, cmaToken, deploymentUrl } = input;
+import { ProvisionStep } from './types';
 
+import catchify from 'catchify';
+
+interface SetPreviewUrlsProps {
+  spaceId: string;
+  cmaToken: string;
+  deploymentUrl: string;
+}
+
+export const setPreviewUrls: ProvisionStep<SetPreviewUrlsProps> = async ({
+  spaceId,
+  cmaToken,
+  deploymentUrl,
+}) => {
   const client = createClient({
     accessToken: cmaToken,
   });
@@ -23,9 +34,7 @@ const setPreviewUrls = async (input) => {
     };
   }
 
-  const webPreview = previews.items.find(
-    (preview) => preview.name === 'Web Preview',
-  );
+  const webPreview = previews.items.find(preview => preview.name === 'Web Preview');
 
   if (webPreview !== undefined) {
     // A preview already exists (as it would if we are re-using space),
@@ -71,6 +80,7 @@ const setPreviewUrls = async (input) => {
 
     return {
       state: 'success',
+      payload: updatePreview,
     };
   }
 
@@ -115,7 +125,6 @@ const setPreviewUrls = async (input) => {
 
   return {
     state: 'success',
+    payload: createPreview,
   };
 };
-
-module.exports = setPreviewUrls;

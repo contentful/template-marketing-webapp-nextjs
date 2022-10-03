@@ -1,9 +1,18 @@
-const { createClient } = require('contentful-management');
-const catchify = require('catchify');
+import { createClient } from 'contentful-management';
 
-const createEmptyEnvironment = async (input) => {
-  const { cmaToken, spaceId } = input;
+import { ProvisionStep } from './types';
 
+import catchify from 'catchify';
+
+interface CreateEmptyEnvironmentProps {
+  cmaToken: string;
+  spaceId: string;
+}
+
+export const createEmptyEnvironment: ProvisionStep<CreateEmptyEnvironmentProps> = async ({
+  cmaToken,
+  spaceId,
+}) => {
   const client = createClient({
     accessToken: cmaToken,
   });
@@ -28,7 +37,6 @@ const createEmptyEnvironment = async (input) => {
 
   return {
     state: 'success',
+    payload: emptyEnvironment,
   };
 };
-
-module.exports = createEmptyEnvironment;
