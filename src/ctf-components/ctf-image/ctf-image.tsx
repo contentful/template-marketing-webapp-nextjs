@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/styles';
 import clsx from 'clsx';
 import React, { useMemo } from 'react';
 
-import { AssetFragment } from '@ctf-components/ctf-asset/__generated__/AssetFragment';
+import { AssetFieldsFragment } from '@src/lib/shared-fragments/__generated/ctf-asset.generated';
 import { CONTAINER_WIDTH } from '@src/theme';
 
 const useStyles = makeStyles(() => ({
@@ -30,7 +30,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-interface CtfImagePropsInterface extends AssetFragment {
+interface CtfImagePropsInterface extends AssetFieldsFragment {
   widthPx?: number;
   cover?: boolean;
   ratio?: number;
@@ -41,7 +41,7 @@ interface CtfImagePropsInterface extends AssetFragment {
   onClick?: () => any;
 }
 
-const CtfImage = (props: CtfImagePropsInterface) => {
+export const CtfImage = (props: CtfImagePropsInterface) => {
   const {
     title,
     description,
@@ -111,5 +111,3 @@ const CtfImage = (props: CtfImagePropsInterface) => {
     </ButtonBase>
   );
 };
-
-export default CtfImage;

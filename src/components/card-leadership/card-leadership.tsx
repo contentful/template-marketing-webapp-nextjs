@@ -2,8 +2,8 @@ import { Theme, makeStyles, Typography } from '@material-ui/core';
 import clsx from 'clsx';
 import React from 'react';
 
-import CtfAsset from '@ctf-components/ctf-asset/ctf-asset';
-import { PersonFragment } from '@ctf-components/ctf-person/__generated__/PersonFragment';
+import { CtfAsset } from '@ctf-components/ctf-asset/ctf-asset';
+import { PersonFieldsFragment } from '@ctf-components/ctf-person/__generated/ctf-person.generated';
 import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 
@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-interface CtfCardLeadershipPropsInterface extends PersonFragment {
+interface CtfCardLeadershipPropsInterface extends PersonFieldsFragment {
   previousComponent: string | null;
 }
 
@@ -72,9 +72,7 @@ const CtfCardLeadership = (props: CtfCardLeadershipPropsInterface) => {
     <div
       className={clsx(
         classes.root,
-        previousComponent === 'TopicPerson'
-          ? classes.rootIncreasedSpacing
-          : undefined,
+        previousComponent === 'TopicPerson' ? classes.rootIncreasedSpacing : undefined,
       )}
     >
       {avatar && (
@@ -83,16 +81,12 @@ const CtfCardLeadership = (props: CtfCardLeadershipPropsInterface) => {
         </div>
       )}
       <div>
-        {nameSplit && (
-          <Typography className={classes.name}>{nameSplit[0]}</Typography>
-        )}
+        {nameSplit && <Typography className={classes.name}>{nameSplit[0]}</Typography>}
         {nameSplit && nameSplit.length === 2 && (
           <Typography className={classes.role}>{nameSplit[1]}</Typography>
         )}
         {bio && (
-          <LayoutContext.Provider
-            value={{ ...defaultLayout, parent: 'card-person' }}
-          >
+          <LayoutContext.Provider value={{ ...defaultLayout, parent: 'card-person' }}>
             <div>
               <CtfRichtext {...bio} className={classes.bio} />
             </div>

@@ -1,8 +1,7 @@
 import { Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
-import React from 'react';
 
-import { PersonFragment } from '@ctf-components/ctf-person/__generated__/PersonFragment';
+import { PersonFieldsFragment } from '@ctf-components/ctf-person/__generated/ctf-person.generated';
 import Avatar from '@src/components/avatar/avatar';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -19,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-interface CtfAuthorPropsInterface extends PersonFragment {}
+interface CtfAuthorPropsInterface extends PersonFieldsFragment {}
 
 const CtfAuthor = (props: CtfAuthorPropsInterface) => {
   const { name, avatar } = props;

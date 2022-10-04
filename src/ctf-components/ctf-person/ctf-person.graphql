@@ -1,0 +1,23 @@
+fragment PersonFields on TopicPerson {
+  __typename
+  sys {
+    id
+  }
+  internalName
+  name
+  bio {
+    json
+  }
+  avatar {
+    ...AssetFields
+  }
+  website
+  location
+  cardStyle
+}
+
+query CtfPerson($id: String!, $locale: String, $preview: Boolean) {
+  topicPerson(id: $id, preview: $preview, locale: $locale) {
+    ...PersonFields
+  }
+}

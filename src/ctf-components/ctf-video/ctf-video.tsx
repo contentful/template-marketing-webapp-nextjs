@@ -1,7 +1,7 @@
 import { makeStyles } from '@material-ui/styles';
 import React from 'react';
 
-import { AssetFragment } from '@ctf-components/ctf-asset/__generated__/AssetFragment';
+import { AssetFieldsFragment } from '@src/lib/shared-fragments/__generated/ctf-asset.generated';
 
 const useStyles = makeStyles(() => ({
   image: {
@@ -25,13 +25,13 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-interface CtfVideoPropsInterface extends AssetFragment {
+interface CtfVideoPropsInterface extends AssetFieldsFragment {
   showDescription?: boolean;
   autoplay?: boolean;
   className?: string;
 }
 
-const CtfVideo = (props: CtfVideoPropsInterface) => {
+export const CtfVideo = (props: CtfVideoPropsInterface) => {
   const { description, url, showDescription, autoplay, className } = props;
 
   const classes = useStyles();
@@ -43,5 +43,3 @@ const CtfVideo = (props: CtfVideoPropsInterface) => {
     </div>
   );
 };
-
-export default CtfVideo;

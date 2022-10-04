@@ -4,7 +4,7 @@ import React from 'react';
 
 import { InfoBlockFragment } from './__generated__/InfoBlockFragment';
 
-import CtfAsset from '@ctf-components/ctf-asset/ctf-asset';
+import { CtfAsset } from '@ctf-components/ctf-asset/ctf-asset';
 import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
 import SectionHeadlines from '@src/components/section-headlines/section-headlines';
 import LayoutContext, { defaultLayout } from '@src/layout-context';

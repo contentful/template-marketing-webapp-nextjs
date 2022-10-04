@@ -7,9 +7,9 @@ import React, { useMemo } from 'react';
 
 import { PostFragment, PostFragment_contentfulMetadata_tags } from './__generated__/PostFragment';
 
-import CtfAsset from '@ctf-components/ctf-asset/ctf-asset';
+import { CtfAsset } from '@ctf-components/ctf-asset/ctf-asset';
 import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
-import CardPerson from '@src/components/card-person/card-person';
+import { CardPerson } from '@src/components/card-person/card-person';
 import ComponentResolver from '@src/components/component-resolver';
 import PostContainer from '@src/components/layout/post-container';
 import Link from '@src/components/link/link';
@@ -181,10 +181,12 @@ const CtfPost = (props: CtfPostPropsInterface) => {
               className={`xray-${props.__typename}`}
               __typename={props.__typename}
               sys={props.sys}
-              internalName={props.internalName || ''}>
+              internalName={props.internalName || ''}
+            >
               {children}
             </XrayFrame>
-          )}>
+          )}
+        >
           <div className={classes.root}>
             <Container maxWidth={false}>
               <div>
@@ -249,10 +251,12 @@ const CtfPost = (props: CtfPostPropsInterface) => {
                 className={`xray-${author.__typename}`}
                 __typename={author.__typename}
                 sys={author.sys}
-                internalName={author.internalName || ''}>
+                internalName={author.internalName || ''}
+              >
                 {children}
               </XrayFrame>
-            )}>
+            )}
+          >
             <Container maxWidth={false} className={classes.authorContainer}>
               <div className={classes.container}>
                 <div className={classes.containerNarrow}>

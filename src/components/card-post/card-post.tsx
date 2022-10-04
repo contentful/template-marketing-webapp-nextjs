@@ -1,7 +1,7 @@
 import { makeStyles, Theme, Typography } from '@material-ui/core';
 import React from 'react';
 
-import CtfAsset from '@ctf-components/ctf-asset/ctf-asset';
+import { CtfAsset } from '@ctf-components/ctf-asset/ctf-asset';
 import { PostFragmentBase } from '@ctf-components/ctf-post/__generated__/PostFragmentBase';
 import Link from '@src/components/link/link';
 

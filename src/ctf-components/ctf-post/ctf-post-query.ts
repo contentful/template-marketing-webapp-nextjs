@@ -103,12 +103,7 @@ export const postFragment = gql`
 
 export const query = gql`
   query CtfPostQuery($slug: String!, $locale: String, $preview: Boolean) {
-    postCollection(
-      where: { slug: $slug }
-      locale: $locale
-      preview: $preview
-      limit: 1
-    ) {
+    postCollection(where: { slug: $slug }, locale: $locale, preview: $preview, limit: 1) {
       items {
         ...PostFragment
       }

@@ -1,10 +1,10 @@
 import { makeStyles, Theme, Container } from '@material-ui/core';
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 
-import { PersonFragment } from '@ctf-components/ctf-person/__generated__/PersonFragment';
+import { PersonFieldsFragment } from '@ctf-components/ctf-person/__generated/ctf-person.generated';
 import Author from '@src/components/author/author';
 import CardLeadership from '@src/components/card-leadership/card-leadership';
-import CardPerson from '@src/components/card-person/card-person';
+import { CardPerson } from '@src/components/card-person/card-person';
 import LayoutContext from '@src/layout-context';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -16,14 +16,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-interface CtfPersonPropsInterface extends PersonFragment {
+interface CtfPersonPropsInterface extends PersonFieldsFragment {
   previousComponent: string | null;
 }
 
 const CtfPerson = (props: CtfPersonPropsInterface) => {
   const layout = useContext(LayoutContext);
   const classes = useStyles();
-  const isLeadership = props.cardStyle === false ? true : false;
+  const isLeadership = props.cardStyle === false;
 
   return layout.parent === 'quote' ? (
     <div className={classes.root} style={{ maxWidth: layout.containerWidth }}>
@@ -32,11 +32,7 @@ const CtfPerson = (props: CtfPersonPropsInterface) => {
   ) : (
     <Container maxWidth={false}>
       <div className={classes.root} style={{ maxWidth: layout.containerWidth }}>
-        {isLeadership ? (
-          <CardLeadership {...props} />
-        ) : (
-          <CardPerson {...props} />
-        )}
+        {isLeadership ? <CardLeadership {...props} /> : <CardPerson {...props} />}
       </div>
     </Container>
   );

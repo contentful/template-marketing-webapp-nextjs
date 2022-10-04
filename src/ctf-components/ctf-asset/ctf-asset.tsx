@@ -1,12 +1,11 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 
-import { AssetFragment } from './__generated__/AssetFragment';
-
-import CtfImage from '@ctf-components/ctf-image/ctf-image';
-import CtfVideo from '@ctf-components/ctf-video/ctf-video';
+import { CtfImage } from '@ctf-components/ctf-image/ctf-image';
+import { CtfVideo } from '@ctf-components/ctf-video/ctf-video';
 import LayoutContext from '@src/layout-context';
+import { AssetFieldsFragment } from '@src/lib/__generated/graphql.types';
 
-interface CtfAssetPropsInterface extends AssetFragment {
+interface CtfAssetPropsInterface extends AssetFieldsFragment {
   className?: string;
   figureClassName?: string;
   widthPx?: number;
@@ -14,11 +13,11 @@ interface CtfAssetPropsInterface extends AssetFragment {
   onClick?: () => any;
 }
 
-const CtfAsset = (props: CtfAssetPropsInterface) => {
+export const CtfAsset = (props: CtfAssetPropsInterface) => {
   const { contentType, url, showDescription = true } = props;
   const layout = useContext(LayoutContext);
 
-  if (contentType === null || url === null) {
+  if (!contentType || !url) {
     return null;
   }
 
@@ -27,16 +26,13 @@ const CtfAsset = (props: CtfAssetPropsInterface) => {
       <CtfImage
         {...props}
         showDescription={
-          ['quote', 'product-table', 'info-block', 'duplex'].includes(
-            layout.parent,
-          ) === true
+          ['quote', 'product-table', 'info-block', 'duplex'].includes(layout.parent) === true
             ? false
             : showDescription
         }
         widthPx={
-          ['quote', 'product-table', 'info-block', 'duplex'].includes(
-            layout.parent,
-          ) === true && props.width !== null
+          ['quote', 'product-table', 'info-block', 'duplex'].includes(layout.parent) === true &&
+          props.width
             ? Math.round(props.width / 2)
             : props.widthPx
         }
@@ -50,5 +46,3 @@ const CtfAsset = (props: CtfAssetPropsInterface) => {
 
   return null;
 };
-
-export default CtfAsset;
