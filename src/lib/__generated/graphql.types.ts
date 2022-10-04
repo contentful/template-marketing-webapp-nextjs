@@ -609,7 +609,6 @@ export type ComponentDuplex = Entry & {
   ctaText?: Maybe<Scalars['String']>;
   headline?: Maybe<Scalars['String']>;
   image?: Maybe<Asset>;
-  imageAlignment?: Maybe<Scalars['String']>;
   imageStyle?: Maybe<Scalars['Boolean']>;
   internalName?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<ComponentDuplexLinkingCollections>;
@@ -652,12 +651,6 @@ export type ComponentDuplexHeadlineArgs = {
 export type ComponentDuplexImageArgs = {
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
-};
-
-
-/** Full-width container for displaying side-by-side image and copy, includes multiple layout options [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/componentDuplex) */
-export type ComponentDuplexImageAlignmentArgs = {
-  locale?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -749,13 +742,6 @@ export type ComponentDuplexFilter = {
   headline_not?: InputMaybe<Scalars['String']>;
   headline_not_contains?: InputMaybe<Scalars['String']>;
   headline_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  imageAlignment?: InputMaybe<Scalars['String']>;
-  imageAlignment_contains?: InputMaybe<Scalars['String']>;
-  imageAlignment_exists?: InputMaybe<Scalars['Boolean']>;
-  imageAlignment_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  imageAlignment_not?: InputMaybe<Scalars['String']>;
-  imageAlignment_not_contains?: InputMaybe<Scalars['String']>;
-  imageAlignment_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   imageStyle?: InputMaybe<Scalars['Boolean']>;
   imageStyle_exists?: InputMaybe<Scalars['Boolean']>;
   imageStyle_not?: InputMaybe<Scalars['Boolean']>;
@@ -811,8 +797,6 @@ export enum ComponentDuplexOrder {
   CtaTextDesc = 'ctaText_DESC',
   HeadlineAsc = 'headline_ASC',
   HeadlineDesc = 'headline_DESC',
-  ImageAlignmentAsc = 'imageAlignment_ASC',
-  ImageAlignmentDesc = 'imageAlignment_DESC',
   ImageStyleAsc = 'imageStyle_ASC',
   ImageStyleDesc = 'imageStyle_DESC',
   InternalNameAsc = 'internalName_ASC',
