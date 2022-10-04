@@ -1,22 +1,40 @@
-const path = require('path');
-const { createDeployment } = require('@vercel/client');
+import path from 'path';
 
-const deployToVercel = async input => {
-  const {
-    spaceId,
-    cmaToken,
-    deliveryApiKey,
-    previewApiKey,
-    legalSpaceId,
-    legalSpaceToken,
-    vercelDeployToken,
-  } = input;
+import { createDeployment } from '@vercel/client';
 
+import { ProvisionStep } from './types';
+
+type DeployToVercelProps = {
+  spaceId: string;
+  cmaToken: string;
+  deliveryApiKey: string;
+  previewApiKey: string;
+  vercelDeployToken?: string;
+};
+
+type DeployToVercelPayload = {
+  deploymentUrl: string;
+};
+
+export const deployToVercel: ProvisionStep<DeployToVercelProps, DeployToVercelPayload> = async ({
+  spaceId,
+  cmaToken,
+  deliveryApiKey,
+  previewApiKey,
+  vercelDeployToken,
+}) => {
   let deployment;
+
+  if (!vercelDeployToken) {
+    return {
+      state: 'error',
+      error: 'Failed to deploy to Vercel - missing token',
+    };
+  }
 
   for await (const event of createDeployment(
     {
-      token: vercelDeployToken || process.env.VERCEL_DEPLOY_TOKEN,
+      token: vercelDeployToken,
       path: path.join(__dirname, '../../'),
       teamId: 'contentful-apps',
     },
@@ -73,5 +91,3 @@ const deployToVercel = async input => {
     },
   };
 };
-
-module.exports = deployToVercel;

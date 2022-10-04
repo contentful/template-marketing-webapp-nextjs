@@ -1,29 +1,35 @@
-const { createClient } = require('contentful-management');
-const catchify = require('catchify');
+import { createClient } from 'contentful-management';
 
-const createSpace = require('./createSpace');
-const importContentModel = require('./importContentModel');
-const createEmptyEnvironment = require('./createEmptyEnvironment');
-const importContent = require('./importContent');
-const deployToVercel = require('./deployToVercel');
-const setPreviewUrls = require('./setPreviewUrls');
-const inviteToSpace = require('./inviteToSpace');
-const updateTranslatorRole = require('./updateTranslatorRole');
+import { createEmptyEnvironment } from './createEmptyEnvironment';
+import { createSpace } from './createSpace';
+import { deployToVercel } from './deployToVercel';
+import { importContent } from './importContent';
+import { importContentModel } from './importContentModel';
+import { inviteToSpace } from './inviteToSpace';
+import { setPreviewUrls } from './setPreviewUrls';
+import { updateTranslatorRole } from './updateTranslatorRole';
 
-const init = async input => {
-  const {
-    organizationId,
-    cmaToken,
-    email,
-    spaceName,
-    spaceId: inputSpaceId,
-    duration = 12,
-    role = 'Administrator',
-    legalSpaceId,
-    legalSpaceToken,
-    vercelDeployToken,
-    source = 'script',
-  } = input;
+import catchify from 'catchify';
+
+interface InitProps {
+  organizationId: string;
+  cmaToken: string;
+  role: string;
+  vercelDeployToken?: string;
+  email?: string;
+  spaceName?: string;
+  spaceId?: string;
+}
+
+export const init = async ({
+  organizationId,
+  cmaToken,
+  email,
+  spaceName,
+  spaceId: inputSpaceId,
+  role = 'Administrator',
+  vercelDeployToken,
+}: InitProps) => {
   const client = createClient({
     accessToken: cmaToken,
   });
@@ -53,7 +59,7 @@ const init = async input => {
   // Create a Contentful space
   const createSpaceStartTime = new Date();
 
-  if (inputSpaceId === undefined) {
+  if (!inputSpaceId) {
     console.info('Creating a Contentful space...');
   } else {
     console.info('Reusing existing space...');
@@ -209,8 +215,6 @@ const init = async input => {
     cmaToken,
     deliveryApiKey,
     previewApiKey,
-    legalSpaceId,
-    legalSpaceToken,
     vercelDeployToken,
   });
 
@@ -222,7 +226,7 @@ const init = async input => {
     };
   }
 
-  const { deploymentUrl } = deployToVercelResult.payload;
+  const deploymentUrl = deployToVercelResult.payload.deploymentUrl;
 
   const deployToVercelEndTime = new Date();
 
@@ -281,8 +285,8 @@ const init = async input => {
       };
     }
 
-    if (inviteToSpaceResult?.meta?.invitationUrl) {
-      contentfulUrl = inviteToSpaceResult.meta.invitationUrl;
+    if (inviteToSpaceResult?.payload?.sys.invitationUrl) {
+      contentfulUrl = inviteToSpaceResult.payload.sys.invitationUrl;
     }
 
     const inviteToSpaceEndTime = new Date();
@@ -339,12 +343,10 @@ const init = async input => {
 
   return {
     state: 'success',
-    meta: {
+    payload: {
       frontend: `https://${deploymentUrl}/en`,
       contentful: contentfulUrl,
       spaceName: createdSpaceName,
     },
   };
 };
-
-module.exports = init;

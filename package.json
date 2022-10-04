@@ -29,7 +29,8 @@
     "lint-fix": "yarn lint --fix",
     "prepare": "husky install",
     "graphql-generate": "graphql-codegen -r dotenv/config --config codegen.ts",
-    "graphql-watch": "graphql-codegen --watch -r dotenv/config --config codegen.ts"
+    "graphql-watch": "graphql-codegen --watch -r dotenv/config --config codegen.ts",
+    "transpile-deploy-and-run": "ts-node scripts/deploy.ts --project ./tsconfig.json"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
