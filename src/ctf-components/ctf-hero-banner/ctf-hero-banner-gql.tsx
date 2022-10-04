@@ -18,8 +18,6 @@ const CtfHeroGql = (props: CtfHeroGqlPropsInterface) => {
     preview,
   });
 
-  // useDataForPreview(queryResult);
-
   if (!data?.componentHeroBanner || isLoading) return null;
 
   return <CtfHeroBanner {...data.componentHeroBanner} />;
