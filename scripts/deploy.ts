@@ -9,13 +9,13 @@ const argv = yargs
   .options({
     organizationId: {
       type: 'string',
-      default: process.env.CONTENTFUL_DEPLOY_ORG,
+      default: process.env.CONTENTFUL_DEPLOY_ORG!,
       describe:
         'If left empty, a default organization will be used. Make sure to use your own organization if you want to keep this demo permanently!',
     },
     cmaToken: {
       type: 'string',
-      default: process.env.CONTENTFUL_DEPLOY_TOKEN,
+      default: process.env.CONTENTFUL_DEPLOY_TOKEN!,
       describe: 'Needs to be provided if you are using a non-default organization',
     },
     email: { type: 'string' },
@@ -33,17 +33,21 @@ const argv = yargs
       default: 'Administrator',
       describe: 'Chose between one of the default roles',
     },
+    vercelDeployToken: {
+      type: 'string',
+      describe: 'Vercel token needed to deploy through their CLI',
+    },
   })
   .parseSync(); // TODO: this should probably be replaced with https://www.npmjs.com/package/yargs-interactive
 
 init({
-  organizationId: argv.organizationId || '',
-  cmaToken: argv.cmaToken || '',
-  email: argv.email || '',
-  spaceName: argv.spaceName || '',
-  spaceId: argv.spaceId || '',
-  role: argv.role || '',
-  vercelDeployToken: '', // TODO: Pass proper token, incorporate with yargs
+  organizationId: argv.organizationId,
+  cmaToken: argv.cmaToken,
+  email: argv.email,
+  spaceName: argv.spaceName,
+  spaceId: argv.spaceId,
+  role: argv.role,
+  vercelDeployToken: argv.vercelDeployToken,
 })
   .then(result => {
     if (result.state !== 'error') {

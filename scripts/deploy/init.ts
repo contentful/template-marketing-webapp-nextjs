@@ -14,24 +14,22 @@ import catchify from 'catchify';
 interface InitProps {
   organizationId: string;
   cmaToken: string;
-  email: string;
-  spaceName: string;
-  spaceId: string;
   role: string;
-  vercelDeployToken: string;
+  vercelDeployToken?: string;
+  email?: string;
+  spaceName?: string;
+  spaceId?: string;
 }
 
-export const init = async (input: InitProps) => {
-  const {
-    organizationId,
-    cmaToken,
-    email,
-    spaceName,
-    spaceId: inputSpaceId,
-    role = 'Administrator',
-    vercelDeployToken,
-  } = input;
-
+export const init = async ({
+  organizationId,
+  cmaToken,
+  email,
+  spaceName,
+  spaceId: inputSpaceId,
+  role = 'Administrator',
+  vercelDeployToken,
+}: InitProps) => {
   const client = createClient({
     accessToken: cmaToken,
   });
@@ -61,7 +59,7 @@ export const init = async (input: InitProps) => {
   // Create a Contentful space
   const createSpaceStartTime = new Date();
 
-  if (inputSpaceId === undefined) {
+  if (!inputSpaceId) {
     console.info('Creating a Contentful space...');
   } else {
     console.info('Reusing existing space...');
@@ -228,7 +226,7 @@ export const init = async (input: InitProps) => {
     };
   }
 
-  const deploymentUrl = deployToVercelResult.payload?.deploymentUrl;
+  const deploymentUrl = deployToVercelResult.payload.deploymentUrl;
 
   const deployToVercelEndTime = new Date();
 

@@ -9,7 +9,7 @@ type DeployToVercelProps = {
   cmaToken: string;
   deliveryApiKey: string;
   previewApiKey: string;
-  vercelDeployToken: string;
+  vercelDeployToken?: string;
 };
 
 type DeployToVercelPayload = {
@@ -24,6 +24,13 @@ export const deployToVercel: ProvisionStep<DeployToVercelProps, DeployToVercelPa
   vercelDeployToken,
 }) => {
   let deployment;
+
+  if (!vercelDeployToken) {
+    return {
+      state: 'error',
+      error: 'Failed to deploy to Vercel - missing token',
+    };
+  }
 
   for await (const event of createDeployment(
     {

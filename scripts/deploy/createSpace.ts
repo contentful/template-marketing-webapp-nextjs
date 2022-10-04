@@ -1,4 +1,4 @@
-import { createClient, Space } from 'contentful-management';
+import { createClient } from 'contentful-management';
 
 import { ProvisionStep } from './types';
 
@@ -7,9 +7,9 @@ import catchify from 'catchify';
 type CreateSpaceProps = {
   organizationId: string;
   cmaToken: string;
-  spaceName: string;
-  email: string;
-  spaceId: string;
+  spaceName?: string;
+  email?: string;
+  spaceId?: string;
 };
 
 type CreateSpacePayload = {
@@ -69,7 +69,8 @@ export const createSpace: ProvisionStep<CreateSpaceProps, CreateSpacePayload> = 
       };
     }
 
-    const deliveryApiKey = apiKeys.items.find(apiKey => apiKey.name === 'Colorful provisioning');
+    const deliveryApiKey =
+      apiKeys.items.find(apiKey => apiKey.name === 'Colorful provisioning') || apiKeys?.items[0]; // TODO: review if we want to grab a fallback key, or rely on a named key at all
 
     if (deliveryApiKey === undefined) {
       return {
