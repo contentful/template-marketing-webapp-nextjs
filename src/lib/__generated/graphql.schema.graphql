@@ -327,7 +327,6 @@ type ComponentDuplex implements Entry {
   ctaText(locale: String): String
   headline(locale: String): String
   image(locale: String, preview: Boolean): Asset
-  imageAlignment(locale: String): String
   imageStyle(locale: String): Boolean
   internalName(locale: String): String
   linkedFrom(allowedLocales: [String]): ComponentDuplexLinkingCollections
@@ -394,13 +393,6 @@ input ComponentDuplexFilter {
   headline_not: String
   headline_not_contains: String
   headline_not_in: [String]
-  imageAlignment: String
-  imageAlignment_contains: String
-  imageAlignment_exists: Boolean
-  imageAlignment_in: [String]
-  imageAlignment_not: String
-  imageAlignment_not_contains: String
-  imageAlignment_not_in: [String]
   imageStyle: Boolean
   imageStyle_exists: Boolean
   imageStyle_not: Boolean
@@ -431,8 +423,6 @@ enum ComponentDuplexOrder {
   ctaText_DESC
   headline_ASC
   headline_DESC
-  imageAlignment_ASC
-  imageAlignment_DESC
   imageStyle_ASC
   imageStyle_DESC
   internalName_ASC
