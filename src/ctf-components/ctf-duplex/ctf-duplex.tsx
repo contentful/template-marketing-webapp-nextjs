@@ -3,6 +3,7 @@ import clsx from 'clsx';
 
 import { DuplexFieldsFragment } from '@ctf-components/ctf-duplex/__generated/ctf-duplex.generated';
 import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
+import { ContentfulImage } from '@src/components/contentful-image/contentful-image';
 import PageLink from '@src/components/link/page-link';
 import PostLink from '@src/components/link/post-link';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
@@ -138,12 +139,15 @@ const DuplexImage = (props: DuplexFieldsFragment) => {
   return (
     <div className={classes.imageContainer}>
       {image ? (
-        <img
-          className={clsx([classes.image, imageStyle === 'fixed' && classes.imageFull])}
-          alt={image.description || undefined}
-          src={`${image.url}?w=600`}
-          srcSet={`${image.url}?w=600 600w, ${image.url}?w=1200 1200w`}
-        />
+        <div style={{ width: '605px', height: '483px', position: 'relative' }}>
+          <ContentfulImage
+            className={clsx([classes.image, imageStyle === 'fixed' && classes.imageFull])}
+            src={`${image.url}?w=600`}
+            alt={image.description || undefined}
+            layout="fill"
+            objectFit="contain"
+          />
+        </div>
       ) : null}
     </div>
   );
