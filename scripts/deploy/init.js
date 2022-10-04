@@ -8,7 +8,6 @@ const importContent = require('./importContent');
 const deployToVercel = require('./deployToVercel');
 const setPreviewUrls = require('./setPreviewUrls');
 const inviteToSpace = require('./inviteToSpace');
-const logToZapier = require('./logToZapier');
 const updateTranslatorRole = require('./updateTranslatorRole');
 
 const init = async input => {
@@ -337,23 +336,6 @@ const init = async input => {
     Frontend: `https://${deploymentUrl}/en`,
     'Contentful App': contentfulUrl,
   });
-
-  if (inputSpaceId === undefined) {
-    await catchify(
-      logToZapier({
-        spaceId,
-        spaceName: createdSpaceName,
-        duration,
-        organizationId,
-        cmaToken,
-        deploymentUrl,
-        email,
-        time: (endTime.getTime() - startTime.getTime()) / 1000,
-        source,
-        role,
-      }),
-    );
-  }
 
   return {
     state: 'success',
