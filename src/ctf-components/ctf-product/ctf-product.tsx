@@ -3,7 +3,7 @@ import React from 'react';
 
 import { ProductFragment } from './__generated__/ProductFragment';
 
-import CtfAsset from '@ctf-components/ctf-asset/ctf-asset';
+import { CtfAsset } from '@ctf-components/ctf-asset/ctf-asset';
 import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
 import Link from '@src/components/link/link';
 import LayoutContext, { defaultLayout } from '@src/layout-context';

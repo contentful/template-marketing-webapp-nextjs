@@ -2,8 +2,7 @@ import { Avatar as MuiAvatar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import React, { useMemo } from 'react';
 
-import { AssetFragment } from '@src/ctf-components/ctf-asset/__generated__/AssetFragment';
-import { PropsFromFragment } from '@src/utils';
+import { AssetFieldsFragment } from '@src/lib/__generated/graphql.types';
 
 const useStyles = makeStyles(() => ({
   avatarRoot: {
@@ -22,7 +21,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 interface AvatarPropsInterface {
-  asset: PropsFromFragment<AssetFragment>;
+  asset: AssetFieldsFragment;
   widthPx?: number;
 }
 

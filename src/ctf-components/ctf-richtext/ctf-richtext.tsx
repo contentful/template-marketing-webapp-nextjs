@@ -8,7 +8,7 @@ import React, { useMemo, useContext, useCallback } from 'react';
 import { useQuery } from 'react-apollo';
 
 import { AssetFragment } from '../ctf-asset/__generated__/AssetFragment';
-import CtfAsset from '../ctf-asset/ctf-asset';
+import { CtfAsset } from '../ctf-asset/ctf-asset';
 import { RichTextEntryHyperlinkQuery } from './__generated__/RichTextEntryHyperlinkQuery';
 
 import ComponentResolver from '@src/components/component-resolver';

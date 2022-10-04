@@ -44,5 +44,7 @@ export const componentGqlMap = {
   ComponentInfoBlock: dynamic(() => import('./ctf-components/ctf-info-block/ctf-info-block-gql')),
   ComponentQuote: dynamic(() => import('./ctf-components/ctf-quote/ctf-quote-gql')),
   ComponentTextBlock: dynamic(() => import('./ctf-components/ctf-text-block/ctf-text-block-gql')),
-  TopicPerson: dynamic(() => import('./ctf-components/ctf-person/ctf-person-gql')),
+  TopicPerson: dynamic(() =>
+    import('./ctf-components/ctf-person/ctf-person-gql').then(module => module.CtfPersonGql),
+  ),
 };
