@@ -1,7 +1,7 @@
 import { makeStyles, Theme, Container, Typography } from '@material-ui/core';
-import React from 'react';
+import { Fragment } from 'react';
 
-import { ProductFragment } from './__generated__/ProductFragment';
+import { ProductFieldsFragment } from './__generated/ctf-product.generated';
 
 import { CtfAsset } from '@ctf-components/ctf-asset/ctf-asset';
 import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
@@ -122,9 +122,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-interface CtfProductPropsInterface extends ProductFragment {}
-
-const CtfProduct = (props: CtfProductPropsInterface) => {
+export const CtfProduct = (props: ProductFieldsFragment) => {
   const { name, featuredImage, description, featuresCollection } = props;
 
   const classes = useStyles();
@@ -171,7 +169,7 @@ const CtfProduct = (props: CtfProductPropsInterface) => {
                   {featuresCollection.items.map(
                     item =>
                       item && (
-                        <React.Fragment key={item.sys.id}>
+                        <Fragment key={item.sys.id}>
                           <div className={classes.featureSeparator} />
                           <div className={classes.featureRow}>
                             <Typography variant="h3" component="h4" className={classes.featureName}>
@@ -181,7 +179,7 @@ const CtfProduct = (props: CtfProductPropsInterface) => {
                               {item.longDescription && <CtfRichtext {...item.longDescription} />}
                             </div>
                           </div>
-                        </React.Fragment>
+                        </Fragment>
                       ),
                   )}
                 </div>
@@ -193,5 +191,3 @@ const CtfProduct = (props: CtfProductPropsInterface) => {
     </>
   );
 };
-
-export default CtfProduct;

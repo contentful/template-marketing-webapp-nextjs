@@ -1,6 +1,5 @@
 import { makeStyles, Theme, Container } from '@material-ui/core';
 import clsx from 'clsx';
-import React from 'react';
 
 import { InfoBlockFieldsFragment } from './__generated/ctf-info-block.generated';
 

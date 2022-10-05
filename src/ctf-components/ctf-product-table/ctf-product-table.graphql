@@ -1,0 +1,19 @@
+fragment ProductTableFields on ComponentProductTable {
+  sys {
+    id
+  }
+  internalName
+  headline
+  subline
+  productsCollection(limit: 3) {
+    items {
+      ...ProductFields
+    }
+  }
+}
+
+query CtfProductTable($id: String!, $locale: String, $preview: Boolean) {
+  componentProductTable(id: $id, preview: $preview, locale: $locale) {
+    ...ProductTableFields
+  }
+}

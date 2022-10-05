@@ -7,7 +7,7 @@ interface CtfQuoteGqlPropsInterface {
   preview: boolean;
 }
 
-const CtfQuoteGql = (props: CtfQuoteGqlPropsInterface) => {
+export const CtfQuoteGql = (props: CtfQuoteGqlPropsInterface) => {
   const { id, locale, preview } = props;
 
   const { isLoading, data } = useCtfQuoteQuery({
@@ -22,5 +22,3 @@ const CtfQuoteGql = (props: CtfQuoteGqlPropsInterface) => {
 
   return <CtfQuote {...data.componentQuote} />;
 };
-
-export default CtfQuoteGql;

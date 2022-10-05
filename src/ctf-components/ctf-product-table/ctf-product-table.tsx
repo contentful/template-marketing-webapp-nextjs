@@ -3,9 +3,9 @@ import throttle from 'lodash/throttle';
 import { useTranslation } from 'next-i18next';
 import Image, { ImageLoader } from 'next/image';
 import queryString from 'query-string';
-import React, { useState, useMemo, useRef, useEffect, useCallback } from 'react';
+import { useState, useMemo, useRef, useEffect, useCallback } from 'react';
 
-import { ProductTableFragment } from './__generated__/ProductTableFragment';
+import { ProductTableFieldsFragment } from './__generated/ctf-product-table.generated';
 
 import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
 import { FormatCurrency } from '@src/components/format-currency';
@@ -125,9 +125,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export interface CtfProductTablePropsInterface extends ProductTableFragment {}
-
-const CtfProductTable = (props: CtfProductTablePropsInterface) => {
+export const CtfProductTable = (props: ProductTableFieldsFragment) => {
   const { t } = useTranslation();
   const { headline, subline, productsCollection } = props;
 
@@ -135,19 +133,19 @@ const CtfProductTable = (props: CtfProductTablePropsInterface) => {
 
   // Rendering product features
   const featureNames: string[] | null = useMemo(() => {
-    if (productsCollection === null || productsCollection.items.length === 0) {
+    if (productsCollection === null || productsCollection?.items.length === 0) {
       return null;
     }
 
     const names: string[] = [];
 
-    productsCollection.items.forEach(product => {
+    productsCollection?.items.forEach(product => {
       if (product === null || (product.featuresCollection?.items.length || 0) === 0) {
         return;
       }
 
       product.featuresCollection!.items.forEach(feature => {
-        if (feature === null || feature.name === null) {
+        if (!feature?.name) {
           return;
         }
 
@@ -172,7 +170,7 @@ const CtfProductTable = (props: CtfProductTablePropsInterface) => {
     featureNames.forEach(featureName => {
       grid[featureName] = {};
 
-      productsCollection.items.forEach(product => {
+      productsCollection?.items.forEach(product => {
         if (product === null || (product.featuresCollection?.items.length || 0) === 0) {
           return;
         }
@@ -258,7 +256,7 @@ const CtfProductTable = (props: CtfProductTablePropsInterface) => {
             subline={subline}
             className={classes.sectionHeadlines}
           />
-          {productsCollection !== null && productsCollection.items.length > 0 && (
+          {productsCollection && productsCollection.items.length > 0 && (
             <div className={classes.comparisonTable}>
               {productsCollection.items.map(
                 (product, j) =>
@@ -342,7 +340,7 @@ const CtfProductTable = (props: CtfProductTablePropsInterface) => {
                           </Typography>
                         ) : (
                           <Typography variant="h2" component="h4" className={classes.priceUpper}>
-                            <FormatCurrency value={product.price} />
+                            <FormatCurrency value={product.price as number} />
                             <span className={classes.priceAddition}>/{t('time.month')}</span>
                           </Typography>
                         )}
@@ -403,7 +401,7 @@ const CtfProductTable = (props: CtfProductTablePropsInterface) => {
                           </Typography>
                         ) : (
                           <Typography variant="h2" component="h4">
-                            <FormatCurrency value={product.price} />
+                            <FormatCurrency value={product.price as number} />
                             <span className={classes.priceAddition}>/{t('time.month')}</span>
                           </Typography>
                         )}
@@ -423,5 +421,3 @@ const CtfProductTable = (props: CtfProductTablePropsInterface) => {
     </div>
   );
 };
-
-export default CtfProductTable;

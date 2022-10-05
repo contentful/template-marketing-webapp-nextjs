@@ -8,7 +8,7 @@ interface CtfInfoBlockGqlPropsInterface {
   previousComponent: string | null;
 }
 
-const CtfInfoBlockGql = ({
+export const CtfInfoBlockGql = ({
   id,
   locale,
   preview,
@@ -26,5 +26,3 @@ const CtfInfoBlockGql = ({
 
   return <CtfInfoBlock {...data.componentInfoBlock} previousComponent={previousComponent} />;
 };
-
-export default CtfInfoBlockGql;
