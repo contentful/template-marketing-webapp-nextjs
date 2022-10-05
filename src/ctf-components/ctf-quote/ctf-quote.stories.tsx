@@ -1,14 +1,16 @@
 import { Story, Meta } from '@storybook/react';
 import React from 'react';
 
-import CtfQuote, { CtfQuotePropsInterface } from '@ctf-components/ctf-quote/ctf-quote';
+import { QuoteFieldsFragment } from './__generated/ctf-quote.generated';
+
+import { CtfQuote } from '@ctf-components/ctf-quote/ctf-quote';
 
 export default {
   title: 'Components/Quote',
   component: CtfQuote,
 } as Meta;
 
-const Template: Story<CtfQuotePropsInterface> = args => <CtfQuote {...args} />;
+const Template: Story<QuoteFieldsFragment> = args => <CtfQuote {...args} />;
 
 export const Default = Template.bind({});
 

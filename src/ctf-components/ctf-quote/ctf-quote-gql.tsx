@@ -1,11 +1,5 @@
-import React from 'react';
-import { useQuery } from 'react-apollo';
-
-import { CtfQuoteQuery } from './__generated__/CtfQuoteQuery';
-import CtfQuote from './ctf-quote';
-import { query } from './ctf-quote-query';
-
-import { useDataForPreview } from '@src/lib/apollo-hooks';
+import { useCtfQuoteQuery } from './__generated/ctf-quote.generated';
+import { CtfQuote } from './ctf-quote';
 
 interface CtfQuoteGqlPropsInterface {
   id: string;
@@ -15,25 +9,18 @@ interface CtfQuoteGqlPropsInterface {
 
 const CtfQuoteGql = (props: CtfQuoteGqlPropsInterface) => {
   const { id, locale, preview } = props;
-  const queryResult = useQuery<CtfQuoteQuery>(query, {
-    variables: {
-      id,
-      locale,
-      preview,
-    },
+
+  const { isLoading, data } = useCtfQuoteQuery({
+    id,
+    locale,
+    preview,
   });
 
-  useDataForPreview(queryResult);
-
-  if (
-    queryResult.data === undefined ||
-    queryResult.loading === true ||
-    queryResult.data.componentQuote === null
-  ) {
+  if (isLoading || !data?.componentQuote) {
     return null;
   }
 
-  return <CtfQuote {...queryResult.data.componentQuote} />;
+  return <CtfQuote {...data.componentQuote} />;
 };
 
 export default CtfQuoteGql;

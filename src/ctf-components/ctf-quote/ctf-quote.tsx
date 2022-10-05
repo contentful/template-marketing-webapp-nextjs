@@ -1,15 +1,15 @@
 import { Container, Theme, makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
 import { useTranslation } from 'next-i18next';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 
-import { QuoteFragment } from './__generated__/QuoteFragment';
+import { QuoteFieldsFragment } from './__generated/ctf-quote.generated';
 
 import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 import { getColorConfigFromPalette } from '@src/theme';
 
-export interface CtfQuotePropsInterface extends QuoteFragment {}
+export interface CtfQuotePropsInterface extends QuoteFieldsFragment {}
 
 const useStyles = makeStyles((theme: Theme) => ({
   innerContainer: {
@@ -104,7 +104,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const CtfQuote = (props: CtfQuotePropsInterface) => {
+export const CtfQuote = (props: CtfQuotePropsInterface) => {
   const { t } = useTranslation();
   const {
     imagePosition,
@@ -162,5 +162,3 @@ const CtfQuote = (props: CtfQuotePropsInterface) => {
     </LayoutContext.Provider>
   );
 };
-
-export default CtfQuote;
