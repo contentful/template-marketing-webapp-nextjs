@@ -1,16 +1,15 @@
 import { Story, Meta } from '@storybook/react';
 import React from 'react';
 
-import CtfInfoBlock, {
-  CtfInfoBlockPropsInterface,
-} from '@ctf-components/ctf-info-block/ctf-info-block';
+import { InfoBlockFieldsFragment } from '@ctf-components/ctf-info-block/__generated/ctf-info-block.generated';
+import { CtfInfoBlock } from '@ctf-components/ctf-info-block/ctf-info-block';
 
 export default {
   title: 'Components/Info block',
   component: CtfInfoBlock,
 } as Meta;
 
-const Template: Story<CtfInfoBlockPropsInterface> = args => <CtfInfoBlock {...args} />;
+const Template: Story<InfoBlockFieldsFragment> = args => <CtfInfoBlock {...args} />;
 
 export const Default = Template.bind({});
 

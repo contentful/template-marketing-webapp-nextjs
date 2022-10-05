@@ -1,11 +1,5 @@
-import React from 'react';
-import { useQuery } from 'react-apollo';
-
-import { CtfInfoBlockQuery } from './__generated__/CtfInfoBlockQuery';
-import CtfInfoBlock from './ctf-info-block';
-import { query } from './ctf-info-block-query';
-
-import { useDataForPreview } from '@src/lib/apollo-hooks';
+import { useCtfInfoBlockQuery } from './__generated/ctf-info-block.generated';
+import { CtfInfoBlock } from './ctf-info-block';
 
 interface CtfInfoBlockGqlPropsInterface {
   id: string;
@@ -20,27 +14,17 @@ const CtfInfoBlockGql = ({
   preview,
   previousComponent,
 }: CtfInfoBlockGqlPropsInterface) => {
-  const queryResult = useQuery<CtfInfoBlockQuery>(query, {
-    variables: {
-      id,
-      locale,
-      preview,
-    },
+  const { isLoading, data } = useCtfInfoBlockQuery({
+    id,
+    locale,
+    preview,
   });
 
-  useDataForPreview(queryResult);
-
-  if (
-    queryResult.data === undefined ||
-    queryResult.loading === true ||
-    queryResult.data.componentInfoBlock === null
-  ) {
+  if (isLoading || !data?.componentInfoBlock) {
     return null;
   }
 
-  return (
-    <CtfInfoBlock {...queryResult.data.componentInfoBlock} previousComponent={previousComponent} />
-  );
+  return <CtfInfoBlock {...data.componentInfoBlock} previousComponent={previousComponent} />;
 };
 
 export default CtfInfoBlockGql;

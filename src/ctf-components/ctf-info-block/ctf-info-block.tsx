@@ -2,7 +2,7 @@ import { makeStyles, Theme, Container } from '@material-ui/core';
 import clsx from 'clsx';
 import React from 'react';
 
-import { InfoBlockFragment } from './__generated__/InfoBlockFragment';
+import { InfoBlockFieldsFragment } from './__generated/ctf-info-block.generated';
 
 import { CtfAsset } from '@ctf-components/ctf-asset/ctf-asset';
 import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
@@ -72,11 +72,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export interface CtfInfoBlockPropsInterface extends InfoBlockFragment {
+export interface CtfInfoBlockPropsInterface extends InfoBlockFieldsFragment {
   previousComponent?: string | null;
 }
 
-const CtfInfoBlock = (props: CtfInfoBlockPropsInterface) => {
+export const CtfInfoBlock = (props: CtfInfoBlockPropsInterface) => {
   const {
     headline,
     subline,
@@ -162,5 +162,3 @@ const CtfInfoBlock = (props: CtfInfoBlockPropsInterface) => {
     </Container>
   );
 };
-
-export default CtfInfoBlock;
