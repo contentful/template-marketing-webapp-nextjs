@@ -25,8 +25,12 @@ export const componentMap = {
   ComponentHeroBanner: dynamic(() =>
     import('./ctf-components/ctf-hero-banner/ctf-hero-banner').then(module => module.CtfHeroBanner),
   ),
-  ComponentInfoBlock: dynamic(() => import('./ctf-components/ctf-info-block/ctf-info-block')),
-  ComponentQuote: dynamic(() => import('./ctf-components/ctf-quote/ctf-quote')),
+  ComponentInfoBlock: dynamic(() =>
+    import('./ctf-components/ctf-info-block/ctf-info-block').then(module => module.CtfInfoBlock),
+  ),
+  ComponentQuote: dynamic(() =>
+    import('./ctf-components/ctf-quote/ctf-quote').then(module => module.CtfQuote),
+  ),
   ComponentTextBlock: dynamic(() => import('./ctf-components/ctf-text-block/ctf-text-block')),
   TopicPerson: dynamic(() => import('./ctf-components/ctf-person/ctf-person')),
 };

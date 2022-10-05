@@ -1,0 +1,34 @@
+fragment InfoBlockFields on ComponentInfoBlock {
+  sys {
+    id
+  }
+  __typename
+  internalName
+  headline
+  subline
+  block1Image {
+    ...AssetFields
+  }
+  block1Body {
+    json
+  }
+  block2Image {
+    ...AssetFields
+  }
+  block2Body {
+    json
+  }
+  block3Image {
+    ...AssetFields
+  }
+  block3Body {
+    json
+  }
+  colorPalette
+}
+
+query CtfInfoBlock($id: String!, $locale: String, $preview: Boolean) {
+  componentInfoBlock(id: $id, locale: $locale, preview: $preview) {
+    ...InfoBlockFields
+  }
+}
