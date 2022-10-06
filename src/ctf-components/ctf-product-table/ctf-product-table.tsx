@@ -3,9 +3,9 @@ import throttle from 'lodash/throttle';
 import { useTranslation } from 'next-i18next';
 import Image, { ImageLoader } from 'next/image';
 import queryString from 'query-string';
-import React, { useState, useMemo, useRef, useEffect, useCallback } from 'react';
+import { useState, useMemo, useRef, useEffect, useCallback } from 'react';
 
-import { ProductTableFragment } from './__generated__/ProductTableFragment';
+import { ProductTableFieldsFragment } from './__generated/ctf-product-table.generated';
 
 import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
 import { FormatCurrency } from '@src/components/format-currency';
@@ -16,11 +16,11 @@ import LayoutContext, { defaultLayout } from '@src/layout-context';
 const contentfulLoader: ImageLoader = ({ src, width, quality }) => {
   const params: Record<string, string | number> = {};
 
-  if (width !== undefined) {
+  if (width) {
     params.w = width;
   }
 
-  if (quality !== undefined) {
+  if (quality) {
     params.q = quality;
   }
 
@@ -125,9 +125,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export interface CtfProductTablePropsInterface extends ProductTableFragment {}
-
-const CtfProductTable = (props: CtfProductTablePropsInterface) => {
+export const CtfProductTable = (props: ProductTableFieldsFragment) => {
   const { t } = useTranslation();
   const { headline, subline, productsCollection } = props;
 
@@ -135,19 +133,19 @@ const CtfProductTable = (props: CtfProductTablePropsInterface) => {
 
   // Rendering product features
   const featureNames: string[] | null = useMemo(() => {
-    if (productsCollection === null || productsCollection.items.length === 0) {
+    if (!productsCollection || productsCollection?.items.length === 0) {
       return null;
     }
 
     const names: string[] = [];
 
-    productsCollection.items.forEach(product => {
-      if (product === null || (product.featuresCollection?.items.length || 0) === 0) {
+    productsCollection?.items.forEach(product => {
+      if (!product || (product.featuresCollection?.items.length || 0) === 0) {
         return;
       }
 
       product.featuresCollection!.items.forEach(feature => {
-        if (feature === null || feature.name === null) {
+        if (!feature?.name) {
           return;
         }
 
@@ -163,7 +161,7 @@ const CtfProductTable = (props: CtfProductTablePropsInterface) => {
   }, [productsCollection]);
 
   const featuresGrid: Record<string, Record<string, any>> | null = useMemo(() => {
-    if (featureNames === null || productsCollection === null) {
+    if (!featureNames || !productsCollection) {
       return null;
     }
 
@@ -172,8 +170,8 @@ const CtfProductTable = (props: CtfProductTablePropsInterface) => {
     featureNames.forEach(featureName => {
       grid[featureName] = {};
 
-      productsCollection.items.forEach(product => {
-        if (product === null || (product.featuresCollection?.items.length || 0) === 0) {
+      productsCollection?.items.forEach(product => {
+        if (!product || (product.featuresCollection?.items.length || 0) === 0) {
           return;
         }
 
@@ -181,7 +179,7 @@ const CtfProductTable = (props: CtfProductTablePropsInterface) => {
           featureX => featureX?.name === featureName,
         );
 
-        if (feature === undefined || feature === null) {
+        if (!feature) {
           return;
         }
 
@@ -200,7 +198,7 @@ const CtfProductTable = (props: CtfProductTablePropsInterface) => {
   const resizeGridItems = useCallback(
     () =>
       throttle(() => {
-        if (gridElement.current === null || gridColumnElements.current.length === 0) {
+        if (!gridElement.current || gridColumnElements.current.length === 0) {
           return;
         }
 
@@ -235,7 +233,7 @@ const CtfProductTable = (props: CtfProductTablePropsInterface) => {
   );
 
   useEffect(() => {
-    if (gridElement.current === null) {
+    if (!gridElement.current) {
       return () => {
         window.removeEventListener('resize', resizeGridItems);
       };
@@ -258,7 +256,7 @@ const CtfProductTable = (props: CtfProductTablePropsInterface) => {
             subline={subline}
             className={classes.sectionHeadlines}
           />
-          {productsCollection !== null && productsCollection.items.length > 0 && (
+          {productsCollection && productsCollection.items.length > 0 && (
             <div className={classes.comparisonTable}>
               {productsCollection.items.map(
                 (product, j) =>
@@ -336,7 +334,7 @@ const CtfProductTable = (props: CtfProductTablePropsInterface) => {
                               : `${gridSizes['index-3']}px`,
                         }}
                       >
-                        {product.price === null || product.price === 0 ? (
+                        {!product.price || product.price === 0 ? (
                           <Typography variant="h2" component="h4" className={classes.priceUpper}>
                             {t('price.free')}
                           </Typography>
@@ -397,7 +395,7 @@ const CtfProductTable = (props: CtfProductTablePropsInterface) => {
                               : `${gridSizes[`index-${featureNames.length + 4}`]}px`,
                         }}
                       >
-                        {product.price === null || product.price === 0 ? (
+                        {!product.price || product.price === 0 ? (
                           <Typography variant="h2" component="h4">
                             {t('price.free')}
                           </Typography>
@@ -423,5 +421,3 @@ const CtfProductTable = (props: CtfProductTablePropsInterface) => {
     </div>
   );
 };
-
-export default CtfProductTable;

@@ -1,0 +1,24 @@
+fragment ProductFields on TopicProduct {
+  sys {
+    id
+  }
+  name
+  featuredImage {
+    ...AssetFields
+  }
+  description {
+    json
+  }
+  price
+  featuresCollection(limit: 30) {
+    items {
+      ...ProductFeatureFields
+    }
+  }
+}
+
+query CtfProduct($id: String!, $locale: String, $preview: Boolean) {
+  topicProduct(id: $id, preview: $preview, locale: $locale) {
+    ...ProductFields
+  }
+}

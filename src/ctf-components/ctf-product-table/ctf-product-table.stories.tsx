@@ -1,16 +1,15 @@
 import { Story, Meta } from '@storybook/react';
-import React from 'react';
 
-import CtfProductTable, {
-  CtfProductTablePropsInterface,
-} from '@ctf-components/ctf-product-table/ctf-product-table';
+import { ProductTableFieldsFragment } from './__generated/ctf-product-table.generated';
+
+import { CtfProductTable } from '@ctf-components/ctf-product-table/ctf-product-table';
 
 export default {
   title: 'Components/Product table',
   component: CtfProductTable,
 } as Meta;
 
-const Template: Story<CtfProductTablePropsInterface> = args => <CtfProductTable {...args} />;
+const Template: Story<ProductTableFieldsFragment> = args => <CtfProductTable {...args} />;
 
 export const Default = Template.bind({});
 

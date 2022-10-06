@@ -1,31 +1,27 @@
 import { Container } from '@material-ui/core';
 import Head from 'next/head';
-import React from 'react';
-import { useQuery } from 'react-apollo';
 
-import { CtfProductQuery } from './__generated__/CtfProductQuery';
-import CtfProduct from './ctf-product';
-import { query } from './ctf-product-query';
+import { useCtfProductQuery } from './__generated/ctf-product.generated';
+import { CtfProduct } from './ctf-product';
 
 import EntryNotFound from '@src/components/errors/entry-not-found';
-import { useDataForPreview } from '@src/lib/apollo-hooks';
 
 interface CtfProductGqlPropsInterface {
   id: string;
+  locale: string;
   preview?: boolean;
 }
 
-const CtfProductGql = (props: CtfProductGqlPropsInterface) => {
-  const queryResult = useQuery<CtfProductQuery>(query, {
-    variables: { ...props },
+export const CtfProductGql = (props: CtfProductGqlPropsInterface) => {
+  const { isLoading, data } = useCtfProductQuery({
+    ...props,
   });
-  useDataForPreview(queryResult);
 
-  if (queryResult.data === undefined || queryResult.loading === true) {
+  if (!data || isLoading) {
     return null;
   }
 
-  if (queryResult.data.topicProduct === null) {
+  if (!data.topicProduct) {
     return (
       <Container>
         <EntryNotFound />
@@ -33,11 +29,11 @@ const CtfProductGql = (props: CtfProductGqlPropsInterface) => {
     );
   }
 
-  const product = queryResult.data.topicProduct;
+  const product = data.topicProduct;
 
   return (
     <>
-      {product.featuredImage && (
+      {product?.featuredImage && (
         <Head>
           <meta
             key="og:image"
@@ -50,5 +46,3 @@ const CtfProductGql = (props: CtfProductGqlPropsInterface) => {
     </>
   );
 };
-
-export default CtfProductGql;

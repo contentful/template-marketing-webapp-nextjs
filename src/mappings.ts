@@ -1,14 +1,18 @@
 import dynamic from 'next/dynamic';
 
 const pageTopicMap = {
-  TopicProduct: dynamic(() => import('./ctf-components/ctf-product/ctf-product-gql')),
+  TopicProduct: dynamic(() =>
+    import('./ctf-components/ctf-product/ctf-product-gql').then(module => module.CtfProductGql),
+  ),
   TopicBusinessInfo: dynamic(() =>
     import('./ctf-components/ctf-business-info/ctf-business-info-gql').then(
       module => module.CtfBusinessInfoGql,
     ),
   ),
-  ComponentProductTable: dynamic(
-    () => import('./ctf-components/ctf-product-table/ctf-product-table-gql'),
+  ComponentProductTable: dynamic(() =>
+    import('./ctf-components/ctf-product-table/ctf-product-table-gql').then(
+      module => module.CtfProductTableGql,
+    ),
   ),
 };
 
@@ -45,8 +49,14 @@ export const componentGqlMap = {
   ComponentHeroBanner: dynamic(
     () => import('./ctf-components/ctf-hero-banner/ctf-hero-banner-gql'),
   ),
-  ComponentInfoBlock: dynamic(() => import('./ctf-components/ctf-info-block/ctf-info-block-gql')),
-  ComponentQuote: dynamic(() => import('./ctf-components/ctf-quote/ctf-quote-gql')),
+  ComponentInfoBlock: dynamic(() =>
+    import('./ctf-components/ctf-info-block/ctf-info-block-gql').then(
+      module => module.CtfInfoBlockGql,
+    ),
+  ),
+  ComponentQuote: dynamic(() =>
+    import('./ctf-components/ctf-quote/ctf-quote-gql').then(module => module.CtfQuoteGql),
+  ),
   ComponentTextBlock: dynamic(() => import('./ctf-components/ctf-text-block/ctf-text-block-gql')),
   TopicPerson: dynamic(() =>
     import('./ctf-components/ctf-person/ctf-person-gql').then(module => module.CtfPersonGql),
