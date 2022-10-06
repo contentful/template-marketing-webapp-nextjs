@@ -8,6 +8,7 @@ import EntryNotFound from '@src/components/errors/entry-not-found';
 
 interface CtfProductGqlPropsInterface {
   id: string;
+  locale: string;
   preview?: boolean;
 }
 
