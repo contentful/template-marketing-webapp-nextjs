@@ -16,11 +16,11 @@ import LayoutContext, { defaultLayout } from '@src/layout-context';
 const contentfulLoader: ImageLoader = ({ src, width, quality }) => {
   const params: Record<string, string | number> = {};
 
-  if (width !== undefined) {
+  if (width) {
     params.w = width;
   }
 
-  if (quality !== undefined) {
+  if (quality) {
     params.q = quality;
   }
 
