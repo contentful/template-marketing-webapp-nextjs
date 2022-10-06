@@ -7,6 +7,7 @@ import EntryNotFound from '@src/components/errors/entry-not-found';
 
 interface CtfProductTableGqlPropsInterface {
   id: string;
+  locale: string;
   preview?: boolean;
 }
 
@@ -19,7 +20,7 @@ export const CtfProductTableGql = (props: CtfProductTableGqlPropsInterface) => {
     return null;
   }
 
-  if (data.componentProductTable === null) {
+  if (!data.componentProductTable) {
     return (
       <Container>
         <EntryNotFound />

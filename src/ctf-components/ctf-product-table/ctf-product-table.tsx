@@ -133,14 +133,14 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
 
   // Rendering product features
   const featureNames: string[] | null = useMemo(() => {
-    if (productsCollection === null || productsCollection?.items.length === 0) {
+    if (!productsCollection || productsCollection?.items.length === 0) {
       return null;
     }
 
     const names: string[] = [];
 
     productsCollection?.items.forEach(product => {
-      if (product === null || (product.featuresCollection?.items.length || 0) === 0) {
+      if (!product || (product.featuresCollection?.items.length || 0) === 0) {
         return;
       }
 
@@ -161,7 +161,7 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
   }, [productsCollection]);
 
   const featuresGrid: Record<string, Record<string, any>> | null = useMemo(() => {
-    if (featureNames === null || productsCollection === null) {
+    if (!featureNames || !productsCollection) {
       return null;
     }
 
@@ -171,7 +171,7 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
       grid[featureName] = {};
 
       productsCollection?.items.forEach(product => {
-        if (product === null || (product.featuresCollection?.items.length || 0) === 0) {
+        if (!product || (product.featuresCollection?.items.length || 0) === 0) {
           return;
         }
 
@@ -179,7 +179,7 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
           featureX => featureX?.name === featureName,
         );
 
-        if (feature === undefined || feature === null) {
+        if (!feature) {
           return;
         }
 
@@ -198,7 +198,7 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
   const resizeGridItems = useCallback(
     () =>
       throttle(() => {
-        if (gridElement.current === null || gridColumnElements.current.length === 0) {
+        if (!gridElement.current || gridColumnElements.current.length === 0) {
           return;
         }
 
@@ -233,7 +233,7 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
   );
 
   useEffect(() => {
-    if (gridElement.current === null) {
+    if (!gridElement.current) {
       return () => {
         window.removeEventListener('resize', resizeGridItems);
       };
@@ -334,13 +334,13 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                               : `${gridSizes['index-3']}px`,
                         }}
                       >
-                        {product.price === null || product.price === 0 ? (
+                        {!product.price || product.price === 0 ? (
                           <Typography variant="h2" component="h4" className={classes.priceUpper}>
                             {t('price.free')}
                           </Typography>
                         ) : (
                           <Typography variant="h2" component="h4" className={classes.priceUpper}>
-                            <FormatCurrency value={product.price as number} />
+                            <FormatCurrency value={product.price} />
                             <span className={classes.priceAddition}>/{t('time.month')}</span>
                           </Typography>
                         )}
@@ -395,13 +395,13 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                               : `${gridSizes[`index-${featureNames.length + 4}`]}px`,
                         }}
                       >
-                        {product.price === null || product.price === 0 ? (
+                        {!product.price || product.price === 0 ? (
                           <Typography variant="h2" component="h4">
                             {t('price.free')}
                           </Typography>
                         ) : (
                           <Typography variant="h2" component="h4">
-                            <FormatCurrency value={product.price as number} />
+                            <FormatCurrency value={product.price} />
                             <span className={classes.priceAddition}>/{t('time.month')}</span>
                           </Typography>
                         )}
