@@ -7,7 +7,7 @@ import { useQuery } from 'react-apollo';
 
 import { CtfBlogQuery } from './__generated__/CtfBlogQuery';
 
-import CategoriesMenu from '@ctf-components/ctf-categories-menu/ctf-categories-menu';
+import { CtfCategoriesMenu } from '@ctf-components/ctf-categories-menu/ctf-categories-menu';
 import { postFragmentBase } from '@ctf-components/ctf-post/ctf-post-query';
 import CardPostExtended from '@src/components/card-post-extended/card-post-extended';
 import EntryNotFound from '@src/components/errors/entry-not-found';
@@ -125,7 +125,7 @@ const BlogPage: NextPage = () => {
                     <Typography variant="h1" className={classes.title}>
                       Blog
                     </Typography>
-                    <CategoriesMenu />
+                    <CtfCategoriesMenu />
                   </div>
                 </div>
               </div>

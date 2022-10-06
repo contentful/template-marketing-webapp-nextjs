@@ -7,10 +7,10 @@ import { CtfAsset } from '@ctf-components/ctf-asset/ctf-asset';
 import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
 import Avatar from '@src/components/avatar/avatar';
 import Link from '@src/components/link/link';
-import { PostFragmentBase } from '@src/ctf-components/ctf-post/__generated__/PostFragmentBase';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
+import { PostFieldsBaseFragment } from '@src/lib/__generated/graphql.types';
 
-interface CtfCardPostExtendedPropsInterface extends PostFragmentBase {}
+interface CtfCardPostExtendedPropsInterface extends PostFieldsBaseFragment {}
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {

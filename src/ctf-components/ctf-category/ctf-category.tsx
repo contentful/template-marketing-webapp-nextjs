@@ -1,15 +1,14 @@
 import { Theme, makeStyles, Typography, Container } from '@material-ui/core';
-import React from 'react';
 
-import { CategoryFragment } from './__generated__/CategoryFragment';
-import { CtfCategoryQuery_postCollection_items } from './__generated__/CtfCategoryQuery';
+import { CategoryFieldsFragment } from './__generated/ctf-category.generated';
 
-import CategoriesMenu from '@ctf-components/ctf-categories-menu/ctf-categories-menu';
+import { CtfCategoriesMenu } from '@ctf-components/ctf-categories-menu/ctf-categories-menu';
 import CardPostExtended from '@src/components/card-post-extended/card-post-extended';
 import CategoryContainer from '@src/components/layout/category-container';
 import Link from '@src/components/link/link';
 import XrayFrame from '@src/components/xray-frame';
 import { useContentfulContext } from '@src/contentful-context';
+import { PostFieldsBaseFragment } from '@src/ctf-components/ctf-post/__generated/ctf-post.generated';
 import { WrapIf } from '@src/jsx-utils';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 
@@ -63,11 +62,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-interface CtfCategoryPropsInterface extends CategoryFragment {
-  posts: (CtfCategoryQuery_postCollection_items | null)[];
+interface CtfCategoryPropsInterface extends CategoryFieldsFragment {
+  posts: (PostFieldsBaseFragment | null)[];
 }
 
-const CtfCategory = (props: CtfCategoryPropsInterface) => {
+export const CtfCategory = (props: CtfCategoryPropsInterface) => {
   const { posts, slug } = props;
   const { xrayActive } = useContentfulContext();
 
@@ -83,10 +82,12 @@ const CtfCategory = (props: CtfCategoryPropsInterface) => {
               className={`xray-${props.__typename}`}
               __typename={props.__typename}
               sys={props.sys}
-              internalName={props.internalName || ''}>
+              internalName={props.internalName || ''}
+            >
               {children}
             </XrayFrame>
-          )}>
+          )}
+        >
           <Container maxWidth={false}>
             <div className={classes.root}>
               <div>
@@ -95,14 +96,14 @@ const CtfCategory = (props: CtfCategoryPropsInterface) => {
                     <Link href="/blog" withoutMaterial className={classes.title}>
                       <Typography variant="h1">Blog</Typography>
                     </Link>
-                    <CategoriesMenu slug={slug ?? undefined} />
+                    <CtfCategoriesMenu slug={slug ?? undefined} />
                   </div>
                 </div>
               </div>
 
               {posts && posts.length > 0 && (
                 <div className={classes.containerNarrow}>
-                  {(posts as CtfCategoryQuery_postCollection_items[])
+                  {(posts as PostFieldsBaseFragment[])
                     .filter(post => post !== null)
                     .map(post => (
                       <div key={post.sys.id} className={classes.postWrap}>
@@ -118,5 +119,3 @@ const CtfCategory = (props: CtfCategoryPropsInterface) => {
     </LayoutContext.Provider>
   );
 };
-
-export default CtfCategory;

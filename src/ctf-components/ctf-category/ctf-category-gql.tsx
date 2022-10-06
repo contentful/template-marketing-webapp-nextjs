@@ -1,15 +1,11 @@
 import { Container } from '@material-ui/core';
 import Head from 'next/head';
-import React from 'react';
-import { useQuery } from 'react-apollo';
 
-import { CtfCategoryQuery } from './__generated__/CtfCategoryQuery';
-import CtfCategory from './ctf-category';
-import { query } from './ctf-category-query';
+import { useCtfCategoryQuery } from './__generated/ctf-category.generated';
+import { CtfCategory } from './ctf-category';
 
 import EntryNotFound from '@src/components/errors/entry-not-found';
 import { useContentfulContext } from '@src/contentful-context';
-import { useDataForPreview } from '@src/lib/apollo-hooks';
 import contentfulConfig from 'contentful.config';
 
 interface Props {
@@ -17,22 +13,21 @@ interface Props {
   preview?: boolean;
 }
 
-const CtfCategoryGql = (props: Props) => {
+export const CtfCategoryGql = (props: Props) => {
   const { locale } = useContentfulContext();
 
-  const queryResult = useQuery<CtfCategoryQuery>(query, {
-    variables: { ...props },
+  const { isLoading, data } = useCtfCategoryQuery({
+    ...props,
   });
-  useDataForPreview(queryResult);
 
-  if (queryResult.data === undefined || queryResult.loading === true) {
+  if (!data || isLoading) {
     return null;
   }
 
   if (
-    queryResult.data.categoryCollection === null ||
-    queryResult.data.categoryCollection.items.length === 0 ||
-    queryResult.data.categoryCollection.items[0] === null
+    !data.categoryCollection ||
+    data.categoryCollection.items.length === 0 ||
+    !data.categoryCollection.items[0]
   ) {
     return (
       <Container>
@@ -41,7 +36,7 @@ const CtfCategoryGql = (props: Props) => {
     );
   }
 
-  const category = queryResult.data.categoryCollection.items[0];
+  const category = data.categoryCollection.items[0];
 
   const { seo } = category;
 
@@ -54,8 +49,8 @@ const CtfCategoryGql = (props: Props) => {
   };
 
   const robots = [
-    metaTags.no_index === true ? 'noindex' : undefined,
-    metaTags.no_follow === true ? 'nofollow' : undefined,
+    metaTags.no_index ? 'noindex' : undefined,
+    metaTags.no_follow ? 'nofollow' : undefined,
   ].filter((x): x is string => x !== undefined);
 
   return (
@@ -90,9 +85,7 @@ const CtfCategoryGql = (props: Props) => {
         )}
         <meta key="og:locale" property="og:locale" content={locale} />
       </Head>
-      <CtfCategory posts={queryResult.data.postCollection?.items || []} {...category} />
+      <CtfCategory posts={data.postCollection?.items || []} {...category} />
     </>
   );
 };
-
-export default CtfCategoryGql;

@@ -9,8 +9,6 @@ import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 import { getColorConfigFromPalette } from '@src/theme';
 
-export interface CtfQuotePropsInterface extends QuoteFieldsFragment {}
-
 const useStyles = makeStyles((theme: Theme) => ({
   innerContainer: {
     display: 'flex',
@@ -18,7 +16,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginLeft: 'auto',
     marginRight: 'auto',
     // maxWidth: '126rem',
-    maxWidth: (props: CtfQuotePropsInterface) => (!props.image ? '93.4rem' : '126rem'),
+    maxWidth: (props: QuoteFieldsFragment) => (!props.image ? '93.4rem' : '126rem'),
     padding: theme.spacing(19, 0, 19),
     [theme.breakpoints.up('md')]: {
       alignItems: 'center',
@@ -42,7 +40,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       borderLeftWidth: 0,
       fontStyle: 'normal',
       paddingLeft: 0,
-      color: (props: CtfQuotePropsInterface) => {
+      color: (props: QuoteFieldsFragment) => {
         const colorConfig = getColorConfigFromPalette(props.colorPalette || '');
 
         return colorConfig.headlineColor;
@@ -104,7 +102,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export const CtfQuote = (props: CtfQuotePropsInterface) => {
+export const CtfQuote = (props: QuoteFieldsFragment) => {
   const { t } = useTranslation();
   const {
     imagePosition,

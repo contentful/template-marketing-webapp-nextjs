@@ -1,0 +1,36 @@
+fragment PostCategoryFields on Category {
+  sys {
+    id
+  }
+  categoryName
+  slug
+}
+
+fragment PostFieldsBase on Post {
+  __typename
+  sys {
+    id
+  }
+  internalName
+  postName
+  publishedDate
+  featuredImage {
+    ...AssetFields
+  }
+  slug
+  category {
+    ...PostCategoryFields
+  }
+  author {
+    ...PersonFields
+  }
+  introText {
+    json
+  }
+  contentfulMetadata {
+    tags {
+      id
+      name
+    }
+  }
+}
