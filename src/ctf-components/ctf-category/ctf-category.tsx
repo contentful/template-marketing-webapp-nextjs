@@ -71,6 +71,7 @@ export const CtfCategory = (props: CtfCategoryPropsInterface) => {
   const { xrayActive } = useContentfulContext();
 
   const classes = useStyles();
+  const filteredPosts = posts.flatMap(post => (post ? [post] : []));
 
   return (
     <LayoutContext.Provider value={{ ...defaultLayout, parent: 'category' }}>
@@ -101,15 +102,13 @@ export const CtfCategory = (props: CtfCategoryPropsInterface) => {
                 </div>
               </div>
 
-              {posts && posts.length > 0 && (
+              {filteredPosts.length > 0 && (
                 <div className={classes.containerNarrow}>
-                  {posts
-                    .filter(post => post !== null)
-                    .map(post => (
-                      <div key={post?.sys.id} className={classes.postWrap}>
-                        {post && <CardPostExtended {...post} />}
-                      </div>
-                    ))}
+                  {filteredPosts.map(post => (
+                    <div key={post.sys.id} className={classes.postWrap}>
+                      {<CardPostExtended {...post} />}
+                    </div>
+                  ))}
                 </div>
               )}
             </div>
