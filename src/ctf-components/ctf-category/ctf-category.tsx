@@ -103,11 +103,11 @@ export const CtfCategory = (props: CtfCategoryPropsInterface) => {
 
               {posts && posts.length > 0 && (
                 <div className={classes.containerNarrow}>
-                  {(posts as PostFieldsBaseFragment[])
+                  {posts
                     .filter(post => post !== null)
                     .map(post => (
-                      <div key={post.sys.id} className={classes.postWrap}>
-                        <CardPostExtended {...post} />
+                      <div key={post?.sys.id} className={classes.postWrap}>
+                        {post && <CardPostExtended {...post} />}
                       </div>
                     ))}
                 </div>

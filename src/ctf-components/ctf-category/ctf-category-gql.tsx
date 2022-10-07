@@ -24,11 +24,7 @@ export const CtfCategoryGql = (props: Props) => {
     return null;
   }
 
-  if (
-    !data.categoryCollection ||
-    data.categoryCollection.items.length === 0 ||
-    !data.categoryCollection.items[0]
-  ) {
+  if (!data.categoryCollection?.items?.[0]) {
     return (
       <Container>
         <EntryNotFound />
