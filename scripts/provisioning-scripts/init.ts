@@ -26,7 +26,7 @@ export const init = async ({
   cmaToken,
   email,
   spaceName,
-  spaceId: inputSpaceId,
+  spaceId: argsProvidedSpaceId,
   role = 'Administrator',
   vercelDeployToken,
 }: InitProps) => {
@@ -59,7 +59,7 @@ export const init = async ({
     /**
      * Reuse an existing Contentful space, or create a new one
      */
-    if (!inputSpaceId) {
+    if (!argsProvidedSpaceId) {
       console.info('Creating a Contentful space...');
     } else {
       console.info('Reusing existing space...');
@@ -75,10 +75,10 @@ export const init = async ({
       cmaToken,
       spaceName,
       email,
-      spaceId: inputSpaceId,
+      spaceId: argsProvidedSpaceId,
     });
 
-    if (!inputSpaceId) {
+    if (!argsProvidedSpaceId) {
       await stepImportContentModel({ spaceId, cmaToken });
       await stepCreateSpaceEmptyEnvironment({ spaceId, cmaToken });
       await stepImportContent({ spaceId, cmaToken });
@@ -100,7 +100,7 @@ export const init = async ({
 
     let contentfulUrl = `https://app.contentful.com/spaces/${spaceId}`;
 
-    if (!inputSpaceId) {
+    if (!argsProvidedSpaceId) {
       const { userInvite } = await stepInviteToSpace({
         spaceId,
         organizationId,
