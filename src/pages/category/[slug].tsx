@@ -1,7 +1,7 @@
 import { NextPage, GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 
-import CtfCategoryGgl from '@ctf-components/ctf-category/ctf-category-gql';
+import { CtfCategoryGql } from '@ctf-components/ctf-category/ctf-category-gql';
 import { useContentfulContext } from '@src/contentful-context';
 import withProviders, { generateGetServerSideProps } from '@src/lib/with-providers';
 
@@ -17,7 +17,7 @@ const CategoryPage: NextPage<CategoryPagePropsInterface> = props => {
   const { previewActive } = useContentfulContext();
   const slug = query ? (query.slug as string) : '';
 
-  return <CtfCategoryGgl slug={slug} preview={previewActive} />;
+  return <CtfCategoryGql slug={slug} preview={previewActive} />;
 };
 
 const CategoryPageWithProviders = withProviders()(CategoryPage);

@@ -1,28 +1,10 @@
 import { makeStyles, Theme } from '@material-ui/core';
 import clsx from 'clsx';
-import gql from 'graphql-tag';
-import React from 'react';
-import { useQuery } from 'react-apollo';
 
-import { CtfBlogCategoriesQuery } from './__generated__/CtfBlogCategoriesQuery';
+import { useCtfBlogCategoriesQuery } from './__generated/ctf-categories-menu.generated';
 
 import Link from '@src/components/link/link';
 import { useContentfulContext } from '@src/contentful-context';
-import { useDataForPreview } from '@src/lib/apollo-hooks';
-
-const categoriesQuery = gql`
-  query CtfBlogCategoriesQuery($locale: String, $preview: Boolean) {
-    categoryCollection(order: categoryName_ASC, locale: $locale, preview: $preview, limit: 15) {
-      items {
-        sys {
-          id
-        }
-        slug
-        categoryName
-      }
-    }
-  }
-`;
 
 const useStyles = makeStyles((theme: Theme) => ({
   categories: {
@@ -61,33 +43,28 @@ interface CtfCategoriesMenuPropsInterface {
   slug?: string;
 }
 
-const CtfCategoriesMenu: React.FC<CtfCategoriesMenuPropsInterface> = props => {
+export const CtfCategoriesMenu: React.FC<CtfCategoriesMenuPropsInterface> = props => {
   const { slug } = props;
   const { locale } = useContentfulContext();
 
   const { previewActive } = useContentfulContext();
 
-  const categoriesQueryResult = useQuery<CtfBlogCategoriesQuery>(categoriesQuery, {
-    variables: { locale, preview: previewActive },
+  const { isLoading, data } = useCtfBlogCategoriesQuery({
+    locale,
+    preview: previewActive,
   });
-
-  useDataForPreview(categoriesQueryResult);
 
   const classes = useStyles();
 
-  if (
-    categoriesQueryResult.data === undefined ||
-    categoriesQueryResult.loading === true ||
-    categoriesQueryResult.data.categoryCollection === null
-  ) {
+  if (isLoading || !data?.categoryCollection) {
     return null;
   }
 
   return (
     <>
-      {categoriesQueryResult.data.categoryCollection.items.length > 0 && (
+      {data.categoryCollection.items.length > 0 && (
         <div className={classes.categories}>
-          {categoriesQueryResult.data.categoryCollection.items.map(
+          {data.categoryCollection.items.map(
             category =>
               category && (
                 <Link
@@ -96,7 +73,8 @@ const CtfCategoriesMenu: React.FC<CtfCategoriesMenuPropsInterface> = props => {
                   className={clsx(
                     classes.categoryLink,
                     slug === category.slug ? classes.categoryLinkActive : undefined,
-                  )}>
+                  )}
+                >
                   {category.categoryName}
                 </Link>
               ),
@@ -106,5 +84,3 @@ const CtfCategoriesMenu: React.FC<CtfCategoriesMenuPropsInterface> = props => {
     </>
   );
 };
-
-export default CtfCategoriesMenu;
