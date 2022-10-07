@@ -1,5 +1,6 @@
 import { createClient } from 'contentful-management';
 
+import { runStep } from '../util/run-step';
 import { ProvisionStep } from './types';
 
 import catchify from 'catchify';
@@ -9,7 +10,14 @@ interface UpdateTranslatorRoleProps {
   spaceId: string;
 }
 
-export const updateTranslatorRole: ProvisionStep<UpdateTranslatorRoleProps> = async input => {
+interface UpdateTranslatorRolePayload {
+  role: unknown;
+}
+
+const updateTranslatorRole: ProvisionStep<
+  UpdateTranslatorRoleProps,
+  UpdateTranslatorRolePayload
+> = async input => {
   const { cmaToken, spaceId } = input;
 
   const client = createClient({
@@ -27,19 +35,14 @@ export const updateTranslatorRole: ProvisionStep<UpdateTranslatorRoleProps> = as
 
   if (rolesError !== null) {
     console.error(rolesError);
-    return {
-      state: 'error',
-      error: 'Failed to update translator role to space - getRoles error',
-    };
+
+    throw new Error('Failed to update translator role to space - getRoles error');
   }
 
   const translatorRole = roles.items.find(x => x.name === 'Translator');
 
   if (translatorRole === undefined) {
-    return {
-      state: 'error',
-      error: 'Failed to update translator role - could not find the Translator role',
-    };
+    throw new Error('Failed to update translator role - could not find the Translator role');
   }
 
   const [updateRoleError, updateRole] = await catchify(
@@ -143,14 +146,24 @@ export const updateTranslatorRole: ProvisionStep<UpdateTranslatorRoleProps> = as
 
   if (updateRoleError !== null) {
     console.error(updateRoleError);
-    return {
-      state: 'error',
-      error: 'Failed to update translator role to space - roles PUT error',
-    };
+
+    throw new Error('Failed to update translator role to space - roles PUT error');
   }
 
   return {
-    state: 'success',
-    payload: updateRole,
+    role: updateRole,
   };
 };
+
+export const stepUpdateTranslatorRole = (props: UpdateTranslatorRoleProps) =>
+  runStep<UpdateTranslatorRolePayload>(
+    () => updateTranslatorRole(props),
+    {
+      label: 'Update translator role',
+      abortOnError: true,
+    },
+    {
+      spaceId: props.spaceId,
+      cmaToken: props.cmaToken,
+    },
+  );

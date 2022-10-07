@@ -1,5 +1,6 @@
 import { createClient } from 'contentful-management';
 
+import { runStep } from '../util/run-step';
 import { ProvisionStep } from './types';
 
 import catchify from 'catchify';
@@ -10,7 +11,11 @@ interface SetPreviewUrlsProps {
   deploymentUrl: string;
 }
 
-export const setPreviewUrls: ProvisionStep<SetPreviewUrlsProps> = async ({
+export interface SetPreviewUrlsPayload {
+  preview: unknown;
+}
+
+export const setPreviewUrls: ProvisionStep<SetPreviewUrlsProps, SetPreviewUrlsPayload> = async ({
   spaceId,
   cmaToken,
   deploymentUrl,
@@ -28,10 +33,8 @@ export const setPreviewUrls: ProvisionStep<SetPreviewUrlsProps> = async ({
 
   if (previewsError !== null) {
     console.error(previewsError);
-    return {
-      state: 'error',
-      error: 'Failed to set preview urls - get preview_environments error',
-    };
+
+    throw new Error('Failed to set preview urls - get preview_environments error');
   }
 
   const webPreview = previews.items.find(preview => preview.name === 'Web Preview');
@@ -72,15 +75,12 @@ export const setPreviewUrls: ProvisionStep<SetPreviewUrlsProps> = async ({
 
     if (updatePreviewError !== null || !updatePreview) {
       console.error(updatePreviewError);
-      return {
-        state: 'error',
-        error: 'Failed to set preview urls - update preview_environments error',
-      };
+
+      throw new Error('Failed to set preview urls - update preview_environments error');
     }
 
     return {
-      state: 'success',
-      payload: updatePreview,
+      preview: updatePreview,
     };
   }
 
@@ -117,14 +117,23 @@ export const setPreviewUrls: ProvisionStep<SetPreviewUrlsProps> = async ({
 
   if (createPreviewError !== null || !createPreview) {
     console.error(createPreviewError);
-    return {
-      state: 'error',
-      error: 'Failed to set preview urls - preview_environments error',
-    };
+
+    throw new Error('Failed to set preview urls - preview_environments error');
   }
 
   return {
-    state: 'success',
-    payload: createPreview,
+    preview: createPreview,
   };
 };
+
+export const stepSetPreviewUrls = (props: SetPreviewUrlsProps) =>
+  runStep<SetPreviewUrlsPayload>(
+    () => setPreviewUrls(props),
+    {
+      label: 'Set up Preview URLs',
+    },
+    {
+      spaceId: props.spaceId,
+      cmaToken: props.cmaToken,
+    },
+  );

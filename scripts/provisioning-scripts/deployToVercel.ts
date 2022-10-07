@@ -2,6 +2,7 @@ import path from 'path';
 
 import { createDeployment } from '@vercel/client';
 
+import { runStep } from '../util/run-step';
 import { ProvisionStep } from './types';
 
 type DeployToVercelProps = {
@@ -16,7 +17,7 @@ type DeployToVercelPayload = {
   deploymentUrl: string;
 };
 
-export const deployToVercel: ProvisionStep<DeployToVercelProps, DeployToVercelPayload> = async ({
+const deployToVercel: ProvisionStep<DeployToVercelProps, DeployToVercelPayload> = async ({
   spaceId,
   cmaToken,
   deliveryApiKey,
@@ -26,10 +27,7 @@ export const deployToVercel: ProvisionStep<DeployToVercelProps, DeployToVercelPa
   let deployment;
 
   if (!vercelDeployToken) {
-    return {
-      state: 'error',
-      error: 'Failed to deploy to Vercel - missing token',
-    };
+    throw new Error('Failed to deploy to Vercel - missing token');
   }
 
   for await (const event of createDeployment(
@@ -65,17 +63,12 @@ export const deployToVercel: ProvisionStep<DeployToVercelProps, DeployToVercelPa
       console.error(event);
 
       if (event.payload.status === 401 || event.payload.status === 403) {
-        return {
-          state: 'error',
-          error:
-            'The Vercel token that you have provided could not be used to create a deployment. Double check that the token is valid.',
-        };
+        throw new Error(
+          'The Vercel token that you have provided could not be used to create a deployment. Double check that the token is valid.',
+        );
       }
 
-      return {
-        state: 'error',
-        error: 'Failed to deploy to Vercel - createDeployment error',
-      };
+      throw new Error('Failed to deploy to Vercel - createDeployment error');
     }
 
     if (event.type === 'ready') {
@@ -85,9 +78,18 @@ export const deployToVercel: ProvisionStep<DeployToVercelProps, DeployToVercelPa
   }
 
   return {
-    state: 'success',
-    payload: {
-      deploymentUrl: deployment.url,
-    },
+    deploymentUrl: deployment.url,
   };
 };
+
+export const stepDeployToVercel = (props: DeployToVercelProps) =>
+  runStep<DeployToVercelPayload>(
+    () => deployToVercel(props),
+    {
+      label: 'Deploying to Vercel',
+    },
+    {
+      spaceId: props.spaceId,
+      cmaToken: props.cmaToken,
+    },
+  );
