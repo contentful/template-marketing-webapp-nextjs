@@ -1,15 +1,11 @@
 import { Container } from '@material-ui/core';
 import Head from 'next/head';
-import React from 'react';
-import { useQuery } from 'react-apollo';
 
-import { CtfPostQuery } from './__generated__/CtfPostQuery';
-import CtfPost from './ctf-post';
-import { query } from './ctf-post-query';
+import { useCtfPostQuery } from './__generated/ctf-post.generated';
+import { CtfPost } from './ctf-post';
 
 import EntryNotFound from '@src/components/errors/entry-not-found';
 import { useContentfulContext } from '@src/contentful-context';
-import { useDataForPreview } from '@src/lib/apollo-hooks';
 import contentfulConfig from 'contentful.config';
 
 interface Props {
@@ -17,22 +13,19 @@ interface Props {
   preview?: boolean;
 }
 
-const CtfPostGql = (props: Props) => {
+export const CtfPostGql = (props: Props) => {
   const { locale } = useContentfulContext();
-  const queryResult = useQuery<CtfPostQuery>(query, {
-    variables: { ...props },
-  });
-  useDataForPreview(queryResult);
 
-  if (queryResult.data === undefined || queryResult.loading === true) {
+  const { isLoading, data } = useCtfPostQuery({
+    ...props,
+    locale,
+  });
+
+  if (!data || isLoading) {
     return null;
   }
 
-  if (
-    queryResult.data.postCollection === null ||
-    queryResult.data.postCollection.items.length === 0 ||
-    queryResult.data.postCollection.items[0] === null
-  ) {
+  if (!data.postCollection?.items?.[0]) {
     return (
       <Container>
         <EntryNotFound />
@@ -40,7 +33,7 @@ const CtfPostGql = (props: Props) => {
     );
   }
 
-  const post = queryResult.data.postCollection.items[0];
+  const post = data.postCollection.items[0];
   const { seo } = post;
 
   const metaTags = {
@@ -52,8 +45,8 @@ const CtfPostGql = (props: Props) => {
   };
 
   const robots = [
-    metaTags.no_index === true ? 'noindex' : undefined,
-    metaTags.no_follow === true ? 'nofollow' : undefined,
+    metaTags.no_index ? 'noindex' : undefined,
+    metaTags.no_follow ? 'nofollow' : undefined,
   ].filter((x): x is string => x !== undefined);
 
   return (
@@ -93,5 +86,3 @@ const CtfPostGql = (props: Props) => {
     </>
   );
 };
-
-export default CtfPostGql;

@@ -3,9 +3,9 @@ import { LocalOffer } from '@material-ui/icons';
 import clsx from 'clsx';
 import formatDate from 'date-fns/format';
 import { useTranslation } from 'next-i18next';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 
-import { PostFragment, PostFragment_contentfulMetadata_tags } from './__generated__/PostFragment';
+import { PostFieldsFragment } from './__generated/ctf-post.generated';
 
 import { CtfAsset } from '@ctf-components/ctf-asset/ctf-asset';
 import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
@@ -17,8 +17,6 @@ import XrayFrame from '@src/components/xray-frame';
 import { useContentfulContext } from '@src/contentful-context';
 import { WrapIf } from '@src/jsx-utils';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
-
-interface CtfPostPropsInterface extends PostFragment {}
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -97,7 +95,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const CtfPost = (props: CtfPostPropsInterface) => {
+export const CtfPost = (props: PostFieldsFragment) => {
   const { t } = useTranslation();
   const { xrayActive } = useContentfulContext();
   const {
@@ -117,7 +115,7 @@ const CtfPost = (props: CtfPostPropsInterface) => {
     props.extraSectionCollection && props.extraSectionCollection.items.filter(it => !!it);
 
   const publishedDateFormated = useMemo(() => {
-    if (publishedDate === null) {
+    if (!publishedDate) {
       return null;
     }
 
@@ -129,7 +127,7 @@ const CtfPost = (props: CtfPostPropsInterface) => {
   }, [publishedDate, t]);
 
   const categoryLink = useMemo(() => {
-    if (category === null) {
+    if (!category) {
       return null;
     }
 
@@ -146,10 +144,10 @@ const CtfPost = (props: CtfPostPropsInterface) => {
 
   const tags: null | JSX.Element = useMemo(() => {
     const nonNullTags = contentfulMetadata.tags
-      .filter((tag): tag is PostFragment_contentfulMetadata_tags => tag !== null)
+      .filter(tag => tag !== null)
       .map(tag => ({
         ...tag,
-        name: tag.name === null ? null : tag.name.split(': ').slice(-1)[0],
+        name: !tag?.name ? null : tag.name.split(': ').slice(-1)[0],
       }));
 
     if (nonNullTags.length === 0) {
@@ -275,5 +273,3 @@ const CtfPost = (props: CtfPostPropsInterface) => {
     </LayoutContext.Provider>
   );
 };
-
-export default CtfPost;

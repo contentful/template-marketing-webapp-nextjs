@@ -1,19 +1,13 @@
 import { Container, Typography, makeStyles, Theme } from '@material-ui/core';
-import gql from 'graphql-tag';
 import { NextPage, GetServerSideProps } from 'next';
 import Head from 'next/head';
-import React from 'react';
-import { useQuery } from 'react-apollo';
-
-import { CtfBlogQuery } from './__generated__/CtfBlogQuery';
 
 import { CtfCategoriesMenu } from '@ctf-components/ctf-categories-menu/ctf-categories-menu';
-import { postFragmentBase } from '@ctf-components/ctf-post/ctf-post-query';
 import CardPostExtended from '@src/components/card-post-extended/card-post-extended';
 import EntryNotFound from '@src/components/errors/entry-not-found';
 import CategoryContainer from '@src/components/layout/category-container';
 import { useContentfulContext } from '@src/contentful-context';
-import { useDataForPreview } from '@src/lib/apollo-hooks';
+import { useCtfBlogQuery } from '@src/ctf-components/ctf-post/__generated/ctf-post.generated';
 import withProviders, { generateGetServerSideProps } from '@src/lib/with-providers';
 import contentfulConfig from 'contentful.config';
 
@@ -55,29 +49,16 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const query = gql`
-  query CtfBlogQuery($locale: String, $preview: Boolean) {
-    postCollection(locale: $locale, preview: $preview, limit: 10, order: publishedDate_DESC) {
-      items {
-        ...PostFragmentBase
-      }
-    }
-  }
-  ${postFragmentBase}
-`;
-
 const BlogPage: NextPage = () => {
   const { locale, previewActive } = useContentfulContext();
-
-  const queryResult = useQuery<CtfBlogQuery>(query, {
-    variables: { locale, preview: previewActive },
+  const { isLoading, data } = useCtfBlogQuery({
+    locale,
+    preview: previewActive,
   });
-
-  useDataForPreview(queryResult);
 
   const classes = useStyles();
 
-  if (queryResult.data === undefined || queryResult.loading === true) {
+  if (!data || isLoading) {
     return null;
   }
 
@@ -98,10 +79,7 @@ const BlogPage: NextPage = () => {
     );
   };
 
-  if (
-    queryResult.data.postCollection === null ||
-    queryResult.data.postCollection.items.length === 0
-  ) {
+  if (!data.postCollection?.items?.[0]) {
     return (
       <>
         {blogHead()}
@@ -132,7 +110,7 @@ const BlogPage: NextPage = () => {
             </div>
 
             <div className={classes.containerNarrow}>
-              {queryResult.data.postCollection.items
+              {data.postCollection.items
                 .filter(post => post !== null)
                 .map(post => (
                   <div className={classes.postWrap} key={post!.sys.id}>

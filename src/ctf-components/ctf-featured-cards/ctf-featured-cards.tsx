@@ -1,7 +1,6 @@
 import { makeStyles, Theme, Container } from '@material-ui/core';
-import React from 'react';
 
-import { FeaturedCardsFragment } from './__generated__/FeaturedCardsFragment';
+import { FeaturedCardsFieldsFragment } from './__generated/ctf-featured-cards.generated';
 
 import CardPost from '@src/components/card-post/card-post';
 import SectionHeadlines from '@src/components/section-headlines/section-headlines';
@@ -41,10 +40,10 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export interface CtfFeaturedCardsPropsType extends FeaturedCardsFragment {}
-
-const CtfFeaturedCards = (props: CtfFeaturedCardsPropsType) => {
-  const { headline, featuredPostsCollection } = props;
+export const CtfFeaturedCards = ({
+  headline,
+  featuredPostsCollection,
+}: FeaturedCardsFieldsFragment) => {
   const classes = useStyles();
 
   return (
@@ -57,18 +56,15 @@ const CtfFeaturedCards = (props: CtfFeaturedCardsPropsType) => {
           align="left"
         />
         <div className={classes.blocksGrid}>
-          {featuredPostsCollection &&
-            featuredPostsCollection.items
-              .filter(featuredPost => !!featuredPost)
-              .map(featuredPost => (
-                <div key={featuredPost!.sys.id} className={classes.block}>
-                  <CardPost {...featuredPost!} linkToPost />
-                </div>
-              ))}
+          {featuredPostsCollection?.items
+            .filter(featuredPost => !!featuredPost)
+            .map(featuredPost => (
+              <div key={featuredPost!.sys.id} className={classes.block}>
+                <CardPost {...featuredPost!} linkToPost />
+              </div>
+            ))}
         </div>
       </div>
     </Container>
   );
 };
-
-export default CtfFeaturedCards;

@@ -1,0 +1,16 @@
+fragment FeaturedCardsFields on ComponentFeaturedCards {
+  internalName
+  headline
+  subline
+  featuredPostsCollection(limit: 3) {
+    items {
+      ...PostFieldsBase
+    }
+  }
+}
+
+query CtfFeaturedCards($id: String!, $locale: String, $preview: Boolean) {
+  componentFeaturedCards(id: $id, preview: $preview, locale: $locale) {
+    ...FeaturedCardsFields
+  }
+}
