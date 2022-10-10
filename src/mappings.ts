@@ -37,7 +37,9 @@ export const componentMap = {
   ComponentQuote: dynamic(() =>
     import('./ctf-components/ctf-quote/ctf-quote').then(module => module.CtfQuote),
   ),
-  ComponentTextBlock: dynamic(() => import('./ctf-components/ctf-text-block/ctf-text-block')),
+  ComponentTextBlock: dynamic(() =>
+    import('./ctf-components/ctf-text-block/ctf-text-block').then(module => module.CtfTextBlock),
+  ),
   TopicPerson: dynamic(() => import('./ctf-components/ctf-person/ctf-person')),
 };
 
@@ -61,7 +63,11 @@ export const componentGqlMap = {
   ComponentQuote: dynamic(() =>
     import('./ctf-components/ctf-quote/ctf-quote-gql').then(module => module.CtfQuoteGql),
   ),
-  ComponentTextBlock: dynamic(() => import('./ctf-components/ctf-text-block/ctf-text-block-gql')),
+  ComponentTextBlock: dynamic(() =>
+    import('./ctf-components/ctf-text-block/ctf-text-block-gql').then(
+      module => module.CtfTextBlockGql,
+    ),
+  ),
   TopicPerson: dynamic(() =>
     import('./ctf-components/ctf-person/ctf-person-gql').then(module => module.CtfPersonGql),
   ),
