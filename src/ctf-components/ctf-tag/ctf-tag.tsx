@@ -4,7 +4,7 @@ import CardPostExtended from '@src/components/card-post-extended/card-post-exten
 import TagContainer from '@src/components/layout/category-container';
 import Link from '@src/components/link/link';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
-import { ContentfulTag, PostFieldsBaseFragment } from '@src/lib/__generated/graphql.types';
+import { ContentfulTag, PostBaseFieldsFragment } from '@src/lib/__generated/graphql.types';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 interface CtfTagPropsInterface {
   tag?: ContentfulTag;
-  posts?: (PostFieldsBaseFragment | null)[];
+  posts?: (PostBaseFieldsFragment | null)[];
 }
 
 export const CtfTag = (props: CtfTagPropsInterface) => {
@@ -75,7 +75,6 @@ export const CtfTag = (props: CtfTagPropsInterface) => {
               <div className={classes.containerNarrow}>
                 <div className={classes.titleContainer}>
                   <Link href="/blog" withoutMaterial className={classes.title}>
-                    FOO
                     <Typography variant="h1">
                       {!tag ? 'Blog' : `Tagged with: ${tag.name}`}
                     </Typography>

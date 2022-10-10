@@ -1,16 +1,15 @@
 import { Story, Meta } from '@storybook/react';
 import React from 'react';
 
-import CtfTextBlock, {
-  CtfTextBlockPropsInterface,
-} from '@ctf-components/ctf-text-block/ctf-text-block';
+import { TextBlockFieldsFragment } from '@ctf-components/ctf-text-block/__generated/ctf-text-block.generated';
+import { CtfTextBlock } from '@ctf-components/ctf-text-block/ctf-text-block';
 
 export default {
   title: 'Components/Text block',
   component: CtfTextBlock,
 } as Meta;
 
-const Template: Story<CtfTextBlockPropsInterface> = args => <CtfTextBlock {...args} />;
+const Template: Story<TextBlockFieldsFragment> = args => <CtfTextBlock {...args} />;
 
 export const Default = Template.bind({});
 

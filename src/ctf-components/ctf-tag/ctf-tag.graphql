@@ -6,7 +6,7 @@ query CtfTag($id: String!, $locale: String, $preview: Boolean) {
     limit: 10
   ) {
     items {
-      ...PostFieldsBase
+      ...PostBaseFields
     }
   }
 }

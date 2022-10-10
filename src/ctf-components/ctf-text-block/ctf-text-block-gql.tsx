@@ -1,11 +1,6 @@
-import React from 'react';
-import { useQuery } from 'react-apollo';
+import { CtfTextBlock } from './ctf-text-block';
 
-import { CtfTextBlockQuery } from './__generated__/CtfTextBlockQuery';
-import CtfTextBlock from './ctf-text-block';
-import { query } from './ctf-text-block-query';
-
-import { useDataForPreview } from '@src/lib/apollo-hooks';
+import { useCtfTextBlockQuery } from '@ctf-components/ctf-text-block/__generated/ctf-text-block.generated';
 
 interface CtfTextBlockGqlPropsInterface {
   id: string;
@@ -13,27 +8,16 @@ interface CtfTextBlockGqlPropsInterface {
   preview: boolean;
 }
 
-const CtfTextBlockGql = (props: CtfTextBlockGqlPropsInterface) => {
-  const { id, locale, preview } = props;
-  const queryResult = useQuery<CtfTextBlockQuery>(query, {
-    variables: {
-      id,
-      locale,
-      preview,
-    },
+export const CtfTextBlockGql = ({ id, locale, preview }: CtfTextBlockGqlPropsInterface) => {
+  const { isLoading, data } = useCtfTextBlockQuery({
+    id,
+    locale,
+    preview,
   });
 
-  useDataForPreview(queryResult);
-
-  if (
-    queryResult.data === undefined ||
-    queryResult.loading === true ||
-    queryResult.data.componentTextBlock === null
-  ) {
+  if (isLoading || !data?.componentTextBlock) {
     return null;
   }
 
-  return <CtfTextBlock {...queryResult.data.componentTextBlock} />;
+  return <CtfTextBlock {...data.componentTextBlock} />;
 };
-
-export default CtfTextBlockGql;

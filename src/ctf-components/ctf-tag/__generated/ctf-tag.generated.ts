@@ -1,9 +1,9 @@
 import * as Types from '../../../lib/__generated/graphql.types';
 
-import { PostFieldsBaseFragment, PostCategoryFieldsFragment } from '../../ctf-post/__generated/ctf-post.generated';
+import { PostBaseFieldsFragment, PostCategoryFieldsFragment } from '../../ctf-post/__generated/ctf-post.generated';
 import { AssetFieldsFragment } from '../../../lib/shared-fragments/__generated/ctf-asset.generated';
 import { PersonFieldsFragment } from '../../ctf-person/__generated/ctf-person.generated';
-import { PostFieldsBaseFragmentDoc, PostCategoryFieldsFragmentDoc } from '../../ctf-post/__generated/ctf-post.generated';
+import { PostBaseFieldsFragmentDoc, PostCategoryFieldsFragmentDoc } from '../../ctf-post/__generated/ctf-post.generated';
 import { AssetFieldsFragmentDoc } from '../../../lib/shared-fragments/__generated/ctf-asset.generated';
 import { PersonFieldsFragmentDoc } from '../../ctf-person/__generated/ctf-person.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
@@ -36,7 +36,7 @@ export type CtfTagQueryVariables = Types.Exact<{
 
 export type CtfTagQuery = { __typename?: 'Query', postCollection?: { __typename?: 'PostCollection', items: Array<(
       { __typename?: 'Post' }
-      & PostFieldsBaseFragment
+      & PostBaseFieldsFragment
     ) | null> } | null };
 
 
@@ -49,11 +49,11 @@ export const CtfTagDocument = `
     limit: 10
   ) {
     items {
-      ...PostFieldsBase
+      ...PostBaseFields
     }
   }
 }
-    ${PostFieldsBaseFragmentDoc}
+    ${PostBaseFieldsFragmentDoc}
 ${AssetFieldsFragmentDoc}
 ${PostCategoryFieldsFragmentDoc}
 ${PersonFieldsFragmentDoc}`;

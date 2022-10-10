@@ -6,7 +6,7 @@ fragment PostCategoryFields on Category {
   slug
 }
 
-fragment PostFieldsBase on Post {
+fragment PostBaseFields on Post {
   __typename
   sys {
     id
@@ -36,7 +36,7 @@ fragment PostFieldsBase on Post {
 }
 
 fragment PostFields on Post {
-  ...PostFieldsBase
+  ...PostBaseFields
   seo {
     title
     description
@@ -94,7 +94,7 @@ query CtfPost($slug: String!, $locale: String, $preview: Boolean) {
 query CtfBlog($locale: String, $preview: Boolean) {
   postCollection(locale: $locale, preview: $preview, limit: 10, order: publishedDate_DESC) {
     items {
-      ...PostFieldsBase
+      ...PostBaseFields
     }
   }
 }

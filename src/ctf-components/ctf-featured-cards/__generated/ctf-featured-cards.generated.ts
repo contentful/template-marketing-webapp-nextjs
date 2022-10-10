@@ -1,9 +1,9 @@
 import * as Types from '../../../lib/__generated/graphql.types';
 
-import { PostFieldsBaseFragment, PostCategoryFieldsFragment } from '../../ctf-post/__generated/ctf-post.generated';
+import { PostBaseFieldsFragment, PostCategoryFieldsFragment } from '../../ctf-post/__generated/ctf-post.generated';
 import { AssetFieldsFragment } from '../../../lib/shared-fragments/__generated/ctf-asset.generated';
 import { PersonFieldsFragment } from '../../ctf-person/__generated/ctf-person.generated';
-import { PostFieldsBaseFragmentDoc, PostCategoryFieldsFragmentDoc } from '../../ctf-post/__generated/ctf-post.generated';
+import { PostBaseFieldsFragmentDoc, PostCategoryFieldsFragmentDoc } from '../../ctf-post/__generated/ctf-post.generated';
 import { AssetFieldsFragmentDoc } from '../../../lib/shared-fragments/__generated/ctf-asset.generated';
 import { PersonFieldsFragmentDoc } from '../../ctf-person/__generated/ctf-person.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
@@ -29,7 +29,7 @@ function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
 }
 export type FeaturedCardsFieldsFragment = { __typename?: 'ComponentFeaturedCards', internalName?: string | null, headline?: string | null, subline?: string | null, featuredPostsCollection?: { __typename?: 'ComponentFeaturedCardsFeaturedPostsCollection', items: Array<(
       { __typename?: 'Post' }
-      & PostFieldsBaseFragment
+      & PostBaseFieldsFragment
     ) | null> } | null };
 
 export type CtfFeaturedCardsQueryVariables = Types.Exact<{
@@ -51,7 +51,7 @@ export const FeaturedCardsFieldsFragmentDoc = `
   subline
   featuredPostsCollection(limit: 3) {
     items {
-      ...PostFieldsBase
+      ...PostBaseFields
     }
   }
 }
@@ -63,7 +63,7 @@ export const CtfFeaturedCardsDocument = `
   }
 }
     ${FeaturedCardsFieldsFragmentDoc}
-${PostFieldsBaseFragmentDoc}
+${PostBaseFieldsFragmentDoc}
 ${AssetFieldsFragmentDoc}
 ${PostCategoryFieldsFragmentDoc}
 ${PersonFieldsFragmentDoc}`;
