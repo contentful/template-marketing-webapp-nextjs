@@ -1,11 +1,5 @@
-import React from 'react';
-import { useQuery } from 'react-apollo';
-
-import { CtfFeaturedCardsQuery } from './__generated__/CtfFeaturedCardsQuery';
-import CtfFeaturedCards from './ctf-featured-cards';
-import { query } from './ctf-featured-cards-query';
-
-import { useDataForPreview } from '@src/lib/apollo-hooks';
+import { useCtfFeaturedCardsQuery } from './__generated/ctf-featured-cards.generated';
+import { CtfFeaturedCards } from './ctf-featured-cards';
 
 interface CtfFeaturedCardsGqlPropsInterface {
   id: string;
@@ -13,26 +7,16 @@ interface CtfFeaturedCardsGqlPropsInterface {
   preview: boolean;
 }
 
-const CtfFeaturedCardsGql = ({ id, locale, preview }: CtfFeaturedCardsGqlPropsInterface) => {
-  const queryResult = useQuery<CtfFeaturedCardsQuery>(query, {
-    variables: {
-      id,
-      locale,
-      preview,
-    },
+export const CtfFeaturedCardsGql = ({ id, locale, preview }: CtfFeaturedCardsGqlPropsInterface) => {
+  const { isLoading, data } = useCtfFeaturedCardsQuery({
+    id,
+    locale,
+    preview,
   });
 
-  useDataForPreview(queryResult);
-
-  if (
-    queryResult.data === undefined ||
-    queryResult.loading === true ||
-    queryResult.data.componentFeaturedCards === null
-  ) {
+  if (!data || isLoading || !data.componentFeaturedCards) {
     return null;
   }
 
-  return <CtfFeaturedCards {...queryResult.data.componentFeaturedCards} />;
+  return <CtfFeaturedCards {...data.componentFeaturedCards} />;
 };
-
-export default CtfFeaturedCardsGql;

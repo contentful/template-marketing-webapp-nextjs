@@ -34,3 +34,67 @@ fragment PostFieldsBase on Post {
     }
   }
 }
+
+fragment PostFields on Post {
+  ...PostFieldsBase
+  seo {
+    title
+    description
+    image {
+      ...AssetFields
+    }
+    noIndex
+    noFollow
+  }
+  introText {
+    json
+    links {
+      entries {
+        block {
+          ...ComponentReferenceFields
+        }
+      }
+      assets {
+        block {
+          ...AssetFields
+        }
+      }
+    }
+  }
+  body {
+    json
+    links {
+      entries {
+        block {
+          ...ComponentReferenceFields
+        }
+      }
+      assets {
+        block {
+          ...AssetFields
+        }
+      }
+    }
+  }
+  extraSectionCollection(limit: 20) {
+    items {
+      ...ComponentReferenceFields
+    }
+  }
+}
+
+query CtfPost($slug: String!, $locale: String, $preview: Boolean) {
+  postCollection(where: { slug: $slug }, locale: $locale, preview: $preview, limit: 1) {
+    items {
+      ...PostFields
+    }
+  }
+}
+
+query CtfBlog($locale: String, $preview: Boolean) {
+  postCollection(locale: $locale, preview: $preview, limit: 10, order: publishedDate_DESC) {
+    items {
+      ...PostFieldsBase
+    }
+  }
+}

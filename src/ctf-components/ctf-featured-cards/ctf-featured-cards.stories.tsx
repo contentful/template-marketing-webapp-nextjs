@@ -1,16 +1,15 @@
-import { Story, Meta } from '@storybook/react';
-import React from 'react';
+import { Meta, Story } from '@storybook/react';
 
-import CtfFeaturedCards, {
-  CtfFeaturedCardsPropsType,
-} from '@ctf-components/ctf-featured-cards/ctf-featured-cards';
+import { FeaturedCardsFieldsFragment } from './__generated/ctf-featured-cards.generated';
+
+import { CtfFeaturedCards } from '@ctf-components/ctf-featured-cards/ctf-featured-cards';
 
 export default {
   title: 'Components/Featured cards',
   component: CtfFeaturedCards,
 } as Meta;
 
-const Template: Story<CtfFeaturedCardsPropsType> = args => <CtfFeaturedCards {...args} />;
+const Template: Story<FeaturedCardsFieldsFragment> = args => <CtfFeaturedCards {...args} />;
 
 export const Default = Template.bind({});
 
