@@ -1,0 +1,30 @@
+fragment TextBlockFields on ComponentTextBlock {
+  __typename
+  sys {
+    id
+  }
+  headline
+  subline
+  body {
+    json
+    links {
+      entries {
+        block {
+          ...ComponentReferenceFields
+        }
+      }
+      assets {
+        block {
+          ...AssetFields
+        }
+      }
+    }
+  }
+  colorPalette
+}
+
+query CtfTextBlock($id: String!, $locale: String, $preview: Boolean) {
+  componentTextBlock(id: $id, locale: $locale, preview: $preview) {
+    ...TextBlockFields
+  }
+}

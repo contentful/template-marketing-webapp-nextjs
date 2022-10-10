@@ -1,12 +1,11 @@
 import { makeStyles, Theme, Container } from '@material-ui/core';
 import React from 'react';
 
-import { TextBlockFragment } from './__generated__/TextBlockFragment';
+import { TextBlockFieldsFragment } from './__generated/ctf-text-block.generated';
 
 import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
 import SectionHeadlines from '@src/components/section-headlines/section-headlines';
 import { getColorConfigFromPalette } from '@src/theme';
-
 
 const useStyles = makeStyles((theme: Theme) => ({
   innerContainer: {
@@ -20,9 +19,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export interface CtfTextBlockPropsInterface extends TextBlockFragment {}
+export interface CtfTextBlockPropsInterface extends TextBlockFieldsFragment {}
 
-const CtfTextBlock = (props: CtfTextBlockPropsInterface) => {
+export const CtfTextBlock = (props: CtfTextBlockPropsInterface) => {
   const { headline, subline, body, colorPalette } = props;
   const colorConfig = getColorConfigFromPalette(colorPalette || '');
   const classes = useStyles();
@@ -59,5 +58,3 @@ const CtfTextBlock = (props: CtfTextBlockPropsInterface) => {
     </Container>
   );
 };
-
-export default CtfTextBlock;
