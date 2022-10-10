@@ -45,6 +45,10 @@ export const CtfFeaturedCards = ({
   featuredPostsCollection,
 }: FeaturedCardsFieldsFragment) => {
   const classes = useStyles();
+  if (!featuredPostsCollection) return;
+  const filteredFeaturedPostsCollection = featuredPostsCollection.items.flatMap(featurePost =>
+    featurePost ? [featurePost] : [],
+  );
 
   return (
     <Container maxWidth={false} className={classes.section}>
@@ -55,15 +59,15 @@ export const CtfFeaturedCards = ({
           className={classes.sectionHeadlines}
           align="left"
         />
-        <div className={classes.blocksGrid}>
-          {featuredPostsCollection?.items
-            .filter(featuredPost => !!featuredPost)
-            .map(featuredPost => (
-              <div key={featuredPost!.sys.id} className={classes.block}>
-                <CardPost {...featuredPost!} linkToPost />
+        {filteredFeaturedPostsCollection.length > 0 && (
+          <div className={classes.blocksGrid}>
+            {filteredFeaturedPostsCollection.map(featuredPost => (
+              <div key={featuredPost.sys.id} className={classes.block}>
+                <CardPost {...featuredPost} linkToPost />
               </div>
             ))}
-        </div>
+          </div>
+        )}
       </div>
     </Container>
   );
