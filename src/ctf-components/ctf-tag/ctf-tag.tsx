@@ -4,7 +4,7 @@ import CardPostExtended from '@src/components/card-post-extended/card-post-exten
 import TagContainer from '@src/components/layout/category-container';
 import Link from '@src/components/link/link';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
-import { PostFieldsBaseFragment } from '@src/lib/__generated/graphql.types';
+import { ContentfulTag, PostFieldsBaseFragment } from '@src/lib/__generated/graphql.types';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -56,20 +56,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-interface ContentfulMetadataTags {
-  __typename?: 'ContentfulTag';
-  id?: string | null;
-  name?: string | null;
-}
-
 interface CtfTagPropsInterface {
-  tag: ContentfulMetadataTags | null;
-  posts: (PostFieldsBaseFragment | null)[];
+  tag?: ContentfulTag;
+  posts?: (PostFieldsBaseFragment | null)[];
 }
 
 export const CtfTag = (props: CtfTagPropsInterface) => {
   const { posts, tag } = props;
-  const filteredPosts = posts.flatMap(post => (post ? [post] : []));
+  const filteredPosts = posts?.flatMap(post => (post ? [post] : []));
   const classes = useStyles();
 
   return (
@@ -90,7 +84,7 @@ export const CtfTag = (props: CtfTagPropsInterface) => {
               </div>
             </div>
 
-            {filteredPosts.length > 0 && (
+            {filteredPosts && filteredPosts.length > 0 && (
               <div className={classes.containerNarrow}>
                 {filteredPosts.map(post => (
                   <div key={post.sys.id} className={classes.postWrap}>

@@ -21,21 +21,20 @@ export const CtfTagGql = (props: Props) => {
 
   const tag = useMemo(() => {
     if (!data) {
-      return null;
+      return;
     }
 
-    const tagFromPost =
-      data.postCollection?.items[0]?.contentfulMetadata.tags.find(
-        metaTag => metaTag?.id === props.id,
-      ) ?? null;
+    const tagFromPost = data.postCollection?.items[0]?.contentfulMetadata.tags.find(
+      metaTag => metaTag?.id === props.id,
+    );
 
     if (!tagFromPost) {
-      return null;
+      return;
     }
 
     return {
       ...tagFromPost,
-      name: !tagFromPost.name ? null : tagFromPost.name.split(': ').slice(-1)[0],
+      name: tagFromPost.name && tagFromPost.name.split(': ').slice(-1)[0],
     };
   }, [props.id, data]);
 
@@ -65,7 +64,7 @@ export const CtfTagGql = (props: Props) => {
         )}
         <meta key="og:locale" property="og:locale" content={locale} />
       </Head>
-      <CtfTag posts={data.postCollection?.items || []} tag={tag} />
+      <CtfTag posts={data?.postCollection?.items} tag={tag} />
     </>
   );
 };
