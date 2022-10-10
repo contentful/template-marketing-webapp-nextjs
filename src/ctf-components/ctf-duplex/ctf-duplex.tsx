@@ -75,6 +75,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     objectFit: 'cover',
     objectPosition: 'center center',
   },
+  nextImageContainer: {
+    width: '100%',
+    height: 'auto',
+  },
 }));
 
 const DuplexContent = (props: DuplexFieldsFragment) => {
@@ -139,13 +143,14 @@ const DuplexImage = (props: DuplexFieldsFragment) => {
   return (
     <div className={classes.imageContainer}>
       {image ? (
-        <div style={{ width: '605px', height: '483px', position: 'relative' }}>
+        <div className={classes.nextImageContainer}>
           <ContentfulImage
             className={clsx([classes.image, imageStyle === 'fixed' && classes.imageFull])}
             src={`${image.url}?w=600`}
             alt={image.description || undefined}
-            layout="fill"
-            objectFit="contain"
+            layout="responsive"
+            width={image.width!}
+            height={image.height!}
           />
         </div>
       ) : null}
