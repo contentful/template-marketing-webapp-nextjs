@@ -1,6 +1,7 @@
 import { createClient } from 'contentful-management';
 import { OrganizationInvitationProps } from 'contentful-management/dist/typings/entities/organization-invitation';
 
+import { runStep } from '../util/run-step';
 import { ProvisionStep } from './types';
 
 import catchify from 'catchify';
@@ -41,16 +42,20 @@ interface InviteToSpaceProps {
   email?: string;
 }
 
-export const inviteToSpace: ProvisionStep<
-  InviteToSpaceProps,
-  OrganizationInvitationProps | null
-> = async ({ organizationId, cmaToken, spaceId, email, role }) => {
-  if (email === undefined) {
+interface InviteToSpacePayload {
+  userInvite: OrganizationInvitationProps | null;
+}
+
+export const inviteToSpace: ProvisionStep<InviteToSpaceProps, InviteToSpacePayload> = async ({
+  organizationId,
+  cmaToken,
+  spaceId,
+  email,
+  role,
+}) => {
+  if (!email) {
     if (role !== 'Administrator') {
-      return {
-        state: 'error',
-        error: 'You need to provide email when passing a non-default role',
-      };
+      throw new Error('You need to provide email when passing a non-default role');
     }
   }
 
@@ -62,10 +67,8 @@ export const inviteToSpace: ProvisionStep<
 
   if (currentUserError !== null) {
     console.error(currentUserError);
-    return {
-      state: 'error',
-      error: 'Failed to invite to space - getCurrentUser error',
-    };
+
+    throw new Error('Failed to invite to space - getCurrentUser error');
   }
 
   let userInvite = null;
@@ -90,10 +93,8 @@ export const inviteToSpace: ProvisionStep<
       isUserAlreadyInOrgError(inviteUserToOrgError) === false
     ) {
       console.error(inviteUserToOrgError);
-      return {
-        state: 'error',
-        error: 'Failed to invite to space - invitations error',
-      };
+
+      throw new Error('Failed to invite to space - invitations error');
     }
 
     const [inviteUserToSpaceError, inviteUserToSpace] = await catchify(
@@ -112,10 +113,8 @@ export const inviteToSpace: ProvisionStep<
       isUserAlreadyInSpaceError(inviteUserToSpaceError) === false
     ) {
       console.error(inviteUserToSpaceError);
-      return {
-        state: 'error',
-        error: 'Failed to invite to space - space_memberships error',
-      };
+
+      throw new Error('Failed to invite to space - space_memberships error');
     }
   } else {
     // If role is not equal to administrator, we want to invite them as that
@@ -129,19 +128,14 @@ export const inviteToSpace: ProvisionStep<
 
     if (rolesError !== null) {
       console.error(rolesError);
-      return {
-        state: 'error',
-        error: 'Failed to invite to space - getRoles error',
-      };
+
+      throw new Error('Failed to invite to space - getRoles error');
     }
 
     const spaceRole = roles.items.find(x => x.name === role);
 
     if (spaceRole === undefined) {
-      return {
-        state: 'error',
-        error: `Failed to invite to space - could not find the role ${role}`,
-      };
+      throw new Error(`Failed to invite to space - could not find the role ${role}`);
     }
 
     // Role found, all good. First invite them to space as that role, then as
@@ -164,10 +158,8 @@ export const inviteToSpace: ProvisionStep<
       isUserAlreadyInOrgError(inviteUserToOrgError) === false
     ) {
       console.error(inviteUserToOrgError);
-      return {
-        state: 'error',
-        error: 'Failed to invite to space - invitations error',
-      };
+
+      throw new Error('Failed to invite to space - invitations error');
     }
 
     if (currentUser.email === email) {
@@ -179,10 +171,8 @@ export const inviteToSpace: ProvisionStep<
 
       if (spaceMembershipsError !== null) {
         console.error(spaceMembershipsError);
-        return {
-          state: 'error',
-          error: 'Failed to invite to space - getSpaceMemberships error',
-        };
+
+        throw new Error('Failed to invite to space - getSpaceMemberships error');
       }
 
       const [updateUserRoleError] = await catchify(
@@ -206,10 +196,8 @@ export const inviteToSpace: ProvisionStep<
 
       if (updateUserRoleError !== null) {
         console.error(updateUserRoleError);
-        return {
-          state: 'error',
-          error: 'Failed to invite to space - space_memberships PUT error',
-        };
+
+        throw new Error('Failed to invite to space - space_memberships PUT error');
       }
     } else {
       const [inviteUserToSpaceError, inviteUserToSpace] = await catchify(
@@ -237,10 +225,8 @@ export const inviteToSpace: ProvisionStep<
         isUserAlreadyInSpaceError(inviteUserToSpaceError) === false
       ) {
         console.error(inviteUserToSpaceError);
-        return {
-          state: 'error',
-          error: 'Failed to invite to space - space_memberships error',
-        };
+
+        throw new Error('Failed to invite to space - space_memberships error');
       }
     }
 
@@ -261,10 +247,8 @@ export const inviteToSpace: ProvisionStep<
       isUserAlreadyInOrgError(inviteAliasUserToOrgError) === false
     ) {
       console.error(inviteAliasUserToOrgError);
-      return {
-        state: 'error',
-        error: 'Failed to invite alias to space - invitations error',
-      };
+
+      throw new Error('Failed to invite alias to space - invitations error');
     }
 
     const [inviteAliasUserToSpaceError, inviteAliasUserToSpace] = await catchify(
@@ -283,15 +267,25 @@ export const inviteToSpace: ProvisionStep<
       isUserAlreadyInSpaceError(inviteAliasUserToSpaceError) === false
     ) {
       console.error(inviteAliasUserToSpaceError);
-      return {
-        state: 'error',
-        error: 'Failed to invite alias to space - space_memberships error',
-      };
+
+      throw new Error('Failed to invite alias to space - space_memberships error');
     }
   }
 
   return {
-    state: 'success',
-    payload: userInvite,
+    userInvite,
   };
 };
+
+export const stepInviteToSpace = (props: InviteToSpaceProps) =>
+  runStep<InviteToSpacePayload>(
+    () => inviteToSpace(props),
+    {
+      label: 'Invite to space',
+      abortOnError: true,
+    },
+    {
+      spaceId: props.spaceId,
+      cmaToken: props.cmaToken,
+    },
+  );

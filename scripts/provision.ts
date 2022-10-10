@@ -1,7 +1,7 @@
 import * as dotenv from 'dotenv';
 import yargs from 'yargs';
 
-import { init } from './deploy/init';
+import { init } from './provisioning-scripts/init';
 
 dotenv.config();
 
@@ -48,15 +48,7 @@ init({
   spaceId: argv.spaceId,
   role: argv.role,
   vercelDeployToken: argv.vercelDeployToken,
-})
-  .then(result => {
-    if (result.state !== 'error') {
-      return;
-    }
-
-    console.info('Deployment failed with the following error:', result.error);
-  })
-  .catch(e => {
-    console.info('Deployment failed with the following error:');
-    console.error(e);
-  });
+}).catch((e: Error) => {
+  console.info('Deployment failed with the following error:');
+  console.error(e);
+});

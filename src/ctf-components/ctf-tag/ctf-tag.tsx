@@ -1,14 +1,10 @@
 import { Theme, makeStyles, Typography, Container } from '@material-ui/core';
 
-import {
-  CtfTagQuery_postCollection_items,
-  CtfTagQuery_postCollection_items_contentfulMetadata_tags,
-} from './__generated__/CtfTagQuery';
-
 import CardPostExtended from '@src/components/card-post-extended/card-post-extended';
 import TagContainer from '@src/components/layout/category-container';
 import Link from '@src/components/link/link';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
+import { ContentfulTag, PostFieldsBaseFragment } from '@src/lib/__generated/graphql.types';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -61,13 +57,13 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 interface CtfTagPropsInterface {
-  tag: CtfTagQuery_postCollection_items_contentfulMetadata_tags | null;
-  posts: (CtfTagQuery_postCollection_items | null)[];
+  tag?: ContentfulTag;
+  posts?: (PostFieldsBaseFragment | null)[];
 }
 
-const CtfTag = (props: CtfTagPropsInterface) => {
+export const CtfTag = (props: CtfTagPropsInterface) => {
   const { posts, tag } = props;
-
+  const filteredPosts = posts?.flatMap(post => (post ? [post] : []));
   const classes = useStyles();
 
   return (
@@ -81,22 +77,20 @@ const CtfTag = (props: CtfTagPropsInterface) => {
                   <Link href="/blog" withoutMaterial className={classes.title}>
                     FOO
                     <Typography variant="h1">
-                      {tag === null ? 'Blog' : `Tagged with: ${tag.name}`}
+                      {!tag ? 'Blog' : `Tagged with: ${tag.name}`}
                     </Typography>
                   </Link>
                 </div>
               </div>
             </div>
 
-            {posts && posts.length > 0 && (
+            {filteredPosts && filteredPosts.length > 0 && (
               <div className={classes.containerNarrow}>
-                {(posts as CtfTagQuery_postCollection_items[])
-                  .filter(post => post !== null)
-                  .map(post => (
-                    <div key={post.sys.id} className={classes.postWrap}>
-                      <CardPostExtended {...post} />
-                    </div>
-                  ))}
+                {filteredPosts.map(post => (
+                  <div key={post.sys.id} className={classes.postWrap}>
+                    <CardPostExtended {...post} />
+                  </div>
+                ))}
               </div>
             )}
           </div>
@@ -105,5 +99,3 @@ const CtfTag = (props: CtfTagPropsInterface) => {
     </LayoutContext.Provider>
   );
 };
-
-export default CtfTag;
