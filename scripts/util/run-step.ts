@@ -22,6 +22,13 @@ export const cleanupSpace = async ({ spaceId, cmaToken }: CleanupSpaceProps) => 
   await catchify(space.delete());
 };
 
+/**
+ * This script wraps our provision-scripts files and adds error handling, logging and time reporting to each step.
+ * The three parameters that are passed are described by their TypeScript types. But to reiterate:
+ * @param step: one of the scripts in provisioning-scripts, where the prop types for the step are passed as a generic.
+ * @param config: config object for the runStep itself; lets user decide to abort the process on error. This also deleted the space. An optional label can be passed that's show in the logging.
+ * @param space: spaceId and CMAToken, used to delete the space if config.abortOnError is passed as true.
+ */
 export const runStep = async <T>(
   step: RunStepFunctionType<T>,
   config: RunStepConfigObject = {

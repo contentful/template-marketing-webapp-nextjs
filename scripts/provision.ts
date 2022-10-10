@@ -48,7 +48,7 @@ init({
   spaceId: argv.spaceId,
   role: argv.role,
   vercelDeployToken: argv.vercelDeployToken,
-}).catch(e => {
+}).catch((e: Error) => {
   console.info('Deployment failed with the following error:');
   console.error(e);
 });
