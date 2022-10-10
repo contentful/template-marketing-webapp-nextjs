@@ -19,9 +19,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export interface CtfTextBlockPropsInterface extends TextBlockFieldsFragment {}
-
-export const CtfTextBlock = (props: CtfTextBlockPropsInterface) => {
+export const CtfTextBlock = (props: TextBlockFieldsFragment) => {
   const { headline, subline, body, colorPalette } = props;
   const colorConfig = getColorConfigFromPalette(colorPalette || '');
   const classes = useStyles();
