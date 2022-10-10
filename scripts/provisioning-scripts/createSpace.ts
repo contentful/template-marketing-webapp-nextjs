@@ -34,10 +34,8 @@ export const createSpace: ProvisionStep<CreateSpaceProps, CreateSpacePayload> = 
 
   if (currentUserError !== null) {
     console.error(currentUserError);
-    return {
-      state: 'error',
-      error: 'Failed to create space - getCurrentUser error',
-    };
+
+    throw new Error('Failed to create space - getCurrentUser error');
   }
 
   if (inputSpaceId !== undefined) {
@@ -47,36 +45,27 @@ export const createSpace: ProvisionStep<CreateSpaceProps, CreateSpacePayload> = 
     if (spaceError !== null) {
       console.error(spaceError);
       if (spaceError.name === 'NotFound') {
-        return {
-          state: 'error',
-          error: `The space with the ID that you have provided could not be found. Make sure that the space exists, and that you have the admin rights for that space`,
-        };
+        throw new Error(
+          'The space with the ID that you have provided could not be found. Make sure that the space exists, and that you have the admin rights for that space',
+        );
       }
 
-      return {
-        state: 'error',
-        error: 'Failed to reuse space - getSpace error',
-      };
+      throw new Error('Failed to reuse space - getSpace error');
     }
 
     const [apiKeysError, apiKeys] = await catchify(space.getApiKeys());
 
     if (apiKeysError !== null) {
       console.error(apiKeysError);
-      return {
-        state: 'error',
-        error: 'Failed to reuse space - getApiKeys error',
-      };
+
+      throw new Error('Failed to reuse space - getApiKeys error');
     }
 
     const deliveryApiKey =
       apiKeys.items.find(apiKey => apiKey.name === 'Colorful provisioning') || apiKeys?.items[0]; // TODO: review if we want to grab a fallback key, or rely on a named key at all
 
     if (deliveryApiKey === undefined) {
-      return {
-        state: 'error',
-        error: 'Failed to reuse space - delivery api key not found',
-      };
+      throw new Error('Failed to reuse space - delivery api key not found');
     }
 
     const [previewApiKeyByIdError, previewApiKeyById] = await catchify(
@@ -88,22 +77,17 @@ export const createSpace: ProvisionStep<CreateSpaceProps, CreateSpacePayload> = 
 
     if (previewApiKeyByIdError !== null) {
       console.error(previewApiKeyByIdError);
-      return {
-        state: 'error',
-        error: 'Failed to reuse space - preview api key error',
-      };
+
+      throw new Error('Failed to reuse space - preview api key error');
     }
 
     const previewApiKey = previewApiKeyById.accessToken;
 
     return {
-      state: 'success',
-      payload: {
-        spaceId: inputSpaceId,
-        spaceName: space.name,
-        deliveryApiKey: deliveryApiKey.accessToken,
-        previewApiKey,
-      },
+      spaceId: inputSpaceId,
+      spaceName: space.name,
+      deliveryApiKey: deliveryApiKey.accessToken,
+      previewApiKey,
     };
   }
 
@@ -123,16 +107,12 @@ export const createSpace: ProvisionStep<CreateSpaceProps, CreateSpacePayload> = 
     console.error(createdSpaceError);
 
     if (createdSpaceError.name === 'NotFound') {
-      return {
-        state: 'error',
-        error: `The token you have provided could not be used to create a space. Make sure the user to which the token belongs has the rights to create new spaces in the organization ${organizationId}, and that the organization has free space entitlements`,
-      };
+      throw new Error(
+        `The token you have provided could not be used to create a space. Make sure the user to which the token belongs has the rights to create new spaces in the organization ${organizationId}, and that the organization has free space entitlements`,
+      );
     }
 
-    return {
-      state: 'error',
-      error: 'Failed to create space - createSpace error',
-    };
+    throw new Error('Failed to create space - createSpace error');
   }
 
   const spaceId = createdSpace.sys.id;
@@ -154,10 +134,8 @@ export const createSpace: ProvisionStep<CreateSpaceProps, CreateSpacePayload> = 
 
   if (createdApiKeyError !== null) {
     console.error(createdApiKeyError);
-    return {
-      state: 'error',
-      error: 'Failed to create space - createApiKey error',
-    };
+
+    throw new Error('Failed to create space - createApiKey error');
   }
 
   const deliveryApiKey = createdApiKey.accessToken;
@@ -171,10 +149,8 @@ export const createSpace: ProvisionStep<CreateSpaceProps, CreateSpacePayload> = 
 
   if (previewApiKeyByIdError !== null) {
     console.error(previewApiKeyByIdError);
-    return {
-      state: 'error',
-      error: 'Failed to create space - preview api key error',
-    };
+
+    throw new Error('Failed to create space - preview api key error');
   }
 
   const previewApiKey = previewApiKeyById.accessToken;
@@ -195,10 +171,8 @@ export const createSpace: ProvisionStep<CreateSpaceProps, CreateSpacePayload> = 
 
   if (createLocaleError !== null || !createLocale) {
     console.error(createLocaleError);
-    return {
-      state: 'error',
-      error: 'Failed to create space - createLocale error',
-    };
+
+    throw new Error('Failed to create space - createLocale error');
   }
 
   // Create an environment alias
@@ -211,12 +185,9 @@ export const createSpace: ProvisionStep<CreateSpaceProps, CreateSpacePayload> = 
   });
 
   return {
-    state: 'success',
-    payload: {
-      spaceId,
-      spaceName: newSpaceName,
-      deliveryApiKey,
-      previewApiKey,
-    },
+    spaceId,
+    spaceName: newSpaceName,
+    deliveryApiKey,
+    previewApiKey,
   };
 };
