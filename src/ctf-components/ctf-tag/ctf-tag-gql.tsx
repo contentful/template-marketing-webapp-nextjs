@@ -1,13 +1,10 @@
 import Head from 'next/head';
-import React, { useMemo } from 'react';
-import { useQuery } from 'react-apollo';
+import { useMemo } from 'react';
 
-import { CtfTagQuery } from './__generated__/CtfTagQuery';
-import CtfTag from './ctf-tag';
-import { query } from './ctf-tag-query';
+import { useCtfTagQuery } from './__generated/ctf-tag.generated';
+import { CtfTag } from './ctf-tag';
 
 import { useContentfulContext } from '@src/contentful-context';
-import { useDataForPreview } from '@src/lib/apollo-hooks';
 import contentfulConfig from 'contentful.config';
 
 interface Props {
@@ -15,34 +12,34 @@ interface Props {
   preview?: boolean;
 }
 
-const CtfTagGql = (props: Props) => {
+export const CtfTagGql = (props: Props) => {
   const { locale } = useContentfulContext();
-  const queryResult = useQuery<CtfTagQuery>(query, {
-    variables: { ...props },
+  const { isLoading, data } = useCtfTagQuery({
+    ...props,
+    locale,
   });
-  useDataForPreview(queryResult);
 
   const tag = useMemo(() => {
-    if (queryResult.data === undefined) {
+    if (!data) {
       return null;
     }
 
     const tagFromPost =
-      queryResult.data.postCollection?.items[0]?.contentfulMetadata.tags.find(
+      data.postCollection?.items[0]?.contentfulMetadata.tags.find(
         metaTag => metaTag?.id === props.id,
       ) ?? null;
 
-    if (tagFromPost === null) {
+    if (!tagFromPost) {
       return null;
     }
 
     return {
       ...tagFromPost,
-      name: tagFromPost.name === null ? null : tagFromPost.name.split(': ').slice(-1)[0],
+      name: !tagFromPost.name ? null : tagFromPost.name.split(': ').slice(-1)[0],
     };
-  }, [props.id, queryResult.data]);
+  }, [props.id, data]);
 
-  if (queryResult.data === undefined || queryResult.loading === true) {
+  if (!data || isLoading) {
     return null;
   }
 
@@ -68,9 +65,7 @@ const CtfTagGql = (props: Props) => {
         )}
         <meta key="og:locale" property="og:locale" content={locale} />
       </Head>
-      <CtfTag posts={queryResult.data.postCollection?.items || []} tag={tag} />
+      <CtfTag posts={data.postCollection?.items || []} tag={tag} />
     </>
   );
 };
-
-export default CtfTagGql;
