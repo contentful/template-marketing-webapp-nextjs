@@ -12,6 +12,7 @@ import { Menu } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/styles';
 import { useTranslation } from 'next-i18next';
 
+import { ContentfulImage } from '@src/components/contentful-image/contentful-image';
 import Link from '@src/components/link/link';
 import { HEADER_HEIGHT, HEADER_HEIGHT_MD, CONTAINER_WIDTH } from '@src/theme';
 import contentfulConfig from 'contentful.config';
@@ -169,15 +170,13 @@ const Header = (props: HeaderPropsInterface) => {
           }}
         >
           <Link href="/" withoutMaterial>
-            <img
+            <ContentfulImage
               src={contentfulConfig.header.logo}
-              className={classes.logo}
               alt="Logo"
-              width={contentfulConfig.header.logoWidth}
-              height={contentfulConfig.header.logoHeight}
+              width={`${contentfulConfig.header.logoWidth}px`}
+              height={`${contentfulConfig.header.logoHeight}px`}
             />
           </Link>
-
           {contentfulConfig.header.menu.length > 0 && (
             <Hidden smDown>
               <div className={classes.menuWrapper}>
@@ -207,7 +206,7 @@ const Header = (props: HeaderPropsInterface) => {
                     </li>
                     <li className={classes.accountMenuItem}>
                       <Link
-                        href="https://dalia.colorfuldemo.com"
+                        href="/sign-in"
                         isButton
                         variant="text"
                         color="primary"

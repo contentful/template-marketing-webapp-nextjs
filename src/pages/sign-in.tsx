@@ -3,6 +3,7 @@ import { GetServerSideProps, NextPage } from 'next';
 import { useTranslation } from 'next-i18next';
 import Head from 'next/head';
 
+import { ContentfulImage } from '@src/components/contentful-image/contentful-image';
 import PageContainer from '@src/components/layout/page-container';
 import Link from '@src/components/link/link';
 import { useContentfulContext } from '@src/contentful-context';
@@ -14,6 +15,10 @@ const logoRatio = contentfulConfig.icon.height / contentfulConfig.icon.width;
 const useStyles = makeStyles((theme: Theme) => ({
   page: {
     backgroundColor: '#EAEAEA',
+  },
+  header: {
+    display: 'flex',
+    justifyContent: 'center',
   },
   container: {
     marginLeft: 'auto',
@@ -108,13 +113,12 @@ const SignInPage: NextPage = () => {
       <PageContainer className={classes.page}>
         <Container maxWidth={false}>
           <section className={classes.container}>
-            <header>
-              <img
+            <header className={classes.header}>
+              <ContentfulImage
                 src={contentfulConfig.icon.dark}
-                className={classes.logo}
                 alt="Logo"
-                width={contentfulConfig.icon.width}
-                height={contentfulConfig.icon.height}
+                width={`${contentfulConfig.icon.width}px`}
+                height={`${contentfulConfig.icon.height}px`}
               />
             </header>
             <form className={classes.form}>
