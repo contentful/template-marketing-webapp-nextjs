@@ -4,7 +4,7 @@ import { useTranslation } from 'next-i18next';
 import { useMemo } from 'react';
 
 import { CtfAsset } from '@ctf-components/ctf-asset/ctf-asset';
-import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
+import { CtfRichtext } from '@ctf-components/ctf-richtext/ctf-richtext';
 import Avatar from '@src/components/avatar/avatar';
 import Link from '@src/components/link/link';
 import LayoutContext, { defaultLayout } from '@src/layout-context';

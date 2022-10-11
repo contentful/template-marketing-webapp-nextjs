@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import React, { useMemo } from 'react';
 
 import { BusinessInfoFieldsFragment } from '@ctf-components/ctf-business-info/__generated/business-info.generated';
-import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
+import { CtfRichtext } from '@ctf-components/ctf-richtext/ctf-richtext';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {

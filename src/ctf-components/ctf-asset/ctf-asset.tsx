@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 
+import { AssetFieldsFragment } from '@ctf-components/ctf-asset/__generated/ctf-asset.generated';
 import { CtfImage } from '@ctf-components/ctf-image/ctf-image';
 import { CtfVideo } from '@ctf-components/ctf-video/ctf-video';
 import LayoutContext from '@src/layout-context';
-import { AssetFieldsFragment } from '@src/lib/__generated/graphql.types';
 
 interface CtfAssetPropsInterface extends AssetFieldsFragment {
   className?: string;

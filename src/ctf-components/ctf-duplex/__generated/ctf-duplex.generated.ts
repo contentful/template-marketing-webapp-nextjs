@@ -2,10 +2,10 @@ import * as Types from '../../../lib/__generated/graphql.types';
 
 import { PageLinkFieldsFragment } from '../../../components/link/__generated/page-link.generated';
 import { PostLinkFieldsFragment } from '../../../components/link/__generated/post-link.generated';
-import { AssetFieldsFragment } from '../../../lib/shared-fragments/__generated/ctf-asset.generated';
+import { AssetFieldsFragment } from '../../ctf-asset/__generated/ctf-asset.generated';
 import { PageLinkFieldsFragmentDoc } from '../../../components/link/__generated/page-link.generated';
 import { PostLinkFieldsFragmentDoc } from '../../../components/link/__generated/post-link.generated';
-import { AssetFieldsFragmentDoc } from '../../../lib/shared-fragments/__generated/ctf-asset.generated';
+import { AssetFieldsFragmentDoc } from '../../ctf-asset/__generated/ctf-asset.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 
 function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
