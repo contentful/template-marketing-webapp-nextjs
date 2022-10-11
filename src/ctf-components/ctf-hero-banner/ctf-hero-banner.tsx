@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import React, { useMemo, useContext } from 'react';
 
 import { HeroBannerFieldsFragment } from '@ctf-components/ctf-hero-banner/__generated/ctf-hero-banner.generated';
-import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
+import { CtfRichtext } from '@ctf-components/ctf-richtext/ctf-richtext';
 import PageLink from '@src/components/link/page-link';
 import PostLink from '@src/components/link/post-link';
 import LayoutContext, { defaultLayout } from '@src/layout-context';

@@ -4,7 +4,7 @@ import { Fragment } from 'react';
 import { ProductFieldsFragment } from './__generated/ctf-product.generated';
 
 import { CtfAsset } from '@ctf-components/ctf-asset/ctf-asset';
-import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
+import { CtfRichtext } from '@ctf-components/ctf-richtext/ctf-richtext';
 import Link from '@src/components/link/link';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 

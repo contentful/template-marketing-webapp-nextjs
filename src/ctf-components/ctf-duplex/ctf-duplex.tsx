@@ -2,7 +2,7 @@ import { Container, Theme, makeStyles, Typography } from '@material-ui/core';
 import clsx from 'clsx';
 
 import { DuplexFieldsFragment } from '@ctf-components/ctf-duplex/__generated/ctf-duplex.generated';
-import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
+import { CtfRichtext } from '@ctf-components/ctf-richtext/ctf-richtext';
 import { ContentfulImage } from '@src/components/contentful-image/contentful-image';
 import PageLink from '@src/components/link/page-link';
 import PostLink from '@src/components/link/post-link';
