@@ -246,22 +246,12 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
     );
   };
 
-  const renderMenuItemChildren = (menuItem: {
-    children?: { label: string; location: string }[];
-  }): JSX.Element | null => {
-    if (menuItem.children === undefined) {
-      return null;
-    }
-
-    return (
-      <ul className={classes.submenu}>
-        {menuItem.children.map((submenuItem, i) => (
-          <li key={i} className={classes.submenuItem}>
-            {renderMenuItem(submenuItem)}
-          </li>
-        ))}
-      </ul>
-    );
+  const renderPageCollectionLinks = pageCollection => {
+    return pageCollection?.items?.map(page => (
+      <li key={page.slug} className={classes.menuItem}>
+        <Link href={page.slug}>{page.pageName}</Link>
+      </li>
+    ));
   };
 
   const classes = useStyles();
@@ -270,15 +260,14 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
     <>
       <Container maxWidth={false} className={classes.footerContainer}>
         <footer className={classes.footer}>
-          {contentfulConfig.footer.menu.length > 0 && (
+          {footerContent?.menuItemsCollection?.items?.length && (
             <nav role="navigation" className={classes.menuWrapper}>
-              {contentfulConfig.footer.menu.map((menuItem, i) => (
+              {footerContent.menuItemsCollection.items.map((menuItem, i) => (
                 <div key={i} className={classes.menuColumn}>
+                  <p className={classes.menuItem}>{menuItem?.groupName}</p>
                   <ul className={classes.menu}>
-                    <li>
-                      {renderMenuItem(menuItem)}
-                      {renderMenuItemChildren(menuItem)}
-                    </li>
+                    {menuItem?.featuredPagesCollection &&
+                      renderPageCollectionLinks(menuItem.featuredPagesCollection)}
                   </ul>
                 </div>
               ))}
