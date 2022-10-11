@@ -1,11 +1,7 @@
 import { Container, makeStyles } from '@material-ui/core';
-import gql from 'graphql-tag';
 import { NextPage, GetServerSideProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
-import { useQuery } from 'react-apollo';
-
-import { SitemapQuery } from './__generated__/SitemapQuery';
 
 import CtfSectionHeadline from '@ctf-components/ctf-section-headline/ctf-section-headline';
 import PageContainer from '@src/components/layout/page-container';
@@ -13,7 +9,7 @@ import CategoryLink from '@src/components/link/category-link';
 import PageLink from '@src/components/link/page-link';
 import PostLink from '@src/components/link/post-link';
 import { useContentfulContext } from '@src/contentful-context';
-import { useDataForPreview } from '@src/lib/apollo-hooks';
+import { useSitemapQuery } from '@src/lib/shared-fragments/__generated/ctf-sitemap.generated';
 import withProviders, { generateGetServerSideProps } from '@src/lib/with-providers';
 import contentfulConfig from 'contentful.config';
 
@@ -36,92 +32,39 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const query = gql`
-  query SitemapQuery($locale: String, $preview: Boolean) {
-    pageCollection(locale: $locale, preview: $preview) {
-      items {
-        pageName
-        slug
-        sys {
-          id
-        }
-        pageContent(locale: $locale, preview: $preview) {
-          ... on Entry {
-            __typename
-            sys {
-              id
-            }
-          }
-        }
-      }
-    }
-    postCollection(locale: $locale, preview: $preview) {
-      items {
-        postName
-        slug
-        sys {
-          id
-        }
-      }
-    }
-    categoryCollection(locale: $locale, preview: $preview) {
-      items {
-        categoryName
-        slug
-        sys {
-          id
-        }
-      }
-    }
-  }
-`;
-
 const SitemapPage: NextPage = () => {
   const { locale } = useContentfulContext();
-
   const { appUrl, previewActive } = useContentfulContext();
-  const queryResult = useQuery<SitemapQuery>(query, {
-    variables: {
-      locale,
-      preview: previewActive,
-    },
+
+  const { isLoading, data } = useSitemapQuery({
+    locale,
+    preview: previewActive,
   });
 
   const classes = useStyles();
 
-  useDataForPreview(queryResult);
-
-  if (queryResult.loading || !queryResult.data) {
+  if (isLoading || !data) {
     return null;
   }
 
-  const pages =
-    queryResult.data.pageCollection === null
-      ? null
-      : queryResult.data.pageCollection.items
-          .filter(page => page !== null && page.slug !== null)
-          .map(page => (page!.slug === 'home' ? ({ ...page, slug: '' } as typeof page) : page))
-          .sort((a, b) => {
-            return a!.slug!.localeCompare(b!.slug!);
-          });
+  const pages = data.pageCollection?.items
+    .filter(page => page !== null && page.slug !== null)
+    .map(page => (page!.slug === 'home' ? ({ ...page, slug: '' } as typeof page) : page))
+    .sort((a, b) => {
+      return a!.slug!.localeCompare(b!.slug!);
+    });
 
-  const posts =
-    queryResult.data.postCollection === null
-      ? null
-      : queryResult.data.postCollection.items
-          .filter(post => post !== null && post.slug !== null)
-          .sort((a, b) => {
-            return a!.slug!.localeCompare(b!.slug!);
-          });
+  const posts = data.postCollection?.items
+    .filter(post => post !== null && post.slug !== null)
+    .sort((a, b) => {
+      return a!.slug!.localeCompare(b!.slug!);
+    });
 
-  const categories =
-    queryResult.data.categoryCollection === null
-      ? null
-      : queryResult.data.categoryCollection.items
-          .filter(category => category !== null && category.slug !== null)
-          .sort((a, b) => {
-            return a!.slug!.localeCompare(b!.slug!);
-          });
+  const categories = data.categoryCollection?.items
+    .filter(category => category !== null && category.slug !== null)
+    .sort((a, b) => {
+      return a!.slug!.localeCompare(b!.slug!);
+    });
 
   return (
     <>
@@ -146,34 +89,41 @@ const SitemapPage: NextPage = () => {
           <CtfSectionHeadline sectionHeadline="Sitemap" />
           <ul className={classes.pageList}>
             {pages &&
-              pages.map(page => (
-                <li key={page!.slug!}>
-                  <PageLink
-                    page={page!}
-                    render={pathname => (
-                      <>
-                        <strong>{`${appUrl}/${pathname!.replace(/^\//, '')}`}</strong>
-                        {`  - [${page!.pageName}]`}
-                      </>
-                    )}
-                  />
-                </li>
-              ))}
+              pages.map(
+                page =>
+                  page && (
+                    <li key={page.slug}>
+                      <PageLink
+                        page={page}
+                        render={pathname =>
+                          pathname && (
+                            <>
+                              <strong>{`${appUrl}/${pathname.replace(/^\//, '')}`}</strong>
+                              {`  - [${page.pageName}]`}
+                            </>
+                          )
+                        }
+                      />
+                    </li>
+                  ),
+              )}
           </ul>
           <ul className={classes.pageList}>
             {posts &&
               posts.map(
                 post =>
                   post && (
-                    <li key={post.slug!}>
+                    <li key={post.slug}>
                       <PostLink
                         post={post}
-                        render={pathname => (
-                          <>
-                            <strong>{`${appUrl}/${pathname!.replace(/^\//, '')}`}</strong>
-                            {`  - [${post.postName}]`}
-                          </>
-                        )}
+                        render={pathname =>
+                          pathname && (
+                            <>
+                              <strong>{`${appUrl}/${pathname.replace(/^\//, '')}`}</strong>
+                              {`  - [${post.postName}]`}
+                            </>
+                          )
+                        }
                       />
                     </li>
                   ),
@@ -184,15 +134,17 @@ const SitemapPage: NextPage = () => {
               categories.map(
                 category =>
                   category && (
-                    <li key={category.slug!}>
+                    <li key={category.slug}>
                       <CategoryLink
                         category={category}
-                        render={pathname => (
-                          <>
-                            <strong>{`${appUrl}/${pathname!.replace(/^\//, '')}`}</strong>
-                            {`  - [${category.categoryName}]`}
-                          </>
-                        )}
+                        render={pathname =>
+                          pathname && (
+                            <>
+                              <strong>{`${appUrl}/${pathname.replace(/^\//, '')}`}</strong>
+                              {`  - [${category.categoryName}]`}
+                            </>
+                          )
+                        }
                       />
                     </li>
                   ),

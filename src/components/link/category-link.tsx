@@ -1,33 +1,16 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
-import Link from '@src/components/link/link';
+import { CategoryLinkFieldsFragment } from './__generated/category-link.generated';
 
-interface CategoryLinkPropsInterface {
-  category: {
-    slug: string | null;
-  };
-  lang?: string;
-  withoutMaterial?: boolean;
-  underline?: boolean;
-  children?: any;
-  className?: string;
-  render?: (pathname?: string) => any;
-  onClick?: () => any;
-  isButton?: boolean;
-  variant?: 'text' | 'outlined' | 'contained' | undefined;
-  size?: 'small' | 'medium' | 'large' | undefined;
-  color?:
-    | 'inherit'
-    | 'default'
-    | 'initial'
-    | 'primary'
-    | 'secondary'
-    | 'textPrimary'
-    | 'textSecondary'
-    | 'error';
-}
+import Link, { LinkProps } from '@src/components/link/link';
 
-const CategoryLink = (props: CategoryLinkPropsInterface) => {
+export type CategoryLinkProps = Omit<LinkProps, 'children'> & {
+  category: CategoryLinkFieldsFragment;
+  render?: (pathname?: string) => ReactNode;
+  children?: ReactNode;
+};
+
+const CategoryLink = (props: CategoryLinkProps) => {
   const pathname = `/category/${props.category.slug || ''}`;
   const linkProps = {
     href: pathname,
