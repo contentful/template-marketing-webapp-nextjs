@@ -2,6 +2,8 @@ import { makeStyles, Theme, Container, Typography } from '@material-ui/core';
 import { Twitter, Facebook, LinkedIn, Instagram } from '@material-ui/icons';
 import { useTranslation } from 'next-i18next';
 
+import { FooterFieldsFragment } from './__generated/ctf-footer.generated';
+
 import { ContentfulImage } from '@src/components/contentful-image/contentful-image';
 import { LanguageSelector } from '@src/components/language-selector';
 import Link from '@src/components/link/link';
@@ -220,7 +222,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export const CtfFooter = () => {
+export const CtfFooter = (props: FooterFieldsFragment) => {
+  console.log({ props });
   const { t } = useTranslation();
 
   const renderMenuItem = (

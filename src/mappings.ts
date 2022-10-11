@@ -71,4 +71,7 @@ export const componentGqlMap = {
   TopicPerson: dynamic(() =>
     import('./ctf-components/ctf-person/ctf-person-gql').then(module => module.CtfPersonGql),
   ),
+  ComponentFooter: dynamic(() =>
+    import('./ctf-components/ctf-footer/ctf-footer-gql').then(module => module.CtfFooterGql),
+  ),
 };

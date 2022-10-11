@@ -1,0 +1,37 @@
+fragment FooterFields on FooterMenuCollection {
+  items {
+    menuItemsCollection {
+      items {
+        groupName
+        featuredPagesCollection {
+          ... on MenuGroupFeaturedPagesCollection {
+            items {
+              ... on Page {
+                slug
+              }
+            }
+          }
+        }
+      }
+    }
+    legalLinks {
+      featuredPagesCollection {
+        items {
+          ... on Page {
+            slug
+          }
+        }
+      }
+    }
+    twitterLink
+    facebookLink
+    linkedinLink
+    instagramLink
+  }
+}
+
+query CtfFooter($locale: String, $preview: Boolean) {
+  footerMenuCollection(locale: $locale, preview: $preview, limit: 1) {
+    ...FooterFields
+  }
+}
