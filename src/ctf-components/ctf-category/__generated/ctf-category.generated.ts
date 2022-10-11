@@ -1,10 +1,10 @@
 import * as Types from '../../../lib/__generated/graphql.types';
 
 import { AssetFieldsFragment } from '../../../lib/shared-fragments/__generated/ctf-asset.generated';
-import { PostFieldsBaseFragment, PostCategoryFieldsFragment } from '../../ctf-post/__generated/ctf-post.generated';
+import { PostBaseFieldsFragment, PostCategoryFieldsFragment } from '../../ctf-post/__generated/ctf-post.generated';
 import { PersonFieldsFragment } from '../../ctf-person/__generated/ctf-person.generated';
 import { AssetFieldsFragmentDoc } from '../../../lib/shared-fragments/__generated/ctf-asset.generated';
-import { PostFieldsBaseFragmentDoc, PostCategoryFieldsFragmentDoc } from '../../ctf-post/__generated/ctf-post.generated';
+import { PostBaseFieldsFragmentDoc, PostCategoryFieldsFragmentDoc } from '../../ctf-post/__generated/ctf-post.generated';
 import { PersonFieldsFragmentDoc } from '../../ctf-person/__generated/ctf-person.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 
@@ -44,7 +44,7 @@ export type CtfCategoryQuery = { __typename?: 'Query', categoryCollection?: { __
       & CategoryFieldsFragment
     ) | null> } | null, postCollection?: { __typename?: 'PostCollection', items: Array<(
       { __typename?: 'Post' }
-      & PostFieldsBaseFragment
+      & PostBaseFieldsFragment
     ) | null> } | null };
 
 export const CategoryFieldsFragmentDoc = `
@@ -86,13 +86,13 @@ export const CtfCategoryDocument = `
     limit: 10
   ) {
     items {
-      ...PostFieldsBase
+      ...PostBaseFields
     }
   }
 }
     ${CategoryFieldsFragmentDoc}
 ${AssetFieldsFragmentDoc}
-${PostFieldsBaseFragmentDoc}
+${PostBaseFieldsFragmentDoc}
 ${PostCategoryFieldsFragmentDoc}
 ${PersonFieldsFragmentDoc}`;
 export const useCtfCategoryQuery = <

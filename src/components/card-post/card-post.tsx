@@ -2,10 +2,10 @@ import { makeStyles, Theme, Typography } from '@material-ui/core';
 import React from 'react';
 
 import { CtfAsset } from '@ctf-components/ctf-asset/ctf-asset';
-import { PostFragmentBase } from '@ctf-components/ctf-post/__generated__/PostFragmentBase';
+import { PostBaseFieldsFragment } from '@ctf-components/ctf-post/__generated/ctf-post.generated';
 import Link from '@src/components/link/link';
 
-interface CtfCardPostPropsInterface extends PostFragmentBase {
+interface CtfCardPostPropsInterface extends PostBaseFieldsFragment {
   linkToPost?: boolean;
   extended?: boolean;
 }
@@ -55,7 +55,7 @@ const CtfCardPost = (props: CtfCardPostPropsInterface) => {
   };
 
   const featuredImageBlock = () => {
-    if (featuredImage === null) {
+    if (!featuredImage) {
       return null;
     }
 

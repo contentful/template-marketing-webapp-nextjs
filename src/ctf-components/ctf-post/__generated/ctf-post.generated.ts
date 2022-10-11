@@ -29,7 +29,7 @@ function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
 }
 export type PostCategoryFieldsFragment = { __typename?: 'Category', categoryName?: string | null, slug?: string | null, sys: { __typename?: 'Sys', id: string } };
 
-export type PostFieldsBaseFragment = { __typename: 'Post', internalName?: string | null, postName?: string | null, publishedDate?: any | null, slug?: string | null, sys: { __typename?: 'Sys', id: string }, featuredImage?: (
+export type PostBaseFieldsFragment = { __typename: 'Post', internalName?: string | null, postName?: string | null, publishedDate?: any | null, slug?: string | null, sys: { __typename?: 'Sys', id: string }, featuredImage?: (
     { __typename?: 'Asset' }
     & AssetFieldsFragment
   ) | null, category?: (
@@ -168,7 +168,7 @@ export type PostFieldsFragment = (
       { __typename?: 'ComponentTextBlock' }
       & ComponentReferenceFields_ComponentTextBlock_Fragment
     ) | null> } | null }
-  & PostFieldsBaseFragment
+  & PostBaseFieldsFragment
 );
 
 export type CtfPostQueryVariables = Types.Exact<{
@@ -191,7 +191,7 @@ export type CtfBlogQueryVariables = Types.Exact<{
 
 export type CtfBlogQuery = { __typename?: 'Query', postCollection?: { __typename?: 'PostCollection', items: Array<(
       { __typename?: 'Post' }
-      & PostFieldsBaseFragment
+      & PostBaseFieldsFragment
     ) | null> } | null };
 
 export const PostCategoryFieldsFragmentDoc = `
@@ -203,8 +203,8 @@ export const PostCategoryFieldsFragmentDoc = `
   slug
 }
     `;
-export const PostFieldsBaseFragmentDoc = `
-    fragment PostFieldsBase on Post {
+export const PostBaseFieldsFragmentDoc = `
+    fragment PostBaseFields on Post {
   __typename
   sys {
     id
@@ -235,7 +235,7 @@ export const PostFieldsBaseFragmentDoc = `
     `;
 export const PostFieldsFragmentDoc = `
     fragment PostFields on Post {
-  ...PostFieldsBase
+  ...PostBaseFields
   seo {
     title
     description
@@ -296,7 +296,7 @@ export const CtfPostDocument = `
   }
 }
     ${PostFieldsFragmentDoc}
-${PostFieldsBaseFragmentDoc}
+${PostBaseFieldsFragmentDoc}
 ${AssetFieldsFragmentDoc}
 ${PostCategoryFieldsFragmentDoc}
 ${PersonFieldsFragmentDoc}
@@ -322,11 +322,11 @@ export const CtfBlogDocument = `
     order: publishedDate_DESC
   ) {
     items {
-      ...PostFieldsBase
+      ...PostBaseFields
     }
   }
 }
-    ${PostFieldsBaseFragmentDoc}
+    ${PostBaseFieldsFragmentDoc}
 ${AssetFieldsFragmentDoc}
 ${PostCategoryFieldsFragmentDoc}
 ${PersonFieldsFragmentDoc}`;

@@ -1,7 +1,6 @@
-import React from 'react';
-
-import { useCtfTextBlockQuery } from './__generated/ctf-text-block.generated';
 import { CtfTextBlock } from './ctf-text-block';
+
+import { useCtfTextBlockQuery } from '@ctf-components/ctf-text-block/__generated/ctf-text-block.generated';
 
 interface CtfTextBlockGqlPropsInterface {
   id: string;
@@ -9,16 +8,14 @@ interface CtfTextBlockGqlPropsInterface {
   preview: boolean;
 }
 
-export const CtfTextBlockGql = (props: CtfTextBlockGqlPropsInterface) => {
-  const { id, locale, preview } = props;
-
+export const CtfTextBlockGql = ({ id, locale, preview }: CtfTextBlockGqlPropsInterface) => {
   const { isLoading, data } = useCtfTextBlockQuery({
     id,
     locale,
     preview,
   });
 
-  if (isLoading || !data || !data?.componentTextBlock) {
+  if (isLoading || !data?.componentTextBlock) {
     return null;
   }
 

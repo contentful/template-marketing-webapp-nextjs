@@ -8,7 +8,7 @@ import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
 import Avatar from '@src/components/avatar/avatar';
 import Link from '@src/components/link/link';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
-import { PostFieldsBaseFragment } from '@src/lib/__generated/graphql.types';
+import { PostBaseFieldsFragment } from '@src/lib/__generated/graphql.types';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const CtfCardPostExtended = (props: PostFieldsBaseFragment) => {
+const CtfCardPostExtended = (props: PostBaseFieldsFragment) => {
   const { t } = useTranslation();
   const { postName, featuredImage, slug, introText, author, publishedDate } = props;
 

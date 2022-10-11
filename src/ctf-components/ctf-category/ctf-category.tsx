@@ -8,7 +8,7 @@ import CategoryContainer from '@src/components/layout/category-container';
 import Link from '@src/components/link/link';
 import XrayFrame from '@src/components/xray-frame';
 import { useContentfulContext } from '@src/contentful-context';
-import { PostFieldsBaseFragment } from '@src/ctf-components/ctf-post/__generated/ctf-post.generated';
+import { PostBaseFieldsFragment } from '@src/ctf-components/ctf-post/__generated/ctf-post.generated';
 import { WrapIf } from '@src/jsx-utils';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 
@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 interface CtfCategoryPropsInterface extends CategoryFieldsFragment {
-  posts: (PostFieldsBaseFragment | null)[];
+  posts: (PostBaseFieldsFragment | null)[];
 }
 
 export const CtfCategory = (props: CtfCategoryPropsInterface) => {
