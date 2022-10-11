@@ -1,7 +1,8 @@
 import { Story, Meta } from '@storybook/react';
 import React from 'react';
 
-import { TextBlockFieldsFragment } from '@ctf-components/ctf-text-block/__generated/ctf-text-block.generated';
+import { TextBlockFieldsFragment } from './__generated/ctf-text-block.generated';
+
 import { CtfTextBlock } from '@ctf-components/ctf-text-block/ctf-text-block';
 
 export default {
