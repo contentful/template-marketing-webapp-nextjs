@@ -8,7 +8,6 @@ import { ContentfulImage } from '@src/components/contentful-image/contentful-ima
 import { LanguageSelector } from '@src/components/language-selector';
 import Link from '@src/components/link/link';
 import { CONTAINER_WIDTH } from '@src/theme';
-import contentfulConfig from 'contentful.config';
 
 const useStyles = makeStyles((theme: Theme) => ({
   footerContainer: {
@@ -227,36 +226,14 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
 
   const { t } = useTranslation();
 
-  const renderMenuItem = (
-    menuItem: {
-      label: string;
-      location?: string;
-    },
-    { className = classes.menuItem }: { className?: string } = {},
-  ): JSX.Element => {
-    if (menuItem.location === undefined) {
-      return <p className={className}>{menuItem.label}</p>;
-    }
-
-    return (
-      <Link href={menuItem.location} className={className}>
-        {menuItem.label}
-      </Link>
-    );
-  };
-
-  const renderPageCollectionLinks = pageCollection => {
-    return (
-      <ul className={classes.submenu}>
-        {pageCollection?.items?.map((page, i) => (
-          <li key={i} className={classes.submenuItem}>
-            <Link href={page.slug} className={classes.menuItem}>
-              {page.slug}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    );
+  const renderPageCollectionLinks = (pageCollection, listClassName) => {
+    return pageCollection?.items?.map((page, i) => (
+      <li key={i} className={listClassName}>
+        <Link href={page.slug} className={classes.menuItem}>
+          {page.slug}
+        </Link>
+      </li>
+    ));
   };
 
   const classes = useStyles();
@@ -272,8 +249,14 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
                   <ul className={classes.menu}>
                     <li>
                       <p className={classes.menuItem}>{menuItem?.groupName}</p>
-                      {menuItem?.featuredPagesCollection &&
-                        renderPageCollectionLinks(menuItem.featuredPagesCollection)}
+                      {menuItem?.featuredPagesCollection && (
+                        <ul className={classes.submenu}>
+                          {renderPageCollectionLinks(
+                            menuItem.featuredPagesCollection,
+                            classes.submenuItem,
+                          )}
+                        </ul>
+                      )}
                     </li>
                   </ul>
                 </div>
@@ -302,16 +285,13 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
               <p className={classes.copyright}>
                 {t('legal.copyright', { year: new Date().getFullYear() })}
               </p>
-              {contentfulConfig.footer.legal.length > 0 && (
+              {footerContent?.legalLinks?.featuredPagesCollection?.items?.length && (
                 <nav role="navigation" className={classes.legalMenuWrapper}>
                   <ul className={classes.legalMenu}>
-                    {contentfulConfig.footer.legal.map((menuItem, i) => (
-                      <li key={i} className={classes.legalMenuItem}>
-                        {renderMenuItem(menuItem, {
-                          className: '',
-                        })}
-                      </li>
-                    ))}
+                    {renderPageCollectionLinks(
+                      footerContent.legalLinks.featuredPagesCollection,
+                      classes.legalMenuItem,
+                    )}
                   </ul>
                 </nav>
               )}
