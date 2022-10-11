@@ -250,7 +250,9 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
       <ul className={classes.submenu}>
         {pageCollection?.items?.map((page, i) => (
           <li key={i} className={classes.submenuItem}>
-            <Link href={page.slug}>{page.slug}</Link>
+            <Link href={page.slug} className={classes.menuItem}>
+              {page.slug}
+            </Link>
           </li>
         ))}
       </ul>
