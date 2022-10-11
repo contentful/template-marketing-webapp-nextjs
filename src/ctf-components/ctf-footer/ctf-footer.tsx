@@ -225,7 +225,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 export const CtfFooter = (props: FooterFieldsFragment) => {
   const footerContent = props.items[0];
 
-  console.log({ footerContent });
   const { t } = useTranslation();
 
   const renderMenuItem = (
@@ -247,11 +246,15 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
   };
 
   const renderPageCollectionLinks = pageCollection => {
-    return pageCollection?.items?.map(page => (
-      <li key={page.slug} className={classes.menuItem}>
-        <Link href={page.slug}>{page.pageName}</Link>
-      </li>
-    ));
+    return (
+      <ul className={classes.submenu}>
+        {pageCollection?.items?.map((page, i) => (
+          <li key={i} className={classes.submenuItem}>
+            <Link href={page.slug}>{page.slug}</Link>
+          </li>
+        ))}
+      </ul>
+    );
   };
 
   const classes = useStyles();
@@ -264,10 +267,12 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
             <nav role="navigation" className={classes.menuWrapper}>
               {footerContent.menuItemsCollection.items.map((menuItem, i) => (
                 <div key={i} className={classes.menuColumn}>
-                  <p className={classes.menuItem}>{menuItem?.groupName}</p>
                   <ul className={classes.menu}>
-                    {menuItem?.featuredPagesCollection &&
-                      renderPageCollectionLinks(menuItem.featuredPagesCollection)}
+                    <li>
+                      <p className={classes.menuItem}>{menuItem?.groupName}</p>
+                      {menuItem?.featuredPagesCollection &&
+                        renderPageCollectionLinks(menuItem.featuredPagesCollection)}
+                    </li>
                   </ul>
                 </div>
               ))}
