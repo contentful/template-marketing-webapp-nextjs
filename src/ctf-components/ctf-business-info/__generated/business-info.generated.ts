@@ -1,7 +1,7 @@
 import * as Types from '../../../lib/__generated/graphql.types';
 
 import { AssetFieldsFragment } from '../../ctf-asset/__generated/ctf-asset.generated';
-import { ComponentReferenceFields_Category_Fragment, ComponentReferenceFields_ComponentCta_Fragment, ComponentReferenceFields_ComponentDuplex_Fragment, ComponentReferenceFields_ComponentFeaturedCards_Fragment, ComponentReferenceFields_ComponentHeroBanner_Fragment, ComponentReferenceFields_ComponentInfoBlock_Fragment, ComponentReferenceFields_ComponentProductTable_Fragment, ComponentReferenceFields_ComponentQuote_Fragment, ComponentReferenceFields_ComponentTextBlock_Fragment, ComponentReferenceFields_Page_Fragment, ComponentReferenceFields_Post_Fragment, ComponentReferenceFields_Seo_Fragment, ComponentReferenceFields_TopicBusinessInfo_Fragment, ComponentReferenceFields_TopicPerson_Fragment, ComponentReferenceFields_TopicProduct_Fragment, ComponentReferenceFields_TopicProductFeature_Fragment } from '../../../lib/shared-fragments/__generated/ctf-componentMap.generated';
+import { ComponentReferenceFields_Category_Fragment, ComponentReferenceFields_ComponentCta_Fragment, ComponentReferenceFields_ComponentDuplex_Fragment, ComponentReferenceFields_ComponentFeaturedCards_Fragment, ComponentReferenceFields_ComponentHeroBanner_Fragment, ComponentReferenceFields_ComponentInfoBlock_Fragment, ComponentReferenceFields_ComponentProductTable_Fragment, ComponentReferenceFields_ComponentQuote_Fragment, ComponentReferenceFields_ComponentTextBlock_Fragment, ComponentReferenceFields_FooterMenu_Fragment, ComponentReferenceFields_MenuGroup_Fragment, ComponentReferenceFields_Page_Fragment, ComponentReferenceFields_Post_Fragment, ComponentReferenceFields_Seo_Fragment, ComponentReferenceFields_TopicBusinessInfo_Fragment, ComponentReferenceFields_TopicPerson_Fragment, ComponentReferenceFields_TopicProduct_Fragment, ComponentReferenceFields_TopicProductFeature_Fragment } from '../../../lib/shared-fragments/__generated/ctf-componentMap.generated';
 import { AssetFieldsFragmentDoc } from '../../ctf-asset/__generated/ctf-asset.generated';
 import { ComponentReferenceFieldsFragmentDoc } from '../../../lib/shared-fragments/__generated/ctf-componentMap.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
@@ -55,6 +55,12 @@ export type BusinessInfoFieldsFragment = { __typename?: 'TopicBusinessInfo', nam
         ) | (
           { __typename?: 'ComponentTextBlock' }
           & ComponentReferenceFields_ComponentTextBlock_Fragment
+        ) | (
+          { __typename?: 'FooterMenu' }
+          & ComponentReferenceFields_FooterMenu_Fragment
+        ) | (
+          { __typename?: 'MenuGroup' }
+          & ComponentReferenceFields_MenuGroup_Fragment
         ) | (
           { __typename?: 'Page' }
           & ComponentReferenceFields_Page_Fragment
