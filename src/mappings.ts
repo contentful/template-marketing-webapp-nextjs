@@ -40,7 +40,9 @@ export const componentMap = {
   ComponentTextBlock: dynamic(() =>
     import('./ctf-components/ctf-text-block/ctf-text-block').then(module => module.CtfTextBlock),
   ),
-  TopicPerson: dynamic(() => import('./ctf-components/ctf-person/ctf-person')),
+  TopicPerson: dynamic(() =>
+    import('./ctf-components/ctf-person/ctf-person').then(module => module.CtfPerson),
+  ),
 };
 
 export const componentGqlMap = {
