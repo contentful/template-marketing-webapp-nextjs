@@ -2,10 +2,10 @@ import { makeStyles, Theme, Typography } from '@material-ui/core';
 import React from 'react';
 
 import { CtfAsset } from '@ctf-components/ctf-asset/ctf-asset';
-import { PostBaseFieldsFragment } from '@ctf-components/ctf-post/__generated/ctf-post.generated';
+import { PostFieldsFragment } from '@ctf-components/ctf-post/__generated/ctf-post.generated';
 import Link from '@src/components/link/link';
 
-interface CtfCardPostPropsInterface extends PostBaseFieldsFragment {
+interface CtfCardPostPropsInterface extends PostFieldsFragment {
   linkToPost?: boolean;
   extended?: boolean;
 }
