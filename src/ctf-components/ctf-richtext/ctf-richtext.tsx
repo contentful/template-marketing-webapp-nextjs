@@ -193,7 +193,7 @@ const EntryHyperlink = ({ node }) => {
 
   if (!data || isLoading) return null;
 
-  if (data.page?.__typename === 'Page') {
+  if (data.page) {
     return (
       <PageLink page={data.page} variant="contained" underline>
         {(node.content[0] as any).value}
@@ -203,7 +203,7 @@ const EntryHyperlink = ({ node }) => {
 
   if (data.post) {
     return (
-      <PostLink post={data.post!} variant="contained" underline>
+      <PostLink post={data.post} variant="contained" underline>
         {(node.content[0] as any).value}
       </PostLink>
     );
