@@ -181,10 +181,6 @@ module.exports = {
             location: '/legal/terms-of-use',
           },
           {
-            label: 'Sitemap',
-            location: '/sitemap',
-          },
-          {
             label: 'Intranet',
             location: 'https://dalia.colorfuldemo.com',
           },
