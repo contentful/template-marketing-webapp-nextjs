@@ -1,5 +1,5 @@
-import { createTheme } from '@material-ui/core';
-import { TypographyStyleOptions } from '@material-ui/core/styles/createTypography';
+import { createTheme } from '@mui/material/styles';
+import { TypographyStyleOptions } from '@mui/material/styles/createTypography';
 
 export const CONTAINER_WIDTH = 1260;
 export const SPACER = 5;
@@ -58,9 +58,7 @@ const colorConfigs: { [key: string]: ColorConfigInterface } = {
   },
 };
 
-export const getColorConfigFromPalette = (
-  palette: string,
-): ColorConfigInterface => {
+export const getColorConfigFromPalette = (palette: string): ColorConfigInterface => {
   if (colorConfigs[`palette-${palette}`] === undefined) {
     return colorConfigs['palette-1. White (#FFFFFF)'];
   }

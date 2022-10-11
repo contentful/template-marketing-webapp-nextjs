@@ -4,8 +4,8 @@ import i18n from './i18next';
 import { i18n as nextI18nextConfig } from '../next-i18next.config';
 import colorfulTheme from '../src/theme';
 import React from 'react';
-import { ThemeProvider, makeStyles } from '@material-ui/styles';
-import { CssBaseline, Theme } from '@material-ui/core';
+import { ThemeProvider, makeStyles } from '@mui/styles';
+import { CssBaseline, Theme } from '@mui/material';
 
 const languageNames = new Intl.DisplayNames([nextI18nextConfig.defaultLocale], {
   type: 'language',

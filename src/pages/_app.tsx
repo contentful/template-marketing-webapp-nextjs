@@ -1,5 +1,5 @@
 import { config as fontawesomeConfig } from '@fortawesome/fontawesome-svg-core';
-import { ThemeProvider } from '@material-ui/styles';
+import { ThemeProvider } from '@mui/styles';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import '@src/components/layout/layout.css';
 import { QueryClientProvider } from '@tanstack/react-query';

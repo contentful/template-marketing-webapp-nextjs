@@ -1,4 +1,5 @@
-import { Theme, makeStyles, Typography, Container } from '@material-ui/core';
+import { Theme, Typography, Container } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 
 import { CategoryFieldsFragment } from './__generated/ctf-category.generated';
 

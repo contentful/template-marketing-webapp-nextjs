@@ -1,4 +1,5 @@
-import { Container, Typography, makeStyles, Theme, Button } from '@material-ui/core';
+import { Container, Typography, Theme, Button } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import { GetServerSideProps, NextPage } from 'next';
 import { useTranslation } from 'next-i18next';
 import Head from 'next/head';

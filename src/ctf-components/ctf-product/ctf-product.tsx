@@ -1,4 +1,5 @@
-import { makeStyles, Theme, Container, Typography } from '@material-ui/core';
+import { Theme, Container, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import { Fragment } from 'react';
 
 import { ProductFieldsFragment } from './__generated/ctf-product.generated';

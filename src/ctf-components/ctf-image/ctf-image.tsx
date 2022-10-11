@@ -1,5 +1,5 @@
-import { ButtonBase } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
+import { ButtonBase } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import React, { useMemo } from 'react';
 

@@ -1,15 +1,6 @@
-import {
-  AppBar,
-  Container,
-  Hidden,
-  IconButton,
-  Theme,
-  Toolbar,
-  Box,
-  SvgIcon,
-} from '@material-ui/core';
-import { Menu } from '@material-ui/icons';
-import { makeStyles } from '@material-ui/styles';
+import { AppBar, Container, Hidden, IconButton, Theme, Toolbar, Box, SvgIcon } from '@mui/material';
+import { Menu } from '@mui/icons-material';
+import { makeStyles } from '@mui/styles';
 import { useTranslation } from 'next-i18next';
 
 import { ContentfulImage } from '@src/components/contentful-image/contentful-image';

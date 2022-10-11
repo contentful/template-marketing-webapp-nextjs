@@ -1,5 +1,5 @@
-import { Theme } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
+import { Theme } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 
 import { PersonFieldsFragment } from '@ctf-components/ctf-person/__generated/ctf-person.generated';
 import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';

@@ -1,4 +1,5 @@
-import { Container, Theme, makeStyles } from '@material-ui/core';
+import { Container, Theme } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import { useTranslation } from 'next-i18next';
 import { useMemo } from 'react';

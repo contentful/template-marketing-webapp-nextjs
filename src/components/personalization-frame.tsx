@@ -1,5 +1,6 @@
-import { Box, makeStyles, Theme, Typography } from '@material-ui/core';
-import { Face } from '@material-ui/icons';
+import { Face } from '@mui/icons-material';
+import { Box, Theme, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import gql from 'graphql-tag';
 import React, { useMemo } from 'react';
@@ -106,7 +107,8 @@ const PersonalizationFrame = (props: Props) => {
             href={contentfulUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className={classes.label}>
+            className={classes.label}
+          >
             <Typography className={classes.labelWithIcon}>
               <Face fontSize="small" /> Audience: &quot;{audienceName}&quot;
             </Typography>

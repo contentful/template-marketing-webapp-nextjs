@@ -1,4 +1,5 @@
-import { makeStyles, Theme, Typography, Container } from '@material-ui/core';
+import { Theme, Typography, Container } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import throttle from 'lodash/throttle';
 import { useTranslation } from 'next-i18next';
 import Image, { ImageLoader } from 'next/image';

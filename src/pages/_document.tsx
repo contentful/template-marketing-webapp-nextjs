@@ -1,6 +1,6 @@
 /* eslint-disable react/no-danger */
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { ServerStyleSheets } from '@material-ui/styles';
+import { ServerStyleSheets } from '@mui/styles';
 import Document, { DocumentContext, Head, Main, NextScript, Html } from 'next/document';
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies

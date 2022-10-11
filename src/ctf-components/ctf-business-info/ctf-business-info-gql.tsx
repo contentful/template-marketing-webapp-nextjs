@@ -1,4 +1,4 @@
-import { Container } from '@material-ui/core';
+import { Container } from '@mui/material';
 import Head from 'next/head';
 
 import CtfBusinessInfo from './ctf-business-info';

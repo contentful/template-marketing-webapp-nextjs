@@ -1,4 +1,5 @@
-import { makeStyles, MenuItem, Select, SvgIcon, Theme } from '@material-ui/core';
+import { MenuItem, Select, SvgIcon, Theme } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import { useRouter } from 'next/router';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -45,7 +46,8 @@ export const LanguageSelector = () => {
           router.push({ pathname: router.pathname, query: router.query }, router.asPath, {
             locale: String(event.target.value),
           });
-        }}>
+        }}
+      >
         {locales?.map(availableLocale => (
           <MenuItem key={availableLocale} value={availableLocale}>
             {languageNames.of(availableLocale)}

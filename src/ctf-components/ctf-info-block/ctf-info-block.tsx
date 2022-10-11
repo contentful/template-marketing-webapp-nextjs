@@ -1,4 +1,5 @@
-import { makeStyles, Theme, Container } from '@material-ui/core';
+import { Theme, Container } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 
 import { InfoBlockFieldsFragment } from './__generated/ctf-info-block.generated';

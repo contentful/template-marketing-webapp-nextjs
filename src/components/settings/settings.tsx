@@ -1,4 +1,5 @@
-import { Theme, makeStyles, useTheme } from '@material-ui/core';
+import { Theme, useTheme } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import React, { useState, useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
@@ -82,7 +83,8 @@ const Settings = () => {
           enterActive: classes.animationEnterActive,
           exit: classes.animationExit,
           exitActive: classes.animationExitActive,
-        }}>
+        }}
+      >
         <SettingsForm
           onClose={() => {
             setSettingsOpen(false);
@@ -95,7 +97,8 @@ const Settings = () => {
         onClick={() => {
           setSettingsOpen(open => !open);
         }}
-        title="Toggle editorial toolbox">
+        title="Toggle editorial toolbox"
+      >
         <SettingsIcon className={classes.toggleImage} />
       </button>
     </>

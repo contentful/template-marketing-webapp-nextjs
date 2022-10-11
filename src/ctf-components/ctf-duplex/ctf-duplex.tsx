@@ -1,4 +1,5 @@
-import { Container, Theme, makeStyles, Typography } from '@material-ui/core';
+import { Container, Theme, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 
 import { DuplexFieldsFragment } from '@ctf-components/ctf-duplex/__generated/ctf-duplex.generated';

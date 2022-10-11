@@ -1,4 +1,5 @@
-import { makeStyles, Theme, Container } from '@material-ui/core';
+import { Theme, Container } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 
 import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
 import { TextBlockFieldsFragment } from '@ctf-components/ctf-text-block/__generated/ctf-text-block.generated';
