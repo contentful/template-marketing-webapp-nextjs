@@ -220,7 +220,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const Footer = () => {
+export const CtfFooter = () => {
   const { t } = useTranslation();
 
   const renderMenuItem = (
@@ -352,5 +352,3 @@ const Footer = () => {
     </>
   );
 };
-
-export default Footer;

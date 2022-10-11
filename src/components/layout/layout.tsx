@@ -3,9 +3,10 @@ import { makeStyles } from '@material-ui/styles';
 import { useRouter } from 'next/router';
 import React, { useState, useEffect, ReactElement } from 'react';
 
-import Footer from './footer';
 import Header from './header';
 import MobileMenu from './mobile-menu';
+
+import { CtfFooter } from 'src/ctf-components/ctf-footer/ctf-footer';
 
 const useStyles = makeStyles((theme: Theme) => ({
   content: {
@@ -51,7 +52,7 @@ const Layout: React.FC<LayoutPropsInterface> = ({ children }) => {
       {/* content */}
       <div className={classes.content}>{children}</div>
 
-      <Footer />
+      <CtfFooter />
 
       <MobileMenu
         isOpen={isMenuOpen}
