@@ -289,17 +289,16 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
           </section>
         </footer>
       </Container>
-
       <Container maxWidth={false} className={classes.footerCorporateContainer}>
         <section className={classes.footerCorporate}>
           <div className={classes.corporateLogoMenu}>
             <div className={classes.corporateLogoContainer}>
               <ContentfulImage
-                src={contentfulConfig.footer.logo}
+                src="https://images.ctfassets.net/w8vf7dk7f259/24hV8yQwJho6mXbrkLEuCY/29c93d344856aed9e3da110d0c3c8500/colorful-collective-logo-light.svg"
                 className={classes.corporateLogo}
                 alt="Logo"
-                width={contentfulConfig.footer.logoWidth}
-                height={contentfulConfig.footer.logoHeight}
+                width={280}
+                height={19}
               />
             </div>
 

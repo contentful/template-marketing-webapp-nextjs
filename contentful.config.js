@@ -74,15 +74,6 @@ module.exports = {
         ],
   },
   footer: {
-    logo:
-      process.env.CONFIG_CONTENTFUL_FOOTER_LOGO ||
-      'https://images.ctfassets.net/w8vf7dk7f259/24hV8yQwJho6mXbrkLEuCY/29c93d344856aed9e3da110d0c3c8500/colorful-collective-logo-light.svg',
-    logoWidth: process.env.CONFIG_CONTENTFUL_FOOTER_LOGO_WIDTH
-      ? parseInt(process.env.CONFIG_CONTENTFUL_FOOTER_LOGO_WIDTH, 10)
-      : 280,
-    logoHeight: process.env.CONFIG_CONTENTFUL_FOOTER_LOGO_HEIGHT
-      ? parseInt(process.env.CONFIG_CONTENTFUL_FOOTER_LOGO_HEIGHT, 10)
-      : 19,
     menu: process.env.CONFIG_CONTENTFUL_FOOTER_MENU
       ? JSON.parse(process.env.CONFIG_CONTENTFUL_FOOTER_MENU)
       : [
