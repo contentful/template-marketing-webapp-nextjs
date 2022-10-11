@@ -10,14 +10,12 @@ interface CtfCtaGqlPropsInterface {
   preview: boolean;
 }
 
-const CtfCtaGql = ({ id, locale, preview }: CtfCtaGqlPropsInterface) => {
+export const CtfCtaGql = ({ id, locale, preview }: CtfCtaGqlPropsInterface) => {
   const { data, isLoading } = useCtfCtaQuery({
     id,
     locale,
     preview,
   });
-
-  // useDataForPreview(queryResult);
 
   if (isLoading || !data?.componentCta) {
     return null;
@@ -25,5 +23,3 @@ const CtfCtaGql = ({ id, locale, preview }: CtfCtaGqlPropsInterface) => {
 
   return <CtfCta {...data.componentCta} />;
 };
-
-export default CtfCtaGql;

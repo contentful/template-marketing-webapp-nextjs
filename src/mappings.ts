@@ -52,10 +52,16 @@ export const componentGqlMap = {
       module => module.CtfFeaturedCardsGql,
     ),
   ),
-  ComponentCta: dynamic(() => import('./ctf-components/ctf-cta/ctf-cta-gql')),
-  ComponentDuplex: dynamic(() => import('./ctf-components/ctf-duplex/ctf-duplex-gql')),
-  ComponentHeroBanner: dynamic(
-    () => import('./ctf-components/ctf-hero-banner/ctf-hero-banner-gql'),
+  ComponentCta: dynamic(() =>
+    import('./ctf-components/ctf-cta/ctf-cta-gql').then(module => module.CtfCtaGql),
+  ),
+  ComponentDuplex: dynamic(() =>
+    import('./ctf-components/ctf-duplex/ctf-duplex-gql').then(module => module.CtfDuplexGql),
+  ),
+  ComponentHeroBanner: dynamic(() =>
+    import('./ctf-components/ctf-hero-banner/ctf-hero-banner-gql').then(
+      module => module.CtfHeroGql,
+    ),
   ),
   ComponentInfoBlock: dynamic(() =>
     import('./ctf-components/ctf-info-block/ctf-info-block-gql').then(

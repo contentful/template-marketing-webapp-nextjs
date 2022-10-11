@@ -10,7 +10,7 @@ interface CtfHeroGqlPropsInterface {
   preview: boolean;
 }
 
-const CtfHeroGql = (props: CtfHeroGqlPropsInterface) => {
+export const CtfHeroGql = (props: CtfHeroGqlPropsInterface) => {
   const { id, locale, preview } = props;
   const { data, isLoading } = useHeroBannerQuery({
     id,
@@ -22,5 +22,3 @@ const CtfHeroGql = (props: CtfHeroGqlPropsInterface) => {
 
   return <CtfHeroBanner {...data.componentHeroBanner} />;
 };
-
-export default CtfHeroGql;
