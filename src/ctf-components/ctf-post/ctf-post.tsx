@@ -8,7 +8,7 @@ import { useMemo } from 'react';
 import { PostFieldsFragment } from './__generated/ctf-post.generated';
 
 import { CtfAsset } from '@ctf-components/ctf-asset/ctf-asset';
-import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
+import { CtfRichtext } from '@ctf-components/ctf-richtext/ctf-richtext';
 import { CardPerson } from '@src/components/card-person/card-person';
 import ComponentResolver from '@src/components/component-resolver';
 import PostContainer from '@src/components/layout/post-container';
