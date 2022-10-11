@@ -7,6 +7,7 @@ import React, { useMemo, useContext, useCallback } from 'react';
 
 import { CtfAsset } from '../ctf-asset/ctf-asset';
 
+import { AssetFieldsFragment } from '@ctf-components/ctf-asset/__generated/ctf-asset.generated';
 import { useCtfRichTextHyperlinkQuery } from '@ctf-components/ctf-richtext/__generated/ctf-richtext.generated';
 import ComponentResolver from '@src/components/component-resolver';
 import PageLink from '@src/components/link/page-link';
