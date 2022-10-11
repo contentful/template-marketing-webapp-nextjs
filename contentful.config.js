@@ -159,12 +159,6 @@ module.exports = {
           linkedin: '#',
           instagram: '#',
         },
-    googlePlayLogo:
-      process.env.CONFIG_CONTENTFUL_FOOTER_GOOGLE_PLAY_LOGO ||
-      'https://images.ctfassets.net/w8vf7dk7f259/1mkXz9jh9W2NUQ1LbOw2BY/ea6c0d3171d05d4cad3c670120e840b2/google-play.png',
-    appStoreLogo:
-      process.env.CONFIG_CONTENTFUL_FOOTER_APP_STORE_LOGO ||
-      'https://images.ctfassets.net/w8vf7dk7f259/4BT6nEbNeJcxlcxPCbFMo0/99a92d5b38fd0bf613cb679ea1d2e876/app-store.png',
     legal: process.env.CONFIG_CONTENTFUL_FOOTER_LEGAL
       ? JSON.parse(process.env.CONFIG_CONTENTFUL_FOOTER_LEGAL)
       : [

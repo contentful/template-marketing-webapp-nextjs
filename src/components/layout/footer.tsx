@@ -281,37 +281,6 @@ const Footer = () => {
           )}
           <section className={classes.footerEndSection}>
             <LanguageSelector />
-
-            <div className={classes.storeLogos}>
-              {contentfulConfig.footer.googlePlayLogo && (
-                <a
-                  className={classes.storeLogo}
-                  href="https://play.google.com/store/apps/details?id=com.contentful.colorfulcoin"
-                >
-                  <ContentfulImage
-                    src={contentfulConfig.footer.googlePlayLogo}
-                    alt="Google Play Store logo"
-                    layout="responsive"
-                    width={`${contentfulConfig.footer.logoWidth}px`}
-                    height={'100px'}
-                  />
-                </a>
-              )}
-              {contentfulConfig.footer.appStoreLogo && (
-                <a
-                  className={classes.storeLogo}
-                  href="https://apps.apple.com/de/app/colorful-coin/id1612505445?l=en"
-                >
-                  <ContentfulImage
-                    src={contentfulConfig.footer.appStoreLogo}
-                    alt="Apple App Store logo"
-                    layout="responsive"
-                    width={`${contentfulConfig.footer.logoWidth}px`}
-                    height={'100px'}
-                  />
-                </a>
-              )}
-            </div>
           </section>
         </footer>
       </Container>
