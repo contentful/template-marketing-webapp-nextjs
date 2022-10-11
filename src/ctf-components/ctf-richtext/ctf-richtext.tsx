@@ -5,7 +5,6 @@ import { Variant } from '@material-ui/core/styles/createTypography';
 import clsx from 'clsx';
 import React, { useMemo, useContext, useCallback } from 'react';
 
-import { AssetFragment } from '../ctf-asset/__generated__/AssetFragment';
 import { CtfAsset } from '../ctf-asset/ctf-asset';
 
 import { useCtfRichTextHyperlinkQuery } from '@ctf-components/ctf-richtext/__generated/ctf-richtext.generated';
@@ -164,7 +163,7 @@ interface Block extends RichtextBlock {
   sys: { id: string };
 }
 
-type Asset = OmitRecursive<AssetFragment, '__typename'>;
+type Asset = OmitRecursive<AssetFieldsFragment, '__typename'>;
 
 interface CtfRichtextPropsInterface {
   json: any;

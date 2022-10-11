@@ -366,11 +366,20 @@ export type CategoryFilter = {
 export type CategoryLinkingCollections = {
   __typename?: 'CategoryLinkingCollections';
   entryCollection?: Maybe<EntryCollection>;
+  menuGroupCollection?: Maybe<MenuGroupCollection>;
   postCollection?: Maybe<PostCollection>;
 };
 
 
 export type CategoryLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type CategoryLinkingCollectionsMenuGroupCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
@@ -1959,6 +1968,168 @@ export enum EntryOrder {
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
+/** Navigation content type used for powering the Footer menu [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/footerMenu) */
+export type FooterMenu = Entry & {
+  __typename?: 'FooterMenu';
+  contentfulMetadata: ContentfulMetadata;
+  facebookLink?: Maybe<Scalars['String']>;
+  instagramLink?: Maybe<Scalars['String']>;
+  internalName?: Maybe<Scalars['String']>;
+  legalLinks?: Maybe<MenuGroup>;
+  linkedFrom?: Maybe<FooterMenuLinkingCollections>;
+  linkedinLink?: Maybe<Scalars['String']>;
+  menuItemsCollection?: Maybe<FooterMenuMenuItemsCollection>;
+  sys: Sys;
+  twitterLink?: Maybe<Scalars['String']>;
+};
+
+
+/** Navigation content type used for powering the Footer menu [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/footerMenu) */
+export type FooterMenuFacebookLinkArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Navigation content type used for powering the Footer menu [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/footerMenu) */
+export type FooterMenuInstagramLinkArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Navigation content type used for powering the Footer menu [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/footerMenu) */
+export type FooterMenuInternalNameArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Navigation content type used for powering the Footer menu [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/footerMenu) */
+export type FooterMenuLegalLinksArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+/** Navigation content type used for powering the Footer menu [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/footerMenu) */
+export type FooterMenuLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** Navigation content type used for powering the Footer menu [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/footerMenu) */
+export type FooterMenuLinkedinLinkArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Navigation content type used for powering the Footer menu [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/footerMenu) */
+export type FooterMenuMenuItemsCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+/** Navigation content type used for powering the Footer menu [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/footerMenu) */
+export type FooterMenuTwitterLinkArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+export type FooterMenuCollection = {
+  __typename?: 'FooterMenuCollection';
+  items: Array<Maybe<FooterMenu>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export type FooterMenuFilter = {
+  AND?: InputMaybe<Array<InputMaybe<FooterMenuFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<FooterMenuFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  facebookLink?: InputMaybe<Scalars['String']>;
+  facebookLink_contains?: InputMaybe<Scalars['String']>;
+  facebookLink_exists?: InputMaybe<Scalars['Boolean']>;
+  facebookLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  facebookLink_not?: InputMaybe<Scalars['String']>;
+  facebookLink_not_contains?: InputMaybe<Scalars['String']>;
+  facebookLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  instagramLink?: InputMaybe<Scalars['String']>;
+  instagramLink_contains?: InputMaybe<Scalars['String']>;
+  instagramLink_exists?: InputMaybe<Scalars['Boolean']>;
+  instagramLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  instagramLink_not?: InputMaybe<Scalars['String']>;
+  instagramLink_not_contains?: InputMaybe<Scalars['String']>;
+  instagramLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  internalName?: InputMaybe<Scalars['String']>;
+  internalName_contains?: InputMaybe<Scalars['String']>;
+  internalName_exists?: InputMaybe<Scalars['Boolean']>;
+  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  internalName_not?: InputMaybe<Scalars['String']>;
+  internalName_not_contains?: InputMaybe<Scalars['String']>;
+  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  legalLinks?: InputMaybe<CfMenuGroupNestedFilter>;
+  legalLinks_exists?: InputMaybe<Scalars['Boolean']>;
+  linkedinLink?: InputMaybe<Scalars['String']>;
+  linkedinLink_contains?: InputMaybe<Scalars['String']>;
+  linkedinLink_exists?: InputMaybe<Scalars['Boolean']>;
+  linkedinLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  linkedinLink_not?: InputMaybe<Scalars['String']>;
+  linkedinLink_not_contains?: InputMaybe<Scalars['String']>;
+  linkedinLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  menuItemsCollection_exists?: InputMaybe<Scalars['Boolean']>;
+  sys?: InputMaybe<SysFilter>;
+  twitterLink?: InputMaybe<Scalars['String']>;
+  twitterLink_contains?: InputMaybe<Scalars['String']>;
+  twitterLink_exists?: InputMaybe<Scalars['Boolean']>;
+  twitterLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  twitterLink_not?: InputMaybe<Scalars['String']>;
+  twitterLink_not_contains?: InputMaybe<Scalars['String']>;
+  twitterLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type FooterMenuLinkingCollections = {
+  __typename?: 'FooterMenuLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+};
+
+
+export type FooterMenuLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+export type FooterMenuMenuItemsCollection = {
+  __typename?: 'FooterMenuMenuItemsCollection';
+  items: Array<Maybe<MenuGroup>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export enum FooterMenuOrder {
+  FacebookLinkAsc = 'facebookLink_ASC',
+  FacebookLinkDesc = 'facebookLink_DESC',
+  InstagramLinkAsc = 'instagramLink_ASC',
+  InstagramLinkDesc = 'instagramLink_DESC',
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  LinkedinLinkAsc = 'linkedinLink_ASC',
+  LinkedinLinkDesc = 'linkedinLink_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TwitterLinkAsc = 'twitterLink_ASC',
+  TwitterLinkDesc = 'twitterLink_DESC'
+}
+
 export enum ImageFormat {
   Avif = 'AVIF',
   /** JPG image format. */
@@ -2053,6 +2224,121 @@ export type ImageTransformOptions = {
   /** Desired width in pixels. Defaults to the original image width. */
   width?: InputMaybe<Scalars['Dimension']>;
 };
+
+/** A group of items making up a section in the navigation menu [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/menuGroup) */
+export type MenuGroup = Entry & {
+  __typename?: 'MenuGroup';
+  contentfulMetadata: ContentfulMetadata;
+  featuredPagesCollection?: Maybe<MenuGroupFeaturedPagesCollection>;
+  groupName?: Maybe<Scalars['String']>;
+  internalTitle?: Maybe<Scalars['String']>;
+  linkedFrom?: Maybe<MenuGroupLinkingCollections>;
+  sys: Sys;
+};
+
+
+/** A group of items making up a section in the navigation menu [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/menuGroup) */
+export type MenuGroupFeaturedPagesCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+/** A group of items making up a section in the navigation menu [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/menuGroup) */
+export type MenuGroupGroupNameArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** A group of items making up a section in the navigation menu [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/menuGroup) */
+export type MenuGroupInternalTitleArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** A group of items making up a section in the navigation menu [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/menuGroup) */
+export type MenuGroupLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type MenuGroupCollection = {
+  __typename?: 'MenuGroupCollection';
+  items: Array<Maybe<MenuGroup>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export type MenuGroupFeaturedPagesCollection = {
+  __typename?: 'MenuGroupFeaturedPagesCollection';
+  items: Array<Maybe<MenuGroupFeaturedPagesItem>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export type MenuGroupFeaturedPagesItem = Category | Page | Post;
+
+export type MenuGroupFilter = {
+  AND?: InputMaybe<Array<InputMaybe<MenuGroupFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<MenuGroupFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  featuredPagesCollection_exists?: InputMaybe<Scalars['Boolean']>;
+  groupName?: InputMaybe<Scalars['String']>;
+  groupName_contains?: InputMaybe<Scalars['String']>;
+  groupName_exists?: InputMaybe<Scalars['Boolean']>;
+  groupName_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  groupName_not?: InputMaybe<Scalars['String']>;
+  groupName_not_contains?: InputMaybe<Scalars['String']>;
+  groupName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  internalTitle?: InputMaybe<Scalars['String']>;
+  internalTitle_contains?: InputMaybe<Scalars['String']>;
+  internalTitle_exists?: InputMaybe<Scalars['Boolean']>;
+  internalTitle_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  internalTitle_not?: InputMaybe<Scalars['String']>;
+  internalTitle_not_contains?: InputMaybe<Scalars['String']>;
+  internalTitle_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  sys?: InputMaybe<SysFilter>;
+};
+
+export type MenuGroupLinkingCollections = {
+  __typename?: 'MenuGroupLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+  footerMenuCollection?: Maybe<FooterMenuCollection>;
+};
+
+
+export type MenuGroupLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type MenuGroupLinkingCollectionsFooterMenuCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+export enum MenuGroupOrder {
+  GroupNameAsc = 'groupName_ASC',
+  GroupNameDesc = 'groupName_DESC',
+  InternalTitleAsc = 'internalTitle_ASC',
+  InternalTitleDesc = 'internalTitle_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
 
 /** Container that enables editors to publish a page, define its slug, select & arrange its content [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/page) */
 export type Page = Entry & {
@@ -2182,6 +2468,7 @@ export type PageLinkingCollections = {
   componentDuplexCollection?: Maybe<ComponentDuplexCollection>;
   componentHeroBannerCollection?: Maybe<ComponentHeroBannerCollection>;
   entryCollection?: Maybe<EntryCollection>;
+  menuGroupCollection?: Maybe<MenuGroupCollection>;
 };
 
 
@@ -2210,6 +2497,14 @@ export type PageLinkingCollectionsComponentHeroBannerCollectionArgs = {
 
 
 export type PageLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type PageLinkingCollectionsMenuGroupCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
@@ -2469,6 +2764,7 @@ export type PostLinkingCollections = {
   componentFeaturedCardsCollection?: Maybe<ComponentFeaturedCardsCollection>;
   componentHeroBannerCollection?: Maybe<ComponentHeroBannerCollection>;
   entryCollection?: Maybe<EntryCollection>;
+  menuGroupCollection?: Maybe<MenuGroupCollection>;
 };
 
 
@@ -2505,6 +2801,14 @@ export type PostLinkingCollectionsComponentHeroBannerCollectionArgs = {
 
 
 export type PostLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type PostLinkingCollectionsMenuGroupCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
@@ -2553,6 +2857,10 @@ export type Query = {
   componentTextBlock?: Maybe<ComponentTextBlock>;
   componentTextBlockCollection?: Maybe<ComponentTextBlockCollection>;
   entryCollection?: Maybe<EntryCollection>;
+  footerMenu?: Maybe<FooterMenu>;
+  footerMenuCollection?: Maybe<FooterMenuCollection>;
+  menuGroup?: Maybe<MenuGroup>;
+  menuGroupCollection?: Maybe<MenuGroupCollection>;
   page?: Maybe<Page>;
   pageCollection?: Maybe<PageCollection>;
   post?: Maybe<Post>;
@@ -2747,6 +3055,40 @@ export type QueryEntryCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<EntryFilter>;
+};
+
+
+export type QueryFooterMenuArgs = {
+  id: Scalars['String'];
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type QueryFooterMenuCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<FooterMenuOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<FooterMenuFilter>;
+};
+
+
+export type QueryMenuGroupArgs = {
+  id: Scalars['String'];
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type QueryMenuGroupCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<MenuGroupOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<MenuGroupFilter>;
 };
 
 
@@ -3787,6 +4129,28 @@ export type CfCategoryNestedFilter = {
   sys?: InputMaybe<SysFilter>;
 };
 
+export type CfMenuGroupNestedFilter = {
+  AND?: InputMaybe<Array<InputMaybe<CfMenuGroupNestedFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<CfMenuGroupNestedFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  featuredPagesCollection_exists?: InputMaybe<Scalars['Boolean']>;
+  groupName?: InputMaybe<Scalars['String']>;
+  groupName_contains?: InputMaybe<Scalars['String']>;
+  groupName_exists?: InputMaybe<Scalars['Boolean']>;
+  groupName_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  groupName_not?: InputMaybe<Scalars['String']>;
+  groupName_not_contains?: InputMaybe<Scalars['String']>;
+  groupName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  internalTitle?: InputMaybe<Scalars['String']>;
+  internalTitle_contains?: InputMaybe<Scalars['String']>;
+  internalTitle_exists?: InputMaybe<Scalars['Boolean']>;
+  internalTitle_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  internalTitle_not?: InputMaybe<Scalars['String']>;
+  internalTitle_not_contains?: InputMaybe<Scalars['String']>;
+  internalTitle_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  sys?: InputMaybe<SysFilter>;
+};
+
 export type CfSeoNestedFilter = {
   AND?: InputMaybe<Array<InputMaybe<CfSeoNestedFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<CfSeoNestedFilter>>>;
@@ -3868,7 +4232,9 @@ export type PageLinkFieldsFragment = { __typename: 'Page', slug?: string | null,
 
 export type PostLinkFieldsFragment = { __typename: 'Post', slug?: string | null, sys: { __typename?: 'Sys', id: string } };
 
-export type BusinessInfoFieldsFragment = { __typename?: 'TopicBusinessInfo', name?: string | null, shortDescription?: string | null, featuredImage?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null, body?: { __typename?: 'TopicBusinessInfoBody', json: any, links: { __typename?: 'TopicBusinessInfoBodyLinks', entries: { __typename?: 'TopicBusinessInfoBodyEntries', block: Array<{ __typename: 'Category', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentCta', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentFeaturedCards', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentInfoBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentProductTable', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentTextBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'Page', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Post', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Seo', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicPerson', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProduct', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProductFeature', sys: { __typename?: 'Sys', id: string } } | null> }, assets: { __typename?: 'TopicBusinessInfoBodyAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null };
+export type AssetFieldsFragment = { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } };
+
+export type BusinessInfoFieldsFragment = { __typename?: 'TopicBusinessInfo', name?: string | null, shortDescription?: string | null, featuredImage?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null, body?: { __typename?: 'TopicBusinessInfoBody', json: any, links: { __typename?: 'TopicBusinessInfoBodyLinks', entries: { __typename?: 'TopicBusinessInfoBodyEntries', block: Array<{ __typename: 'Category', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentCta', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentFeaturedCards', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentInfoBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentProductTable', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentTextBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'FooterMenu', sys: { __typename?: 'Sys', id: string } } | { __typename: 'MenuGroup', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Page', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Post', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Seo', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicPerson', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProduct', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProductFeature', sys: { __typename?: 'Sys', id: string } } | null> }, assets: { __typename?: 'TopicBusinessInfoBodyAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null };
 
 export type CtfBusinessInfoQueryVariables = Exact<{
   id: Scalars['String'];
@@ -3877,7 +4243,7 @@ export type CtfBusinessInfoQueryVariables = Exact<{
 }>;
 
 
-export type CtfBusinessInfoQuery = { __typename?: 'Query', topicBusinessInfo?: { __typename?: 'TopicBusinessInfo', name?: string | null, shortDescription?: string | null, featuredImage?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null, body?: { __typename?: 'TopicBusinessInfoBody', json: any, links: { __typename?: 'TopicBusinessInfoBodyLinks', entries: { __typename?: 'TopicBusinessInfoBodyEntries', block: Array<{ __typename: 'Category', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentCta', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentFeaturedCards', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentInfoBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentProductTable', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentTextBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'Page', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Post', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Seo', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicPerson', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProduct', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProductFeature', sys: { __typename?: 'Sys', id: string } } | null> }, assets: { __typename?: 'TopicBusinessInfoBodyAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null } | null };
+export type CtfBusinessInfoQuery = { __typename?: 'Query', topicBusinessInfo?: { __typename?: 'TopicBusinessInfo', name?: string | null, shortDescription?: string | null, featuredImage?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null, body?: { __typename?: 'TopicBusinessInfoBody', json: any, links: { __typename?: 'TopicBusinessInfoBodyLinks', entries: { __typename?: 'TopicBusinessInfoBodyEntries', block: Array<{ __typename: 'Category', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentCta', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentFeaturedCards', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentInfoBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentProductTable', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentTextBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'FooterMenu', sys: { __typename?: 'Sys', id: string } } | { __typename: 'MenuGroup', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Page', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Post', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Seo', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicPerson', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProduct', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProductFeature', sys: { __typename?: 'Sys', id: string } } | null> }, assets: { __typename?: 'TopicBusinessInfoBodyAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null } | null };
 
 export type BlogCategoriesFieldsFragment = { __typename?: 'CategoryCollection', items: Array<{ __typename?: 'Category', slug?: string | null, categoryName?: string | null, sys: { __typename?: 'Sys', id: string } } | null> };
 
@@ -3955,7 +4321,7 @@ export type CtfInfoBlockQueryVariables = Exact<{
 
 export type CtfInfoBlockQuery = { __typename?: 'Query', componentInfoBlock?: { __typename: 'ComponentInfoBlock', internalName?: string | null, headline?: string | null, subline?: string | null, colorPalette?: string | null, sys: { __typename?: 'Sys', id: string }, block1Image?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null, block1Body?: { __typename?: 'ComponentInfoBlockBlock1Body', json: any } | null, block2Image?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null, block2Body?: { __typename?: 'ComponentInfoBlockBlock2Body', json: any } | null, block3Image?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null, block3Body?: { __typename?: 'ComponentInfoBlockBlock3Body', json: any } | null } | null };
 
-export type LegalPageFieldsFragment = { __typename?: 'Page', pageName?: string | null, pageContent?: { __typename: 'ComponentProductTable', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', name?: string | null, sys: { __typename?: 'Sys', id: string }, featuredImage?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null, body?: { __typename?: 'TopicBusinessInfoBody', json: any, links: { __typename?: 'TopicBusinessInfoBodyLinks', entries: { __typename?: 'TopicBusinessInfoBodyEntries', block: Array<{ __typename: 'Category', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentCta', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentFeaturedCards', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentInfoBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentProductTable', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentTextBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'Page', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Post', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Seo', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicPerson', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProduct', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProductFeature', sys: { __typename?: 'Sys', id: string } } | null> }, assets: { __typename?: 'TopicBusinessInfoBodyAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null } | { __typename: 'TopicProduct', sys: { __typename?: 'Sys', id: string } } | null };
+export type LegalPageFieldsFragment = { __typename?: 'Page', pageName?: string | null, pageContent?: { __typename: 'ComponentProductTable', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', name?: string | null, sys: { __typename?: 'Sys', id: string }, featuredImage?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null, body?: { __typename?: 'TopicBusinessInfoBody', json: any, links: { __typename?: 'TopicBusinessInfoBodyLinks', entries: { __typename?: 'TopicBusinessInfoBodyEntries', block: Array<{ __typename: 'Category', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentCta', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentFeaturedCards', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentInfoBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentProductTable', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentTextBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'FooterMenu', sys: { __typename?: 'Sys', id: string } } | { __typename: 'MenuGroup', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Page', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Post', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Seo', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicPerson', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProduct', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProductFeature', sys: { __typename?: 'Sys', id: string } } | null> }, assets: { __typename?: 'TopicBusinessInfoBodyAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null } | { __typename: 'TopicProduct', sys: { __typename?: 'Sys', id: string } } | null };
 
 export type CtfLegalPageQueryVariables = Exact<{
   slug: Scalars['String'];
@@ -3963,7 +4329,7 @@ export type CtfLegalPageQueryVariables = Exact<{
 }>;
 
 
-export type CtfLegalPageQuery = { __typename?: 'Query', pageCollection?: { __typename?: 'PageCollection', items: Array<{ __typename?: 'Page', pageName?: string | null, pageContent?: { __typename: 'ComponentProductTable', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', name?: string | null, sys: { __typename?: 'Sys', id: string }, featuredImage?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null, body?: { __typename?: 'TopicBusinessInfoBody', json: any, links: { __typename?: 'TopicBusinessInfoBodyLinks', entries: { __typename?: 'TopicBusinessInfoBodyEntries', block: Array<{ __typename: 'Category', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentCta', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentFeaturedCards', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentInfoBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentProductTable', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentTextBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'Page', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Post', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Seo', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicPerson', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProduct', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProductFeature', sys: { __typename?: 'Sys', id: string } } | null> }, assets: { __typename?: 'TopicBusinessInfoBodyAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null } | { __typename: 'TopicProduct', sys: { __typename?: 'Sys', id: string } } | null } | null> } | null };
+export type CtfLegalPageQuery = { __typename?: 'Query', pageCollection?: { __typename?: 'PageCollection', items: Array<{ __typename?: 'Page', pageName?: string | null, pageContent?: { __typename: 'ComponentProductTable', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', name?: string | null, sys: { __typename?: 'Sys', id: string }, featuredImage?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null, body?: { __typename?: 'TopicBusinessInfoBody', json: any, links: { __typename?: 'TopicBusinessInfoBodyLinks', entries: { __typename?: 'TopicBusinessInfoBodyEntries', block: Array<{ __typename: 'Category', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentCta', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentFeaturedCards', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentInfoBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentProductTable', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentTextBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'FooterMenu', sys: { __typename?: 'Sys', id: string } } | { __typename: 'MenuGroup', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Page', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Post', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Seo', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicPerson', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProduct', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProductFeature', sys: { __typename?: 'Sys', id: string } } | null> }, assets: { __typename?: 'TopicBusinessInfoBodyAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null } | { __typename: 'TopicProduct', sys: { __typename?: 'Sys', id: string } } | null } | null> } | null };
 
 export type CtfPageFieldsFragment = { __typename?: 'Page', pageName?: string | null, slug?: string | null, internalName?: string | null, seo?: { __typename?: 'Seo', title?: string | null, description?: string | null, noIndex?: boolean | null, noFollow?: boolean | null, image?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null } | null, topSectionCollection?: { __typename?: 'PageTopSectionCollection', items: Array<{ __typename: 'ComponentCta', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentFeaturedCards', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentInfoBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentTextBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, pageContent?: { __typename: 'ComponentProductTable', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProduct', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | null, extraSectionCollection?: { __typename?: 'PageExtraSectionCollection', items: Array<{ __typename: 'ComponentCta', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentFeaturedCards', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentInfoBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentTextBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null };
 
@@ -3991,7 +4357,7 @@ export type PostCategoryFieldsFragment = { __typename?: 'Category', categoryName
 
 export type PostBaseFieldsFragment = { __typename: 'Post', internalName?: string | null, postName?: string | null, publishedDate?: any | null, slug?: string | null, sys: { __typename?: 'Sys', id: string }, featuredImage?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null, category?: { __typename?: 'Category', categoryName?: string | null, slug?: string | null, sys: { __typename?: 'Sys', id: string } } | null, author?: { __typename: 'TopicPerson', internalName?: string | null, name?: string | null, website?: string | null, location?: string | null, cardStyle?: boolean | null, sys: { __typename?: 'Sys', id: string }, bio?: { __typename?: 'TopicPersonBio', json: any } | null, avatar?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null } | null, introText?: { __typename?: 'PostIntroText', json: any } | null, contentfulMetadata: { __typename?: 'ContentfulMetadata', tags: Array<{ __typename?: 'ContentfulTag', id?: string | null, name?: string | null } | null> } };
 
-export type PostFieldsFragment = { __typename: 'Post', internalName?: string | null, postName?: string | null, publishedDate?: any | null, slug?: string | null, seo?: { __typename?: 'Seo', title?: string | null, description?: string | null, noIndex?: boolean | null, noFollow?: boolean | null, image?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null } | null, introText?: { __typename?: 'PostIntroText', json: any, links: { __typename?: 'PostIntroTextLinks', entries: { __typename?: 'PostIntroTextEntries', block: Array<{ __typename: 'Category', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentCta', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentFeaturedCards', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentInfoBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentProductTable', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentTextBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'Page', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Post', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Seo', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicPerson', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProduct', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProductFeature', sys: { __typename?: 'Sys', id: string } } | null> }, assets: { __typename?: 'PostIntroTextAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null, body?: { __typename?: 'PostBody', json: any, links: { __typename?: 'PostBodyLinks', entries: { __typename?: 'PostBodyEntries', block: Array<{ __typename: 'Category', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentCta', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentFeaturedCards', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentInfoBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentProductTable', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentTextBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'Page', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Post', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Seo', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicPerson', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProduct', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProductFeature', sys: { __typename?: 'Sys', id: string } } | null> }, assets: { __typename?: 'PostBodyAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null, extraSectionCollection?: { __typename?: 'PostExtraSectionCollection', items: Array<{ __typename: 'ComponentCta', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentFeaturedCards', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentInfoBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentTextBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, sys: { __typename?: 'Sys', id: string }, featuredImage?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null, category?: { __typename?: 'Category', categoryName?: string | null, slug?: string | null, sys: { __typename?: 'Sys', id: string } } | null, author?: { __typename: 'TopicPerson', internalName?: string | null, name?: string | null, website?: string | null, location?: string | null, cardStyle?: boolean | null, sys: { __typename?: 'Sys', id: string }, bio?: { __typename?: 'TopicPersonBio', json: any } | null, avatar?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null } | null, contentfulMetadata: { __typename?: 'ContentfulMetadata', tags: Array<{ __typename?: 'ContentfulTag', id?: string | null, name?: string | null } | null> } };
+export type PostFieldsFragment = { __typename: 'Post', internalName?: string | null, postName?: string | null, publishedDate?: any | null, slug?: string | null, seo?: { __typename?: 'Seo', title?: string | null, description?: string | null, noIndex?: boolean | null, noFollow?: boolean | null, image?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null } | null, introText?: { __typename?: 'PostIntroText', json: any, links: { __typename?: 'PostIntroTextLinks', entries: { __typename?: 'PostIntroTextEntries', block: Array<{ __typename: 'Category', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentCta', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentFeaturedCards', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentInfoBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentProductTable', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentTextBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'FooterMenu', sys: { __typename?: 'Sys', id: string } } | { __typename: 'MenuGroup', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Page', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Post', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Seo', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicPerson', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProduct', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProductFeature', sys: { __typename?: 'Sys', id: string } } | null> }, assets: { __typename?: 'PostIntroTextAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null, body?: { __typename?: 'PostBody', json: any, links: { __typename?: 'PostBodyLinks', entries: { __typename?: 'PostBodyEntries', block: Array<{ __typename: 'Category', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentCta', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentFeaturedCards', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentInfoBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentProductTable', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentTextBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'FooterMenu', sys: { __typename?: 'Sys', id: string } } | { __typename: 'MenuGroup', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Page', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Post', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Seo', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicPerson', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProduct', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProductFeature', sys: { __typename?: 'Sys', id: string } } | null> }, assets: { __typename?: 'PostBodyAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null, extraSectionCollection?: { __typename?: 'PostExtraSectionCollection', items: Array<{ __typename: 'ComponentCta', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentFeaturedCards', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentInfoBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentTextBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, sys: { __typename?: 'Sys', id: string }, featuredImage?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null, category?: { __typename?: 'Category', categoryName?: string | null, slug?: string | null, sys: { __typename?: 'Sys', id: string } } | null, author?: { __typename: 'TopicPerson', internalName?: string | null, name?: string | null, website?: string | null, location?: string | null, cardStyle?: boolean | null, sys: { __typename?: 'Sys', id: string }, bio?: { __typename?: 'TopicPersonBio', json: any } | null, avatar?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null } | null, contentfulMetadata: { __typename?: 'ContentfulMetadata', tags: Array<{ __typename?: 'ContentfulTag', id?: string | null, name?: string | null } | null> } };
 
 export type CtfPostQueryVariables = Exact<{
   slug: Scalars['String'];
@@ -4000,7 +4366,7 @@ export type CtfPostQueryVariables = Exact<{
 }>;
 
 
-export type CtfPostQuery = { __typename?: 'Query', postCollection?: { __typename?: 'PostCollection', items: Array<{ __typename: 'Post', internalName?: string | null, postName?: string | null, publishedDate?: any | null, slug?: string | null, seo?: { __typename?: 'Seo', title?: string | null, description?: string | null, noIndex?: boolean | null, noFollow?: boolean | null, image?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null } | null, introText?: { __typename?: 'PostIntroText', json: any, links: { __typename?: 'PostIntroTextLinks', entries: { __typename?: 'PostIntroTextEntries', block: Array<{ __typename: 'Category', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentCta', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentFeaturedCards', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentInfoBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentProductTable', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentTextBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'Page', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Post', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Seo', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicPerson', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProduct', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProductFeature', sys: { __typename?: 'Sys', id: string } } | null> }, assets: { __typename?: 'PostIntroTextAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null, body?: { __typename?: 'PostBody', json: any, links: { __typename?: 'PostBodyLinks', entries: { __typename?: 'PostBodyEntries', block: Array<{ __typename: 'Category', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentCta', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentFeaturedCards', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentInfoBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentProductTable', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentTextBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'Page', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Post', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Seo', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicPerson', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProduct', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProductFeature', sys: { __typename?: 'Sys', id: string } } | null> }, assets: { __typename?: 'PostBodyAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null, extraSectionCollection?: { __typename?: 'PostExtraSectionCollection', items: Array<{ __typename: 'ComponentCta', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentFeaturedCards', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentInfoBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentTextBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, sys: { __typename?: 'Sys', id: string }, featuredImage?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null, category?: { __typename?: 'Category', categoryName?: string | null, slug?: string | null, sys: { __typename?: 'Sys', id: string } } | null, author?: { __typename: 'TopicPerson', internalName?: string | null, name?: string | null, website?: string | null, location?: string | null, cardStyle?: boolean | null, sys: { __typename?: 'Sys', id: string }, bio?: { __typename?: 'TopicPersonBio', json: any } | null, avatar?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null } | null, contentfulMetadata: { __typename?: 'ContentfulMetadata', tags: Array<{ __typename?: 'ContentfulTag', id?: string | null, name?: string | null } | null> } } | null> } | null };
+export type CtfPostQuery = { __typename?: 'Query', postCollection?: { __typename?: 'PostCollection', items: Array<{ __typename: 'Post', internalName?: string | null, postName?: string | null, publishedDate?: any | null, slug?: string | null, seo?: { __typename?: 'Seo', title?: string | null, description?: string | null, noIndex?: boolean | null, noFollow?: boolean | null, image?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null } | null, introText?: { __typename?: 'PostIntroText', json: any, links: { __typename?: 'PostIntroTextLinks', entries: { __typename?: 'PostIntroTextEntries', block: Array<{ __typename: 'Category', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentCta', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentFeaturedCards', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentInfoBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentProductTable', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentTextBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'FooterMenu', sys: { __typename?: 'Sys', id: string } } | { __typename: 'MenuGroup', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Page', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Post', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Seo', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicPerson', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProduct', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProductFeature', sys: { __typename?: 'Sys', id: string } } | null> }, assets: { __typename?: 'PostIntroTextAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null, body?: { __typename?: 'PostBody', json: any, links: { __typename?: 'PostBodyLinks', entries: { __typename?: 'PostBodyEntries', block: Array<{ __typename: 'Category', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentCta', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentFeaturedCards', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentInfoBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentProductTable', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentTextBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'FooterMenu', sys: { __typename?: 'Sys', id: string } } | { __typename: 'MenuGroup', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Page', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Post', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Seo', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicPerson', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProduct', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProductFeature', sys: { __typename?: 'Sys', id: string } } | null> }, assets: { __typename?: 'PostBodyAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null, extraSectionCollection?: { __typename?: 'PostExtraSectionCollection', items: Array<{ __typename: 'ComponentCta', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentFeaturedCards', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentInfoBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentTextBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, sys: { __typename?: 'Sys', id: string }, featuredImage?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null, category?: { __typename?: 'Category', categoryName?: string | null, slug?: string | null, sys: { __typename?: 'Sys', id: string } } | null, author?: { __typename: 'TopicPerson', internalName?: string | null, name?: string | null, website?: string | null, location?: string | null, cardStyle?: boolean | null, sys: { __typename?: 'Sys', id: string }, bio?: { __typename?: 'TopicPersonBio', json: any } | null, avatar?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null } | null, contentfulMetadata: { __typename?: 'ContentfulMetadata', tags: Array<{ __typename?: 'ContentfulTag', id?: string | null, name?: string | null } | null> } } | null> } | null };
 
 export type CtfBlogQueryVariables = Exact<{
   locale?: InputMaybe<Scalars['String']>;
@@ -4043,7 +4409,7 @@ export type CtfProductQueryVariables = Exact<{
 
 export type CtfProductQuery = { __typename?: 'Query', topicProduct?: { __typename?: 'TopicProduct', name?: string | null, price?: number | null, sys: { __typename?: 'Sys', id: string }, featuredImage?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null, description?: { __typename?: 'TopicProductDescription', json: any } | null, featuresCollection?: { __typename?: 'TopicProductFeaturesCollection', items: Array<{ __typename?: 'TopicProductFeature', name?: string | null, sys: { __typename?: 'Sys', id: string }, longDescription?: { __typename?: 'TopicProductFeatureLongDescription', json: any, links: { __typename?: 'TopicProductFeatureLongDescriptionLinks', assets: { __typename?: 'TopicProductFeatureLongDescriptionAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null, shortDescription?: { __typename?: 'TopicProductFeatureShortDescription', json: any, links: { __typename?: 'TopicProductFeatureShortDescriptionLinks', assets: { __typename?: 'TopicProductFeatureShortDescriptionAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null } | null> } | null } | null };
 
-export type QuoteFieldsFragment = { __typename: 'ComponentQuote', internalName?: string | null, quoteAlignment?: boolean | null, imagePosition?: boolean | null, colorPalette?: string | null, sys: { __typename?: 'Sys', id: string }, quote?: { __typename?: 'ComponentQuoteQuote', json: any, links: { __typename?: 'ComponentQuoteQuoteLinks', entries: { __typename?: 'ComponentQuoteQuoteEntries', block: Array<{ __typename: 'Category', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentCta', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentFeaturedCards', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentInfoBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentProductTable', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentTextBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'Page', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Post', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Seo', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicPerson', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProduct', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProductFeature', sys: { __typename?: 'Sys', id: string } } | null> }, assets: { __typename?: 'ComponentQuoteQuoteAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null, image?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null };
+export type QuoteFieldsFragment = { __typename: 'ComponentQuote', internalName?: string | null, quoteAlignment?: boolean | null, imagePosition?: boolean | null, colorPalette?: string | null, sys: { __typename?: 'Sys', id: string }, quote?: { __typename?: 'ComponentQuoteQuote', json: any, links: { __typename?: 'ComponentQuoteQuoteLinks', entries: { __typename?: 'ComponentQuoteQuoteEntries', block: Array<{ __typename: 'Category', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentCta', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentFeaturedCards', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentInfoBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentProductTable', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentTextBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'FooterMenu', sys: { __typename?: 'Sys', id: string } } | { __typename: 'MenuGroup', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Page', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Post', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Seo', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicPerson', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProduct', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProductFeature', sys: { __typename?: 'Sys', id: string } } | null> }, assets: { __typename?: 'ComponentQuoteQuoteAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null, image?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null };
 
 export type CtfQuoteQueryVariables = Exact<{
   id: Scalars['String'];
@@ -4052,7 +4418,7 @@ export type CtfQuoteQueryVariables = Exact<{
 }>;
 
 
-export type CtfQuoteQuery = { __typename?: 'Query', componentQuote?: { __typename: 'ComponentQuote', internalName?: string | null, quoteAlignment?: boolean | null, imagePosition?: boolean | null, colorPalette?: string | null, sys: { __typename?: 'Sys', id: string }, quote?: { __typename?: 'ComponentQuoteQuote', json: any, links: { __typename?: 'ComponentQuoteQuoteLinks', entries: { __typename?: 'ComponentQuoteQuoteEntries', block: Array<{ __typename: 'Category', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentCta', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentFeaturedCards', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentInfoBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentProductTable', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentTextBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'Page', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Post', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Seo', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicPerson', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProduct', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProductFeature', sys: { __typename?: 'Sys', id: string } } | null> }, assets: { __typename?: 'ComponentQuoteQuoteAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null, image?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null } | null };
+export type CtfQuoteQuery = { __typename?: 'Query', componentQuote?: { __typename: 'ComponentQuote', internalName?: string | null, quoteAlignment?: boolean | null, imagePosition?: boolean | null, colorPalette?: string | null, sys: { __typename?: 'Sys', id: string }, quote?: { __typename?: 'ComponentQuoteQuote', json: any, links: { __typename?: 'ComponentQuoteQuoteLinks', entries: { __typename?: 'ComponentQuoteQuoteEntries', block: Array<{ __typename: 'Category', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentCta', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentFeaturedCards', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentInfoBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentProductTable', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentTextBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'FooterMenu', sys: { __typename?: 'Sys', id: string } } | { __typename: 'MenuGroup', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Page', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Post', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Seo', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicPerson', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProduct', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProductFeature', sys: { __typename?: 'Sys', id: string } } | null> }, assets: { __typename?: 'ComponentQuoteQuoteAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null, image?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null } | null };
 
 export type RichTextHyperlinkFieldsFragment = { __typename?: 'Query', page?: { __typename: 'Page', slug?: string | null, sys: { __typename?: 'Sys', id: string }, pageContent?: { __typename: 'ComponentProductTable', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProduct', sys: { __typename?: 'Sys', id: string } } | null } | null, post?: { __typename: 'Post', slug?: string | null, sys: { __typename?: 'Sys', id: string } } | null };
 
@@ -4074,7 +4440,7 @@ export type CtfTagQueryVariables = Exact<{
 
 export type CtfTagQuery = { __typename?: 'Query', postCollection?: { __typename?: 'PostCollection', items: Array<{ __typename: 'Post', internalName?: string | null, postName?: string | null, publishedDate?: any | null, slug?: string | null, sys: { __typename?: 'Sys', id: string }, featuredImage?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null, category?: { __typename?: 'Category', categoryName?: string | null, slug?: string | null, sys: { __typename?: 'Sys', id: string } } | null, author?: { __typename: 'TopicPerson', internalName?: string | null, name?: string | null, website?: string | null, location?: string | null, cardStyle?: boolean | null, sys: { __typename?: 'Sys', id: string }, bio?: { __typename?: 'TopicPersonBio', json: any } | null, avatar?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null } | null, introText?: { __typename?: 'PostIntroText', json: any } | null, contentfulMetadata: { __typename?: 'ContentfulMetadata', tags: Array<{ __typename?: 'ContentfulTag', id?: string | null, name?: string | null } | null> } } | null> } | null };
 
-export type TextBlockFieldsFragment = { __typename: 'ComponentTextBlock', headline?: string | null, subline?: string | null, colorPalette?: string | null, sys: { __typename?: 'Sys', id: string }, body?: { __typename?: 'ComponentTextBlockBody', json: any, links: { __typename?: 'ComponentTextBlockBodyLinks', entries: { __typename?: 'ComponentTextBlockBodyEntries', block: Array<{ __typename: 'Category', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentCta', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentFeaturedCards', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentInfoBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentProductTable', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentTextBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'Page', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Post', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Seo', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicPerson', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProduct', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProductFeature', sys: { __typename?: 'Sys', id: string } } | null> }, assets: { __typename?: 'ComponentTextBlockBodyAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null };
+export type TextBlockFieldsFragment = { __typename: 'ComponentTextBlock', headline?: string | null, subline?: string | null, colorPalette?: string | null, sys: { __typename?: 'Sys', id: string }, body?: { __typename?: 'ComponentTextBlockBody', json: any, links: { __typename?: 'ComponentTextBlockBodyLinks', entries: { __typename?: 'ComponentTextBlockBodyEntries', block: Array<{ __typename: 'Category', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentCta', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentFeaturedCards', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentInfoBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentProductTable', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentTextBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'FooterMenu', sys: { __typename?: 'Sys', id: string } } | { __typename: 'MenuGroup', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Page', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Post', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Seo', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicPerson', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProduct', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProductFeature', sys: { __typename?: 'Sys', id: string } } | null> }, assets: { __typename?: 'ComponentTextBlockBodyAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null };
 
 export type CtfTextBlockQueryVariables = Exact<{
   id: Scalars['String'];
@@ -4083,9 +4449,7 @@ export type CtfTextBlockQueryVariables = Exact<{
 }>;
 
 
-export type CtfTextBlockQuery = { __typename?: 'Query', componentTextBlock?: { __typename: 'ComponentTextBlock', headline?: string | null, subline?: string | null, colorPalette?: string | null, sys: { __typename?: 'Sys', id: string }, body?: { __typename?: 'ComponentTextBlockBody', json: any, links: { __typename?: 'ComponentTextBlockBodyLinks', entries: { __typename?: 'ComponentTextBlockBodyEntries', block: Array<{ __typename: 'Category', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentCta', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentFeaturedCards', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentInfoBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentProductTable', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentTextBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'Page', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Post', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Seo', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicPerson', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProduct', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProductFeature', sys: { __typename?: 'Sys', id: string } } | null> }, assets: { __typename?: 'ComponentTextBlockBodyAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null } | null };
-
-export type AssetFieldsFragment = { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } };
+export type CtfTextBlockQuery = { __typename?: 'Query', componentTextBlock?: { __typename: 'ComponentTextBlock', headline?: string | null, subline?: string | null, colorPalette?: string | null, sys: { __typename?: 'Sys', id: string }, body?: { __typename?: 'ComponentTextBlockBody', json: any, links: { __typename?: 'ComponentTextBlockBodyLinks', entries: { __typename?: 'ComponentTextBlockBodyEntries', block: Array<{ __typename: 'Category', sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentCta', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentFeaturedCards', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentInfoBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentProductTable', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentTextBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'FooterMenu', sys: { __typename?: 'Sys', id: string } } | { __typename: 'MenuGroup', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Page', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Post', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Seo', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicPerson', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProduct', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProductFeature', sys: { __typename?: 'Sys', id: string } } | null> }, assets: { __typename?: 'ComponentTextBlockBodyAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null } | null };
 
 type ComponentReferenceFields_Category_Fragment = { __typename: 'Category', sys: { __typename?: 'Sys', id: string } };
 
@@ -4105,6 +4469,10 @@ type ComponentReferenceFields_ComponentQuote_Fragment = { __typename: 'Component
 
 type ComponentReferenceFields_ComponentTextBlock_Fragment = { __typename: 'ComponentTextBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } };
 
+type ComponentReferenceFields_FooterMenu_Fragment = { __typename: 'FooterMenu', sys: { __typename?: 'Sys', id: string } };
+
+type ComponentReferenceFields_MenuGroup_Fragment = { __typename: 'MenuGroup', sys: { __typename?: 'Sys', id: string } };
+
 type ComponentReferenceFields_Page_Fragment = { __typename: 'Page', sys: { __typename?: 'Sys', id: string } };
 
 type ComponentReferenceFields_Post_Fragment = { __typename: 'Post', sys: { __typename?: 'Sys', id: string } };
@@ -4119,4 +4487,4 @@ type ComponentReferenceFields_TopicProduct_Fragment = { __typename: 'TopicProduc
 
 type ComponentReferenceFields_TopicProductFeature_Fragment = { __typename: 'TopicProductFeature', sys: { __typename?: 'Sys', id: string } };
 
-export type ComponentReferenceFieldsFragment = ComponentReferenceFields_Category_Fragment | ComponentReferenceFields_ComponentCta_Fragment | ComponentReferenceFields_ComponentDuplex_Fragment | ComponentReferenceFields_ComponentFeaturedCards_Fragment | ComponentReferenceFields_ComponentHeroBanner_Fragment | ComponentReferenceFields_ComponentInfoBlock_Fragment | ComponentReferenceFields_ComponentProductTable_Fragment | ComponentReferenceFields_ComponentQuote_Fragment | ComponentReferenceFields_ComponentTextBlock_Fragment | ComponentReferenceFields_Page_Fragment | ComponentReferenceFields_Post_Fragment | ComponentReferenceFields_Seo_Fragment | ComponentReferenceFields_TopicBusinessInfo_Fragment | ComponentReferenceFields_TopicPerson_Fragment | ComponentReferenceFields_TopicProduct_Fragment | ComponentReferenceFields_TopicProductFeature_Fragment;
+export type ComponentReferenceFieldsFragment = ComponentReferenceFields_Category_Fragment | ComponentReferenceFields_ComponentCta_Fragment | ComponentReferenceFields_ComponentDuplex_Fragment | ComponentReferenceFields_ComponentFeaturedCards_Fragment | ComponentReferenceFields_ComponentHeroBanner_Fragment | ComponentReferenceFields_ComponentInfoBlock_Fragment | ComponentReferenceFields_ComponentProductTable_Fragment | ComponentReferenceFields_ComponentQuote_Fragment | ComponentReferenceFields_ComponentTextBlock_Fragment | ComponentReferenceFields_FooterMenu_Fragment | ComponentReferenceFields_MenuGroup_Fragment | ComponentReferenceFields_Page_Fragment | ComponentReferenceFields_Post_Fragment | ComponentReferenceFields_Seo_Fragment | ComponentReferenceFields_TopicBusinessInfo_Fragment | ComponentReferenceFields_TopicPerson_Fragment | ComponentReferenceFields_TopicProduct_Fragment | ComponentReferenceFields_TopicProductFeature_Fragment;

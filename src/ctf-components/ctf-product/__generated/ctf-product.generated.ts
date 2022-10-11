@@ -1,8 +1,8 @@
 import * as Types from '../../../lib/__generated/graphql.types';
 
-import { AssetFieldsFragment } from '../../../lib/shared-fragments/__generated/ctf-asset.generated';
+import { AssetFieldsFragment } from '../../ctf-asset/__generated/ctf-asset.generated';
 import { ProductFeatureFieldsFragment } from '../../ctf-product-feature/__generated/ctf-product-feature.generated';
-import { AssetFieldsFragmentDoc } from '../../../lib/shared-fragments/__generated/ctf-asset.generated';
+import { AssetFieldsFragmentDoc } from '../../ctf-asset/__generated/ctf-asset.generated';
 import { ProductFeatureFieldsFragmentDoc } from '../../ctf-product-feature/__generated/ctf-product-feature.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 
