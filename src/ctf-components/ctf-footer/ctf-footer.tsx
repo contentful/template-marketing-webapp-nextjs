@@ -223,7 +223,9 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 export const CtfFooter = (props: FooterFieldsFragment) => {
-  console.log({ props });
+  const footerContent = props.items[0];
+
+  console.log({ footerContent });
   const { t } = useTranslation();
 
   const renderMenuItem = (
@@ -327,23 +329,23 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
             <div className={classes.socialWrapper}>
               <Typography className={classes.socialTitle}>{t('socials.findUsOn')}</Typography>
               <div className={classes.social}>
-                {contentfulConfig.footer.social.twitter && (
-                  <a href={contentfulConfig.footer.social.twitter}>
+                {footerContent?.twitterLink && (
+                  <a href={footerContent.twitterLink}>
                     <Twitter />
                   </a>
                 )}
-                {contentfulConfig.footer.social.facebook && (
-                  <a href={contentfulConfig.footer.social.facebook}>
+                {footerContent?.facebookLink && (
+                  <a href={footerContent.facebookLink}>
                     <Facebook />
                   </a>
                 )}
-                {contentfulConfig.footer.social.linkedin && (
-                  <a href={contentfulConfig.footer.social.linkedin}>
+                {footerContent?.linkedinLink && (
+                  <a href={footerContent.linkedinLink}>
                     <LinkedIn />
                   </a>
                 )}
-                {contentfulConfig.footer.social.instagram && (
-                  <a href={contentfulConfig.footer.social.instagram}>
+                {footerContent?.instagramLink && (
+                  <a href={footerContent.instagramLink}>
                     <Instagram />
                   </a>
                 )}

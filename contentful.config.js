@@ -150,15 +150,6 @@ module.exports = {
             ],
           },
         ],
-    social: process.env.CONFIG_CONTENTFUL_FOOTER_SOCIAL
-      ? JSON.parse(process.env.CONFIG_CONTENTFUL_FOOTER_SOCIAL)
-      : {
-          // Supported: Twitter, Facebook, LinkedIn, Instagram
-          twitter: '#',
-          facebook: '#',
-          linkedin: '#',
-          instagram: '#',
-        },
     legal: process.env.CONFIG_CONTENTFUL_FOOTER_LEGAL
       ? JSON.parse(process.env.CONFIG_CONTENTFUL_FOOTER_LEGAL)
       : [
