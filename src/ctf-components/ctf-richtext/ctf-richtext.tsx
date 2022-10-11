@@ -7,10 +7,10 @@ import gql from 'graphql-tag';
 import React, { useMemo, useContext, useCallback } from 'react';
 import { useQuery } from 'react-apollo';
 
-import { AssetFragment } from '../ctf-asset/__generated__/AssetFragment';
 import { CtfAsset } from '../ctf-asset/ctf-asset';
 import { RichTextEntryHyperlinkQuery } from './__generated__/RichTextEntryHyperlinkQuery';
 
+import { AssetFieldsFragment } from '@ctf-components/ctf-asset/__generated/ctf-asset.generated';
 import ComponentResolver from '@src/components/component-resolver';
 import PageLink from '@src/components/link/page-link';
 import PostLink from '@src/components/link/post-link';
@@ -167,7 +167,7 @@ interface Block extends RichtextBlock {
   sys: { id: string };
 }
 
-type Asset = OmitRecursive<AssetFragment, '__typename'>;
+type Asset = OmitRecursive<AssetFieldsFragment, '__typename'>;
 
 interface CtfRichtextPropsInterface {
   json: any;
