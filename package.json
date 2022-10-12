@@ -61,7 +61,6 @@
     "date-fns": "^2.29.1",
     "dotenv": "^16.0.1",
     "graphql": "^16.5.0",
-    "graphql-tag": "^2.12.6",
     "imagesloaded": "^5.0.0",
     "intersection-observer": "^0.12.2",
     "isomorphic-unfetch": "^3.1.0",
