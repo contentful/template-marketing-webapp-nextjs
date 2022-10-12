@@ -83,9 +83,6 @@ module.exports = withPlugins(plugins, {
       use: ['@svgr/webpack'],
     });
 
-    // TODO: remove once getServerSideTranslations is properly importer in each gSSP Next.js method
-    config.resolve.fallback = { ...config.resolve.fallback, fs: false }; // https://stackoverflow.com/questions/64926174/module-not-found-cant-resolve-fs-in-next-js-application
-
     includePolyfills(config);
 
     return config;

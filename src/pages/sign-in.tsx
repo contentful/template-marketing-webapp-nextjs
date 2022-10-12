@@ -1,5 +1,5 @@
 import { Container, Typography, makeStyles, Theme, Button } from '@material-ui/core';
-import { GetServerSideProps, NextPage } from 'next';
+import { NextPage, NextPageContext } from 'next';
 import { useTranslation } from 'next-i18next';
 import Head from 'next/head';
 
@@ -7,7 +7,7 @@ import { ContentfulImage } from '@src/components/contentful-image/contentful-ima
 import PageContainer from '@src/components/layout/page-container';
 import Link from '@src/components/link/link';
 import { useContentfulContext } from '@src/contentful-context';
-import { generateGetServerSideProps } from '@src/lib/with-providers';
+import { getServerSideTranslations } from '@src/lib/get-serverside-translations';
 import contentfulConfig from 'contentful.config';
 
 const logoRatio = contentfulConfig.icon.height / contentfulConfig.icon.width;
@@ -173,8 +173,10 @@ const SignInPage: NextPage = () => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = generateGetServerSideProps({
-  Page: SignInPage,
+export const getServerSideProps = async ({ locale }: NextPageContext) => ({
+  props: {
+    ...(await getServerSideTranslations(locale)),
+  },
 });
 
 export default SignInPage;

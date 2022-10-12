@@ -46,9 +46,6 @@ const CustomApp = (props: AppProps) => {
     contentfulContextValue.spaceEnv = 'default';
   }
 
-  contentfulContextValue.personalizationAudience =
-    (router.query.personalizationAudience as string) || null;
-
   return (
     <QueryClientProvider client={gqlQueryClient}>
       <ContentfulContext.Provider value={contentfulContextValue}>
