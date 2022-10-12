@@ -1,13 +1,4 @@
-import {
-  AppBar,
-  Container,
-  Hidden,
-  IconButton,
-  Theme,
-  Toolbar,
-  Box,
-  SvgIcon,
-} from '@material-ui/core';
+import { AppBar, Container, IconButton, Theme, Toolbar, Box, SvgIcon } from '@material-ui/core';
 import { Menu } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/styles';
 import { useTranslation } from 'next-i18next';
@@ -178,7 +169,7 @@ const Header = (props: HeaderPropsInterface) => {
             />
           </Link>
           {contentfulConfig.header.menu.length > 0 && (
-            <Hidden smDown>
+            <Box display={{ xs: 'none', md: 'block' }}>
               <div className={classes.menuWrapper}>
                 <nav role="navigation">
                   <ul className={classes.menu}>
@@ -233,18 +224,16 @@ const Header = (props: HeaderPropsInterface) => {
                   </ul>
                 </nav>
               </div>
-            </Hidden>
+            </Box>
           )}
         </Container>
 
         {/* menu button */}
-        <Hidden mdUp>
-          <Box>
-            <IconButton onClick={() => onMenuClick && onMenuClick()}>
-              <Menu />
-            </IconButton>
-          </Box>
-        </Hidden>
+        <Box display={{ md: 'none' }}>
+          <IconButton onClick={() => onMenuClick && onMenuClick()}>
+            <Menu />
+          </IconButton>
+        </Box>
       </Toolbar>
     </AppBar>
   );
