@@ -4,25 +4,13 @@ fragment FooterFields on FooterMenuCollection {
       items {
         groupName
         featuredPagesCollection {
-          ... on MenuGroupFeaturedPagesCollection {
-            items {
-              ... on Page {
-                slug
-                pageName
-              }
-            }
-          }
+          ...MenuGroupFields
         }
       }
     }
     legalLinks {
       featuredPagesCollection {
-        items {
-          ... on Page {
-            slug
-            pageName
-          }
-        }
+        ...MenuGroupFields
       }
     }
     twitterLink
