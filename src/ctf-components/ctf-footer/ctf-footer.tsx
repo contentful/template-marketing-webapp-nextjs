@@ -221,16 +221,29 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
+const getLinkDisplayText = menuItem => {
+  if ('pageName' in menuItem) {
+    return menuItem.pageName;
+  }
+  if ('categoryName' in menuItem) {
+    return menuItem.categoryName;
+  }
+  if ('postName' in menuItem) {
+    return menuItem.postName;
+  }
+  return menuItem.slug;
+};
+
 export const CtfFooter = (props: FooterFieldsFragment) => {
   const footerContent = props.items[0];
 
   const { t } = useTranslation();
 
-  const renderPageCollectionLinks = (pageCollection, listClassName) => {
-    return pageCollection?.items?.map((page, i) => (
+  const renderMenuGroupLinks = (menuGroup, listClassName) => {
+    return menuGroup?.items?.map((menuItem, i) => (
       <li key={i} className={listClassName}>
-        <Link href={page.slug} className={classes.menuItem}>
-          {page.slug}
+        <Link href={menuItem.slug} className={classes.menuItem}>
+          {getLinkDisplayText(menuItem)}
         </Link>
       </li>
     ));
@@ -251,7 +264,7 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
                       <p className={classes.menuItem}>{menuItem?.groupName}</p>
                       {menuItem?.featuredPagesCollection && (
                         <ul className={classes.submenu}>
-                          {renderPageCollectionLinks(
+                          {renderMenuGroupLinks(
                             menuItem.featuredPagesCollection,
                             classes.submenuItem,
                           )}
@@ -288,7 +301,7 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
               {footerContent?.legalLinks?.featuredPagesCollection?.items?.length && (
                 <nav role="navigation" className={classes.legalMenuWrapper}>
                   <ul className={classes.legalMenu}>
-                    {renderPageCollectionLinks(
+                    {renderMenuGroupLinks(
                       footerContent.legalLinks.featuredPagesCollection,
                       classes.legalMenuItem,
                     )}
