@@ -6,7 +6,7 @@ import React, { useState, useEffect, ReactElement } from 'react';
 import Header from './header';
 import MobileMenu from './mobile-menu';
 
-import { CtfFooterGql } from 'src/ctf-components/ctf-footer/ctf-footer-gql';
+import { CtfFooterGql } from '@ctf-components/ctf-footer/ctf-footer-gql';
 
 const useStyles = makeStyles((theme: Theme) => ({
   content: {
