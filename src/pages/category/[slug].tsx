@@ -1,29 +1,21 @@
-import { NextPage, GetServerSideProps } from 'next';
+import { NextPage, NextPageContext } from 'next';
 import { useRouter } from 'next/router';
 
 import { CtfCategoryGql } from '@ctf-components/ctf-category/ctf-category-gql';
 import { useContentfulContext } from '@src/contentful-context';
-import withProviders, { generateGetServerSideProps } from '@src/lib/with-providers';
+import { getServerSideTranslations } from '@src/lib/get-serverside-translations';
 
-interface CategoryPagePropsInterface {
-  ssrQuery?: {
-    [key: string]: string;
-  };
-}
-
-const CategoryPage: NextPage<CategoryPagePropsInterface> = props => {
+const CategoryPage: NextPage = () => {
   const router = useRouter();
-  const query = router ? router.query : props.ssrQuery;
   const { previewActive } = useContentfulContext();
-  const slug = query ? (query.slug as string) : '';
+  const slug = (router?.query.slug as string) || '';
 
   return <CtfCategoryGql slug={slug} preview={previewActive} />;
 };
 
-const CategoryPageWithProviders = withProviders()(CategoryPage);
-
-export const getServerSideProps: GetServerSideProps = generateGetServerSideProps({
-  Page: CategoryPageWithProviders,
+export const getServerSideProps = async ({ locale }: NextPageContext) => ({
+  props: {
+    ...(await getServerSideTranslations(locale)),
+  },
 });
-
-export default CategoryPageWithProviders;
+export default CategoryPage;
