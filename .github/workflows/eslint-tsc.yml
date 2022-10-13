@@ -2,9 +2,7 @@
 name: ESLint & TSC
 
 # Event for the workflow
-on: 
- pull_request:
- push:
+on: [pull_request]
 
 # List of jobs
 jobs:
@@ -41,7 +39,7 @@ jobs:
         # `--prefer-offline` gives cache priority
 
       - name: ESLint
-        run: yarn lint --parallel
+        run: yarn lint
 
       - name: TSC
         run: yarn type-check
