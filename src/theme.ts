@@ -91,112 +91,107 @@ const colorfulTheme = createTheme({
     },
   },
 
-  overrides: {
+  components: {
     MuiToolbar: {
-      gutters: {
-        '@media (min-width: 600px)': {
-          paddingLeft: '30px',
-          paddingRight: '30px',
-        },
-        '@media (min-width: 1280px)': {
-          paddingLeft: '75px',
-          paddingRight: '75px',
-        },
-      },
-    },
-    MuiContainer: {
-      root: {
-        '@media (min-width: 600px)': {
-          paddingLeft: '30px',
-          paddingRight: '30px',
-        },
-        '@media (min-width: 1280px)': {
-          paddingLeft: '75px',
-          paddingRight: '75px',
+      styleOverrides: {
+        gutters: {
+          '@media (min-width: 600px)': {
+            paddingLeft: '30px',
+            paddingRight: '30px',
+          },
+          '@media (min-width: 1280px)': {
+            paddingLeft: '75px',
+            paddingRight: '75px',
+          },
         },
       },
     },
     MuiLink: {
-      underlineHover: {
-        '&:hover': {
-          textDecoration: 'underline',
+      styleOverrides: {
+        underlineHover: {
+          '&:hover': {
+            textDecoration: 'underline',
+          },
         },
       },
     },
     MuiButton: {
-      root: {
-        textTransform: 'none',
-        textDecoration: 'none',
-        boxShadow: 'none',
-        fontSize: '2.1rem',
-        lineHeight: 1.52,
-        fontWeight: 500,
-        transition:
-          'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out',
-      },
-
-      contained: {
-        borderRadius: '9px',
-        boxShadow: 'none',
-        padding: '1.1rem 2.4rem',
-
-        '&:hover, &:focus': {
-          boxShadow: '0px 3px 6px #00000029',
-          transform: 'translateY(-4px)',
+      styleOverrides: {
+        root: {
+          textTransform: 'none',
+          textDecoration: 'none',
+          boxShadow: 'none',
+          fontSize: '2.1rem',
+          lineHeight: 1.52,
+          fontWeight: 500,
+          transition:
+            'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out',
         },
-      },
+        contained: {
+          borderRadius: '9px',
+          boxShadow: 'none',
+          padding: '1.1rem 2.4rem',
 
-      containedSecondary: {
-        '&:hover, &:focus': {
-          backgroundColor: '#fff',
+          '&:hover, &:focus': {
+            boxShadow: '0px 3px 6px #00000029',
+            transform: 'translateY(-4px)',
+          },
         },
-      },
 
-      containedSizeSmall: {
-        fontSize: '1.8rem',
-        lineHeight: 1.801,
-        padding: '0 1.4rem',
-      },
-
-      text: {
-        padding: 0,
-
-        '&:hover, &:focus': {
-          backgroundColor: 'transparent',
-          transform: 'translateY(-4px)',
+        containedSecondary: {
+          '&:hover, &:focus': {
+            backgroundColor: '#fff',
+          },
         },
-      },
 
-      textPrimary: {
-        '&:hover, &:focus': {
-          backgroundColor: 'transparent',
+        containedSizeSmall: {
+          fontSize: '1.8rem',
+          lineHeight: 1.801,
+          padding: '0 1.4rem',
         },
-      },
 
-      textSecondary: {
-        '&:hover, &:focus': {
-          backgroundColor: 'transparent',
+        text: {
+          padding: 0,
+
+          '&:hover, &:focus': {
+            backgroundColor: 'transparent',
+            transform: 'translateY(-4px)',
+          },
         },
-      },
 
-      textSizeSmall: {
-        fontSize: '1.8rem',
-        lineHeight: 1.801,
-        padding: 0,
+        textPrimary: {
+          '&:hover, &:focus': {
+            backgroundColor: 'transparent',
+          },
+        },
+
+        textSecondary: {
+          '&:hover, &:focus': {
+            backgroundColor: 'transparent',
+          },
+        },
+
+        textSizeSmall: {
+          fontSize: '1.8rem',
+          lineHeight: 1.801,
+          padding: 0,
+        },
       },
     },
-
     MuiTextField: {
-      root: {
-        '& .MuiOutlinedInput-input': {
-          padding: `1.35rem 1.4rem`,
+      styleOverrides: {
+        root: {
+          '& .MuiOutlinedInput-input': {
+            padding: `1.35rem 1.4rem`,
+          },
         },
       },
     },
-
     MuiChip: {
-      root: {
-        backgroundColor: '#f2f2f2',
+      styleOverrides: {
+        root: {
+          backgroundColor: '#f2f2f2',
+        },
       },
     },
   },

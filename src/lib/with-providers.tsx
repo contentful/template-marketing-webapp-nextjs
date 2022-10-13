@@ -1,4 +1,4 @@
-import { ThemeProvider } from '@mui/styles';
+import { ThemeProvider, Theme, StyledEngineProvider } from '@mui/material/styles';
 import { ApolloClient, IntrospectionResultData, NormalizedCacheObject } from 'apollo-boost';
 import { NextPage, GetServerSideProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -10,6 +10,11 @@ import { createCfulUrl, createClientWithLink, createLink } from '@src/lib/init-a
 import colorfulTheme from '@src/theme';
 import contentfulConfig from 'contentful.config';
 import i18nConfig from 'next-i18next.config.js';
+
+declare module '@mui/styles/defaultTheme' {
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  interface DefaultTheme extends Theme {}
+}
 
 const mainIntrospection = require('../../introspection/main-introspection.json');
 
@@ -133,18 +138,20 @@ export const generateGetServerSideProps =
         <ContentfulContext.Provider value={contentfulContextValue}>
           <ApolloProvider client={mainApolloClient}>
             <ApolloContext.Provider value={apolloContextValue}>
-              <ThemeProvider theme={colorfulTheme}>
-                <Page
-                  locale={ctx.locale}
-                  pageProps={{ props: newProps }}
-                  apolloConfigs={apolloConfigs}
-                  apolloClients={{
-                    main: mainApolloClient,
-                  }}
-                  error={error}
-                  ssrQuery={ctx.query}
-                />
-              </ThemeProvider>
+              <StyledEngineProvider injectFirst>
+                <ThemeProvider theme={colorfulTheme}>
+                  <Page
+                    locale={ctx.locale}
+                    pageProps={{ props: newProps }}
+                    apolloConfigs={apolloConfigs}
+                    apolloClients={{
+                      main: mainApolloClient,
+                    }}
+                    error={error}
+                    ssrQuery={ctx.query}
+                  />
+                </ThemeProvider>
+              </StyledEngineProvider>
             </ApolloContext.Provider>
           </ApolloProvider>
         </ContentfulContext.Provider>,

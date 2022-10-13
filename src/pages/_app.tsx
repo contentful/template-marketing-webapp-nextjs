@@ -1,5 +1,5 @@
 import { config as fontawesomeConfig } from '@fortawesome/fontawesome-svg-core';
-import { ThemeProvider } from '@mui/styles';
+import { Theme, ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import '@src/components/layout/layout.css';
 import { QueryClientProvider } from '@tanstack/react-query';
@@ -14,6 +14,11 @@ import { ContentfulContext, contentfulContextValue } from '@src/contentful-conte
 import { gqlQueryClient } from '@src/lib/gql-client';
 import colorfulTheme from '@src/theme';
 import contentfulConfig from 'contentful.config';
+
+declare module '@mui/styles/defaultTheme' {
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  interface DefaultTheme extends Theme {}
+}
 
 fontawesomeConfig.autoAddCss = false;
 
@@ -52,35 +57,37 @@ const CustomApp = (props: AppProps) => {
   return (
     <QueryClientProvider client={gqlQueryClient}>
       <ContentfulContext.Provider value={contentfulContextValue}>
-        <ThemeProvider theme={colorfulTheme}>
-          <Head>
-            <meta
-              name="viewport"
-              content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
-            />
-            <title key="title">{contentfulConfig.meta.title}</title>
-            <meta key="og:title" property="og:title" content={contentfulConfig.meta.title} />
-            <meta
-              key="description"
-              name="description"
-              content={contentfulConfig.meta.description}
-            />
+        <StyledEngineProvider injectFirst>
+          <ThemeProvider theme={colorfulTheme}>
+            <Head>
+              <meta
+                name="viewport"
+                content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
+              />
+              <title key="title">{contentfulConfig.meta.title}</title>
+              <meta key="og:title" property="og:title" content={contentfulConfig.meta.title} />
+              <meta
+                key="description"
+                name="description"
+                content={contentfulConfig.meta.description}
+              />
 
-            <meta
-              key="og:description"
-              property="og:description"
-              content={contentfulConfig.meta.description}
-            />
-            <meta key="og:image" property="og:image" content={contentfulConfig.meta.image} />
-            <meta key="og:image:width" property="og:image:width" content="1200" />
-            <meta key="og:image:height" property="og:image:height" content="630" />
-            <meta key="og:type" property="og:type" content="website" />
-          </Head>
-          <Layout preview={contentfulContextValue.previewActive}>
-            <Component {...pageProps} err={(props as any).err} />
-            <Settings />
-          </Layout>
-        </ThemeProvider>
+              <meta
+                key="og:description"
+                property="og:description"
+                content={contentfulConfig.meta.description}
+              />
+              <meta key="og:image" property="og:image" content={contentfulConfig.meta.image} />
+              <meta key="og:image:width" property="og:image:width" content="1200" />
+              <meta key="og:image:height" property="og:image:height" content="630" />
+              <meta key="og:type" property="og:type" content="website" />
+            </Head>
+            <Layout preview={contentfulContextValue.previewActive}>
+              <Component {...pageProps} err={(props as any).err} />
+              <Settings />
+            </Layout>
+          </ThemeProvider>
+        </StyledEngineProvider>
       </ContentfulContext.Provider>
     </QueryClientProvider>
   );

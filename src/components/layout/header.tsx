@@ -169,7 +169,7 @@ const Header = (props: HeaderPropsInterface) => {
             />
           </Link>
           {contentfulConfig.header.menu.length > 0 && (
-            <Hidden smDown>
+            <Hidden mdDown>
               <div className={classes.menuWrapper}>
                 <nav role="navigation">
                   <ul className={classes.menu}>
@@ -231,7 +231,7 @@ const Header = (props: HeaderPropsInterface) => {
         {/* menu button */}
         <Hidden mdUp>
           <Box>
-            <IconButton onClick={() => onMenuClick && onMenuClick()}>
+            <IconButton onClick={() => onMenuClick && onMenuClick()} size="large">
               <Menu />
             </IconButton>
           </Box>

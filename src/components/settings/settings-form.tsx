@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       bottom: theme.spacing(28),
       boxShadow: '0 2px 30px rgba(0,0,0,0.29)',
       height: '70rem',
-      maxHeight: `calc(100vh - ${theme.spacing(29)}px)`,
+      maxHeight: `calc(100vh - ${theme.spacing(29)})`,
       right: theme.spacing(9),
       width: '42.3rem',
     },

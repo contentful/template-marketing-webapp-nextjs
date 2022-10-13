@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     flexFlow: 'row wrap',
     marginBottom: theme.spacing(6),
     marginLeft: theme.spacing(-5),
-    width: `calc(100% + ${theme.spacing(5)}px)`,
+    width: `calc(100% + ${theme.spacing(5)})`,
     [theme.breakpoints.up('md')]: {
       justifyContent: 'flex-end',
       marginBottom: theme.spacing(8),

@@ -1,7 +1,7 @@
 import { documentToReactComponents, Options } from '@contentful/rich-text-react-renderer';
 import { Block as RichtextBlock, BLOCKS, INLINES } from '@contentful/rich-text-types';
-import { Variant } from '@mui/material/styles/createTypography';
 import { Theme, Typography, Container } from '@mui/material';
+import { Variant } from '@mui/material/styles/createTypography';
 import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import gql from 'graphql-tag';
