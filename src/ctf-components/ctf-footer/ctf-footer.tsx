@@ -234,19 +234,36 @@ const getLinkDisplayText = menuItem => {
   return menuItem.slug;
 };
 
+const getLinkHrefPrefix = menuItem => {
+  if ('pageName' in menuItem) {
+    return menuItem.slug;
+  }
+  if ('categoryName' in menuItem) {
+    return `category/${menuItem.slug}`;
+  }
+  if ('postName' in menuItem) {
+    return `post/${menuItem.slug}`;
+  }
+  return menuItem.slug;
+};
+
 export const CtfFooter = (props: FooterFieldsFragment) => {
   const footerContent = props.items[0];
 
   const { t } = useTranslation();
 
   const renderMenuGroupLinks = (menuGroup, listClassName) => {
-    return menuGroup?.items?.map((menuItem, i) => (
-      <li key={i} className={listClassName}>
-        <Link href={menuItem.slug} className={classes.menuItem}>
-          {getLinkDisplayText(menuItem)}
-        </Link>
-      </li>
-    ));
+    return menuGroup?.items?.map((menuItem, i) => {
+      const href = getLinkHrefPrefix(menuItem);
+      const linkText = getLinkDisplayText(menuItem);
+      return (
+        <li key={i} className={listClassName}>
+          <Link href={href} className={classes.menuItem}>
+            {linkText}
+          </Link>
+        </li>
+      )
+    });
   };
 
   const classes = useStyles();
