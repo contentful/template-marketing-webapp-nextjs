@@ -177,3 +177,18 @@ API calls made to the Contentful GraphQL endpoint are made through React Query `
 2. `[folderName]/__generated/[fileName].generated.ts` is generated
 3. Within the generated file, a new hook is generated with the following pattern: `use[fileName]`
 4. The hook can now be imported and used within the `.ts(x)` files in the component folder
+
+## Husky & git hooks
+This repository makes use of Husky to enforce commit hooks. For more info see: https://github.com/typicode/husky. The config for both the pre-commit and pre-push hooks can be found in the .husky folder in the root.
+
+### Pre-commit
+Before allowing a commit, we require a successful result from the TypeScript compiler (`tsc`) and our `lint-staged` script will be run. This ensures all Eslint and Prettier rules are enforced on the files that are staged to be committed. 
+The tsc command is ran separately from the `lint-staged` step, because we require the Typescript compiler to sample _all_ files. This is important to ensure that no deviating types were introduced by the codegen for example. 
+
+### Pre-push
+The same two tasks are ran for pre-push, that are ran for pre-commit.
+
+### Overriding the Husky git hooks 
+In case of wanting to bypass the pre-commit or pre-push hooks, pass a `--noVerify` flag to your Git commands.
+
+⚠️ Make sure you only use this if you know why you're using it. ⚠️ 
