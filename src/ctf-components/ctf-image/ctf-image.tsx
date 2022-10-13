@@ -3,7 +3,8 @@ import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import React, { useMemo } from 'react';
 
-import { AssetFieldsFragment } from '@src/lib/shared-fragments/__generated/ctf-asset.generated';
+import { AssetFieldsFragment } from '../ctf-asset/__generated/ctf-asset.generated';
+
 import { CONTAINER_WIDTH } from '@src/theme';
 
 const useStyles = makeStyles(() => ({

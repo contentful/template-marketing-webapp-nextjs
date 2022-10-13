@@ -4,20 +4,17 @@ import { Theme, Typography, Container } from '@mui/material';
 import { Variant } from '@mui/material/styles/createTypography';
 import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
-import gql from 'graphql-tag';
 import React, { useMemo, useContext, useCallback } from 'react';
-import { useQuery } from 'react-apollo';
 
-import { AssetFragment } from '../ctf-asset/__generated__/AssetFragment';
 import { CtfAsset } from '../ctf-asset/ctf-asset';
-import { RichTextEntryHyperlinkQuery } from './__generated__/RichTextEntryHyperlinkQuery';
 
+import { AssetFieldsFragment } from '@ctf-components/ctf-asset/__generated/ctf-asset.generated';
+import { useCtfRichTextHyperlinkQuery } from '@ctf-components/ctf-richtext/__generated/ctf-richtext.generated';
 import ComponentResolver from '@src/components/component-resolver';
 import PageLink from '@src/components/link/page-link';
 import PostLink from '@src/components/link/post-link';
 import { useContentfulContext } from '@src/contentful-context';
 import LayoutContext from '@src/layout-context';
-import { useDataForPreview } from '@src/lib/apollo-hooks';
 import { OmitRecursive, tryget } from '@src/utils';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -168,7 +165,7 @@ interface Block extends RichtextBlock {
   sys: { id: string };
 }
 
-type Asset = OmitRecursive<AssetFragment, '__typename'>;
+type Asset = OmitRecursive<AssetFieldsFragment, '__typename'>;
 
 interface CtfRichtextPropsInterface {
   json: any;
@@ -187,39 +184,17 @@ interface CtfRichtextPropsInterface {
 }
 
 const EntryHyperlink = ({ node }) => {
-  const { previewActive } = useContentfulContext();
-  const queryResult = useQuery<RichTextEntryHyperlinkQuery>(
-    gql`
-      query RichTextEntryHyperlinkQuery($id: String!, $preview: Boolean) {
-        page(id: $id, preview: $preview) {
-          sys {
-            id
-          }
-          slug
-        }
-        post(id: $id, preview: $preview) {
-          sys {
-            id
-          }
-          slug
-        }
-      }
-    `,
-    {
-      variables: {
-        id: node.data?.target.sys.id,
-        preview: previewActive,
-      },
-    },
-  );
+  const { previewActive, locale } = useContentfulContext();
 
-  useDataForPreview(queryResult);
+  const { isLoading, data } = useCtfRichTextHyperlinkQuery({
+    locale,
+    id: node.data?.target.sys.id,
+    preview: previewActive,
+  });
 
-  const { loading, data } = queryResult;
+  if (!data || isLoading) return null;
 
-  if (!data || loading) return null;
-
-  if (data.page !== null) {
+  if (data.page) {
     return (
       <PageLink page={data.page} variant="contained" underline>
         {(node.content[0] as any).value}
@@ -227,7 +202,7 @@ const EntryHyperlink = ({ node }) => {
     );
   }
 
-  if (data.post !== null) {
+  if (data.post) {
     return (
       <PostLink post={data.post} variant="contained" underline>
         {(node.content[0] as any).value}
@@ -238,7 +213,7 @@ const EntryHyperlink = ({ node }) => {
   return null;
 };
 
-const CtfRichtext = (props: CtfRichtextPropsInterface) => {
+export const CtfRichtext = (props: CtfRichtextPropsInterface) => {
   const { json, links, containerClassName, gridClassName } = props;
   const layout = useContext(LayoutContext);
 
@@ -426,5 +401,3 @@ const CtfRichtext = (props: CtfRichtextPropsInterface) => {
     </div>
   );
 };
-
-export default CtfRichtext;

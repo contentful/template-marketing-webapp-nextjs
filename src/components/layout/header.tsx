@@ -1,5 +1,5 @@
-import { AppBar, Container, Hidden, IconButton, Theme, Toolbar, Box, SvgIcon } from '@mui/material';
 import { Menu } from '@mui/icons-material';
+import { AppBar, Container, IconButton, Theme, Toolbar, Box, SvgIcon } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { useTranslation } from 'next-i18next';
 
@@ -76,7 +76,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     backgroundColor: '#fff',
     boxShadow: '0 3px 6px #00000029',
     borderRadius: '14px',
-    left: theme.spacing(10) * -1,
+    left: Number(theme.spacing(10)) * -1,
     listStyle: 'none',
     opacity: 0,
     padding: theme.spacing(4, 10),
@@ -169,7 +169,7 @@ const Header = (props: HeaderPropsInterface) => {
             />
           </Link>
           {contentfulConfig.header.menu.length > 0 && (
-            <Hidden mdDown>
+            <Box display={{ xs: 'none', md: 'block' }}>
               <div className={classes.menuWrapper}>
                 <nav role="navigation">
                   <ul className={classes.menu}>
@@ -224,18 +224,16 @@ const Header = (props: HeaderPropsInterface) => {
                   </ul>
                 </nav>
               </div>
-            </Hidden>
+            </Box>
           )}
         </Container>
 
         {/* menu button */}
-        <Hidden mdUp>
-          <Box>
-            <IconButton onClick={() => onMenuClick && onMenuClick()} size="large">
-              <Menu />
-            </IconButton>
-          </Box>
-        </Hidden>
+        <Box display={{ md: 'none' }}>
+          <IconButton onClick={() => onMenuClick && onMenuClick()}>
+            <Menu />
+          </IconButton>
+        </Box>
       </Toolbar>
     </AppBar>
   );

@@ -1,7 +1,7 @@
 import { makeStyles } from '@mui/styles';
 import React from 'react';
 
-import { AssetFieldsFragment } from '@src/lib/shared-fragments/__generated/ctf-asset.generated';
+import { AssetFieldsFragment } from '@ctf-components/ctf-asset/__generated/ctf-asset.generated';
 
 const useStyles = makeStyles(() => ({
   image: {

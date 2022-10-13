@@ -42,7 +42,7 @@ export const LanguageSelector = () => {
       <Select
         value={locale}
         disableUnderline
-        onChange={(event: React.ChangeEvent<{ value: unknown }>) => {
+        onChange={event => {
           router.push({ pathname: router.pathname, query: router.query }, router.asPath, {
             locale: String(event.target.value),
           });

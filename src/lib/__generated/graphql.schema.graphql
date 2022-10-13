@@ -177,6 +177,7 @@ input CategoryFilter {
 
 type CategoryLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  menuGroupCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): MenuGroupCollection
   postCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PostCollection
 }
 
@@ -1151,6 +1152,106 @@ enum EntryOrder {
   sys_publishedVersion_DESC
 }
 
+"""
+Navigation content type used for powering the Footer menu [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/footerMenu)
+"""
+type FooterMenu implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  facebookLink(locale: String): String
+  instagramLink(locale: String): String
+  internalName(locale: String): String
+  legalLinks(locale: String, preview: Boolean): MenuGroup
+  linkedFrom(allowedLocales: [String]): FooterMenuLinkingCollections
+  linkedinLink(locale: String): String
+  menuItemsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): FooterMenuMenuItemsCollection
+  sys: Sys!
+  twitterLink(locale: String): String
+}
+
+type FooterMenuCollection {
+  items: [FooterMenu]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input FooterMenuFilter {
+  AND: [FooterMenuFilter]
+  OR: [FooterMenuFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  facebookLink: String
+  facebookLink_contains: String
+  facebookLink_exists: Boolean
+  facebookLink_in: [String]
+  facebookLink_not: String
+  facebookLink_not_contains: String
+  facebookLink_not_in: [String]
+  instagramLink: String
+  instagramLink_contains: String
+  instagramLink_exists: Boolean
+  instagramLink_in: [String]
+  instagramLink_not: String
+  instagramLink_not_contains: String
+  instagramLink_not_in: [String]
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  legalLinks: cfMenuGroupNestedFilter
+  legalLinks_exists: Boolean
+  linkedinLink: String
+  linkedinLink_contains: String
+  linkedinLink_exists: Boolean
+  linkedinLink_in: [String]
+  linkedinLink_not: String
+  linkedinLink_not_contains: String
+  linkedinLink_not_in: [String]
+  menuItemsCollection_exists: Boolean
+  sys: SysFilter
+  twitterLink: String
+  twitterLink_contains: String
+  twitterLink_exists: Boolean
+  twitterLink_in: [String]
+  twitterLink_not: String
+  twitterLink_not_contains: String
+  twitterLink_not_in: [String]
+}
+
+type FooterMenuLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+type FooterMenuMenuItemsCollection {
+  items: [MenuGroup]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+enum FooterMenuOrder {
+  facebookLink_ASC
+  facebookLink_DESC
+  instagramLink_ASC
+  instagramLink_DESC
+  internalName_ASC
+  internalName_DESC
+  linkedinLink_ASC
+  linkedinLink_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  twitterLink_ASC
+  twitterLink_DESC
+}
+
 """The 'HexColor' type represents color in `rgb:ffffff` string format."""
 scalar HexColor
 
@@ -1288,6 +1389,76 @@ The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://
 scalar JSON
 
 """
+A group of items making up a section in the navigation menu [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/menuGroup)
+"""
+type MenuGroup implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  featuredPagesCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): MenuGroupFeaturedPagesCollection
+  groupName(locale: String): String
+  internalTitle(locale: String): String
+  linkedFrom(allowedLocales: [String]): MenuGroupLinkingCollections
+  sys: Sys!
+}
+
+type MenuGroupCollection {
+  items: [MenuGroup]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+type MenuGroupFeaturedPagesCollection {
+  items: [MenuGroupFeaturedPagesItem]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+union MenuGroupFeaturedPagesItem = Category | Page | Post
+
+input MenuGroupFilter {
+  AND: [MenuGroupFilter]
+  OR: [MenuGroupFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  featuredPagesCollection_exists: Boolean
+  groupName: String
+  groupName_contains: String
+  groupName_exists: Boolean
+  groupName_in: [String]
+  groupName_not: String
+  groupName_not_contains: String
+  groupName_not_in: [String]
+  internalTitle: String
+  internalTitle_contains: String
+  internalTitle_exists: Boolean
+  internalTitle_in: [String]
+  internalTitle_not: String
+  internalTitle_not_contains: String
+  internalTitle_not_in: [String]
+  sys: SysFilter
+}
+
+type MenuGroupLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  footerMenuCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): FooterMenuCollection
+}
+
+enum MenuGroupOrder {
+  groupName_ASC
+  groupName_DESC
+  internalTitle_ASC
+  internalTitle_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+"""
 Container that enables editors to publish a page, define its slug, select & arrange its content [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/page)
 """
 type Page implements Entry {
@@ -1357,6 +1528,7 @@ type PageLinkingCollections {
   componentDuplexCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentDuplexCollection
   componentHeroBannerCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentHeroBannerCollection
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  menuGroupCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): MenuGroupCollection
 }
 
 enum PageOrder {
@@ -1522,6 +1694,7 @@ type PostLinkingCollections {
   componentFeaturedCardsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentFeaturedCardsCollection
   componentHeroBannerCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentHeroBannerCollection
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  menuGroupCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): MenuGroupCollection
 }
 
 enum PostOrder {
@@ -1570,6 +1743,10 @@ type Query {
   componentTextBlock(id: String!, locale: String, preview: Boolean): ComponentTextBlock
   componentTextBlockCollection(limit: Int = 100, locale: String, order: [ComponentTextBlockOrder], preview: Boolean, skip: Int = 0, where: ComponentTextBlockFilter): ComponentTextBlockCollection
   entryCollection(limit: Int = 100, locale: String, order: [EntryOrder], preview: Boolean, skip: Int = 0, where: EntryFilter): EntryCollection
+  footerMenu(id: String!, locale: String, preview: Boolean): FooterMenu
+  footerMenuCollection(limit: Int = 100, locale: String, order: [FooterMenuOrder], preview: Boolean, skip: Int = 0, where: FooterMenuFilter): FooterMenuCollection
+  menuGroup(id: String!, locale: String, preview: Boolean): MenuGroup
+  menuGroupCollection(limit: Int = 100, locale: String, order: [MenuGroupOrder], preview: Boolean, skip: Int = 0, where: MenuGroupFilter): MenuGroupCollection
   page(id: String!, locale: String, preview: Boolean): Page
   pageCollection(limit: Int = 100, locale: String, order: [PageOrder], preview: Boolean, skip: Int = 0, where: PageFilter): PageCollection
   post(id: String!, locale: String, preview: Boolean): Post
@@ -2166,6 +2343,28 @@ input cfCategoryNestedFilter {
   slug_not: String
   slug_not_contains: String
   slug_not_in: [String]
+  sys: SysFilter
+}
+
+input cfMenuGroupNestedFilter {
+  AND: [cfMenuGroupNestedFilter]
+  OR: [cfMenuGroupNestedFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  featuredPagesCollection_exists: Boolean
+  groupName: String
+  groupName_contains: String
+  groupName_exists: Boolean
+  groupName_in: [String]
+  groupName_not: String
+  groupName_not_contains: String
+  groupName_not_in: [String]
+  internalTitle: String
+  internalTitle_contains: String
+  internalTitle_exists: Boolean
+  internalTitle_in: [String]
+  internalTitle_not: String
+  internalTitle_not_contains: String
+  internalTitle_not_in: [String]
   sys: SysFilter
 }
 

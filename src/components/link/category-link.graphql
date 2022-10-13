@@ -1,0 +1,9 @@
+fragment CategoryLinkFields on Category {
+  __typename
+  slug
+  categoryName
+  sys {
+    id
+  }
+  categoryName
+}

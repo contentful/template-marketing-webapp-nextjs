@@ -1,27 +1,20 @@
-import { NextPage, GetServerSideProps } from 'next';
+import { NextPage, NextPageContext } from 'next';
 import { useRouter } from 'next/router';
 
 import CtfLegalPageGgl from '@ctf-components/ctf-legal-page/ctf-legal-page-gql';
-import withProviders, { generateGetServerSideProps } from '@src/lib/with-providers';
+import { getServerSideTranslations } from '@src/lib/get-serverside-translations';
 
-interface LegalPagePropsInterface {
-  ssrQuery?: {
-    [key: string]: string;
-  };
-}
-
-const LegalPage: NextPage<LegalPagePropsInterface> = props => {
+const LegalPage: NextPage = () => {
   const router = useRouter();
-  const query = router ? router.query : props.ssrQuery;
-  const slug = query ? (query.slug as string) : '';
+  const slug = (router?.query.slug as string) || '';
 
   return <CtfLegalPageGgl slug={slug} />;
 };
 
-const LegalPageWithProviders = withProviders()(LegalPage);
-
-export const getServerSideProps: GetServerSideProps = generateGetServerSideProps({
-  Page: LegalPageWithProviders,
+export const getServerSideProps = async ({ locale }: NextPageContext) => ({
+  props: {
+    ...(await getServerSideTranslations(locale)),
+  },
 });
 
-export default LegalPageWithProviders;
+export default LegalPage;

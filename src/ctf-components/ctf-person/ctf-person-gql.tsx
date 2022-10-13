@@ -1,4 +1,4 @@
-import CtfPerson from './ctf-person';
+import { CtfPerson } from './ctf-person';
 
 import { useCtfPersonQuery } from '@ctf-components/ctf-person/__generated/ctf-person.generated';
 

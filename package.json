@@ -9,16 +9,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "gen:query-types:cful": "apollo client:codegen --target=typescript --config=./apollo.config.js --globalTypesFile=globalTypes.d.ts",
-    "gen:query-types": "npm run build:server && npm run gen:query-types:cful",
     "dev": "next dev",
-    "gen:introspections": "ts-node --project tsconfig.scripts.json ./scripts/fetch-introspections.ts",
     "watch:server": "tsc --build tsconfig.server.json",
     "build:server": "tsc --build tsconfig.server.json",
     "build:next": "next build",
     "build": "npm run build:server && npm run build:next",
     "export": "next export",
     "start": "next start",
+    "type-check": "tsc --noEmit",
     "test": "echo \"Error: no test specified\" && exit 1",
     "migrate:init": "ctf-migrate init",
     "migrate:content-model": "ctf-migrate up -a",
@@ -28,8 +26,8 @@
     "lint": "eslint './src/**/*.{js,jsx,ts,tsx}'",
     "lint-fix": "yarn lint --fix",
     "prepare": "husky install",
-    "graphql-generate": "graphql-codegen -r dotenv/config --config codegen.ts",
-    "graphql-watch": "graphql-codegen --watch -r dotenv/config --config codegen.ts",
+    "graphql-codegen:generate": "graphql-codegen -r dotenv/config --config codegen.ts",
+    "graphql-codegen:watch": "graphql-codegen --watch -r dotenv/config --config codegen.ts",
     "contentful-scripts:provision": "ts-node scripts/provision.ts --project ./tsconfig.json",
     "contentful-scripts:delete": "ts-node scripts/delete.ts --project ./tsconfig.json"
   },
@@ -58,8 +56,6 @@
     "@svgr/webpack": "^6.3.1",
     "@tanstack/react-query": "^4.3.9",
     "@types/react-transition-group": "^4.4.5",
-    "apollo-boost": "^0.4.9",
-    "apollo-link-context": "^1.0.20",
     "catchify": "^2.6.1",
     "clsx": "^1.2.1",
     "contentful": "^9.1.33",
@@ -68,8 +64,6 @@
     "date-fns": "^2.29.1",
     "dotenv": "^16.0.1",
     "graphql": "^16.5.0",
-    "graphql-tag": "^2.12.6",
-    "graphql-tools": "^8.3.1",
     "imagesloaded": "^5.0.0",
     "intersection-observer": "^0.12.2",
     "isomorphic-unfetch": "^3.1.0",
@@ -83,7 +77,6 @@
     "query-string": "^7.1.1",
     "random-js": "^2.1.0",
     "react": "^18.2.0",
-    "react-apollo": "^3.1.5",
     "react-dom": "^18.2.0",
     "react-jdenticon": "1.0.0",
     "react-jss": "^10.9.2",
@@ -123,7 +116,6 @@
     "@typescript-eslint/parser": "^5.32.0",
     "@vercel/build-utils": "^5.2.0",
     "@vercel/client": "^12.1.10",
-    "apollo": "^2.34.0",
     "axios": "^0.27.2",
     "babel-jest": "^27.0.2",
     "babel-loader": "^8.2.5",
@@ -151,5 +143,10 @@
     "storybook-react-i18next": "^1.1.2",
     "typescript": "^4.8.3",
     "yargs": "^17.5.1"
+  },
+  "resolutions": {
+    "**/trim": "^1.0.0",
+    "**/trim-newlines": "^3.0.1",
+    "**/glob-parent": "^5.1.2"
   }
 }

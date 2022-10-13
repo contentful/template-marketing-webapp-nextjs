@@ -2,7 +2,7 @@ import { Container, Theme, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
 import { CtaFieldsFragment } from '@ctf-components/ctf-cta/__generated/ctf-cta.generated';
-import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
+import { CtfRichtext } from '@ctf-components/ctf-richtext/ctf-richtext';
 import PageLink from '@src/components/link/page-link';
 import PostLink from '@src/components/link/post-link';
 import LayoutContext, { defaultLayout } from '@src/layout-context';

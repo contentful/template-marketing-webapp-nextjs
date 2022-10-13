@@ -1,27 +1,20 @@
-import { NextPage, GetServerSideProps } from 'next';
+import { NextPage, NextPageContext } from 'next';
 import { useRouter } from 'next/router';
 
 import CtfPageGgl from '@ctf-components/ctf-page/ctf-page-qgl';
-import withProviders, { generateGetServerSideProps } from '@src/lib/with-providers';
+import { getServerSideTranslations } from '@src/lib/get-serverside-translations';
 
-interface SlugPagePropsInterface {
-  ssrQuery?: {
-    [key: string]: string;
-  };
-}
-
-const SlugPage: NextPage<SlugPagePropsInterface> = ({ ssrQuery }) => {
+const SlugPage: NextPage = () => {
   const router = useRouter();
-  const query = router ? router.query : ssrQuery;
-  const slug = query ? (query.slug as string) : '';
+  const slug = (router?.query.slug as string) || '';
 
   return <CtfPageGgl slug={slug} />;
 };
 
-const SlugPageWithProviders = withProviders()(SlugPage);
-
-export const getServerSideProps: GetServerSideProps = generateGetServerSideProps({
-  Page: SlugPageWithProviders,
+export const getServerSideProps = async ({ locale }: NextPageContext) => ({
+  props: {
+    ...(await getServerSideTranslations(locale)),
+  },
 });
 
-export default SlugPageWithProviders;
+export default SlugPage;

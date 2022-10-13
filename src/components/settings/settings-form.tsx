@@ -449,10 +449,10 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
             availableEnvironment => availableEnvironment.name === option,
           );
 
-          if (environment === undefined) {
+          if (!environment) {
             return (
               <Typography className={clsx(classes.envOptionName, classes.autocompleteOptionFont)}>
-                {option}
+                <>{option}</>
               </Typography>
             );
           }

@@ -2,7 +2,7 @@ import { Theme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
 import { PersonFieldsFragment } from '@ctf-components/ctf-person/__generated/ctf-person.generated';
-import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
+import { CtfRichtext } from '@ctf-components/ctf-richtext/ctf-richtext';
 import Avatar from '@src/components/avatar/avatar';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 

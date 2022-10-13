@@ -5,7 +5,7 @@ import React from 'react';
 
 import { CtfAsset } from '@ctf-components/ctf-asset/ctf-asset';
 import { PersonFieldsFragment } from '@ctf-components/ctf-person/__generated/ctf-person.generated';
-import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
+import { CtfRichtext } from '@ctf-components/ctf-richtext/ctf-richtext';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 
 const useStyles = makeStyles((theme: Theme) => ({

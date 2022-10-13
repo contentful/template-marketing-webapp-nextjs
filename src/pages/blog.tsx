@@ -1,6 +1,6 @@
 import { Container, Typography, Theme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import { NextPage, GetServerSideProps } from 'next';
+import { NextPage, NextPageContext } from 'next';
 import Head from 'next/head';
 
 import { CtfCategoriesMenu } from '@ctf-components/ctf-categories-menu/ctf-categories-menu';
@@ -9,7 +9,7 @@ import EntryNotFound from '@src/components/errors/entry-not-found';
 import CategoryContainer from '@src/components/layout/category-container';
 import { useContentfulContext } from '@src/contentful-context';
 import { useCtfBlogQuery } from '@src/ctf-components/ctf-post/__generated/ctf-post.generated';
-import withProviders, { generateGetServerSideProps } from '@src/lib/with-providers';
+import { getServerSideTranslations } from '@src/lib/get-serverside-translations';
 import contentfulConfig from 'contentful.config';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -126,10 +126,10 @@ const BlogPage: NextPage = () => {
   );
 };
 
-const BlogPageWithProviders = withProviders()(BlogPage);
-
-export const getServerSideProps: GetServerSideProps = generateGetServerSideProps({
-  Page: BlogPageWithProviders,
+export const getServerSideProps = async ({ locale }: NextPageContext) => ({
+  props: {
+    ...(await getServerSideTranslations(locale)),
+  },
 });
 
-export default BlogPageWithProviders;
+export default BlogPage;

@@ -21,7 +21,7 @@ interface CtfPersonPropsInterface extends PersonFieldsFragment {
   previousComponent: string | null;
 }
 
-const CtfPerson = (props: CtfPersonPropsInterface) => {
+export const CtfPerson = (props: CtfPersonPropsInterface) => {
   const layout = useContext(LayoutContext);
   const classes = useStyles();
   const isLeadership = props.cardStyle === false;
@@ -38,5 +38,3 @@ const CtfPerson = (props: CtfPersonPropsInterface) => {
     </Container>
   );
 };
-
-export default CtfPerson;

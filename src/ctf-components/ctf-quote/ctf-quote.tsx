@@ -6,7 +6,7 @@ import { useMemo } from 'react';
 
 import { QuoteFieldsFragment } from './__generated/ctf-quote.generated';
 
-import CtfRichtext from '@ctf-components/ctf-richtext/ctf-richtext';
+import { CtfRichtext } from '@ctf-components/ctf-richtext/ctf-richtext';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 import { getColorConfigFromPalette } from '@src/theme';
 

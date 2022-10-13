@@ -10,14 +10,12 @@ interface CtfDuplexGqlPropsInterface {
   preview: boolean;
 }
 
-const CtfDuplexGql = ({ id, locale, preview }: CtfDuplexGqlPropsInterface) => {
+export const CtfDuplexGql = ({ id, locale, preview }: CtfDuplexGqlPropsInterface) => {
   const { data, isLoading } = useCtfDuplexQuery({
     id,
     locale,
     preview,
   });
-
-  // useDataForPreview(queryResult);
 
   if (isLoading || !data?.componentDuplex) {
     return null;
@@ -25,5 +23,3 @@ const CtfDuplexGql = ({ id, locale, preview }: CtfDuplexGqlPropsInterface) => {
 
   return <CtfDuplex {...data.componentDuplex} />;
 };
-
-export default CtfDuplexGql;
