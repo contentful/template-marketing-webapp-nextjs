@@ -1,29 +1,21 @@
-import { NextPage, GetServerSideProps } from 'next';
+import { NextPage, NextPageContext } from 'next';
 import { useRouter } from 'next/router';
 
 import { CtfPostGql } from '@ctf-components/ctf-post/ctf-post-gql';
 import { useContentfulContext } from '@src/contentful-context';
-import withProviders, { generateGetServerSideProps } from '@src/lib/with-providers';
+import { getServerSideTranslations } from '@src/lib/get-serverside-translations';
 
-interface PostPagePropsInterface {
-  ssrQuery?: {
-    [key: string]: string;
-  };
-}
-
-const PostPage: NextPage<PostPagePropsInterface> = props => {
+const PostPage: NextPage = () => {
   const router = useRouter();
-  const query = router ? router.query : props.ssrQuery;
   const { previewActive } = useContentfulContext();
-  const slug = query ? (query.slug as string) : '';
+  const slug = (router?.query.slug as string) || '';
 
   return <CtfPostGql slug={slug} preview={previewActive} />;
 };
 
-const PostPageWithProviders = withProviders()(PostPage);
-
-export const getServerSideProps: GetServerSideProps = generateGetServerSideProps({
-  Page: PostPageWithProviders,
+export const getServerSideProps = async ({ locale }: NextPageContext) => ({
+  props: {
+    ...(await getServerSideTranslations(locale)),
+  },
 });
-
-export default PostPageWithProviders;
+export default PostPage;

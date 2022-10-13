@@ -1,16 +1,16 @@
-import { NextPage, GetServerSideProps } from 'next';
+import { NextPage, NextPageContext } from 'next';
 
 import CtfPageGgl from '@ctf-components/ctf-page/ctf-page-qgl';
-import withProviders, { generateGetServerSideProps } from '@src/lib/with-providers';
+import { getServerSideTranslations } from '@src/lib/get-serverside-translations';
 
 const LangPage: NextPage = () => {
   return <CtfPageGgl slug="/" />;
 };
 
-const LangPageWithProviders = withProviders()(LangPage);
-
-export const getServerSideProps: GetServerSideProps = generateGetServerSideProps({
-  Page: LangPageWithProviders,
+export const getServerSideProps = async ({ locale }: NextPageContext) => ({
+  props: {
+    ...(await getServerSideTranslations(locale)),
+  },
 });
 
-export default LangPageWithProviders;
+export default LangPage;
