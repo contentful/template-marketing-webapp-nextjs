@@ -3,9 +3,10 @@ import { makeStyles } from '@mui/styles';
 import { useRouter } from 'next/router';
 import React, { useState, useEffect, ReactElement } from 'react';
 
-import Footer from './footer';
 import Header from './header';
 import MobileMenu from './mobile-menu';
+
+import { CtfFooterGql } from '@ctf-components/ctf-footer/ctf-footer-gql';
 
 const useStyles = makeStyles((theme: Theme) => ({
   content: {
@@ -51,7 +52,7 @@ const Layout: React.FC<LayoutPropsInterface> = ({ children }) => {
       {/* content */}
       <div className={classes.content}>{children}</div>
 
-      <Footer />
+      <CtfFooterGql />
 
       <MobileMenu
         isOpen={isMenuOpen}

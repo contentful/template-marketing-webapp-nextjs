@@ -3,11 +3,12 @@ import { Theme, Container, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { useTranslation } from 'next-i18next';
 
-import { ContentfulImage } from '@src/components/contentful-image/contentful-image';
+import { FooterFieldsFragment } from './__generated/ctf-footer.generated';
+
 import { LanguageSelector } from '@src/components/language-selector';
 import Link from '@src/components/link/link';
+import Logo from '@src/icons/logo-tagline.svg';
 import { CONTAINER_WIDTH } from '@src/theme';
-import contentfulConfig from 'contentful.config';
 
 const useStyles = makeStyles((theme: Theme) => ({
   footerContainer: {
@@ -221,43 +222,49 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const Footer = () => {
+const getLinkDisplayText = menuItem => {
+  if ('pageName' in menuItem) {
+    return menuItem.pageName;
+  }
+  if ('categoryName' in menuItem) {
+    return menuItem.categoryName;
+  }
+  if ('postName' in menuItem) {
+    return menuItem.postName;
+  }
+  return menuItem.slug;
+};
+
+const getLinkHrefPrefix = menuItem => {
+  if ('pageName' in menuItem) {
+    return menuItem.slug;
+  }
+  if ('categoryName' in menuItem) {
+    return `category/${menuItem.slug}`;
+  }
+  if ('postName' in menuItem) {
+    return `post/${menuItem.slug}`;
+  }
+  return menuItem.slug;
+};
+
+export const CtfFooter = (props: FooterFieldsFragment) => {
+  const footerContent = props.items[0];
+
   const { t } = useTranslation();
 
-  const renderMenuItem = (
-    menuItem: {
-      label: string;
-      location?: string;
-    },
-    { className = classes.menuItem }: { className?: string } = {},
-  ): JSX.Element => {
-    if (menuItem.location === undefined) {
-      return <p className={className}>{menuItem.label}</p>;
-    }
-
-    return (
-      <Link href={menuItem.location} className={className}>
-        {menuItem.label}
-      </Link>
-    );
-  };
-
-  const renderMenuItemChildren = (menuItem: {
-    children?: { label: string; location: string }[];
-  }): JSX.Element | null => {
-    if (menuItem.children === undefined) {
-      return null;
-    }
-
-    return (
-      <ul className={classes.submenu}>
-        {menuItem.children.map((submenuItem, i) => (
-          <li key={i} className={classes.submenuItem}>
-            {renderMenuItem(submenuItem)}
-          </li>
-        ))}
-      </ul>
-    );
+  const renderMenuGroupLinks = (menuGroup, listClassName) => {
+    return menuGroup?.items?.map((menuItem, i) => {
+      const href = getLinkHrefPrefix(menuItem);
+      const linkText = getLinkDisplayText(menuItem);
+      return (
+        <li key={i} className={listClassName}>
+          <Link href={href} className={classes.menuItem}>
+            {linkText}
+          </Link>
+        </li>
+      );
+    });
   };
 
   const classes = useStyles();
@@ -266,14 +273,21 @@ const Footer = () => {
     <>
       <Container maxWidth={false} className={classes.footerContainer}>
         <footer className={classes.footer}>
-          {contentfulConfig.footer.menu.length > 0 && (
+          {footerContent?.menuItemsCollection?.items?.length && (
             <nav role="navigation" className={classes.menuWrapper}>
-              {contentfulConfig.footer.menu.map((menuItem, i) => (
+              {footerContent.menuItemsCollection.items.map((menuItem, i) => (
                 <div key={i} className={classes.menuColumn}>
                   <ul className={classes.menu}>
                     <li>
-                      {renderMenuItem(menuItem)}
-                      {renderMenuItemChildren(menuItem)}
+                      <p className={classes.menuItem}>{menuItem?.groupName}</p>
+                      {menuItem?.featuredPagesCollection && (
+                        <ul className={classes.submenu}>
+                          {renderMenuGroupLinks(
+                            menuItem.featuredPagesCollection,
+                            classes.submenuItem,
+                          )}
+                        </ul>
+                      )}
                     </li>
                   </ul>
                 </div>
@@ -282,68 +296,27 @@ const Footer = () => {
           )}
           <section className={classes.footerEndSection}>
             <LanguageSelector />
-
-            <div className={classes.storeLogos}>
-              {contentfulConfig.footer.googlePlayLogo && (
-                <a
-                  className={classes.storeLogo}
-                  href="https://play.google.com/store/apps/details?id=com.contentful.colorfulcoin"
-                >
-                  <ContentfulImage
-                    src={contentfulConfig.footer.googlePlayLogo}
-                    alt="Google Play Store logo"
-                    layout="responsive"
-                    width={`${contentfulConfig.footer.logoWidth}px`}
-                    height={'100px'}
-                  />
-                </a>
-              )}
-              {contentfulConfig.footer.appStoreLogo && (
-                <a
-                  className={classes.storeLogo}
-                  href="https://apps.apple.com/de/app/colorful-coin/id1612505445?l=en"
-                >
-                  <ContentfulImage
-                    src={contentfulConfig.footer.appStoreLogo}
-                    alt="Apple App Store logo"
-                    layout="responsive"
-                    width={`${contentfulConfig.footer.logoWidth}px`}
-                    height={'100px'}
-                  />
-                </a>
-              )}
-            </div>
           </section>
         </footer>
       </Container>
-
       <Container maxWidth={false} className={classes.footerCorporateContainer}>
         <section className={classes.footerCorporate}>
           <div className={classes.corporateLogoMenu}>
             <div className={classes.corporateLogoContainer}>
-              <ContentfulImage
-                src={contentfulConfig.footer.logo}
-                className={classes.corporateLogo}
-                alt="Logo"
-                width={contentfulConfig.footer.logoWidth}
-                height={contentfulConfig.footer.logoHeight}
-              />
+              <Logo className={classes.corporateLogo} />
             </div>
 
             <section className={classes.copyrightAndLegal}>
               <p className={classes.copyright}>
                 {t('legal.copyright', { year: new Date().getFullYear() })}
               </p>
-              {contentfulConfig.footer.legal.length > 0 && (
+              {footerContent?.legalLinks?.featuredPagesCollection?.items?.length && (
                 <nav role="navigation" className={classes.legalMenuWrapper}>
                   <ul className={classes.legalMenu}>
-                    {contentfulConfig.footer.legal.map((menuItem, i) => (
-                      <li key={i} className={classes.legalMenuItem}>
-                        {renderMenuItem(menuItem, {
-                          className: '',
-                        })}
-                      </li>
-                    ))}
+                    {renderMenuGroupLinks(
+                      footerContent.legalLinks.featuredPagesCollection,
+                      classes.legalMenuItem,
+                    )}
                   </ul>
                 </nav>
               )}
@@ -356,23 +329,23 @@ const Footer = () => {
             <div className={classes.socialWrapper}>
               <Typography className={classes.socialTitle}>{t('socials.findUsOn')}</Typography>
               <div className={classes.social}>
-                {contentfulConfig.footer.social.twitter && (
-                  <a href={contentfulConfig.footer.social.twitter}>
+                {footerContent?.twitterLink && (
+                  <a href={footerContent.twitterLink}>
                     <Twitter />
                   </a>
                 )}
-                {contentfulConfig.footer.social.facebook && (
-                  <a href={contentfulConfig.footer.social.facebook}>
+                {footerContent?.facebookLink && (
+                  <a href={footerContent.facebookLink}>
                     <Facebook />
                   </a>
                 )}
-                {contentfulConfig.footer.social.linkedin && (
-                  <a href={contentfulConfig.footer.social.linkedin}>
+                {footerContent?.linkedinLink && (
+                  <a href={footerContent.linkedinLink}>
                     <LinkedIn />
                   </a>
                 )}
-                {contentfulConfig.footer.social.instagram && (
-                  <a href={contentfulConfig.footer.social.instagram}>
+                {footerContent?.instagramLink && (
+                  <a href={footerContent.instagramLink}>
                     <Instagram />
                   </a>
                 )}
@@ -384,5 +357,3 @@ const Footer = () => {
     </>
   );
 };
-
-export default Footer;
