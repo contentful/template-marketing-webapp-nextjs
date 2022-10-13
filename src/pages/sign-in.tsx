@@ -136,9 +136,9 @@ const SignInPage: NextPage = () => {
                 <div className={classes.formField}>
                   <div className={classes.formFieldLabel}>
                     <label htmlFor="sign-in-password">{t('common.password')}</label>
-                    <a href="/src/pages/sign-in#" className={classes.forgotPassword}>
+                    <Link href="/sign-in" className={classes.forgotPassword}>
                       {t('common.forgotPassword')}
-                    </a>
+                    </Link>
                   </div>
                   <input
                     id="sign-in-password"
