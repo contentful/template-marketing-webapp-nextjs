@@ -2,7 +2,9 @@
 name: ESLint & TSC
 
 # Event for the workflow
-on: [pull_request, push]
+on: 
+ pull_request:
+ push:
 
 # List of jobs
 jobs:
@@ -35,7 +37,7 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ matrix.node-version }}-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install dependencies
-        run: yarn ci --frozen-lockfile --prefer-offline
+        run: yarn install --frozen-lockfile --prefer-offline
         # `--prefer-offline` gives cache priority
 
       - name: ESLint
