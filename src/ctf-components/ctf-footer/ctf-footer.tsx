@@ -3,8 +3,8 @@ import { Twitter, Facebook, LinkedIn, Instagram } from '@material-ui/icons';
 import { useTranslation } from 'next-i18next';
 
 import { FooterFieldsFragment } from './__generated/ctf-footer.generated';
+import Logo from './colorful-collective-logo-light.svg';
 
-import { ContentfulImage } from '@src/components/contentful-image/contentful-image';
 import { LanguageSelector } from '@src/components/language-selector';
 import Link from '@src/components/link/link';
 import { CONTAINER_WIDTH } from '@src/theme';
@@ -262,7 +262,7 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
             {linkText}
           </Link>
         </li>
-      )
+      );
     });
   };
 
@@ -302,13 +302,7 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
         <section className={classes.footerCorporate}>
           <div className={classes.corporateLogoMenu}>
             <div className={classes.corporateLogoContainer}>
-              <ContentfulImage
-                src="https://images.ctfassets.net/w8vf7dk7f259/24hV8yQwJho6mXbrkLEuCY/29c93d344856aed9e3da110d0c3c8500/colorful-collective-logo-light.svg"
-                className={classes.corporateLogo}
-                alt="Logo"
-                width={280}
-                height={19}
-              />
+              <Logo className={classes.corporateLogo} />
             </div>
 
             <section className={classes.copyrightAndLegal}>
