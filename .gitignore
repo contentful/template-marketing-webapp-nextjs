@@ -3,6 +3,8 @@ contenful.config.secret.json
 dist
 .next
 out
+tsconfig.tsbuildinfo
+
 
 ### Paw ###
 *.paw
