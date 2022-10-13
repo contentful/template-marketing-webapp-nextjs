@@ -1,5 +1,5 @@
 import { config as fontawesomeConfig } from '@fortawesome/fontawesome-svg-core';
-import { Theme, ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
+import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import '@src/components/layout/layout.css';
 import { QueryClientProvider } from '@tanstack/react-query';
@@ -15,11 +15,6 @@ import { gqlQueryClient } from '@src/lib/gql-client';
 import colorfulTheme from '@src/theme';
 import contentfulConfig from 'contentful.config';
 import nextI18nConfig from 'next-i18next.config';
-
-declare module '@mui/styles/defaultTheme' {
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface DefaultTheme extends Theme {}
-}
 
 fontawesomeConfig.autoAddCss = false;
 
