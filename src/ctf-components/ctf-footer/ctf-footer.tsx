@@ -6,7 +6,7 @@ import { FooterFieldsFragment } from './__generated/ctf-footer.generated';
 
 import { LanguageSelector } from '@src/components/language-selector';
 import Link from '@src/components/link/link';
-import Logo from '@src/icons/colorful-collective-logo-light.svg';
+import Logo from '@src/icons/logo-tagline.svg';
 import { CONTAINER_WIDTH } from '@src/theme';
 
 const useStyles = makeStyles((theme: Theme) => ({
