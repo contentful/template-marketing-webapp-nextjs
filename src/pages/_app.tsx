@@ -14,6 +14,7 @@ import { ContentfulContext, contentfulContextValue } from '@src/contentful-conte
 import { gqlQueryClient } from '@src/lib/gql-client';
 import colorfulTheme from '@src/theme';
 import contentfulConfig from 'contentful.config';
+import nextI18nConfig from 'next-i18next.config';
 
 declare module '@mui/styles/defaultTheme' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -90,4 +91,4 @@ const CustomApp = (props: AppProps) => {
   );
 };
 
-export default appWithTranslation(CustomApp);
+export default appWithTranslation(CustomApp, nextI18nConfig);
