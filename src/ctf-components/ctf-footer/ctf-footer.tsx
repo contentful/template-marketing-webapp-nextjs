@@ -3,10 +3,10 @@ import { Twitter, Facebook, LinkedIn, Instagram } from '@material-ui/icons';
 import { useTranslation } from 'next-i18next';
 
 import { FooterFieldsFragment } from './__generated/ctf-footer.generated';
-import Logo from './colorful-collective-logo-light.svg';
 
 import { LanguageSelector } from '@src/components/language-selector';
 import Link from '@src/components/link/link';
+import Logo from '@src/icons/colorful-collective-logo-light.svg';
 import { CONTAINER_WIDTH } from '@src/theme';
 
 const useStyles = makeStyles((theme: Theme) => ({
