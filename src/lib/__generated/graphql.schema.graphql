@@ -1394,6 +1394,7 @@ A group of items making up a section in the navigation menu [See type definition
 type MenuGroup implements Entry {
   contentfulMetadata: ContentfulMetadata!
   featuredPagesCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): MenuGroupFeaturedPagesCollection
+  groupLink(locale: String, preview: Boolean): MenuGroupGroupLink
   groupName(locale: String): String
   internalTitle(locale: String): String
   linkedFrom(allowedLocales: [String]): MenuGroupLinkingCollections
@@ -1421,6 +1422,7 @@ input MenuGroupFilter {
   OR: [MenuGroupFilter]
   contentfulMetadata: ContentfulMetadataFilter
   featuredPagesCollection_exists: Boolean
+  groupLink_exists: Boolean
   groupName: String
   groupName_contains: String
   groupName_exists: Boolean
@@ -1437,6 +1439,8 @@ input MenuGroupFilter {
   internalTitle_not_in: [String]
   sys: SysFilter
 }
+
+union MenuGroupGroupLink = Category | Page | Post
 
 type MenuGroupLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
@@ -2411,6 +2415,7 @@ input cfMenuGroupNestedFilter {
   OR: [cfMenuGroupNestedFilter]
   contentfulMetadata: ContentfulMetadataFilter
   featuredPagesCollection_exists: Boolean
+  groupLink_exists: Boolean
   groupName: String
   groupName_contains: String
   groupName_exists: Boolean

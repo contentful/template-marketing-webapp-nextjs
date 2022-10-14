@@ -2,8 +2,13 @@ fragment NavigationFields on NavigationMenuCollection {
   items {
     menuItemsCollection {
       items {
-        groupName
-        featuredPagesCollection {
+        label: groupName
+        link: groupLink {
+          ...PageLinkFields
+          ...CategoryLinkFields
+          ...PostLinkFields
+        }
+        children: featuredPagesCollection {
           ...MenuGroupFields
         }
       }

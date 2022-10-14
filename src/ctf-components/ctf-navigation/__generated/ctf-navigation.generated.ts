@@ -1,13 +1,13 @@
 import * as Types from '../../../lib/__generated/graphql.types';
 
-import { MenuGroupFieldsFragment } from '../../../lib/shared-fragments/__generated/ctf-menuGroup.generated';
 import { PageLinkFieldsFragment } from '../../../components/link/__generated/page-link.generated';
 import { CategoryLinkFieldsFragment } from '../../../components/link/__generated/category-link.generated';
 import { PostLinkFieldsFragment } from '../../../components/link/__generated/post-link.generated';
-import { MenuGroupFieldsFragmentDoc } from '../../../lib/shared-fragments/__generated/ctf-menuGroup.generated';
+import { MenuGroupFieldsFragment } from '../../../lib/shared-fragments/__generated/ctf-menuGroup.generated';
 import { PageLinkFieldsFragmentDoc } from '../../../components/link/__generated/page-link.generated';
 import { CategoryLinkFieldsFragmentDoc } from '../../../components/link/__generated/category-link.generated';
 import { PostLinkFieldsFragmentDoc } from '../../../components/link/__generated/post-link.generated';
+import { MenuGroupFieldsFragmentDoc } from '../../../lib/shared-fragments/__generated/ctf-menuGroup.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 
 function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
@@ -29,7 +29,16 @@ function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
     return json.data;
   }
 }
-export type NavigationFieldsFragment = { __typename?: 'NavigationMenuCollection', items: Array<{ __typename?: 'NavigationMenu', menuItemsCollection?: { __typename?: 'NavigationMenuMenuItemsCollection', items: Array<{ __typename?: 'MenuGroup', groupName?: string | null, featuredPagesCollection?: (
+export type NavigationFieldsFragment = { __typename?: 'NavigationMenuCollection', items: Array<{ __typename?: 'NavigationMenu', menuItemsCollection?: { __typename?: 'NavigationMenuMenuItemsCollection', items: Array<{ __typename?: 'MenuGroup', label?: string | null, link?: (
+          { __typename?: 'Category' }
+          & CategoryLinkFieldsFragment
+        ) | (
+          { __typename?: 'Page' }
+          & PageLinkFieldsFragment
+        ) | (
+          { __typename?: 'Post' }
+          & PostLinkFieldsFragment
+        ) | null, children?: (
           { __typename?: 'MenuGroupFeaturedPagesCollection' }
           & MenuGroupFieldsFragment
         ) | null } | null> } | null } | null> };
@@ -50,8 +59,13 @@ export const NavigationFieldsFragmentDoc = `
   items {
     menuItemsCollection {
       items {
-        groupName
-        featuredPagesCollection {
+        label: groupName
+        link: groupLink {
+          ...PageLinkFields
+          ...CategoryLinkFields
+          ...PostLinkFields
+        }
+        children: featuredPagesCollection {
           ...MenuGroupFields
         }
       }
@@ -66,10 +80,10 @@ export const CtfNavigationDocument = `
   }
 }
     ${NavigationFieldsFragmentDoc}
-${MenuGroupFieldsFragmentDoc}
 ${PageLinkFieldsFragmentDoc}
 ${CategoryLinkFieldsFragmentDoc}
-${PostLinkFieldsFragmentDoc}`;
+${PostLinkFieldsFragmentDoc}
+${MenuGroupFieldsFragmentDoc}`;
 export const useCtfNavigationQuery = <
       TData = CtfNavigationQuery,
       TError = unknown

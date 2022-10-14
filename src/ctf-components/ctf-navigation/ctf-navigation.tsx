@@ -82,15 +82,18 @@ const getLinkDisplayText = menuItem => {
 
 const getLinkHrefPrefix = menuItem => {
   if ('pageName' in menuItem) {
-    return menuItem.slug;
+    return `/${menuItem.slug}`;
   }
+
   if ('categoryName' in menuItem) {
     return `category/${menuItem.slug}`;
   }
+
   if ('postName' in menuItem) {
     return `post/${menuItem.slug}`;
   }
-  return menuItem.slug;
+
+  return `/${menuItem.slug}`;
 };
 
 export const CtfNavigation = (props: NavigationFieldsFragment) => {
@@ -119,10 +122,14 @@ export const CtfNavigation = (props: NavigationFieldsFragment) => {
           <ul className={classes.menu}>
             {navigationContent.menuItemsCollection.items.map((menuItem, i) => (
               <li key={i} className={classes.menuItem}>
-                {menuItem?.groupName}
-                {menuItem?.featuredPagesCollection && (
+                {menuItem?.link === null ? (
+                  menuItem?.label
+                ) : (
+                  <Link href={`/${menuItem?.link?.slug}`}>{menuItem?.label}</Link>
+                )}
+                {menuItem?.link === null && menuItem?.children && (
                   <ul className={classes.submenu}>
-                    {renderNavigationLinks(menuItem.featuredPagesCollection, classes.submenuItem)}
+                    {renderNavigationLinks(menuItem.children, classes.submenuItem)}
                   </ul>
                 )}
               </li>
