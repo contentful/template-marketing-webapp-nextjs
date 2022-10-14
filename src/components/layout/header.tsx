@@ -3,6 +3,7 @@ import { Menu } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/styles';
 import { useTranslation } from 'next-i18next';
 
+import { CtfNavigationGql } from '@ctf-components/ctf-navigation/ctf-navigation-gql';
 import { ContentfulImage } from '@src/components/contentful-image/contentful-image';
 import Link from '@src/components/link/link';
 import { HEADER_HEIGHT, HEADER_HEIGHT_MD, CONTAINER_WIDTH } from '@src/theme';
@@ -33,65 +34,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   menuWrapper: {
     alignItems: 'center',
     display: 'flex',
-  },
-  menu: {
-    alignItems: 'center',
-    display: 'flex',
-    listStyle: 'none',
-    margin: 0,
-    padding: 0,
-  },
-  menuItem: {
-    alignItems: 'center',
-    cursor: 'default',
-    display: 'inline-flex',
-    fontSize: '2.1rem',
-    height: '8rem',
-    lineHeight: '1.8',
-    marginRight: theme.spacing(8),
-    position: 'relative',
-
-    [theme.breakpoints.up('lg')]: {
-      marginRight: theme.spacing(10),
-    },
-
-    '& a': {
-      cursor: 'pointer',
-      display: 'inline-block',
-      transition: 'transform 0.2s ease-in-out',
-    },
-
-    '&:hover, &:focus, &:focus-within': {
-      '& > a': {
-        transform: 'translateY(-4px)',
-      },
-      '& $submenu': {
-        opacity: 1,
-        pointerEvents: 'all',
-        transform: 'translateY(0)',
-      },
-    },
-  },
-  submenu: {
-    backgroundColor: '#fff',
-    boxShadow: '0 3px 6px #00000029',
-    borderRadius: '14px',
-    left: theme.spacing(10) * -1,
-    listStyle: 'none',
-    opacity: 0,
-    padding: theme.spacing(4, 10),
-    pointerEvents: 'none',
-    position: 'absolute',
-    top: 'calc(100% - 2rem)',
-    transform: 'translateY(20%)',
-    transition: 'all 0.3s ease-in-out',
-  },
-  submenuItem: {
-    '&:hover, &:focus, &:focus-within': {
-      '& > a': {
-        transform: 'translateY(-4px)',
-      },
-    },
   },
   accountMenu: {
     alignItems: 'center',
@@ -127,28 +69,6 @@ const Header = (props: HeaderPropsInterface) => {
   const { onMenuClick } = props;
   const classes = useStyles();
 
-  const renderMenuItem = (menuItem: { label: string; location?: string }): string | JSX.Element => {
-    return <Link href={menuItem.location}>{menuItem.label}</Link>;
-  };
-
-  const renderMenuItemChildren = (menuItem: {
-    children?: { label: string; location: string }[];
-  }): JSX.Element | null => {
-    if (menuItem.children === undefined) {
-      return null;
-    }
-
-    return (
-      <ul className={classes.submenu}>
-        {menuItem.children.map(submenuItem => (
-          <li key={submenuItem.label} className={classes.submenuItem}>
-            {renderMenuItem(submenuItem)}
-          </li>
-        ))}
-      </ul>
-    );
-  };
-
   return (
     <AppBar position="fixed" color="secondary" className={classes.appbar}>
       <Toolbar className={classes.toolbar}>
@@ -171,17 +91,7 @@ const Header = (props: HeaderPropsInterface) => {
           {contentfulConfig.header.menu.length > 0 && (
             <Box display={{ xs: 'none', md: 'block' }}>
               <div className={classes.menuWrapper}>
-                <nav role="navigation">
-                  <ul className={classes.menu}>
-                    {contentfulConfig.header.menu.map(menuItem => (
-                      <li key={menuItem.label} className={classes.menuItem}>
-                        {menuItem.location ? renderMenuItem(menuItem) : menuItem.label}
-                        {renderMenuItemChildren(menuItem)}
-                      </li>
-                    ))}
-                  </ul>
-                </nav>
-
+                <CtfNavigationGql />
                 <nav>
                   <ul className={classes.accountMenu}>
                     <li className={classes.accountMenuItem}>

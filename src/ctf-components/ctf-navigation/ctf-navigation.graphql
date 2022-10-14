@@ -1,0 +1,18 @@
+fragment NavigationFields on NavigationMenuCollection {
+  items {
+    menuItemsCollection {
+      items {
+        groupName
+        featuredPagesCollection {
+          ...MenuGroupFields
+        }
+      }
+    }
+  }
+}
+
+query CtfNavigation($locale: String, $preview: Boolean) {
+  navigationMenuCollection(locale: $locale, preview: $preview, limit: 1) {
+    ...NavigationFields
+  }
+}

@@ -1441,6 +1441,7 @@ input MenuGroupFilter {
 type MenuGroupLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   footerMenuCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): FooterMenuCollection
+  navigationMenuCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): NavigationMenuCollection
 }
 
 enum MenuGroupOrder {
@@ -1448,6 +1449,63 @@ enum MenuGroupOrder {
   groupName_DESC
   internalTitle_ASC
   internalTitle_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+"""
+Navigation menu in the header [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/navigationMenu)
+"""
+type NavigationMenu implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  internalName(locale: String): String
+  linkedFrom(allowedLocales: [String]): NavigationMenuLinkingCollections
+  menuItemsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): NavigationMenuMenuItemsCollection
+  sys: Sys!
+}
+
+type NavigationMenuCollection {
+  items: [NavigationMenu]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input NavigationMenuFilter {
+  AND: [NavigationMenuFilter]
+  OR: [NavigationMenuFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  menuItemsCollection_exists: Boolean
+  sys: SysFilter
+}
+
+type NavigationMenuLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+type NavigationMenuMenuItemsCollection {
+  items: [MenuGroup]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+enum NavigationMenuOrder {
+  internalName_ASC
+  internalName_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -1747,6 +1805,8 @@ type Query {
   footerMenuCollection(limit: Int = 100, locale: String, order: [FooterMenuOrder], preview: Boolean, skip: Int = 0, where: FooterMenuFilter): FooterMenuCollection
   menuGroup(id: String!, locale: String, preview: Boolean): MenuGroup
   menuGroupCollection(limit: Int = 100, locale: String, order: [MenuGroupOrder], preview: Boolean, skip: Int = 0, where: MenuGroupFilter): MenuGroupCollection
+  navigationMenu(id: String!, locale: String, preview: Boolean): NavigationMenu
+  navigationMenuCollection(limit: Int = 100, locale: String, order: [NavigationMenuOrder], preview: Boolean, skip: Int = 0, where: NavigationMenuFilter): NavigationMenuCollection
   page(id: String!, locale: String, preview: Boolean): Page
   pageCollection(limit: Int = 100, locale: String, order: [PageOrder], preview: Boolean, skip: Int = 0, where: PageFilter): PageCollection
   post(id: String!, locale: String, preview: Boolean): Post
