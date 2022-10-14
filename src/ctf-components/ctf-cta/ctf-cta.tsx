@@ -1,5 +1,5 @@
-import { Container, Theme, makeStyles, Typography } from '@material-ui/core';
-import React from 'react';
+import { Container, Theme, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 
 import { CtaFieldsFragment } from '@ctf-components/ctf-cta/__generated/ctf-cta.generated';
 import { CtfRichtext } from '@ctf-components/ctf-richtext/ctf-richtext';

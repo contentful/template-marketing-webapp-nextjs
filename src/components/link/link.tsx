@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core';
-import MuiButton from '@material-ui/core/Button';
-import MuiLink from '@material-ui/core/Link';
+import MuiButton from '@mui/material/Button';
+import MuiLink from '@mui/material/Link';
+import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';

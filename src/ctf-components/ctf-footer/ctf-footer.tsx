@@ -1,5 +1,6 @@
-import { makeStyles, Theme, Container, Typography } from '@material-ui/core';
-import { Twitter, Facebook, LinkedIn, Instagram } from '@material-ui/icons';
+import { Twitter, Facebook, LinkedIn, Instagram } from '@mui/icons-material';
+import { Theme, Container, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import { useTranslation } from 'next-i18next';
 
 import { FooterFieldsFragment } from './__generated/ctf-footer.generated';

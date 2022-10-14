@@ -1,4 +1,5 @@
-import { makeStyles, Theme, Typography } from '@material-ui/core';
+import { Theme, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import formatDate from 'date-fns/format';
 import { useTranslation } from 'next-i18next';
 import { useMemo } from 'react';

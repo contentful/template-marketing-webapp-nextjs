@@ -1,5 +1,5 @@
-import { Avatar as MuiAvatar } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
+import { Avatar as MuiAvatar } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import React, { useMemo } from 'react';
 
 import { AssetFieldsFragment } from '@src/lib/__generated/graphql.types';

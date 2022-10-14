@@ -1,4 +1,5 @@
-import { Theme, makeStyles, Typography, Container } from '@material-ui/core';
+import { Theme, Typography, Container } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 
 import CardPostExtended from '@src/components/card-post-extended/card-post-extended';
 import TagContainer from '@src/components/layout/category-container';

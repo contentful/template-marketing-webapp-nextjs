@@ -1,6 +1,6 @@
-import { AppBar, Container, IconButton, Theme, Toolbar, Box, SvgIcon } from '@material-ui/core';
-import { Menu } from '@material-ui/icons';
-import { makeStyles } from '@material-ui/styles';
+import { Menu } from '@mui/icons-material';
+import { AppBar, Container, IconButton, Theme, Toolbar, Box, SvgIcon } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import { useTranslation } from 'next-i18next';
 
 import { ContentfulImage } from '@src/components/contentful-image/contentful-image';
@@ -76,7 +76,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     backgroundColor: '#fff',
     boxShadow: '0 3px 6px #00000029',
     borderRadius: '14px',
-    left: theme.spacing(10) * -1,
+    left: Number(theme.spacing(10)) * -1,
     listStyle: 'none',
     opacity: 0,
     padding: theme.spacing(4, 10),

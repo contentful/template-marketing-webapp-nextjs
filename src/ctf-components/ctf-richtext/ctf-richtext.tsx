@@ -1,7 +1,8 @@
 import { documentToReactComponents, Options } from '@contentful/rich-text-react-renderer';
 import { Block as RichtextBlock, BLOCKS, INLINES } from '@contentful/rich-text-types';
-import { makeStyles, Theme, Typography, Container } from '@material-ui/core';
-import { Variant } from '@material-ui/core/styles/createTypography';
+import { Theme, Typography, Container } from '@mui/material';
+import { Variant } from '@mui/material/styles/createTypography';
+import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import React, { useMemo, useContext, useCallback } from 'react';
 

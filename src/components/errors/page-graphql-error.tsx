@@ -1,4 +1,4 @@
-import { Container, Box } from '@material-ui/core';
+import { Container, Box } from '@mui/material';
 import React from 'react';
 
 import GraphqlError from './graphql-error';

@@ -1,3 +1,4 @@
+import Autocomplete from '@mui/lab/Autocomplete';
 import {
   Theme,
   FormHelperText,
@@ -9,9 +10,8 @@ import {
   Button,
   Typography,
   InputAdornment,
-} from '@material-ui/core';
-import Autocomplete from '@material-ui/lab/Autocomplete';
-import { makeStyles } from '@material-ui/styles';
+} from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import format from 'date-fns/format';
 import { useRouter } from 'next/router';
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       bottom: theme.spacing(28),
       boxShadow: '0 2px 30px rgba(0,0,0,0.29)',
       height: '70rem',
-      maxHeight: `calc(100vh - ${theme.spacing(29)}px)`,
+      maxHeight: `calc(100vh - ${theme.spacing(29)})`,
       right: theme.spacing(9),
       width: '42.3rem',
     },
@@ -449,10 +449,10 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
             availableEnvironment => availableEnvironment.name === option,
           );
 
-          if (environment === undefined) {
+          if (!environment) {
             return (
               <Typography className={clsx(classes.envOptionName, classes.autocompleteOptionFont)}>
-                {option}
+                <>{option}</>
               </Typography>
             );
           }

@@ -1,9 +1,5 @@
-import {
-  makeStyles,
-  Theme,
-  Typography,
-  TypographyProps,
-} from '@material-ui/core';
+import { Theme, Typography, TypographyProps } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import React from 'react';
 
@@ -66,15 +62,8 @@ const SectionHeadline = (props: SectionHeadlinesPropsInterface) => {
   }
 
   return (
-    <div
-      className={clsx(
-        align === 'center' ? classes.containerCentered : null,
-        className,
-      )}
-    >
-      {headline && (
-        <Typography {...computedHeadlineProps}>{headline}</Typography>
-      )}
+    <div className={clsx(align === 'center' ? classes.containerCentered : null, className)}>
+      {headline && <Typography {...computedHeadlineProps}>{headline}</Typography>}
       {subline && <Typography {...computedSublineProps}>{subline}</Typography>}
       {body && <Markdown text={body} className={classes.text} />}
     </div>
