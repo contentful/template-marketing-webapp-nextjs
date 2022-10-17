@@ -2,31 +2,8 @@ import { Drawer, SvgIcon, makeStyles } from '@material-ui/core';
 import { useTranslation } from 'next-i18next';
 
 import Link from '@src/components/link/link';
-import contentfulConfig from 'contentful.config';
 
 const useStyles = makeStyles(theme => ({
-  menu: {
-    listStyle: 'none',
-    margin: 0,
-    padding: theme.spacing(4, 8),
-  },
-  menuItem: {
-    cursor: 'default',
-    display: 'block',
-    fontSize: '2.1rem',
-    lineHeight: '1.8',
-    position: 'relative',
-
-    a: {
-      cursor: 'pointer',
-    },
-  },
-  submenu: {
-    borderLeft: '1px solid #eee',
-    listStyle: 'none',
-    padding: theme.spacing(0, 0, 0, 2),
-  },
-
   accountMenu: {
     listStyle: 'none',
     margin: 0,
@@ -60,46 +37,10 @@ const MobileMenu = (props: MobileMenuPropsInterface) => {
     }
   };
 
-  const renderMenuItem = (menuItem: { label: string; location?: string }): string | JSX.Element => {
-    if (menuItem.location === undefined) {
-      return menuItem.label;
-    }
-
-    return <Link href={menuItem.location}>{menuItem.label}</Link>;
-  };
-
-  const renderMenuItemChildren = (menuItem: {
-    children?: { label: string; location: string }[];
-  }): JSX.Element | null => {
-    if (menuItem.children === undefined) {
-      return null;
-    }
-
-    return (
-      <ul className={classes.submenu}>
-        {menuItem.children.map((submenuItem, i) => (
-          <li key={i}>{renderMenuItem(submenuItem)}</li>
-        ))}
-      </ul>
-    );
-  };
-
   const classes = useStyles();
 
   return (
     <Drawer open={isOpen} anchor="right" onClose={onCloseClick}>
-      {contentfulConfig.header.menu.length > 0 && (
-        <nav role="navigation">
-          <ul className={classes.menu}>
-            {contentfulConfig.header.menu.map((menuItem, i) => (
-              <li key={i} className={classes.menuItem}>
-                {menuItem.location ? renderMenuItem(menuItem) : menuItem.label}
-                {renderMenuItemChildren(menuItem)}
-              </li>
-            ))}
-          </ul>
-        </nav>
-      )}
       <nav>
         <ul className={classes.accountMenu}>
           <li className={classes.accountMenuItem}>

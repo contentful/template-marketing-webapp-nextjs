@@ -4,9 +4,9 @@ import { useRouter } from 'next/router';
 import React, { useState, useEffect, ReactElement } from 'react';
 
 import Header from './header';
-import MobileMenu from './mobile-menu';
 
 import { CtfFooterGql } from '@ctf-components/ctf-footer/ctf-footer-gql';
+import { CtfMobileMenuGql } from '@src/ctf-components/ctf-mobile-menu/ctf-mobile-menu-gql';
 
 const useStyles = makeStyles((theme: Theme) => ({
   content: {
@@ -54,7 +54,7 @@ const Layout: React.FC<LayoutPropsInterface> = ({ children }) => {
 
       <CtfFooterGql />
 
-      <MobileMenu
+      <CtfMobileMenuGql
         isOpen={isMenuOpen}
         onOpenChange={(newOpen: boolean) => {
           setMenuOpen(newOpen);
