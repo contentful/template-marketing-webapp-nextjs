@@ -82,7 +82,7 @@ const Header = (props: HeaderPropsInterface) => {
           <Link href="/" withoutMaterial>
             <CtfImage
               url={contentfulConfig.header.logo}
-              title="Logo"
+              title={t('common.logoImageAltText')}
               width={contentfulConfig.header.logoWidth}
               height={contentfulConfig.header.logoHeight}
             />
