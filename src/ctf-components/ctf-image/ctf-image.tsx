@@ -32,11 +32,11 @@ const useStyles = makeStyles(() => ({
 
 interface CtfImagePropsInterface {
   widthPx?: number;
-  title: any;
-  description?: string;
-  url: string;
-  width: number;
-  height: number;
+  title?: string | null;
+  description?: string | null;
+  url?: string | null;
+  width?: number | null;
+  height?: number | null;
   cover?: boolean;
   ratio?: number;
   className?: string;
