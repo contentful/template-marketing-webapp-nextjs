@@ -17,11 +17,11 @@ export const getLinkHrefPrefix = menuItem => {
   }
 
   if ('categoryName' in menuItem) {
-    return `category/${menuItem.slug}`;
+    return `/category/${menuItem.slug}`;
   }
 
   if ('postName' in menuItem) {
-    return `post/${menuItem.slug}`;
+    return `/post/${menuItem.slug}`;
   }
 
   return `/${menuItem.slug}`;
