@@ -1987,7 +1987,7 @@
         "id": "page",
         "type": "ContentType",
         "createdAt": "2022-09-15T14:29:16.393Z",
-        "updatedAt": "2022-09-26T12:05:46.279Z",
+        "updatedAt": "2022-10-14T11:58:17.221Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -1995,8 +1995,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 7,
-        "publishedAt": "2022-09-26T12:05:46.279Z",
+        "publishedVersion": 9,
+        "publishedAt": "2022-10-14T11:58:17.221Z",
         "firstPublishedAt": "2022-09-15T14:29:21.253Z",
         "createdBy": {
           "sys": {
@@ -2009,16 +2009,16 @@
           "sys": {
             "type": "Link",
             "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
+            "id": "2yMBxu1ERIzFAD1nViscNY"
           }
         },
-        "publishedCounter": 4,
-        "version": 8,
+        "publishedCounter": 5,
+        "version": 10,
         "publishedBy": {
           "sys": {
             "type": "Link",
             "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
+            "id": "2yMBxu1ERIzFAD1nViscNY"
           }
         }
       },
@@ -2031,7 +2031,7 @@
           "name": "Internal name",
           "type": "Symbol",
           "localized": false,
-          "required": false,
+          "required": true,
           "validations": [
           ],
           "disabled": false,
@@ -2777,6 +2777,372 @@
           ],
           "disabled": false,
           "omitted": false
+        }
+      ]
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "vw5be3ki3sdd"
+          }
+        },
+        "id": "menuGroup",
+        "type": "ContentType",
+        "createdAt": "2022-10-11T12:16:53.863Z",
+        "updatedAt": "2022-10-14T14:22:55.950Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 3,
+        "publishedAt": "2022-10-14T14:22:55.950Z",
+        "firstPublishedAt": "2022-10-11T12:16:54.278Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "2OIQouqxFqeLqtXJFHSgS8"
+          }
+        },
+        "publishedCounter": 2,
+        "version": 4,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "2OIQouqxFqeLqtXJFHSgS8"
+          }
+        }
+      },
+      "displayField": "internalTitle",
+      "name": "🚈 Menu Group",
+      "description": "A group of items making up a section in the navigation menu",
+      "fields": [
+        {
+          "id": "internalTitle",
+          "name": "Internal title",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "groupName",
+          "name": "Group name",
+          "type": "Symbol",
+          "localized": true,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "groupLink",
+          "name": "Group Link",
+          "type": "Link",
+          "localized": false,
+          "required": false,
+          "validations": [
+            {
+              "linkContentType": [
+                "post",
+                "category",
+                "page"
+              ]
+            }
+          ],
+          "disabled": false,
+          "omitted": false,
+          "linkType": "Entry"
+        },
+        {
+          "id": "featuredPages",
+          "name": "Featured pages",
+          "type": "Array",
+          "localized": false,
+          "required": false,
+          "validations": [
+            {
+              "size": {
+                "max": 4
+              }
+            }
+          ],
+          "disabled": false,
+          "omitted": false,
+          "items": {
+            "type": "Link",
+            "validations": [
+              {
+                "linkContentType": [
+                  "post",
+                  "category",
+                  "page"
+                ]
+              }
+            ],
+            "linkType": "Entry"
+          }
+        }
+      ]
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "vw5be3ki3sdd"
+          }
+        },
+        "id": "footerMenu",
+        "type": "ContentType",
+        "createdAt": "2022-10-11T12:24:15.635Z",
+        "updatedAt": "2022-10-11T12:24:16.010Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 1,
+        "publishedAt": "2022-10-11T12:24:16.010Z",
+        "firstPublishedAt": "2022-10-11T12:24:16.010Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 2,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        }
+      },
+      "displayField": "internalName",
+      "name": "🚈 Footer Menu",
+      "description": "Navigation content type used for powering the Footer menu",
+      "fields": [
+        {
+          "id": "internalName",
+          "name": "Internal name",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "menuItems",
+          "name": "Menu Items",
+          "type": "Array",
+          "localized": false,
+          "required": false,
+          "validations": [
+            {
+              "size": {
+                "max": 3
+              }
+            }
+          ],
+          "disabled": false,
+          "omitted": false,
+          "items": {
+            "type": "Link",
+            "validations": [
+              {
+                "linkContentType": [
+                  "menuGroup"
+                ]
+              }
+            ],
+            "linkType": "Entry"
+          }
+        },
+        {
+          "id": "legalLinks",
+          "name": "Legal links",
+          "type": "Link",
+          "localized": false,
+          "required": false,
+          "validations": [
+            {
+              "linkContentType": [
+                "menuGroup"
+              ]
+            }
+          ],
+          "disabled": false,
+          "omitted": false,
+          "linkType": "Entry"
+        },
+        {
+          "id": "twitterLink",
+          "name": "Twitter Link",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "facebookLink",
+          "name": "Facebook Link",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "linkedinLink",
+          "name": "Linkedin Link",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "instagramLink",
+          "name": "Instagram Link",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        }
+      ]
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "vw5be3ki3sdd"
+          }
+        },
+        "id": "navigationMenu",
+        "type": "ContentType",
+        "createdAt": "2022-10-13T12:14:31.778Z",
+        "updatedAt": "2022-10-13T12:18:25.059Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 3,
+        "publishedAt": "2022-10-13T12:18:25.059Z",
+        "firstPublishedAt": "2022-10-13T12:14:32.411Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "2OIQouqxFqeLqtXJFHSgS8"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "2OIQouqxFqeLqtXJFHSgS8"
+          }
+        },
+        "publishedCounter": 2,
+        "version": 4,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "2OIQouqxFqeLqtXJFHSgS8"
+          }
+        }
+      },
+      "displayField": "internalName",
+      "name": "🚈 Navigation Menu",
+      "description": "Navigation menu in the header",
+      "fields": [
+        {
+          "id": "internalName",
+          "name": "Internal Name",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "menuItems",
+          "name": "Menu Items",
+          "type": "Array",
+          "localized": false,
+          "required": false,
+          "validations": [
+            {
+              "size": {
+                "max": 4
+              }
+            }
+          ],
+          "disabled": false,
+          "omitted": false,
+          "items": {
+            "type": "Link",
+            "validations": [
+              {
+                "linkContentType": [
+                  "menuGroup"
+                ]
+              }
+            ],
+            "linkType": "Entry"
+          }
         }
       ]
     }
@@ -5800,7 +6166,7 @@
             "linkType": "Space"
           }
         },
-        "version": 12,
+        "version": 14,
         "createdAt": "2022-09-15T14:29:21.325Z",
         "createdBy": {
           "sys": {
@@ -5809,10 +6175,10 @@
             "linkType": "User"
           }
         },
-        "updatedAt": "2022-09-26T12:05:46.891Z",
+        "updatedAt": "2022-10-14T11:58:18.311Z",
         "updatedBy": {
           "sys": {
-            "id": "71mGdtYS1bRYVZepHbBmRT",
+            "id": "2yMBxu1ERIzFAD1nViscNY",
             "type": "Link",
             "linkType": "User"
           }
@@ -6333,6 +6699,219 @@
         {
           "fieldId": "price",
           "widgetId": "numberEditor",
+          "widgetNamespace": "builtin"
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "default",
+        "type": "EditorInterface",
+        "space": {
+          "sys": {
+            "id": "vw5be3ki3sdd",
+            "type": "Link",
+            "linkType": "Space"
+          }
+        },
+        "version": 4,
+        "createdAt": "2022-10-11T12:16:54.368Z",
+        "createdBy": {
+          "sys": {
+            "id": "71mGdtYS1bRYVZepHbBmRT",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "updatedAt": "2022-10-14T14:22:56.612Z",
+        "updatedBy": {
+          "sys": {
+            "id": "2OIQouqxFqeLqtXJFHSgS8",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "id": "menuGroup",
+            "type": "Link",
+            "linkType": "ContentType"
+          }
+        },
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        }
+      },
+      "controls": [
+        {
+          "fieldId": "internalTitle",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "groupName",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "groupLink",
+          "widgetId": "entryLinkEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "featuredPages",
+          "widgetId": "entryLinksEditor",
+          "widgetNamespace": "builtin"
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "default",
+        "type": "EditorInterface",
+        "space": {
+          "sys": {
+            "id": "vw5be3ki3sdd",
+            "type": "Link",
+            "linkType": "Space"
+          }
+        },
+        "version": 2,
+        "createdAt": "2022-10-11T12:24:16.145Z",
+        "createdBy": {
+          "sys": {
+            "id": "71mGdtYS1bRYVZepHbBmRT",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "updatedAt": "2022-10-11T12:24:16.696Z",
+        "updatedBy": {
+          "sys": {
+            "id": "71mGdtYS1bRYVZepHbBmRT",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "id": "footerMenu",
+            "type": "Link",
+            "linkType": "ContentType"
+          }
+        },
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        }
+      },
+      "controls": [
+        {
+          "fieldId": "internalName",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "menuItems",
+          "settings": {
+            "bulkEditing": true,
+            "showLinkEntityAction": true,
+            "showCreateEntityAction": true
+          },
+          "widgetId": "entryCardsEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "legalLinks",
+          "widgetId": "entryCardEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "twitterLink",
+          "widgetId": "urlEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "facebookLink",
+          "widgetId": "urlEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "linkedinLink",
+          "widgetId": "urlEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "instagramLink",
+          "widgetId": "urlEditor",
+          "widgetNamespace": "builtin"
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "default",
+        "type": "EditorInterface",
+        "space": {
+          "sys": {
+            "id": "vw5be3ki3sdd",
+            "type": "Link",
+            "linkType": "Space"
+          }
+        },
+        "version": 4,
+        "createdAt": "2022-10-13T12:14:32.511Z",
+        "createdBy": {
+          "sys": {
+            "id": "2OIQouqxFqeLqtXJFHSgS8",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "updatedAt": "2022-10-13T12:18:25.654Z",
+        "updatedBy": {
+          "sys": {
+            "id": "2OIQouqxFqeLqtXJFHSgS8",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "id": "navigationMenu",
+            "type": "Link",
+            "linkType": "ContentType"
+          }
+        },
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        }
+      },
+      "controls": [
+        {
+          "fieldId": "internalName",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "menuItems",
+          "settings": {
+            "bulkEditing": true,
+            "showLinkEntityAction": true,
+            "showCreateEntityAction": true
+          },
+          "widgetId": "entryCardsEditor",
           "widgetNamespace": "builtin"
         }
       ]
@@ -17630,7 +18209,7 @@
         "id": "1zJTgmH9Y6Yi6dXkgchkck",
         "type": "Entry",
         "createdAt": "2022-09-15T14:33:19.786Z",
-        "updatedAt": "2022-09-15T14:34:42.773Z",
+        "updatedAt": "2022-10-17T10:30:29.740Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -17638,8 +18217,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 1,
-        "publishedAt": "2022-09-15T14:34:42.773Z",
+        "publishedVersion": 3,
+        "publishedAt": "2022-10-17T10:30:29.740Z",
         "firstPublishedAt": "2022-09-15T14:34:42.773Z",
         "createdBy": {
           "sys": {
@@ -17655,8 +18234,8 @@
             "id": "71mGdtYS1bRYVZepHbBmRT"
           }
         },
-        "publishedCounter": 1,
-        "version": 2,
+        "publishedCounter": 2,
+        "version": 4,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -17674,7 +18253,7 @@
       },
       "fields": {
         "internalName": {
-          "en-US": "Apply for a Job Hero (p13n)"
+          "en-US": "Apply for a Job Hero"
         },
         "headline": {
           "en-US": "Bright people. Big impact."
@@ -17832,119 +18411,6 @@
             "id": "vw5be3ki3sdd"
           }
         },
-        "id": "rHiXeCwfJ96AayF6rpGLg",
-        "type": "Entry",
-        "createdAt": "2022-09-15T14:33:20.782Z",
-        "updatedAt": "2022-09-15T14:34:44.885Z",
-        "environment": {
-          "sys": {
-            "id": "master",
-            "type": "Link",
-            "linkType": "Environment"
-          }
-        },
-        "publishedVersion": 1,
-        "publishedAt": "2022-09-15T14:34:44.885Z",
-        "firstPublishedAt": "2022-09-15T14:34:44.885Z",
-        "createdBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "updatedBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "publishedCounter": 1,
-        "version": 2,
-        "publishedBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "contentType": {
-          "sys": {
-            "type": "Link",
-            "linkType": "ContentType",
-            "id": "componentHeroBanner"
-          }
-        }
-      },
-      "fields": {
-        "internalName": {
-          "en-US": "Learn to Invest Hero (p13n)"
-        },
-        "headline": {
-          "en-US": "Looking for ways to turn your paycheck into wealth? "
-        },
-        "bodyText": {
-          "en-US": {
-            "nodeType": "document",
-            "data": {
-            },
-            "content": [
-              {
-                "nodeType": "paragraph",
-                "content": [
-                  {
-                    "nodeType": "text",
-                    "value": "Our course Investing 101 is here to help you learn the fundamentals of financial investing and give you the skills you need to start growing your wealth.",
-                    "marks": [
-                    ],
-                    "data": {
-                    }
-                  }
-                ],
-                "data": {
-                }
-              }
-            ]
-          }
-        },
-        "image": {
-          "en-US": {
-            "sys": {
-              "type": "Link",
-              "linkType": "Asset",
-              "id": "436rI4EVBjGhXEbzh8FpgA"
-            }
-          }
-        },
-        "imageStyle": {
-          "en-US": false
-        },
-        "colorPalette": {
-          "en-US": "4. Gray (#EAEAEA)"
-        }
-      }
-    },
-    {
-      "metadata": {
-        "tags": [
-          {
-            "sys": {
-              "type": "Link",
-              "linkType": "Tag",
-              "id": "marketing"
-            }
-          }
-        ]
-      },
-      "sys": {
-        "space": {
-          "sys": {
-            "type": "Link",
-            "linkType": "Space",
-            "id": "vw5be3ki3sdd"
-          }
-        },
         "id": "1OjggI7CEaIbgG6gXD29Nm",
         "type": "Entry",
         "createdAt": "2022-09-15T14:33:20.793Z",
@@ -18014,162 +18480,6 @@
         },
         "noFollow": {
           "en-US": true
-        }
-      }
-    },
-    {
-      "metadata": {
-        "tags": [
-          {
-            "sys": {
-              "type": "Link",
-              "linkType": "Tag",
-              "id": "marketing"
-            }
-          },
-          {
-            "sys": {
-              "type": "Link",
-              "linkType": "Tag",
-              "id": "p13n"
-            }
-          }
-        ]
-      },
-      "sys": {
-        "space": {
-          "sys": {
-            "type": "Link",
-            "linkType": "Space",
-            "id": "vw5be3ki3sdd"
-          }
-        },
-        "id": "2kF35bA3NtEy00HO3rxS48",
-        "type": "Entry",
-        "createdAt": "2022-09-15T14:33:21.798Z",
-        "updatedAt": "2022-09-15T14:34:49.584Z",
-        "environment": {
-          "sys": {
-            "id": "master",
-            "type": "Link",
-            "linkType": "Environment"
-          }
-        },
-        "publishedVersion": 1,
-        "publishedAt": "2022-09-15T14:34:49.584Z",
-        "firstPublishedAt": "2022-09-15T14:34:49.584Z",
-        "createdBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "updatedBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "publishedCounter": 1,
-        "version": 2,
-        "publishedBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "contentType": {
-          "sys": {
-            "type": "Link",
-            "linkType": "ContentType",
-            "id": "componentHeroBanner"
-          }
-        }
-      },
-      "fields": {
-        "internalName": {
-          "en-US": "College Students Hero (p13n)"
-        },
-        "headline": {
-          "de-DE": "Wir wollten, dass das Bankwesen einfach ist. Also bauten wir es von Grund auf neu auf.",
-          "en-US": "Instant transfers. Absolute privacy. And commission-free investing."
-        },
-        "bodyText": {
-          "de-DE": {
-            "data": {
-            },
-            "content": [
-              {
-                "data": {
-                },
-                "content": [
-                  {
-                    "data": {
-                    },
-                    "marks": [
-                    ],
-                    "value": "Coin-Karten bieten großartige Tarife, personalisierte Dienstleistungen und exklusive Vergünstigungen, die Ihnen helfen, Ihr Geld mit Zuversicht zu verwalten.",
-                    "nodeType": "text"
-                  }
-                ],
-                "nodeType": "paragraph"
-              }
-            ],
-            "nodeType": "document"
-          },
-          "en-US": {
-            "data": {
-            },
-            "content": [
-              {
-                "data": {
-                },
-                "content": [
-                  {
-                    "data": {
-                    },
-                    "marks": [
-                    ],
-                    "value": "Coin cards offer great rates, instant transfers, and features built to help you stuff done on the go, in your phone.",
-                    "nodeType": "text"
-                  }
-                ],
-                "nodeType": "paragraph"
-              }
-            ],
-            "nodeType": "document"
-          }
-        },
-        "ctaText": {
-          "de-DE": "Konto eröffnen",
-          "en-US": "Sign up today"
-        },
-        "targetPage": {
-          "en-US": {
-            "sys": {
-              "type": "Link",
-              "linkType": "Entry",
-              "id": "3WZorGRUOaY2ic0xfBTrix"
-            }
-          }
-        },
-        "image": {
-          "en-US": {
-            "sys": {
-              "type": "Link",
-              "linkType": "Asset",
-              "id": "2vlNgeM6ZHsgtLEQFMaZ5o"
-            }
-          }
-        },
-        "imageStyle": {
-          "en-US": false
-        },
-        "colorPalette": {
-          "en-US": "2. White Smoke (#FCFCFC)"
         }
       }
     },
@@ -21432,7 +21742,7 @@
         "id": "5O7Uh7pOHrwatFP3jMy3eq",
         "type": "Entry",
         "createdAt": "2022-09-15T14:33:24.795Z",
-        "updatedAt": "2022-09-15T14:35:01.995Z",
+        "updatedAt": "2022-10-17T10:28:45.271Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -21440,8 +21750,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 1,
-        "publishedAt": "2022-09-15T14:35:01.995Z",
+        "publishedVersion": 3,
+        "publishedAt": "2022-10-17T10:28:45.271Z",
         "firstPublishedAt": "2022-09-15T14:35:01.995Z",
         "createdBy": {
           "sys": {
@@ -21457,8 +21767,8 @@
             "id": "71mGdtYS1bRYVZepHbBmRT"
           }
         },
-        "publishedCounter": 1,
-        "version": 2,
+        "publishedCounter": 2,
+        "version": 4,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -21476,7 +21786,7 @@
       },
       "fields": {
         "internalName": {
-          "en-US": "Next step (p13n)"
+          "en-US": "Next step"
         },
         "pageName": {
           "en-US": "Build the Future of Finance"
@@ -21511,125 +21821,7 @@
               "sys": {
                 "type": "Link",
                 "linkType": "Entry",
-                "id": "6PgmJ5C2D32JAeOZtreoS0"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
                 "id": "1TDY4os1IjIPbyAXnjJLk3"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "metadata": {
-        "tags": [
-          {
-            "sys": {
-              "type": "Link",
-              "linkType": "Tag",
-              "id": "marketing"
-            }
-          },
-          {
-            "sys": {
-              "type": "Link",
-              "linkType": "Tag",
-              "id": "p13n"
-            }
-          }
-        ]
-      },
-      "sys": {
-        "space": {
-          "sys": {
-            "type": "Link",
-            "linkType": "Space",
-            "id": "vw5be3ki3sdd"
-          }
-        },
-        "id": "1c30tW97SK3hY202vhNIAa",
-        "type": "Entry",
-        "createdAt": "2022-09-15T14:33:24.806Z",
-        "updatedAt": "2022-09-15T14:34:58.972Z",
-        "environment": {
-          "sys": {
-            "id": "master",
-            "type": "Link",
-            "linkType": "Environment"
-          }
-        },
-        "publishedVersion": 1,
-        "publishedAt": "2022-09-15T14:34:58.972Z",
-        "firstPublishedAt": "2022-09-15T14:34:58.972Z",
-        "createdBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "updatedBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "publishedCounter": 1,
-        "version": 2,
-        "publishedBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "contentType": {
-          "sys": {
-            "type": "Link",
-            "linkType": "ContentType",
-            "id": "componentProductTable"
-          }
-        }
-      },
-      "fields": {
-        "internalName": {
-          "en-US": "Product comparison / Business Owners (p13n)"
-        },
-        "headline": {
-          "de-DE": "Kreditkarte wurde gerade aktualisiert",
-          "en-US": "Credit Card Just Got Upgraded"
-        },
-        "subline": {
-          "de-DE": "Eröffnen Sie ein kostenloses Konto und beantragen Sie eine Karte online",
-          "en-US": "Open a free account and apply for a card online"
-        },
-        "products": {
-          "en-US": [
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "4iZO00YnKE8I8c90VIUuhN"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "5BfEkkNsrAGLLJQukwIjrJ"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "6fLrCPm8bEgMWIIzKVML0E"
               }
             }
           ]
@@ -21749,14 +21941,21 @@
             "sys": {
               "type": "Link",
               "linkType": "Tag",
-              "id": "marketing"
+              "id": "product-updates"
             }
           },
           {
             "sys": {
               "type": "Link",
               "linkType": "Tag",
-              "id": "p13n"
+              "id": "security"
+            }
+          },
+          {
+            "sys": {
+              "type": "Link",
+              "linkType": "Tag",
+              "id": "support"
             }
           }
         ]
@@ -21769,10 +21968,10 @@
             "id": "vw5be3ki3sdd"
           }
         },
-        "id": "7GTCUDpXRo2FipcX9dqvU9",
+        "id": "5Oz2hRXAqdHcJbW16s6TcJ",
         "type": "Entry",
-        "createdAt": "2022-09-15T14:33:24.826Z",
-        "updatedAt": "2022-09-21T09:13:32.057Z",
+        "createdAt": "2022-09-15T14:33:25.073Z",
+        "updatedAt": "2022-10-13T15:14:41.034Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -21781,8 +21980,8 @@
           }
         },
         "publishedVersion": 3,
-        "publishedAt": "2022-09-21T09:13:32.057Z",
-        "firstPublishedAt": "2022-09-15T14:34:58.614Z",
+        "publishedAt": "2022-10-13T15:14:41.034Z",
+        "firstPublishedAt": "2022-10-13T12:21:55.510Z",
         "createdBy": {
           "sys": {
             "type": "Link",
@@ -21794,7 +21993,7 @@
           "sys": {
             "type": "Link",
             "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
+            "id": "7gxyQg3SRcNJ1yIA2ITgsM"
           }
         },
         "publishedCounter": 2,
@@ -21803,161 +22002,244 @@
           "sys": {
             "type": "Link",
             "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
+            "id": "7gxyQg3SRcNJ1yIA2ITgsM"
           }
         },
         "contentType": {
           "sys": {
             "type": "Link",
             "linkType": "ContentType",
-            "id": "componentProductTable"
+            "id": "post"
           }
         }
       },
       "fields": {
         "internalName": {
-          "en-US": "Product comparison / Crypto Enthusiasts (p13n)"
+          "en-US": "An update on improving our customer experience"
         },
-        "headline": {
-          "de-DE": "Kreditkarte wurde gerade aktualisiert",
-          "en-US": "Credit Card Just Got Upgraded"
+        "postName": {
+          "en-US": "An update on improving our customer experience"
         },
-        "subline": {
-          "de-DE": "Eröffnen Sie ein kostenloses Konto und beantragen Sie eine Karte online",
-          "en-US": "Open a free account and apply for a card online"
+        "slug": {
+          "en-US": "an-update-on-improving-our-customer-experience"
         },
-        "products": {
+        "publishedDate": {
+          "en-US": "2021-06-17T00:00+02:00"
+        },
+        "featuredImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "5e8BgyVrOuGg8LMzKnL22v"
+            }
+          }
+        },
+        "introText": {
+          "en-US": {
+            "data": {
+            },
+            "content": [
+              {
+                "data": {
+                },
+                "content": [
+                  {
+                    "data": {
+                    },
+                    "marks": [
+                    ],
+                    "value": "We believe that outstanding customer support is a defining feature of modern brands. In the last 12 months we’ve seen our customer base grow 4x, which puts bigger demands on our support team and Colorful Coin as a whole. To continue providing exceptional customer experience, we’ve accelerated our investment in people and technology and wanted to highlight some of the key areas benefiting from these changes.",
+                    "nodeType": "text"
+                  }
+                ],
+                "nodeType": "paragraph"
+              }
+            ],
+            "nodeType": "document"
+          }
+        },
+        "body": {
+          "en-US": {
+            "data": {
+            },
+            "content": [
+              {
+                "data": {
+                },
+                "content": [
+                  {
+                    "data": {
+                    },
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "value": "Growing our support team",
+                    "nodeType": "text"
+                  }
+                ],
+                "nodeType": "paragraph"
+              },
+              {
+                "data": {
+                },
+                "content": [
+                  {
+                    "data": {
+                    },
+                    "marks": [
+                    ],
+                    "value": "In the last six months, we tripled the size of our full-time customer support team. We added more than 150 people to our existing offices in Austin, TX; Toronto, Canada; Berlin, Germany and Wellington, New Zealand. We have also opened offices in new geographies: Buenos Aires, Argentina and Delhi, India to be better positioned to serve customers in these key markets. We will continue growing our support staff at a similar rate in the coming months. All the new employees undergo extensive training by completing an immersive 4 week onboarding program.",
+                    "nodeType": "text"
+                  }
+                ],
+                "nodeType": "paragraph"
+              },
+              {
+                "data": {
+                },
+                "content": [
+                  {
+                    "data": {
+                    },
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "value": "Expanding live support",
+                    "nodeType": "text"
+                  }
+                ],
+                "nodeType": "paragraph"
+              },
+              {
+                "data": {
+                },
+                "content": [
+                  {
+                    "data": {
+                    },
+                    "marks": [
+                    ],
+                    "value": "To help our customers reach resolution to their issues faster, we’ve added live support via messaging and phone support. Our internal research has shown that up to 74% of routine customer issues can be resolved via live chat in less than three minutes. Our smart triage flow facilitates quicker turnaround times for the remaining issues and customer issues where intervention of a support agent is necessary for legal or organizational issues, for example, to troubleshoot KYC issues involving multiple legal jurisdictions. We believe that a multi-channel approach to support will offer the best of both worlds — speed of resolution and knowledgeable advice. ",
+                    "nodeType": "text"
+                  }
+                ],
+                "nodeType": "paragraph"
+              },
+              {
+                "data": {
+                },
+                "content": [
+                  {
+                    "data": {
+                    },
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "value": "Investing into educational resources",
+                    "nodeType": "text"
+                  }
+                ],
+                "nodeType": "paragraph"
+              },
+              {
+                "data": {
+                },
+                "content": [
+                  {
+                    "data": {
+                    },
+                    "marks": [
+                    ],
+                    "value": "As Colorful Coin extends its product line-up and welcomes new categories of customers, we’re also looking for ways to help customers correctly identify their problems and solve them through a combination of self-service tools and educational resources. Starting from the next month, we will offer our customers a comprehensive library of financial guides, how-to tips, and step-by-step tutorials covering popular topics and frequently encountered issues. The educational resources will make extensive use of video tutorials, since our recent customer survey revealed them to drive higher satisfaction.",
+                    "nodeType": "text"
+                  }
+                ],
+                "nodeType": "paragraph"
+              },
+              {
+                "data": {
+                },
+                "content": [
+                  {
+                    "data": {
+                    },
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "value": "Doubling down on security",
+                    "nodeType": "text"
+                  }
+                ],
+                "nodeType": "paragraph"
+              },
+              {
+                "data": {
+                },
+                "content": [
+                  {
+                    "data": {
+                    },
+                    "marks": [
+                    ],
+                    "value": "Coin customers trust us with their financial assets and we implement extensive security measures to safeguard these assets. In the last three months, we have successfully rolled out 2-factor authentication (2FA) to all our accounts. We work closely with outside security consultants and third-party vendors to maintain strict security posture, identify and document any potential vulnerabilities, and implement regular security audits. In the coming months we will introduce proactive security measures where we may temporarily freeze a customer’s account when we detect unusual activity. This is done to protect customers' funds. ",
+                    "nodeType": "text"
+                  }
+                ],
+                "nodeType": "paragraph"
+              },
+              {
+                "data": {
+                },
+                "content": [
+                  {
+                    "data": {
+                    },
+                    "marks": [
+                    ],
+                    "value": "We want to thank you for putting your trust into Colorful Coin and providing timely feedback on our product and services. We will continue investing in a variety of measures to improve the customer experience and share regular updates on our progress on this blog.",
+                    "nodeType": "text"
+                  }
+                ],
+                "nodeType": "paragraph"
+              }
+            ],
+            "nodeType": "document"
+          }
+        },
+        "category": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Entry",
+              "id": "30lr8Fg8ATqmhTBzRRh3v7"
+            }
+          }
+        },
+        "author": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Entry",
+              "id": "5YEkWZ4oATSKbR2i7ZUF06"
+            }
+          }
+        },
+        "extraSection": {
           "en-US": [
             {
               "sys": {
                 "type": "Link",
                 "linkType": "Entry",
-                "id": "4iZO00YnKE8I8c90VIUuhN"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "1I8b3U2KtoGVHXX1KBwosw"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "2Jv15oYNaOUzyyJEp5P5z4"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "metadata": {
-        "tags": [
-          {
-            "sys": {
-              "type": "Link",
-              "linkType": "Tag",
-              "id": "marketing"
-            }
-          },
-          {
-            "sys": {
-              "type": "Link",
-              "linkType": "Tag",
-              "id": "p13n"
-            }
-          }
-        ]
-      },
-      "sys": {
-        "space": {
-          "sys": {
-            "type": "Link",
-            "linkType": "Space",
-            "id": "vw5be3ki3sdd"
-          }
-        },
-        "id": "5KuGYsf5rSVsS0vLGN4La4",
-        "type": "Entry",
-        "createdAt": "2022-09-15T14:33:24.960Z",
-        "updatedAt": "2022-09-15T14:35:00.604Z",
-        "environment": {
-          "sys": {
-            "id": "master",
-            "type": "Link",
-            "linkType": "Environment"
-          }
-        },
-        "publishedVersion": 1,
-        "publishedAt": "2022-09-15T14:35:00.604Z",
-        "firstPublishedAt": "2022-09-15T14:35:00.604Z",
-        "createdBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "updatedBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "publishedCounter": 1,
-        "version": 2,
-        "publishedBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "contentType": {
-          "sys": {
-            "type": "Link",
-            "linkType": "ContentType",
-            "id": "componentProductTable"
-          }
-        }
-      },
-      "fields": {
-        "internalName": {
-          "en-US": "Product comparison / College Students (p13n)"
-        },
-        "headline": {
-          "de-DE": "Kreditkarte wurde gerade aktualisiert",
-          "en-US": "Credit Card Just Got Upgraded"
-        },
-        "subline": {
-          "de-DE": "Eröffnen Sie ein kostenloses Konto und beantragen Sie eine Karte online",
-          "en-US": "Open a free account and apply for a card online"
-        },
-        "products": {
-          "en-US": [
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "6Eacv9GTkVhk6n6V8dY41j"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "5BfEkkNsrAGLLJQukwIjrJ"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "2Jv15oYNaOUzyyJEp5P5z4"
+                "id": "3pMqJAiovXZhMw1CEKGhoh"
               }
             }
           ]
@@ -22859,375 +23141,6 @@
             "sys": {
               "type": "Link",
               "linkType": "Tag",
-              "id": "development"
-            }
-          },
-          {
-            "sys": {
-              "type": "Link",
-              "linkType": "Tag",
-              "id": "product"
-            }
-          }
-        ]
-      },
-      "sys": {
-        "space": {
-          "sys": {
-            "type": "Link",
-            "linkType": "Space",
-            "id": "vw5be3ki3sdd"
-          }
-        },
-        "id": "6rGI2fSP0KB2XXoABNMdAE",
-        "type": "Entry",
-        "createdAt": "2022-09-15T14:33:25.810Z",
-        "updatedAt": "2022-09-15T14:35:09.360Z",
-        "environment": {
-          "sys": {
-            "id": "master",
-            "type": "Link",
-            "linkType": "Environment"
-          }
-        },
-        "publishedVersion": 1,
-        "publishedAt": "2022-09-15T14:35:09.360Z",
-        "firstPublishedAt": "2022-09-15T14:35:09.360Z",
-        "createdBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "updatedBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "publishedCounter": 1,
-        "version": 2,
-        "publishedBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "contentType": {
-          "sys": {
-            "type": "Link",
-            "linkType": "ContentType",
-            "id": "page"
-          }
-        }
-      },
-      "fields": {
-        "internalName": {
-          "en-US": "Featured cards overview page"
-        },
-        "pageName": {
-          "de-DE": "Überblick über das Design: Call-to-Action (CTA)-Banner",
-          "en-US": "Design overview: Featured cards"
-        },
-        "slug": {
-          "en-US": "all-featured-cards"
-        },
-        "seo": {
-          "en-US": {
-            "sys": {
-              "type": "Link",
-              "linkType": "Entry",
-              "id": "1OjggI7CEaIbgG6gXD29Nm"
-            }
-          }
-        },
-        "topSection": {
-          "en-US": [
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "3S5euWEiglwjoFZcKE57cb"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "60wne4Sbe009bfHEyi1KTc"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "65D6X0RnKtKvjEd5kh76DN"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "MIfdrwqbX0S2FpW8U4ZMb"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "7sNzb7izn03Kj8RQLiOHt"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "metadata": {
-        "tags": [
-          {
-            "sys": {
-              "type": "Link",
-              "linkType": "Tag",
-              "id": "development"
-            }
-          },
-          {
-            "sys": {
-              "type": "Link",
-              "linkType": "Tag",
-              "id": "product"
-            }
-          }
-        ]
-      },
-      "sys": {
-        "space": {
-          "sys": {
-            "type": "Link",
-            "linkType": "Space",
-            "id": "vw5be3ki3sdd"
-          }
-        },
-        "id": "2c95ivFFgAnw1hH2xCl1BL",
-        "type": "Entry",
-        "createdAt": "2022-09-15T14:33:25.828Z",
-        "updatedAt": "2022-09-20T14:02:41.554Z",
-        "environment": {
-          "sys": {
-            "id": "master",
-            "type": "Link",
-            "linkType": "Environment"
-          }
-        },
-        "publishedVersion": 3,
-        "publishedAt": "2022-09-20T14:02:41.554Z",
-        "firstPublishedAt": "2022-09-15T14:35:05.282Z",
-        "createdBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "updatedBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "publishedCounter": 2,
-        "version": 4,
-        "publishedBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "contentType": {
-          "sys": {
-            "type": "Link",
-            "linkType": "ContentType",
-            "id": "page"
-          }
-        }
-      },
-      "fields": {
-        "internalName": {
-          "en-US": "External assets overview page"
-        },
-        "pageName": {
-          "de-DE": "Überblick über das Design: Hero-Banner",
-          "en-US": "Design overview: External assets"
-        },
-        "slug": {
-          "en-US": "external-assets"
-        },
-        "seo": {
-          "en-US": {
-            "sys": {
-              "type": "Link",
-              "linkType": "Entry",
-              "id": "1OjggI7CEaIbgG6gXD29Nm"
-            }
-          }
-        },
-        "topSection": {
-          "en-US": [
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "5B5RtW72JTge0PzDRfvt1z"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "6V19MTty6k21JEOjumJu5U"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "6kv7zavcXCTJdfH35QmTp8"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "6PgmJ5C2D32JAeOZtreoS0"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "metadata": {
-        "tags": [
-          {
-            "sys": {
-              "type": "Link",
-              "linkType": "Tag",
-              "id": "marketing"
-            }
-          }
-        ]
-      },
-      "sys": {
-        "space": {
-          "sys": {
-            "type": "Link",
-            "linkType": "Space",
-            "id": "vw5be3ki3sdd"
-          }
-        },
-        "id": "2keGMy6wtgdniBuKHhYkvo",
-        "type": "Entry",
-        "createdAt": "2022-09-15T14:33:26.782Z",
-        "updatedAt": "2022-09-15T14:35:11.251Z",
-        "environment": {
-          "sys": {
-            "id": "master",
-            "type": "Link",
-            "linkType": "Environment"
-          }
-        },
-        "publishedVersion": 1,
-        "publishedAt": "2022-09-15T14:35:11.251Z",
-        "firstPublishedAt": "2022-09-15T14:35:11.251Z",
-        "createdBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "updatedBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "publishedCounter": 1,
-        "version": 2,
-        "publishedBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "contentType": {
-          "sys": {
-            "type": "Link",
-            "linkType": "ContentType",
-            "id": "componentHeroBanner"
-          }
-        }
-      },
-      "fields": {
-        "internalName": {
-          "en-US": "Become a Partner Hero (p13n)"
-        },
-        "headline": {
-          "en-US": "The Coin Advantage"
-        },
-        "bodyText": {
-          "en-US": {
-            "nodeType": "document",
-            "data": {
-            },
-            "content": [
-              {
-                "nodeType": "paragraph",
-                "content": [
-                  {
-                    "nodeType": "text",
-                    "value": "Accelerate your customer acquisition by partnering with a leading fintech platform serving two million high-value customers across North America and Europe.",
-                    "marks": [
-                    ],
-                    "data": {
-                    }
-                  }
-                ],
-                "data": {
-                }
-              }
-            ]
-          }
-        },
-        "image": {
-          "en-US": {
-            "sys": {
-              "type": "Link",
-              "linkType": "Asset",
-              "id": "5sEmsxtswwqx0QD4Q6vRrS"
-            }
-          }
-        },
-        "colorPalette": {
-          "en-US": "6. Dark Gray (#797979)"
-        }
-      }
-    },
-    {
-      "metadata": {
-        "tags": [
-          {
-            "sys": {
-              "type": "Link",
-              "linkType": "Tag",
               "id": "marketing"
             }
           }
@@ -23367,6 +23280,108 @@
         },
         "colorPalette": {
           "en-US": "1. White (#FFFFFF)"
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": [
+          {
+            "sys": {
+              "type": "Link",
+              "linkType": "Tag",
+              "id": "marketing"
+            }
+          }
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "vw5be3ki3sdd"
+          }
+        },
+        "id": "3pMqJAiovXZhMw1CEKGhoh",
+        "type": "Entry",
+        "createdAt": "2022-09-15T14:33:26.797Z",
+        "updatedAt": "2022-10-13T15:14:53.845Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 1,
+        "publishedAt": "2022-10-13T15:14:53.845Z",
+        "firstPublishedAt": "2022-10-13T15:14:53.845Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "7gxyQg3SRcNJ1yIA2ITgsM"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 2,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "7gxyQg3SRcNJ1yIA2ITgsM"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "componentFeaturedCards"
+          }
+        }
+      },
+      "fields": {
+        "internalName": {
+          "en-US": "Related articles - An update on improving our customer experience"
+        },
+        "headline": {
+          "en-US": "Related articles"
+        },
+        "subline": {
+          "en-US": "Discover practical tips and inspirational stories"
+        },
+        "featuredPosts": {
+          "en-US": [
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "1HxKzx4k4GcI9Tm8sUrBOb"
+              }
+            },
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "7dToVRJyg4Mrvm9kPJkzHS"
+              }
+            },
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "ZTBZTnn1ycFMOkxEG5bnY"
+              }
+            }
+          ]
         }
       }
     },
@@ -24046,169 +24061,6 @@
     {
       "metadata": {
         "tags": [
-          {
-            "sys": {
-              "type": "Link",
-              "linkType": "Tag",
-              "id": "marketing"
-            }
-          },
-          {
-            "sys": {
-              "type": "Link",
-              "linkType": "Tag",
-              "id": "ninetailedVariant"
-            }
-          },
-          {
-            "sys": {
-              "type": "Link",
-              "linkType": "Tag",
-              "id": "p13n"
-            }
-          }
-        ]
-      },
-      "sys": {
-        "space": {
-          "sys": {
-            "type": "Link",
-            "linkType": "Space",
-            "id": "vw5be3ki3sdd"
-          }
-        },
-        "id": "4lVD4i2dXRo6QZyTN52q6u",
-        "type": "Entry",
-        "createdAt": "2022-09-15T14:33:27.788Z",
-        "updatedAt": "2022-09-21T09:13:15.171Z",
-        "environment": {
-          "sys": {
-            "id": "master",
-            "type": "Link",
-            "linkType": "Environment"
-          }
-        },
-        "publishedVersion": 3,
-        "publishedAt": "2022-09-21T09:13:15.171Z",
-        "firstPublishedAt": "2022-09-15T14:35:13.813Z",
-        "createdBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "updatedBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "publishedCounter": 2,
-        "version": 4,
-        "publishedBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "contentType": {
-          "sys": {
-            "type": "Link",
-            "linkType": "ContentType",
-            "id": "componentHeroBanner"
-          }
-        }
-      },
-      "fields": {
-        "internalName": {
-          "en-US": "Crypto Enthusiasts Hero (p13n)"
-        },
-        "headline": {
-          "de-DE": "Neugierige Reisende haben keine festen Pläne. Nur einen offenen Geist und eine zuverlässige Karte.",
-          "en-US": "Curious travelers don’t have fixed plans. Just an open mind and a reliable card."
-        },
-        "bodyText": {
-          "de-DE": {
-            "data": {
-            },
-            "content": [
-              {
-                "data": {
-                },
-                "content": [
-                  {
-                    "data": {
-                    },
-                    "marks": [
-                    ],
-                    "value": "Vollgepackt mit ultimativen Reisevergünstigungen bietet die Coin Black-Karte weltweit kostenlose Abhebungen am Geldautomaten, eine durchzugsaktivierte Reiseversicherung, beste Wechselkurse und vieles mehr.",
-                    "nodeType": "text"
-                  }
-                ],
-                "nodeType": "paragraph"
-              }
-            ],
-            "nodeType": "document"
-          },
-          "en-US": {
-            "data": {
-            },
-            "content": [
-              {
-                "data": {
-                },
-                "content": [
-                  {
-                    "data": {
-                    },
-                    "marks": [
-                    ],
-                    "value": "Packed with ultimate travel perks, the Coin Black card offers free ATM withdrawals worldwide, swipe-activated travel insurance, best exchange rates and more.",
-                    "nodeType": "text"
-                  }
-                ],
-                "nodeType": "paragraph"
-              }
-            ],
-            "nodeType": "document"
-          }
-        },
-        "ctaText": {
-          "de-DE": "Konto eröffnen",
-          "en-US": " Sign up today"
-        },
-        "targetPage": {
-          "en-US": {
-            "sys": {
-              "type": "Link",
-              "linkType": "Entry",
-              "id": "6LznwSwpmSWNCMwbgmtB2L"
-            }
-          }
-        },
-        "image": {
-          "en-US": {
-            "sys": {
-              "type": "Link",
-              "linkType": "Asset",
-              "id": "Klj37WVfnGvInqaiNnUx3"
-            }
-          }
-        },
-        "imageStyle": {
-          "en-US": false
-        },
-        "colorPalette": {
-          "en-US": "4. Gray (#EAEAEA)"
-        }
-      }
-    },
-    {
-      "metadata": {
-        "tags": [
         ]
       },
       "sys": {
@@ -24493,7 +24345,7 @@
         "id": "49bPuF5kTLBdcMni9ekV88",
         "type": "Entry",
         "createdAt": "2022-09-15T14:33:27.820Z",
-        "updatedAt": "2022-09-15T14:35:14.198Z",
+        "updatedAt": "2022-10-17T10:28:54.489Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -24501,8 +24353,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 1,
-        "publishedAt": "2022-09-15T14:35:14.198Z",
+        "publishedVersion": 3,
+        "publishedAt": "2022-10-17T10:28:54.489Z",
         "firstPublishedAt": "2022-09-15T14:35:14.198Z",
         "createdBy": {
           "sys": {
@@ -24518,8 +24370,8 @@
             "id": "71mGdtYS1bRYVZepHbBmRT"
           }
         },
-        "publishedCounter": 1,
-        "version": 2,
+        "publishedCounter": 2,
+        "version": 4,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -24537,7 +24389,7 @@
       },
       "fields": {
         "internalName": {
-          "en-US": "Business Owners Hero (p13n)"
+          "en-US": "Business Owners Hero"
         },
         "headline": {
           "de-DE": "Erfolgreiche Unternehmen folgen zwei Regeln: Kunden begeistern und die Bücher ausgleichen",
@@ -26330,174 +26182,6 @@
                 "type": "Link",
                 "linkType": "Entry",
                 "id": "1HxKzx4k4GcI9Tm8sUrBOb"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "metadata": {
-        "tags": [
-          {
-            "sys": {
-              "type": "Link",
-              "linkType": "Tag",
-              "id": "development"
-            }
-          },
-          {
-            "sys": {
-              "type": "Link",
-              "linkType": "Tag",
-              "id": "product"
-            }
-          }
-        ]
-      },
-      "sys": {
-        "space": {
-          "sys": {
-            "type": "Link",
-            "linkType": "Space",
-            "id": "vw5be3ki3sdd"
-          }
-        },
-        "id": "TUGRHhxXnNCatAeEPuq1c",
-        "type": "Entry",
-        "createdAt": "2022-09-15T14:33:29.776Z",
-        "updatedAt": "2022-09-15T14:35:20.403Z",
-        "environment": {
-          "sys": {
-            "id": "master",
-            "type": "Link",
-            "linkType": "Environment"
-          }
-        },
-        "publishedVersion": 1,
-        "publishedAt": "2022-09-15T14:35:20.403Z",
-        "firstPublishedAt": "2022-09-15T14:35:20.403Z",
-        "createdBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "updatedBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "publishedCounter": 1,
-        "version": 2,
-        "publishedBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "contentType": {
-          "sys": {
-            "type": "Link",
-            "linkType": "ContentType",
-            "id": "page"
-          }
-        }
-      },
-      "fields": {
-        "internalName": {
-          "en-US": "CTA overview page"
-        },
-        "pageName": {
-          "de-DE": "Überblick über das Design: Call-to-Action (CTA)-Banner",
-          "en-US": "Design overview: Call-to-Action (CTA) banners"
-        },
-        "slug": {
-          "en-US": "all-ctas"
-        },
-        "seo": {
-          "en-US": {
-            "sys": {
-              "type": "Link",
-              "linkType": "Entry",
-              "id": "1OjggI7CEaIbgG6gXD29Nm"
-            }
-          }
-        },
-        "topSection": {
-          "en-US": [
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "6ruOAya7HFswgpaARPjXoR"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "3371yjLDTYWEOxOBRLOln1"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "3sM8dUzz4g3LwhCfTg1T8L"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "5kdrEnDGRuiQJSm8QHBo4R"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "7gG6cVEXCC6m0mc97NBV80"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "7x1Al58clma8WjdSWmpIX5"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "60V1I6c97DHioZke2zihLH"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "1zAq04785aQOOJWvE7NWPR"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "5XjElzOfIQ3oDOSOTBBzW3"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "21PNlm1l7uBEn4uRJ1b9RG"
               }
             }
           ]
@@ -28642,258 +28326,6 @@
             "sys": {
               "type": "Link",
               "linkType": "Tag",
-              "id": "development"
-            }
-          },
-          {
-            "sys": {
-              "type": "Link",
-              "linkType": "Tag",
-              "id": "product"
-            }
-          }
-        ]
-      },
-      "sys": {
-        "space": {
-          "sys": {
-            "type": "Link",
-            "linkType": "Space",
-            "id": "vw5be3ki3sdd"
-          }
-        },
-        "id": "51zswIzY73chul0397mGJ6",
-        "type": "Entry",
-        "createdAt": "2022-09-15T14:33:38.802Z",
-        "updatedAt": "2022-09-15T14:35:23.079Z",
-        "environment": {
-          "sys": {
-            "id": "master",
-            "type": "Link",
-            "linkType": "Environment"
-          }
-        },
-        "publishedVersion": 1,
-        "publishedAt": "2022-09-15T14:35:23.079Z",
-        "firstPublishedAt": "2022-09-15T14:35:23.079Z",
-        "createdBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "updatedBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "publishedCounter": 1,
-        "version": 2,
-        "publishedBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "contentType": {
-          "sys": {
-            "type": "Link",
-            "linkType": "ContentType",
-            "id": "page"
-          }
-        }
-      },
-      "fields": {
-        "internalName": {
-          "en-US": "Text block overview page"
-        },
-        "pageName": {
-          "de-DE": "Überblick über das Design: Textblöcke",
-          "en-US": "Design overview: Text blocks"
-        },
-        "slug": {
-          "en-US": "all-text-blocks"
-        },
-        "seo": {
-          "en-US": {
-            "sys": {
-              "type": "Link",
-              "linkType": "Entry",
-              "id": "1OjggI7CEaIbgG6gXD29Nm"
-            }
-          }
-        },
-        "topSection": {
-          "en-US": [
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "6MnsHcwoIUwNibfdtCXaqn"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "metadata": {
-        "tags": [
-          {
-            "sys": {
-              "type": "Link",
-              "linkType": "Tag",
-              "id": "development"
-            }
-          },
-          {
-            "sys": {
-              "type": "Link",
-              "linkType": "Tag",
-              "id": "product"
-            }
-          }
-        ]
-      },
-      "sys": {
-        "space": {
-          "sys": {
-            "type": "Link",
-            "linkType": "Space",
-            "id": "vw5be3ki3sdd"
-          }
-        },
-        "id": "7jzsHYzK52hWAK3I41icFj",
-        "type": "Entry",
-        "createdAt": "2022-09-15T14:33:39.814Z",
-        "updatedAt": "2022-09-15T14:35:26.113Z",
-        "environment": {
-          "sys": {
-            "id": "master",
-            "type": "Link",
-            "linkType": "Environment"
-          }
-        },
-        "publishedVersion": 1,
-        "publishedAt": "2022-09-15T14:35:26.113Z",
-        "firstPublishedAt": "2022-09-15T14:35:26.113Z",
-        "createdBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "updatedBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "publishedCounter": 1,
-        "version": 2,
-        "publishedBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "contentType": {
-          "sys": {
-            "type": "Link",
-            "linkType": "ContentType",
-            "id": "page"
-          }
-        }
-      },
-      "fields": {
-        "internalName": {
-          "en-US": "Benefits overview page"
-        },
-        "pageName": {
-          "de-DE": "Überblick über das Design: Info-Blöcke",
-          "en-US": "Design overview: Info blocks"
-        },
-        "slug": {
-          "en-US": "all-benefits"
-        },
-        "seo": {
-          "en-US": {
-            "sys": {
-              "type": "Link",
-              "linkType": "Entry",
-              "id": "1OjggI7CEaIbgG6gXD29Nm"
-            }
-          }
-        },
-        "topSection": {
-          "en-US": [
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "2rtr5bmeBeXLqR6rZe9mZF"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "3JqLncpMbnZYrCPebujXhK"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "7bAX9PLozjr4DWQTgxpvuv"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "1TDY4os1IjIPbyAXnjJLk3"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "5rtpikrGJx1EcTNr6ftjNC"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "4NWujw1qFOZ0HrxfHa550v"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "1jTJhqCsTr6u9Z1CQjKlPO"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "metadata": {
-        "tags": [
-          {
-            "sys": {
-              "type": "Link",
-              "linkType": "Tag",
               "id": "marketing"
             }
           },
@@ -29967,230 +29399,6 @@
             "sys": {
               "type": "Link",
               "linkType": "Tag",
-              "id": "development"
-            }
-          },
-          {
-            "sys": {
-              "type": "Link",
-              "linkType": "Tag",
-              "id": "product"
-            }
-          }
-        ]
-      },
-      "sys": {
-        "space": {
-          "sys": {
-            "type": "Link",
-            "linkType": "Space",
-            "id": "vw5be3ki3sdd"
-          }
-        },
-        "id": "72RHPlKxyZDrLfdWxp4x0C",
-        "type": "Entry",
-        "createdAt": "2022-09-15T14:33:39.895Z",
-        "updatedAt": "2022-09-15T14:35:24.456Z",
-        "environment": {
-          "sys": {
-            "id": "master",
-            "type": "Link",
-            "linkType": "Environment"
-          }
-        },
-        "publishedVersion": 1,
-        "publishedAt": "2022-09-15T14:35:24.456Z",
-        "firstPublishedAt": "2022-09-15T14:35:24.456Z",
-        "createdBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "updatedBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "publishedCounter": 1,
-        "version": 2,
-        "publishedBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "contentType": {
-          "sys": {
-            "type": "Link",
-            "linkType": "ContentType",
-            "id": "page"
-          }
-        }
-      },
-      "fields": {
-        "internalName": {
-          "en-US": "Quote overview page"
-        },
-        "pageName": {
-          "de-DE": "Überblick über das Design: Zitate",
-          "en-US": "Design overview: Quotes"
-        },
-        "slug": {
-          "en-US": "all-quotes"
-        },
-        "seo": {
-          "en-US": {
-            "sys": {
-              "type": "Link",
-              "linkType": "Entry",
-              "id": "1OjggI7CEaIbgG6gXD29Nm"
-            }
-          }
-        },
-        "topSection": {
-          "en-US": [
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "3mDhTueAjy4gwjOT9WBIof"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "2qaztL6mibTPZRA5nDdN6V"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "2fh7DboJhjWwcRmWfZnC5R"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "6mpfUatICzVh4etDMHzpaP"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "7d9WuoBlwTGzvfh4VgrkJF"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "6fDmIh3iBBaZqa6WbeSKBg"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "3FOzj6eR9z9X9VbdFYVYs2"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "5tUE7UWmcHIKeN0yi8RTjb"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "55dErNz3wNHK6s0VzpyKjj"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "6g86retW3hgnuB3zsIPT33"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "373GjMRZPJ9KCN8wC49bnB"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "3TbhMv1iMqyL5A21V45uSO"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "322r09hfbs6gbSpVgI84XV"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "4IUHxjgDMprLpZCCcxZHCR"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "25wnXBsT6FVhaF2dboJ4R7"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "7vw1D3MtmtmXWNJYzwsQHC"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "6N5kCjzeAUVAm7SaR7DpHO"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "6swK2FgmMYaKBsVxKnbHFS"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "metadata": {
-        "tags": [
-          {
-            "sys": {
-              "type": "Link",
-              "linkType": "Tag",
               "id": "leadership"
             }
           },
@@ -30744,433 +29952,6 @@
                 "type": "Link",
                 "linkType": "Entry",
                 "id": "60wne4Sbe009bfHEyi1KTc"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "metadata": {
-        "tags": [
-          {
-            "sys": {
-              "type": "Link",
-              "linkType": "Tag",
-              "id": "development"
-            }
-          },
-          {
-            "sys": {
-              "type": "Link",
-              "linkType": "Tag",
-              "id": "product"
-            }
-          }
-        ]
-      },
-      "sys": {
-        "space": {
-          "sys": {
-            "type": "Link",
-            "linkType": "Space",
-            "id": "vw5be3ki3sdd"
-          }
-        },
-        "id": "6aEz7aoa1zFRlSVEPXrUj4",
-        "type": "Entry",
-        "createdAt": "2022-09-15T14:33:39.909Z",
-        "updatedAt": "2022-09-15T14:35:23.822Z",
-        "environment": {
-          "sys": {
-            "id": "master",
-            "type": "Link",
-            "linkType": "Environment"
-          }
-        },
-        "publishedVersion": 1,
-        "publishedAt": "2022-09-15T14:35:23.822Z",
-        "firstPublishedAt": "2022-09-15T14:35:23.822Z",
-        "createdBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "updatedBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "publishedCounter": 1,
-        "version": 2,
-        "publishedBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "contentType": {
-          "sys": {
-            "type": "Link",
-            "linkType": "ContentType",
-            "id": "page"
-          }
-        }
-      },
-      "fields": {
-        "internalName": {
-          "en-US": "Duplex overview page"
-        },
-        "pageName": {
-          "de-DE": "Überblick über das Design: Duplex-Komponenten",
-          "en-US": "Design overview: Duplex components"
-        },
-        "slug": {
-          "en-US": "all-duplex-cards"
-        },
-        "seo": {
-          "en-US": {
-            "sys": {
-              "type": "Link",
-              "linkType": "Entry",
-              "id": "1OjggI7CEaIbgG6gXD29Nm"
-            }
-          }
-        },
-        "topSection": {
-          "en-US": [
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "3RheGeEmGkOmPefS40cusE"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "5hOYnlXbV9FFDfe1qwtNio"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "3yIA4Gp77IUJzdCLl3OGGp"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "69SMgPDXjReLwBHYhLM51o"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "3YhYtIpoRdt9DFmn1ZL83D"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "13d0gHkbRO8w33ereDZX5k"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "2mjP3RSFlLSdiZ5UxAJqFI"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "2YyLGMfG56rLSzzN4vnzKB"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "5Ch8PfHV97hmctTWTyE5kN"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "58mDcyfVObjGTjftUD7AGh"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "11WMkQfmoqwxtuUbbCvoIO"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "6oysdbxZsvavEzTWXmfwhO"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "1FZLnsVioeMiNntjY97uX9"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "350Vic01qnkh7C0IxFeVCD"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "6a3oVsEZskrJ63cr08kWez"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "4G0PCB59tKiZLLu8cSVhIz"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "4JW1uLE5aCkRiuLVPuN7a0"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "768TurwznzU0zJ9P8Uh2Vu"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "50XaOfW8kiJGtA5i61P1Z9"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "4PDtP5qAHe1i74abVRwSVm"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "59V24381VSuImY2hORYzX0"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "metadata": {
-        "tags": [
-          {
-            "sys": {
-              "type": "Link",
-              "linkType": "Tag",
-              "id": "development"
-            }
-          },
-          {
-            "sys": {
-              "type": "Link",
-              "linkType": "Tag",
-              "id": "product"
-            }
-          }
-        ]
-      },
-      "sys": {
-        "space": {
-          "sys": {
-            "type": "Link",
-            "linkType": "Space",
-            "id": "vw5be3ki3sdd"
-          }
-        },
-        "id": "1ZLjYCSVtGXCPUTx7tjFiP",
-        "type": "Entry",
-        "createdAt": "2022-09-15T14:33:39.972Z",
-        "updatedAt": "2022-09-15T14:35:25.745Z",
-        "environment": {
-          "sys": {
-            "id": "master",
-            "type": "Link",
-            "linkType": "Environment"
-          }
-        },
-        "publishedVersion": 1,
-        "publishedAt": "2022-09-15T14:35:25.745Z",
-        "firstPublishedAt": "2022-09-15T14:35:25.745Z",
-        "createdBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "updatedBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "publishedCounter": 1,
-        "version": 2,
-        "publishedBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "71mGdtYS1bRYVZepHbBmRT"
-          }
-        },
-        "contentType": {
-          "sys": {
-            "type": "Link",
-            "linkType": "ContentType",
-            "id": "page"
-          }
-        }
-      },
-      "fields": {
-        "internalName": {
-          "en-US": "Hero overview page"
-        },
-        "pageName": {
-          "de-DE": "Überblick über das Design: Hero-Banner",
-          "en-US": "Design overview: Hero banners"
-        },
-        "slug": {
-          "en-US": "all-heros"
-        },
-        "seo": {
-          "en-US": {
-            "sys": {
-              "type": "Link",
-              "linkType": "Entry",
-              "id": "1OjggI7CEaIbgG6gXD29Nm"
-            }
-          }
-        },
-        "topSection": {
-          "en-US": [
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "54oaiSfiKIi2PQDm3ZPDf3"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "3vhrJAL2RdO9m8EybpyTpZ"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "Kb3GX6w2uotTYccS9fHBq"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "S3xnZ8vfdJ1mFskcl1B0n"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "5144jAyceEtSfkHBu7lxv1"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "49bPuF5kTLBdcMni9ekV88"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "4lVD4i2dXRo6QZyTN52q6u"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "2kF35bA3NtEy00HO3rxS48"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "2keGMy6wtgdniBuKHhYkvo"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "rHiXeCwfJ96AayF6rpGLg"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "1zJTgmH9Y6Yi6dXkgchkck"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "2rqNeT5GDnFHQl9K1FmzVJ"
               }
             }
           ]
@@ -32829,7 +31610,7 @@
         "id": "2SKWtzmGOnQm80nRGIIclu",
         "type": "Entry",
         "createdAt": "2022-09-15T14:33:41.835Z",
-        "updatedAt": "2022-09-15T14:35:31.719Z",
+        "updatedAt": "2022-10-17T10:28:01.355Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -32837,8 +31618,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 1,
-        "publishedAt": "2022-09-15T14:35:31.719Z",
+        "publishedVersion": 3,
+        "publishedAt": "2022-10-17T10:28:01.355Z",
         "firstPublishedAt": "2022-09-15T14:35:31.719Z",
         "createdBy": {
           "sys": {
@@ -32854,8 +31635,8 @@
             "id": "71mGdtYS1bRYVZepHbBmRT"
           }
         },
-        "publishedCounter": 1,
-        "version": 2,
+        "publishedCounter": 2,
+        "version": 4,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -32873,7 +31654,7 @@
       },
       "fields": {
         "internalName": {
-          "en-US": "Pricing page (p13n)"
+          "en-US": "Pricing page"
         },
         "pageName": {
           "de-DE": "Preise",
@@ -32969,7 +31750,7 @@
         "id": "3t7Iub6Arm23Cn7wWkIJTd",
         "type": "Entry",
         "createdAt": "2022-09-15T14:33:41.968Z",
-        "updatedAt": "2022-09-15T14:35:30.524Z",
+        "updatedAt": "2022-10-17T10:26:18.305Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -32977,8 +31758,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 1,
-        "publishedAt": "2022-09-15T14:35:30.524Z",
+        "publishedVersion": 3,
+        "publishedAt": "2022-10-17T10:26:18.305Z",
         "firstPublishedAt": "2022-09-15T14:35:30.524Z",
         "createdBy": {
           "sys": {
@@ -32994,8 +31775,8 @@
             "id": "71mGdtYS1bRYVZepHbBmRT"
           }
         },
-        "publishedCounter": 1,
-        "version": 2,
+        "publishedCounter": 2,
+        "version": 4,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -33013,7 +31794,7 @@
       },
       "fields": {
         "internalName": {
-          "en-US": "Homepage (p13n)"
+          "en-US": "Homepage"
         },
         "pageName": {
           "de-DE": "Die Karte, die Sie schon immer wollten",
@@ -36592,6 +35373,899 @@
               }
             ]
           }
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "vw5be3ki3sdd"
+          }
+        },
+        "id": "6c9tUMxxamKB9R7S16ne1X",
+        "type": "Entry",
+        "createdAt": "2022-10-11T12:24:26.312Z",
+        "updatedAt": "2022-10-11T12:40:14.412Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 14,
+        "publishedAt": "2022-10-11T12:40:14.412Z",
+        "firstPublishedAt": "2022-10-11T12:38:50.141Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "publishedCounter": 2,
+        "version": 15,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "footerMenu"
+          }
+        }
+      },
+      "fields": {
+        "internalName": {
+          "en-US": "Default Footer"
+        },
+        "menuItems": {
+          "en-US": [
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "4qORkPSGFW65TKKXnLremJ"
+              }
+            },
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "121h7IcX4yGCoWm3LNkoqi"
+              }
+            },
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "2JjapQQlCHZcSrAAdRqRRD"
+              }
+            }
+          ]
+        },
+        "legalLinks": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Entry",
+              "id": "3K20F9RwYAp9oL344DAeUP"
+            }
+          }
+        },
+        "twitterLink": {
+          "en-US": "https://twitter.com/"
+        },
+        "facebookLink": {
+          "en-US": "https://facebook.com/"
+        },
+        "linkedinLink": {
+          "en-US": "https://linkedin.com/"
+        },
+        "instagramLink": {
+          "en-US": "https://instagram.com/"
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "vw5be3ki3sdd"
+          }
+        },
+        "id": "3K20F9RwYAp9oL344DAeUP",
+        "type": "Entry",
+        "createdAt": "2022-10-11T12:24:58.759Z",
+        "updatedAt": "2022-10-11T12:25:29.387Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 4,
+        "publishedAt": "2022-10-11T12:25:29.387Z",
+        "firstPublishedAt": "2022-10-11T12:25:29.387Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 5,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "menuGroup"
+          }
+        }
+      },
+      "fields": {
+        "internalTitle": {
+          "en-US": "Legal Links"
+        },
+        "featuredPages": {
+          "en-US": [
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "4OSewDgF5UsbHVwRNIIILi"
+              }
+            },
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "2S392TdnTG2mT7pBKiEPDL"
+              }
+            },
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "3kTfzbaPxUcWTJpNH0aG9e"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "vw5be3ki3sdd"
+          }
+        },
+        "id": "4qORkPSGFW65TKKXnLremJ",
+        "type": "Entry",
+        "createdAt": "2022-10-11T12:25:36.706Z",
+        "updatedAt": "2022-10-11T12:32:49.122Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 5,
+        "publishedAt": "2022-10-11T12:32:49.122Z",
+        "firstPublishedAt": "2022-10-11T12:32:49.122Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 6,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "menuGroup"
+          }
+        }
+      },
+      "fields": {
+        "internalTitle": {
+          "en-US": "Product Links"
+        },
+        "groupName": {
+          "en-US": "Products"
+        },
+        "featuredPages": {
+          "en-US": [
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "3Qnjx9WkvM4ZC44AIBDZwt"
+              }
+            },
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "6LznwSwpmSWNCMwbgmtB2L"
+              }
+            },
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "jYxVlZPpqdeZs93jmpAlF"
+              }
+            },
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "2SKWtzmGOnQm80nRGIIclu"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "vw5be3ki3sdd"
+          }
+        },
+        "id": "121h7IcX4yGCoWm3LNkoqi",
+        "type": "Entry",
+        "createdAt": "2022-10-11T12:32:56.471Z",
+        "updatedAt": "2022-10-11T12:37:43.006Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 4,
+        "publishedAt": "2022-10-11T12:37:43.006Z",
+        "firstPublishedAt": "2022-10-11T12:37:43.006Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 5,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "menuGroup"
+          }
+        }
+      },
+      "fields": {
+        "internalTitle": {
+          "en-US": "Customer Links"
+        },
+        "groupName": {
+          "en-US": "Customers"
+        },
+        "featuredPages": {
+          "en-US": [
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "57DuhVn0j48Aj20B7sNHiF"
+              }
+            },
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "7wGhPNCZNLknpSaJVWfnHf"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "vw5be3ki3sdd"
+          }
+        },
+        "id": "2JjapQQlCHZcSrAAdRqRRD",
+        "type": "Entry",
+        "createdAt": "2022-10-11T12:37:52.533Z",
+        "updatedAt": "2022-10-13T09:49:11.094Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 12,
+        "publishedAt": "2022-10-13T09:49:11.094Z",
+        "firstPublishedAt": "2022-10-11T12:38:46.939Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "publishedCounter": 3,
+        "version": 13,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "71mGdtYS1bRYVZepHbBmRT"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "menuGroup"
+          }
+        }
+      },
+      "fields": {
+        "internalTitle": {
+          "en-US": "Company Links"
+        },
+        "groupName": {
+          "en-US": "Company"
+        },
+        "featuredPages": {
+          "en-US": [
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "7wGhPNCZNLknpSaJVWfnHf"
+              }
+            },
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "ZTBZTnn1ycFMOkxEG5bnY"
+              }
+            },
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "30lr8Fg8ATqmhTBzRRh3v7"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "vw5be3ki3sdd"
+          }
+        },
+        "id": "BtIJpF1q3Td9pT0lkzipx",
+        "type": "Entry",
+        "createdAt": "2022-10-13T12:15:28.576Z",
+        "updatedAt": "2022-10-13T20:53:45.898Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 9,
+        "publishedAt": "2022-10-13T20:53:45.898Z",
+        "firstPublishedAt": "2022-10-13T12:22:12.488Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "2OIQouqxFqeLqtXJFHSgS8"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "2OIQouqxFqeLqtXJFHSgS8"
+          }
+        },
+        "publishedCounter": 2,
+        "version": 10,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "2OIQouqxFqeLqtXJFHSgS8"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "navigationMenu"
+          }
+        }
+      },
+      "fields": {
+        "internalName": {
+          "en-US": "Default Navigation"
+        },
+        "menuItems": {
+          "en-US": [
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "5Llrq4mnBxMujXY6ArJC4f"
+              }
+            },
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "01HUvROKwHqty0fL84pyLi"
+              }
+            },
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "5zxUwjzYlIpR8FcdVXbbbg"
+              }
+            },
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "7q4gGmkFpdlVj09ld3ysDt"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "vw5be3ki3sdd"
+          }
+        },
+        "id": "5Llrq4mnBxMujXY6ArJC4f",
+        "type": "Entry",
+        "createdAt": "2022-10-13T12:15:51.294Z",
+        "updatedAt": "2022-10-13T12:18:04.523Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 4,
+        "publishedAt": "2022-10-13T12:18:04.523Z",
+        "firstPublishedAt": "2022-10-13T12:18:04.523Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "2OIQouqxFqeLqtXJFHSgS8"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "2OIQouqxFqeLqtXJFHSgS8"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 5,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "2OIQouqxFqeLqtXJFHSgS8"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "menuGroup"
+          }
+        }
+      },
+      "fields": {
+        "internalTitle": {
+          "en-US": "Products"
+        },
+        "groupName": {
+          "en-US": "Products"
+        },
+        "featuredPages": {
+          "en-US": [
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "3Qnjx9WkvM4ZC44AIBDZwt"
+              }
+            },
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "6LznwSwpmSWNCMwbgmtB2L"
+              }
+            },
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "jYxVlZPpqdeZs93jmpAlF"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "vw5be3ki3sdd"
+          }
+        },
+        "id": "01HUvROKwHqty0fL84pyLi",
+        "type": "Entry",
+        "createdAt": "2022-10-13T12:19:50.610Z",
+        "updatedAt": "2022-10-14T14:24:19.237Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 9,
+        "publishedAt": "2022-10-14T14:24:19.237Z",
+        "firstPublishedAt": "2022-10-13T12:20:16.702Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "2OIQouqxFqeLqtXJFHSgS8"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "2OIQouqxFqeLqtXJFHSgS8"
+          }
+        },
+        "publishedCounter": 2,
+        "version": 10,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "2OIQouqxFqeLqtXJFHSgS8"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "menuGroup"
+          }
+        }
+      },
+      "fields": {
+        "internalTitle": {
+          "en-US": "Pricing"
+        },
+        "groupName": {
+          "en-US": "Pricing"
+        },
+        "groupLink": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Entry",
+              "id": "2SKWtzmGOnQm80nRGIIclu"
+            }
+          }
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "vw5be3ki3sdd"
+          }
+        },
+        "id": "5zxUwjzYlIpR8FcdVXbbbg",
+        "type": "Entry",
+        "createdAt": "2022-10-13T12:20:24.407Z",
+        "updatedAt": "2022-10-14T14:24:38.437Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 7,
+        "publishedAt": "2022-10-14T14:24:38.437Z",
+        "firstPublishedAt": "2022-10-13T12:20:50.574Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "2OIQouqxFqeLqtXJFHSgS8"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "2OIQouqxFqeLqtXJFHSgS8"
+          }
+        },
+        "publishedCounter": 2,
+        "version": 8,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "2OIQouqxFqeLqtXJFHSgS8"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "menuGroup"
+          }
+        }
+      },
+      "fields": {
+        "internalTitle": {
+          "en-US": "About Us"
+        },
+        "groupName": {
+          "en-US": "About Us"
+        },
+        "groupLink": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Entry",
+              "id": "7wGhPNCZNLknpSaJVWfnHf"
+            }
+          }
+        }
+      }
+    },
+    {
+      "metadata": {
+        "tags": [
+        ]
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "vw5be3ki3sdd"
+          }
+        },
+        "id": "7q4gGmkFpdlVj09ld3ysDt",
+        "type": "Entry",
+        "createdAt": "2022-10-13T12:20:59.405Z",
+        "updatedAt": "2022-10-14T14:25:47.922Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 7,
+        "publishedAt": "2022-10-14T14:25:47.922Z",
+        "firstPublishedAt": "2022-10-13T12:22:03.472Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "2OIQouqxFqeLqtXJFHSgS8"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "2OIQouqxFqeLqtXJFHSgS8"
+          }
+        },
+        "publishedCounter": 2,
+        "version": 8,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "2OIQouqxFqeLqtXJFHSgS8"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "menuGroup"
+          }
+        }
+      },
+      "fields": {
+        "internalTitle": {
+          "en-US": "Blog"
+        },
+        "groupName": {
+          "en-US": "Blog"
+        },
+        "featuredPages": {
+          "en-US": [
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "5Oz2hRXAqdHcJbW16s6TcJ"
+              }
+            }
+          ]
         }
       }
     }
