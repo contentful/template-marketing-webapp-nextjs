@@ -5,6 +5,7 @@ import { useTranslation } from 'next-i18next';
 
 import { FooterFieldsFragment } from './__generated/ctf-footer.generated';
 
+import { getLinkDisplayText, getLinkHrefPrefix } from '@ctf-components/ctf-navigation/utils';
 import { LanguageSelector } from '@src/components/language-selector';
 import Link from '@src/components/link/link';
 import Logo from '@src/icons/logo-tagline.svg';
@@ -221,32 +222,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
 }));
-
-const getLinkDisplayText = menuItem => {
-  if ('pageName' in menuItem) {
-    return menuItem.pageName;
-  }
-  if ('categoryName' in menuItem) {
-    return menuItem.categoryName;
-  }
-  if ('postName' in menuItem) {
-    return menuItem.postName;
-  }
-  return menuItem.slug;
-};
-
-const getLinkHrefPrefix = menuItem => {
-  if ('pageName' in menuItem) {
-    return menuItem.slug;
-  }
-  if ('categoryName' in menuItem) {
-    return `category/${menuItem.slug}`;
-  }
-  if ('postName' in menuItem) {
-    return `post/${menuItem.slug}`;
-  }
-  return menuItem.slug;
-};
 
 export const CtfFooter = (props: FooterFieldsFragment) => {
   const footerContent = props.items[0];

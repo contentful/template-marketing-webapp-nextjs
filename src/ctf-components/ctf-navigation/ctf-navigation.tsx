@@ -1,7 +1,8 @@
-import { Theme } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
+import { Theme } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 
 import { NavigationFieldsFragment } from './__generated/ctf-navigation.generated';
+import { getLinkDisplayText, getLinkHrefPrefix } from './utils';
 
 import Link from '@src/components/link/link';
 
@@ -48,7 +49,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     backgroundColor: '#fff',
     boxShadow: '0 3px 6px #00000029',
     borderRadius: '14px',
-    left: theme.spacing(10) * -1,
+    left: theme.spacing(10 * -1),
     listStyle: 'none',
     opacity: 0,
     padding: theme.spacing(4, 10),
@@ -66,35 +67,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
 }));
-
-const getLinkDisplayText = menuItem => {
-  if ('pageName' in menuItem) {
-    return menuItem.pageName;
-  }
-  if ('categoryName' in menuItem) {
-    return menuItem.categoryName;
-  }
-  if ('postName' in menuItem) {
-    return menuItem.postName;
-  }
-  return menuItem.slug;
-};
-
-const getLinkHrefPrefix = menuItem => {
-  if ('pageName' in menuItem) {
-    return `/${menuItem.slug}`;
-  }
-
-  if ('categoryName' in menuItem) {
-    return `category/${menuItem.slug}`;
-  }
-
-  if ('postName' in menuItem) {
-    return `post/${menuItem.slug}`;
-  }
-
-  return `/${menuItem.slug}`;
-};
 
 export const CtfNavigation = (props: NavigationFieldsFragment) => {
   const classes = useStyles();

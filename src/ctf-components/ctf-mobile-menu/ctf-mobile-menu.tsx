@@ -1,6 +1,8 @@
-import { Drawer, makeStyles } from '@material-ui/core';
+import { Drawer } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 
 import { NavigationFieldsFragment } from '@ctf-components/ctf-navigation/__generated/ctf-navigation.generated';
+import { getLinkDisplayText, getLinkHrefPrefix } from '@ctf-components/ctf-navigation/utils';
 import Link from '@src/components/link/link';
 
 const useStyles = makeStyles(theme => ({
@@ -26,35 +28,6 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(0, 0, 0, 2),
   },
 }));
-
-const getLinkDisplayText = menuItem => {
-  if ('pageName' in menuItem) {
-    return menuItem.pageName;
-  }
-  if ('categoryName' in menuItem) {
-    return menuItem.categoryName;
-  }
-  if ('postName' in menuItem) {
-    return menuItem.postName;
-  }
-  return menuItem.slug;
-};
-
-const getLinkHrefPrefix = menuItem => {
-  if ('pageName' in menuItem) {
-    return `/${menuItem.slug}`;
-  }
-
-  if ('categoryName' in menuItem) {
-    return `category/${menuItem.slug}`;
-  }
-
-  if ('postName' in menuItem) {
-    return `post/${menuItem.slug}`;
-  }
-
-  return `/${menuItem.slug}`;
-};
 
 interface MobileMenuPropsInterface extends NavigationFieldsFragment {
   isOpen?: boolean;
