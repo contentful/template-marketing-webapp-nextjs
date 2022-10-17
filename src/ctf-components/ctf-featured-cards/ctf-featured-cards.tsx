@@ -1,4 +1,5 @@
-import { makeStyles, Theme, Container } from '@material-ui/core';
+import { Theme, Container } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 
 import { FeaturedCardsFieldsFragment } from './__generated/ctf-featured-cards.generated';
 

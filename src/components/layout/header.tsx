@@ -1,6 +1,6 @@
-import { AppBar, Container, IconButton, Theme, Toolbar, Box, SvgIcon } from '@material-ui/core';
-import { Menu } from '@material-ui/icons';
-import { makeStyles } from '@material-ui/styles';
+import { Menu } from '@mui/icons-material';
+import { AppBar, Container, IconButton, Theme, Toolbar, Box, SvgIcon } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import { useTranslation } from 'next-i18next';
 
 import { CtfNavigationGql } from '@ctf-components/ctf-navigation/ctf-navigation-gql';
@@ -78,8 +78,7 @@ const Header = (props: HeaderPropsInterface) => {
           maxWidth={false}
           style={{
             maxWidth: `${CONTAINER_WIDTH / 10}rem`,
-          }}
-        >
+          }}>
           <Link href="/" withoutMaterial>
             <ContentfulImage
               src={contentfulConfig.header.logo}
@@ -100,8 +99,7 @@ const Header = (props: HeaderPropsInterface) => {
                         isButton
                         variant="contained"
                         color="primary"
-                        size="small"
-                      >
+                        size="small">
                         {t('common.signUp')}
                       </Link>
                     </li>
@@ -126,8 +124,7 @@ const Header = (props: HeaderPropsInterface) => {
                               </clipPath>
                             </defs>
                           </SvgIcon>
-                        }
-                      >
+                        }>
                         {t('common.signIn')}
                       </Link>
                     </li>

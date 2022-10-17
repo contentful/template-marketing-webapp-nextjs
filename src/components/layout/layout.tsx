@@ -1,5 +1,5 @@
-import { CssBaseline, Theme } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
+import { CssBaseline, Theme } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import { useRouter } from 'next/router';
 import React, { useState, useEffect, ReactElement } from 'react';
 

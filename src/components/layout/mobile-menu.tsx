@@ -1,4 +1,5 @@
-import { Drawer, SvgIcon, makeStyles } from '@material-ui/core';
+import { Drawer, SvgIcon } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import { useTranslation } from 'next-i18next';
 
 import Link from '@src/components/link/link';

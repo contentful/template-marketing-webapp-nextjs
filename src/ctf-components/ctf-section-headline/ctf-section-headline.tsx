@@ -1,8 +1,7 @@
-import { Theme, Typography } from '@material-ui/core';
+import { Theme, Typography } from '@mui/material';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
-import React from 'react';
 
 import Markdown from '@src/components/markdown';
 
@@ -51,9 +50,7 @@ const CtfSectionHeadline = (props: Props) => {
           {props.sectionHeadline}
         </Typography>
       )}
-      {props.sectionSubline && (
-        <Markdown className={classes.subline} text={props.sectionSubline} />
-      )}
+      {props.sectionSubline && <Markdown className={classes.subline} text={props.sectionSubline} />}
     </div>
   );
 };

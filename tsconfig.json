@@ -17,36 +17,17 @@
     "baseUrl": "./",
     "paths": {
       "@public/*": ["./public/*"],
-      "@pages/*": [
-        "./pages/*"
-      ],
-      "@src/*": [
-        "./src/*"
-      ],
-      "@ctf-components/*": [
-        "./src/ctf-components/*"
-      ]
+      "@pages/*": ["./pages/*"],
+      "@src/*": ["./src/*"],
+      "@ctf-components/*": ["./src/ctf-components/*"]
     },
-    "typeRoots": [
-      "./@types",
-      "./node_modules/@types"
-    ],
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "typeRoots": ["./@types", "./node_modules/@types"],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "isolatedModules": true,
     "incremental": true
   },
-  "exclude": [
-    "node_modules"
-  ],
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ]
+  "exclude": ["node_modules"],
+  "include": ["**/*.ts", "**/*.tsx", "@types/**/*.d.ts"]
 }

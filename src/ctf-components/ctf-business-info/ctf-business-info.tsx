@@ -1,5 +1,6 @@
-import { makeStyles, Theme, Container } from '@material-ui/core';
-import Typography from '@material-ui/core/Typography';
+import { Theme, Container } from '@mui/material';
+import Typography from '@mui/material/Typography';
+import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import React, { useMemo } from 'react';
 

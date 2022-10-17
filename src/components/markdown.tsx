@@ -1,8 +1,9 @@
-import { Theme, makeStyles } from '@material-ui/core';
+import { Theme } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import React from 'react';
 import parse from 'rehype-parse';
-import rehypeReact from 'rehype-react'
+import rehypeReact from 'rehype-react';
 import breaks from 'remark-breaks';
 import { unified } from 'unified';
 
@@ -32,7 +33,10 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const renderer = unified().use(parse).use(breaks).use(rehypeReact, {createElement: React.createElement});
+const renderer = unified()
+  .use(parse)
+  .use(breaks)
+  .use(rehypeReact, { createElement: React.createElement });
 type Props = {
   text: string;
   className?: string;

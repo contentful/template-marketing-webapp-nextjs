@@ -1,6 +1,7 @@
-import { Container, makeStyles, Theme, Typography } from '@material-ui/core';
+import { Container, Theme, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
-import React, { useMemo, useContext } from 'react';
+import { useMemo, useContext } from 'react';
 
 import { HeroBannerFieldsFragment } from '@ctf-components/ctf-hero-banner/__generated/ctf-hero-banner.generated';
 import { CtfRichtext } from '@ctf-components/ctf-richtext/ctf-richtext';

@@ -1,10 +1,11 @@
-import { makeStyles, Theme, Typography } from '@material-ui/core'
-import clsx from 'clsx'
-import React from 'react'
+import { Theme, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import clsx from 'clsx';
+import React from 'react';
 
 interface Props {
-  className?: string
-  children?: any,
+  className?: string;
+  children?: any;
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -15,17 +16,15 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: theme.spacing(1),
     margin: theme.spacing(12, 0),
   },
-}))
+}));
 
 const ErrorBox = (props: Props) => {
-  const classes = useStyles()
+  const classes = useStyles();
   return (
     <div className={clsx(classes.errorBoxRoot, props.className)}>
-      <Typography variant="body1">
-        {props.children}
-      </Typography>
+      <Typography variant="body1">{props.children}</Typography>
     </div>
-  )
-}
+  );
+};
 
-export default ErrorBox
+export default ErrorBox;

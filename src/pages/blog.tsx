@@ -1,4 +1,5 @@
-import { Container, Typography, makeStyles, Theme } from '@material-ui/core';
+import { Container, Typography, Theme } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import { NextPage, NextPageContext } from 'next';
 import Head from 'next/head';
 

@@ -1,5 +1,6 @@
-import { makeStyles, Theme } from '@material-ui/core';
-import { CSSProperties } from '@material-ui/core/styles/withStyles';
+import { Theme } from '@mui/material';
+import { CSSProperties } from '@mui/material/styles/createTypography';
+import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import React from 'react';
 

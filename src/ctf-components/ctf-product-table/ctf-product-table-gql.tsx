@@ -1,4 +1,4 @@
-import { Container } from '@material-ui/core';
+import { Container } from '@mui/material';
 
 import { useCtfProductTableQuery } from './__generated/ctf-product-table.generated';
 import { CtfProductTable } from './ctf-product-table';

@@ -1,5 +1,6 @@
-import { Theme, makeStyles, Container, Typography } from '@material-ui/core';
-import { LocalOffer } from '@material-ui/icons';
+import { LocalOffer } from '@mui/icons-material';
+import { Theme, Container, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import formatDate from 'date-fns/format';
 import { useTranslation } from 'next-i18next';
