@@ -5,7 +5,6 @@ import { useTranslation } from 'next-i18next';
 import Head from 'next/head';
 import React from 'react';
 
-import { ContentfulImage } from '@src/components/contentful-image/contentful-image';
 import PageContainer from '@src/components/layout/page-container';
 import Link from '@src/components/link/link';
 import { useContentfulContext } from '@src/contentful-context';
@@ -114,14 +113,7 @@ const SignUpPage: NextPage = () => {
       <PageContainer className={classes.page}>
         <Container maxWidth={false}>
           <section className={classes.container}>
-            <header className={classes.header}>
-              <ContentfulImage
-                src={contentfulConfig.icon.dark}
-                alt="Logo"
-                width={`${contentfulConfig.icon.width}px`}
-                height={`${contentfulConfig.icon.height}px`}
-              />
-            </header>
+            <header className={classes.header} />
             <form className={classes.form}>
               <Typography variant="h3" component="h1">
                 {t('common.createAccount')}
