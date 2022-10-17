@@ -1,9 +1,8 @@
 import { ButtonBase } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
+import Image, { ImageProps } from 'next/image';
 import React, { useMemo } from 'react';
-
-import { AssetFieldsFragment } from '../ctf-asset/__generated/ctf-asset.generated';
 
 import { CONTAINER_WIDTH } from '@src/theme';
 
@@ -31,14 +30,20 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-interface CtfImagePropsInterface extends AssetFieldsFragment {
+interface CtfImagePropsInterface {
   widthPx?: number;
+  title?: string | null;
+  description?: string | null;
+  url?: string | null;
+  width?: number | null;
+  height?: number | null;
   cover?: boolean;
   ratio?: number;
   className?: string;
   imgClassName?: string;
   figureClassName?: string;
   showDescription?: boolean;
+  layout?: ImageProps['layout'];
   onClick?: () => any;
 }
 
@@ -57,22 +62,13 @@ export const CtfImage = (props: CtfImagePropsInterface) => {
     figureClassName,
     onClick,
     showDescription = true,
+    layout = "intrinsic",
   } = props;
 
   const imgSrc = useMemo(() => {
     return widthPx === undefined ? url : `${url}?w=${Math.min(widthPx, width || CONTAINER_WIDTH)}`;
   }, [url, widthPx, width]);
-  const imgSrcset = useMemo(() => {
-    if (widthPx === undefined) {
-      return '';
-    }
 
-    const computedWidth = Math.min(widthPx, width || CONTAINER_WIDTH);
-
-    return `${url}?w=${computedWidth} ${computedWidth}w, ${url}?w=${computedWidth * 2} ${
-      computedWidth * 2
-    }w`;
-  }, [url, widthPx, width]);
   const paddingTop = useMemo(
     () => `${(ratio || (height || 0) / (width || 0)) * 100}%`,
     [ratio, width, height],
@@ -80,9 +76,7 @@ export const CtfImage = (props: CtfImagePropsInterface) => {
   const asBackground = ratio !== undefined || cover === true;
   const classes = useStyles();
 
-  if (url === null) {
-    return null;
-  }
+  if (!url) return null;
 
   return (
     <ButtonBase className={clsx(classes.root, className)} onClick={onClick}>
@@ -99,12 +93,13 @@ export const CtfImage = (props: CtfImagePropsInterface) => {
         </div>
       ) : (
         <figure className={clsx(classes.figure, figureClassName)}>
-          <img
+          <Image
             className={clsx(classes.image, imgClassName)}
-            src={imgSrc || undefined}
-            srcSet={imgSrcset}
+            src={url}
             alt={title!}
-            width={widthPx ? widthPx : undefined}
+            width={width!}
+            height={height!}
+            layout={layout}
           />
           {showDescription && description && <figcaption>{description}</figcaption>}
         </figure>

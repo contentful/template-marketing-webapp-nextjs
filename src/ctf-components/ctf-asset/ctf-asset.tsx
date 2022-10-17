@@ -32,7 +32,7 @@ export const CtfAsset = (props: CtfAssetPropsInterface) => {
         }
         widthPx={
           ['quote', 'product-table', 'info-block', 'duplex'].includes(layout.parent) === true &&
-          props.width
+            props.width
             ? Math.round(props.width / 2)
             : props.widthPx
         }
