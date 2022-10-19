@@ -1,13 +1,11 @@
 import { Menu } from '@mui/icons-material';
-import { AppBar, Container, IconButton, Theme, Toolbar, Box, SvgIcon } from '@mui/material';
+import { AppBar, Container, IconButton, Theme, Toolbar, Box } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import { useTranslation } from 'next-i18next';
 
 import { CtfNavigationGql } from '@ctf-components/ctf-navigation/ctf-navigation-gql';
-import { ContentfulImage } from '@src/components/contentful-image/contentful-image';
 import Link from '@src/components/link/link';
+import Logo from '@src/icons/colorful-coin-logo.svg';
 import { HEADER_HEIGHT, HEADER_HEIGHT_MD, CONTAINER_WIDTH } from '@src/theme';
-import contentfulConfig from 'contentful.config';
 
 const useStyles = makeStyles((theme: Theme) => ({
   appbar: {
@@ -58,6 +56,11 @@ const useStyles = makeStyles((theme: Theme) => ({
       fontSize: '1.5rem',
     },
   },
+  corporateLogo: {
+    display: 'block',
+    height: 'auto',
+    width: '113px',
+  },
 }));
 
 interface HeaderPropsInterface {
@@ -65,7 +68,6 @@ interface HeaderPropsInterface {
 }
 
 const Header = (props: HeaderPropsInterface) => {
-  const { t } = useTranslation();
   const { onMenuClick } = props;
   const classes = useStyles();
 
@@ -80,59 +82,13 @@ const Header = (props: HeaderPropsInterface) => {
             maxWidth: `${CONTAINER_WIDTH / 10}rem`,
           }}>
           <Link href="/" withoutMaterial>
-            <ContentfulImage
-              src={contentfulConfig.header.logo}
-              alt="Logo"
-              width={`${contentfulConfig.header.logoWidth}px`}
-              height={`${contentfulConfig.header.logoHeight}px`}
-            />
+            <Logo className={classes.corporateLogo} />
           </Link>
-          {contentfulConfig.header.menu.length > 0 && (
-            <Box display={{ xs: 'none', md: 'block' }}>
-              <div className={classes.menuWrapper}>
-                <CtfNavigationGql />
-                <nav>
-                  <ul className={classes.accountMenu}>
-                    <li className={classes.accountMenuItem}>
-                      <Link
-                        href="/sign-up"
-                        isButton
-                        variant="contained"
-                        color="primary"
-                        size="small">
-                        {t('common.signUp')}
-                      </Link>
-                    </li>
-                    <li className={classes.accountMenuItem}>
-                      <Link
-                        href="/sign-in"
-                        isButton
-                        variant="text"
-                        color="primary"
-                        size="small"
-                        startIcon={
-                          <SvgIcon fontSize="inherit" viewBox="0 0 14 16">
-                            <g clipPath="url(#clip0)" stroke="#000">
-                              <path d="M9.447 15.278h-5.75v-.347h5.75a2.85 2.85 0 0 0 2.847-2.847v-8.39A2.85 2.85 0 0 0 9.447.847h-5.75V.5h5.75a3.2 3.2 0 0 1 3.194 3.194v8.39a3.2 3.2 0 0 1-3.194 3.194z" />
-                              <path d="M10.28 7.889L6.83 4.44l-.251.251 3.448 3.449.252-.251z" />
-                              <path d="M6.83 11.338l3.449-3.449-.251-.251-3.449 3.448.251.252z" />
-                              <path d="M9.972 7.663H.5v.416h9.472v-.416z" />
-                            </g>
-                            <defs>
-                              <clipPath id="clip0">
-                                <path fill="#fff" d="M0 0h13.141v15.778H0z" />
-                              </clipPath>
-                            </defs>
-                          </SvgIcon>
-                        }>
-                        {t('common.signIn')}
-                      </Link>
-                    </li>
-                  </ul>
-                </nav>
-              </div>
-            </Box>
-          )}
+          <Box display={{ xs: 'none', md: 'block' }}>
+            <div className={classes.menuWrapper}>
+              <CtfNavigationGql />
+            </div>
+          </Box>
         </Container>
 
         {/* menu button */}

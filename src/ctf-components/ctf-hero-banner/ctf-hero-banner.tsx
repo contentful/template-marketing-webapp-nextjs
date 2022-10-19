@@ -124,8 +124,7 @@ export const CtfHeroBanner = (props: HeroBannerFieldsFragment) => {
         backgroundImage:
           imageStyle === 'full' && backgroundImage ? `url(${backgroundImage!})` : undefined,
         backgroundColor: colorConfig.backgroundColor,
-      }}
-    >
+      }}>
       {imageStyle === 'partial' && backgroundImage && (
         <div className={classes.partialBgContainer}>
           <div
@@ -141,8 +140,7 @@ export const CtfHeroBanner = (props: HeroBannerFieldsFragment) => {
           <Typography
             variant="h1"
             className={classes.headline}
-            style={{ color: colorConfig.headlineColor }}
-          >
+            style={{ color: colorConfig.headlineColor }}>
             {headline}
           </Typography>
         )}
@@ -160,8 +158,7 @@ export const CtfHeroBanner = (props: HeroBannerFieldsFragment) => {
                 page={targetPage}
                 variant="contained"
                 color={colorConfig.buttonColor}
-                isButton
-              >
+                isButton>
                 {ctaText}
               </PageLink>
             )}
@@ -170,8 +167,7 @@ export const CtfHeroBanner = (props: HeroBannerFieldsFragment) => {
                 post={targetPage}
                 variant="contained"
                 color={colorConfig.buttonColor}
-                isButton
-              >
+                isButton>
                 {ctaText}
               </PostLink>
             )}
