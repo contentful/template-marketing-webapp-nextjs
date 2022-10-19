@@ -3,8 +3,8 @@ import { AppBar, Container, IconButton, Theme, Toolbar, Box, SvgIcon } from '@mu
 import { makeStyles } from '@mui/styles';
 import { useTranslation } from 'next-i18next';
 
+import { CtfImage } from '@ctf-components/ctf-image/ctf-image';
 import { CtfNavigationGql } from '@ctf-components/ctf-navigation/ctf-navigation-gql';
-import { ContentfulImage } from '@src/components/contentful-image/contentful-image';
 import Link from '@src/components/link/link';
 import { HEADER_HEIGHT, HEADER_HEIGHT_MD, CONTAINER_WIDTH } from '@src/theme';
 import contentfulConfig from 'contentful.config';
@@ -80,11 +80,11 @@ const Header = (props: HeaderPropsInterface) => {
             maxWidth: `${CONTAINER_WIDTH / 10}rem`,
           }}>
           <Link href="/" withoutMaterial>
-            <ContentfulImage
-              src={contentfulConfig.header.logo}
-              alt="Logo"
-              width={`${contentfulConfig.header.logoWidth}px`}
-              height={`${contentfulConfig.header.logoHeight}px`}
+            <CtfImage
+              url={contentfulConfig.header.logo}
+              title={t('common.logoImageAltText')}
+              width={contentfulConfig.header.logoWidth}
+              height={contentfulConfig.header.logoHeight}
             />
           </Link>
           {contentfulConfig.header.menu.length > 0 && (

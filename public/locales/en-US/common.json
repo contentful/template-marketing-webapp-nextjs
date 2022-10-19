@@ -7,7 +7,8 @@
     "createAccount": "Create your GoCoin account",
     "signInAccount": "Sign into your GoCoin account",
     "noAccount": "Don't have an account?",
-    "existingAccount": "Already have an account?"
+    "existingAccount": "Already have an account?",
+    "logoImageAltText": "Logo"
   },
   "price": {
     "free": "Free"

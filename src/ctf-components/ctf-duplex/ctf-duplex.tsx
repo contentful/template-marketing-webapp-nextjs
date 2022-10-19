@@ -4,8 +4,8 @@ import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 
 import { DuplexFieldsFragment } from '@ctf-components/ctf-duplex/__generated/ctf-duplex.generated';
+import { CtfImage } from '@ctf-components/ctf-image/ctf-image';
 import { CtfRichtext } from '@ctf-components/ctf-richtext/ctf-richtext';
-import { ContentfulImage } from '@src/components/contentful-image/contentful-image';
 import PageLink from '@src/components/link/page-link';
 import PostLink from '@src/components/link/post-link';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
@@ -146,10 +146,10 @@ const DuplexImage = (props: DuplexFieldsFragment) => {
     <div className={classes.imageContainer}>
       {image ? (
         <div className={classes.nextImageContainer}>
-          <ContentfulImage
+          <CtfImage
             className={clsx([classes.image, imageStyle === 'fixed' && classes.imageFull])}
-            src={`${image.url}?w=600`}
-            alt={image.description || undefined}
+            url={`${image.url}?w=600`}
+            title={image.description || undefined}
             layout="responsive"
             width={image.width!}
             height={image.height!}
