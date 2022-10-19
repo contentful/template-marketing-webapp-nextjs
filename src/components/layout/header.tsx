@@ -70,8 +70,8 @@ const Header = (props: HeaderPropsInterface) => {
   const classes = useStyles();
 
   return (
-    <AppBar position="fixed" color="secondary" className={classes.appbar}>
-      <Toolbar className={classes.toolbar}>
+    <AppBar position="sticky" color="secondary" className={classes.appbar}>
+      <Toolbar>
         <Container
           className={classes.toolbarContent}
           disableGutters

@@ -1,18 +1,11 @@
-import { Theme } from '@mui/material';
 import { CSSProperties } from '@mui/material/styles/createTypography';
 import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import React from 'react';
 
-import { HEADER_HEIGHT_MD, HEADER_HEIGHT } from '@src/theme';
-
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   pageContainerRoot: {
-    marginTop: HEADER_HEIGHT_MD,
     width: '100%',
-    [theme.breakpoints.up('md')]: {
-      marginTop: HEADER_HEIGHT,
-    },
   },
 }));
 
