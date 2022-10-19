@@ -2,7 +2,6 @@ import { Menu } from '@mui/icons-material';
 import { AppBar, Container, IconButton, Theme, Toolbar, Box } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
-import { CtfImage } from '@ctf-components/ctf-image/ctf-image';
 import { CtfNavigationGql } from '@ctf-components/ctf-navigation/ctf-navigation-gql';
 import Link from '@src/components/link/link';
 import Logo from '@src/icons/colorful-coin-logo.svg';
