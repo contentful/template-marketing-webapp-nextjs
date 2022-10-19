@@ -65,13 +65,13 @@ module.exports = withPlugins(plugins, {
   },
 
   webpack(config, options) {
-    if (!options.isServer) {
+    if (!options.isServer || process.env.circularDependencies) {
       import('circular-dependency-plugin').then(({ default: CircularDependencyPlugin }) => {
         config.plugins.push(
           new CircularDependencyPlugin({
             exclude: /a\.js|node_modules/,
             failOnError: false,
-            allowAsyncCycles: false,
+            allowAsyncCycles: true,
             cwd: process.cwd(),
           }),
         );
