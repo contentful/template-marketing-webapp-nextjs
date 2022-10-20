@@ -1,12 +1,8 @@
 import * as Types from '../../../lib/__generated/graphql.types';
 
 import { PageLinkFieldsFragment } from '../../../components/link/__generated/page-link.generated';
-import { CategoryLinkFieldsFragment } from '../../../components/link/__generated/category-link.generated';
-import { PostLinkFieldsFragment } from '../../../components/link/__generated/post-link.generated';
 import { MenuGroupFieldsFragment } from '../../../lib/shared-fragments/__generated/ctf-menuGroup.generated';
 import { PageLinkFieldsFragmentDoc } from '../../../components/link/__generated/page-link.generated';
-import { CategoryLinkFieldsFragmentDoc } from '../../../components/link/__generated/category-link.generated';
-import { PostLinkFieldsFragmentDoc } from '../../../components/link/__generated/post-link.generated';
 import { MenuGroupFieldsFragmentDoc } from '../../../lib/shared-fragments/__generated/ctf-menuGroup.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 
@@ -30,14 +26,8 @@ function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
   }
 }
 export type NavigationFieldsFragment = { __typename?: 'NavigationMenuCollection', items: Array<{ __typename?: 'NavigationMenu', menuItemsCollection?: { __typename?: 'NavigationMenuMenuItemsCollection', items: Array<{ __typename?: 'MenuGroup', label?: string | null, link?: (
-          { __typename?: 'Category' }
-          & CategoryLinkFieldsFragment
-        ) | (
           { __typename?: 'Page' }
           & PageLinkFieldsFragment
-        ) | (
-          { __typename?: 'Post' }
-          & PostLinkFieldsFragment
         ) | null, children?: (
           { __typename?: 'MenuGroupFeaturedPagesCollection' }
           & MenuGroupFieldsFragment
@@ -62,8 +52,6 @@ export const NavigationFieldsFragmentDoc = `
         label: groupName
         link: groupLink {
           ...PageLinkFields
-          ...CategoryLinkFields
-          ...PostLinkFields
         }
         children: featuredPagesCollection {
           ...MenuGroupFields
@@ -81,8 +69,6 @@ export const CtfNavigationDocument = `
 }
     ${NavigationFieldsFragmentDoc}
 ${PageLinkFieldsFragmentDoc}
-${CategoryLinkFieldsFragmentDoc}
-${PostLinkFieldsFragmentDoc}
 ${MenuGroupFieldsFragmentDoc}`;
 export const useCtfNavigationQuery = <
       TData = CtfNavigationQuery,

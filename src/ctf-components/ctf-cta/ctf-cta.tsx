@@ -4,7 +4,6 @@ import { makeStyles } from '@mui/styles';
 import { CtaFieldsFragment } from '@ctf-components/ctf-cta/__generated/ctf-cta.generated';
 import { CtfRichtext } from '@ctf-components/ctf-richtext/ctf-richtext';
 import PageLink from '@src/components/link/page-link';
-import PostLink from '@src/components/link/post-link';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 import { getColorConfigFromPalette } from '@src/theme';
 import optimizeLineBreak from '@src/typography/optimize-line-break';
@@ -65,28 +64,15 @@ export const CtfCta = (props: CtaFieldsFragment) => {
         )}
         {targetPage && targetPage.slug && (
           <div className={classes.ctaContainer}>
-            {targetPage.__typename === 'Page' && (
-              <PageLink
-                page={targetPage}
-                variant="contained"
-                color={colorConfig.buttonColor}
-                isButton
-                urlParams={urlParameters ?? ''}
-              >
-                {ctaText}
-              </PageLink>
-            )}
-            {targetPage.__typename === 'Post' && (
-              <PostLink
-                post={targetPage}
-                variant="contained"
-                color={colorConfig.buttonColor}
-                isButton
-                urlParams={urlParameters ?? ''}
-              >
-                {ctaText}
-              </PostLink>
-            )}
+            <PageLink
+              page={targetPage}
+              variant="contained"
+              color={colorConfig.buttonColor}
+              isButton
+              urlParams={urlParameters ?? ''}
+            >
+              {ctaText}
+            </PageLink>
           </div>
         )}
       </div>

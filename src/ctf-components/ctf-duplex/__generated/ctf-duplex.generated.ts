@@ -1,10 +1,8 @@
 import * as Types from '../../../lib/__generated/graphql.types';
 
 import { PageLinkFieldsFragment } from '../../../components/link/__generated/page-link.generated';
-import { PostLinkFieldsFragment } from '../../../components/link/__generated/post-link.generated';
 import { AssetFieldsFragment } from '../../ctf-asset/__generated/ctf-asset.generated';
 import { PageLinkFieldsFragmentDoc } from '../../../components/link/__generated/page-link.generated';
-import { PostLinkFieldsFragmentDoc } from '../../../components/link/__generated/post-link.generated';
 import { AssetFieldsFragmentDoc } from '../../ctf-asset/__generated/ctf-asset.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 
@@ -30,9 +28,6 @@ function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
 export type DuplexFieldsFragment = { __typename: 'ComponentDuplex', internalName?: string | null, containerLayout?: boolean | null, headline?: string | null, ctaText?: string | null, imageStyle?: boolean | null, colorPalette?: string | null, sys: { __typename?: 'Sys', id: string }, bodyText?: { __typename?: 'ComponentDuplexBodyText', json: any } | null, targetPage?: (
     { __typename?: 'Page' }
     & PageLinkFieldsFragment
-  ) | (
-    { __typename?: 'Post' }
-    & PostLinkFieldsFragment
   ) | null, image?: (
     { __typename?: 'Asset' }
     & AssetFieldsFragment
@@ -65,7 +60,6 @@ export const DuplexFieldsFragmentDoc = `
   ctaText
   targetPage {
     ...PageLinkFields
-    ...PostLinkFields
   }
   image {
     ...AssetFields
@@ -82,7 +76,6 @@ export const CtfDuplexDocument = `
 }
     ${DuplexFieldsFragmentDoc}
 ${PageLinkFieldsFragmentDoc}
-${PostLinkFieldsFragmentDoc}
 ${AssetFieldsFragmentDoc}`;
 export const useCtfDuplexQuery = <
       TData = CtfDuplexQuery,

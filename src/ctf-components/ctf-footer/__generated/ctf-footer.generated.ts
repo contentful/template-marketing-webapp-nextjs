@@ -2,12 +2,8 @@ import * as Types from '../../../lib/__generated/graphql.types';
 
 import { MenuGroupFieldsFragment } from '../../../lib/shared-fragments/__generated/ctf-menuGroup.generated';
 import { PageLinkFieldsFragment } from '../../../components/link/__generated/page-link.generated';
-import { CategoryLinkFieldsFragment } from '../../../components/link/__generated/category-link.generated';
-import { PostLinkFieldsFragment } from '../../../components/link/__generated/post-link.generated';
 import { MenuGroupFieldsFragmentDoc } from '../../../lib/shared-fragments/__generated/ctf-menuGroup.generated';
 import { PageLinkFieldsFragmentDoc } from '../../../components/link/__generated/page-link.generated';
-import { CategoryLinkFieldsFragmentDoc } from '../../../components/link/__generated/category-link.generated';
-import { PostLinkFieldsFragmentDoc } from '../../../components/link/__generated/post-link.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 
 function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
@@ -79,9 +75,7 @@ export const CtfFooterDocument = `
 }
     ${FooterFieldsFragmentDoc}
 ${MenuGroupFieldsFragmentDoc}
-${PageLinkFieldsFragmentDoc}
-${CategoryLinkFieldsFragmentDoc}
-${PostLinkFieldsFragmentDoc}`;
+${PageLinkFieldsFragmentDoc}`;
 export const useCtfFooterQuery = <
       TData = CtfFooterQuery,
       TError = unknown
