@@ -365,84 +365,6 @@ enum ComponentDuplexOrder {
 union ComponentDuplexTargetPage = Page
 
 """
-Collection of cards to promote editorial and marketing content [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/componentFeaturedCards)
-"""
-type ComponentFeaturedCards implements Entry {
-  contentfulMetadata: ContentfulMetadata!
-  featuredPostsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentFeaturedCardsFeaturedPostsCollection
-  headline(locale: String): String
-  internalName(locale: String): String
-  linkedFrom(allowedLocales: [String]): ComponentFeaturedCardsLinkingCollections
-  subline(locale: String): String
-  sys: Sys!
-}
-
-type ComponentFeaturedCardsCollection {
-  items: [ComponentFeaturedCards]!
-  limit: Int!
-  skip: Int!
-  total: Int!
-}
-
-type ComponentFeaturedCardsFeaturedPostsCollection {
-  items: [Entry]!
-  limit: Int!
-  skip: Int!
-  total: Int!
-}
-
-input ComponentFeaturedCardsFilter {
-  AND: [ComponentFeaturedCardsFilter]
-  OR: [ComponentFeaturedCardsFilter]
-  contentfulMetadata: ContentfulMetadataFilter
-  featuredPostsCollection_exists: Boolean
-  headline: String
-  headline_contains: String
-  headline_exists: Boolean
-  headline_in: [String]
-  headline_not: String
-  headline_not_contains: String
-  headline_not_in: [String]
-  internalName: String
-  internalName_contains: String
-  internalName_exists: Boolean
-  internalName_in: [String]
-  internalName_not: String
-  internalName_not_contains: String
-  internalName_not_in: [String]
-  subline: String
-  subline_contains: String
-  subline_exists: Boolean
-  subline_in: [String]
-  subline_not: String
-  subline_not_contains: String
-  subline_not_in: [String]
-  sys: SysFilter
-}
-
-type ComponentFeaturedCardsLinkingCollections {
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  pageCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageCollection
-}
-
-enum ComponentFeaturedCardsOrder {
-  headline_ASC
-  headline_DESC
-  internalName_ASC
-  internalName_DESC
-  subline_ASC
-  subline_DESC
-  sys_firstPublishedAt_ASC
-  sys_firstPublishedAt_DESC
-  sys_id_ASC
-  sys_id_DESC
-  sys_publishedAt_ASC
-  sys_publishedAt_DESC
-  sys_publishedVersion_ASC
-  sys_publishedVersion_DESC
-}
-
-"""
 Full-width container for displaying images and snappy copy; can include an optional CTA [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/componentHeroBanner)
 """
 type ComponentHeroBanner implements Entry {
@@ -1469,7 +1391,7 @@ type PageExtraSectionCollection {
   total: Int!
 }
 
-union PageExtraSectionItem = ComponentCta | ComponentDuplex | ComponentFeaturedCards | ComponentHeroBanner | ComponentInfoBlock | ComponentQuote | ComponentTextBlock
+union PageExtraSectionItem = ComponentCta | ComponentDuplex | ComponentHeroBanner | ComponentInfoBlock | ComponentQuote | ComponentTextBlock
 
 input PageFilter {
   AND: [PageFilter]
@@ -1538,7 +1460,7 @@ type PageTopSectionCollection {
   total: Int!
 }
 
-union PageTopSectionItem = ComponentCta | ComponentDuplex | ComponentFeaturedCards | ComponentHeroBanner | ComponentInfoBlock | ComponentQuote | ComponentTextBlock
+union PageTopSectionItem = ComponentCta | ComponentDuplex | ComponentHeroBanner | ComponentInfoBlock | ComponentQuote | ComponentTextBlock
 
 """
 The 'Quality' type represents quality as whole numeric values between `1` and `100`.
@@ -1552,8 +1474,6 @@ type Query {
   componentCtaCollection(limit: Int = 100, locale: String, order: [ComponentCtaOrder], preview: Boolean, skip: Int = 0, where: ComponentCtaFilter): ComponentCtaCollection
   componentDuplex(id: String!, locale: String, preview: Boolean): ComponentDuplex
   componentDuplexCollection(limit: Int = 100, locale: String, order: [ComponentDuplexOrder], preview: Boolean, skip: Int = 0, where: ComponentDuplexFilter): ComponentDuplexCollection
-  componentFeaturedCards(id: String!, locale: String, preview: Boolean): ComponentFeaturedCards
-  componentFeaturedCardsCollection(limit: Int = 100, locale: String, order: [ComponentFeaturedCardsOrder], preview: Boolean, skip: Int = 0, where: ComponentFeaturedCardsFilter): ComponentFeaturedCardsCollection
   componentHeroBanner(id: String!, locale: String, preview: Boolean): ComponentHeroBanner
   componentHeroBannerCollection(limit: Int = 100, locale: String, order: [ComponentHeroBannerOrder], preview: Boolean, skip: Int = 0, where: ComponentHeroBannerFilter): ComponentHeroBannerCollection
   componentInfoBlock(id: String!, locale: String, preview: Boolean): ComponentInfoBlock
