@@ -2,9 +2,6 @@ fragment RichTextHyperlinkFields on Query {
   page(id: $id, preview: $preview, locale: $locale) {
     ...PageLinkFields
   }
-  post(id: $id, preview: $preview, locale: $locale) {
-    ...PostLinkFields
-  }
 }
 
 query CtfRichTextHyperlink($id: String!, $locale: String, $preview: Boolean) {

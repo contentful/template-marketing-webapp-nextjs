@@ -12,7 +12,6 @@ import { AssetFieldsFragment } from '@ctf-components/ctf-asset/__generated/ctf-a
 import { useCtfRichTextHyperlinkQuery } from '@ctf-components/ctf-richtext/__generated/ctf-richtext.generated';
 import ComponentResolver from '@src/components/component-resolver';
 import PageLink from '@src/components/link/page-link';
-import PostLink from '@src/components/link/post-link';
 import { useContentfulContext } from '@src/contentful-context';
 import LayoutContext from '@src/layout-context';
 import { OmitRecursive, tryget } from '@src/utils';
@@ -202,14 +201,6 @@ const EntryHyperlink = ({ node }) => {
     );
   }
 
-  if (data.post) {
-    return (
-      <PostLink post={data.post} variant="contained" underline>
-        {(node.content[0] as any).value}
-      </PostLink>
-    );
-  }
-
   return null;
 };
 
@@ -323,31 +314,31 @@ export const CtfRichtext = (props: CtfRichtextPropsInterface) => {
 
     const paragraphRenderer =
       (rendererProps: ParagraphRendererInterface = {}) =>
-      (_node, children) => {
-        const { variant, className, component } = rendererProps;
+        (_node, children) => {
+          const { variant, className, component } = rendererProps;
 
-        if (!variant) {
-          return <ParagraphGridContainer>{children}</ParagraphGridContainer>;
-        }
+          if (!variant) {
+            return <ParagraphGridContainer>{children}</ParagraphGridContainer>;
+          }
 
-        if (component) {
+          if (component) {
+            return (
+              <ParagraphGridContainer>
+                <Typography variant={variant} className={className} component={component}>
+                  {children}
+                </Typography>
+              </ParagraphGridContainer>
+            );
+          }
+
           return (
             <ParagraphGridContainer>
-              <Typography variant={variant} className={className} component={component}>
+              <Typography variant={variant} className={className}>
                 {children}
               </Typography>
             </ParagraphGridContainer>
           );
-        }
-
-        return (
-          <ParagraphGridContainer>
-            <Typography variant={variant} className={className}>
-              {children}
-            </Typography>
-          </ParagraphGridContainer>
-        );
-      };
+        };
 
     opts.renderNode![BLOCKS.PARAGRAPH] = paragraphRenderer({
       variant: 'body1',

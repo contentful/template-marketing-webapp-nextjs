@@ -11,7 +11,6 @@ fragment CtaFields on ComponentCta {
   ctaText
   targetPage {
     ...PageLinkFields
-    ...PostLinkFields
   }
   urlParameters
   colorPalette

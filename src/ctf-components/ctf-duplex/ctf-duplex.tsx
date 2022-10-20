@@ -7,7 +7,6 @@ import { DuplexFieldsFragment } from '@ctf-components/ctf-duplex/__generated/ctf
 import { CtfImage } from '@ctf-components/ctf-image/ctf-image';
 import { CtfRichtext } from '@ctf-components/ctf-richtext/ctf-richtext';
 import PageLink from '@src/components/link/page-link';
-import PostLink from '@src/components/link/post-link';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 import { getColorConfigFromPalette } from '@src/theme';
 import optimizeLineBreak from '@src/typography/optimize-line-break';
@@ -110,26 +109,14 @@ const DuplexContent = (props: DuplexFieldsFragment) => {
       )}
       {targetPage && targetPage.slug && (
         <div className={classes.ctaContainer}>
-          {targetPage.__typename === 'Page' && (
-            <PageLink
-              page={targetPage}
-              variant="contained"
-              color={colorConfig.buttonColor}
-              isButton
-            >
-              {ctaText}
-            </PageLink>
-          )}
-          {targetPage.__typename === 'Post' && (
-            <PostLink
-              post={targetPage}
-              variant="contained"
-              color={colorConfig.buttonColor}
-              isButton
-            >
-              {ctaText}
-            </PostLink>
-          )}
+          <PageLink
+            page={targetPage}
+            variant="contained"
+            color={colorConfig.buttonColor}
+            isButton
+          >
+            {ctaText}
+          </PageLink>
         </div>
       )}
     </div>

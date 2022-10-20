@@ -1,9 +1,7 @@
 import * as Types from '../../../lib/__generated/graphql.types';
 
-import { PostLinkFieldsFragment } from '../../../components/link/__generated/post-link.generated';
 import { PageLinkFieldsFragment } from '../../../components/link/__generated/page-link.generated';
 import { AssetFieldsFragment } from '../../ctf-asset/__generated/ctf-asset.generated';
-import { PostLinkFieldsFragmentDoc } from '../../../components/link/__generated/post-link.generated';
 import { PageLinkFieldsFragmentDoc } from '../../../components/link/__generated/page-link.generated';
 import { AssetFieldsFragmentDoc } from '../../ctf-asset/__generated/ctf-asset.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
@@ -30,9 +28,6 @@ function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
 export type HeroBannerFieldsFragment = { __typename: 'ComponentHeroBanner', internalName?: string | null, headline?: string | null, ctaText?: string | null, imageStyle?: boolean | null, heroSize?: boolean | null, colorPalette?: string | null, sys: { __typename?: 'Sys', id: string }, bodyText?: { __typename?: 'ComponentHeroBannerBodyText', json: any } | null, targetPage?: (
     { __typename?: 'Page' }
     & PageLinkFieldsFragment
-  ) | (
-    { __typename?: 'Post' }
-    & PostLinkFieldsFragment
   ) | null, image?: (
     { __typename?: 'Asset' }
     & AssetFieldsFragment
@@ -63,7 +58,6 @@ export const HeroBannerFieldsFragmentDoc = `
   }
   ctaText
   targetPage {
-    ...PostLinkFields
     ...PageLinkFields
   }
   image {
@@ -81,7 +75,6 @@ export const HeroBannerDocument = `
   }
 }
     ${HeroBannerFieldsFragmentDoc}
-${PostLinkFieldsFragmentDoc}
 ${PageLinkFieldsFragmentDoc}
 ${AssetFieldsFragmentDoc}`;
 export const useHeroBannerQuery = <

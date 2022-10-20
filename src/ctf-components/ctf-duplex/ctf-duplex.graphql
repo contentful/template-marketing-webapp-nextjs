@@ -12,7 +12,6 @@ fragment DuplexFields on ComponentDuplex {
   ctaText
   targetPage {
     ...PageLinkFields
-    ...PostLinkFields
   }
   image {
     ...AssetFields

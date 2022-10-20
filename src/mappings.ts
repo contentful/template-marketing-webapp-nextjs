@@ -17,11 +17,6 @@ const pageTopicMap = {
 };
 
 export const componentMap = {
-  ComponentFeaturedCards: dynamic(() =>
-    import('./ctf-components/ctf-featured-cards/ctf-featured-cards').then(
-      module => module.CtfFeaturedCards,
-    ),
-  ),
   ComponentCta: dynamic(() =>
     import('./ctf-components/ctf-cta/ctf-cta').then(module => module.CtfCta),
   ),
@@ -47,11 +42,6 @@ export const componentMap = {
 
 export const componentGqlMap = {
   ...pageTopicMap,
-  ComponentFeaturedCards: dynamic(() =>
-    import('./ctf-components/ctf-featured-cards/ctf-featured-cards-gql').then(
-      module => module.CtfFeaturedCardsGql,
-    ),
-  ),
   ComponentCta: dynamic(() =>
     import('./ctf-components/ctf-cta/ctf-cta-gql').then(module => module.CtfCtaGql),
   ),

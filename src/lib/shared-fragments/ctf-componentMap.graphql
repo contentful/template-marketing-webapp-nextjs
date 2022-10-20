@@ -9,9 +9,6 @@ fragment ComponentReferenceFields on Entry {
   ... on ComponentDuplex {
     internalName
   }
-  ... on ComponentFeaturedCards {
-    internalName
-  }
   ... on ComponentHeroBanner {
     internalName
   }
