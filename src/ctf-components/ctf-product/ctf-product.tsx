@@ -6,7 +6,6 @@ import { ProductFieldsFragment } from './__generated/ctf-product.generated';
 
 import { CtfAsset } from '@ctf-components/ctf-asset/ctf-asset';
 import { CtfRichtext } from '@ctf-components/ctf-richtext/ctf-richtext';
-import Link from '@src/components/link/link';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -143,11 +142,6 @@ export const CtfProduct = (props: ProductFieldsFragment) => {
                 <CtfRichtext {...description} className={classes.body} />
               </LayoutContext.Provider>
             )}
-            <div className={classes.ctaContainer}>
-              <Link href="/sign-in" isButton color="primary" variant="contained">
-                Sign Up
-              </Link>
-            </div>
           </div>
           {featuredImage && (
             <div className={classes.imageContainer}>

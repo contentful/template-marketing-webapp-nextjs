@@ -10,7 +10,6 @@ import { ProductTableFieldsFragment } from './__generated/ctf-product-table.gene
 
 import { CtfRichtext } from '@ctf-components/ctf-richtext/ctf-richtext';
 import { FormatCurrency } from '@src/components/format-currency';
-import Link from '@src/components/link/link';
 import SectionHeadlines from '@src/components/section-headlines/section-headlines';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 
@@ -267,8 +266,7 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                       className={classes.comparisonTableColumn}
                       ref={el => {
                         gridColumnElements.current[j] = el;
-                      }}
-                    >
+                      }}>
                       <div className={classes.featuredImage}>
                         <div
                           data-equal-size="0"
@@ -277,8 +275,7 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                               gridSizes[`index-0`] === undefined
                                 ? undefined
                                 : `${gridSizes[`index-0`]}px`,
-                          }}
-                        >
+                          }}>
                           {product.featuredImage && (
                             <Image
                               src={product.featuredImage.url as string}
@@ -299,8 +296,7 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                             gridSizes[`index-1`] === undefined
                               ? undefined
                               : `${gridSizes[`index-1`]}px`,
-                        }}
-                      >
+                        }}>
                         <Typography variant="h2">{product.name}</Typography>
                       </div>
                       <div
@@ -310,15 +306,13 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                             gridSizes['index-2'] === undefined
                               ? undefined
                               : `${gridSizes['index-2']}px`,
-                        }}
-                      >
+                        }}>
                         {product.description && (
                           <LayoutContext.Provider
                             value={{
                               ...defaultLayout,
                               parent: 'product-description',
-                            }}
-                          >
+                            }}>
                             <CtfRichtext
                               {...product.description}
                               className={classes.shortDescription}
@@ -333,8 +327,7 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                             featureNames === null || gridSizes['index-3'] === undefined
                               ? undefined
                               : `${gridSizes['index-3']}px`,
-                        }}
-                      >
+                        }}>
                         {!product.price || product.price === 0 ? (
                           <Typography variant="h2" component="h4" className={classes.priceUpper}>
                             {t('price.free')}
@@ -346,18 +339,12 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                           </Typography>
                         )}
                       </div>
-                      <div className={classes.signUp}>
-                        <Link href="/sign-up" isButton color="primary" variant="contained">
-                          {t('common.signUp')}
-                        </Link>
-                      </div>
                       {featureNames && featuresGrid && (
                         <LayoutContext.Provider
                           value={{
                             ...defaultLayout,
                             parent: 'product-table',
-                          }}
-                        >
+                          }}>
                           <div className={classes.comparisonFeaturesBreak} />
                           {featureNames.map((featureName, i) => (
                             <div
@@ -367,8 +354,7 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                                 featuresGrid[featureName][product.sys.id] === undefined
                                   ? 'true'
                                   : 'false'
-                              }
-                            >
+                              }>
                               <div
                                 data-equal-size={i + 4}
                                 className={classes.featureInner}
@@ -377,8 +363,7 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                                     gridSizes[`index-${i + 4}`] === undefined
                                       ? undefined
                                       : `${gridSizes[`index-${i + 4}`]}px`,
-                                }}
-                              >
+                                }}>
                                 <CtfRichtext {...featuresGrid[featureName][product.sys.id]} />
                               </div>
                             </div>
@@ -394,8 +379,7 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                             gridSizes[`index-${featureNames.length + 4}`] === undefined
                               ? undefined
                               : `${gridSizes[`index-${featureNames.length + 4}`]}px`,
-                        }}
-                      >
+                        }}>
                         {!product.price || product.price === 0 ? (
                           <Typography variant="h2" component="h4">
                             {t('price.free')}
@@ -406,11 +390,6 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                             <span className={classes.priceAddition}>/{t('time.month')}</span>
                           </Typography>
                         )}
-                      </div>
-                      <div className={classes.signUp}>
-                        <Link href="/sign-up" isButton color="primary" variant="contained">
-                          {t('common.signUp')}
-                        </Link>
                       </div>
                     </div>
                   ),

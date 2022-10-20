@@ -79,9 +79,7 @@ export const CtfNavigation = (props: NavigationFieldsFragment) => {
       const linkText = getLinkDisplayText(menuItem);
       return (
         <li key={i} className={listClassName}>
-          <Link href={href} className={classes.menuItem}>
-            {linkText}
-          </Link>
+          <Link href={href}>{linkText}</Link>
         </li>
       );
     });
