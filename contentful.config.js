@@ -29,50 +29,6 @@ module.exports = {
     image:
       'https://images.ctfassets.net/w8vf7dk7f259/4bucno7z1xAyVI5MOkU6Pu/ded83d0ec1eb732ae3a81ddab7a18877/fallback-image-03.jpg',
   },
-  header: {
-    logo:
-      process.env.CONFIG_CONTENTFUL_HEADER_LOGO ||
-      'https://images.ctfassets.net/w8vf7dk7f259/N3oD9LQUQYMIG4mj0IHck/2cae76d412675c96100941b2a381672d/colorful-coin-logo.svg',
-    logoWidth: process.env.CONFIG_CONTENTFUL_HEADER_LOGO_WIDTH
-      ? parseInt(process.env.CONFIG_CONTENTFUL_HEADER_LOGO_WIDTH, 10)
-      : 113,
-    logoHeight: process.env.CONFIG_CONTENTFUL_HEADER_LOGO_HEIGHT
-      ? parseInt(process.env.CONFIG_CONTENTFUL_HEADER_LOGO_HEIGHT, 10)
-      : 40,
-    menu: process.env.CONFIG_CONTENTFUL_HEADER_MENU
-      ? JSON.parse(process.env.CONFIG_CONTENTFUL_HEADER_MENU)
-      : [
-          {
-            label: 'Products',
-            children: [
-              {
-                label: 'Classic',
-                location: '/classic-card',
-              },
-              {
-                label: 'Black',
-                location: '/black-card',
-              },
-              {
-                label: 'Corporate',
-                location: '/corporate-card',
-              },
-            ],
-          },
-          {
-            label: 'Pricing',
-            location: '/pricing',
-          },
-          {
-            label: 'About us',
-            location: '/about-us',
-          },
-          {
-            label: 'Blog',
-            location: '/blog',
-          },
-        ],
-  },
   icon: {
     light:
       process.env.CONFIG_CONTENTFUL_ICON_LIGHT ||

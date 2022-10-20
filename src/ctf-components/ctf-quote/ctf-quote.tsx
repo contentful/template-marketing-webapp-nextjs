@@ -1,7 +1,6 @@
 import { Container, Theme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
-import { useTranslation } from 'next-i18next';
 import { useMemo } from 'react';
 
 import { QuoteFieldsFragment } from './__generated/ctf-quote.generated';
@@ -16,7 +15,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     flexDirection: 'column',
     marginLeft: 'auto',
     marginRight: 'auto',
-    // maxWidth: '126rem',
     maxWidth: (props: QuoteFieldsFragment) => (!props.image ? '93.4rem' : '126rem'),
     padding: theme.spacing(19, 0, 19),
     [theme.breakpoints.up('md')]: {
@@ -104,7 +102,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 export const CtfQuote = (props: QuoteFieldsFragment) => {
-  const { t } = useTranslation();
   const {
     imagePosition,
     image,
@@ -124,24 +121,20 @@ export const CtfQuote = (props: QuoteFieldsFragment) => {
         maxWidth={false}
         style={{
           backgroundColor: colorConfig.backgroundColor,
-        }}
-      >
+        }}>
         <div className={classes.innerContainer}>
           <div
             className={clsx(
               classes.innerBody,
               classes[`innerBody-${containerLayout}`],
               backgroundImage ? undefined : classes.innerBodyFull,
-            )}
-          >
+            )}>
             {quote && (
               <div
                 style={{
                   color: colorConfig.textColor,
                   textAlign: quoteAlignment,
-                }}
-              >
-                {t('common.signIn')}
+                }}>
                 <CtfRichtext {...quote} />
               </div>
             )}
