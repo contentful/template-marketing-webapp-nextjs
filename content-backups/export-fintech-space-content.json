@@ -1353,7 +1353,7 @@
         "id": "page",
         "type": "ContentType",
         "createdAt": "2022-09-15T14:29:16.393Z",
-        "updatedAt": "2022-10-14T11:58:17.221Z",
+        "updatedAt": "2022-10-20T13:38:23.417Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -1361,8 +1361,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 9,
-        "publishedAt": "2022-10-14T11:58:17.221Z",
+        "publishedVersion": 13,
+        "publishedAt": "2022-10-20T13:38:23.417Z",
         "firstPublishedAt": "2022-09-15T14:29:21.253Z",
         "createdBy": {
           "sys": {
@@ -1375,16 +1375,16 @@
           "sys": {
             "type": "Link",
             "linkType": "User",
-            "id": "2yMBxu1ERIzFAD1nViscNY"
+            "id": "71mGdtYS1bRYVZepHbBmRT"
           }
         },
-        "publishedCounter": 5,
-        "version": 10,
+        "publishedCounter": 7,
+        "version": 14,
         "publishedBy": {
           "sys": {
             "type": "Link",
             "linkType": "User",
-            "id": "2yMBxu1ERIzFAD1nViscNY"
+            "id": "71mGdtYS1bRYVZepHbBmRT"
           }
         }
       },
@@ -1462,13 +1462,10 @@
                 "linkContentType": [
                   "componentCta",
                   "componentDuplex",
-                  "componentFeaturedCards",
                   "componentHeroBanner",
                   "componentInfoBlock",
                   "componentQuote",
-                  "componentTextBlock",
-                  "wrapperExternalAsset",
-                  "personalizationContainer"
+                  "componentTextBlock"
                 ]
               }
             ],
@@ -1506,13 +1503,10 @@
                 "linkContentType": [
                   "componentCta",
                   "componentDuplex",
-                  "componentFeaturedCards",
                   "componentHeroBanner",
                   "componentInfoBlock",
                   "componentQuote",
-                  "componentTextBlock",
-                  "wrapperExternalAsset",
-                  "personalizationContainer"
+                  "componentTextBlock"
                 ]
               }
             ],
@@ -5065,7 +5059,7 @@
             "linkType": "Space"
           }
         },
-        "version": 14,
+        "version": 18,
         "createdAt": "2022-09-15T14:29:21.325Z",
         "createdBy": {
           "sys": {
@@ -5074,10 +5068,10 @@
             "linkType": "User"
           }
         },
-        "updatedAt": "2022-10-14T11:58:18.311Z",
+        "updatedAt": "2022-10-20T13:38:23.975Z",
         "updatedBy": {
           "sys": {
-            "id": "2yMBxu1ERIzFAD1nViscNY",
+            "id": "71mGdtYS1bRYVZepHbBmRT",
             "type": "Link",
             "linkType": "User"
           }
@@ -16349,7 +16343,7 @@
         "id": "3t7Iub6Arm23Cn7wWkIJTd",
         "type": "Entry",
         "createdAt": "2022-09-15T14:33:41.968Z",
-        "updatedAt": "2022-10-17T10:26:18.305Z",
+        "updatedAt": "2022-10-20T13:42:27.271Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -16357,8 +16351,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 3,
-        "publishedAt": "2022-10-17T10:26:18.305Z",
+        "publishedVersion": 5,
+        "publishedAt": "2022-10-20T13:42:27.271Z",
         "firstPublishedAt": "2022-09-15T14:35:30.524Z",
         "createdBy": {
           "sys": {
@@ -16374,8 +16368,8 @@
             "id": "71mGdtYS1bRYVZepHbBmRT"
           }
         },
-        "publishedCounter": 2,
-        "version": 4,
+        "publishedCounter": 3,
+        "version": 6,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -16455,13 +16449,6 @@
                 "type": "Link",
                 "linkType": "Entry",
                 "id": "2fh7DboJhjWwcRmWfZnC5R"
-              }
-            },
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "60wne4Sbe009bfHEyi1KTc"
               }
             },
             {
