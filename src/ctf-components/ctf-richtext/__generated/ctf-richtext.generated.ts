@@ -1,9 +1,7 @@
 import * as Types from '../../../lib/__generated/graphql.types';
 
 import { PageLinkFieldsFragment } from '../../../components/link/__generated/page-link.generated';
-import { PostLinkFieldsFragment } from '../../../components/link/__generated/post-link.generated';
 import { PageLinkFieldsFragmentDoc } from '../../../components/link/__generated/page-link.generated';
-import { PostLinkFieldsFragmentDoc } from '../../../components/link/__generated/post-link.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 
 function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
@@ -28,9 +26,6 @@ function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
 export type RichTextHyperlinkFieldsFragment = { __typename?: 'Query', page?: (
     { __typename?: 'Page' }
     & PageLinkFieldsFragment
-  ) | null, post?: (
-    { __typename?: 'Post' }
-    & PostLinkFieldsFragment
   ) | null };
 
 export type CtfRichTextHyperlinkQueryVariables = Types.Exact<{
@@ -50,9 +45,6 @@ export const RichTextHyperlinkFieldsFragmentDoc = `
   page(id: $id, preview: $preview, locale: $locale) {
     ...PageLinkFields
   }
-  post(id: $id, preview: $preview, locale: $locale) {
-    ...PostLinkFields
-  }
 }
     `;
 export const CtfRichTextHyperlinkDocument = `
@@ -60,8 +52,7 @@ export const CtfRichTextHyperlinkDocument = `
   ...RichTextHyperlinkFields
 }
     ${RichTextHyperlinkFieldsFragmentDoc}
-${PageLinkFieldsFragmentDoc}
-${PostLinkFieldsFragmentDoc}`;
+${PageLinkFieldsFragmentDoc}`;
 export const useCtfRichTextHyperlinkQuery = <
       TData = CtfRichTextHyperlinkQuery,
       TError = unknown

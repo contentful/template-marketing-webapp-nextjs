@@ -10,7 +10,6 @@ fragment HeroBannerFields on ComponentHeroBanner {
   }
   ctaText
   targetPage {
-    ...PostLinkFields
     ...PageLinkFields
   }
   image {

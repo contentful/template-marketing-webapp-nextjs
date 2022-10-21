@@ -6,7 +6,6 @@ import { useMemo, useContext } from 'react';
 import { HeroBannerFieldsFragment } from '@ctf-components/ctf-hero-banner/__generated/ctf-hero-banner.generated';
 import { CtfRichtext } from '@ctf-components/ctf-richtext/ctf-richtext';
 import PageLink from '@src/components/link/page-link';
-import PostLink from '@src/components/link/post-link';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 import { getColorConfigFromPalette, HEADER_HEIGHT_MD, HEADER_HEIGHT } from '@src/theme';
 
@@ -153,24 +152,13 @@ export const CtfHeroBanner = (props: HeroBannerFieldsFragment) => {
         )}
         {targetPage && ctaText && (
           <div className={classes.ctaContainer}>
-            {targetPage.__typename === 'Page' && (
-              <PageLink
-                page={targetPage}
-                variant="contained"
-                color={colorConfig.buttonColor}
-                isButton>
-                {ctaText}
-              </PageLink>
-            )}
-            {targetPage.__typename === 'Post' && (
-              <PostLink
-                post={targetPage}
-                variant="contained"
-                color={colorConfig.buttonColor}
-                isButton>
-                {ctaText}
-              </PostLink>
-            )}
+            <PageLink
+              page={targetPage}
+              variant="contained"
+              color={colorConfig.buttonColor}
+              isButton>
+              {ctaText}
+            </PageLink>
           </div>
         )}
       </div>
