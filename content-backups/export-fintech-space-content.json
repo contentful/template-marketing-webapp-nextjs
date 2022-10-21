@@ -15762,7 +15762,7 @@
         "id": "7wGhPNCZNLknpSaJVWfnHf",
         "type": "Entry",
         "createdAt": "2022-09-15T14:33:41.199Z",
-        "updatedAt": "2022-09-15T14:35:29.205Z",
+        "updatedAt": "2022-10-21T11:15:36.602Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -15770,8 +15770,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 1,
-        "publishedAt": "2022-09-15T14:35:29.205Z",
+        "publishedVersion": 3,
+        "publishedAt": "2022-10-21T11:15:36.602Z",
         "firstPublishedAt": "2022-09-15T14:35:29.205Z",
         "createdBy": {
           "sys": {
@@ -15787,8 +15787,8 @@
             "id": "71mGdtYS1bRYVZepHbBmRT"
           }
         },
-        "publishedCounter": 1,
-        "version": 2,
+        "publishedCounter": 2,
+        "version": 4,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -15823,17 +15823,6 @@
               "id": "ohspi5gYQSqQdFADFTg6F"
             }
           }
-        },
-        "extraSection": {
-          "en-US": [
-            {
-              "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "7sNzb7izn03Kj8RQLiOHt"
-              }
-            }
-          ]
         }
       }
     },
