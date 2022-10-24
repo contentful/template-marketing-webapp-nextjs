@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import { fetchDefaultHeaderParams, fetchHeaderParamsPreview, fetchGraphqlEndpoint } from '@src/lib/fetchParams';
+import { fetcherHeaderParamsDefault, fetcherHeaderParamsPreview, fetcherGraphqlEndpoint } from '@src/lib/fetcherParams';
 import contentfulConfig from 'contentful.config';
 import i18nConfig from 'next-i18next.config.js';
 const { i18n } = i18nConfig;
@@ -33,11 +33,11 @@ export const contentfulContextValue: ContentfulContextInterface = {
   appUrl: contentfulConfig.meta.url,
   spaceEnv: 'default',
   availableLocales: contentfulConfig.contentful.available_locales,
-  fetcherUrl: fetchGraphqlEndpoint,
+  fetcherUrl: fetcherGraphqlEndpoint,
   fetcherConfig: ({ options, query, variables }) => ({
     method: 'POST',
     headers: {
-      ...fetchDefaultHeaderParams.headers,
+      ...fetcherHeaderParamsDefault.headers,
       ...options,
     },
     body: JSON.stringify({
@@ -55,7 +55,7 @@ const ContentfulContentProvider = ({ children, router }) => {
   const previewActive = !!router.query.preview;
 
   const fetcherConfig = ({ options, query, variables }) => {
-    const fetchParamHeaders = previewActive ? fetchHeaderParamsPreview.headers : fetchDefaultHeaderParams.headers;
+    const fetchParamHeaders = previewActive ? fetcherHeaderParamsPreview.headers : fetcherHeaderParamsDefault.headers;
     return {
       method: 'POST',
       headers: {
@@ -81,7 +81,7 @@ const ContentfulContentProvider = ({ children, router }) => {
       appUrl: contentfulConfig.meta.url,
       spaceEnv: router.query.env ?? 'default',
       availableLocales: contentfulConfig.contentful.available_locales,
-      fetcherUrl: fetchGraphqlEndpoint,
+      fetcherUrl: fetcherGraphqlEndpoint,
       fetcherConfig
     }} >
       {children}
