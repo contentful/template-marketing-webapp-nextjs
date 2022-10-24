@@ -1,6 +1,7 @@
 import { Twitter, Facebook, LinkedIn, Instagram } from '@mui/icons-material';
-import { Theme, Container, Typography } from '@mui/material';
+import { Theme, Container, Typography, Box } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import { visuallyHidden } from '@mui/utils';
 import { useTranslation } from 'next-i18next';
 
 import { FooterFieldsFragment } from './__generated/ctf-footer.generated';
@@ -305,22 +306,38 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
               <Typography className={classes.socialTitle}>{t('socials.findUsOn')}</Typography>
               <div className={classes.social}>
                 {footerContent?.twitterLink && (
-                  <a href={footerContent.twitterLink}>
+                  <a
+                    href={footerContent.twitterLink}
+                    title={t('social.twitter')}
+                    target="_blank"
+                    rel="nofollow noreferrer">
                     <Twitter />
                   </a>
                 )}
                 {footerContent?.facebookLink && (
-                  <a href={footerContent.facebookLink}>
+                  <a
+                    href={footerContent.facebookLink}
+                    title={t('social.facebook')}
+                    target="_blank"
+                    rel="nofollow noreferrer">
                     <Facebook />
                   </a>
                 )}
                 {footerContent?.linkedinLink && (
-                  <a href={footerContent.linkedinLink}>
+                  <a
+                    href={footerContent.linkedinLink}
+                    title={t('social.linkedin')}
+                    target="_blank"
+                    rel="nofollow noreferrer">
                     <LinkedIn />
                   </a>
                 )}
                 {footerContent?.instagramLink && (
-                  <a href={footerContent.instagramLink}>
+                  <a
+                    href={footerContent.instagramLink}
+                    title={t('social.instagram')}
+                    target="_blank"
+                    rel="nofollow noreferrer">
                     <Instagram />
                   </a>
                 )}
