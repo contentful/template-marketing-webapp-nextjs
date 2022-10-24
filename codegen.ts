@@ -1,13 +1,13 @@
 import { CodegenConfig } from '@graphql-codegen/cli';
 
-import { fetchParams, graphqlEndpoint } from './src/lib/fetcherConfig';
+import { fetchDefaultHeaderParams, fetchGraphqlEndpoint } from './src/lib/fetchParams';
 
 export const config: CodegenConfig = {
   overwrite: true,
   ignoreNoDocuments: true,
   schema: [
     {
-      [graphqlEndpoint]: fetchParams,
+      [fetchGraphqlEndpoint]: fetchDefaultHeaderParams,
     },
   ],
   generates: {

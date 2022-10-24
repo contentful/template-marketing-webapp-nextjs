@@ -4,21 +4,10 @@ export const useFetchData = <TData, TVariables>(
   query: string,
   options?: RequestInit['headers'],
 ): ((variables?: TVariables) => Promise<TData>) => {
-  const { fetcherUrl, fetchParams } = useContentfulContext();
+  const { fetcherUrl, fetcherConfig } = useContentfulContext();
 
   return async (variables?: TVariables) => {
-    const res = await fetch(fetcherUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...fetchParams.headers,
-        ...options,
-      },
-      body: JSON.stringify({
-        query,
-        variables,
-      }),
-    });
+    const res = await fetch(fetcherUrl, fetcherConfig({ options, query, variables }));
 
     const json = await res.json();
 

@@ -1,6 +1,6 @@
-import React, { useContext, useState, Dispatch, SetStateAction } from 'react';
+import React, { useContext } from 'react';
 
-import { fetchParams, fetchParamsPreview, graphqlEndpoint } from '@src/lib/fetcherConfig';
+import { fetchDefaultHeaderParams, fetchHeaderParamsPreview, fetchGraphqlEndpoint } from '@src/lib/fetchParams';
 import contentfulConfig from 'contentful.config';
 import i18nConfig from 'next-i18next.config.js';
 const { i18n } = i18nConfig;
@@ -17,9 +17,9 @@ export interface ContentfulContextInterface {
   spaceEnv: string;
   availableLocales: string[];
   fetcherUrl: string;
-  fetchParams: {
-    headers: Record<string, string>;
-  };
+  fetcherConfig: (
+    { options, query, variables }: { options: RequestInit['headers'], query: string, variables }
+  ) => Record<string, unknown>;
 }
 
 export const contentfulContextValue: ContentfulContextInterface = {
@@ -33,17 +33,41 @@ export const contentfulContextValue: ContentfulContextInterface = {
   appUrl: contentfulConfig.meta.url,
   spaceEnv: 'default',
   availableLocales: contentfulConfig.contentful.available_locales,
-  fetcherUrl: graphqlEndpoint,
-  fetchParams,
+  fetcherUrl: fetchGraphqlEndpoint,
+  fetcherConfig: ({ options, query, variables }) => ({
+    method: 'POST',
+    headers: {
+      ...fetchDefaultHeaderParams.headers,
+      ...options,
+    },
+    body: JSON.stringify({
+      query,
+      variables,
+    }),
+  }),
 };
 
 export const ContentfulContext = React.createContext<ContentfulContextInterface>(contentfulContextValue);
 
 export const useContentfulContext = () => useContext(ContentfulContext);
 
-
 const ContentfulContentProvider = ({ children, router }) => {
   const previewActive = !!router.query.preview;
+
+  const fetcherConfig = ({ options, query, variables }) => {
+    const fetchParamHeaders = previewActive ? fetchHeaderParamsPreview.headers : fetchDefaultHeaderParams.headers;
+    return {
+      method: 'POST',
+      headers: {
+        ...fetchParamHeaders,
+        ...options,
+      },
+      body: JSON.stringify({
+        query,
+        variables,
+      }),
+    }
+  }
 
   return (
     <ContentfulContext.Provider value={{
@@ -57,8 +81,8 @@ const ContentfulContentProvider = ({ children, router }) => {
       appUrl: contentfulConfig.meta.url,
       spaceEnv: router.query.env ?? 'default',
       availableLocales: contentfulConfig.contentful.available_locales,
-      fetcherUrl: graphqlEndpoint,
-      fetchParams: previewActive ? fetchParamsPreview : fetchParams,
+      fetcherUrl: fetchGraphqlEndpoint,
+      fetcherConfig
     }} >
       {children}
     </ContentfulContext.Provider>
