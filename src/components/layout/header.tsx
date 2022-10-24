@@ -1,6 +1,7 @@
 import { Menu } from '@mui/icons-material';
 import { AppBar, Container, IconButton, Theme, Toolbar, Box } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import { useTranslation } from 'next-i18next';
 
 import { CtfNavigationGql } from '@ctf-components/ctf-navigation/ctf-navigation-gql';
 import Link from '@src/components/link/link';
@@ -64,11 +65,14 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 interface HeaderPropsInterface {
+  isMenuOpen?: boolean;
   onMenuClick?: () => any;
 }
 
 const Header = (props: HeaderPropsInterface) => {
-  const { onMenuClick } = props;
+  const { t } = useTranslation();
+
+  const { onMenuClick, isMenuOpen } = props;
   const classes = useStyles();
 
   return (
@@ -81,7 +85,7 @@ const Header = (props: HeaderPropsInterface) => {
           style={{
             maxWidth: `${CONTAINER_WIDTH / 10}rem`,
           }}>
-          <Link href="/" withoutMaterial>
+          <Link href="/" withoutMaterial title={t('common.homepage')}>
             <Logo className={classes.corporateLogo} />
           </Link>
           <Box display={{ xs: 'none', md: 'block' }}>
@@ -93,7 +97,12 @@ const Header = (props: HeaderPropsInterface) => {
 
         {/* menu button */}
         <Box display={{ md: 'none' }}>
-          <IconButton onClick={() => onMenuClick && onMenuClick()}>
+          <IconButton
+            title={t('navigation.mobileMenuButton')}
+            onClick={() => onMenuClick?.()}
+            aria-controls="mobile-menu"
+            aria-expanded={isMenuOpen}
+            aria-haspopup="dialog">
             <Menu />
           </IconButton>
         </Box>

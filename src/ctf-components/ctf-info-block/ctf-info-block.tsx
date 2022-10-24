@@ -65,7 +65,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       marginTop: '3rem',
     },
     '& p': {
-      color: '#797979',
+      color: '#6f6f6f',
       fontSize: '1.8rem',
       lineHeight: 1.52,
     },
@@ -97,16 +97,14 @@ export const CtfInfoBlock = (props: CtfInfoBlockPropsInterface) => {
       maxWidth={false}
       style={{
         backgroundColor: colorConfig.backgroundColor,
-      }}
-    >
+      }}>
       <div
         className={clsx(
           classes.innerContainer,
           previousComponent === 'ComponentInfoBlock' && !headline && !subline
             ? classes.innerContainerAfterInfoBlock
             : null,
-        )}
-      >
+        )}>
         <SectionHeadlines
           headline={headline}
           headlineProps={{

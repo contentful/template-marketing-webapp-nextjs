@@ -1,5 +1,6 @@
 {
   "common": {
+    "homepage": "Homepage",
     "password": "Password",
     "forgotPassword": "Forgot password?",
     "signIn": "Sign In",
@@ -13,6 +14,9 @@
   "price": {
     "free": "Free"
   },
+  "navigation": {
+    "mobileMenuButton": "Open menu"
+  },
   "time": {
     "month": "Month"
   },
@@ -21,7 +25,11 @@
     "publishedByAuthorOnDate": " on {{ date }}"
   },
   "socials": {
-    "findUsOn": "Find us on"
+    "findUsOn": "Find us on",
+    "twitter": "Twitter",
+    "facebook": "Facebook",
+    "linkedin": "LinkedIn",
+    "instagram": "Instagram"
   },
   "legal": {
     "copyright": "© Copyright {{ year }}",

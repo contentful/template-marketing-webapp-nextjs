@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   submenuItem: {
     '& a': {
       borderBottom: '1px solid transparent',
-      color: '#7C7C7C',
+      color: '#707070',
       display: 'inline-block',
       minWidth: 0,
       transition: 'border-bottom-color 0.2s ease-in-out',
