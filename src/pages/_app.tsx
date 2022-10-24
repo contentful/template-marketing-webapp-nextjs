@@ -48,8 +48,8 @@ const CustomApp = (props: AppProps) => {
   }
 
   return (
-    <QueryClientProvider client={gqlQueryClient}>
-      <ContentfulContext.Provider value={contentfulContextValue}>
+    <ContentfulContext.Provider value={contentfulContextValue}>
+      <QueryClientProvider client={gqlQueryClient}>
         <StyledEngineProvider injectFirst>
           <ThemeProvider theme={colorfulTheme}>
             <Head>
@@ -81,8 +81,8 @@ const CustomApp = (props: AppProps) => {
             </Layout>
           </ThemeProvider>
         </StyledEngineProvider>
-      </ContentfulContext.Provider>
-    </QueryClientProvider>
+      </QueryClientProvider>
+    </ContentfulContext.Provider>
   );
 };
 

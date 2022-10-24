@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 
+import { fetchParams, graphqlEndpoint } from '@src/lib/fetcherConfig';
 import contentfulConfig from 'contentful.config';
 import i18nConfig from 'next-i18next.config.js';
 const { i18n } = i18nConfig;
@@ -15,6 +16,10 @@ export interface ContentfulContextInterface {
   appUrl: string;
   spaceEnv: string;
   availableLocales: string[];
+  fetcherUrl: string;
+  fetchParams: {
+    headers: Record<string, string>;
+  };
 }
 
 export const contentfulContextValue: ContentfulContextInterface = {
@@ -28,6 +33,8 @@ export const contentfulContextValue: ContentfulContextInterface = {
   appUrl: contentfulConfig.meta.url,
   spaceEnv: 'default',
   availableLocales: contentfulConfig.contentful.available_locales,
+  fetcherUrl: graphqlEndpoint,
+  fetchParams,
 };
 
 export const ContentfulContext = React.createContext(contentfulContextValue);
