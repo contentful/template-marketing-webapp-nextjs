@@ -10,7 +10,7 @@ import React, { useEffect } from 'react';
 
 import Layout from '@src/components/layout/layout';
 import Settings from '@src/components/settings/settings';
-import { ContentfulContext, contentfulContextValue } from '@src/contentful-context';
+import { useContentfulContext, ContentfulContentProvider } from '@src/contentful-context';
 import { gqlQueryClient } from '@src/lib/gql-client';
 import colorfulTheme from '@src/theme';
 import contentfulConfig from 'contentful.config';
@@ -20,7 +20,7 @@ fontawesomeConfig.autoAddCss = false;
 
 const CustomApp = (props: AppProps) => {
   const { Component, pageProps, router } = props;
-
+  const { previewActive } = useContentfulContext();
   useEffect(() => {
     // when component is mounting we remove server side rendered css:
     const jssStyles = document.querySelector('#jss-server-side');
@@ -35,21 +35,9 @@ const CustomApp = (props: AppProps) => {
     };
   }, [router.events]);
 
-  if (typeof router.locale === 'string') {
-    contentfulContextValue.locale = router.locale;
-  }
-  contentfulContextValue.previewActive = !!router.query.preview;
-  contentfulContextValue.xrayActive = !!router.query.xray;
-
-  if (router.query.env !== undefined) {
-    contentfulContextValue.spaceEnv = router.query.env as string;
-  } else {
-    contentfulContextValue.spaceEnv = 'default';
-  }
-
   return (
-    <QueryClientProvider client={gqlQueryClient}>
-      <ContentfulContext.Provider value={contentfulContextValue}>
+    <ContentfulContentProvider router={router}>
+      <QueryClientProvider client={gqlQueryClient}>
         <StyledEngineProvider injectFirst>
           <ThemeProvider theme={colorfulTheme}>
             <Head>
@@ -75,14 +63,14 @@ const CustomApp = (props: AppProps) => {
               <meta key="og:image:height" property="og:image:height" content="630" />
               <meta key="og:type" property="og:type" content="website" />
             </Head>
-            <Layout preview={contentfulContextValue.previewActive}>
+            <Layout preview={previewActive}>
               <Component {...pageProps} err={(props as any).err} />
               <Settings />
             </Layout>
           </ThemeProvider>
         </StyledEngineProvider>
-      </ContentfulContext.Provider>
-    </QueryClientProvider>
+      </QueryClientProvider>
+    </ContentfulContentProvider>
   );
 };
 

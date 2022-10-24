@@ -5,26 +5,7 @@ import { ComponentReferenceFields_ComponentCta_Fragment, ComponentReferenceField
 import { AssetFieldsFragmentDoc } from '../../ctf-asset/__generated/ctf-asset.generated';
 import { ComponentReferenceFieldsFragmentDoc } from '../../../lib/shared-fragments/__generated/ctf-componentMap.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
-
-function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
-  return async (): Promise<TData> => {
-    const res = await fetch("https://graphql.contentful.com/content/v1/spaces/vw5be3ki3sdd", {
-    method: "POST",
-    ...({"headers":{"Content-Type":"application/json","Authorization":"Bearer GM7NHP-8LZDbI758jw1ze9OYJV9rVpKcJfyjRP30ang"}}),
-      body: JSON.stringify({ query, variables }),
-    });
-
-    const json = await res.json();
-
-    if (json.errors) {
-      const { message } = json.errors[0];
-
-      throw new Error(message);
-    }
-
-    return json.data;
-  }
-}
+import { useFetchData } from '@src/lib/fetcher';
 export type LegalPageFieldsFragment = { __typename?: 'Page', pageName?: string | null, pageContent?: { __typename: 'ComponentProductTable', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', name?: string | null, sys: { __typename?: 'Sys', id: string }, featuredImage?: (
       { __typename?: 'Asset' }
       & AssetFieldsFragment
@@ -147,6 +128,6 @@ export const useCtfLegalPageQuery = <
     ) =>
     useQuery<CtfLegalPageQuery, TError, TData>(
       ['CtfLegalPage', variables],
-      fetcher<CtfLegalPageQuery, CtfLegalPageQueryVariables>(CtfLegalPageDocument, variables),
+      useFetchData<CtfLegalPageQuery, CtfLegalPageQueryVariables>(CtfLegalPageDocument).bind(null, variables),
       options
     );
