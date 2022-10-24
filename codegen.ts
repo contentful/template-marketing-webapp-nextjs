@@ -1,24 +1,13 @@
 import { CodegenConfig } from '@graphql-codegen/cli';
-import * as dotenv from 'dotenv';
 
-dotenv.config({
-  path: __dirname + '/.env',
-});
-
-const graphqlEndpoint = `https://graphql.contentful.com/content/v1/spaces/${String(
-  process.env.CONFIG_CONTENTFUL_MAIN_SPACE_ID,
-)}`;
+import { fetcherHeaderParamsDefault, fetcherGraphqlEndpoint } from './src/lib/fetcherParams';
 
 export const config: CodegenConfig = {
   overwrite: true,
   ignoreNoDocuments: true,
   schema: [
     {
-      [graphqlEndpoint]: {
-        headers: {
-          Authorization: `Bearer ${process.env.CONFIG_CONTENTFUL_MAIN_SPACE_TOKEN}`,
-        },
-      },
+      [fetcherGraphqlEndpoint]: fetcherHeaderParamsDefault,
     },
   ],
   generates: {
@@ -50,13 +39,8 @@ export const config: CodegenConfig = {
         preResolveTypes: true,
         withHooks: true,
         fetcher: {
-          endpoint: graphqlEndpoint,
-          fetchParams: {
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: `Bearer ${process.env.CONFIG_CONTENTFUL_MAIN_SPACE_TOKEN}`,
-            },
-          },
+          func: '@src/lib/fetcher#useFetchData',
+          isReactHook: true,
         },
       },
     },
