@@ -1,4 +1,3 @@
-import { ButtonBase } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import Image, { ImageProps } from 'next/image';
