@@ -1,14 +1,6 @@
 {
   "common": {
     "homepage": "Homepage",
-    "password": "Password",
-    "forgotPassword": "Forgot password?",
-    "signIn": "Sign In",
-    "signUp": "Sign Up",
-    "createAccount": "Create your GoCoin account",
-    "signInAccount": "Sign into your GoCoin account",
-    "noAccount": "Don't have an account?",
-    "existingAccount": "Already have an account?",
     "logoImageAltText": "Logo"
   },
   "price": {
