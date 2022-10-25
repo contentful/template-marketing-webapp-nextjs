@@ -41,13 +41,11 @@ export const LanguageSelector = () => {
       </SvgIcon>
       <Select
         value={locale}
-        disableUnderline
         onChange={event => {
           router.push({ pathname: router.pathname, query: router.query }, router.asPath, {
             locale: String(event.target.value),
           });
-        }}
-      >
+        }}>
         {locales?.map(availableLocale => (
           <MenuItem key={availableLocale} value={availableLocale}>
             {languageNames.of(availableLocale)}
