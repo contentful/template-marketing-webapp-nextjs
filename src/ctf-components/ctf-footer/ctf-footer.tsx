@@ -1,7 +1,6 @@
 import { Twitter, Facebook, LinkedIn, Instagram } from '@mui/icons-material';
-import { Theme, Container, Typography, Box } from '@mui/material';
+import { Theme, Container, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import { visuallyHidden } from '@mui/utils';
 import { useTranslation } from 'next-i18next';
 
 import { FooterFieldsFragment } from './__generated/ctf-footer.generated';
