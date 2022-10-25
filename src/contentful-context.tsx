@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import { fetcherHeaderParamsDefault, fetcherHeaderParamsPreview, fetcherGraphqlEndpoint } from '@src/lib/fetcherParams';
+import { getParamHeaders, fetcherHeaderParamsDefault, fetcherGraphqlEndpoint, fetcherGraphqlEndpointFromQueryParams } from '@src/lib/fetcherParams';
 import contentfulConfig from 'contentful.config';
 import i18nConfig from 'next-i18next.config.js';
 const { i18n } = i18nConfig;
@@ -53,9 +53,11 @@ export const useContentfulContext = () => useContext(ContentfulContext);
 
 const ContentfulContentProvider = ({ children, router }) => {
   const previewActive = !!router.query.preview;
+  const { delivery_token, preview_token, space_id } = router.query;
+  const shouldUseSpaceCredsFromParams = !!delivery_token && !!preview_token && !!space_id
 
   const fetcherConfig = ({ options, query, variables }) => {
-    const fetchParamHeaders = previewActive ? fetcherHeaderParamsPreview.headers : fetcherHeaderParamsDefault.headers;
+    const fetchParamHeaders = getParamHeaders({ previewActive, shouldUseSpaceCredsFromParams, preview_token, delivery_token });
     return {
       method: 'POST',
       headers: {
@@ -81,7 +83,7 @@ const ContentfulContentProvider = ({ children, router }) => {
       appUrl: contentfulConfig.meta.url,
       spaceEnv: router.query.env ?? 'default',
       availableLocales: contentfulConfig.contentful.available_locales,
-      fetcherUrl: fetcherGraphqlEndpoint,
+      fetcherUrl: shouldUseSpaceCredsFromParams ? fetcherGraphqlEndpointFromQueryParams(space_id) : fetcherGraphqlEndpoint,
       fetcherConfig
     }} >
       {children}
