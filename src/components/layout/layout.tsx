@@ -47,7 +47,7 @@ const Layout: React.FC<LayoutPropsInterface> = ({ children }) => {
   return (
     <>
       <CssBaseline />
-      <Header onMenuClick={() => setMenuOpen(true)} />
+      <Header isMenuOpen={isMenuOpen} onMenuClick={() => setMenuOpen(true)} />
 
       {/* content */}
       <div className={classes.content}>{children}</div>

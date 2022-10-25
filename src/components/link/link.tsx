@@ -32,6 +32,7 @@ interface Props {
   startIcon?: any;
   endIcon?: any;
   urlParams?: string;
+  title?: string;
 }
 export type LinkProps = Props;
 
@@ -50,6 +51,7 @@ const Link = (props: Props) => {
     startIcon,
     endIcon,
     urlParams = '',
+    title,
   } = props;
   const router = useRouter();
   let href = props.href || '';
@@ -109,7 +111,7 @@ const Link = (props: Props) => {
         size={size}
         startIcon={startIcon}
         endIcon={endIcon}
-      >
+        title={title}>
         {children}
       </MuiButton>
     ) : (
@@ -121,7 +123,7 @@ const Link = (props: Props) => {
         target={props.target}
         rel="noopener noreferrer"
         onClick={() => onClick && onClick()}
-      >
+        title={title}>
         {children}
       </MuiLink>
     );
@@ -130,7 +132,9 @@ const Link = (props: Props) => {
   if (withoutMaterial === true) {
     return (
       <NextLink href={href} as={as} passHref>
-        <a className={clsx(classes.baseAnchor, className)}>{children}</a>
+        <a className={clsx(classes.baseAnchor, className)} title={title}>
+          {children}
+        </a>
       </NextLink>
     );
   }
@@ -147,7 +151,7 @@ const Link = (props: Props) => {
           size={size}
           startIcon={startIcon}
           endIcon={endIcon}
-        >
+          title={title}>
           {children}
         </MuiButton>
       </NextLink>
@@ -162,7 +166,7 @@ const Link = (props: Props) => {
         underline={underlineStyle}
         color={color}
         onClick={() => onClick && onClick()}
-      >
+        title={title}>
         {children}
       </MuiLink>
     </NextLink>

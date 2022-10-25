@@ -50,16 +50,10 @@ const useStyles = makeStyles((theme: Theme) => ({
       '[data-columns-count="3"] & $comparisonTableColumn:nth-child(3) [data-equal-size]': {
         height: 'auto !important',
       },
-      '[data-columns-count="3"] & [data-empty="true"]': {
-        display: 'none',
-      },
     },
     '@media (max-width: 819px)': {
       '[data-columns-count] & [data-equal-size]': {
         height: 'auto !important',
-      },
-      '[data-columns-count] & [data-empty="true"]': {
-        display: 'none',
       },
       '[data-columns-count] & $comparisonTableColumn:not(:first-child)': {
         marginTop: theme.spacing(8),
@@ -67,6 +61,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   comparisonTableColumn: {
+    display: 'flex',
+    flexDirection: 'column',
     flexShrink: 0,
     marginBottom: theme.spacing(4),
     maxWidth: '100%',
@@ -108,9 +104,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginTop: theme.spacing(6),
   },
   pricingBottom: {
-    marginTop: theme.spacing(3),
+    marginTop: 'auto',
+    paddingTop: theme.spacing(3),
     [theme.breakpoints.up('md')]: {
-      marginTop: theme.spacing(8),
+      marginTop: 'auto',
+      paddingTop: theme.spacing(8),
     },
   },
   priceAddition: {
@@ -279,7 +277,7 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                           {product.featuredImage && (
                             <Image
                               src={product.featuredImage.url as string}
-                              alt={product.featuredImage.description as string}
+                              alt={product.featuredImage.description || ''}
                               width={product.featuredImage.width as number}
                               height={product.featuredImage.height as number}
                               quality={60}
@@ -329,11 +327,11 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                               : `${gridSizes['index-3']}px`,
                         }}>
                         {!product.price || product.price === 0 ? (
-                          <Typography variant="h2" component="h4" className={classes.priceUpper}>
+                          <Typography variant="h2" component="span" className={classes.priceUpper}>
                             {t('price.free')}
                           </Typography>
                         ) : (
-                          <Typography variant="h2" component="h4" className={classes.priceUpper}>
+                          <Typography variant="h2" component="span" className={classes.priceUpper}>
                             <FormatCurrency value={product.price} />
                             <span className={classes.priceAddition}>/{t('time.month')}</span>
                           </Typography>
@@ -346,28 +344,18 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                             parent: 'product-table',
                           }}>
                           <div className={classes.comparisonFeaturesBreak} />
-                          {featureNames.map((featureName, i) => (
-                            <div
-                              key={`${product.sys.id}-${featureName}`}
-                              className={classes.feature}
-                              data-empty={
-                                featuresGrid[featureName][product.sys.id] === undefined
-                                  ? 'true'
-                                  : 'false'
-                              }>
-                              <div
-                                data-equal-size={i + 4}
-                                className={classes.featureInner}
-                                style={{
-                                  height:
-                                    gridSizes[`index-${i + 4}`] === undefined
-                                      ? undefined
-                                      : `${gridSizes[`index-${i + 4}`]}px`,
-                                }}>
-                                <CtfRichtext {...featuresGrid[featureName][product.sys.id]} />
-                              </div>
-                            </div>
-                          ))}
+                          {featureNames.map(
+                            (featureName, i) =>
+                              featuresGrid[featureName][product.sys.id] && (
+                                <div
+                                  key={`${product.sys.id}-${featureName}`}
+                                  className={classes.feature}>
+                                  <div data-equal-size={i + 4} className={classes.featureInner}>
+                                    <CtfRichtext {...featuresGrid[featureName][product.sys.id]} />
+                                  </div>
+                                </div>
+                              ),
+                          )}
                         </LayoutContext.Provider>
                       )}
                       <div
@@ -381,11 +369,11 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                               : `${gridSizes[`index-${featureNames.length + 4}`]}px`,
                         }}>
                         {!product.price || product.price === 0 ? (
-                          <Typography variant="h2" component="h4">
+                          <Typography variant="h2" component="span">
                             {t('price.free')}
                           </Typography>
                         ) : (
-                          <Typography variant="h2" component="h4">
+                          <Typography variant="h2" component="span">
                             <FormatCurrency value={product.price} />
                             <span className={classes.priceAddition}>/{t('time.month')}</span>
                           </Typography>
