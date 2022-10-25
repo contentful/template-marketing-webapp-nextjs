@@ -18,7 +18,7 @@ export const fetcherHeaderParamsPreview = {
   },
 };
 
-export const getParamHeaders = ({ previewActive, shouldUseSpaceCredsFromParams, preview_token, delivery_token }) => {
+export const getFetchParams = ({ previewActive, shouldUseSpaceCredsFromParams, preview_token, delivery_token }) => {
   if (previewActive) {
     if (shouldUseSpaceCredsFromParams) {
       return {

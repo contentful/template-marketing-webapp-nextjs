@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import { getParamHeaders, fetcherHeaderParamsDefault, fetcherGraphqlEndpoint, fetcherGraphqlEndpointFromQueryParams } from '@src/lib/fetcherParams';
+import { getFetchParams, fetcherHeaderParamsDefault, fetcherGraphqlEndpoint, fetcherGraphqlEndpointFromQueryParams } from '@src/lib/fetcherParams';
 import contentfulConfig from 'contentful.config';
 import i18nConfig from 'next-i18next.config.js';
 const { i18n } = i18nConfig;
@@ -57,11 +57,12 @@ const ContentfulContentProvider = ({ children, router }) => {
   const shouldUseSpaceCredsFromParams = !!delivery_token && !!preview_token && !!space_id
 
   const fetcherConfig = ({ options, query, variables }) => {
-    const fetchParamHeaders = getParamHeaders({ previewActive, shouldUseSpaceCredsFromParams, preview_token, delivery_token });
+    const fetchParams = getFetchParams({ previewActive, shouldUseSpaceCredsFromParams, preview_token, delivery_token });
+
     return {
       method: 'POST',
       headers: {
-        ...fetchParamHeaders,
+        ...fetchParams.headers,
         ...options,
       },
       body: JSON.stringify({
