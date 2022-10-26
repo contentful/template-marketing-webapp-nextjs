@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { CtfLegalPage } from './ctf-legal-page';
 
 import { useCtfLegalPageQuery } from '@ctf-components/ctf-legal-page/__generated/ctf-legal-page.generated';
-import PageError from '@src/components/errors/page-error';
+import { PageError } from '@src/components/features/errors/page-error';
 import { useContentfulContext } from '@src/contentful-context';
 import { tryget } from '@src/utils';
 
