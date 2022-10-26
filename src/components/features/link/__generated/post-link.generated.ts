@@ -1,4 +1,4 @@
-import * as Types from '../../../lib/__generated/graphql.types';
+import * as Types from '../../../../lib/__generated/graphql.types';
 
 export type PostLinkFieldsFragment = { __typename: 'Post', slug?: string | null, postName?: string | null, sys: { __typename?: 'Sys', id: string } };
 

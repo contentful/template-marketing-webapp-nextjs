@@ -1,6 +1,6 @@
 import CtfBusinessInfo from '@ctf-components/ctf-business-info/ctf-business-info';
 import { LegalPageFieldsFragment } from '@ctf-components/ctf-legal-page/__generated/ctf-legal-page.generated';
-import PageContainer from '@src/components/layout/page-container';
+import PageContainer from '@src/components/templates/layout/page-container';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 
 export const CtfLegalPage = (props: LegalPageFieldsFragment) => {

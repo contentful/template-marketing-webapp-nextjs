@@ -6,8 +6,8 @@ import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useEffect } from 'react';
 
-import Layout from '@src/components/layout/layout';
-import Settings from '@src/components/settings/settings';
+import Settings from '@src/components/features/settings/settings';
+import Layout from '@src/components/templates/layout/layout';
 import { useContentfulContext, ContentfulContentProvider } from '@src/contentful-context';
 import { gqlQueryClient } from '@src/lib/gql-client';
 import colorfulTheme from '@src/theme';

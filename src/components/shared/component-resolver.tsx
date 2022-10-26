@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import React, { useMemo } from 'react';
 
-import { componentGqlMap, componentMap } from '../mappings';
+import { componentGqlMap, componentMap } from '../../mappings';
 import XrayFrame from './xray-frame';
 
 import { useContentfulContext } from '@src/contentful-context';
@@ -74,13 +74,11 @@ const ComponentResolver = (props: Props) => {
         <XrayFrame {...componentProps} className={`xray-${componentProps.__typename}`}>
           {children}
         </XrayFrame>
-      )}
-    >
+      )}>
       <Box
         position="relative"
         component={inline ? 'span' : 'div'}
-        className={componentProps.__typename}
-      >
+        className={componentProps.__typename}>
         {Component ? (
           <Component
             {...componentProps}

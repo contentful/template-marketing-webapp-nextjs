@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
-import { PageLinkFieldsFragment } from '@src/components/link/__generated/page-link.generated';
-import Link, { LinkProps } from '@src/components/link/link';
+import { PageLinkFieldsFragment } from '@src/components/features/link/__generated/page-link.generated';
+import Link, { LinkProps } from '@src/components/features/link/link';
 
 export type PageLinkProps = Omit<LinkProps, 'children'> & {
   page: PageLinkFieldsFragment;

@@ -3,7 +3,7 @@ import { Theme, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 
-import Markdown from '@src/components/markdown';
+import Markdown from '@src/components/features/markdown';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {

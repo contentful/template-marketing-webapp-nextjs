@@ -3,7 +3,7 @@ import React from 'react';
 
 import GraphqlError from './graphql-error';
 
-import PageContainer from '@src/components/layout/page-container';
+import PageContainer from '@src/components/templates/layout/page-container';
 
 const PageGraphqlError = (props: { error: any }) => (
   <PageContainer>

@@ -3,7 +3,7 @@ import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import React from 'react';
 
-import Markdown from '@src/components/markdown';
+import Markdown from '@src/components/features/markdown';
 
 const useStyles = makeStyles((theme: Theme) => ({
   containerCentered: {

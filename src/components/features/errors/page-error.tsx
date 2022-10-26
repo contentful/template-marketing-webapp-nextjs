@@ -3,7 +3,7 @@ import { makeStyles } from '@mui/styles';
 import React from 'react';
 import { File } from 'react-kawaii';
 
-import PageContainer from '@src/components/layout/page-container';
+import PageContainer from '@src/components/templates/layout/page-container';
 import colorfulTheme from '@src/theme';
 
 interface PropsInterface {

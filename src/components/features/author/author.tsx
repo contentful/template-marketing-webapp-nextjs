@@ -2,7 +2,7 @@ import { Theme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
 import { PersonFieldsFragment } from '@ctf-components/ctf-person/__generated/ctf-person.generated';
-import Avatar from '@src/components/avatar/avatar';
+import Avatar from '@src/components/features/avatar/avatar';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {},
