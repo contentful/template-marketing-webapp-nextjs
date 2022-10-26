@@ -1,4 +1,4 @@
-import { Theme, Container, Typography } from '@mui/material';
+import { Theme, Container, Typography, Box } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { Fragment } from 'react';
 
@@ -160,24 +160,24 @@ export const CtfProduct = (props: ProductFieldsFragment) => {
           <section className={classes.featuresSection}>
             <Container maxWidth={false}>
               <div className={classes.innerContainer}>
-                <div>
+                <Box component="dl">
                   {featuresCollection.items.map(
                     item =>
                       item && (
                         <Fragment key={item.sys.id}>
                           <div className={classes.featureSeparator} />
                           <div className={classes.featureRow}>
-                            <Typography variant="h3" component="h4" className={classes.featureName}>
+                            <Typography variant="h3" component="dt" className={classes.featureName}>
                               {item.name}
                             </Typography>
-                            <div className={classes.featureValue}>
+                            <Box component="dd" margin={0} className={classes.featureValue}>
                               {item.longDescription && <CtfRichtext {...item.longDescription} />}
-                            </div>
+                            </Box>
                           </div>
                         </Fragment>
                       ),
                   )}
-                </div>
+                </Box>
               </div>
             </Container>
           </section>

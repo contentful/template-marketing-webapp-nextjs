@@ -5,26 +5,7 @@ import { PageLinkFieldsFragment } from '../../../components/link/__generated/pag
 import { MenuGroupFieldsFragmentDoc } from '../../../lib/shared-fragments/__generated/ctf-menuGroup.generated';
 import { PageLinkFieldsFragmentDoc } from '../../../components/link/__generated/page-link.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
-
-function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
-  return async (): Promise<TData> => {
-    const res = await fetch("https://graphql.contentful.com/content/v1/spaces/vw5be3ki3sdd", {
-    method: "POST",
-    ...({"headers":{"Content-Type":"application/json","Authorization":"Bearer GM7NHP-8LZDbI758jw1ze9OYJV9rVpKcJfyjRP30ang"}}),
-      body: JSON.stringify({ query, variables }),
-    });
-
-    const json = await res.json();
-
-    if (json.errors) {
-      const { message } = json.errors[0];
-
-      throw new Error(message);
-    }
-
-    return json.data;
-  }
-}
+import { useFetchData } from '@src/lib/fetcher';
 export type FooterFieldsFragment = { __typename?: 'FooterMenuCollection', items: Array<{ __typename?: 'FooterMenu', twitterLink?: string | null, facebookLink?: string | null, linkedinLink?: string | null, instagramLink?: string | null, menuItemsCollection?: { __typename?: 'FooterMenuMenuItemsCollection', items: Array<{ __typename?: 'MenuGroup', groupName?: string | null, featuredPagesCollection?: (
           { __typename?: 'MenuGroupFeaturedPagesCollection' }
           & MenuGroupFieldsFragment
@@ -85,7 +66,7 @@ export const useCtfFooterQuery = <
     ) =>
     useQuery<CtfFooterQuery, TError, TData>(
       variables === undefined ? ['CtfFooter'] : ['CtfFooter', variables],
-      fetcher<CtfFooterQuery, CtfFooterQueryVariables>(CtfFooterDocument, variables),
+      useFetchData<CtfFooterQuery, CtfFooterQueryVariables>(CtfFooterDocument).bind(null, variables),
       options
     );
 

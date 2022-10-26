@@ -62,7 +62,13 @@ export const CtfMobileMenu = (props: MobileMenuPropsInterface) => {
   };
 
   return (
-    <Drawer open={isOpen} anchor="right" onClose={onCloseClick}>
+    <Drawer
+      open={isOpen}
+      anchor="right"
+      onClose={onCloseClick}
+      role="dialog"
+      id="mobile-menu"
+      aria-modal={true}>
       {mobileMenuContent?.menuItemsCollection?.items.length && (
         <nav role="navigation">
           <ul className={classes.menu}>

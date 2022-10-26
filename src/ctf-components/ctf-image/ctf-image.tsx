@@ -1,4 +1,3 @@
-import { ButtonBase } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import Image, { ImageProps } from 'next/image';
@@ -44,7 +43,6 @@ interface CtfImagePropsInterface {
   figureClassName?: string;
   showDescription?: boolean;
   layout?: ImageProps['layout'];
-  onClick?: () => any;
 }
 
 export const CtfImage = (props: CtfImagePropsInterface) => {
@@ -60,9 +58,8 @@ export const CtfImage = (props: CtfImagePropsInterface) => {
     className,
     imgClassName,
     figureClassName,
-    onClick,
     showDescription = true,
-    layout = "intrinsic",
+    layout = 'intrinsic',
   } = props;
 
   const imgSrc = useMemo(() => {
@@ -79,7 +76,7 @@ export const CtfImage = (props: CtfImagePropsInterface) => {
   if (!url) return null;
 
   return (
-    <ButtonBase className={clsx(classes.root, className)} onClick={onClick}>
+    <div className={clsx(classes.root, className)}>
       {asBackground ? (
         <div>
           <div
@@ -96,7 +93,7 @@ export const CtfImage = (props: CtfImagePropsInterface) => {
           <Image
             className={clsx(classes.image, imgClassName)}
             src={url}
-            alt={title!}
+            alt={title || ''}
             width={width!}
             height={height!}
             layout={layout}
@@ -104,6 +101,6 @@ export const CtfImage = (props: CtfImagePropsInterface) => {
           {showDescription && description && <figcaption>{description}</figcaption>}
         </figure>
       )}
-    </ButtonBase>
+    </div>
   );
 };

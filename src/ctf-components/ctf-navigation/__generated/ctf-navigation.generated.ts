@@ -5,26 +5,7 @@ import { MenuGroupFieldsFragment } from '../../../lib/shared-fragments/__generat
 import { PageLinkFieldsFragmentDoc } from '../../../components/link/__generated/page-link.generated';
 import { MenuGroupFieldsFragmentDoc } from '../../../lib/shared-fragments/__generated/ctf-menuGroup.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
-
-function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
-  return async (): Promise<TData> => {
-    const res = await fetch("https://graphql.contentful.com/content/v1/spaces/vw5be3ki3sdd", {
-    method: "POST",
-    ...({"headers":{"Content-Type":"application/json","Authorization":"Bearer GM7NHP-8LZDbI758jw1ze9OYJV9rVpKcJfyjRP30ang"}}),
-      body: JSON.stringify({ query, variables }),
-    });
-
-    const json = await res.json();
-
-    if (json.errors) {
-      const { message } = json.errors[0];
-
-      throw new Error(message);
-    }
-
-    return json.data;
-  }
-}
+import { useFetchData } from '@src/lib/fetcher';
 export type NavigationFieldsFragment = { __typename?: 'NavigationMenuCollection', items: Array<{ __typename?: 'NavigationMenu', menuItemsCollection?: { __typename?: 'NavigationMenuMenuItemsCollection', items: Array<{ __typename?: 'MenuGroup', label?: string | null, link?: (
           { __typename?: 'Page' }
           & PageLinkFieldsFragment
@@ -79,7 +60,7 @@ export const useCtfNavigationQuery = <
     ) =>
     useQuery<CtfNavigationQuery, TError, TData>(
       variables === undefined ? ['CtfNavigation'] : ['CtfNavigation', variables],
-      fetcher<CtfNavigationQuery, CtfNavigationQueryVariables>(CtfNavigationDocument, variables),
+      useFetchData<CtfNavigationQuery, CtfNavigationQueryVariables>(CtfNavigationDocument).bind(null, variables),
       options
     );
 

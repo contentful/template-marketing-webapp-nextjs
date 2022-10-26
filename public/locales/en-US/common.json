@@ -1,17 +1,13 @@
 {
   "common": {
-    "password": "Password",
-    "forgotPassword": "Forgot password?",
-    "signIn": "Sign In",
-    "signUp": "Sign Up",
-    "createAccount": "Create your GoCoin account",
-    "signInAccount": "Sign into your GoCoin account",
-    "noAccount": "Don't have an account?",
-    "existingAccount": "Already have an account?",
+    "homepage": "Homepage",
     "logoImageAltText": "Logo"
   },
   "price": {
     "free": "Free"
+  },
+  "navigation": {
+    "mobileMenuButton": "Open menu"
   },
   "time": {
     "month": "Month"
@@ -21,7 +17,11 @@
     "publishedByAuthorOnDate": " on {{ date }}"
   },
   "socials": {
-    "findUsOn": "Find us on"
+    "findUsOn": "Find us on",
+    "twitter": "Twitter",
+    "facebook": "Facebook",
+    "linkedin": "LinkedIn",
+    "instagram": "Instagram"
   },
   "legal": {
     "copyright": "© Copyright {{ year }}",

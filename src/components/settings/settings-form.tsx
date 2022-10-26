@@ -420,6 +420,7 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
         renderInput={params => (
           <TextField
             {...params}
+            variant="standard"
             label="Source environment"
             fullWidth
             helperText="Select an environment to view an alternative branch of your content"
@@ -432,8 +433,7 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
                     height="12"
                     viewBox="0 0 12 12"
                     fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
+                    xmlns="http://www.w3.org/2000/svg">
                     <path
                       d="M12 7.49l-1.69 1.69-2.186-2.087-.994.994 2.187 2.186-1.79 1.69H12V7.49zm0-2.98V.036H7.528l1.69 1.69-3.479 3.478H.075v1.49h6.26l3.976-3.975L12 4.51z"
                       fill="#2A3039"
@@ -444,53 +444,58 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
             }}
           />
         )}
-        renderOption={option => {
+        renderOption={(props, option) => {
           const environment = environments.find(
             availableEnvironment => availableEnvironment.name === option,
           );
 
           if (!environment) {
             return (
-              <Typography className={clsx(classes.envOptionName, classes.autocompleteOptionFont)}>
-                <>{option}</>
+              <Typography
+                {...props}
+                className={clsx(classes.envOptionName, classes.autocompleteOptionFont)}>
+                {option}
               </Typography>
             );
           }
 
           return (
-            <div className={classes.envOption}>
-              <div className={classes.envOptionIcon}>
-                <svg
-                  width="22"
-                  height="22"
-                  viewBox="0 0 12 12"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12 7.49l-1.69 1.69-2.186-2.087-.994.994 2.187 2.186-1.79 1.69H12V7.49zm0-2.98V.036H7.528l1.69 1.69-3.479 3.478H.075v1.49h6.26l3.976-3.975L12 4.51z"
-                    fill={newSpaceEnv === environment.name ? '#2A3039' : '#B5C3C9'}
-                  />
-                </svg>
+            <li {...props}>
+              <div className={classes.envOption}>
+                <div className={classes.envOptionIcon}>
+                  <svg
+                    width="22"
+                    height="22"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M12 7.49l-1.69 1.69-2.186-2.087-.994.994 2.187 2.186-1.79 1.69H12V7.49zm0-2.98V.036H7.528l1.69 1.69-3.479 3.478H.075v1.49h6.26l3.976-3.975L12 4.51z"
+                      fill={newSpaceEnv === environment.name ? '#2A3039' : '#B5C3C9'}
+                    />
+                  </svg>
+                </div>
+                <div className={classes.envOptionBody}>
+                  <Typography
+                    className={clsx(classes.envOptionName, classes.autocompleteOptionFont)}>
+                    {environment.name}
+                  </Typography>
+                  <Typography
+                    className={clsx(classes.envOptionDescription, classes.autocompleteOptionFont)}>
+                    {`Created on ${format(
+                      new Date(environment.createdAt),
+                      'MMM d, yyyy',
+                    )} at ${format(new Date(environment.createdAt), 'HH:mm')}`}
+                  </Typography>
+                </div>
               </div>
-              <div className={classes.envOptionBody}>
-                <Typography className={clsx(classes.envOptionName, classes.autocompleteOptionFont)}>
-                  {environment.name}
-                </Typography>
-                <Typography
-                  className={clsx(classes.envOptionDescription, classes.autocompleteOptionFont)}
-                >
-                  {`Created on ${format(
-                    new Date(environment.createdAt),
-                    'MMM d, yyyy',
-                  )} at ${format(new Date(environment.createdAt), 'HH:mm')}`}
-                </Typography>
-              </div>
-            </div>
+            </li>
           );
         }}
         onChange={(_event, value) => {
-          setNewSpaceEnv(value as string);
+          if (!value) return;
+
+          setNewSpaceEnv(value);
           setIsDirty(true);
         }}
         value={newSpaceEnv}
@@ -567,8 +572,7 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
               type="button"
               variant="text"
               color="primary"
-              onClick={onClose}
-            >
+              onClick={onClose}>
               Close
             </Button>
             <Button
@@ -577,8 +581,7 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
               variant="text"
               color="primary"
               onClick={onClose}
-              disabled={!isDirty}
-            >
+              disabled={!isDirty}>
               Apply changes
             </Button>
           </footer>

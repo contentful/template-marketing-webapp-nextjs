@@ -65,7 +65,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   submenuItem: {
     '& a': {
       borderBottom: '1px solid transparent',
-      color: '#7C7C7C',
+      color: '#707070',
       display: 'inline-block',
       minWidth: 0,
       transition: 'border-bottom-color 0.2s ease-in-out',
@@ -305,22 +305,38 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
               <Typography className={classes.socialTitle}>{t('socials.findUsOn')}</Typography>
               <div className={classes.social}>
                 {footerContent?.twitterLink && (
-                  <a href={footerContent.twitterLink}>
+                  <a
+                    href={footerContent.twitterLink}
+                    title={t('social.twitter')}
+                    target="_blank"
+                    rel="nofollow noreferrer">
                     <Twitter />
                   </a>
                 )}
                 {footerContent?.facebookLink && (
-                  <a href={footerContent.facebookLink}>
+                  <a
+                    href={footerContent.facebookLink}
+                    title={t('social.facebook')}
+                    target="_blank"
+                    rel="nofollow noreferrer">
                     <Facebook />
                   </a>
                 )}
                 {footerContent?.linkedinLink && (
-                  <a href={footerContent.linkedinLink}>
+                  <a
+                    href={footerContent.linkedinLink}
+                    title={t('social.linkedin')}
+                    target="_blank"
+                    rel="nofollow noreferrer">
                     <LinkedIn />
                   </a>
                 )}
                 {footerContent?.instagramLink && (
-                  <a href={footerContent.instagramLink}>
+                  <a
+                    href={footerContent.instagramLink}
+                    title={t('social.instagram')}
+                    target="_blank"
+                    rel="nofollow noreferrer">
                     <Instagram />
                   </a>
                 )}

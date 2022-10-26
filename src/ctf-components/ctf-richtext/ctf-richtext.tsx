@@ -236,8 +236,7 @@ export const CtfRichtext = (props: CtfRichtextPropsInterface) => {
             'cta-subline',
             'hero-banner-body',
             'post-intro',
-          ].includes(layout.parent)}
-        >
+          ].includes(layout.parent)}>
           <div className={containerClassName}>
             <div className={clsx(classes.paragraphGridContainer, gridClassName)}>
               {containerProps.children}
@@ -314,41 +313,41 @@ export const CtfRichtext = (props: CtfRichtextPropsInterface) => {
 
     const paragraphRenderer =
       (rendererProps: ParagraphRendererInterface = {}) =>
-        (_node, children) => {
-          const { variant, className, component } = rendererProps;
+      (_node, children) => {
+        const { variant, className, component } = rendererProps;
 
-          if (!variant) {
-            return <ParagraphGridContainer>{children}</ParagraphGridContainer>;
-          }
+        if (!variant) {
+          return <ParagraphGridContainer>{children}</ParagraphGridContainer>;
+        }
 
-          if (component) {
-            return (
-              <ParagraphGridContainer>
-                <Typography variant={variant} className={className} component={component}>
-                  {children}
-                </Typography>
-              </ParagraphGridContainer>
-            );
-          }
-
+        if (component) {
           return (
             <ParagraphGridContainer>
-              <Typography variant={variant} className={className}>
+              <Typography variant={variant} className={className} component={component}>
                 {children}
               </Typography>
             </ParagraphGridContainer>
           );
-        };
+        }
+
+        return (
+          <ParagraphGridContainer>
+            <Typography variant={variant} className={className}>
+              {children}
+            </Typography>
+          </ParagraphGridContainer>
+        );
+      };
 
     opts.renderNode![BLOCKS.PARAGRAPH] = paragraphRenderer({
       variant: 'body1',
     });
-    opts.renderNode![BLOCKS.HEADING_1] = paragraphRenderer({ variant: 'h1' });
-    opts.renderNode![BLOCKS.HEADING_2] = paragraphRenderer({ variant: 'h2' });
-    opts.renderNode![BLOCKS.HEADING_3] = paragraphRenderer({ variant: 'h3' });
-    opts.renderNode![BLOCKS.HEADING_4] = paragraphRenderer({ variant: 'h4' });
-    opts.renderNode![BLOCKS.HEADING_5] = paragraphRenderer({ variant: 'h5' });
-    opts.renderNode![BLOCKS.HEADING_6] = paragraphRenderer({ variant: 'h6' });
+    opts.renderNode![BLOCKS.HEADING_1] = paragraphRenderer({ variant: 'h1', component: 'h2' });
+    opts.renderNode![BLOCKS.HEADING_2] = paragraphRenderer({ variant: 'h2', component: 'h2' });
+    opts.renderNode![BLOCKS.HEADING_3] = paragraphRenderer({ variant: 'h3', component: 'h2' });
+    opts.renderNode![BLOCKS.HEADING_4] = paragraphRenderer({ variant: 'h4', component: 'h2' });
+    opts.renderNode![BLOCKS.HEADING_5] = paragraphRenderer({ variant: 'h5', component: 'h2' });
+    opts.renderNode![BLOCKS.HEADING_6] = paragraphRenderer({ variant: 'h6', component: 'h2' });
     opts.renderNode![BLOCKS.QUOTE] = paragraphRenderer({
       component: 'blockquote',
       variant: 'body1',
@@ -359,8 +358,7 @@ export const CtfRichtext = (props: CtfRichtextPropsInterface) => {
           <div
             style={{
               overflow: 'auto',
-            }}
-          >
+            }}>
             <table>{children}</table>
           </div>
         </ParagraphGridContainer>
