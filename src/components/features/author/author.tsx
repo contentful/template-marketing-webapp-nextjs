@@ -2,7 +2,7 @@ import { Theme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
 import { PersonFieldsFragment } from '@ctf-components/ctf-person/__generated/ctf-person.generated';
-import Avatar from '@src/components/features/avatar/avatar';
+import { Avatar } from '@src/components/features/avatar';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {},
@@ -18,9 +18,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-interface CtfAuthorPropsInterface extends PersonFieldsFragment {}
+interface AuthorPropsInterface extends PersonFieldsFragment {}
 
-const CtfAuthor = (props: CtfAuthorPropsInterface) => {
+export const Author = (props: AuthorPropsInterface) => {
   const { name, avatar } = props;
 
   const classes = useStyles();
@@ -36,5 +36,3 @@ const CtfAuthor = (props: CtfAuthorPropsInterface) => {
     </div>
   );
 };
-
-export default CtfAuthor;

@@ -4,9 +4,9 @@ import React, { useMemo } from 'react';
 
 import { tryget } from '@src/utils';
 
-// TODO add other errors than only `NetworkError`
+// TODO: add other errors than only `NetworkError`
 
-const GraphqlError = (props: { error: any }) => {
+export const GraphqlError = (props: { error: any }) => {
   const { error } = props;
   console.error({ error });
   const theme = useTheme<Theme>();
@@ -42,5 +42,3 @@ const GraphqlError = (props: { error: any }) => {
     </Box>
   );
 };
-
-export default GraphqlError;

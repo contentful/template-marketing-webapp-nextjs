@@ -3,7 +3,7 @@ import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import React from 'react';
 
-import Markdown from '@src/components/features/markdown';
+import { Markdown } from '@src/components/features/markdown';
 
 const useStyles = makeStyles((theme: Theme) => ({
   containerCentered: {
@@ -33,7 +33,7 @@ interface SectionHeadlinesPropsInterface {
   className?: string;
 }
 
-const SectionHeadline = (props: SectionHeadlinesPropsInterface) => {
+export const SectionHeadlines = (props: SectionHeadlinesPropsInterface) => {
   const {
     headline,
     headlineProps = {},
@@ -69,5 +69,3 @@ const SectionHeadline = (props: SectionHeadlinesPropsInterface) => {
     </div>
   );
 };
-
-export default SectionHeadline;

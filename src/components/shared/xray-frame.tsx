@@ -52,7 +52,7 @@ interface Props {
   className?: string;
 }
 
-const XrayFrame = (props: Props) => {
+export const XrayFrame = (props: Props) => {
   const contentfulContext = useContentfulContext();
   const {
     spaceEnv,
@@ -75,5 +75,3 @@ const XrayFrame = (props: Props) => {
     </Box>
   );
 };
-
-export default XrayFrame;

@@ -306,7 +306,7 @@ interface SettingsFormPropsInterface {
   onClose: () => void;
 }
 
-const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
+export const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
   const { onClose } = props;
   const router = useRouter();
 
@@ -593,5 +593,3 @@ const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
     </section>
   );
 };
-
-export default SettingsForm;

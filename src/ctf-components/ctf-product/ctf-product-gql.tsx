@@ -4,7 +4,7 @@ import Head from 'next/head';
 import { useCtfProductQuery } from './__generated/ctf-product.generated';
 import { CtfProduct } from './ctf-product';
 
-import EntryNotFound from '@src/components/errors/entry-not-found';
+import { EntryNotFound } from '@src/components/features/errors/entry-not-found';
 
 interface CtfProductGqlPropsInterface {
   id: string;

@@ -4,7 +4,7 @@ import Head from 'next/head';
 import CtfBusinessInfo from './ctf-business-info';
 
 import { useCtfBusinessInfoQuery } from '@ctf-components/ctf-business-info/__generated/business-info.generated';
-import EntryNotFound from '@src/components/errors/entry-not-found';
+import { EntryNotFound } from '@src/components/features/errors/entry-not-found';
 import { useContentfulContext } from '@src/contentful-context';
 
 interface CtfBusinessInfoGqlPropsInterface {

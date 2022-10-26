@@ -1,11 +1,9 @@
 import { Container, Box } from '@mui/material';
-import React from 'react';
 
-import GraphqlError from './graphql-error';
+import { GraphqlError } from '@src/components/shared/graphql-error';
+import { PageContainer } from '@src/components/templates/page-container';
 
-import PageContainer from '@src/components/templates/layout/page-container';
-
-const PageGraphqlError = (props: { error: any }) => (
+export const PageGraphqlError = (props: { error: any }) => (
   <PageContainer>
     <Container>
       <Box my={12}>
@@ -14,5 +12,3 @@ const PageGraphqlError = (props: { error: any }) => (
     </Container>
   </PageContainer>
 );
-
-export default PageGraphqlError;

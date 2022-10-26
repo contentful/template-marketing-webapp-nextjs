@@ -3,7 +3,7 @@ import { makeStyles } from '@mui/styles';
 
 import { CtaFieldsFragment } from '@ctf-components/ctf-cta/__generated/ctf-cta.generated';
 import { CtfRichtext } from '@ctf-components/ctf-richtext/ctf-richtext';
-import PageLink from '@src/components/link/page-link';
+import { PageLink } from '@src/components/features/page-link';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 import { getColorConfigFromPalette } from '@src/theme';
 import optimizeLineBreak from '@src/typography/optimize-line-break';
@@ -42,16 +42,14 @@ export const CtfCta = (props: CtaFieldsFragment) => {
       className={classes.root}
       style={{
         backgroundColor: colorConfig.backgroundColor,
-      }}
-    >
+      }}>
       <div className={classes.innerContainer}>
         {headline && (
           <Typography
             variant="h1"
             component="h2"
             className={classes.headline}
-            style={{ color: colorConfig.headlineColor }}
-          >
+            style={{ color: colorConfig.headlineColor }}>
             {optimizeLineBreak(headline)}
           </Typography>
         )}
@@ -69,8 +67,7 @@ export const CtfCta = (props: CtaFieldsFragment) => {
               variant="contained"
               color={colorConfig.buttonColor}
               isButton
-              urlParams={urlParameters ?? ''}
-            >
+              urlParams={urlParameters ?? ''}>
               {ctaText}
             </PageLink>
           </div>

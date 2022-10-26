@@ -6,7 +6,7 @@ import { InfoBlockFieldsFragment } from './__generated/ctf-info-block.generated'
 
 import { CtfAsset } from '@ctf-components/ctf-asset/ctf-asset';
 import { CtfRichtext } from '@ctf-components/ctf-richtext/ctf-richtext';
-import SectionHeadlines from '@src/components/section-headlines/section-headlines';
+import { SectionHeadlines } from '@src/components/features/section-headlines';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 import { getColorConfigFromPalette } from '@src/theme';
 

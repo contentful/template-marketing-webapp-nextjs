@@ -1,6 +1,13 @@
 import { CSSProperties } from '@mui/material/styles/createTypography';
+import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import React from 'react';
+
+const useStyles = makeStyles(() => ({
+  root: {
+    width: '100%',
+  },
+}));
 
 type Props = {
   className?: string;
@@ -8,12 +15,11 @@ type Props = {
   children?: React.ReactNode | React.ReactNode[];
 };
 
-const ProductContainer = (props: Props) => {
+export const PostContainer = (props: Props) => {
+  const classes = useStyles();
   return (
-    <div style={props.style} className={clsx(props.className)}>
+    <div style={props.style} className={clsx(classes.root, props.className)}>
       {props.children}
     </div>
   );
 };
-
-export default ProductContainer;

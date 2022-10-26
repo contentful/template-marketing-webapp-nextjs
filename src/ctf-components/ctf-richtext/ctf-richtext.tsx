@@ -10,8 +10,8 @@ import { CtfAsset } from '../ctf-asset/ctf-asset';
 
 import { AssetFieldsFragment } from '@ctf-components/ctf-asset/__generated/ctf-asset.generated';
 import { useCtfRichTextHyperlinkQuery } from '@ctf-components/ctf-richtext/__generated/ctf-richtext.generated';
-import PageLink from '@src/components/features/link/page-link';
-import ComponentResolver from '@src/components/shared/component-resolver';
+import { PageLink } from '@src/components/features/page-link';
+import { ComponentResolver } from '@src/components/shared/component-resolver';
 import { useContentfulContext } from '@src/contentful-context';
 import LayoutContext from '@src/layout-context';
 import { OmitRecursive, tryget } from '@src/utils';

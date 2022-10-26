@@ -2,7 +2,7 @@ import { Box } from '@mui/material';
 import React, { useMemo } from 'react';
 
 import { componentGqlMap, componentMap } from '../../mappings';
-import XrayFrame from './xray-frame';
+import { XrayFrame } from './xray-frame';
 
 import { useContentfulContext } from '@src/contentful-context';
 import { WrapIf } from '@src/jsx-utils';
@@ -25,7 +25,7 @@ interface Props {
   inline?: boolean;
 }
 
-const ComponentResolver = (props: Props) => {
+export const ComponentResolver = (props: Props) => {
   const { componentProps, inline = false } = props;
   const { xrayActive, previewActive } = useContentfulContext();
 
@@ -100,5 +100,3 @@ const ComponentResolver = (props: Props) => {
     </WrapIf>
   );
 };
-
-export default ComponentResolver;

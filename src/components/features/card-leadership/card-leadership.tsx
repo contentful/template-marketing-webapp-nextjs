@@ -59,11 +59,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-interface CtfCardLeadershipPropsInterface extends PersonFieldsFragment {
+interface CardLeadershipPropsInterface extends PersonFieldsFragment {
   previousComponent: string | null;
 }
 
-const CtfCardLeadership = (props: CtfCardLeadershipPropsInterface) => {
+export const CardLeadership = (props: CardLeadershipPropsInterface) => {
   const { name, bio, avatar, previousComponent } = props;
   const nameSplit = name?.split(', ');
 
@@ -74,8 +74,7 @@ const CtfCardLeadership = (props: CtfCardLeadershipPropsInterface) => {
       className={clsx(
         classes.root,
         previousComponent === 'TopicPerson' ? classes.rootIncreasedSpacing : undefined,
-      )}
-    >
+      )}>
       {avatar && (
         <div className={classes.avatar}>
           <CtfAsset {...avatar} showDescription={false} widthPx={442} />
@@ -97,5 +96,3 @@ const CtfCardLeadership = (props: CtfCardLeadershipPropsInterface) => {
     </div>
   );
 };
-
-export default CtfCardLeadership;

@@ -9,8 +9,8 @@ import { useState, useMemo, useRef, useEffect, useCallback } from 'react';
 import { ProductTableFieldsFragment } from './__generated/ctf-product-table.generated';
 
 import { CtfRichtext } from '@ctf-components/ctf-richtext/ctf-richtext';
-import { FormatCurrency } from '@src/components/format-currency';
-import SectionHeadlines from '@src/components/section-headlines/section-headlines';
+import { FormatCurrency } from '@src/components/features/format-currency';
+import { SectionHeadlines } from '@src/components/features/section-headlines';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 
 const contentfulLoader: ImageLoader = ({ src, width, quality }) => {

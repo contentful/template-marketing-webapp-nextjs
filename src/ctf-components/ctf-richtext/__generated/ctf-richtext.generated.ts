@@ -1,7 +1,7 @@
 import * as Types from '../../../lib/__generated/graphql.types';
 
-import { PageLinkFieldsFragment } from '../../../components/link/__generated/page-link.generated';
-import { PageLinkFieldsFragmentDoc } from '../../../components/link/__generated/page-link.generated';
+import { PageLinkFieldsFragment } from '../../../components/features/page-link/__generated/page-link.generated';
+import { PageLinkFieldsFragmentDoc } from '../../../components/features/page-link/__generated/page-link.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { useFetchData } from '@src/lib/fetcher';
 export type RichTextHyperlinkFieldsFragment = { __typename?: 'Query', page?: (

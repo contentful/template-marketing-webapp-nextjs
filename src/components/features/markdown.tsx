@@ -42,7 +42,7 @@ type Props = {
   className?: string;
 };
 
-const Markdown = (props: Props) => {
+export const Markdown = (props: Props) => {
   const classes = useStyles();
   return (
     <div className={clsx(classes.root, props.className)}>
@@ -50,5 +50,3 @@ const Markdown = (props: Props) => {
     </div>
   );
 };
-
-export default Markdown;

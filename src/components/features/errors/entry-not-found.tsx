@@ -1,9 +1,7 @@
 import React from 'react';
 
-import ErrorBox from './error-box';
+import { ErrorBox } from '@src/components/shared/error-box';
 
-const EntryNotFound = (props: { className?: string }) => (
+export const EntryNotFound = (props: { className?: string }) => (
   <ErrorBox {...props}>Component not found.</ErrorBox>
 );
-
-export default EntryNotFound;

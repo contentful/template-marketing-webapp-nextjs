@@ -3,7 +3,7 @@ import { makeStyles } from '@mui/styles';
 
 import { CtfRichtext } from '@ctf-components/ctf-richtext/ctf-richtext';
 import { TextBlockFieldsFragment } from '@ctf-components/ctf-text-block/__generated/ctf-text-block.generated';
-import SectionHeadlines from '@src/components/section-headlines/section-headlines';
+import { SectionHeadlines } from '@src/components/features/section-headlines';
 import { getColorConfigFromPalette } from '@src/theme';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -32,8 +32,7 @@ export const CtfTextBlock = ({
       maxWidth={false}
       style={{
         backgroundColor: colorConfig.backgroundColor,
-      }}
-    >
+      }}>
       <div className={classes.innerContainer}>
         <SectionHeadlines
           headline={headline}
@@ -50,8 +49,7 @@ export const CtfTextBlock = ({
           <div
             style={{
               color: colorConfig.textColor,
-            }}
-          >
+            }}>
             <CtfRichtext {...body} />
           </div>
         )}

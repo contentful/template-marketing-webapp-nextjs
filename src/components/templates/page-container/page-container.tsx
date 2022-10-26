@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import React from 'react';
 
 const useStyles = makeStyles(() => ({
-  root: {
+  pageContainerRoot: {
     width: '100%',
   },
 }));
@@ -15,13 +15,11 @@ type Props = {
   children?: React.ReactNode | React.ReactNode[];
 };
 
-const PostContainer = (props: Props) => {
+export const PageContainer = (props: Props) => {
   const classes = useStyles();
   return (
-    <div style={props.style} className={clsx(classes.root, props.className)}>
+    <div style={props.style} className={clsx(classes.pageContainerRoot, props.className)}>
       {props.children}
     </div>
   );
 };
-
-export default PostContainer;

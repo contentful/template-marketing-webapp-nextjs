@@ -36,7 +36,7 @@ interface Props {
 }
 export type LinkProps = Props;
 
-const Link = (props: Props) => {
+export const Link = (props: Props) => {
   const {
     dropUrlParams,
     className,
@@ -172,5 +172,3 @@ const Link = (props: Props) => {
     </NextLink>
   );
 };
-
-export default Link;

@@ -1,1 +1,1 @@
-export * from './FormatCurrency';
+export * from './format-currency';

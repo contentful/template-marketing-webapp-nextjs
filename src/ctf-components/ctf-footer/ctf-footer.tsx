@@ -6,8 +6,8 @@ import { useTranslation } from 'next-i18next';
 import { FooterFieldsFragment } from './__generated/ctf-footer.generated';
 
 import { getLinkDisplayText, getLinkHrefPrefix } from '@ctf-components/ctf-navigation/utils';
-import { LanguageSelector } from '@src/components/language-selector';
-import Link from '@src/components/link/link';
+import { LanguageSelector } from '@src/components/features/language-selector';
+import { Link } from '@src/components/shared/link';
 import Logo from '@src/icons/logo-tagline.svg';
 import { CONTAINER_WIDTH } from '@src/theme';
 

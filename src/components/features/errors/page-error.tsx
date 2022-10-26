@@ -3,7 +3,7 @@ import { makeStyles } from '@mui/styles';
 import React from 'react';
 import { File } from 'react-kawaii';
 
-import PageContainer from '@src/components/templates/layout/page-container';
+import { PageContainer } from '@src/components/templates/page-container';
 import colorfulTheme from '@src/theme';
 
 interface PropsInterface {
@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const CtfError404Gql = (props: PropsInterface) => {
+export const PageError = (props: PropsInterface) => {
   const classes = useStyles();
 
   const error =
@@ -77,5 +77,3 @@ const CtfError404Gql = (props: PropsInterface) => {
     </div>
   );
 };
-
-export default CtfError404Gql;

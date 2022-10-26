@@ -3,7 +3,7 @@ import { makeStyles } from '@mui/styles';
 import React, { useState, useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
-import SettingsForm from '@src/components/features/settings/settings-form';
+import { SettingsForm } from '@src/components/features/settings/settings-form';
 import SettingsIcon from '@src/icons/settings-icon.svg';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const Settings = () => {
+export const Settings = () => {
   const classes = useStyles();
   const theme = useTheme();
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -102,5 +102,3 @@ const Settings = () => {
     </>
   );
 };
-
-export default Settings;

@@ -1,7 +1,7 @@
 import * as Types from '../../../lib/__generated/graphql.types';
 
-import { PageLinkFieldsFragment } from '../../../components/link/__generated/page-link.generated';
-import { PageLinkFieldsFragmentDoc } from '../../../components/link/__generated/page-link.generated';
+import { PageLinkFieldsFragment } from '../../../components/features/page-link/__generated/page-link.generated';
+import { PageLinkFieldsFragmentDoc } from '../../../components/features/page-link/__generated/page-link.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { useFetchData } from '@src/lib/fetcher';
 export type CtaFieldsFragment = { __typename: 'ComponentCta', internalName?: string | null, headline?: string | null, ctaText?: string | null, urlParameters?: string | null, colorPalette?: string | null, sys: { __typename?: 'Sys', id: string }, subline?: { __typename?: 'ComponentCtaSubline', json: any } | null, targetPage?: (

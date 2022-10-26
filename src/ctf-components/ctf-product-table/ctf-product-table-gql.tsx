@@ -3,7 +3,7 @@ import { Container } from '@mui/material';
 import { useCtfProductTableQuery } from './__generated/ctf-product-table.generated';
 import { CtfProductTable } from './ctf-product-table';
 
-import EntryNotFound from '@src/components/errors/entry-not-found';
+import { EntryNotFound } from '@src/components/features/errors/entry-not-found';
 
 interface CtfProductTableGqlPropsInterface {
   id: string;

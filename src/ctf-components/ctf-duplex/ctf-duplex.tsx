@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import { DuplexFieldsFragment } from '@ctf-components/ctf-duplex/__generated/ctf-duplex.generated';
 import { CtfImage } from '@ctf-components/ctf-image/ctf-image';
 import { CtfRichtext } from '@ctf-components/ctf-richtext/ctf-richtext';
-import PageLink from '@src/components/link/page-link';
+import { PageLink } from '@src/components/features/page-link';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 import { getColorConfigFromPalette } from '@src/theme';
 import optimizeLineBreak from '@src/typography/optimize-line-break';
@@ -95,8 +95,7 @@ const DuplexContent = (props: DuplexFieldsFragment) => {
           variant="h1"
           component="h2"
           className={classes.headline}
-          style={{ color: colorConfig.headlineColor }}
-        >
+          style={{ color: colorConfig.headlineColor }}>
           {optimizeLineBreak(headline)}
         </Typography>
       )}
@@ -109,12 +108,7 @@ const DuplexContent = (props: DuplexFieldsFragment) => {
       )}
       {targetPage && targetPage.slug && (
         <div className={classes.ctaContainer}>
-          <PageLink
-            page={targetPage}
-            variant="contained"
-            color={colorConfig.buttonColor}
-            isButton
-          >
+          <PageLink page={targetPage} variant="contained" color={colorConfig.buttonColor} isButton>
             {ctaText}
           </PageLink>
         </div>
@@ -158,8 +152,7 @@ export const CtfDuplex = (props: DuplexFieldsFragment) => {
       maxWidth={false}
       style={{
         backgroundColor: colorConfig.backgroundColor,
-      }}
-    >
+      }}>
       <div className={classes.innerContainer}>
         {containerLayoutBoolean ? (
           <>

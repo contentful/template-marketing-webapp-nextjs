@@ -3,9 +3,9 @@ import { makeStyles } from '@mui/styles';
 import { useContext } from 'react';
 
 import { PersonFieldsFragment } from '@ctf-components/ctf-person/__generated/ctf-person.generated';
-import Author from '@src/components/author/author';
-import CardLeadership from '@src/components/card-leadership/card-leadership';
-import { CardPerson } from '@src/components/card-person/card-person';
+import { Author } from '@src/components/features/author';
+import { CardLeadership } from '@src/components/features/card-leadership';
+import { CardPerson } from '@src/components/features/card-person';
 import LayoutContext from '@src/layout-context';
 
 const useStyles = makeStyles((theme: Theme) => ({

@@ -3,7 +3,7 @@ import { makeStyles } from '@mui/styles';
 
 import { PersonFieldsFragment } from '@ctf-components/ctf-person/__generated/ctf-person.generated';
 import { CtfRichtext } from '@ctf-components/ctf-richtext/ctf-richtext';
-import Avatar from '@src/components/features/avatar/avatar';
+import { Avatar } from '@src/components/features/avatar';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 
 const useStyles = makeStyles((theme: Theme) => ({

@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next';
 
-import PageError from '@src/components/errors/page-error';
+import { PageError } from '@src/components/features/errors/page-error';
 import { getServerSideTranslations } from '@src/lib/get-serverside-translations';
 
 const ErrorPage404 = () => {

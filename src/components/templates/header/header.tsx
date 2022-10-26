@@ -4,7 +4,7 @@ import { makeStyles } from '@mui/styles';
 import { useTranslation } from 'next-i18next';
 
 import { CtfNavigationGql } from '@ctf-components/ctf-navigation/ctf-navigation-gql';
-import Link from '@src/components/features/link/link';
+import { Link } from '@src/components/shared/link';
 import Logo from '@src/icons/colorful-coin-logo.svg';
 import { HEADER_HEIGHT, HEADER_HEIGHT_MD, CONTAINER_WIDTH } from '@src/theme';
 
@@ -69,7 +69,7 @@ interface HeaderPropsInterface {
   onMenuClick?: () => any;
 }
 
-const Header = (props: HeaderPropsInterface) => {
+export const Header = (props: HeaderPropsInterface) => {
   const { t } = useTranslation();
 
   const { onMenuClick, isMenuOpen } = props;
@@ -110,5 +110,3 @@ const Header = (props: HeaderPropsInterface) => {
     </AppBar>
   );
 };
-
-export default Header;

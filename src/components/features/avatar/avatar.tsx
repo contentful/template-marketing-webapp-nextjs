@@ -25,7 +25,7 @@ interface AvatarPropsInterface {
   widthPx?: number;
 }
 
-const Avatar = (props: AvatarPropsInterface) => {
+export const Avatar = (props: AvatarPropsInterface) => {
   const { asset, widthPx = 250 } = props;
   const url = useMemo(() => `${asset.url}?w=${widthPx}`, [asset.url, widthPx]);
   const classes = useStyles();
@@ -35,5 +35,3 @@ const Avatar = (props: AvatarPropsInterface) => {
     </div>
   );
 };
-
-export default Avatar;

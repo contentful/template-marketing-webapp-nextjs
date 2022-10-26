@@ -5,7 +5,7 @@ import { useMemo, useContext } from 'react';
 
 import { HeroBannerFieldsFragment } from '@ctf-components/ctf-hero-banner/__generated/ctf-hero-banner.generated';
 import { CtfRichtext } from '@ctf-components/ctf-richtext/ctf-richtext';
-import PageLink from '@src/components/link/page-link';
+import { PageLink } from '@src/components/features/page-link';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 import { getColorConfigFromPalette, HEADER_HEIGHT_MD, HEADER_HEIGHT } from '@src/theme';
 
