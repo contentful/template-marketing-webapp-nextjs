@@ -89,3 +89,8 @@ export const useHeroBannerQuery = <
       fetcher<HeroBannerQuery, HeroBannerQueryVariables>(HeroBannerDocument, variables),
       options
     );
+
+useHeroBannerQuery.getKey = (variables: HeroBannerQueryVariables) => ['HeroBanner', variables];
+;
+
+useHeroBannerQuery.fetcher = (variables: HeroBannerQueryVariables) => fetcher<HeroBannerQuery, HeroBannerQueryVariables>(HeroBannerDocument, variables);

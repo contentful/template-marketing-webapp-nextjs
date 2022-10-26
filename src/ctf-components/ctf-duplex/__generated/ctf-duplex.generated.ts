@@ -89,3 +89,8 @@ export const useCtfDuplexQuery = <
       fetcher<CtfDuplexQuery, CtfDuplexQueryVariables>(CtfDuplexDocument, variables),
       options
     );
+
+useCtfDuplexQuery.getKey = (variables: CtfDuplexQueryVariables) => ['CtfDuplex', variables];
+;
+
+useCtfDuplexQuery.fetcher = (variables: CtfDuplexQueryVariables) => fetcher<CtfDuplexQuery, CtfDuplexQueryVariables>(CtfDuplexDocument, variables);

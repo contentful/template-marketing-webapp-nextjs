@@ -144,3 +144,8 @@ export const useCtfPageQuery = <
       fetcher<CtfPageQuery, CtfPageQueryVariables>(CtfPageDocument, variables),
       options
     );
+
+useCtfPageQuery.getKey = (variables: CtfPageQueryVariables) => ['CtfPage', variables];
+;
+
+useCtfPageQuery.fetcher = (variables: CtfPageQueryVariables) => fetcher<CtfPageQuery, CtfPageQueryVariables>(CtfPageDocument, variables);

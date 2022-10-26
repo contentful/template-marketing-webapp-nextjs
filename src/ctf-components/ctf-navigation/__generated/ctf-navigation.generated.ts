@@ -82,3 +82,8 @@ export const useCtfNavigationQuery = <
       fetcher<CtfNavigationQuery, CtfNavigationQueryVariables>(CtfNavigationDocument, variables),
       options
     );
+
+useCtfNavigationQuery.getKey = (variables?: CtfNavigationQueryVariables) => variables === undefined ? ['CtfNavigation'] : ['CtfNavigation', variables];
+;
+
+useCtfNavigationQuery.fetcher = (variables?: CtfNavigationQueryVariables) => fetcher<CtfNavigationQuery, CtfNavigationQueryVariables>(CtfNavigationDocument, variables);

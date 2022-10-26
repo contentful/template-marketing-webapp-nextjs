@@ -138,3 +138,8 @@ export const useCtfBusinessInfoQuery = <
       fetcher<CtfBusinessInfoQuery, CtfBusinessInfoQueryVariables>(CtfBusinessInfoDocument, variables),
       options
     );
+
+useCtfBusinessInfoQuery.getKey = (variables: CtfBusinessInfoQueryVariables) => ['CtfBusinessInfo', variables];
+;
+
+useCtfBusinessInfoQuery.fetcher = (variables: CtfBusinessInfoQueryVariables) => fetcher<CtfBusinessInfoQuery, CtfBusinessInfoQueryVariables>(CtfBusinessInfoDocument, variables);

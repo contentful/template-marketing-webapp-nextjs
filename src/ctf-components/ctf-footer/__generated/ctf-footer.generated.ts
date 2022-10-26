@@ -88,3 +88,8 @@ export const useCtfFooterQuery = <
       fetcher<CtfFooterQuery, CtfFooterQueryVariables>(CtfFooterDocument, variables),
       options
     );
+
+useCtfFooterQuery.getKey = (variables?: CtfFooterQueryVariables) => variables === undefined ? ['CtfFooter'] : ['CtfFooter', variables];
+;
+
+useCtfFooterQuery.fetcher = (variables?: CtfFooterQueryVariables) => fetcher<CtfFooterQuery, CtfFooterQueryVariables>(CtfFooterDocument, variables);

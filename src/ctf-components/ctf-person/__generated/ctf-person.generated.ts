@@ -79,3 +79,8 @@ export const useCtfPersonQuery = <
       fetcher<CtfPersonQuery, CtfPersonQueryVariables>(CtfPersonDocument, variables),
       options
     );
+
+useCtfPersonQuery.getKey = (variables: CtfPersonQueryVariables) => ['CtfPerson', variables];
+;
+
+useCtfPersonQuery.fetcher = (variables: CtfPersonQueryVariables) => fetcher<CtfPersonQuery, CtfPersonQueryVariables>(CtfPersonDocument, variables);

@@ -42,6 +42,8 @@ export const config: CodegenConfig = {
       },
       plugins: ['typescript-operations', 'typescript-react-query'],
       config: {
+        exposeQueryKeys: true,
+        exposeFetcher: true,
         rawRequest: false,
         inlineFragmentTypes: 'combine',
         skipTypename: false,

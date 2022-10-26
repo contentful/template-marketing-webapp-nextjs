@@ -2,24 +2,32 @@ import { config as fontawesomeConfig } from '@fortawesome/fontawesome-svg-core';
 import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import '@src/components/layout/layout.css';
-import { QueryClientProvider } from '@tanstack/react-query';
-import { appWithTranslation } from 'next-i18next';
+import { DehydratedState, Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { appWithTranslation, SSRConfig } from 'next-i18next';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Layout from '@src/components/layout/layout';
 import Settings from '@src/components/settings/settings';
 import { ContentfulContext, contentfulContextValue } from '@src/contentful-context';
-import { gqlQueryClient } from '@src/lib/gql-client';
+import { queryConfig } from '@src/lib/gql-client';
 import colorfulTheme from '@src/theme';
 import contentfulConfig from 'contentful.config';
 import nextI18nConfig from 'next-i18next.config';
 
 fontawesomeConfig.autoAddCss = false;
 
-const CustomApp = (props: AppProps) => {
-  const { Component, pageProps, router } = props;
+type CustomPageProps = SSRConfig & { dehydratedState: DehydratedState; err: Error };
+
+const CustomApp = ({
+  Component,
+  router,
+  pageProps: originalPageProps,
+}: AppProps<CustomPageProps>) => {
+  const [queryClient] = useState(() => new QueryClient(queryConfig));
+  const { dehydratedState, err, ...pageProps } = originalPageProps;
 
   useEffect(() => {
     // when component is mounting we remove server side rendered css:
@@ -48,7 +56,9 @@ const CustomApp = (props: AppProps) => {
   }
 
   return (
-    <QueryClientProvider client={gqlQueryClient}>
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
+
       <ContentfulContext.Provider value={contentfulContextValue}>
         <StyledEngineProvider injectFirst>
           <ThemeProvider theme={colorfulTheme}>
@@ -76,7 +86,9 @@ const CustomApp = (props: AppProps) => {
               <meta key="og:type" property="og:type" content="website" />
             </Head>
             <Layout preview={contentfulContextValue.previewActive}>
-              <Component {...pageProps} err={(props as any).err} />
+              <Hydrate state={dehydratedState}>
+                <Component {...pageProps} err={err} />
+              </Hydrate>
               <Settings />
             </Layout>
           </ThemeProvider>

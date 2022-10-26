@@ -144,3 +144,8 @@ export const useCtfQuoteQuery = <
       fetcher<CtfQuoteQuery, CtfQuoteQueryVariables>(CtfQuoteDocument, variables),
       options
     );
+
+useCtfQuoteQuery.getKey = (variables: CtfQuoteQueryVariables) => ['CtfQuote', variables];
+;
+
+useCtfQuoteQuery.fetcher = (variables: CtfQuoteQueryVariables) => fetcher<CtfQuoteQuery, CtfQuoteQueryVariables>(CtfQuoteDocument, variables);

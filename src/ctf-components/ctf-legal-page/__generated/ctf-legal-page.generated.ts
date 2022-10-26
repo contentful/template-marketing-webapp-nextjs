@@ -150,3 +150,8 @@ export const useCtfLegalPageQuery = <
       fetcher<CtfLegalPageQuery, CtfLegalPageQueryVariables>(CtfLegalPageDocument, variables),
       options
     );
+
+useCtfLegalPageQuery.getKey = (variables: CtfLegalPageQueryVariables) => ['CtfLegalPage', variables];
+;
+
+useCtfLegalPageQuery.fetcher = (variables: CtfLegalPageQueryVariables) => fetcher<CtfLegalPageQuery, CtfLegalPageQueryVariables>(CtfLegalPageDocument, variables);

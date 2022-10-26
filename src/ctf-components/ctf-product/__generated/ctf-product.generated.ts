@@ -86,3 +86,8 @@ export const useCtfProductQuery = <
       fetcher<CtfProductQuery, CtfProductQueryVariables>(CtfProductDocument, variables),
       options
     );
+
+useCtfProductQuery.getKey = (variables: CtfProductQueryVariables) => ['CtfProduct', variables];
+;
+
+useCtfProductQuery.fetcher = (variables: CtfProductQueryVariables) => fetcher<CtfProductQuery, CtfProductQueryVariables>(CtfProductDocument, variables);

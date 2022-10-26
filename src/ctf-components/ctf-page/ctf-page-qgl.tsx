@@ -17,6 +17,7 @@ const CtfPageGgl = ({ slug: slugFromProps }: Props) => {
   const { locale } = useContentfulContext();
 
   const slug = !slugFromProps || slugFromProps === '/' ? 'home' : slugFromProps;
+
   const { previewActive } = useContentfulContext();
 
   const { isLoading, data } = useCtfPageQuery({

@@ -96,3 +96,8 @@ export const useCtfInfoBlockQuery = <
       fetcher<CtfInfoBlockQuery, CtfInfoBlockQueryVariables>(CtfInfoBlockDocument, variables),
       options
     );
+
+useCtfInfoBlockQuery.getKey = (variables: CtfInfoBlockQueryVariables) => ['CtfInfoBlock', variables];
+;
+
+useCtfInfoBlockQuery.fetcher = (variables: CtfInfoBlockQueryVariables) => fetcher<CtfInfoBlockQuery, CtfInfoBlockQueryVariables>(CtfInfoBlockDocument, variables);

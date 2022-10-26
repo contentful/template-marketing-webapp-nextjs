@@ -137,3 +137,8 @@ export const useCtfTextBlockQuery = <
       fetcher<CtfTextBlockQuery, CtfTextBlockQueryVariables>(CtfTextBlockDocument, variables),
       options
     );
+
+useCtfTextBlockQuery.getKey = (variables: CtfTextBlockQueryVariables) => ['CtfTextBlock', variables];
+;
+
+useCtfTextBlockQuery.fetcher = (variables: CtfTextBlockQueryVariables) => fetcher<CtfTextBlockQuery, CtfTextBlockQueryVariables>(CtfTextBlockDocument, variables);

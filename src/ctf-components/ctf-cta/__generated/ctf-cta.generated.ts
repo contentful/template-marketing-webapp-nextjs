@@ -79,3 +79,8 @@ export const useCtfCtaQuery = <
       fetcher<CtfCtaQuery, CtfCtaQueryVariables>(CtfCtaDocument, variables),
       options
     );
+
+useCtfCtaQuery.getKey = (variables: CtfCtaQueryVariables) => ['CtfCta', variables];
+;
+
+useCtfCtaQuery.fetcher = (variables: CtfCtaQueryVariables) => fetcher<CtfCtaQuery, CtfCtaQueryVariables>(CtfCtaDocument, variables);
