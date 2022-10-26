@@ -95,8 +95,7 @@ const DuplexContent = (props: DuplexFieldsFragment) => {
           variant="h1"
           component="h2"
           className={classes.headline}
-          style={{ color: colorConfig.headlineColor }}
-        >
+          style={{ color: colorConfig.headlineColor }}>
           {optimizeLineBreak(headline)}
         </Typography>
       )}
@@ -109,12 +108,7 @@ const DuplexContent = (props: DuplexFieldsFragment) => {
       )}
       {targetPage && targetPage.slug && (
         <div className={classes.ctaContainer}>
-          <PageLink
-            page={targetPage}
-            variant="contained"
-            color={colorConfig.buttonColor}
-            isButton
-          >
+          <PageLink page={targetPage} variant="contained" color={colorConfig.buttonColor} isButton>
             {ctaText}
           </PageLink>
         </div>
@@ -135,11 +129,11 @@ const DuplexImage = (props: DuplexFieldsFragment) => {
         <div className={classes.nextImageContainer}>
           <CtfImage
             className={clsx([classes.image, imageStyle === 'fixed' && classes.imageFull])}
-            url={`${image.url}?w=600`}
-            title={image.description || undefined}
+            src={`${image.url}?w=600`}
+            title={image.description || ''}
             layout="responsive"
-            width={image.width!}
-            height={image.height!}
+            width={image.width || undefined}
+            height={image.height || undefined}
           />
         </div>
       ) : null}
@@ -158,8 +152,7 @@ export const CtfDuplex = (props: DuplexFieldsFragment) => {
       maxWidth={false}
       style={{
         backgroundColor: colorConfig.backgroundColor,
-      }}
-    >
+      }}>
       <div className={classes.innerContainer}>
         {containerLayoutBoolean ? (
           <>

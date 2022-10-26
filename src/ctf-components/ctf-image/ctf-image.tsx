@@ -1,106 +1,53 @@
-import { makeStyles } from '@mui/styles';
-import clsx from 'clsx';
+import { Box } from '@mui/material';
 import Image, { ImageProps } from 'next/image';
-import React, { useMemo } from 'react';
+import React, { useState } from 'react';
 
-import { CONTAINER_WIDTH } from '@src/theme';
-
-const useStyles = makeStyles(() => ({
-  root: {
-    width: '100%',
-  },
-
-  figure: {
-    margin: 0,
-  },
-
-  image: {
-    display: 'block',
-    maxWidth: '100%',
-  },
-
-  backgroundImg: {
-    display: 'inline-block',
-    height: 0,
-    width: '100%',
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center center',
-  },
-}));
-
-interface CtfImagePropsInterface {
-  widthPx?: number;
-  title?: string | null;
+interface CtfImagePropsInterface extends ImageProps {
   description?: string | null;
-  url?: string | null;
-  width?: number | null;
-  height?: number | null;
-  cover?: boolean;
-  ratio?: number;
-  className?: string;
-  imgClassName?: string;
-  figureClassName?: string;
   showDescription?: boolean;
-  layout?: ImageProps['layout'];
 }
 
-export const CtfImage = (props: CtfImagePropsInterface) => {
-  const {
-    title,
-    description,
-    url,
-    width,
-    height,
-    widthPx,
-    cover,
-    ratio,
-    className,
-    imgClassName,
-    figureClassName,
-    showDescription = true,
-    layout = 'intrinsic',
-  } = props;
+export const CtfImage = ({
+  src,
+  description,
+  showDescription = true,
+  title = '',
+  width,
+  height,
+  layout,
+  ...rest
+}: CtfImagePropsInterface) => {
+  const [loaded, setLoaded] = useState(false);
 
-  const imgSrc = useMemo(() => {
-    return widthPx === undefined ? url : `${url}?w=${Math.min(widthPx, width || CONTAINER_WIDTH)}`;
-  }, [url, widthPx, width]);
+  if (!src) return null;
 
-  const paddingTop = useMemo(
-    () => `${(ratio || (height || 0) / (width || 0)) * 100}%`,
-    [ratio, width, height],
-  );
-  const asBackground = ratio !== undefined || cover === true;
-  const classes = useStyles();
-
-  if (!url) return null;
+  const blurUrl = new URL(String(src));
+  blurUrl.searchParams.set('w', '100');
 
   return (
-    <div className={clsx(classes.root, className)}>
-      {asBackground ? (
-        <div>
-          <div
-            className={clsx(classes.backgroundImg, imgClassName)}
-            style={{
-              backgroundImage: `url(${imgSrc})`,
-              backgroundSize: cover ? 'cover' : 'contain',
-              paddingTop,
-            }}
-          />
-        </div>
-      ) : (
-        <figure className={clsx(classes.figure, figureClassName)}>
-          <Image
-            className={clsx(classes.image, imgClassName)}
-            src={url}
-            alt={title || ''}
-            width={width!}
-            height={height!}
-            layout={layout}
-          />
-          {showDescription && description && <figcaption>{description}</figcaption>}
-        </figure>
-      )}
-    </div>
+    <Box
+      component="figure"
+      margin="0"
+      fontSize={0}
+      style={{
+        transition: '300ms ease-out',
+        transitionProperty: 'opacity',
+        opacity: loaded ? 1 : 0,
+      }}>
+      <Image
+        onLoad={() => {
+          setLoaded(true);
+        }}
+        src={src}
+        alt={title}
+        width={width}
+        height={height}
+        layout={layout}
+        placeholder="blur"
+        blurDataURL={blurUrl.toString()}
+        {...rest}
+      />
+      {showDescription && description && <figcaption>{description}</figcaption>}
+    </Box>
   );
 };
