@@ -106,7 +106,7 @@ Importing space contents (Models, Entries, Environments, App Integrations etc) i
 
 This can be done using the [Contentful CLI](https://www.contentful.com/developers/docs/tutorials/cli/installation/) tool, by running the following command:
 
-`contentful space export --space-id {{spaceId}}`
+`contentful space export --space-id {{spaceId}}` or `npx contentful-cli space export --space-id {{spaceId}} --management-token {{ --management-token }}`
 
 Where spaceId is the space id of the test contentful space. see here https://www.contentful.com/developers/docs/tutorials/cli/import-and-export for installation and authentication information.
 
