@@ -1,5 +1,4 @@
 import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
-import '@src/components/templates/layout/layout.css';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { appWithTranslation } from 'next-i18next';
 import { AppProps } from 'next/app';
