@@ -1,11 +1,10 @@
 import { Theme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
-import { PersonFieldsFragment } from '@ctf-components/ctf-person/__generated/ctf-person.generated';
 import { Avatar } from '@src/components/features/avatar';
+import { PersonFieldsFragment } from '@src/components/features/ctf-components/ctf-person/__generated/ctf-person.generated';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  root: {},
   avatar: {
     display: 'inline-block',
     width: '11.4rem',
@@ -26,7 +25,7 @@ export const Author = (props: AuthorPropsInterface) => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div>
       {avatar && (
         <div className={classes.avatar}>
           <Avatar asset={avatar} />

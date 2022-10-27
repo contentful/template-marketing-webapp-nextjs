@@ -3,9 +3,9 @@ import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import React from 'react';
 
-import { CtfAsset } from '@ctf-components/ctf-asset/ctf-asset';
-import { PersonFieldsFragment } from '@ctf-components/ctf-person/__generated/ctf-person.generated';
-import { CtfRichtext } from '@ctf-components/ctf-richtext/ctf-richtext';
+import { CtfAsset } from '@src/components/features/ctf-components/ctf-asset/ctf-asset';
+import { PersonFieldsFragment } from '@src/components/features/ctf-components/ctf-person/__generated/ctf-person.generated';
+import { CtfRichtext } from '@src/components/features/ctf-components/ctf-richtext/ctf-richtext';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 
 const useStyles = makeStyles((theme: Theme) => ({
