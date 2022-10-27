@@ -7,7 +7,7 @@ import Head from 'next/head';
 import { useEffect } from 'react';
 
 import { Settings } from '@src/components/features/settings';
-import Layout from '@src/components/templates/layout/layout';
+import { Layout } from '@src/components/templates/layout';
 import { useContentfulContext, ContentfulContentProvider } from '@src/contentful-context';
 import { gqlQueryClient } from '@src/lib/gql-client';
 import colorfulTheme from '@src/theme';
