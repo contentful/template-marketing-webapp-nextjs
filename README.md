@@ -52,6 +52,12 @@ yarn dev
 
 to start the local development server. By default, the server will listen on `http://localhost:3000`
 
+## Passing space credentials through query parameters
+
+It's possible to override which space content is fetched from, by passing the space id, CDA & CPA tokens as query parameters. The query string should take the following format:
+
+`?delivery_token={{delivery_token}}&preview_token={{preview_token}}&space_id={{space_id}}`
+
 ## Contentful Components
 
 The term _Contentful Components_ (_ctf-compoents_ for short) is used for react components which have an equivalent contentful _content type_. E.g. all react components needed for rendering the _content-type_ **HeroBanner** can be found in the folder **src/ctf-components/ctf-hero-banner**.
@@ -106,7 +112,7 @@ Importing space contents (Models, Entries, Environments, App Integrations etc) i
 
 This can be done using the [Contentful CLI](https://www.contentful.com/developers/docs/tutorials/cli/installation/) tool, by running the following command:
 
-`contentful space export --space-id {{spaceId}}`
+`contentful space export --space-id {{spaceId}}` or `npx contentful-cli space export --space-id {{spaceId}} --management-token {{management-token}}`
 
 Where spaceId is the space id of the test contentful space. see here https://www.contentful.com/developers/docs/tutorials/cli/import-and-export for installation and authentication information.
 
@@ -146,16 +152,20 @@ API calls made to the Contentful GraphQL endpoint are made through React Query `
 4. The hook can now be imported and used within the `.ts(x)` files in the component folder
 
 ## Husky & git hooks
+
 This repository makes use of Husky to enforce commit hooks. For more info see: https://github.com/typicode/husky. The config for both the pre-commit and pre-push hooks can be found in the .husky folder in the root.
 
 ### Pre-commit
-Before allowing a commit, we require a successful result from the TypeScript compiler (`tsc`) and our `lint-staged` script will be run. This ensures all Eslint and Prettier rules are enforced on the files that are staged to be committed. 
-The tsc command is ran separately from the `lint-staged` step, because we require the Typescript compiler to sample _all_ files. This is important to ensure that no deviating types were introduced by the codegen for example. 
+
+Before allowing a commit, we require a successful result from the TypeScript compiler (`tsc`) and our `lint-staged` script will be run. This ensures all Eslint and Prettier rules are enforced on the files that are staged to be committed.
+The tsc command is ran separately from the `lint-staged` step, because we require the Typescript compiler to sample _all_ files. This is important to ensure that no deviating types were introduced by the codegen for example.
 
 ### Pre-push
+
 The same two tasks are ran for pre-push, that are ran for pre-commit.
 
-### Overriding the Husky git hooks 
+### Overriding the Husky git hooks
+
 In case of wanting to bypass the pre-commit or pre-push hooks, pass a `--noVerify` flag to your Git commands.
 
-⚠️ Make sure you only use this if you know why you're using it. ⚠️ 
+⚠️ Make sure you only use this if you know why you're using it. ⚠️
