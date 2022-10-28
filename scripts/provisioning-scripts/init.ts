@@ -2,11 +2,8 @@ import { createClient } from 'contentful-management';
 
 import { stepCreateSpaceEmptyEnvironment } from './createEmptyEnvironment';
 import { createSpace } from './createSpace';
-import { stepDeployToVercel } from './deployToVercel';
 import { stepImportContent } from './importContent';
 import { stepImportContentModel } from './importContentModel';
-import { stepInviteToSpace } from './inviteToSpace';
-import { stepSetPreviewUrls } from './setPreviewUrls';
 
 import catchify from 'catchify';
 
@@ -83,35 +80,7 @@ export const init = async ({
       await stepImportContent({ spaceId, cmaToken });
     }
 
-    // const deploymentUrl = 'example.com/fake-url'
-    // const { deploymentUrl } = await stepDeployToVercel({
-    //   spaceId,
-    //   cmaToken,
-    //   deliveryApiKey,
-    //   previewApiKey,
-    //   vercelDeployToken,
-    // });
-
-    // await stepSetPreviewUrls({
-    //   spaceId,
-    //   cmaToken,
-    //   deploymentUrl,
-    // });
-
     let contentfulUrl = `https://app.contentful.com/spaces/${spaceId}`;
-
-    // if (!argsProvidedSpaceId) {
-    //   const { userInvite } = await stepInviteToSpace({
-    //     spaceId,
-    //     organizationId,
-    //     cmaToken,
-    //     email,
-    //     role,
-    //   });
-
-    //   contentfulUrl =
-    //     userInvite?.sys.invitationUrl || `https://app.contentful.com/spaces/${spaceId}`;
-    // }
 
     /**
      * Finish up provisioning and report to user
