@@ -33,6 +33,15 @@ yarn dev
 
 to start the local development server. By default, the server will listen on `http://localhost:3000`
 
+## Running the provisioning scripts
+Provision your space with:
+```bash
+yarn contentful-scripts:provision
+```
+Delete your space with:
+```bash
+yarn contentful-scripts:delete --spaceId=[space_ID_here]
+```
 ## Passing space credentials through query parameters
 
 It's possible to override which space content is fetched from, by passing the space id, CDA & CPA tokens as query parameters. The query string should take the following format:
