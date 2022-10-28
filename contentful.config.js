@@ -8,11 +8,11 @@ const url = !process.env.CONFIG_CONTENTFUL_META_URL
 module.exports = {
   contentful: {
     // main_space_id: Contentful Space ID
-    main_space_id: process.env.CONFIG_CONTENTFUL_MAIN_SPACE_ID || '',
+    main_space_id: process.env.NEXT_PUBLIC_CONFIG_CONTENTFUL_MAIN_SPACE_ID || '',
     // main_space_token: Contentful Space Delivery API - access token
-    main_space_token: process.env.CONFIG_CONTENTFUL_MAIN_SPACE_TOKEN || '',
+    main_space_token: process.env.NEXT_PUBLIC_CONFIG_CONTENTFUL_MAIN_SPACE_TOKEN || '',
     // main_space_preview_token: Contentful Space Preview API - access token
-    main_space_preview_token: process.env.CONFIG_CONTENTFUL_MAIN_SPACE_PREVIEW_TOKEN || '',
+    main_space_preview_token: process.env.NEXT_PUBLIC_CONFIG_CONTENTFUL_MAIN_SPACE_PREVIEW_TOKEN || '',
     // main_space_management_token: Contentful Content Management token
     main_space_management_token: process.env.CONFIG_CONTENTFUL_MAIN_SPACE_MANAGEMENT_TOKEN || '',
   },
