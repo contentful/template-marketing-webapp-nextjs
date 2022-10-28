@@ -7,7 +7,6 @@ import { stepImportContent } from './importContent';
 import { stepImportContentModel } from './importContentModel';
 import { stepInviteToSpace } from './inviteToSpace';
 import { stepSetPreviewUrls } from './setPreviewUrls';
-import { stepUpdateTranslatorRole } from './updateTranslatorRole';
 
 import catchify from 'catchify';
 
@@ -84,36 +83,35 @@ export const init = async ({
       await stepImportContent({ spaceId, cmaToken });
     }
 
-    const { deploymentUrl } = await stepDeployToVercel({
-      spaceId,
-      cmaToken,
-      deliveryApiKey,
-      previewApiKey,
-      vercelDeployToken,
-    });
+    // const deploymentUrl = 'example.com/fake-url'
+    // const { deploymentUrl } = await stepDeployToVercel({
+    //   spaceId,
+    //   cmaToken,
+    //   deliveryApiKey,
+    //   previewApiKey,
+    //   vercelDeployToken,
+    // });
 
-    await stepSetPreviewUrls({
-      spaceId,
-      cmaToken,
-      deploymentUrl,
-    });
+    // await stepSetPreviewUrls({
+    //   spaceId,
+    //   cmaToken,
+    //   deploymentUrl,
+    // });
 
     let contentfulUrl = `https://app.contentful.com/spaces/${spaceId}`;
 
-    if (!argsProvidedSpaceId) {
-      const { userInvite } = await stepInviteToSpace({
-        spaceId,
-        organizationId,
-        cmaToken,
-        email,
-        role,
-      });
+    // if (!argsProvidedSpaceId) {
+    //   const { userInvite } = await stepInviteToSpace({
+    //     spaceId,
+    //     organizationId,
+    //     cmaToken,
+    //     email,
+    //     role,
+    //   });
 
-      contentfulUrl =
-        userInvite?.sys.invitationUrl || `https://app.contentful.com/spaces/${spaceId}`;
-
-      await stepUpdateTranslatorRole({ spaceId, cmaToken });
-    }
+    //   contentfulUrl =
+    //     userInvite?.sys.invitationUrl || `https://app.contentful.com/spaces/${spaceId}`;
+    // }
 
     /**
      * Finish up provisioning and report to user
@@ -127,13 +125,11 @@ export const init = async ({
     );
 
     console.table({
-      Frontend: deploymentUrl ? `https://${deploymentUrl}/en` : `Deployment wasn't successful`,
       'Contentful App': contentfulUrl,
       spaceName: createdSpaceName,
     });
 
     return {
-      frontend: deploymentUrl ? `https://${deploymentUrl}/en` : `Deployment wasn't successful`,
       contentful: contentfulUrl,
       spaceName: createdSpaceName,
     };
