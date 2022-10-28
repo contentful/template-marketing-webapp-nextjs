@@ -44,16 +44,16 @@ const deployToVercel: ProvisionStep<DeployToVercelProps, DeployToVercelPayload> 
         outputDirectory: null,
       },
       env: {
-        CONFIG_CONTENTFUL_MAIN_SPACE_ID: spaceId,
-        CONFIG_CONTENTFUL_MAIN_SPACE_TOKEN: deliveryApiKey,
-        CONFIG_CONTENTFUL_MAIN_SPACE_PREVIEW_TOKEN: previewApiKey,
+        NEXT_PUBLIC_CONFIG_CONTENTFUL_MAIN_SPACE_ID: spaceId,
+        NEXT_PUBLIC_CONFIG_CONTENTFUL_MAIN_SPACE_TOKEN: deliveryApiKey,
+        NEXT_PUBLIC_CONFIG_CONTENTFUL_MAIN_SPACE_PREVIEW_TOKEN: previewApiKey,
         CONFIG_CONTENTFUL_MAIN_SPACE_MANAGEMENT_TOKEN: cmaToken,
       },
       build: {
         env: {
-          CONFIG_CONTENTFUL_MAIN_SPACE_ID: spaceId,
-          CONFIG_CONTENTFUL_MAIN_SPACE_TOKEN: deliveryApiKey,
-          CONFIG_CONTENTFUL_MAIN_SPACE_PREVIEW_TOKEN: previewApiKey,
+          NEXT_PUBLIC_CONFIG_CONTENTFUL_MAIN_SPACE_ID: spaceId,
+          NEXT_PUBLIC_CONFIG_CONTENTFUL_MAIN_SPACE_TOKEN: deliveryApiKey,
+          NEXT_PUBLIC_CONFIG_CONTENTFUL_MAIN_SPACE_PREVIEW_TOKEN: previewApiKey,
           CONFIG_CONTENTFUL_MAIN_SPACE_MANAGEMENT_TOKEN: cmaToken,
         },
       },
