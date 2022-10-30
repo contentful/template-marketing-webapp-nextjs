@@ -2,7 +2,7 @@ import Head from 'next/head';
 
 import CtfPage from './ctf-page';
 
-import { PageError } from '@src/components/features//errors/page-error';
+import { PageError } from '@src/components/features/errors/page-error';
 import { useCtfPageQuery } from '@src/components/features/ctf-components/ctf-page/__generated/ctf-page.generated';
 import { useContentfulContext } from '@src/contentful-context';
 import { tryget } from '@src/utils';
