@@ -1,10 +1,10 @@
 import { dehydrate, QueryClient } from '@tanstack/react-query';
 import { NextPage, NextPageContext } from 'next';
 
-import { useCtfFooterQuery } from '@ctf-components/ctf-footer/__generated/ctf-footer.generated';
-import { useCtfNavigationQuery } from '@ctf-components/ctf-navigation/__generated/ctf-navigation.generated';
+import { useCtfFooterQuery } from '@src/components/features/ctf-components/ctf-footer/__generated/ctf-footer.generated';
+import { useCtfNavigationQuery } from '@src/components/features/ctf-components/ctf-navigation/__generated/ctf-navigation.generated';
+import { useCtfPageQuery } from '@src/components/features/ctf-components/ctf-page/__generated/ctf-page.generated';
 import CtfPageGgl from '@src/components/features/ctf-components/ctf-page/ctf-page-gql';
-import { useCtfPageQuery } from '@src/ctf-components/ctf-page/__generated/ctf-page.generated';
 import { getServerSideTranslations } from '@src/lib/get-serverside-translations';
 import { prefetchPromiseArr } from '@src/lib/prefetch-promise-array';
 

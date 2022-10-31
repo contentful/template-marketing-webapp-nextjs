@@ -1,13 +1,13 @@
-import { useCtfBusinessInfoQuery } from '@ctf-components/ctf-business-info/__generated/business-info.generated';
-import { useCtfCtaQuery } from '@ctf-components/ctf-cta/__generated/ctf-cta.generated';
-import { useCtfDuplexQuery } from '@ctf-components/ctf-duplex/__generated/ctf-duplex.generated';
-import { useCtfHeroBannerQuery } from '@ctf-components/ctf-hero-banner/__generated/ctf-hero-banner.generated';
-import { useCtfInfoBlockQuery } from '@ctf-components/ctf-info-block/__generated/ctf-info-block.generated';
-import { useCtfPersonQuery } from '@ctf-components/ctf-person/__generated/ctf-person.generated';
-import { useCtfProductTableQuery } from '@ctf-components/ctf-product-table/__generated/ctf-product-table.generated';
-import { useCtfProductQuery } from '@ctf-components/ctf-product/__generated/ctf-product.generated';
-import { useCtfQuoteQuery } from '@ctf-components/ctf-quote/__generated/ctf-quote.generated';
-import { useCtfTextBlockQuery } from '@ctf-components/ctf-text-block/__generated/ctf-text-block.generated';
+import { useCtfBusinessInfoQuery } from '@src/components/features/ctf-components/ctf-business-info/__generated/business-info.generated';
+import { useCtfCtaQuery } from '@src/components/features/ctf-components/ctf-cta/__generated/ctf-cta.generated';
+import { useCtfDuplexQuery } from '@src/components/features/ctf-components/ctf-duplex/__generated/ctf-duplex.generated';
+import { useCtfHeroBannerQuery } from '@src/components/features/ctf-components/ctf-hero-banner/__generated/ctf-hero-banner.generated';
+import { useCtfInfoBlockQuery } from '@src/components/features/ctf-components/ctf-info-block/__generated/ctf-info-block.generated';
+import { useCtfPersonQuery } from '@src/components/features/ctf-components/ctf-person/__generated/ctf-person.generated';
+import { useCtfProductTableQuery } from '@src/components/features/ctf-components/ctf-product-table/__generated/ctf-product-table.generated';
+import { useCtfProductQuery } from '@src/components/features/ctf-components/ctf-product/__generated/ctf-product.generated';
+import { useCtfQuoteQuery } from '@src/components/features/ctf-components/ctf-quote/__generated/ctf-quote.generated';
+import { useCtfTextBlockQuery } from '@src/components/features/ctf-components/ctf-text-block/__generated/ctf-text-block.generated';
 import {
   CtfBusinessInfoQuery,
   CtfPersonQuery,
