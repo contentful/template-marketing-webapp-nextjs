@@ -56,11 +56,11 @@ const Link = (props: Props) => {
   const router = useRouter();
   let href = props.href || '';
   let { as } = props;
-  if (as && !dropUrlParams && router) {
+
+  if (!dropUrlParams && router) {
     const urlQuerystring = router.asPath.split('?')[1];
     if (urlQuerystring) {
       href += href.indexOf('?') < 0 ? `?${urlQuerystring}` : `&${urlQuerystring}`;
-      as += `?${urlQuerystring}`;
     }
   }
 

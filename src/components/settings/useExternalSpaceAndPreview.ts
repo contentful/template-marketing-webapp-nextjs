@@ -1,0 +1,80 @@
+import { useQueryClient } from '@tanstack/react-query';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+
+import { fetchConfig } from '@src/lib/fetchConfig';
+
+const fetcherGraphqlEndpoint = space_id =>
+  `https://graphql.contentful.com/content/v1/spaces/${space_id}`;
+
+const fetcherHeaderParamsDefault = {
+  headers: {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${process.env.NEXT_PUBLIC_CONFIG_CONTENTFUL_MAIN_SPACE_TOKEN}`,
+  },
+};
+
+const fetcherHeaderParamsPreview = {
+  headers: {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${process.env.NEXT_PUBLIC_CONFIG_CONTENTFUL_MAIN_SPACE_PREVIEW_TOKEN}`,
+  },
+};
+
+const getFetchParams = ({
+  previewActive,
+  shouldUseSpaceCredsFromParams,
+  preview_token,
+  delivery_token,
+}) => {
+  if (previewActive) {
+    if (shouldUseSpaceCredsFromParams) {
+      return {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${preview_token}`,
+        },
+      };
+    } else {
+      return fetcherHeaderParamsPreview;
+    }
+  } else if (shouldUseSpaceCredsFromParams) {
+    return {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${delivery_token}`,
+      },
+    };
+  } else {
+    return fetcherHeaderParamsDefault;
+  }
+};
+
+export const useExternalSpaceAndPreview = () => {
+  const router = useRouter();
+
+  const queryClient = useQueryClient();
+
+  const { delivery_token, preview_token, space_id, preview } = router.query;
+
+  const previewActive = !!preview;
+  const shouldUseSpaceCredsFromParams = !!delivery_token && !!preview_token && !!space_id;
+
+  const fetchParams = getFetchParams({
+    previewActive,
+    shouldUseSpaceCredsFromParams,
+    preview_token,
+    delivery_token,
+  });
+
+  fetchConfig.params.headers = fetchParams.headers;
+  fetchConfig.endpoint = shouldUseSpaceCredsFromParams
+    ? fetcherGraphqlEndpoint(space_id)
+    : fetcherGraphqlEndpoint(process.env.NEXT_PUBLIC_CONFIG_CONTENTFUL_MAIN_SPACE_ID);
+
+  useEffect(() => {
+    if (shouldUseSpaceCredsFromParams) {
+      queryClient.invalidateQueries();
+    }
+  }, [queryClient, shouldUseSpaceCredsFromParams]);
+};

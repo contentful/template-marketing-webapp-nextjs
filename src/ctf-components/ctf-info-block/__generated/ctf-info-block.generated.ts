@@ -1,9 +1,29 @@
 import * as Types from '../../../lib/__generated/graphql.types';
 
 import { AssetFieldsFragment } from '../../ctf-asset/__generated/ctf-asset.generated';
+import { fetchConfig } from '@src/lib/fetchConfig';
 import { AssetFieldsFragmentDoc } from '../../ctf-asset/__generated/ctf-asset.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
-import { useFetchData } from '@src/lib/fetcher';
+
+function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
+  return async (): Promise<TData> => {
+    const res = await fetch(fetchConfig.endpoint as string, {
+    method: "POST",
+    ...(fetchConfig.params),
+      body: JSON.stringify({ query, variables }),
+    });
+
+    const json = await res.json();
+
+    if (json.errors) {
+      const { message } = json.errors[0];
+
+      throw new Error(message);
+    }
+
+    return json.data;
+  }
+}
 export type InfoBlockFieldsFragment = { __typename: 'ComponentInfoBlock', internalName?: string | null, headline?: string | null, subline?: string | null, colorPalette?: string | null, sys: { __typename?: 'Sys', id: string }, block1Image?: (
     { __typename?: 'Asset' }
     & AssetFieldsFragment
@@ -74,7 +94,7 @@ export const useCtfInfoBlockQuery = <
     ) =>
     useQuery<CtfInfoBlockQuery, TError, TData>(
       ['CtfInfoBlock', variables],
-      useFetchData<CtfInfoBlockQuery, CtfInfoBlockQueryVariables>(CtfInfoBlockDocument).bind(null, variables),
+      fetcher<CtfInfoBlockQuery, CtfInfoBlockQueryVariables>(CtfInfoBlockDocument, variables),
       options
     );
 

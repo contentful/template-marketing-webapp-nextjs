@@ -2,10 +2,30 @@ import * as Types from '../../../lib/__generated/graphql.types';
 
 import { MenuGroupFieldsFragment } from '../../../lib/shared-fragments/__generated/ctf-menuGroup.generated';
 import { PageLinkFieldsFragment } from '../../../components/link/__generated/page-link.generated';
+import { fetchConfig } from '@src/lib/fetchConfig';
 import { MenuGroupFieldsFragmentDoc } from '../../../lib/shared-fragments/__generated/ctf-menuGroup.generated';
 import { PageLinkFieldsFragmentDoc } from '../../../components/link/__generated/page-link.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
-import { useFetchData } from '@src/lib/fetcher';
+
+function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
+  return async (): Promise<TData> => {
+    const res = await fetch(fetchConfig.endpoint as string, {
+    method: "POST",
+    ...(fetchConfig.params),
+      body: JSON.stringify({ query, variables }),
+    });
+
+    const json = await res.json();
+
+    if (json.errors) {
+      const { message } = json.errors[0];
+
+      throw new Error(message);
+    }
+
+    return json.data;
+  }
+}
 export type FooterFieldsFragment = { __typename?: 'FooterMenuCollection', items: Array<{ __typename?: 'FooterMenu', twitterLink?: string | null, facebookLink?: string | null, linkedinLink?: string | null, instagramLink?: string | null, menuItemsCollection?: { __typename?: 'FooterMenuMenuItemsCollection', items: Array<{ __typename?: 'MenuGroup', groupName?: string | null, featuredPagesCollection?: (
           { __typename?: 'MenuGroupFeaturedPagesCollection' }
           & MenuGroupFieldsFragment
@@ -66,7 +86,7 @@ export const useCtfFooterQuery = <
     ) =>
     useQuery<CtfFooterQuery, TError, TData>(
       variables === undefined ? ['CtfFooter'] : ['CtfFooter', variables],
-      useFetchData<CtfFooterQuery, CtfFooterQueryVariables>(CtfFooterDocument).bind(null, variables),
+      fetcher<CtfFooterQuery, CtfFooterQueryVariables>(CtfFooterDocument, variables),
       options
     );
 

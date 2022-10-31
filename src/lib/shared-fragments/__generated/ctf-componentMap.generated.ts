@@ -1,5 +1,6 @@
 import * as Types from '../../__generated/graphql.types';
 
+import { fetchConfig } from '@src/lib/fetchConfig';
 export type ComponentReferenceFields_ComponentCta_Fragment = { __typename: 'ComponentCta', internalName?: string | null, sys: { __typename?: 'Sys', id: string } };
 
 export type ComponentReferenceFields_ComponentDuplex_Fragment = { __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } };

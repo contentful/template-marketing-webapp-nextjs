@@ -2,10 +2,30 @@ import * as Types from '../../../lib/__generated/graphql.types';
 
 import { PageLinkFieldsFragment } from '../../../components/link/__generated/page-link.generated';
 import { MenuGroupFieldsFragment } from '../../../lib/shared-fragments/__generated/ctf-menuGroup.generated';
+import { fetchConfig } from '@src/lib/fetchConfig';
 import { PageLinkFieldsFragmentDoc } from '../../../components/link/__generated/page-link.generated';
 import { MenuGroupFieldsFragmentDoc } from '../../../lib/shared-fragments/__generated/ctf-menuGroup.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
-import { useFetchData } from '@src/lib/fetcher';
+
+function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
+  return async (): Promise<TData> => {
+    const res = await fetch(fetchConfig.endpoint as string, {
+    method: "POST",
+    ...(fetchConfig.params),
+      body: JSON.stringify({ query, variables }),
+    });
+
+    const json = await res.json();
+
+    if (json.errors) {
+      const { message } = json.errors[0];
+
+      throw new Error(message);
+    }
+
+    return json.data;
+  }
+}
 export type NavigationFieldsFragment = { __typename?: 'NavigationMenuCollection', items: Array<{ __typename?: 'NavigationMenu', menuItemsCollection?: { __typename?: 'NavigationMenuMenuItemsCollection', items: Array<{ __typename?: 'MenuGroup', label?: string | null, link?: (
           { __typename?: 'Page' }
           & PageLinkFieldsFragment
@@ -60,7 +80,7 @@ export const useCtfNavigationQuery = <
     ) =>
     useQuery<CtfNavigationQuery, TError, TData>(
       variables === undefined ? ['CtfNavigation'] : ['CtfNavigation', variables],
-      useFetchData<CtfNavigationQuery, CtfNavigationQueryVariables>(CtfNavigationDocument).bind(null, variables),
+      fetcher<CtfNavigationQuery, CtfNavigationQueryVariables>(CtfNavigationDocument, variables),
       options
     );
 

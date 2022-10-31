@@ -26,9 +26,6 @@ const CtfPageGgl = ({ slug: slugFromProps }: Props) => {
     preview: previewActive,
   });
 
-  // TODO: consider adding new polling feature to RQ hooks
-  // useDataForPreview(queryResult);
-
   const page = tryget(() => data?.pageCollection!.items[0]);
 
   if (isLoading) return <></>;

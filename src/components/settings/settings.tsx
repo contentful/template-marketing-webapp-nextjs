@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
 import SettingsForm from '@src/components/settings/settings-form';
+import { useExternalSpaceAndPreview } from '@src/components/settings/useExternalSpaceAndPreview';
 import SettingsIcon from '@src/icons/settings-icon.svg';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -72,6 +73,8 @@ const Settings = () => {
     document.body.classList.add('is-scroll-locked');
   }, [settingsOpen, theme.breakpoints]);
 
+  useExternalSpaceAndPreview();
+
   return (
     <>
       <CSSTransition
@@ -83,8 +86,7 @@ const Settings = () => {
           enterActive: classes.animationEnterActive,
           exit: classes.animationExit,
           exitActive: classes.animationExitActive,
-        }}
-      >
+        }}>
         <SettingsForm
           onClose={() => {
             setSettingsOpen(false);
@@ -97,8 +99,7 @@ const Settings = () => {
         onClick={() => {
           setSettingsOpen(open => !open);
         }}
-        title="Toggle editorial toolbox"
-      >
+        title="Toggle editorial toolbox">
         <SettingsIcon className={classes.toggleImage} />
       </button>
     </>
