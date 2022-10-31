@@ -19,28 +19,9 @@ The legal space is not spun up when the deployment script is used, instead, we r
 
 ## Local development
 
-Create an `.env` file with the folowing structure:
+Rename the `.env.example` file to `.env` and add the necessary values (your space ID as well as the Content Delivery API and Content Preview API tokens).
 
-```
-BUNDLE_ANALYZE=false
-ENVIRONMENT_NAME=local
-
-CONFIG_CONTENTFUL_META_URL=http://localhost:3000
-
-CONFIG_CONTENTFUL_MAIN_SPACE_ID=
-CONFIG_CONTENTFUL_MAIN_SPACE_TOKEN=
-CONFIG_CONTENTFUL_MAIN_SPACE_PREVIEW_TOKEN=
-CONFIG_CONTENTFUL_MAIN_SPACE_MANAGEMENT_TOKEN=
-
-CONTENTFUL_DEPLOY_TOKEN=
-CONTENTFUL_DEPLOY_ORG=
-
-VERCEL_DEPLOY_TOKEN=
-```
-
-You can find the values for the legal space environment variables by checking out the `.env` file linked here [Installation guide](https://contentful.atlassian.net/wiki/spaces/MAR/pages/2080309537/Colorful+Coin+setup+guide#Installing)
-
-Note that that .env file contains some additional variables that are only needed if you will be using the deployment script to spin up your own instance of the demo.
+Note that the `.env` file contains some additional variables that are only needed if you will be using the deployment script to spin up your own instance of the demo.
 
 ---
 
@@ -52,6 +33,15 @@ yarn dev
 
 to start the local development server. By default, the server will listen on `http://localhost:3000`
 
+## Running the provisioning scripts
+Provision your space with:
+```bash
+yarn contentful-scripts:provision
+```
+Delete your space with:
+```bash
+yarn contentful-scripts:delete --spaceId=[space_ID_here]
+```
 ## Passing space credentials through query parameters
 
 It's possible to override which space content is fetched from, by passing the space id, CDA & CPA tokens as query parameters. The query string should take the following format:
