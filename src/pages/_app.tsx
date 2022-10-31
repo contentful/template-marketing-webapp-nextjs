@@ -1,5 +1,4 @@
 import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
-import '@src/components/layout/layout.css';
 import { DehydratedState, Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { appWithTranslation, SSRConfig } from 'next-i18next';
@@ -7,8 +6,8 @@ import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 
-import Layout from '@src/components/layout/layout';
-import Settings from '@src/components/settings/settings';
+import { Settings } from '@src/components/features/settings';
+import { Layout } from '@src/components/templates/layout/layout';
 import { useContentfulContext, ContentfulContentProvider } from '@src/contentful-context';
 import { queryConfig } from '@src/lib/gql-client';
 import colorfulTheme from '@src/theme';

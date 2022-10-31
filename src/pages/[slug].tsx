@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 import { useCtfFooterQuery } from '@ctf-components/ctf-footer/__generated/ctf-footer.generated';
 import { useCtfNavigationQuery } from '@ctf-components/ctf-navigation/__generated/ctf-navigation.generated';
-import CtfPageGgl from '@ctf-components/ctf-page/ctf-page-qgl';
+import CtfPageGgl from '@src/components/features/ctf-components/ctf-page/ctf-page-gql';
 import { useCtfPageQuery } from '@src/ctf-components/ctf-page/__generated/ctf-page.generated';
 import { ComponentReferenceFieldsFragment } from '@src/lib/__generated/graphql.types';
 import { fetchConfig } from '@src/lib/fetchConfig';

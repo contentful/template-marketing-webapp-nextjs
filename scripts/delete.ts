@@ -11,6 +11,7 @@ const argv = yargs
     cmaToken: {
       type: 'string',
       describe: 'Needs to be provided if you are using a non-default organization',
+      default: process.env.CONTENTFUL_DEPLOY_TOKEN!,
     },
     spaceId: {
       type: 'string',

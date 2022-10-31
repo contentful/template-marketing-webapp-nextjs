@@ -194,6 +194,24 @@ const colorfulTheme = createTheme({
         },
       },
     },
+    MuiCssBaseline: {
+      styleOverrides: {
+        html: {
+          fontSize: '10px',
+          minHeight: '100%',
+        },
+        body: {
+          minHeight: '100%',
+          '.is-scroll-locked': {
+            overflow: 'hidden',
+          },
+          '#__next': {
+            display: 'flex',
+            flexDirection: 'column',
+          }
+        },
+      }
+    }
   },
 });
 
