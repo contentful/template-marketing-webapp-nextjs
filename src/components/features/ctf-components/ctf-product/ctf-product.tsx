@@ -125,8 +125,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 export const CtfProduct = (props: ProductFieldsFragment) => {
   const { name, featuredImage, description, featuresCollection } = props;
 
-  console.log(featuredImage);
-
   const classes = useStyles();
 
   return (
