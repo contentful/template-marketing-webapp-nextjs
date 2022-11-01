@@ -14,7 +14,9 @@ interface CtfProductGqlPropsInterface {
 
 export const CtfProductGql = (props: CtfProductGqlPropsInterface) => {
   const { isLoading, data } = useCtfProductQuery({
-    ...props,
+    id: props.id,
+    locale: props.locale,
+    preview: props.preview,
   });
 
   if (!data || isLoading) {

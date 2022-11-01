@@ -1,9 +1,29 @@
 import * as Types from '../../../../../lib/__generated/graphql.types';
 
 import { AssetFieldsFragment } from '../../ctf-asset/__generated/ctf-asset.generated';
+import { fetchConfig } from '@src/lib/fetchConfig';
 import { AssetFieldsFragmentDoc } from '../../ctf-asset/__generated/ctf-asset.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
-import { useFetchData } from '@src/lib/fetcher';
+
+function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
+  return async (): Promise<TData> => {
+    const res = await fetch(fetchConfig.endpoint as string, {
+    method: "POST",
+    ...(fetchConfig.params),
+      body: JSON.stringify({ query, variables }),
+    });
+
+    const json = await res.json();
+
+    if (json.errors) {
+      const { message } = json.errors[0];
+
+      throw new Error(message);
+    }
+
+    return json.data;
+  }
+}
 export type ProductFeatureFieldsFragment = { __typename?: 'TopicProductFeature', name?: string | null, sys: { __typename?: 'Sys', id: string }, longDescription?: { __typename?: 'TopicProductFeatureLongDescription', json: any, links: { __typename?: 'TopicProductFeatureLongDescriptionLinks', assets: { __typename?: 'TopicProductFeatureLongDescriptionAssets', block: Array<(
           { __typename?: 'Asset' }
           & AssetFieldsFragment
@@ -69,6 +89,11 @@ export const useCtfProductFeatureQuery = <
     ) =>
     useQuery<CtfProductFeatureQuery, TError, TData>(
       ['CtfProductFeature', variables],
-      useFetchData<CtfProductFeatureQuery, CtfProductFeatureQueryVariables>(CtfProductFeatureDocument).bind(null, variables),
+      fetcher<CtfProductFeatureQuery, CtfProductFeatureQueryVariables>(CtfProductFeatureDocument, variables),
       options
     );
+
+useCtfProductFeatureQuery.getKey = (variables: CtfProductFeatureQueryVariables) => ['CtfProductFeature', variables];
+;
+
+useCtfProductFeatureQuery.fetcher = (variables: CtfProductFeatureQueryVariables) => fetcher<CtfProductFeatureQuery, CtfProductFeatureQueryVariables>(CtfProductFeatureDocument, variables);

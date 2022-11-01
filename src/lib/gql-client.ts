@@ -1,7 +1,7 @@
-import { QueryCache, QueryClient } from '@tanstack/query-core';
+import { QueryCache } from '@tanstack/query-core';
 import Router from 'next/router';
 
-export const gqlQueryClient = new QueryClient({
+export const queryConfig = {
   queryCache: new QueryCache({
     onError: () => {
       Router.push({ pathname: '/404' });
@@ -10,8 +10,9 @@ export const gqlQueryClient = new QueryClient({
   defaultOptions: {
     queries: {
       retry: false,
+      refetchOnMount: false,
       refetchIntervalInBackground: false,
       refetchOnWindowFocus: false,
     },
   },
-});
+};

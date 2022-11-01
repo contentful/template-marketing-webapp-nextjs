@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useHeroBannerQuery } from './__generated/ctf-hero-banner.generated';
+import { useCtfHeroBannerQuery } from './__generated/ctf-hero-banner.generated';
 import { CtfHeroBanner } from './ctf-hero-banner';
 
 interface CtfHeroGqlPropsInterface {
@@ -11,7 +11,7 @@ interface CtfHeroGqlPropsInterface {
 
 export const CtfHeroGql = (props: CtfHeroGqlPropsInterface) => {
   const { id, locale, preview } = props;
-  const { data, isLoading } = useHeroBannerQuery({
+  const { data, isLoading } = useCtfHeroBannerQuery({
     id,
     locale,
     preview,

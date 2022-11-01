@@ -1,13 +1,13 @@
 import { CodegenConfig } from '@graphql-codegen/cli';
 
-import { fetcherHeaderParamsDefault, fetcherGraphqlEndpoint } from './src/lib/fetcherParams';
+import { fetchConfig } from './src/lib/fetchConfig';
 
 export const config: CodegenConfig = {
   overwrite: true,
   ignoreNoDocuments: true,
   schema: [
     {
-      [fetcherGraphqlEndpoint]: fetcherHeaderParamsDefault,
+      [fetchConfig.endpoint]: fetchConfig.params,
     },
   ],
   generates: {
@@ -29,8 +29,18 @@ export const config: CodegenConfig = {
         baseTypesPath: 'lib/__generated/graphql.types.ts',
         folder: '__generated',
       },
-      plugins: ['typescript-operations', 'typescript-react-query'],
+      plugins: [
+        'typescript-operations',
+        'typescript-react-query',
+        {
+          add: {
+            content: "import { fetchConfig } from '@src/lib/fetchConfig';",
+          },
+        },
+      ],
       config: {
+        exposeQueryKeys: true,
+        exposeFetcher: true,
         rawRequest: false,
         inlineFragmentTypes: 'combine',
         skipTypename: false,
@@ -39,8 +49,8 @@ export const config: CodegenConfig = {
         preResolveTypes: true,
         withHooks: true,
         fetcher: {
-          func: '@src/lib/fetcher#useFetchData',
-          isReactHook: true,
+          endpoint: 'fetchConfig.endpoint',
+          fetchParams: 'fetchConfig.params',
         },
       },
     },

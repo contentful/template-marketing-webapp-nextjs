@@ -17,6 +17,7 @@ const CtfPageGgl = ({ slug: slugFromProps }: Props) => {
   const { locale } = useContentfulContext();
 
   const slug = !slugFromProps || slugFromProps === '/' ? 'home' : slugFromProps;
+
   const { previewActive } = useContentfulContext();
 
   const { isLoading, data } = useCtfPageQuery({
@@ -24,9 +25,6 @@ const CtfPageGgl = ({ slug: slugFromProps }: Props) => {
     locale,
     preview: previewActive,
   });
-
-  // TODO: consider adding new polling feature to RQ hooks
-  // useDataForPreview(queryResult);
 
   const page = tryget(() => data?.pageCollection!.items[0]);
 

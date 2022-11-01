@@ -1,9 +1,29 @@
 import * as Types from '../../../../../lib/__generated/graphql.types';
 
 import { PageLinkFieldsFragment } from '../../../page-link/__generated/page-link.generated';
+import { fetchConfig } from '@src/lib/fetchConfig';
 import { PageLinkFieldsFragmentDoc } from '../../../page-link/__generated/page-link.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
-import { useFetchData } from '@src/lib/fetcher';
+
+function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
+  return async (): Promise<TData> => {
+    const res = await fetch(fetchConfig.endpoint as string, {
+    method: "POST",
+    ...(fetchConfig.params),
+      body: JSON.stringify({ query, variables }),
+    });
+
+    const json = await res.json();
+
+    if (json.errors) {
+      const { message } = json.errors[0];
+
+      throw new Error(message);
+    }
+
+    return json.data;
+  }
+}
 export type RichTextHyperlinkFieldsFragment = { __typename?: 'Query', page?: (
     { __typename?: 'Page' }
     & PageLinkFieldsFragment
@@ -43,6 +63,11 @@ export const useCtfRichTextHyperlinkQuery = <
     ) =>
     useQuery<CtfRichTextHyperlinkQuery, TError, TData>(
       ['CtfRichTextHyperlink', variables],
-      useFetchData<CtfRichTextHyperlinkQuery, CtfRichTextHyperlinkQueryVariables>(CtfRichTextHyperlinkDocument).bind(null, variables),
+      fetcher<CtfRichTextHyperlinkQuery, CtfRichTextHyperlinkQueryVariables>(CtfRichTextHyperlinkDocument, variables),
       options
     );
+
+useCtfRichTextHyperlinkQuery.getKey = (variables: CtfRichTextHyperlinkQueryVariables) => ['CtfRichTextHyperlink', variables];
+;
+
+useCtfRichTextHyperlinkQuery.fetcher = (variables: CtfRichTextHyperlinkQueryVariables) => fetcher<CtfRichTextHyperlinkQuery, CtfRichTextHyperlinkQueryVariables>(CtfRichTextHyperlinkDocument, variables);
