@@ -145,12 +145,7 @@ export const CtfProduct = (props: ProductFieldsFragment) => {
           </div>
           {featuredImage && (
             <div className={classes.imageContainer}>
-              <CtfAsset
-                {...featuredImage}
-                showDescription={false}
-                widthPx={470}
-                className={classes.imageInner}
-              />
+              <CtfAsset {...featuredImage} showDescription={false} className={classes.imageInner} />
             </div>
           )}
         </div>
