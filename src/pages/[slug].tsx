@@ -1,7 +1,7 @@
 import { NextPage, NextPageContext } from 'next';
 import { useRouter } from 'next/router';
 
-import CtfPageGgl from '@ctf-components/ctf-page/ctf-page-qgl';
+import CtfPageGgl from '@src/components/features/ctf-components/ctf-page/ctf-page-gql';
 import { getServerSideTranslations } from '@src/lib/get-serverside-translations';
 
 const SlugPage: NextPage = () => {

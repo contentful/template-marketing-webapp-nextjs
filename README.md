@@ -19,28 +19,9 @@ The legal space is not spun up when the deployment script is used, instead, we r
 
 ## Local development
 
-Create an `.env` file with the folowing structure:
+Rename the `.env.example` file to `.env` and add the necessary values (your space ID as well as the Content Delivery API and Content Preview API tokens).
 
-```
-BUNDLE_ANALYZE=false
-ENVIRONMENT_NAME=local
-
-CONFIG_CONTENTFUL_META_URL=http://localhost:3000
-
-CONFIG_CONTENTFUL_MAIN_SPACE_ID=
-CONFIG_CONTENTFUL_MAIN_SPACE_TOKEN=
-CONFIG_CONTENTFUL_MAIN_SPACE_PREVIEW_TOKEN=
-CONFIG_CONTENTFUL_MAIN_SPACE_MANAGEMENT_TOKEN=
-
-CONTENTFUL_DEPLOY_TOKEN=
-CONTENTFUL_DEPLOY_ORG=
-
-VERCEL_DEPLOY_TOKEN=
-```
-
-You can find the values for the legal space environment variables by checking out the `.env` file linked here [Installation guide](https://contentful.atlassian.net/wiki/spaces/MAR/pages/2080309537/Colorful+Coin+setup+guide#Installing)
-
-Note that that .env file contains some additional variables that are only needed if you will be using the deployment script to spin up your own instance of the demo.
+Note that the `.env` file contains some additional variables that are only needed if you will be using the deployment script to spin up your own instance of the demo.
 
 ---
 
@@ -51,6 +32,21 @@ yarn dev
 ```
 
 to start the local development server. By default, the server will listen on `http://localhost:3000`
+
+## Running the provisioning scripts
+Provision your space with:
+```bash
+yarn contentful-scripts:provision
+```
+Delete your space with:
+```bash
+yarn contentful-scripts:delete --spaceId=[space_ID_here]
+```
+## Passing space credentials through query parameters
+
+It's possible to override which space content is fetched from, by passing the space id, CDA & CPA tokens as query parameters. The query string should take the following format:
+
+`?delivery_token={{delivery_token}}&preview_token={{preview_token}}&space_id={{space_id}}`
 
 ## Contentful Components
 
@@ -146,16 +142,20 @@ API calls made to the Contentful GraphQL endpoint are made through React Query `
 4. The hook can now be imported and used within the `.ts(x)` files in the component folder
 
 ## Husky & git hooks
+
 This repository makes use of Husky to enforce commit hooks. For more info see: https://github.com/typicode/husky. The config for both the pre-commit and pre-push hooks can be found in the .husky folder in the root.
 
 ### Pre-commit
-Before allowing a commit, we require a successful result from the TypeScript compiler (`tsc`) and our `lint-staged` script will be run. This ensures all Eslint and Prettier rules are enforced on the files that are staged to be committed. 
-The tsc command is ran separately from the `lint-staged` step, because we require the Typescript compiler to sample _all_ files. This is important to ensure that no deviating types were introduced by the codegen for example. 
+
+Before allowing a commit, we require a successful result from the TypeScript compiler (`tsc`) and our `lint-staged` script will be run. This ensures all Eslint and Prettier rules are enforced on the files that are staged to be committed.
+The tsc command is ran separately from the `lint-staged` step, because we require the Typescript compiler to sample _all_ files. This is important to ensure that no deviating types were introduced by the codegen for example.
 
 ### Pre-push
+
 The same two tasks are ran for pre-push, that are ran for pre-commit.
 
-### Overriding the Husky git hooks 
+### Overriding the Husky git hooks
+
 In case of wanting to bypass the pre-commit or pre-push hooks, pass a `--noVerify` flag to your Git commands.
 
-⚠️ Make sure you only use this if you know why you're using it. ⚠️ 
+⚠️ Make sure you only use this if you know why you're using it. ⚠️

@@ -1,13 +1,12 @@
 import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
-import '@src/components/layout/layout.css';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { appWithTranslation } from 'next-i18next';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useEffect } from 'react';
 
-import Layout from '@src/components/layout/layout';
-import Settings from '@src/components/settings/settings';
+import { Settings } from '@src/components/features/settings';
+import { Layout } from '@src/components/templates/layout/layout';
 import { useContentfulContext, ContentfulContentProvider } from '@src/contentful-context';
 import { gqlQueryClient } from '@src/lib/gql-client';
 import colorfulTheme from '@src/theme';
