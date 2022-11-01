@@ -130,11 +130,11 @@ const DuplexImage = (props: DuplexFieldsFragment) => {
         <div className={classes.nextImageContainer}>
           <CtfImage
             className={clsx([classes.image, imageStyle === 'fixed' && classes.imageFull])}
-            url={`${image.url}?w=600`}
-            title={image.description || undefined}
+            src={`${image.url}?w=600`}
+            title={image.description || ''}
             layout="responsive"
-            width={image.width!}
-            height={image.height!}
+            width={image.width || undefined}
+            height={image.height || undefined}
           />
         </div>
       ) : null}

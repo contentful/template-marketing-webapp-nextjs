@@ -77,7 +77,7 @@ export const CardLeadership = (props: CardLeadershipPropsInterface) => {
       )}>
       {avatar && (
         <div className={classes.avatar}>
-          <CtfAsset {...avatar} showDescription={false} widthPx={442} />
+          <CtfAsset {...avatar} showDescription={false} />
         </div>
       )}
       <div>
