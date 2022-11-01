@@ -8,7 +8,6 @@ export interface ContentfulContextInterface {
   locale: string;
   spaceIds: {
     main: string;
-    legal: string;
   };
   previewActive: boolean;
   xrayActive: boolean;
