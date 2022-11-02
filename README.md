@@ -34,14 +34,19 @@ yarn dev
 to start the local development server. By default, the server will listen on `http://localhost:3000`
 
 ## Running the provisioning scripts
+
 Provision your space with:
+
 ```bash
 yarn contentful-scripts:provision
 ```
+
 Delete your space with:
+
 ```bash
 yarn contentful-scripts:delete --spaceId=[space_ID_here]
 ```
+
 ## Passing space credentials through query parameters
 
 It's possible to override which space content is fetched from, by passing the space id, CDA & CPA tokens as query parameters. The query string should take the following format:
@@ -100,11 +105,41 @@ Stories are defined in the `/src/stories` folder. You can follow an example ther
 
 Importing space contents (Models, Entries, Environments, App Integrations etc) is done as part of the `init` script. When developing, we often want to make changes to what will become our internal CF test space, for example removing an entry or renaming an environment. To make sure that the `content-backups` file stays up to date, after making changes in our contentful internal test space, we should _re-export_ the updated space contents.
 
-This can be done using the [Contentful CLI](https://www.contentful.com/developers/docs/tutorials/cli/installation/) tool, by running the following command:
+This can be done using the [Contentful CLI](https://www.contentful.com/developers/docs/tutorials/cli/installation/) tool, by running one of the following commands:
 
-`contentful space export --space-id {{spaceId}}` or `npx contentful-cli space export --space-id {{spaceId}} --management-token {{management-token}}`
+```bash
+contentful space export --space-id {{spaceId}} --skipRoles true --skipWebhooks true --environment-id {{environmentName}}
+```
 
-Where spaceId is the space id of the test contentful space. see here https://www.contentful.com/developers/docs/tutorials/cli/import-and-export for installation and authentication information.
+or
+
+```bash
+npx contentful-cli space export --space-id {{spaceId}} --management-token {{management-token}} --skipRoles true --skipWebhooks true --environment-id {{environmentName}}
+```
+
+Where spaceId is the space id of the test contentful space.
+
+Rather than passing each option individually, we can also save them in a config json file, for example:
+
+`example.config.json`
+
+```json
+{
+  "spaceId": "{{spaceId}}",
+  "environment-id": "{{environmentName}}",
+  "managementToken": "{{management-token}}",
+  "skipRoles": true,
+  "skipWebhooks": true
+}
+```
+
+we can then just run the following command:
+
+```bash
+contentful space export --config example-config.json
+```
+
+See here https://www.contentful.com/developers/docs/tutorials/cli/import-and-export for installation and authentication information.
 
 See the above section, `Content model changes`, for information about generating new GraphQl introspection files when making changes to the content model.
 
