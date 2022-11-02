@@ -107,11 +107,15 @@ Importing space contents (Models, Entries, Environments, App Integrations etc) i
 
 This can be done using the [Contentful CLI](https://www.contentful.com/developers/docs/tutorials/cli/installation/) tool, by running one of the following commands:
 
-`contentful space export --space-id {{spaceId}} --skipRoles true --skipWebhooks true --environment-id {{environmentName}}`
+```bash
+contentful space export --space-id {{spaceId}} --skipRoles true --skipWebhooks true --environment-id {{environmentName}}
+```
 
 or
 
-`npx contentful-cli space export --space-id {{spaceId}} --management-token {{management-token}} --skipRoles true --skipWebhooks true --environment-id {{environmentName}}`
+```bash
+npx contentful-cli space export --space-id {{spaceId}} --management-token {{management-token}} --skipRoles true --skipWebhooks true --environment-id {{environmentName}}
+```
 
 Where spaceId is the space id of the test contentful space.
 
@@ -119,7 +123,7 @@ Rather than passing each option individually, we can also save them in a config 
 
 `example.config.json`
 
-```
+```json
 {
   "spaceId": "{{spaceId}}",
   "environment-id": "{{environmentName}}",
@@ -131,7 +135,9 @@ Rather than passing each option individually, we can also save them in a config 
 
 we can then just run the following command:
 
-`contentful space export --config example-config.json`
+```bash
+contentful space export --config example-config.json
+```
 
 See here https://www.contentful.com/developers/docs/tutorials/cli/import-and-export for installation and authentication information.
 
