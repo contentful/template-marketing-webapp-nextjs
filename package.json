@@ -1,17 +1,14 @@
 {
   "name": "template-marketing-webapp-nextjs",
-  "private": true,
+  "description": "",
   "version": "0.0.1",
   "engines": {
     "node": "16.16.0",
     "npm": "Please use Yarn"
   },
-  "description": "",
-  "main": "index.js",
   "scripts": {
     "start": "next start",
     "dev": "next dev",
-    "dev:cd": "NODE_OPTIONS='--inspect' circularDependencies=true next dev",
     "build": "next build",
     "export": "next build && next export",
     "prepare": "husky install",
@@ -37,7 +34,7 @@
       "prettier --write"
     ]
   },
-  "license": "UNLICENSED",
+  "license": "MIT",
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.12.1",
     "@contentful/rich-text-types": "^15.12.1",
