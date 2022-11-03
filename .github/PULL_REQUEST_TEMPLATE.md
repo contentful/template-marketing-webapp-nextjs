@@ -16,7 +16,6 @@ story/background for it?
 * [ ] There is a migration necessary for this to work
 * [ ] There is a dependent PR that needs to be deployed first
 * [ ] I have read the relevant `readme.md` file(s)
-* [ ] All commits follow our [Git commit message convention](https://github.com/contentful/forma-36/tree/main/packages/forma-36-react-components#commits)
 * [ ] Tests are added/updated/not required
 * [ ] Tests are passing
 * [ ] Usage notes are added/updated/not required
