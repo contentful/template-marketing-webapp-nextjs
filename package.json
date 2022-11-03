@@ -1,6 +1,7 @@
 {
   "name": "template-marketing-webapp-nextjs",
   "description": "",
+  "private": true,
   "version": "0.0.1",
   "engines": {
     "node": "16.16.0",

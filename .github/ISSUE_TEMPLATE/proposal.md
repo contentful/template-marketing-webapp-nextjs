@@ -15,7 +15,7 @@ Please use this template to propose a change you'd like to make
 ## The problem
 
 <!--
-Start with the describing the problem you want to solve
+Start with describing the problem you want to solve
 -->
 
 ## The proposed solution
