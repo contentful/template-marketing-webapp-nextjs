@@ -33,25 +33,6 @@ yarn dev
 
 to start the local development server. By default, the server will listen on `http://localhost:3000`
 
-## Running the provisioning scripts
-
-Provision your space with:
-
-```bash
-yarn contentful-scripts:provision
-```
-
-Delete your space with:
-
-```bash
-yarn contentful-scripts:delete --spaceId=[space_ID_here]
-```
-
-## Passing space credentials through query parameters
-
-It's possible to override which space content is fetched from, by passing the space id, CDA & CPA tokens as query parameters. The query string should take the following format:
-
-`?delivery_token={{delivery_token}}&preview_token={{preview_token}}&space_id={{space_id}}`
 
 ## Contentful Components
 
@@ -86,62 +67,6 @@ Creating new _ctf-components_ involves following steps:
 - optionally, generate typescript interfaces for the graphql result by calling `yarn graphql-codegen:generate` (see [GraphQL implementation & code generation](#GraphQL implementation & code generation)).
 - create react components for rendering (**./src/ctf-components/ctf-[contentTypeName]-gql.tsx** and **./src/ctf-components/ctf-[contentTypeName].tsx**).
 - Add the component to the `componentGqlMap` in _./src//mappings.ts_.
-
-# Storybook
-
-Colorful Coin now has a matching Storybook. You can see a hosted version [here](https://storybook.coin.colorfuldemo.com/).
-
-Stories are defined in the `/src/stories` folder. You can follow an example there to add new components to your Storybook. General steps would be:
-
-- Create a new folder for your story
-- Create a .tsx file (or .jsx if you are not familiar with TypeScript)
-- Import the component that you are tryign to document from `/src/ctf-components`
-- Wrap it into the `Wrapper` component
-- Pass the correct props that the component expects
-
-# Developer Docs
-
-## Importing / exporting space contents
-
-Importing space contents (Models, Entries, Environments, App Integrations etc) is done as part of the `init` script. When developing, we often want to make changes to what will become our internal CF test space, for example removing an entry or renaming an environment. To make sure that the `content-backups` file stays up to date, after making changes in our contentful internal test space, we should _re-export_ the updated space contents.
-
-This can be done using the [Contentful CLI](https://www.contentful.com/developers/docs/tutorials/cli/installation/) tool, by running one of the following commands:
-
-```bash
-contentful space export --space-id {{spaceId}} --skipRoles true --skipWebhooks true --environment-id {{environmentName}}
-```
-
-or
-
-```bash
-npx contentful-cli space export --space-id {{spaceId}} --management-token {{management-token}} --skipRoles true --skipWebhooks true --environment-id {{environmentName}}
-```
-
-Where spaceId is the space id of the test contentful space.
-
-Rather than passing each option individually, we can also save them in a config json file, for example:
-
-`example.config.json`
-
-```json
-{
-  "spaceId": "{{spaceId}}",
-  "environment-id": "{{environmentName}}",
-  "managementToken": "{{management-token}}",
-  "skipRoles": true,
-  "skipWebhooks": true
-}
-```
-
-we can then just run the following command:
-
-```bash
-contentful space export --config example-config.json
-```
-
-See here https://www.contentful.com/developers/docs/tutorials/cli/import-and-export for installation and authentication information.
-
-See the above section, `Content model changes`, for information about generating new GraphQl introspection files when making changes to the content model.
 
 ## GraphQL implementation & code generation
 
