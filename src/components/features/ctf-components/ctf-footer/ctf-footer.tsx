@@ -310,7 +310,7 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
                 {footerContent?.twitterLink && (
                   <a
                     href={footerContent.twitterLink}
-                    title={t('social.twitter')}
+                    title={t('socials.twitter')}
                     target="_blank"
                     rel="nofollow noreferrer">
                     <Twitter />
@@ -319,7 +319,7 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
                 {footerContent?.facebookLink && (
                   <a
                     href={footerContent.facebookLink}
-                    title={t('social.facebook')}
+                    title={t('socials.facebook')}
                     target="_blank"
                     rel="nofollow noreferrer">
                     <Facebook />
@@ -328,7 +328,7 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
                 {footerContent?.linkedinLink && (
                   <a
                     href={footerContent.linkedinLink}
-                    title={t('social.linkedin')}
+                    title={t('socials.linkedin')}
                     target="_blank"
                     rel="nofollow noreferrer">
                     <LinkedIn />
@@ -337,7 +337,7 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
                 {footerContent?.instagramLink && (
                   <a
                     href={footerContent.instagramLink}
-                    title={t('social.instagram')}
+                    title={t('socials.instagram')}
                     target="_blank"
                     rel="nofollow noreferrer">
                     <Instagram />
