@@ -1,5 +1,6 @@
 import { Theme, Container, Grid, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import { useTranslation } from 'next-i18next';
 import React from 'react';
 import { File } from 'react-kawaii';
 
@@ -38,13 +39,14 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 export const PageError = (props: PropsInterface) => {
+  const { t } = useTranslation();
   const classes = useStyles();
 
   const error =
     props.error === undefined
       ? {
           code: 400,
-          message: 'Something went wrong, check your url and try again',
+          message: t('error.somethingWentWrong'),
         }
       : props.error;
 
@@ -62,7 +64,7 @@ export const PageError = (props: PropsInterface) => {
                   className={classes.icon}
                 />
                 <Typography variant="h1" gutterBottom>
-                  {error.code} error
+                  {t('error.code', { code: error.code })}
                 </Typography>
               </div>
               {error.message && (

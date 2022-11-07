@@ -1,0 +1,31 @@
+{
+  "common": {
+    "homepage": "Startseite",
+    "logoImageAltText": "Logo"
+  },
+  "price": {
+    "free": "Kostenloss"
+  },
+  "navigation": {
+    "mobileMenuButton": "Menü öffnen"
+  },
+  "time": {
+    "month": "Monat"
+  },
+  "socials": {
+    "findUsOn": "Finden Sie uns auf",
+    "twitter": "Twitter",
+    "facebook": "Facebook",
+    "linkedin": "LinkedIn",
+    "instagram": "Instagram"
+  },
+  "legal": {
+    "copyright": "© Copyright {{ year }}",
+    "disclaimer": "Colorful Coin ist von der Financial Conduct Authority nach den Electronic Money Regulations 2011, Firm Reference 000001, für die Ausgabe von elektronischem Geld nicht zugelassen. Bitte beachten Sie, dass es sich hierbei um eine Demo-Website handelt, die nur für den internen Gebrauch bestimmt ist, und nicht um eine echte Dienstleistung/ein echtes Produkt.\n\n"
+  },
+  "error": {
+    "code": "{{code}} error",
+    "componentNotFound": "Komponente nicht gefunden",
+    "somethingWentWrong": "50 / 5,000\nTranslation results\nEtwas ist schief gelaufen, überprüfen Sie Ihre URL und versuchen Sie es erneut"
+  }
+}
