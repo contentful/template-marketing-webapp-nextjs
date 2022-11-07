@@ -12,10 +12,6 @@
   "time": {
     "month": "Month"
   },
-  "content": {
-    "published": "Published",
-    "publishedByAuthorOnDate": " on {{ date }}"
-  },
   "socials": {
     "findUsOn": "Find us on",
     "twitter": "Twitter",
@@ -26,5 +22,10 @@
   "legal": {
     "copyright": "© Copyright {{ year }}",
     "disclaimer": "Colorful Coin is not authorised by the Financial Conduct Authority under the Electronic Money Regulations 2011, Firm Reference 000001, for the issuing of electronic money. Please be aware that this is a demo website intended for internal use only and not a real service/product."
+  },
+  "error": {
+    "code": "{{code}} error",
+    "componentNotFound": "Component not found.",
+    "somethingWentWrong": "Something went wrong, check your url and try again"
   }
 }
