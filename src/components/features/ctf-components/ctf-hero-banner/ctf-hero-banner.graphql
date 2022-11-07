@@ -4,6 +4,8 @@ fragment HeroBannerFields on ComponentHeroBanner {
   }
   internalName
   __typename
+  # Tutorial: uncomment the line below to add the Greeting field to the query
+  # greeting
   headline
   bodyText {
     json
