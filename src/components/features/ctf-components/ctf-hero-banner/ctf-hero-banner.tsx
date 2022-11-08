@@ -96,6 +96,8 @@ export const CtfHeroBanner = (props: HeroBannerFieldsFragment) => {
     image,
     imageStyle: imageStyleBoolean,
     headline,
+    // Tutorial: uncomment the line below to make the Greeting field available to render
+    // greeting
     bodyText,
     ctaText,
     targetPage,
@@ -136,6 +138,13 @@ export const CtfHeroBanner = (props: HeroBannerFieldsFragment) => {
         </div>
       )}
       <div className={classes.innerContainer}>
+        {/* Tutorial: uncomment this block to render the Greeting field value
+        {greeting && (
+          <Typography>
+            {greeting}
+          </Typography>
+        )}
+        */}
         {headline && (
           <Typography
             variant="h1"
