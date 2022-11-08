@@ -2,13 +2,21 @@
 
 ![The homepage of the Marketing Starter Template](./marketing-starter-template.jpg "The homepage of the Marketing Starter Template")
 
-Create a ready to use Marketing website, powered by Next.js and Contentful.
+A ready to use Marketing website, powered by Next.js and Contentful.
 
 ---
 
 **What is Contentful?**
 
 [Contentful](https://www.contentful.com/) provides content infrastructure for digital teams to power websites, apps, and devices. Unlike a CMS, Contentful was built to integrate with the modern software stack. It offers a central hub for structured content, powerful management and delivery APIs, and a customizable web app that enable developers and content creators to ship their products faster.
+
+---
+
+## DISCLAIMER
+
+This document outlines steps to follow as part of Contentful's Starter Templates journey.
+
+If your sole curiosity brought you to this repository, you will not be able to get the full potential of this Starter Template until an upcoming release.
 
 ---
 
