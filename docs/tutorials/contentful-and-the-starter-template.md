@@ -1,14 +1,12 @@
 # DISCLAIMER
 
-This document outlines steps to follow as part of a specific tutorial journey, which is only available to a group of users for the first release of the Starter Templates.
+This document outlines steps to follow as part of Contentful's Starter Templates journey.
 
-If your sole curiosity brought you to this repository, you will not be able to get the full potential of this Starter Template until a coming soon release.
-
-We apologize for the inconvenience.
+If your sole curiosity brought you to this repository, you will not be able to follow the tutorial and get the full potential of this Starter Template until an upcoming release.
 
 ---
 
-## Begin your journey with Contentful and the Starter Template
+## Begin your journey with Contentful and the Marketing Starter Template
 
 After reading this document, you will be able to:
 
@@ -53,9 +51,7 @@ Note that from now on, we will refer to the Contentful application, as the `web 
 
 > Pre-requisites:
 >
-> To follow the next steps, log in to [https://app.contentful.com/](https://app.contentful.com/).  
->
-> If you don’t already have a Contentful account, go to [https://www.contentful.com/sign-up/](https://www.contentful.com/sign-up/) to get one for free. Then go to [https://app.contentful.com/](https://app.contentful.com/) and log in.
+> To follow the next steps, make sure you are logged into [https://app.contentful.com/](https://app.contentful.com/).
 
 ---
 
@@ -80,7 +76,7 @@ From the `Top section (optional)` field, click on the first `💎 Hero banner co
 - Edit the `Headline` and/or `Body text` fields
 - Publish the changes by clicking on the `Publish changes` button in the right entry sidebar
 - Open the preview to see the changes, by clicking on the `Open preview` button in the right entry sidebar
-  - Note that you can also see the changes by running the Starter Template application locally, after completing the setup [TODO - ADD link to setup section from README](../README.md/#setup)
+  - Note that you can also see the changes by running the Starter Template application locally, after completing the [setup](../../README.md/#getting-started)
 
 #### Homepage - Content type
 
@@ -90,7 +86,7 @@ Now, we are going to edit the `💎 Hero banner component` content type to under
 
 > Pre-requisites:
 >
-> To follow the next steps, make sure you have completed the Starter Template setup [TODO - ADD link to setup section from README](../README.md/#setup) and that the Starter Template application is running locally.
+> To follow the next steps, make sure you have completed the [Starter Template setup](../../README.md/#getting-started) and that the Starter Template application is running locally.
 
 ---
 
@@ -132,3 +128,10 @@ We understood the basics of some of Contentful's core features (content model, c
 You are now equipped to make this Starter Template your own and utilize the full potential of Contentful.
 
 Have a great journey with Contentful!
+
+## Notes
+
+- [Contentful Web App Overview](https://www.contentful.com/help/contentful-web-app-overview/)
+- [Content Modelling Basics](https://www.contentful.com/help/content-modelling-basics/)
+- [References](https://www.contentful.com/help/references/)
+- [Entry Editor](https://www.contentful.com/help/entry-editor/)

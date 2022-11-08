@@ -1,42 +1,54 @@
-# base-template
+# Contentful Marketing Starter Template
 
-This repository contains a basic repository template and should only be used if you can't find a suitable high-level template. If you want to create a new component, [visit Backstage](https://contentful.roadie.so/cd-scaffolder/new-component) instead.
+![The homepage of the Marketing Starter Template](./marketing-starter-template.jpg "The homepage of the Marketing Starter Template")
 
-## Basic structure
-
-- `.circleci/` your circle config [learn more](https://contentful.roadie.so/catalog/default/system/circleci)
-- `.github/` your github config, [learn more](https://contentful.roadie.so/catalog/default/system/github)
-- `mkdocs.yml` & `docs/` your tech-docs, [learn more](https://contentful.roadie.so/catalog/default/system/documentation)
-- `catalog-info.yaml` your backstage config, [learn more](https://contentful.roadie.so/catalog/default/system/backstage)
-
-# Colorful Demo - Fintech
-
-To deploy your own dedicated demo, check out the [following guide](https://contentful.atlassian.net/wiki/spaces/MAR/pages/2080309537/Colorful+Coin+setup+guide)
-
-My recommendation would be to follow that guide first, which will spin up a new space for you with the populated content model and content. Then, you can use that newly created space for your local development as well.
-
-The legal space is not spun up when the deployment script is used, instead, we re-use our existing space since it does not really need to be edited that often.
-
-## Local development
-
-Rename the `.env.example` file to `.env` and add the necessary values (your space ID as well as the Content Delivery API and Content Preview API tokens).
-
-Note that the `.env` file contains some additional variables that are only needed if you will be using the deployment script to spin up your own instance of the demo.
+Create a ready to use Marketing website, powered by Next.js and Contentful.
 
 ---
 
-Once you have the `.env` file in place, and you have installed dependencies with `yarn`, you can run
+**What is Contentful?**
 
+[Contentful](https://www.contentful.com/) provides content infrastructure for digital teams to power websites, apps, and devices. Unlike a CMS, Contentful was built to integrate with the modern software stack. It offers a central hub for structured content, powerful management and delivery APIs, and a customizable web app that enable developers and content creators to ship their products faster.
+
+---
+
+## Features
+
+- Composable content through powerful & flexible content modeling
+- Localization ready
+- SEO ready
+- Easily customizable through theming
+- Generation of typed code, in sync with the API schema (content types) through GraphQL codegen
+
+## Getting started
+
+### Environment variables
+
+Rename the `.env.example` file to `.env` and add the necessary values.
+
+### Dependencies
+
+To install the necessary dependencies, run:
+
+```bash
+yarn
 ```
+
+### Run the Starter Template in development mode
+
+```bash
 yarn dev
 ```
 
-to start the local development server. By default, the server will listen on `http://localhost:3000`
+The Starter Template should be up and running on `http://localhost:3000`.
 
+## Begin your journey with Contentful and the Marketing Starter Template
+
+Follow this [tutorial document](./docs/tutorials/contentful-and-the-starter-template.md) to understand the relationship between Contentful and the Starter Template source code.
 
 ## Contentful Components
 
-The term _Contentful Components_ (_ctf-compoents_ for short) is used for react components which have an equivalent contentful _content type_. E.g. all react components needed for rendering the _content-type_ **HeroBanner** can be found in the folder **src/ctf-components/ctf-hero-banner**.
+The term _Contentful Components_ (_ctf-components_ for short) is used for react components which have an equivalent Contentful _content type_. E.g. all react components needed for rendering the _content-type_ **HeroBanner** can be found in the folder **src/ctf-components/ctf-hero-banner**.
 
 Usually a _ctf-component_ is composed of 3 files:
 
@@ -62,7 +74,7 @@ According to this pattern, all _ctf-components_ suffixed with **-gql** should be
 
 Creating new _ctf-components_ involves following steps:
 
-- Create a folder for the compnent files (_./src/ctf-components/ctf-[contentTypeName]_)
+- Create a folder for the component files (_./src/ctf-components/ctf-[contentTypeName]_)
 - Create the file for the graphql query strings (_./src/ctf-components/ctf-[contentTypeName].graphql_)
 - optionally, generate typescript interfaces for the graphql result by calling `yarn graphql-codegen:generate` (see [GraphQL implementation & code generation](#GraphQL implementation & code generation)).
 - create react components for rendering (**./src/ctf-components/ctf-[contentTypeName]-gql.tsx** and **./src/ctf-components/ctf-[contentTypeName].tsx**).
@@ -70,10 +82,11 @@ Creating new _ctf-components_ involves following steps:
 
 ## GraphQL implementation & code generation
 
-This project makes use of Contentful's GraphQL API for more info see: https://www.contentful.com/developers/docs/references/graphql/. We use graphql-codegen to generate a typesafe API client, utilising React Query as the "client".
+This project makes use of Contentful's GraphQL API for more info see: [https://www.contentful.com/developers/docs/references/graphql/](https://www.contentful.com/developers/docs/references/graphql/).  
+We use `graphql-codegen` to generate a typesafe API client, utilizing React Query as the "client".
 
-- https://www.the-guild.dev/graphql/codegen
-- https://tanstack.com/query/v4
+- [https://www.the-guild.dev/graphql/codegen](https://www.the-guild.dev/graphql/codegen)
+- [https://tanstack.com/query/v4](https://tanstack.com/query/v4)
 
 ### Codegen
 
@@ -103,7 +116,7 @@ API calls made to the Contentful GraphQL endpoint are made through React Query `
 
 ## Husky & git hooks
 
-This repository makes use of Husky to enforce commit hooks. For more info see: https://github.com/typicode/husky. The config for both the pre-commit and pre-push hooks can be found in the .husky folder in the root.
+This repository makes use of Husky to enforce commit hooks. For more info see: [https://github.com/typicode/husky](https://github.com/typicode/husky). The config for both the pre-commit and pre-push hooks can be found in the `.husky` folder located in the root.
 
 ### Pre-commit
 
