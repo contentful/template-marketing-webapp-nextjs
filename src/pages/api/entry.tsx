@@ -14,7 +14,7 @@ async function getAudiences(req: NextApiRequest, res: NextApiResponse) {
     query: { environmentId },
   } = req;
 
-  const space = await client.getSpace(contentfulConfig.contentful.main_space_id);
+  const space = await client.getSpace(contentfulConfig.contentful.space_id);
 
   if (!space) {
     res.json([]);
@@ -119,7 +119,7 @@ async function getAudiences(req: NextApiRequest, res: NextApiResponse) {
 async function getEnvironments(_req: NextApiRequest, res: NextApiResponse) {
   const environmentNames = [] as string[];
 
-  const space = await client.getSpace(contentfulConfig.contentful.main_space_id);
+  const space = await client.getSpace(contentfulConfig.contentful.space_id);
 
   if (!space) {
     res.json([]);
@@ -202,7 +202,7 @@ async function getLocales(req: NextApiRequest, res: NextApiResponse) {
     query: { environmentId },
   } = req;
 
-  const space = await client.getSpace(contentfulConfig.contentful.main_space_id);
+  const space = await client.getSpace(contentfulConfig.contentful.space_id);
 
   if (!space) {
     res.json([]);

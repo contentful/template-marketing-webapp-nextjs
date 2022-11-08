@@ -19,7 +19,7 @@ export interface ContentfulContextInterface {
 export const contentfulContextValue: ContentfulContextInterface = {
   locale: i18n.defaultLocale,
   spaceIds: {
-    main: contentfulConfig.contentful.main_space_id,
+    main: contentfulConfig.contentful.space_id,
   },
   previewActive: false,
   xrayActive: false,
@@ -40,7 +40,7 @@ const ContentfulContentProvider = ({ children, router }) => {
       value={{
         locale: typeof router.locale === 'string' ? router.locale : i18n.defaultLocale,
         spaceIds: {
-          main: contentfulConfig.contentful.main_space_id,
+          main: contentfulConfig.contentful.space_id,
         },
         previewActive,
         xrayActive: !!router.query.xray,

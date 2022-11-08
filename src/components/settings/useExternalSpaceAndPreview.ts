@@ -10,7 +10,7 @@ const fetcherGraphqlEndpoint = space_id =>
 const fetcherHeaderParamsDefault = {
   headers: {
     'Content-Type': 'application/json',
-    Authorization: `Bearer ${process.env.NEXT_PUBLIC_CONFIG_CONTENTFUL_MAIN_SPACE_TOKEN}`,
+    Authorization: `Bearer ${process.env.NEXT_PUBLIC_CONFIG_CONTENTFUL_DELIVERY_API_TOKEN}`,
   },
 };
 
@@ -70,7 +70,7 @@ export const useExternalSpaceAndPreview = () => {
   fetchConfig.params.headers = fetchParams.headers;
   fetchConfig.endpoint = shouldUseSpaceCredsFromParams
     ? fetcherGraphqlEndpoint(space_id)
-    : fetcherGraphqlEndpoint(process.env.NEXT_PUBLIC_CONFIG_CONTENTFUL_MAIN_SPACE_ID);
+    : fetcherGraphqlEndpoint(process.env.NEXT_PUBLIC_CONFIG_CONTENTFUL_SPACE_ID);
 
   useEffect(() => {
     if (shouldUseSpaceCredsFromParams) {
