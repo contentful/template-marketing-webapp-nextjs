@@ -1,6 +1,6 @@
 # Contentful Marketing Starter Template
 
-![The homepage of the Marketing Starter Template](./marketing-starter-template.jpg "The homepage of the Marketing Starter Template")
+![The homepage of the Marketing Starter Template](marketing-stater-template.jpg "The homepage of the Marketing Starter Template")
 
 A ready to use Marketing website, powered by Next.js and Contentful.
 
