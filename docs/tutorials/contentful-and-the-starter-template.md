@@ -107,6 +107,13 @@ From the `💎 Hero banner component` content type page:
 - Re-organize the new field by dragging and dropping it to the top of the list
 - Save the changes, by clicking on the `Save` button in the top right corner.
 
+The new field is now available, let's add a value in the `Homepage` entry
+
+- Go to the `Homepage` entry editor (see [Homepage - Entry](./contentful-and-the-starter-template.md#homepage-entry) to do so)
+- From the `Top section (optional)` field, click on the first `💎 Hero banner component` entry reference to edit it
+- Add a value to the `Greeting` field
+- Publish the changes by clicking on the `Publish changes` button in the right entry sidebar
+
 #### Edit the content type in the Starter Template source code
 
 Now, let's connect the new `Greeting` field to our Starter Template source code.
