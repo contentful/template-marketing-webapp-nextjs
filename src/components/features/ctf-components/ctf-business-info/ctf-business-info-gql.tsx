@@ -21,8 +21,6 @@ export const CtfBusinessInfoGql = ({ preview, id }: CtfBusinessInfoGqlPropsInter
     preview,
   });
 
-  // useDataForPreview(queryResult);
-
   if (!data || isLoading) {
     return null;
   }
