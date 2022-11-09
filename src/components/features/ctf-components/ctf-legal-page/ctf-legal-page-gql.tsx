@@ -22,8 +22,6 @@ const CtfLegalPageGgl = (props: Props) => {
     locale,
   });
 
-  // useDataForPreview(queryResult);
-
   const page = tryget(() => data?.pageCollection!.items[0]);
 
   if (isLoading) return <></>;
