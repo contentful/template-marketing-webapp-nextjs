@@ -149,6 +149,18 @@ The configuration for the codegen can be found in `codegen.ts`, located in the r
 
 ---
 
+## Deploy
+
+The Starter Template can be deployed to your hosting provider of choice.
+
+We offer integrations with Vercel and Netlify to speed up the process, you can use the deploy buttons below.
+
+| Vercel  | Netlify  | 
+|---|---|
+| [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fcontentful%2Ftemplate-marketing-webapp-nextjs&env=NEXT_PUBLIC_CONFIG_CONTENTFUL_SPACE_ID,NEXT_PUBLIC_CONFIG_CONTENTFUL_DELIVERY_API_TOKEN,NEXT_PUBLIC_CONFIG_CONTENTFUL_PREVIEW_API_TOKEN&envDescription=API%20Keys%20needed%20for%20the%20application&envLink=https%3A%2F%2Fgithub.com%2Fcontentful%2Ftemplate-marketing-webapp-nextjs%23environment-variables) | [![Deploy to Netlify Button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https%3A%2F%2Fgithub.com%2Fcontentful%2Ftemplate-marketing-webapp-nextjs#NEXT_PUBLIC_CONFIG_CONTENTFUL_SPACE_ID=&NEXT_PUBLIC_CONFIG_CONTENTFUL_DELIVERY_API_TOKEN=&NEXT_PUBLIC_CONFIG_CONTENTFUL_PREVIEW_API_TOKEN=) |
+
+---
+
 ## Contentful Components
 
 The term _Contentful Components_ (_ctf-components_ for short) is used for React components which have an equivalent Contentful _content type_.  
