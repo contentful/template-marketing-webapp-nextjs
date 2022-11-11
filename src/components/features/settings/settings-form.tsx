@@ -1,22 +1,17 @@
-import Autocomplete from '@mui/lab/Autocomplete';
 import {
   Theme,
   FormHelperText,
-  TextField,
   FormControl,
   FormControlLabel,
-  CircularProgress,
   Switch,
   Button,
   Typography,
-  InputAdornment,
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
-import format from 'date-fns/format';
 import { useRouter } from 'next/router';
 import queryString from 'query-string';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import { useContentfulContext } from '@src/contentful-context';
 import SettingsIcon from '@src/icons/settings-icon.svg';
@@ -249,57 +244,6 @@ const useStyles = makeStyles((theme: Theme) => ({
       opacity: 0.5,
     },
   },
-
-  envOption: {
-    alignItems: 'center',
-    display: 'flex',
-    flexWrap: 'nowrap',
-    paddingBottom: theme.spacing(2),
-    paddingTop: theme.spacing(2),
-  },
-  envOptionIcon: {
-    flexGrow: 0,
-    flexShrink: 0,
-    fontSize: 0,
-    marginRight: theme.spacing(5),
-    width: '2.2rem',
-  },
-  envOptionBody: {
-    flexGrow: 0,
-    flexShrink: 1,
-  },
-  envOptionName: {
-    color: '#2A3039',
-    fontSize: '1.6rem',
-    lineHeight: 1.12,
-  },
-  envOptionDescription: {
-    boxOrient: 'vertical',
-    color: '#B5C3C9',
-    display: '-webkit-box',
-    fontSize: '1.4rem',
-    lineClamp: 1,
-    lineHeight: 1.5,
-    overflow: 'hidden',
-  },
-  autocompleteOptionFont: {
-    fontFamily:
-      '-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol',
-  },
-  personalizationPreviewButton: {
-    backgroundColor: '#e5ebed',
-    border: '0.1rem solid #c3cfd5',
-    borderRadius: '0.2rem',
-    color: '#2d2f31',
-    display: 'inline-block',
-    fontSize: '1.4rem',
-    padding: '0 1.4rem',
-    transition: 'background .2s ease-in-out,opacity .2s ease-in-out,border-color 0.2s ease-in-out',
-    '&:hover, &:focus': {
-      backgroundColor: '#d3dce0',
-      transform: 'none',
-    },
-  },
 }));
 
 interface SettingsFormPropsInterface {
@@ -311,62 +255,10 @@ export const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
   const router = useRouter();
 
   const classes = useStyles();
-  const { spaceEnv, appUrl, xrayActive, previewActive } = useContentfulContext();
-  const [environments, setEnvironments] = useState([] as { name: string; createdAt: string }[]);
-  const [defaultEnv, setDefaultEnv] = useState('');
-  const [newSpaceEnv, setNewSpaceEnv] = useState(spaceEnv !== 'default' ? spaceEnv : '');
+  const { xrayActive, previewActive } = useContentfulContext();
   const [newXrayActive, setNewXrayActive] = useState(xrayActive || false);
   const [newPreviewActive, setNewPreviewActive] = useState(previewActive || false);
   const [isDirty, setIsDirty] = useState(false);
-
-  useEffect(() => {
-    let shouldCancelFetch = false;
-
-    fetch(`${appUrl}/api/entry?api=environments`)
-      .then(res => res.json())
-      .then(availableEnvironments => {
-        if (shouldCancelFetch === true) {
-          return;
-        }
-
-        if (availableEnvironments.length > 0) {
-          setDefaultEnv(availableEnvironments[0].name);
-
-          if (newSpaceEnv === '') {
-            setNewSpaceEnv(availableEnvironments[0].name);
-          }
-        }
-
-        setEnvironments(availableEnvironments);
-      });
-
-    return () => {
-      shouldCancelFetch = true;
-    };
-  }, [appUrl, newSpaceEnv]);
-
-  useEffect(() => {
-    if (newSpaceEnv === '') {
-      return () => null;
-    }
-
-    let shouldCancelFetch = false;
-    // We split by an empty space because a default environment has a
-    // " (default)" suffix applied
-    const environmentIdArg = newSpaceEnv === null ? '' : newSpaceEnv.split(' ')[0];
-
-    fetch(`${appUrl}/api/entry?api=audiences&environmentId=${environmentIdArg}`)
-      .then(res => res.json())
-      .then(() => {
-        if (shouldCancelFetch === true) {
-          return;
-        }
-      });
-
-    return () => {
-      shouldCancelFetch = true;
-    };
-  }, [appUrl, newSpaceEnv]);
 
   const onSubmit = async event => {
     event.preventDefault();
@@ -376,14 +268,6 @@ export const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
     }
 
     const queryParams = queryString.parse(window.location.search);
-
-    if (newSpaceEnv !== spaceEnv) {
-      if ([null, '', defaultEnv].includes(newSpaceEnv)) {
-        delete queryParams.env;
-      } else {
-        queryParams.env = newSpaceEnv;
-      }
-    }
 
     if (xrayActive !== newXrayActive) {
       if (newXrayActive === false) {
@@ -406,100 +290,6 @@ export const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
       `${router.asPath.split('?')[0]}${
         queryString.stringify(queryParams) ? `?${queryString.stringify(queryParams)}` : ''
       }`,
-    );
-  };
-
-  const environmentsField = () => {
-    if (environments.length === 0) {
-      return <CircularProgress />;
-    }
-
-    return (
-      <Autocomplete
-        options={environments.map(environment => environment.name)}
-        renderInput={params => (
-          <TextField
-            {...params}
-            variant="standard"
-            label="Source environment"
-            fullWidth
-            helperText="Select an environment to view an alternative branch of your content"
-            InputProps={{
-              ...params.InputProps,
-              startAdornment: (
-                <InputAdornment position="start">
-                  <svg
-                    width="22"
-                    height="12"
-                    viewBox="0 0 12 12"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M12 7.49l-1.69 1.69-2.186-2.087-.994.994 2.187 2.186-1.79 1.69H12V7.49zm0-2.98V.036H7.528l1.69 1.69-3.479 3.478H.075v1.49h6.26l3.976-3.975L12 4.51z"
-                      fill="#2A3039"
-                    />
-                  </svg>
-                </InputAdornment>
-              ),
-            }}
-          />
-        )}
-        renderOption={(props, option) => {
-          const environment = environments.find(
-            availableEnvironment => availableEnvironment.name === option,
-          );
-
-          if (!environment) {
-            return (
-              <Typography
-                {...props}
-                className={clsx(classes.envOptionName, classes.autocompleteOptionFont)}>
-                {option}
-              </Typography>
-            );
-          }
-
-          return (
-            <li {...props}>
-              <div className={classes.envOption}>
-                <div className={classes.envOptionIcon}>
-                  <svg
-                    width="22"
-                    height="22"
-                    viewBox="0 0 12 12"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M12 7.49l-1.69 1.69-2.186-2.087-.994.994 2.187 2.186-1.79 1.69H12V7.49zm0-2.98V.036H7.528l1.69 1.69-3.479 3.478H.075v1.49h6.26l3.976-3.975L12 4.51z"
-                      fill={newSpaceEnv === environment.name ? '#2A3039' : '#B5C3C9'}
-                    />
-                  </svg>
-                </div>
-                <div className={classes.envOptionBody}>
-                  <Typography
-                    className={clsx(classes.envOptionName, classes.autocompleteOptionFont)}>
-                    {environment.name}
-                  </Typography>
-                  <Typography
-                    className={clsx(classes.envOptionDescription, classes.autocompleteOptionFont)}>
-                    {`Created on ${format(
-                      new Date(environment.createdAt),
-                      'MMM d, yyyy',
-                    )} at ${format(new Date(environment.createdAt), 'HH:mm')}`}
-                  </Typography>
-                </div>
-              </div>
-            </li>
-          );
-        }}
-        onChange={(_event, value) => {
-          if (!value) return;
-
-          setNewSpaceEnv(value);
-          setIsDirty(true);
-        }}
-        value={newSpaceEnv}
-      />
     );
   };
 
@@ -558,14 +348,7 @@ export const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
               </FormHelperText>
             </FormControl>
           </div>
-          <div className={classes.formSection}>
-            <Typography className={classes.formSectionTitle} variant="h5">
-              Content tools
-            </Typography>
-            <FormControl margin="normal" fullWidth>
-              {environmentsField()}
-            </FormControl>
-          </div>
+
           <footer className={classes.footer}>
             <Button
               className={classes.footerButton}

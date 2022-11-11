@@ -10,8 +10,6 @@ module.exports = {
     space_id: process.env.NEXT_PUBLIC_CONFIG_CONTENTFUL_SPACE_ID || '',
     cda_token: process.env.NEXT_PUBLIC_CONFIG_CONTENTFUL_DELIVERY_API_TOKEN || '',
     cpa_token: process.env.NEXT_PUBLIC_CONFIG_CONTENTFUL_PREVIEW_API_TOKEN || '',
-    // main_space_management_token: Contentful Content Management token
-    main_space_management_token: process.env.CONFIG_CONTENTFUL_MAIN_SPACE_MANAGEMENT_TOKEN || '',
   },
   meta: {
     title:
