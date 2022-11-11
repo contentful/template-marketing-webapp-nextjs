@@ -4,7 +4,7 @@
   "private": true,
   "version": "0.0.1",
   "engines": {
-    "node": "16",
+    "node": "16.18.1",
     "npm": "Please use Yarn"
   },
   "scripts": {
