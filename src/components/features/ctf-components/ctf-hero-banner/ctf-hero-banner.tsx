@@ -1,13 +1,13 @@
 import { Container, Theme, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
-import { useMemo, useContext } from 'react';
+import { useMemo } from 'react';
 
 import { HeroBannerFieldsFragment } from './__generated/ctf-hero-banner.generated';
 
 import { CtfRichtext } from '@src/components/features/ctf-components/ctf-richtext/ctf-richtext';
 import { PageLink } from '@src/components/features/page-link';
-import LayoutContext, { defaultLayout } from '@src/layout-context';
+import LayoutContext, { defaultLayout, useLayoutContext } from '@src/layout-context';
 import { getColorConfigFromPalette, HEADER_HEIGHT_MD, HEADER_HEIGHT } from '@src/theme';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -104,7 +104,7 @@ export const CtfHeroBanner = (props: HeroBannerFieldsFragment) => {
     colorPalette,
     heroSize: heroSizeBoolean,
   } = props;
-  const layout = useContext(LayoutContext);
+  const layout = useLayoutContext();
 
   const colorConfig = getColorConfigFromPalette(colorPalette || '');
   const imageStyle = imageStyleBoolean ? 'partial' : 'full';

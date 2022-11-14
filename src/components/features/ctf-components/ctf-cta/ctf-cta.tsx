@@ -7,7 +7,7 @@ import { CtfRichtext } from '@src/components/features/ctf-components/ctf-richtex
 import { PageLink } from '@src/components/features/page-link';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 import { getColorConfigFromPalette } from '@src/theme';
-import optimizeLineBreak from '@src/typography/optimize-line-break';
+import { optimizeLineBreak } from '@src/utils';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {

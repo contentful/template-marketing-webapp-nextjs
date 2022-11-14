@@ -1,11 +1,10 @@
 import { ImageProps } from 'next/image';
-import { useContext } from 'react';
 
 import { AssetFieldsFragment } from './__generated/ctf-asset.generated';
 
 import { CtfImage } from '@src/components/features/ctf-components/ctf-image/ctf-image';
 import { CtfVideo } from '@src/components/features/ctf-components/ctf-video/ctf-video';
-import LayoutContext from '@src/layout-context';
+import { useLayoutContext } from '@src/layout-context';
 
 interface CtfAssetPropsInterface
   extends AssetFieldsFragment,
@@ -17,7 +16,7 @@ interface CtfAssetPropsInterface
 
 export const CtfAsset = (props: CtfAssetPropsInterface) => {
   const { contentType, url, showDescription = true, title, width, height } = props;
-  const layout = useContext(LayoutContext);
+  const layout = useLayoutContext();
 
   if (!contentType || !url) {
     return null;

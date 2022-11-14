@@ -4,7 +4,7 @@ import { Theme, Typography, Container } from '@mui/material';
 import { Variant } from '@mui/material/styles/createTypography';
 import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
-import React, { useMemo, useContext, useCallback } from 'react';
+import React, { useMemo, useCallback } from 'react';
 
 import { CtfAsset } from '../ctf-asset/ctf-asset';
 
@@ -13,7 +13,7 @@ import { useCtfRichTextHyperlinkQuery } from '@src/components/features/ctf-compo
 import { PageLink } from '@src/components/features/page-link';
 import { ComponentResolver } from '@src/components/shared/component-resolver';
 import { useContentfulContext } from '@src/contentful-context';
-import LayoutContext from '@src/layout-context';
+import { useLayoutContext } from '@src/layout-context';
 import { OmitRecursive, tryget } from '@src/utils';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -206,7 +206,7 @@ const EntryHyperlink = ({ node }) => {
 
 export const CtfRichtext = (props: CtfRichtextPropsInterface) => {
   const { json, links, containerClassName, gridClassName } = props;
-  const layout = useContext(LayoutContext);
+  const layout = useLayoutContext();
 
   const entryBlocks = useMemo(
     () => tryget(() => links!.entries!.block!.filter(b => !!b), [] as Block[])!,
@@ -308,7 +308,7 @@ export const CtfRichtext = (props: CtfRichtextPropsInterface) => {
     interface ParagraphRendererInterface {
       variant?: Variant;
       className?: string;
-      component?: React.ElementType<any>;
+      component?: React.ElementType;
     }
 
     const paragraphRenderer =
