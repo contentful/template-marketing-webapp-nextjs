@@ -1,13 +1,12 @@
 import { Theme, Container } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import { useContext } from 'react';
 
 import { PersonFieldsFragment } from './__generated/ctf-person.generated';
 
 import { Author } from '@src/components/features/author';
 import { CardLeadership } from '@src/components/features/card-leadership';
 import { CardPerson } from '@src/components/features/card-person';
-import LayoutContext from '@src/layout-context';
+import { useLayoutContext } from '@src/layout-context';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -23,7 +22,7 @@ interface CtfPersonPropsInterface extends PersonFieldsFragment {
 }
 
 export const CtfPerson = (props: CtfPersonPropsInterface) => {
-  const layout = useContext(LayoutContext);
+  const layout = useLayoutContext();
   const classes = useStyles();
   const isLeadership = props.cardStyle === false;
 

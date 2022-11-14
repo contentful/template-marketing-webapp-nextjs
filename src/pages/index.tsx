@@ -12,7 +12,7 @@ const LangPage: NextPage = () => {
   return <CtfPageGgl slug="/" />;
 };
 
-export const getServerSideProps = async ({ locale, req }: NextPageContext) => {
+export const getServerSideProps = async ({ locale }: NextPageContext) => {
   try {
     const queryClient = new QueryClient();
 

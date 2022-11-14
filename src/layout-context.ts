@@ -7,4 +7,6 @@ export const defaultLayout = {
 
 const LayoutContext = React.createContext(defaultLayout);
 
+export const useLayoutContext = () => React.useContext(LayoutContext);
+
 export default LayoutContext;

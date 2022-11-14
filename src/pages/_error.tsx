@@ -74,7 +74,7 @@ const getStatusAndMessageFromError = (
   return error;
 };
 
-const ErrorPage: NextPage<ErrorPagePropsInterface> = ({ statusCode, err, code, message, req }) => {
+const ErrorPage: NextPage<ErrorPagePropsInterface> = ({ statusCode, err, code, message }) => {
   if (code !== undefined && message !== undefined) {
     return <PageError error={{ code, message }} />;
   }

@@ -1,11 +1,10 @@
 import { Box } from '@mui/material';
 import React, { useMemo } from 'react';
 
-import { componentGqlMap, componentMap } from '../../mappings';
 import { XrayFrame } from './xray-frame';
 
 import { useContentfulContext } from '@src/contentful-context';
-import { WrapIf } from '@src/jsx-utils';
+import { componentGqlMap, componentMap } from '@src/mappings';
 
 let previousComponent: string | null = null;
 interface Props {
@@ -24,6 +23,16 @@ interface Props {
   className?: string;
   inline?: boolean;
 }
+
+const XrayWrapper = ({ xrayActive, componentProps, children }) => {
+  return xrayActive ? (
+    <XrayFrame {...componentProps} className={`xray-${componentProps.__typename}`}>
+      {children}
+    </XrayFrame>
+  ) : (
+    children
+  );
+};
 
 export const ComponentResolver = (props: Props) => {
   const { componentProps, inline = false } = props;
@@ -68,13 +77,7 @@ export const ComponentResolver = (props: Props) => {
   }
 
   return (
-    <WrapIf
-      when={xrayActive}
-      wrap={children => (
-        <XrayFrame {...componentProps} className={`xray-${componentProps.__typename}`}>
-          {children}
-        </XrayFrame>
-      )}>
+    <XrayWrapper componentProps={componentProps} xrayActive={xrayActive}>
       <Box
         position="relative"
         component={inline ? 'span' : 'div'}
@@ -97,6 +100,6 @@ export const ComponentResolver = (props: Props) => {
           />
         )}
       </Box>
-    </WrapIf>
+    </XrayWrapper>
   );
 };
