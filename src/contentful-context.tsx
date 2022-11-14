@@ -11,9 +11,6 @@ export interface ContentfulContextInterface {
   };
   previewActive: boolean;
   xrayActive: boolean;
-  appUrl: string;
-  spaceEnv: string;
-  availableLocales: string[];
 }
 
 export const contentfulContextValue: ContentfulContextInterface = {
@@ -23,9 +20,6 @@ export const contentfulContextValue: ContentfulContextInterface = {
   },
   previewActive: false,
   xrayActive: false,
-  appUrl: contentfulConfig.meta.url,
-  spaceEnv: 'default',
-  availableLocales: contentfulConfig.contentful.available_locales,
 };
 
 export const ContentfulContext = createContext<ContentfulContextInterface>(contentfulContextValue);
@@ -44,9 +38,6 @@ const ContentfulContentProvider = ({ children, router }) => {
         },
         previewActive,
         xrayActive: !!router.query.xray,
-        appUrl: contentfulConfig.meta.url,
-        spaceEnv: router.query.env ?? 'default',
-        availableLocales: contentfulConfig.contentful.available_locales,
       }}>
       {children}
     </ContentfulContext.Provider>
