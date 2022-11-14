@@ -88,7 +88,7 @@ module.exports = withPlugins(plugins, {
     return config;
   },
 
-  rewrites() {
+  async rewrites() {
     return {
         beforeFiles: [
             // if the host is `template-marketing-webapp-nextjs.vercel.app`,
@@ -98,7 +98,7 @@ module.exports = withPlugins(plugins, {
                 has: [
                     {
                         type: 'host',
-                        value: 'template-marketing-webapp-nextjs.vercel.app',
+                        value: 'colorfuldemo.com',
                     },
                 ],
                 destination: '/marketing-site/:path*',
