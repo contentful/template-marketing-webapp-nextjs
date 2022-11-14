@@ -4,13 +4,13 @@ A Marketing Starter Template powered by Next.js & Contentful, pre-designed with 
 
 ![The homepage of the Marketing Starter Template](marketing-starter-template.jpg "The homepage of the Marketing Starter Template")
 
----
+$~$
 
 ## What is Contentful?
 
-[Contentful](https://www.contentful.com/) provides content infrastructure for digital teams to power websites, apps, and devices. Unlike a CMS, Contentful was built to integrate with the modern software stack. It offers a central hub for structured content, powerful management and delivery APIs, and a customizable web app that enable developers and content creators to ship their products faster.
+[Contentful](https://www.contentful.com/) provides content infrastructure for digital teams to power websites, apps, and devices. Unlike a CMS, Contentful was built to integrate with the modern software stack. It offers a central hub for structured content, powerful management, and delivery APIs, and a customizable web app that enables developers and content creators to ship their products faster.
 
----
+$~$
 
 ## DISCLAIMER
 
@@ -18,7 +18,7 @@ This document outlines information available as part of a beta Contentful's Star
 
 If your sole curiosity brought you to this repository, you will not be able to get the full potential of this Starter Template until an upcoming release.
 
----
+$~$
 
 ## Begin your journey with Contentful and the Marketing Starter Template
 
@@ -27,22 +27,32 @@ Follow this [guide](./docs/tutorials/contentful-and-the-starter-template.md) to 
 - Entry editing, and updates preview in the Starter Template application (online/locally)
 - Content type editing in the Contentful web app, as well as in the Starter Template's code
 
----
+$~$
 
 ## Features
 
-- Composable content through powerful & flexible content modeling
-- Localization ready
-- SEO ready
-- Easily customizable through theming
-- Server-side rendering with [Next.js](https://nextjs.org/)
-- Optimized data management with [React Query](@tanstack/react-query)
-- Generation of [GraphQL](https://graphql.org/) typed code (schema, types, and React Query hooks), in sync with the content types through [graphql-codegen](https://www.the-guild.dev/graphql/codegen)
-- Enhanced Developer Experience with [TypeScript](https://www.typescriptlang.org/)
+- Composable content through powerful & flexible content modeling.
+- Localization ready.
+- SEO ready.
+- Server-side rendering with Next.js[^1].
+- Optimized data management with React Query[^2].
+- Generation of GraphQL[^3] typed code (schema, types, and React Query hooks), in sync with the content types through graphql-codegen[^4].
+- Enhanced Developer Experience with TypeScript[^5].
 
----
+$~$
 
 ## Getting started
+
+To get started, read the following guidelines.
+
+- [Environment variables](./README.md#environment-variables)
+- [Dependencies](./README.md#dependencies)
+- [Development](./README.md#development)
+- [Contentful API & GraphQL](./README.md#contentful-api--graphql)
+- [Contentful Components](./README.md#contentful-components)
+- [Deployment](./README.md#deployment)
+
+$~$
 
 ### Environment variables
 
@@ -53,6 +63,8 @@ In order to authenticate the requests to the Contentful APIs, the following valu
 - Contentful Preview API token: [https://www.contentful.com/developers/docs/references/content-preview-api/](https://www.contentful.com/developers/docs/references/content-preview-api/)
 
 Rename the `.env.example` file to `.env` and add the necessary values.
+
+$~$
 
 ### Dependencies
 
@@ -72,7 +84,7 @@ The Starter Template should be up and running on `http://localhost:3000`.
 
 All necessary dependencies are installed under `node_modules` and any necessary tools can be accessed via npm scripts.
 
----
+$~$
 
 ## Development
 
@@ -80,25 +92,33 @@ All necessary dependencies are installed under `node_modules` and any necessary 
 
 It is recommended to use the Node version listed in the `.nvmrc` file, we recommend using [nvm](https://github.com/nvm-sh/nvm) to easily switch between Node versions.
 
+$~$
+
 ### Husky & git hooks
 
 This repository makes use of [Husky](https://github.com/typicode/husky) to enforce commit hooks.
 
 The config for both the `pre-commit` and `pre-push` hooks can be found in the `.husky` folder, located in the root of the project.
 
+---
+
 #### Pre-commit
 
 Before allowing a commit, we require a successful result from the TypeScript compiler (`tsc`) and our `lint-staged` script will be run.  
 
-This ensures all Eslint and Prettier rules are enforced on the files that are staged to be committed.
+This ensures all ESLint and Prettier rules are enforced on the files that are staged to be committed.
 
-The tsc command is ran separately from the `lint-staged` step, because we require the Typescript compiler to sample _all_ files.  
+The `tsc` command is run separately from the `lint-staged` step because we require the Typescript compiler to sample _all_ files.  
 
 This is important to ensure that no deviating types were introduced by the [codegen](./README.md#graphql--code-generation) for example.
 
+---
+
 #### Pre-push
 
-The same two tasks are ran for pre-push, that are ran for pre-commit.
+The same two tasks are run for pre-push and for pre-commit.
+
+---
 
 #### Overriding the Husky git hooks
 
@@ -106,7 +126,7 @@ In case of wanting to bypass the `pre-commit` or `pre-push` hooks, pass a `--noV
 
 ⚠️ Make sure you only use this if you know why you're using it. ⚠️
 
----
+$~$
 
 ### Contentful API & GraphQL
 
@@ -121,6 +141,8 @@ The hooks are generated from the `.graphql` files collocated within the componen
 3. Within the generated file, a new hook is generated with the following pattern: `use[fileName]`
 4. The hook can now be imported and used within the `.ts(x)` files in the component folder
 
+$~$
+
 ### GraphQL & code generation
 
 We use `graphql-codegen` to generate a type-safe API client, utilizing [React Query](https://tanstack.com/query/v4/) as the "client".
@@ -129,6 +151,8 @@ The data for the hooks is pre-fetched on the server-side.
 
 For more information on how this data is hydrated please read [the official documentation](https://tanstack.com/query/v4/docs/guides/ssr#using-hydration).
 
+---
+
 #### Commands
 
 In order to (re-)generate the GraphQL schema, types and hooks, please use either of the following commands:
@@ -136,57 +160,40 @@ In order to (re-)generate the GraphQL schema, types and hooks, please use either
 - `yarn graphql-codegen:generate` generates a schema, types and code to fetch data from the Contentful APIs
 - `yarn graphql-codegen:watch` similar to the `generate` command, but it runs as a watch task which will rerun the steps when changes are made in the `.graphql` files
 
-The first steps of the codegen generate files that contain the GraphQL schema, and matching typescript types.  
+The first steps of the codegen generate files that contain the GraphQL schema and matching TypeScript types.  
 They're generated to the `src/lib/__generated` folder and ought to be committed once altered/added to the repository.
 
 Additionally, the codegen watches .graphql files in our `src` folder, if it runs successfully it generates a `__generated` folder collocated in the folder where the `.graphql` file was found.  
 
-One exception to this rule is the `src/lib/fragments` folder that contains shared GraphQL Fragments that are used in several other queries/fragments.  
+One exception to this rule is the `src/lib/fragments` folder which contains shared GraphQL Fragments that are used in several other queries/fragments.  
 
 The TS types for these files are generated in the same location, in a `__generated` folder and like the other files ought to be committed.
+
+---
 
 #### Configuration
 
 The configuration for the codegen can be found in `codegen.ts`, located in the root of the project.
 
----
+$~$
 
-## Deployment
+### Contentful Components
 
-The Starter Template can be deployed to your hosting provider of choice.
-
-We offer integrations with Vercel and Netlify to speed up the process (by setting-up the GitHub repository and the necessary environment variables keys in the hosting provider space), you can use the deploy buttons below.
-
-| Vercel  | Netlify  |
-|---|---|
-| [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fcontentful%2Ftemplate-marketing-webapp-nextjs&env=NEXT_PUBLIC_CONFIG_CONTENTFUL_SPACE_ID,NEXT_PUBLIC_CONFIG_CONTENTFUL_DELIVERY_API_TOKEN,NEXT_PUBLIC_CONFIG_CONTENTFUL_PREVIEW_API_TOKEN&envDescription=API%20Keys%20needed%20for%20the%20application&envLink=https%3A%2F%2Fgithub.com%2Fcontentful%2Ftemplate-marketing-webapp-nextjs%23environment-variables) | [![Deploy to Netlify Button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https%3A%2F%2Fgithub.com%2Fcontentful%2Ftemplate-marketing-webapp-nextjs#NEXT_PUBLIC_CONFIG_CONTENTFUL_SPACE_ID=&NEXT_PUBLIC_CONFIG_CONTENTFUL_DELIVERY_API_TOKEN=&NEXT_PUBLIC_CONFIG_CONTENTFUL_PREVIEW_API_TOKEN=) |
-| [Environment variables docs](https://vercel.com/docs/concepts/projects/environment-variables) | [Environment variables docs](https://docs.netlify.com/environment-variables/overview/) |
-
-Make sure to add the necessary [environment variables values](./README.md#environment-variables) to the hosting provider environment variables.
-
-### Content preview
-
-Once you have the Starter Template deployed on your hosting provider, you can update the Content preview URL in your space settings.  
-
-You can follow our guide to learn how to do so: [https://www.contentful.com/help/setup-content-preview](https://www.contentful.com/help/setup-content-preview).
-
----
-
-## Contentful Components
-
-The term _Contentful Components_ (_ctf-components_ for short) is used for React components which have an equivalent Contentful _content type_.  
+The term _Contentful Components_ (_ctf-components_ for short) is used for React components that have an equivalent Contentful _content type_.  
 
 E.g. all React components needed for rendering the _content-type_ `HeroBanner` can be found in the folder `src/features/ctf-components/ctf-hero-banner`.
 
 Usually a _ctf-component_ is composed of 3 files:
 
-- `ctf-[contentypeName].graphql`: holding the query strings needed for the GraphQL request to fetch the components data
-- `ctf-[contentypeName]-gql.tsx`: React component which executes the GraphQL query and passes the result to a component for rendering
-- `ctf-[contentypeName].tsx`: the React component which is actually rendering the content type
+- `ctf-[contentypeName].graphql`: holding the query strings needed for the GraphQL request to fetch the components data.
+- `ctf-[contentypeName]-gql.tsx`: React component which executes the GraphQL query and passes the result to a component for rendering.
+- `ctf-[contentypeName].tsx`: the React component which is actually rendering the content type.
 
-Optionally, a folder with typescript interfaces which were generated by GraphQL codegen can also be included:
+Optionally, a folder with TypeScript interfaces which were generated by GraphQL codegen can also be included:
 
-- `/__generated/`: (see [GraphQL & code generation](./README.md#graphql--code-generation))
+- `/__generated/`: (see [GraphQL & code generation](./README.md#graphql--code-generation)).
+
+$~$
 
 ### Component Resolver and content type mapping
 
@@ -204,6 +211,8 @@ If the React component is found the _content type_ `id`, `__typename`, and `inte
 
 According to this pattern, all _ctf-components_ suffixed with `-gql` should be added to `componentGqlMap` and all without a suffix should be added to `componentMap`.
 
+$~$
+
 ### Creating new Contentful Components
 
 Creating new _ctf-components_ involve the following steps:
@@ -213,3 +222,67 @@ Creating new _ctf-components_ involve the following steps:
 - Optionally, generate TypeScript interfaces for the GraphQL result by calling `yarn graphql-codegen:generate` (see [GraphQL & code generation](./README.md#graphql--code-generation)).
 - Create the React components for rendering (`./src/ctf-components/ctf-[contentTypeName]-gql.tsx` and `./src/ctf-components/ctf-[contentTypeName].tsx`).
 - Add the component to the `componentGqlMap` in `./src/mappings.ts`.
+
+$~$
+
+---
+
+$~$
+
+## Deployment
+
+The Starter Template can be deployed to your hosting provider of choice.
+
+We offer integrations with Vercel and Netlify to speed up the process (by setting-up the GitHub repository and the necessary environment variables keys in the hosting provider space), you can use the deploy buttons below.
+
+| Vercel  | Netlify  |
+|---|---|
+| [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fcontentful%2Ftemplate-marketing-webapp-nextjs&env=NEXT_PUBLIC_CONFIG_CONTENTFUL_SPACE_ID,NEXT_PUBLIC_CONFIG_CONTENTFUL_DELIVERY_API_TOKEN,NEXT_PUBLIC_CONFIG_CONTENTFUL_PREVIEW_API_TOKEN&envDescription=API%20Keys%20needed%20for%20the%20application&envLink=https%3A%2F%2Fgithub.com%2Fcontentful%2Ftemplate-marketing-webapp-nextjs%23environment-variables) | [![Deploy to Netlify Button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https%3A%2F%2Fgithub.com%2Fcontentful%2Ftemplate-marketing-webapp-nextjs#NEXT_PUBLIC_CONFIG_CONTENTFUL_SPACE_ID=&NEXT_PUBLIC_CONFIG_CONTENTFUL_DELIVERY_API_TOKEN=&NEXT_PUBLIC_CONFIG_CONTENTFUL_PREVIEW_API_TOKEN=) |
+| [Environment variables docs](https://vercel.com/docs/concepts/projects/environment-variables) | [Environment variables docs](https://docs.netlify.com/environment-variables/overview/) |
+
+Make sure to add the necessary [environment variables values](./README.md#environment-variables) to the hosting provider environment variables.
+
+---
+
+### Content preview
+
+Once you have the Starter Template deployed on your hosting provider, you can update the Content preview URL in your space settings.  
+
+You can follow our guide to learn how to do so: [https://www.contentful.com/help/setup-content-preview](https://www.contentful.com/help/setup-content-preview).
+
+$~$
+
+---
+
+$~$
+
+## Support
+
+If you have a problem with this Starter Template, post a message in our [Contentful Community Slack](https://www.contentful.com/slack/).
+
+Can't find your answer there? You can file a feedback issue through [this template](https://github.com/contentful/template-marketing-webapp-nextjs/tree/main/.github/ISSUE_TEMPLATE/feedback.md).
+
+If you have other problems with Contentful not related to the Starter Template, you can contact the [Customer Support](https://support.contentful.com/).
+
+$~$
+
+## Contributing
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md).
+
+$~$
+
+## License
+
+MIT License, see [LICENSE](./LICENSE).
+
+$~$
+
+<!-- FOOTNOTES -->
+
+[^1]: [Next.js docs](https://nextjs.org/docs/getting-started)
+[^2]: [React Query](https://tanstack.com/query/v4/docs/overview)
+[^3]: [GraphQL docs](https://graphql.org/learn/)
+[^4]: [graphql-codegen](https://www.the-guild.dev/graphql/codegen)
+[^5]: [TypeScript](https://www.typescriptlang.org/)
+[^note]: [React docs](https://reactjs.org/docs/getting-started.html)
