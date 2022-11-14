@@ -88,22 +88,24 @@ module.exports = withPlugins(plugins, {
     return config;
   },
 
+  // basePath: '/marketing-site',
+
   async rewrites() {
     return {
-        beforeFiles: [
-            // if the host is `template-marketing-webapp-nextjs.vercel.app`,
-            // this rewrite will be applied
+      beforeFiles: [
+        // if the host is `template-marketing-webapp-nextjs-git-chore-domain-sub-folder.colorfuldemo.com`,
+        // this rewrite will be applied
+        {
+          source: '/:path*',
+          has: [
             {
-                source: '/:path*',
-                has: [
-                    {
-                        type: 'host',
-                        value: 'colorfuldemo.com',
-                    },
-                ],
-                destination: '/marketing-site/:path*',
+              type: 'host',
+              value: 'template-marketing-webapp-nextjs-git-chore-domain-sub-folder.colorfuldemo.com',
             },
-        ]
+          ],
+          destination: '/marketing-site/:path*',
+        },
+      ]
     }
-}
+  }
 });
