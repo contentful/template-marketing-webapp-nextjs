@@ -28,6 +28,7 @@ const CustomApp = ({
   useEffect(() => {
     // when component is mounting we remove server side rendered css:
     const jssStyles = document.querySelector('#jss-server-side');
+
     if (jssStyles && jssStyles.parentNode) {
       jssStyles.parentNode.removeChild(jssStyles);
     }

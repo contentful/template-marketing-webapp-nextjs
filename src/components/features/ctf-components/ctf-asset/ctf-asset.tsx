@@ -26,7 +26,6 @@ export const CtfAsset = (props: CtfAssetPropsInterface) => {
   if (contentType.startsWith('image')) {
     return (
       <CtfImage
-        {...props}
         height={height || undefined}
         width={width || undefined}
         title={title || ''}

@@ -55,12 +55,10 @@ interface Props {
 export const XrayFrame = (props: Props) => {
   const contentfulContext = useContentfulContext();
   const {
-    spaceEnv,
     spaceIds: { main: spaceId },
   } = contentfulContext;
   const classes = useStyles();
-  const environmentsUrlFragment = spaceEnv === 'default' ? '' : `environments/${spaceEnv}/`;
-  const contentfulUrl = `https://app.contentful.com/spaces/${spaceId}/${environmentsUrlFragment}entries/${props.sys.id}`;
+  const contentfulUrl = `https://app.contentful.com/spaces/${spaceId}/entries/${props.sys.id}`; // TODO: replace me as well for https://contentful.atlassian.net/browse/PLATO-203
   return (
     <Box className={clsx(classes.xframeRoot, props.className)}>
       {props.children}
