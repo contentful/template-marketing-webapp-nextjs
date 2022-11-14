@@ -87,4 +87,23 @@ module.exports = withPlugins(plugins, {
 
     return config;
   },
+
+  rewrites() {
+    return {
+        beforeFiles: [
+            // if the host is `template-marketing-webapp-nextjs.vercel.app`,
+            // this rewrite will be applied
+            {
+                source: '/:path*',
+                has: [
+                    {
+                        type: 'host',
+                        value: 'template-marketing-webapp-nextjs.vercel.app',
+                    },
+                ],
+                destination: '/marketing-site/:path*',
+            },
+        ]
+    }
+}
 });
