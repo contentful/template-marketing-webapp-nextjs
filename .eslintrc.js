@@ -26,7 +26,6 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
     'plugin:jsx-a11y/recommended',
-    'plugin:storybook/recommended',
     'plugin:@next/next/recommended',
   ],
   rules: {

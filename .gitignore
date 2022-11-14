@@ -187,8 +187,6 @@ bower_components
 
 .env
 
-storybook-static
-
 ### Intellij ###
 .idea/
 
