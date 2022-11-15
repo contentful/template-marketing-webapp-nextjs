@@ -15,8 +15,8 @@ interface ColorConfigInterface {
 
 const colorConfigs: { [key: string]: ColorConfigInterface } = {
   'palette-1. White (#FFFFFF)': {
-    headlineColor: '#000',
-    textColor: '#000',
+    headlineColor: '#1B273A',
+    textColor: '#414D63',
     backgroundColor: '#fff',
     buttonColor: 'primary',
   },
@@ -27,8 +27,8 @@ const colorConfigs: { [key: string]: ColorConfigInterface } = {
     buttonColor: 'secondary',
   },
   'palette-2. White Smoke (#FCFCFC)': {
-    headlineColor: '#000',
-    textColor: '#000',
+    headlineColor: '#1B273A',
+    textColor: '#414D63',
     backgroundColor: '#fcfcfc',
     buttonColor: 'primary',
   },
@@ -69,7 +69,7 @@ export const getColorConfigFromPalette = (palette: string): ColorConfigInterface
 const colorfulTheme = createTheme({
   spacing: SPACER,
   typography: {
-    fontFamily: `'Archivo', Helvetica, Arial, sans-serif`,
+    fontFamily: `'Red Hat Display', sans-serif`,
     htmlFontSize: 10,
     caption: {
       fontSize: '1.5rem',

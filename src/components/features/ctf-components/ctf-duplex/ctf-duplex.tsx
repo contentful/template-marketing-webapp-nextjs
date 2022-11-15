@@ -35,7 +35,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   headline: {
-    fontSize: '3.4rem',
+    fontSize: '36px',
+    lineHeight: '48px',
+    fontWeight: 700,
     maxWidth: '60.4rem',
     [theme.breakpoints.up('xl')]: {
       fontSize: '3.8rem',
@@ -43,10 +45,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   richText: {
     fontWeight: 400,
-    lineHeight: 1.52,
+    fontSize: '25px',
+    lineHeight: '39px',
     marginTop: theme.spacing(7),
     '& .MuiTypography-body1': {
-      fontSize: '2rem',
+      fontSize: '25px',
       [theme.breakpoints.up('xl')]: {
         fontSize: '2.5rem',
       },
@@ -70,6 +73,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: 'block',
     margin: 'auto 0',
     maxWidth: '100%',
+    borderRadius: '16px',
+    boxShadow: `0px 0px 0px 1px rgba(25, 37, 50, 0.1),
+    0px -6px 16px -6px rgba(25, 37, 50, 0.03),
+    0px 8px 16px -8px rgba(25, 37, 50, 0.2),
+    0px 13px 27px -5px rgba(25, 37, 50, 0.15)`,
   },
   imageFull: {
     width: '100%',

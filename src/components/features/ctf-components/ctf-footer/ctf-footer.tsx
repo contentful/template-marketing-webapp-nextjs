@@ -49,9 +49,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   menuItem: {
-    fontSize: '1.8rem',
-    fontWeight: 500,
-    lineHeight: '1.2',
+    fontSize: '18px',
+    fontWeight: 400,
+    lineHeight: '22px',
+    color: '#1B273A',
     margin: theme.spacing(0, 0, 4),
     [theme.breakpoints.up('sm')]: {
       marginBottom: theme.spacing(8),
@@ -68,7 +69,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   submenuItem: {
     '& a': {
       borderBottom: '1px solid transparent',
-      color: '#707070',
+      color: '#414D63',
       display: 'inline-block',
       minWidth: 0,
       transition: 'border-bottom-color 0.2s ease-in-out',
@@ -136,8 +137,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   copyright: {
-    fontSize: '1.8rem',
-    lineHeight: 1.389,
+    fontSize: '18px',
+    lineHeight: '25px',
     margin: theme.spacing(0, 10, 0, 0),
   },
   legalMenuWrapper: {},
@@ -194,8 +195,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   socialTitle: {
-    fontSize: '1.8rem',
-    lineHeight: 1.2,
+    fontSize: '18px',
+    fontWeight: 400,
+    lineHeight: '22px',
   },
   social: {
     display: 'flex',
@@ -215,9 +217,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   disclaimer: {
-    color: '#959595',
-    fontSize: '1.8rem',
-    lineHeight: 1.389,
+    color: '#E7EBEE',
+    fontSize: '18px',
+    lineHeight: '25px',
+    fontWeight: 400,
     marginTop: theme.spacing(10),
     width: '100%',
     [theme.breakpoints.up('md')]: {
