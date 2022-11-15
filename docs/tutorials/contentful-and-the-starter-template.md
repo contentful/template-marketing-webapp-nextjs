@@ -4,7 +4,7 @@ This document outlines steps to follow as part of Contentful's Starter Templates
 
 If your sole curiosity brought you to this repository, you will not be able to follow the tutorial and get the full potential of this Starter Template until an upcoming release.
 
----
+$~$
 
 ## Begin your journey with Contentful and the Marketing Starter Template
 
@@ -15,7 +15,7 @@ After reading this document, you will be able to:
   - Edit an entry, and see the update in the Starter Template application (online/locally).
   - Edit a content type in the Contentful web app, as well as in the Starter Template's code.
 
----
+$~$
 
 ### Contentful core features
 
@@ -25,27 +25,33 @@ A content model is the foundation of every great digital project. Your model is 
 
 Designing your content model is a critical step in building a solid, efficient, and future-proof application with Contentful.
 
+---
+
 #### What is a content type
 
 Within your overall content model, you’ll have individual content types. You can think of each content type as an outline for your content; it tells you what data will be contained within each individual entry. Think of the content type as the “stencil” for the “drawing” that will be your entry.
 
 Each content type is made up of fields that denote the type of data that will be included in the entry. For example, the title of a web page or news article would have its own text field, the body would have another, and there would also be fields to include any media files.
 
+---
+
 #### What is an entry
 
 An entry is a piece of content created from a content model, Contentful provides an editor to create content.
+
+---
 
 #### What is a reference
 
 A reference is a field type you can add to your content type. This field gives you the ability to link one or multiple entries to another.
 
----
+$~$
 
 ### Relationship between Contentful and the Starter Template
 
 In the previous step, we learned the basics of Contentful's core features.
 
-Now, we will explore the relationship between Contentful and the Starter Template frontend layer, by using the Homepage entry as an example.
+Now, we will explore the relationship between Contentful and the Starter Template frontend layer, by using the `Homepage` entry as an example.
 
 Note that from now on, we will refer to the Contentful application, as the `web app`.
 
@@ -53,7 +59,7 @@ Note that from now on, we will refer to the Contentful application, as the `web 
 >
 > To follow the next steps, make sure you are logged into [https://app.contentful.com/](https://app.contentful.com/).
 
----
+$~$
 
 #### Homepage - Entry
 
@@ -79,6 +85,8 @@ From the `Top section (optional)` field, click on the first `💎 Hero banner co
 
 NOTE: you can also see the changes by running the Starter Template application locally, after completing the [setup](../../README.md/#getting-started).
 
+---
+
 #### Homepage - Content type
 
 In the previous step, we explored the `Homepage` entry's structure and edited one of the `💎 Hero banner component` entry references.
@@ -89,7 +97,7 @@ Now, we are going to edit the `💎 Hero banner component` content type to under
 >
 > To follow the next steps, make sure you have completed the [Starter Template setup](../../README.md/#getting-started) and that the Starter Template application is running locally, at [http://localhost:3000](http://localhost:3000).
 
----
+$~$
 
 #### Edit the content type in the web app
 
@@ -115,6 +123,8 @@ The new field is now available, let's add a value in the `Homepage` entry:
 - Add a value to the `Greeting` field.
 - Publish the changes by clicking on the `Publish changes` button in the right entry sidebar.
 
+---
+
 #### Edit the content type in the Starter Template source code
 
 Now, let's connect the new `Greeting` field to our Starter Template source code:
@@ -128,6 +138,8 @@ Now, let's connect the new `Greeting` field to our Starter Template source code:
 - Navigate to the running Starter Template application, [http://localhost:3000/](http://localhost:3000/)
   - If the application is not running yet, in your terminal of choice, run `yarn dev`.
 - You should see the `Greeting` field in the Homepage - Hero section.
+
+$~$
 
 ## Wrap up
 
