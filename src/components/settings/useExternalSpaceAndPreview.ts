@@ -4,8 +4,8 @@ import { useEffect } from 'react';
 
 import { fetchConfig } from '@src/lib/fetchConfig';
 
-const fetcherGraphqlEndpoint = space_id =>
-  `https://graphql.contentful.com/content/v1/spaces/${space_id}`;
+const fetcherGraphqlEndpoint = (space_id, domain = 'contentful.com') =>
+  `https://graphql.${domain}/content/v1/spaces/${space_id}`;
 
 const fetcherHeaderParamsDefault = {
   headers: {
@@ -55,7 +55,7 @@ export const useExternalSpaceAndPreview = () => {
 
   const queryClient = useQueryClient();
 
-  const { delivery_token, preview_token, space_id, preview } = router.query;
+  const { domain, delivery_token, preview_token, space_id, preview } = router.query;
 
   const previewActive = !!preview;
   const shouldUseSpaceCredsFromParams = !!delivery_token && !!preview_token && !!space_id;
@@ -69,7 +69,7 @@ export const useExternalSpaceAndPreview = () => {
 
   fetchConfig.params.headers = fetchParams.headers;
   fetchConfig.endpoint = shouldUseSpaceCredsFromParams
-    ? fetcherGraphqlEndpoint(space_id)
+    ? fetcherGraphqlEndpoint(space_id, domain as string)
     : fetcherGraphqlEndpoint(process.env.NEXT_PUBLIC_CONFIG_CONTENTFUL_SPACE_ID);
 
   useEffect(() => {
