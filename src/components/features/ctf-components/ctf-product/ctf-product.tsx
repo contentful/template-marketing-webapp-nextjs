@@ -33,8 +33,10 @@ const useStyles = makeStyles((theme: Theme) => ({
   headline: {
     fontSize: '3.2rem',
     maxWidth: '60.4rem',
+    fontWeight: 600,
+    lineHeight: '39px',
     [theme.breakpoints.up('xl')]: {
-      fontSize: '3.6rem',
+      fontSize: '38px',
     },
   },
   body: {
@@ -46,7 +48,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     '& p': {
       fontSize: '2rem',
       [theme.breakpoints.up('xl')]: {
-        fontSize: '2.5rem',
+        fontSize: '25px',
+        fontWeight: 400,
+        lineHeight: '39px',
       },
     },
   },
@@ -99,6 +103,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   featureName: {
     marginBottom: theme.spacing(4),
     marginTop: 0,
+    color: '#414D63',
     [theme.breakpoints.up('md')]: {
       flexGrow: 1,
       flexShrink: 0,
@@ -114,7 +119,9 @@ const useStyles = makeStyles((theme: Theme) => ({
       width: '50rem',
     },
     '& .MuiTypography-body1': {
-      fontSize: '2rem',
+      fontSize: '20px',
+      fontWeight: 400,
+      color: '#414D63',
     },
     '& > div:last-child': {
       marginBottom: theme.spacing(10),
