@@ -4,6 +4,8 @@ import { useEffect } from 'react';
 
 import { fetchConfig } from '@src/lib/fetchConfig';
 
+type Domain = 'contentful.com' | 'flinkly.com' | 'quirely.com';
+
 const fetcherGraphqlEndpoint = (space_id, domain = 'contentful.com') =>
   `https://graphql.${domain}/content/v1/spaces/${space_id}`;
 
@@ -69,7 +71,7 @@ export const useExternalSpaceAndPreview = () => {
 
   fetchConfig.params.headers = fetchParams.headers;
   fetchConfig.endpoint = shouldUseSpaceCredsFromParams
-    ? fetcherGraphqlEndpoint(space_id, domain as string)
+    ? fetcherGraphqlEndpoint(space_id, domain as Domain)
     : fetcherGraphqlEndpoint(process.env.NEXT_PUBLIC_CONFIG_CONTENTFUL_SPACE_ID);
 
   useEffect(() => {
