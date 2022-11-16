@@ -216,17 +216,6 @@ const useStyles = makeStyles((theme: Theme) => ({
       fontSize: '3.2rem',
     },
   },
-  disclaimer: {
-    color: '#E7EBEE',
-    fontSize: '18px',
-    lineHeight: '25px',
-    fontWeight: 400,
-    marginTop: theme.spacing(10),
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      marginTop: 0,
-    },
-  },
 }));
 
 export const CtfFooter = (props: FooterFieldsFragment) => {
@@ -305,8 +294,6 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
           </div>
 
           <div className={classes.socialDisclaimer}>
-            <p className={classes.disclaimer}>{t('legal.disclaimer')}</p>
-
             <div className={classes.socialWrapper}>
               <Typography className={classes.socialTitle}>{t('socials.findUsOn')}</Typography>
               <div className={classes.social}>
