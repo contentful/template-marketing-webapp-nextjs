@@ -35,8 +35,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   headline: {
-    fontSize: '36px',
-    lineHeight: '48px',
+    fontSize: '2.25rem',
+    lineHeight: 1.3,
     fontWeight: 700,
     maxWidth: '60.4rem',
     [theme.breakpoints.up('xl')]: {
@@ -45,11 +45,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   richText: {
     fontWeight: 400,
-    fontSize: '25px',
-    lineHeight: '39px',
+    fontSize: '1.563rem',
+    lineHeight: 1.56,
     marginTop: theme.spacing(7),
     '& .MuiTypography-body1': {
-      fontSize: '25px',
+      fontSize: '1.563rem',
       [theme.breakpoints.up('xl')]: {
         fontSize: '2.5rem',
       },

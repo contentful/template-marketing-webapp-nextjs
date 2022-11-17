@@ -10,15 +10,15 @@ const useStyles = makeStyles((theme: Theme) => ({
     textAlign: 'center',
   },
   headline: {
-    fontSize: '36px',
+    fontSize: '2.25rem',
     fontWeight: 600,
-    lineHeight: '39px',
+    lineHeight: 1.083,
   },
   subline: {
     fontWeight: 400,
-    lineHeight: '39px',
+    lineHeight: 1.56,
     marginTop: theme.spacing(6),
-    fontSize: '25px',
+    fontSize: '1.563rem',
     color: '#414D63',
   },
 

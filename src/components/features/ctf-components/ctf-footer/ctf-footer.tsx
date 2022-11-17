@@ -49,9 +49,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   menuItem: {
-    fontSize: '18px',
+    fontSize: '1.125rem',
     fontWeight: 400,
-    lineHeight: '22px',
+    lineHeight: 1.2,
     color: '#1B273A',
     margin: theme.spacing(0, 0, 4),
     [theme.breakpoints.up('sm')]: {
@@ -137,8 +137,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   copyright: {
-    fontSize: '18px',
-    lineHeight: '25px',
+    fontSize: '1.125rem',
+    lineHeight: 1.2,
     margin: theme.spacing(0, 10, 0, 0),
   },
   legalMenuWrapper: {},
@@ -195,9 +195,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   socialTitle: {
-    fontSize: '18px',
+    fontSize: '1.125rem',
     fontWeight: 400,
-    lineHeight: '22px',
+    lineHeight: 1.2,
   },
   social: {
     display: 'flex',

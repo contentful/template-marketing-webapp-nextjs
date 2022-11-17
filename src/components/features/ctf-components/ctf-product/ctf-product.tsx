@@ -34,9 +34,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontSize: '3.2rem',
     maxWidth: '60.4rem',
     fontWeight: 600,
-    lineHeight: '39px',
+    lineHeight: 1.39,
     [theme.breakpoints.up('xl')]: {
-      fontSize: '38px',
+      fontSize: '2.375rem',
     },
   },
   body: {
@@ -48,9 +48,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     '& p': {
       fontSize: '2rem',
       [theme.breakpoints.up('xl')]: {
-        fontSize: '25px',
+        fontSize: '1.563rem',
         fontWeight: 400,
-        lineHeight: '39px',
+        lineHeight: 1.56,
       },
     },
   },

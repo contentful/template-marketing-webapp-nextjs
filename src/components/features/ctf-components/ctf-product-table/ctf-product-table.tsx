@@ -83,9 +83,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   title: {
     color: '#1B273A',
-    fontSize: '21px',
+    fontSize: '1.313rem',
     fontWeight: 500,
-    lineHeight: '23px',
+    lineHeight: 1.09,
   },
   shortDescription: {
     marginTop: theme.spacing(8),
@@ -93,8 +93,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     '& p': {
       fontWeight: 400,
       color: '#414D63',
-      fontSize: '20px',
-      lineHeight: '31px',
+      fontSize: '1.25rem',
+      lineHeight: 1.55,
     },
   },
   featuredImage: {
@@ -122,16 +122,16 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   priceAddition: {
-    fontSize: '20px',
+    fontSize: '1.25rem',
     fontWeight: 400,
     color: '#414D63',
   },
   priceUpper: {
-    fontSize: '20px',
+    fontSize: '1.25rem',
     fontWeight: 400,
     color: '#414D63',
     '& $priceAddition': {
-      fontSize: '20px',
+      fontSize: '1.25rem',
       fontWeight: 400,
     },
   },

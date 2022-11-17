@@ -78,11 +78,11 @@ const useStyles = makeStyles((theme: Theme) => ({
 
   body: {
     fontWeight: 400,
-    lineHeight: '39px',
+    lineHeight: 1.56,
     marginTop: theme.spacing(6),
     maxWidth: '46.9rem',
     '& p': {
-      fontSize: '25px',
+      fontSize: '1.563rem',
       [theme.breakpoints.up('xl')]: {
         fontSize: '2.5rem',
       },
