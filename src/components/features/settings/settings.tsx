@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
 import { SettingsForm } from '@src/components/features/settings/settings-form';
-import { useExternalSpaceAndPreview } from '@src/components/settings/useExternalSpaceAndPreview';
 import SettingsIcon from '@src/icons/settings-icon.svg';
 
 const useStyles = makeStyles((theme: Theme) => ({
