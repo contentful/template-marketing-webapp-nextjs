@@ -58,6 +58,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 export const Settings = () => {
   const classes = useStyles();
   const theme = useTheme();
+  const { shouldUseSpaceCredsFromParams } = useExternalSpaceAndPreview();
   const [settingsOpen, setSettingsOpen] = useState(false);
 
   useEffect(() => {
@@ -73,8 +74,6 @@ export const Settings = () => {
     document.body.classList.add('is-scroll-locked');
   }, [settingsOpen, theme.breakpoints]);
 
-  const { shouldUseSpaceCredsFromParams } = useExternalSpaceAndPreview();
-  console.log(shouldUseSpaceCredsFromParams)
   return (
     <>
       <CSSTransition
