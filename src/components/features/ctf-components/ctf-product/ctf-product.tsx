@@ -119,7 +119,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       width: '50rem',
     },
     '& .MuiTypography-body1': {
-      fontSize: '20px',
+      fontSize: '1.25rem',
       fontWeight: 400,
       color: '#414D63',
     },

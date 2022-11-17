@@ -67,9 +67,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 
   headline: {
-    fontSize: '38px',
+    fontSize: '2.375rem',
     fontWeight: 800,
-    lineHeight: '41px',
+    lineHeight: 1.08,
     maxWidth: '44rem',
     [theme.breakpoints.up('xl')]: {
       fontSize: '3.8rem',
