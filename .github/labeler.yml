@@ -1,2 +1,2 @@
 PRIVATE-BRANCH-FEATURE:
-  - ./**/*
+  - any: ["./**/*"]
