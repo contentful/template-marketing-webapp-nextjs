@@ -22,6 +22,12 @@
     "graphql-codegen:generate": "graphql-codegen -r dotenv/config --config codegen.ts",
     "graphql-codegen:watch": "graphql-codegen --watch -r dotenv/config --config codegen.ts"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "enforce-branch-name '(PREVIEW-BRANCH|)\/.+'",
+      "pre-push": "enforce-branch-name '(PREVIEW-BRANCH|)\/.+'"
+    }
+  },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
       "eslint --quiet --fix"
@@ -82,6 +88,7 @@
     "babel-plugin-import": "^1.13.3",
     "circular-dependency-plugin": "^5.2.2",
     "contentful-import": "^8.3.2",
+    "enforce-branch-name": "^1.1.2",
     "eslint": "8.22.0",
     "eslint-config-next": "^12.3.1",
     "eslint-config-prettier": "^8.3.0",
