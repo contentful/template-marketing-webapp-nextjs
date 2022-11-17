@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     '& p': {
       fontSize: '2rem',
       [theme.breakpoints.up('xl')]: {
-        fontSize: '1.563rem',
+        fontSize: '2.5rem',
         fontWeight: 400,
         lineHeight: 1.56,
       },
@@ -119,7 +119,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       width: '50rem',
     },
     '& .MuiTypography-body1': {
-      fontSize: '1.25rem',
+      fontSize: '1.8rem',
       fontWeight: 400,
       color: '#414D63',
     },

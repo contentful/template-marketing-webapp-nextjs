@@ -83,7 +83,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   title: {
     color: '#1B273A',
-    fontSize: '1.313rem',
+    fontSize: '2rem',
     fontWeight: 500,
     lineHeight: 1.09,
   },
@@ -93,7 +93,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     '& p': {
       fontWeight: 400,
       color: '#414D63',
-      fontSize: '1.25rem',
+      fontSize: '1.8rem',
       lineHeight: 1.55,
     },
   },
@@ -122,16 +122,16 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   priceAddition: {
-    fontSize: '1.25rem',
+    fontSize: '1.8rem',
     fontWeight: 400,
     color: '#414D63',
   },
   priceUpper: {
-    fontSize: '1.25rem',
+    fontSize: '1.8rem',
     fontWeight: 400,
     color: '#414D63',
     '& $priceAddition': {
-      fontSize: '1.25rem',
+      fontSize: '1.8rem',
       fontWeight: 400,
     },
   },

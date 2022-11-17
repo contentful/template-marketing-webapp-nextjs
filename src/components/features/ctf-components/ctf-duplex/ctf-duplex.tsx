@@ -35,23 +35,22 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   headline: {
-    fontSize: '2.25rem',
+    fontSize: '3rem',
     lineHeight: 1.3,
     fontWeight: 700,
     maxWidth: '60.4rem',
     [theme.breakpoints.up('xl')]: {
-      fontSize: '3.8rem',
+      fontSize: '3.5rem',
     },
   },
   richText: {
     fontWeight: 400,
-    fontSize: '1.563rem',
     lineHeight: 1.56,
     marginTop: theme.spacing(7),
     '& .MuiTypography-body1': {
-      fontSize: '1.563rem',
+      fontSize: '2.5rem',
       [theme.breakpoints.up('xl')]: {
-        fontSize: '2.5rem',
+        fontSize: '1.8rem',
       },
     },
   },
