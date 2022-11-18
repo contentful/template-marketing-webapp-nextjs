@@ -18,9 +18,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     alignItems: 'center',
     cursor: 'default',
     display: 'inline-flex',
-    fontSize: '2.1rem',
+    fontSize: '1.7rem',
+    fontWeight: 400,
     height: '8rem',
-    lineHeight: '1.8',
+    lineHeight: 1.9,
     marginRight: theme.spacing(8),
     position: 'relative',
 

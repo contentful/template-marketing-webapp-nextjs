@@ -50,8 +50,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   menuItem: {
     fontSize: '1.8rem',
-    fontWeight: 500,
-    lineHeight: '1.2',
+    fontWeight: 400,
+    lineHeight: 1.2,
+    color: '#1B273A',
     margin: theme.spacing(0, 0, 4),
     [theme.breakpoints.up('sm')]: {
       marginBottom: theme.spacing(8),
@@ -68,7 +69,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   submenuItem: {
     '& a': {
       borderBottom: '1px solid transparent',
-      color: '#707070',
+      color: '#414D63',
       display: 'inline-block',
       minWidth: 0,
       transition: 'border-bottom-color 0.2s ease-in-out',
@@ -137,8 +138,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   copyright: {
     fontSize: '1.8rem',
-    lineHeight: 1.389,
-    margin: theme.spacing(0, 10, 0, 0),
+    lineHeight: 1.2,
+    margin: theme.spacing(1, 10, 0, 0),
   },
   legalMenuWrapper: {},
   legalMenu: {
@@ -153,8 +154,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   legalMenuItem: {
-    fontSize: '1.8rem',
-    lineHeight: 1.389,
+    fontSize: '2rem',
+    lineHeight: 1.2,
     marginTop: theme.spacing(2),
     width: '100%',
     [theme.breakpoints.up('md')]: {
@@ -195,6 +196,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   socialTitle: {
     fontSize: '1.8rem',
+    fontWeight: 400,
     lineHeight: 1.2,
   },
   social: {
@@ -204,7 +206,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     '& a': {
       color: 'inherit',
       display: 'inline-block',
-      lineHeight: 1,
+      lineHeight: 1.2,
 
       '&:not(:first-child)': {
         marginLeft: theme.spacing(6),

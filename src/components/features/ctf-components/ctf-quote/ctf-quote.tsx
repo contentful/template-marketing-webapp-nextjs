@@ -32,7 +32,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
 
     '& p': {
-      fontSize: '2.5rem',
+      fontSize: '1.563rem',
+      fontWeight: 400,
     },
 
     '& blockquote': {
@@ -49,8 +50,10 @@ const useStyles = makeStyles((theme: Theme) => ({
         paddingRight: 0,
       },
       '& p': {
-        fontSize: '3.5rem',
-        lineHeight: '1.3',
+        fontSize: '2.8rem',
+        fontWeight: 300,
+        lineHeight: 1.314,
+        color: '#414D63',
       },
     },
 
@@ -88,6 +91,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     marginBottom: theme.spacing(7),
+    borderRadius: '16px',
+    boxShadow: `0px 0px 0px 1px rgba(25, 37, 50, 0.1),
+    0px -6px 16px -6px rgba(25, 37, 50, 0.03),
+    0px 8px 16px -8px rgba(25, 37, 50, 0.2),
+    0px 13px 27px -5px rgba(25, 37, 50, 0.15)`,
 
     [theme.breakpoints.up('md')]: {
       marginBottom: 0,

@@ -9,12 +9,19 @@ const useStyles = makeStyles((theme: Theme) => ({
   containerCentered: {
     textAlign: 'center',
   },
-  headline: {},
+  headline: {
+    fontSize: '2.25rem',
+    fontWeight: 600,
+    lineHeight: 1.083,
+  },
   subline: {
     fontWeight: 400,
-    lineHeight: 1.52,
+    lineHeight: 1.56,
     marginTop: theme.spacing(6),
+    fontSize: '1.8rem',
+    color: '#414D63',
   },
+
   text: {
     '& p': {
       fontSize: '2.5rem',
