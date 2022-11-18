@@ -126,7 +126,7 @@ const DuplexImage = (props: DuplexFieldsFragment) => {
 
   return (
     <div className={classes.imageContainer}>
-      {image ? (
+      {image?.url ? (
         <div className={classes.nextImageContainer}>
           <CtfImage
             className={clsx([classes.image, imageStyle === 'fixed' && classes.imageFull])}
