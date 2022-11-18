@@ -58,6 +58,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 export const Settings = () => {
   const classes = useStyles();
   const theme = useTheme();
+  const { shouldUseSpaceCredsFromParams } = useExternalSpaceAndPreview();
   const [settingsOpen, setSettingsOpen] = useState(false);
 
   useEffect(() => {
@@ -72,8 +73,6 @@ export const Settings = () => {
 
     document.body.classList.add('is-scroll-locked');
   }, [settingsOpen, theme.breakpoints]);
-
-  useExternalSpaceAndPreview();
 
   return (
     <>
@@ -93,15 +92,17 @@ export const Settings = () => {
           }}
         />
       </CSSTransition>
-      <button
-        className={classes.toggle}
-        type="button"
-        onClick={() => {
-          setSettingsOpen(open => !open);
-        }}
-        title="Toggle editorial toolbox">
-        <SettingsIcon className={classes.toggleImage} />
-      </button>
+      {shouldUseSpaceCredsFromParams &&
+        <button
+          className={classes.toggle}
+          type="button"
+          onClick={() => {
+            setSettingsOpen(open => !open);
+          }}
+          title="Toggle editorial toolbox">
+          <SettingsIcon className={classes.toggleImage} />
+        </button>
+      }
     </>
   );
 };
