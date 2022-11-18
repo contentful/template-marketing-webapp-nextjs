@@ -64,6 +64,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: 'flex',
     alignItems: 'center',
     order: 0,
+    boxShadow: `0px 0px 0px 1px rgba(25, 37, 50, 0.1),
+    0px -6px 16px -6px rgba(25, 37, 50, 0.03),
+    0px 8px 16px -8px rgba(25, 37, 50, 0.2),
+    0px 13px 27px -5px rgba(25, 37, 50, 0.15)`,
+    borderRadius: '16px',
     [theme.breakpoints.up('md')]: {
       order: 'initial',
     },
@@ -73,10 +78,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: 'auto 0',
     maxWidth: '100%',
     borderRadius: '16px',
-    boxShadow: `0px 0px 0px 1px rgba(25, 37, 50, 0.1),
-    0px -6px 16px -6px rgba(25, 37, 50, 0.03),
-    0px 8px 16px -8px rgba(25, 37, 50, 0.2),
-    0px 13px 27px -5px rgba(25, 37, 50, 0.15)`,
   },
   imageFull: {
     width: '100%',
