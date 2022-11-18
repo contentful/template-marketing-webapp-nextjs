@@ -57,7 +57,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 export const Settings = () => {
   const classes = useStyles();
   const theme = useTheme();
-  const { shouldUseSpaceCredsFromParams } = useExternalSpaceAndPreview();
   const [settingsOpen, setSettingsOpen] = useState(false);
 
   useEffect(() => {
@@ -91,17 +90,15 @@ export const Settings = () => {
           }}
         />
       </CSSTransition>
-      {shouldUseSpaceCredsFromParams &&
-        <button
-          className={classes.toggle}
-          type="button"
-          onClick={() => {
-            setSettingsOpen(open => !open);
-          }}
-          title="Toggle editorial toolbox">
-          <SettingsIcon className={classes.toggleImage} />
-        </button>
-      }
+      <button
+        className={classes.toggle}
+        type="button"
+        onClick={() => {
+          setSettingsOpen(open => !open);
+        }}
+        title="Toggle editorial toolbox">
+        <SettingsIcon className={classes.toggleImage} />
+      </button>
     </>
   );
 };
