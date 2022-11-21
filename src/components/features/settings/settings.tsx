@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
 import { SettingsForm } from '@src/components/features/settings/settings-form';
-import { useExternalSpaceAndPreview } from '@src/components/settings/useExternalSpaceAndPreview';
 import SettingsIcon from '@src/icons/settings-icon.svg';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -58,7 +57,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 export const Settings = () => {
   const classes = useStyles();
   const theme = useTheme();
-  const { shouldUseSpaceCredsFromParams } = useExternalSpaceAndPreview();
   const [settingsOpen, setSettingsOpen] = useState(false);
 
   useEffect(() => {
@@ -92,17 +90,15 @@ export const Settings = () => {
           }}
         />
       </CSSTransition>
-      {shouldUseSpaceCredsFromParams &&
-        <button
-          className={classes.toggle}
-          type="button"
-          onClick={() => {
-            setSettingsOpen(open => !open);
-          }}
-          title="Toggle editorial toolbox">
-          <SettingsIcon className={classes.toggleImage} />
-        </button>
-      }
+      <button
+        className={classes.toggle}
+        type="button"
+        onClick={() => {
+          setSettingsOpen(open => !open);
+        }}
+        title="Toggle editorial toolbox">
+        <SettingsIcon className={classes.toggleImage} />
+      </button>
     </>
   );
 };
