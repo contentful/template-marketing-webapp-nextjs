@@ -20,7 +20,7 @@ export default class CustomDocument extends Document {
           <meta name="theme-color" content={colorfulTheme.palette.primary.main} />
 
           <link
-            href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;1,400;1,600&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;800;900&display=swap"
             rel="stylesheet"
           />
 
