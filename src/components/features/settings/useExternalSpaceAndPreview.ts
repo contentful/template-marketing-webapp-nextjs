@@ -79,4 +79,8 @@ export const useExternalSpaceAndPreview = () => {
       queryClient.invalidateQueries();
     }
   }, [queryClient, shouldUseSpaceCredsFromParams]);
+
+  return {
+    shouldUseSpaceCredsFromParams,
+  };
 };

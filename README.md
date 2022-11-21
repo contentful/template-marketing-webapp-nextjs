@@ -1,3 +1,6 @@
+## ⚠️ This branch (and PR) were created from main-private and should be merged back into main-private it as well ⚠️
+For more information on how to handle branches, PR's and merging, please refer to our documentation: https://contentful.atlassian.net/wiki/spaces/PROD/pages/4090724936/Templates+-+Git+flow
+
 # Contentful Marketing Starter Template
 
 A Marketing Starter Template powered by Next.js & Contentful, pre-designed with optimized & adjustable pages, components, and data management.
