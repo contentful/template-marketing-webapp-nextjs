@@ -59,7 +59,7 @@ module.exports = withPlugins(plugins, {
    */
   images: {
     deviceSizes: [320, 420, 768, 1024, 1200, 1600],
-    domains: ['images.ctfassets.net', 'images.flinkly.com', 'images.quirely.com'],
+    domains: ['images.ctfassets.net'],
     path: '/_next/image',
     loader: 'default',
   },
