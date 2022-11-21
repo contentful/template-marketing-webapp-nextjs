@@ -1,0 +1,5 @@
+fragment MenuGroupFields on MenuGroupFeaturedPagesCollection {
+  items {
+    ...PageLinkFields
+  }
+}

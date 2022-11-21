@@ -1,0 +1,30 @@
+{
+  "common": {
+    "homepage": "Startseite",
+    "logoImageAltText": "Logo"
+  },
+  "price": {
+    "free": "Kostenloss"
+  },
+  "navigation": {
+    "mobileMenuButton": "Menü öffnen"
+  },
+  "time": {
+    "month": "Monat"
+  },
+  "socials": {
+    "findUsOn": "Finden Sie uns auf",
+    "twitter": "Twitter",
+    "facebook": "Facebook",
+    "linkedin": "LinkedIn",
+    "instagram": "Instagram"
+  },
+  "legal": {
+    "copyright": "© Copyright {{ year }}"
+  },
+  "error": {
+    "code": "{{code}} error",
+    "componentNotFound": "Komponente nicht gefunden",
+    "somethingWentWrong": "50 / 5,000\nTranslation results\nEtwas ist schief gelaufen, überprüfen Sie Ihre URL und versuchen Sie es erneut"
+  }
+}

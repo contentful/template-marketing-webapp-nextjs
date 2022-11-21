@@ -1,0 +1,32 @@
+fragment ProductFeatureFields on TopicProductFeature {
+  sys {
+    id
+  }
+  name
+  longDescription {
+    json
+    links {
+      assets {
+        block {
+          ...AssetFields
+        }
+      }
+    }
+  }
+  shortDescription {
+    json
+    links {
+      assets {
+        block {
+          ...AssetFields
+        }
+      }
+    }
+  }
+}
+
+query CtfProductFeature($id: String!, $locale: String, $preview: Boolean) {
+  topicProductFeature(id: $id, preview: $preview, locale: $locale) {
+    ...ProductFeatureFields
+  }
+}

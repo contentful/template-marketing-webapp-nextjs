@@ -1,0 +1,23 @@
+fragment CtaFields on ComponentCta {
+  sys {
+    id
+  }
+  __typename
+  internalName
+  headline
+  subline {
+    json
+  }
+  ctaText
+  targetPage {
+    ...PageLinkFields
+  }
+  urlParameters
+  colorPalette
+}
+
+query CtfCta($id: String!, $locale: String, $preview: Boolean) {
+  componentCta(id: $id, locale: $locale, preview: $preview) {
+    ...CtaFields
+  }
+}

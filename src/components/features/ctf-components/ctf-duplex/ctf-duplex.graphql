@@ -1,0 +1,27 @@
+fragment DuplexFields on ComponentDuplex {
+  sys {
+    id
+  }
+  __typename
+  internalName
+  containerLayout
+  headline
+  bodyText {
+    json
+  }
+  ctaText
+  targetPage {
+    ...PageLinkFields
+  }
+  image {
+    ...AssetFields
+  }
+  imageStyle
+  colorPalette
+}
+
+query CtfDuplex($id: String!, $locale: String, $preview: Boolean) {
+  componentDuplex(id: $id, locale: $locale, preview: $preview) {
+    ...DuplexFields
+  }
+}

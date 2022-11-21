@@ -1,0 +1,9 @@
+fragment RichTextHyperlinkFields on Query {
+  page(id: $id, preview: $preview, locale: $locale) {
+    ...PageLinkFields
+  }
+}
+
+query CtfRichTextHyperlink($id: String!, $locale: String, $preview: Boolean) {
+  ...RichTextHyperlinkFields
+}

@@ -1,0 +1,35 @@
+fragment CtfPageFields on Page {
+  pageName
+  internalName: pageName
+  slug
+  seo {
+    title
+    description
+    image {
+      ...AssetFields
+    }
+    noIndex
+    noFollow
+  }
+  topSectionCollection(limit: 20) {
+    items {
+      ...ComponentReferenceFields
+    }
+  }
+  pageContent {
+    ...ComponentReferenceFields
+  }
+  extraSectionCollection(limit: 20) {
+    items {
+      ...ComponentReferenceFields
+    }
+  }
+}
+
+query CtfPage($slug: String!, $locale: String, $preview: Boolean) {
+  pageCollection(where: { slug: $slug }, locale: $locale, preview: $preview, limit: 1) {
+    items {
+      ...CtfPageFields
+    }
+  }
+}
