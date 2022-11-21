@@ -29,7 +29,7 @@ const contentfulLoader: ImageLoader = ({ src, width, quality }) => {
 
 const useStyles = makeStyles((theme: Theme) => ({
   section: {
-    backgroundColor: '#F7F7F7',
+    backgroundColor: '#FCFCFC',
   },
   innerContainer: {
     marginLeft: 'auto',
@@ -81,11 +81,20 @@ const useStyles = makeStyles((theme: Theme) => ({
       padding: theme.spacing(11, 0, 11),
     },
   },
+  title: {
+    color: '#1B273A',
+    fontSize: '2rem',
+    fontWeight: 500,
+    lineHeight: 1.09,
+  },
   shortDescription: {
     marginTop: theme.spacing(8),
     paddingBottom: theme.spacing(4),
     '& p': {
-      fontWeight: 500,
+      fontWeight: 400,
+      color: '#414D63',
+      fontSize: '1.8rem',
+      lineHeight: 1.55,
     },
   },
   featuredImage: {
@@ -96,6 +105,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.up('md')]: {
       paddingBottom: theme.spacing(5),
     },
+    color: '#414D63',
   },
   featureInner: {
     overflow: 'hidden',
@@ -112,13 +122,17 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   priceAddition: {
-    fontSize: '2.1rem',
+    fontSize: '1.8rem',
     fontWeight: 400,
+    color: '#414D63',
   },
   priceUpper: {
-    fontSize: '2.1rem',
+    fontSize: '1.8rem',
+    fontWeight: 400,
+    color: '#414D63',
     '& $priceAddition': {
       fontSize: '1.8rem',
+      fontWeight: 400,
     },
   },
 }));
@@ -295,7 +309,9 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                               ? undefined
                               : `${gridSizes[`index-1`]}px`,
                         }}>
-                        <Typography variant="h2">{product.name}</Typography>
+                        <Typography variant="h2" className={classes.title}>
+                          {product.name}
+                        </Typography>
                       </div>
                       <div
                         data-equal-size="2"
@@ -373,7 +389,7 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                             {t('price.free')}
                           </Typography>
                         ) : (
-                          <Typography variant="h2" component="span">
+                          <Typography variant="h2" component="span" className={classes.priceUpper}>
                             <FormatCurrency value={product.price} />
                             <span className={classes.priceAddition}>/{t('time.month')}</span>
                           </Typography>
