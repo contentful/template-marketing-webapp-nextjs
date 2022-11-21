@@ -117,7 +117,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   corporateLogoContainer: {
     flexShrink: 0,
     marginBottom: theme.spacing(3),
-    marginRight: theme.spacing(8),
     marginTop: '0.2rem',
     [theme.breakpoints.up('md')]: {
       flexShrink: 0,
@@ -153,8 +152,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   legalMenuItem: {
-    fontSize: '1.8rem',
-    lineHeight: 1.389,
+    fontSize: '2rem',
     marginTop: theme.spacing(2),
     width: '100%',
     [theme.breakpoints.up('md')]: {
