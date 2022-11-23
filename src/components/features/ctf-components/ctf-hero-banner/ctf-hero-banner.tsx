@@ -99,7 +99,7 @@ export const CtfHeroBanner = (props: HeroBannerFieldsFragment) => {
     imageStyle: imageStyleBoolean,
     headline,
     // Tutorial: uncomment the line below to make the Greeting field available to render
-    // greeting
+    // greeting,
     bodyText,
     ctaText,
     targetPage,
