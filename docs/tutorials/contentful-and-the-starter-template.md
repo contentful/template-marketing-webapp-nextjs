@@ -84,7 +84,7 @@ From the `Top section (optional)` field, click on the first `💎 Hero banner co
 3. From the `Homepage` entry editor, open the preview to see the changes, by clicking on the `Open preview` button in the right entry sidebar.
 4. You should see the changes, they are only visible to you until you decide to publish them, this is made possible thanks to the preview mode.
 
-NOTE: you can also see the changes by running the Starter Template application locally, after completing the [setup](../../README.md/#getting-started).
+NOTE: you can also see the changes by running the Starter Template application locally, after completing the [setup](../../README.md/#getting-started). You will have to publish the changes, as the preview mode is only available from Contentful.
 
 ---
 
