@@ -79,9 +79,10 @@ You will be directed to the `Homepage` entry editor, where you will see the stru
 
 From the `Top section (optional)` field, click on the first `💎 Hero banner component` entry reference to edit it:
 
-1. Edit the `Headline` and/or `Body text` fields.
-2. Publish the changes by clicking on the `Publish changes` button in the right entry sidebar.
-3. Open the preview to see the changes, by clicking on the `Open preview` button in the right entry sidebar.
+1. Edit the `Headline` and/or `Body text` fields, the changes are saved automatically.
+2. Return to the `Homepage` entry editor, by clicking on the left-pointing chevron.
+3. From the `Homepage` entry editor, open the preview to see the changes, by clicking on the `Open preview` button in the right entry sidebar.
+4. You should see the changes, they are only visible to you until you decide to publish them, this is made possible thanks to the preview mode.
 
 NOTE: you can also see the changes by running the Starter Template application locally, after completing the [setup](../../README.md/#getting-started).
 
