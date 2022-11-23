@@ -129,12 +129,12 @@ The new field is now available, let's add a value in the `Homepage` entry:
 
 Now, let's connect the new `Greeting` field to our Starter Template source code:
 
-- In your terminal of choice, run `yarn run graphql-codegen:generate`, this script will sync the Starter Template's source code with the web app content models, and generate the necessary updated typings files.
+- In your terminal of choice, run `yarn run graphql-codegen:watch`, this script will sync the Starter Template's source code with the web app content models, and generate the necessary updated typings files, as soon as a change is made in a `.graphql` file.
   - In our case, it will update the typings of our `💎 Hero banner component` content type, to make the `Greeting` field available.
 - Open the `ctf-hero-banner.graphql` file, this file represents the query made to Contentful to get the `💎 Hero banner component` content type fields values
-  - Follow the comment in the file, line #7.
+  - Follow the comment in the file, line #7, save the changes.
 - Open the `ctf-hero-banner.tsx` file, this file represents the `💎 Hero banner component` content type.
-  - Follow the comments in the file, lines #99 and #142.
+  - Follow the comments in the file, lines #99 and #142, save the changes.
 - Navigate to the running Starter Template application, [http://localhost:3000/](http://localhost:3000/)
   - If the application is not running yet, in your terminal of choice, run `yarn dev`.
 - You should see the `Greeting` field in the Homepage - Hero section.
