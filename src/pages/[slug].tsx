@@ -64,18 +64,14 @@ export const getServerSideProps = async ({ locale, params }: CustomNextPageConte
 
       if (!__typename)
         return {
-          props: {
-            notFound: true,
-          },
+          notFound: true,
         };
 
       const query = prefetchMap?.[__typename];
 
       if (!query)
         return {
-          props: {
-            notFound: true,
-          },
+          notFound: true,
         };
 
       const data: PrefetchMappingTypeFetcher = await query.fetcher({
