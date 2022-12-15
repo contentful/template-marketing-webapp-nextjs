@@ -1,4 +1,4 @@
-import { Menu } from '@mui/icons-material';
+import Menu from '@mui/icons-material/Menu';
 import { AppBar, Container, IconButton, Theme, Toolbar, Box } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { useTranslation } from 'next-i18next';

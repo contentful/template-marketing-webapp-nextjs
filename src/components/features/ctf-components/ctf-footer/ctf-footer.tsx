@@ -1,4 +1,7 @@
-import { Twitter, Facebook, LinkedIn, Instagram } from '@mui/icons-material';
+import Facebook from '@mui/icons-material/Facebook';
+import Instagram from '@mui/icons-material/Instagram';
+import LinkedIn from '@mui/icons-material/LinkedIn';
+import Twitter from '@mui/icons-material/Twitter';
 import { Theme, Container, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { useTranslation } from 'next-i18next';
@@ -154,6 +157,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   legalMenuItem: {
     fontSize: '2rem',
+    marginTop: theme.spacing(2),
     width: '100%',
     [theme.breakpoints.up('md')]: {
       marginTop: 0,
