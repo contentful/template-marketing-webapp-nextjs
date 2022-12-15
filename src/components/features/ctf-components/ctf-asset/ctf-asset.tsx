@@ -27,7 +27,7 @@ export const CtfAsset = (props: CtfAssetPropsInterface) => {
       <CtfImage
         height={height || undefined}
         width={width || undefined}
-        title={title || ''}
+        alt={title || ''}
         src={url}
         showDescription={
           ['quote', 'product-table', 'info-block', 'duplex'].includes(layout.parent) === true

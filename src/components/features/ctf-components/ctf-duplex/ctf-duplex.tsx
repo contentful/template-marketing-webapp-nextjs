@@ -139,7 +139,7 @@ const DuplexImage = (props: DuplexFieldsFragment) => {
           <CtfImage
             className={clsx([classes.image, imageStyle === 'fixed' && classes.imageFull])}
             src={`${image.url}?w=600`}
-            title={image.description || ''}
+            alt={image.description || ''}
             layout="responsive"
             width={image.width || undefined}
             height={image.height || undefined}
