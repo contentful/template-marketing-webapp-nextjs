@@ -11,7 +11,6 @@ export const CtfImage = ({
   src,
   description,
   showDescription = true,
-  title = '',
   width,
   height,
   layout,
@@ -39,7 +38,6 @@ export const CtfImage = ({
           setLoaded(true);
         }}
         src={src}
-        alt={title}
         width={width}
         height={height}
         layout={layout}
