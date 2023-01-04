@@ -20,7 +20,7 @@ export const LanguageSelector = () => {
   const classes = useStyles();
   const router = useRouter();
 
-  const languageNames = new Intl.DisplayNames([locale || 'en'], {
+  const languageNames = new Intl.DisplayNames([], {
     type: 'language',
   });
 
