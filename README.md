@@ -3,7 +3,7 @@
 A Marketing Starter Template powered by Next.js & Contentful, pre-designed with optimized & adjustable pages,
 components, and data management.
 
-![The homepage of the Marketing Starter Template](marketing-starter-template.jpg "The homepage of the Marketing Starter Template")
+![The homepage of the Marketing Starter Template](marketing-starter-template.jpg 'The homepage of the Marketing Starter Template')
 
 $~$
 
@@ -22,6 +22,10 @@ The Starter Templates experience is currently only available to new users.
 
 To benefit from this experience, please follow this link to create a new
 account: [https://www.contentful.com/sign-up/?action=create_starter_template](https://www.contentful.com/sign-up/?action=create_starter_template).
+
+To immediately start auto installation of this template after creating a new account,
+please follow this link:
+[https://www.contentful.com/sign-up/?action=create_starter_template&template_name=marketing](https://www.contentful.com/sign-up/?action=create_starter_template&template_name=marketing).
 
 $~$
 
@@ -178,7 +182,7 @@ In order to (re-)generate the GraphQL schema, types and hooks, please use either
 - `yarn graphql-codegen:watch` similar to the `generate` command, but it runs as a watch task which will rerun the steps
   when changes are made in the `.graphql` files
 
-The first steps of the codegen generate files that contain the GraphQL schema and matching TypeScript types.  
+The first steps of the codegen generate files that contain the GraphQL schema and matching TypeScript types.
 They're generated to the `src/lib/__generated` folder and ought to be committed once altered/added to the repository.
 
 Additionally, the codegen watches .graphql files in our `src` folder, if it runs successfully it generates
@@ -231,10 +235,10 @@ The **component-resolver** then uses a key map to find the right React component
 the _content type_ name and the value is the React component.
 
 It will check the map `componentMap` first, and if the _content type_ could be resolved it is assumed all content is
-available.  
+available.
 The content is then passed to the React component.
 
-If the _content type_ could not be resolved, `componentGqlMap` will be used for resolving.  
+If the _content type_ could not be resolved, `componentGqlMap` will be used for resolving.
 If the React component is found the _content type_ `id`, `__typename`, and `internalName` will be passed, which is used
 by the component to fetch its data.
 
@@ -269,7 +273,7 @@ We offer integrations with Vercel and Netlify to speed up the process by clickin
 the necessary environment variables keys are pre-configured in the hosting provider space.
 
 | Vercel                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Netlify                                                                                                                                                                                                                                                                                                                                           |
-|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fcontentful%2Ftemplate-marketing-webapp-nextjs&env=NEXT_PUBLIC_CONFIG_CONTENTFUL_SPACE_ID,NEXT_PUBLIC_CONFIG_CONTENTFUL_DELIVERY_API_TOKEN,NEXT_PUBLIC_CONFIG_CONTENTFUL_PREVIEW_API_TOKEN&envDescription=API%20Keys%20needed%20for%20the%20application&envLink=https%3A%2F%2Fgithub.com%2Fcontentful%2Ftemplate-marketing-webapp-nextjs%23environment-variables) | [![Deploy to Netlify Button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https%3A%2F%2Fgithub.com%2Fcontentful%2Ftemplate-marketing-webapp-nextjs#NEXT_PUBLIC_CONFIG_CONTENTFUL_SPACE_ID=&NEXT_PUBLIC_CONFIG_CONTENTFUL_DELIVERY_API_TOKEN=&NEXT_PUBLIC_CONFIG_CONTENTFUL_PREVIEW_API_TOKEN=) |
 | [Environment variables docs](https://vercel.com/docs/concepts/projects/environment-variables)                                                                                                                                                                                                                                                                                                                                                                                              | [Environment variables docs](https://docs.netlify.com/environment-variables/overview/)                                                                                                                                                                                                                                                            |
 
