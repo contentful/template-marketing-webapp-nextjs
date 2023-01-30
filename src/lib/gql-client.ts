@@ -10,9 +10,9 @@ export const queryConfig = {
   defaultOptions: {
     queries: {
       retry: false,
-      refetchOnMount: false,
+      refetchOnMount: true,
       refetchIntervalInBackground: false,
-      refetchOnWindowFocus: false,
+      refetchOnWindowFocus: true,
     },
   },
 };
