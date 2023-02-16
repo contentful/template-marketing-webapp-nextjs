@@ -42,7 +42,7 @@ SEGMENT_TRACKINGPLAN_ID=
 SEGMENT_TYPEWRITER_API_TOKEN=
 ```
 
-Where to find the values is documented on https://contentful.atlassian.net/wiki/spaces/PROD/pages/edit-v2/4138500311.
+Where to find the values is documented at https://contentful.atlassian.net/l/cp/1Sh1XmJn.
 
 ### Related files
 
