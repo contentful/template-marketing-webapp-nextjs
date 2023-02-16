@@ -195,3 +195,6 @@ package-lock.json
 
 # Sentry
 .sentryclirc
+
+# Segment
+typewriter.yml

@@ -6,6 +6,7 @@ import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 
+import { CtfSegmentAnalytics } from '@src/_ctf-private';
 import { Settings } from '@src/components/features/settings';
 import { Layout } from '@src/components/templates/layout/layout';
 import { useContentfulContext, ContentfulContentProvider } from '@src/contentful-context';
@@ -64,6 +65,7 @@ const CustomApp = ({
 
       <ContentfulContentProvider router={router}>
         <QueryClientProvider client={queryClient}>
+          <CtfSegmentAnalytics />
           <ReactQueryDevtools initialIsOpen={false} />
           <StyledEngineProvider injectFirst>
             <ThemeProvider theme={colorfulTheme}>

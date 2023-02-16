@@ -8,6 +8,7 @@ import { useTranslation } from 'next-i18next';
 
 import { FooterFieldsFragment } from './__generated/ctf-footer.generated';
 
+import { CtfConsentManager } from '@src/_ctf-private';
 import {
   getLinkDisplayText,
   getLinkHrefPrefix,
@@ -337,6 +338,7 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
               </div>
             </div>
           </div>
+          <CtfConsentManager />
         </section>
       </Container>
     </>

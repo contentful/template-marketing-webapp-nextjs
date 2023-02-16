@@ -20,7 +20,8 @@
     "instagram": "Instagram"
   },
   "legal": {
-    "copyright": "© Copyright {{ year }}"
+    "copyright": "© Copyright {{ year }}",
+    "manageConsent": "Cookie-Zustimmung verwalten (Zustimmungsänderungen erfordern eine manuelle Seitenaktualisierung)"
   },
   "error": {
     "code": "{{code}} error",
