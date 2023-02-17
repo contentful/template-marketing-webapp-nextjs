@@ -20,7 +20,8 @@
     "instagram": "Instagram"
   },
   "legal": {
-    "copyright": "© Copyright {{ year }}"
+    "copyright": "© Copyright {{ year }}",
+    "manageConsent": "Manage cookie consent (Consent changes require a manual page refresh)"
   },
   "error": {
     "code": "{{code}} error",

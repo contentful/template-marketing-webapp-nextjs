@@ -8,11 +8,12 @@
     "npm": "Please use Yarn"
   },
   "scripts": {
+    "prepare": "husky install && yarn typewriter:init",
+    "predev": "yarn typewriter:update",
     "start": "next start",
     "dev": "next dev",
     "build": "next build",
     "export": "next build && next export",
-    "prepare": "husky install",
     "type-check": "tsc --noEmit",
     "test": "echo \"Error: no test specified\" && exit 1",
     "migrate:init": "ctf-migrate init",
@@ -20,7 +21,9 @@
     "lint": "eslint './src/**/*.{js,jsx,ts,tsx}'",
     "lint-fix": "yarn lint --fix",
     "graphql-codegen:generate": "graphql-codegen -r dotenv/config --config codegen.ts",
-    "graphql-codegen:watch": "graphql-codegen --watch -r dotenv/config --config codegen.ts"
+    "graphql-codegen:watch": "graphql-codegen --watch -r dotenv/config --config codegen.ts",
+    "typewriter:init": "node ./analytics/generateTypewriterConfig.js",
+    "typewriter:update": "yarn typewriter --update"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
@@ -32,6 +35,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@contentful/experience-consent-manager": "^2.3.2",
     "@contentful/rich-text-react-renderer": "^15.12.1",
     "@contentful/rich-text-types": "^15.12.1",
     "@emotion/react": "^11.10.4",
@@ -76,6 +80,7 @@
     "@types/lodash": "^4.14.182",
     "@types/react": "^18.0.15",
     "@types/react-transition-group": "^4.4.5",
+    "@types/segment-analytics": "^0.0.34",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.32.0",
     "babel-jest": "^27.0.2",
@@ -95,11 +100,13 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^8.0.0",
     "i18next": "^21.9.2",
+    "js-yaml": "^4.1.0",
     "lint-staged": "^13.0.3",
     "postcss": "^8.4.14",
     "prettier": "^2.7.1",
     "react-i18next": "^11.18.6",
-    "typescript": "4.8.4"
+    "typescript": "4.8.4",
+    "typewriter": "^8.1.0"
   },
   "resolutions": {
     "**/trim": "^1.0.0",
