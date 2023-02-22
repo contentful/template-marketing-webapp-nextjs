@@ -1,9 +1,11 @@
 import { Box, Theme, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
+import { useRouter } from 'next/router';
 import React from 'react';
 
 import { useContentfulContext } from '@src/contentful-context';
+import typewriter from 'analytics';
 
 const useStyles = makeStyles((theme: Theme) => ({
   xframeRoot: {
@@ -25,6 +27,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 
   label: {
+    cursor: 'pointer',
     background: '#EAEAEA',
     display: 'inline-block',
     maxWidth: '100%',
@@ -53,22 +56,38 @@ interface Props {
 }
 
 export const XrayFrame = (props: Props) => {
+  const router = useRouter();
   const contentfulContext = useContentfulContext();
+  const { domain = 'contentful.com' } = router.query;
+
   const {
     spaceIds: { main: spaceId },
   } = contentfulContext;
   const classes = useStyles();
-  const contentfulUrl = `https://app.contentful.com/spaces/${spaceId}/entries/${props.sys.id}`; // TODO: replace me as well for https://contentful.atlassian.net/browse/PLATO-203
+  const contentfulUrl = `https://app.${domain}/spaces/${spaceId}/entries/${props.sys.id}`;
+
+  const handleOnClick = e => {
+    e.stopPropagation();
+
+    typewriter.contentModelInteracted({
+      entryTypeName: props.__typename || '',
+      entryInternalName: props.internalName || '',
+      entryLink: contentfulUrl,
+    });
+
+    window.open(contentfulUrl, '_blank', 'noopener noreferrer');
+  };
+
   return (
     <Box className={clsx(classes.xframeRoot, props.className)}>
       {props.children}
       <Box className={classes.frame}>
-        <a href={contentfulUrl} target="_blank" rel="noopener noreferrer" className={classes.label}>
+        <button onClick={handleOnClick} className={classes.label}>
           <Typography>
             <strong>{props.__typename}</strong>
             {props.internalName && <span> | {props.internalName}</span>}
           </Typography>
-        </a>
+        </button>
       </Box>
     </Box>
   );

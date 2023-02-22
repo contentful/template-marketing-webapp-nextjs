@@ -11,10 +11,11 @@ import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import queryString from 'query-string';
-import React, { useState } from 'react';
+import React, { forwardRef, useState } from 'react';
 
 import { useContentfulContext } from '@src/contentful-context';
 import SettingsIcon from '@src/icons/settings-icon.svg';
+import typewriter from 'analytics';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -250,7 +251,7 @@ interface SettingsFormPropsInterface {
   onClose: () => void;
 }
 
-export const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
+export const SettingsForm = forwardRef<HTMLDivElement, SettingsFormPropsInterface>((props, ref) => {
   const { onClose } = props;
   const router = useRouter();
 
@@ -272,16 +273,32 @@ export const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
     if (xrayActive !== newXrayActive) {
       if (newXrayActive === false) {
         delete queryParams.xray;
+
+        typewriter.xrayModeInteracted({
+          enabled: false,
+        });
       } else {
         queryParams.xray = '1';
+
+        typewriter.xrayModeInteracted({
+          enabled: true,
+        });
       }
     }
 
     if (previewActive !== newPreviewActive) {
       if (newPreviewActive === false) {
         delete queryParams.preview;
+
+        typewriter.previewModeInteracted({
+          enabled: false,
+        });
       } else {
         queryParams.preview = '1';
+
+        typewriter.previewModeInteracted({
+          enabled: true,
+        });
       }
     }
 
@@ -294,7 +311,7 @@ export const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
   };
 
   return (
-    <section className={classes.root}>
+    <section className={classes.root} ref={ref}>
       <header className={classes.header}>
         <SettingsIcon className={classes.logo} />
         <Typography className={classes.headerTitle} variant="h1">
@@ -375,4 +392,4 @@ export const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
       </div>
     </section>
   );
-};
+});

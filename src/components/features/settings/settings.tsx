@@ -1,11 +1,12 @@
 import { Theme, useTheme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
 import { SettingsForm } from '@src/components/features/settings/settings-form';
 import { useExternalSpaceAndPreview } from '@src/components/features/settings/useExternalSpaceAndPreview';
 import SettingsIcon from '@src/icons/settings-icon.svg';
+import typewriter from 'analytics';
 
 const useStyles = makeStyles((theme: Theme) => ({
   toggle: {
@@ -59,6 +60,9 @@ export const Settings = () => {
   const classes = useStyles();
   const theme = useTheme();
   const { shouldUseSpaceCredsFromParams } = useExternalSpaceAndPreview();
+
+  const toolboxRef = useRef<HTMLDivElement | null>(null);
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
   const [settingsOpen, setSettingsOpen] = useState(false);
 
   useEffect(() => {
@@ -74,6 +78,38 @@ export const Settings = () => {
     document.body.classList.add('is-scroll-locked');
   }, [settingsOpen, theme.breakpoints]);
 
+  const handleToolboxInteraction = (isOpen?: boolean) => {
+    setSettingsOpen(currentState => {
+      typewriter.toolboxInteracted({ isOpen: isOpen || !currentState });
+
+      return isOpen || !currentState;
+    });
+  };
+
+  useEffect(() => {
+    const handleClickOutside = event => {
+      if (event.target === buttonRef.current || buttonRef.current?.contains(event.target)) return;
+
+      if (toolboxRef.current && !toolboxRef.current.contains(event.target)) {
+        handleToolboxInteraction(false);
+      }
+    };
+
+    const handleEscape = event => {
+      if (event.key === 'Escape') {
+        handleToolboxInteraction(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside, true);
+    document.addEventListener('keydown', handleEscape, true);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside, true);
+      document.removeEventListener('keydown', handleEscape, true);
+    };
+  }, []);
+
   return (
     <>
       <CSSTransition
@@ -87,17 +123,19 @@ export const Settings = () => {
           exitActive: classes.animationExitActive,
         }}>
         <SettingsForm
+          ref={toolboxRef}
           onClose={() => {
-            setSettingsOpen(false);
+            handleToolboxInteraction(false);
           }}
         />
       </CSSTransition>
       {shouldUseSpaceCredsFromParams && (
         <button
+          ref={buttonRef}
           className={classes.toggle}
           type="button"
           onClick={() => {
-            setSettingsOpen(open => !open);
+            handleToolboxInteraction();
           }}
           title="Toggle editorial toolbox">
           <SettingsIcon className={classes.toggleImage} />
