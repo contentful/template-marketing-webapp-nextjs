@@ -2,6 +2,7 @@ import { Container, Typography } from '@mui/material';
 import { Theme } from '@mui/material/styles';
 import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
+import { getLivePreviewProps } from '@contentful/live-preview';
 
 import { DuplexFieldsFragment } from './__generated/ctf-duplex.generated';
 
@@ -11,6 +12,7 @@ import { PageLink } from '@src/components/features/page-link';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 import { getColorConfigFromPalette } from '@src/theme';
 import { optimizeLineBreak } from '@src/utils';
+import { useContentfulContext } from '@src/contentful-context';
 
 const useStyles = makeStyles((theme: Theme) => ({
   innerContainer: {
@@ -93,6 +95,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const DuplexContent = (props: DuplexFieldsFragment) => {
   const { headline, bodyText, targetPage, ctaText, colorPalette } = props;
+  const { locale } = useContentfulContext();
 
   const colorConfig = getColorConfigFromPalette(colorPalette || '');
   const classes = useStyles();
@@ -104,19 +107,24 @@ const DuplexContent = (props: DuplexFieldsFragment) => {
           variant="h1"
           component="h2"
           className={classes.headline}
-          style={{ color: colorConfig.headlineColor }}>
+          style={{ color: colorConfig.headlineColor }}
+          {...getLivePreviewProps({ entryId: props.sys.id, fieldId: 'headline', locale })}>
           {optimizeLineBreak(headline)}
         </Typography>
       )}
       {bodyText && (
         <LayoutContext.Provider value={{ ...defaultLayout, parent: 'duplex' }}>
-          <div style={{ color: colorConfig.textColor }}>
+          <div
+            style={{ color: colorConfig.textColor }}
+            {...getLivePreviewProps({ entryId: props.sys.id, fieldId: 'bodyText', locale })}>
             <CtfRichtext {...bodyText} className={classes.richText} />
           </div>
         </LayoutContext.Provider>
       )}
       {targetPage && targetPage.slug && (
-        <div className={classes.ctaContainer}>
+        <div
+          className={classes.ctaContainer}
+          {...getLivePreviewProps({ entryId: props.sys.id, fieldId: 'ctaText', locale })}>
           <PageLink page={targetPage} variant="contained" color={colorConfig.buttonColor} isButton>
             {ctaText}
           </PageLink>
@@ -129,13 +137,16 @@ const DuplexContent = (props: DuplexFieldsFragment) => {
 const DuplexImage = (props: DuplexFieldsFragment) => {
   const { image, imageStyle: imageStyleBoolean } = props;
   const imageStyle = imageStyleBoolean ? 'fixed' : 'full';
+  const { locale } = useContentfulContext();
 
   const classes = useStyles();
 
   return (
     <div className={classes.imageContainer}>
       {image?.url ? (
-        <div className={classes.nextImageContainer}>
+        <div
+          className={classes.nextImageContainer}
+          {...getLivePreviewProps({ entryId: props.sys.id, fieldId: 'image', locale })}>
           <CtfImage
             className={clsx([classes.image, imageStyle === 'fixed' && classes.imageFull])}
             src={`${image.url}?w=600`}

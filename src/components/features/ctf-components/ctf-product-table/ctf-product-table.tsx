@@ -12,6 +12,7 @@ import { CtfRichtext } from '@src/components/features/ctf-components/ctf-richtex
 import { FormatCurrency } from '@src/components/features/format-currency';
 import { SectionHeadlines } from '@src/components/features/section-headlines';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
+import { useContentfulContext } from '@src/contentful-context';
 
 const contentfulLoader: ImageLoader = ({ src, width, quality }) => {
   const params: Record<string, string | number> = {};
@@ -139,6 +140,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export const CtfProductTable = (props: ProductTableFieldsFragment) => {
   const { t } = useTranslation();
+  const { locale } = useContentfulContext();
   const { headline, subline, productsCollection } = props;
 
   const classes = useStyles();
