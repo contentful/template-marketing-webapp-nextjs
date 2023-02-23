@@ -26,7 +26,7 @@ function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
     return json.data;
   }
 }
-export type BusinessInfoFieldsFragment = { __typename?: 'TopicBusinessInfo', name?: string | null, shortDescription?: string | null, featuredImage?: (
+export type BusinessInfoFieldsFragment = { __typename?: 'TopicBusinessInfo', name?: string | null, shortDescription?: string | null, sys: { __typename?: 'Sys', id: string }, featuredImage?: (
     { __typename?: 'Asset' }
     & AssetFieldsFragment
   ) | null, body?: { __typename?: 'TopicBusinessInfoBody', json: any, links: { __typename?: 'TopicBusinessInfoBodyLinks', entries: { __typename?: 'TopicBusinessInfoBodyEntries', block: Array<(
@@ -96,6 +96,9 @@ export type CtfBusinessInfoQuery = { __typename?: 'Query', topicBusinessInfo?: (
 
 export const BusinessInfoFieldsFragmentDoc = `
     fragment BusinessInfoFields on TopicBusinessInfo {
+  sys {
+    id
+  }
   name
   shortDescription
   featuredImage {
