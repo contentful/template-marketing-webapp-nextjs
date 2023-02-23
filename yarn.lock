@@ -1141,6 +1141,11 @@
   resolved "https://registry.yarnpkg.com/@colors/colors/-/colors-1.5.0.tgz#bb504579c1cae923e6576a4f5da43d25f97bdbd9"
   integrity sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==
 
+"@contentful/live-preview@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@contentful/live-preview/-/live-preview-1.0.3.tgz#ff12f4a38fbe01a760c0280d673f0e2a88647358"
+  integrity sha512-dryk9V1+aA4JKeKUPDqEPe7KUFhg1KCh2+vLZOTxWRgA91b955H1ccTB5E8SDC/gNXtkZTYxZSXPv5G2HRPevA==
+
 "@contentful/rich-text-react-renderer@^15.12.1":
   version "15.12.1"
   resolved "https://registry.yarnpkg.com/@contentful/rich-text-react-renderer/-/rich-text-react-renderer-15.12.1.tgz#978c335e7ad5284dc6790a6a8c0ec16878b957b0"
