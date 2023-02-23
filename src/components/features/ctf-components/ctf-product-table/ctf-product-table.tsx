@@ -5,6 +5,7 @@ import { useTranslation } from 'next-i18next';
 import Image, { ImageLoader } from 'next/image';
 import queryString from 'query-string';
 import { useState, useMemo, useRef, useEffect, useCallback } from 'react';
+import { getLivePreviewProps } from '@contentful/live-preview';
 
 import { ProductTableFieldsFragment } from './__generated/ctf-product-table.generated';
 
@@ -141,7 +142,12 @@ const useStyles = makeStyles((theme: Theme) => ({
 export const CtfProductTable = (props: ProductTableFieldsFragment) => {
   const { t } = useTranslation();
   const { locale } = useContentfulContext();
-  const { headline, subline, productsCollection } = props;
+  const {
+    headline,
+    subline,
+    productsCollection,
+    sys: { id },
+  } = props;
 
   const classes = useStyles();
 
@@ -267,7 +273,13 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
         <div className={classes.innerContainer}>
           <SectionHeadlines
             headline={headline}
+            headlineLivePreviewProps={{
+              ...getLivePreviewProps({ entryId: id, fieldId: 'headline', locale }),
+            }}
             subline={subline}
+            sublineLivePreviewProps={{
+              ...getLivePreviewProps({ entryId: id, fieldId: 'subline', locale }),
+            }}
             className={classes.sectionHeadlines}
           />
           {productsCollection && productsCollection.items.length > 0 && (
@@ -281,7 +293,13 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                       ref={el => {
                         gridColumnElements.current[j] = el;
                       }}>
-                      <div className={classes.featuredImage}>
+                      <div
+                        className={classes.featuredImage}
+                        {...getLivePreviewProps({
+                          entryId: product.sys.id,
+                          fieldId: 'featuredImage',
+                          locale,
+                        })}>
                         <div
                           data-equal-size="0"
                           style={{
@@ -311,7 +329,14 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                               ? undefined
                               : `${gridSizes[`index-1`]}px`,
                         }}>
-                        <Typography variant="h2" className={classes.title}>
+                        <Typography
+                          variant="h2"
+                          className={classes.title}
+                          {...getLivePreviewProps({
+                            entryId: product.sys.id,
+                            fieldId: 'name',
+                            locale,
+                          })}>
                           {product.name}
                         </Typography>
                       </div>
@@ -322,7 +347,12 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                             gridSizes['index-2'] === undefined
                               ? undefined
                               : `${gridSizes['index-2']}px`,
-                        }}>
+                        }}
+                        {...getLivePreviewProps({
+                          entryId: product.sys.id,
+                          fieldId: 'description',
+                          locale,
+                        })}>
                         {product.description && (
                           <LayoutContext.Provider
                             value={{
@@ -343,7 +373,12 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                             featureNames === null || gridSizes['index-3'] === undefined
                               ? undefined
                               : `${gridSizes['index-3']}px`,
-                        }}>
+                        }}
+                        {...getLivePreviewProps({
+                          entryId: product.sys.id,
+                          fieldId: 'price',
+                          locale,
+                        })}>
                         {!product.price || product.price === 0 ? (
                           <Typography variant="h2" component="span" className={classes.priceUpper}>
                             {t('price.free')}
@@ -362,18 +397,30 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                             parent: 'product-table',
                           }}>
                           <div className={classes.comparisonFeaturesBreak} />
-                          {featureNames.map(
-                            (featureName, i) =>
-                              featuresGrid[featureName][product.sys.id] && (
-                                <div
-                                  key={`${product.sys.id}-${featureName}`}
-                                  className={classes.feature}>
-                                  <div data-equal-size={i + 4} className={classes.featureInner}>
-                                    <CtfRichtext {...featuresGrid[featureName][product.sys.id]} />
+                          <div
+                            {...getLivePreviewProps({
+                              entryId: id,
+                              fieldId: 'featureNames',
+                              locale,
+                            })}>
+                            {featureNames.map(
+                              (featureName, i) =>
+                                featuresGrid[featureName][product.sys.id] && (
+                                  <div
+                                    key={`${product.sys.id}-${featureName}`}
+                                    className={classes.feature}
+                                    {...getLivePreviewProps({
+                                      entryId: product.sys.id,
+                                      fieldId: 'shortDescription',
+                                      locale,
+                                    })}>
+                                    <div data-equal-size={i + 4} className={classes.featureInner}>
+                                      <CtfRichtext {...featuresGrid[featureName][product.sys.id]} />
+                                    </div>
                                   </div>
-                                </div>
-                              ),
-                          )}
+                                ),
+                            )}
+                          </div>
                         </LayoutContext.Provider>
                       )}
                       <div
@@ -391,7 +438,15 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                             {t('price.free')}
                           </Typography>
                         ) : (
-                          <Typography variant="h2" component="span" className={classes.priceUpper}>
+                          <Typography
+                            variant="h2"
+                            component="span"
+                            className={classes.priceUpper}
+                            {...getLivePreviewProps({
+                              entryId: product.sys.id,
+                              fieldId: 'price',
+                              locale,
+                            })}>
                             <FormatCurrency value={product.price} />
                             <span className={classes.priceAddition}>/{t('time.month')}</span>
                           </Typography>
