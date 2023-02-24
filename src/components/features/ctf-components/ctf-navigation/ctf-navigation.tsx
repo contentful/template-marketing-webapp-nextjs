@@ -1,10 +1,12 @@
 import { Theme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import { getLivePreviewProps } from '@contentful/live-preview';
 
 import { NavigationFieldsFragment } from './__generated/ctf-navigation.generated';
 import { getLinkDisplayText, getLinkHrefPrefix } from './utils';
 
 import { Link } from '@src/components/shared/link';
+import { useContentfulContext } from '@src/contentful-context';
 
 const useStyles = makeStyles((theme: Theme) => ({
   menu: {
@@ -71,6 +73,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export const CtfNavigation = (props: NavigationFieldsFragment) => {
   const classes = useStyles();
+  const { locale } = useContentfulContext();
 
   const navigationContent = props.items[0];
 
@@ -78,8 +81,16 @@ export const CtfNavigation = (props: NavigationFieldsFragment) => {
     return menuGroup?.items?.map((menuItem, i) => {
       const href = getLinkHrefPrefix(menuItem);
       const linkText = getLinkDisplayText(menuItem);
+
       return (
-        <li key={i} className={listClassName}>
+        <li
+          key={i}
+          className={listClassName}
+          {...getLivePreviewProps({
+            entryId: menuItem.sys.id,
+            fieldId: menuItem?.groupName,
+            locale,
+          })}>
           <Link href={href}>{linkText}</Link>
         </li>
       );
@@ -92,7 +103,14 @@ export const CtfNavigation = (props: NavigationFieldsFragment) => {
         <nav role="navigation">
           <ul className={classes.menu}>
             {navigationContent.menuItemsCollection.items.map((menuItem, i) => (
-              <li key={i} className={classes.menuItem}>
+              <li
+                key={i}
+                className={classes.menuItem}
+                {...getLivePreviewProps({
+                  entryId: menuItem?.sys.id,
+                  fieldId: menuItem?.label,
+                  locale,
+                })}>
                 {!menuItem?.link ? (
                   menuItem?.label
                 ) : (

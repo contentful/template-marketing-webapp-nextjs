@@ -2,12 +2,14 @@ import { Container, Theme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import { useMemo } from 'react';
+import { getLivePreviewProps } from '@contentful/live-preview';
 
 import { QuoteFieldsFragment } from './__generated/ctf-quote.generated';
 
 import { CtfRichtext } from '@src/components/features/ctf-components/ctf-richtext/ctf-richtext';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 import { getColorConfigFromPalette } from '@src/theme';
+import { useContentfulContext } from '@src/contentful-context';
 
 const useStyles = makeStyles((theme: Theme) => ({
   innerContainer: {
@@ -116,12 +118,14 @@ export const CtfQuote = (props: QuoteFieldsFragment) => {
     quote,
     colorPalette,
     quoteAlignment: quoteAlignmentBoolean,
+    sys: { id },
   } = props;
   const colorConfig = getColorConfigFromPalette(colorPalette || '');
   const containerLayout = imagePosition === true ? 'imageLeft' : 'imageRight';
   const quoteAlignment = quoteAlignmentBoolean === true ? 'center' : 'left';
   const backgroundImage = useMemo(() => (image ? `${image.url}?w=${600 * 2}` : undefined), [image]);
   const classes = useStyles(props);
+  const { locale } = useContentfulContext();
 
   return (
     <LayoutContext.Provider value={{ ...defaultLayout, parent: 'quote' }}>
@@ -139,6 +143,7 @@ export const CtfQuote = (props: QuoteFieldsFragment) => {
             )}>
             {quote && (
               <div
+                {...getLivePreviewProps({ entryId: id, fieldId: 'quote', locale })}
                 style={{
                   color: colorConfig.textColor,
                   textAlign: quoteAlignment,
@@ -147,7 +152,9 @@ export const CtfQuote = (props: QuoteFieldsFragment) => {
               </div>
             )}
           </div>
-          <div className={classes.imageContainer}>
+          <div
+            className={classes.imageContainer}
+            {...getLivePreviewProps({ entryId: id, fieldId: 'backgroundImage', locale })}>
             {backgroundImage && (
               <div
                 className={classes.imageFixed}

@@ -1948,7 +1948,7 @@
       {
         "kind": "OBJECT",
         "name": "ComponentCta",
-        "description": "Full-width container for creating visually distinct Calls-to-Action (CTAs) [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/componentCta)",
+        "description": "Full-width container for creating visually distinct Calls-to-Action (CTAs) [See type definition](https://app.contentful.com/spaces/c586i03gpxi9/content_types/componentCta)",
         "fields": [
           {
             "name": "colorPalette",
@@ -3343,7 +3343,7 @@
       {
         "kind": "OBJECT",
         "name": "ComponentDuplex",
-        "description": "Full-width container for displaying side-by-side image and copy, includes multiple layout options [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/componentDuplex)",
+        "description": "Full-width container for displaying side-by-side image and copy, includes multiple layout options [See type definition](https://app.contentful.com/spaces/c586i03gpxi9/content_types/componentDuplex)",
         "fields": [
           {
             "name": "bodyText",
@@ -4804,7 +4804,7 @@
       {
         "kind": "OBJECT",
         "name": "ComponentHeroBanner",
-        "description": "Full-width container for displaying images and snappy copy; can include an optional CTA [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/componentHeroBanner)",
+        "description": "Full-width container for displaying images and snappy copy; can include an optional CTA [See type definition](https://app.contentful.com/spaces/c586i03gpxi9/content_types/componentHeroBanner)",
         "fields": [
           {
             "name": "bodyText",
@@ -6265,7 +6265,7 @@
       {
         "kind": "OBJECT",
         "name": "ComponentInfoBlock",
-        "description": "Full-width container for displaying short bits of generic information with optional icons/visuals [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/componentInfoBlock)",
+        "description": "Full-width container for displaying short bits of generic information with optional icons/visuals [See type definition](https://app.contentful.com/spaces/c586i03gpxi9/content_types/componentInfoBlock)",
         "fields": [
           {
             "name": "block1Body",
@@ -8151,7 +8151,7 @@
       {
         "kind": "OBJECT",
         "name": "ComponentProductTable",
-        "description": "Component that renders products in a table enabling a side-by-side comparison [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/componentProductTable)",
+        "description": "Component that renders products in a table enabling a side-by-side comparison [See type definition](https://app.contentful.com/spaces/c586i03gpxi9/content_types/componentProductTable)",
         "fields": [
           {
             "name": "contentfulMetadata",
@@ -9106,7 +9106,7 @@
       {
         "kind": "OBJECT",
         "name": "ComponentQuote",
-        "description": "Full-width component for quotes, reviews and testimonials, includes multiple layout options [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/componentQuote)",
+        "description": "Full-width component for quotes, reviews and testimonials, includes multiple layout options [See type definition](https://app.contentful.com/spaces/c586i03gpxi9/content_types/componentQuote)",
         "fields": [
           {
             "name": "colorPalette",
@@ -10244,7 +10244,7 @@
       {
         "kind": "OBJECT",
         "name": "ComponentTextBlock",
-        "description": "Constrained-width component for displaying ad-hoc paragraphs of text (FAQs, intros, descriptions) [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/componentTextBlock)",
+        "description": "Constrained-width component for displaying ad-hoc paragraphs of text (FAQs, intros, descriptions) [See type definition](https://app.contentful.com/spaces/c586i03gpxi9/content_types/componentTextBlock)",
         "fields": [
           {
             "name": "body",
@@ -11964,7 +11964,7 @@
       {
         "kind": "OBJECT",
         "name": "FooterMenu",
-        "description": "Navigation content type used for powering the Footer menu [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/footerMenu)",
+        "description": "Navigation content type used for powering the Footer menu [See type definition](https://app.contentful.com/spaces/c586i03gpxi9/content_types/footerMenu)",
         "fields": [
           {
             "name": "contentfulMetadata",
@@ -13485,7 +13485,7 @@
       {
         "kind": "OBJECT",
         "name": "MenuGroup",
-        "description": "A group of items making up a section in the navigation menu [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/menuGroup)",
+        "description": "A group of items making up a section in the navigation menu [See type definition](https://app.contentful.com/spaces/c586i03gpxi9/content_types/menuGroup)",
         "fields": [
           {
             "name": "contentfulMetadata",
@@ -14453,7 +14453,7 @@
       {
         "kind": "OBJECT",
         "name": "NavigationMenu",
-        "description": "Navigation menu in the header [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/navigationMenu)",
+        "description": "Navigation menu in the header [See type definition](https://app.contentful.com/spaces/c586i03gpxi9/content_types/navigationMenu)",
         "fields": [
           {
             "name": "contentfulMetadata",
@@ -15089,7 +15089,7 @@
       {
         "kind": "OBJECT",
         "name": "Page",
-        "description": "Container that enables editors to publish a page, define its slug, select & arrange its content [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/page)",
+        "description": "Container that enables editors to publish a page, define its slug, select & arrange its content [See type definition](https://app.contentful.com/spaces/c586i03gpxi9/content_types/page)",
         "fields": [
           {
             "name": "contentfulMetadata",
@@ -19121,7 +19121,7 @@
       {
         "kind": "OBJECT",
         "name": "Seo",
-        "description": "Open Graph (OG) meta tags for optimizing SEO visibility [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/seo)",
+        "description": "Open Graph (OG) meta tags for optimizing SEO visibility [See type definition](https://app.contentful.com/spaces/c586i03gpxi9/content_types/seo)",
         "fields": [
           {
             "name": "contentfulMetadata",
@@ -20675,7 +20675,7 @@
       {
         "kind": "OBJECT",
         "name": "TopicBusinessInfo",
-        "description": "Container for ever-green content like About us, Career pages, FAQ, Knowledge base & more [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/topicBusinessInfo)",
+        "description": "Container for ever-green content like About us, Career pages, FAQ, Knowledge base & more [See type definition](https://app.contentful.com/spaces/c586i03gpxi9/content_types/topicBusinessInfo)",
         "fields": [
           {
             "name": "body",
@@ -21784,7 +21784,7 @@
       {
         "kind": "OBJECT",
         "name": "TopicPerson",
-        "description": "Container for holding info about people (article authors, company leadership, quoted customers, etc.) [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/topicPerson)",
+        "description": "Container for holding info about people (article authors, company leadership, quoted customers, etc.) [See type definition](https://app.contentful.com/spaces/c586i03gpxi9/content_types/topicPerson)",
         "fields": [
           {
             "name": "avatar",
@@ -23046,7 +23046,7 @@
       {
         "kind": "OBJECT",
         "name": "TopicProduct",
-        "description": "Container for product-specific information like card definitions, features, benefits, prices & more [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/topicProduct)",
+        "description": "Container for product-specific information like card definitions, features, benefits, prices & more [See type definition](https://app.contentful.com/spaces/c586i03gpxi9/content_types/topicProduct)",
         "fields": [
           {
             "name": "contentfulMetadata",
@@ -23609,7 +23609,7 @@
       {
         "kind": "OBJECT",
         "name": "TopicProductFeature",
-        "description": "Sub-container for product features enabling re-use of generic features across different products [See type definition](https://app.contentful.com/spaces/vw5be3ki3sdd/content_types/topicProductFeature)",
+        "description": "Sub-container for product features enabling re-use of generic features across different products [See type definition](https://app.contentful.com/spaces/c586i03gpxi9/content_types/topicProductFeature)",
         "fields": [
           {
             "name": "contentfulMetadata",

@@ -1,5 +1,8 @@
 fragment FooterFields on FooterMenuCollection {
   items {
+    sys {
+      id
+    }
     menuItemsCollection {
       items {
         groupName

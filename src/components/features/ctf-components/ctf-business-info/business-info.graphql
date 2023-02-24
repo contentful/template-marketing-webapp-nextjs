@@ -1,4 +1,7 @@
 fragment BusinessInfoFields on TopicBusinessInfo {
+  sys {
+    id
+  }
   name
   shortDescription
   featuredImage {

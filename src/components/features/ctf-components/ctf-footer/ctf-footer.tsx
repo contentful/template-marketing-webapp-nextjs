@@ -5,6 +5,7 @@ import Twitter from '@mui/icons-material/Twitter';
 import { Theme, Container, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { useTranslation } from 'next-i18next';
+import { getLivePreviewProps } from '@contentful/live-preview';
 
 import { FooterFieldsFragment } from './__generated/ctf-footer.generated';
 
@@ -16,6 +17,7 @@ import { LanguageSelector } from '@src/components/features/language-selector';
 import { Link } from '@src/components/shared/link';
 import Logo from '@src/icons/logo-tagline.svg';
 import { CONTAINER_WIDTH } from '@src/theme';
+import { useContentfulContext } from '@src/contentful-context';
 
 const useStyles = makeStyles((theme: Theme) => ({
   footerContainer: {
@@ -223,6 +225,7 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
   const footerContent = props.items[0];
 
   const { t } = useTranslation();
+  const { locale } = useContentfulContext();
 
   const renderMenuGroupLinks = (menuGroup, listClassName) => {
     return menuGroup?.items?.map((menuItem, i) => {
@@ -249,7 +252,12 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
               {footerContent.menuItemsCollection.items.map((menuItem, i) => (
                 <div key={i} className={classes.menuColumn}>
                   <ul className={classes.menu}>
-                    <li>
+                    <li
+                      {...getLivePreviewProps({
+                        entryId: footerContent.sys.id,
+                        fieldId: menuItem?.groupName,
+                        locale,
+                      })}>
                       <p className={classes.menuItem}>{menuItem?.groupName}</p>
                       {menuItem?.featuredPagesCollection && (
                         <ul className={classes.submenu}>

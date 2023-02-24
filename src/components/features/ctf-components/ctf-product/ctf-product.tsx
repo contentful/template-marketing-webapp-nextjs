@@ -1,12 +1,14 @@
 import { Theme, Container, Typography, Box } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { Fragment } from 'react';
+import { getLivePreviewProps } from '@contentful/live-preview';
 
 import { ProductFieldsFragment } from './__generated/ctf-product.generated';
 
 import { CtfAsset } from '@src/components/features/ctf-components/ctf-asset/ctf-asset';
 import { CtfRichtext } from '@src/components/features/ctf-components/ctf-richtext/ctf-richtext';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
+import { useContentfulContext } from '@src/contentful-context';
 
 const useStyles = makeStyles((theme: Theme) => ({
   innerIntroContainer: {
@@ -130,8 +132,15 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 export const CtfProduct = (props: ProductFieldsFragment) => {
-  const { name, featuredImage, description, featuresCollection } = props;
+  const {
+    name,
+    featuredImage,
+    description,
+    featuresCollection,
+    sys: { id },
+  } = props;
 
+  const { locale } = useContentfulContext();
   const classes = useStyles();
 
   return (
@@ -140,18 +149,26 @@ export const CtfProduct = (props: ProductFieldsFragment) => {
         <div className={classes.innerIntroContainer}>
           <div className={classes.innerBody}>
             {name && (
-              <Typography variant="h1" component="h2" className={classes.headline}>
+              <Typography
+                variant="h1"
+                component="h2"
+                className={classes.headline}
+                {...getLivePreviewProps({ entryId: id, fieldId: 'headline', locale })}>
                 {name}
               </Typography>
             )}
             {description && (
               <LayoutContext.Provider value={{ ...defaultLayout, parent: 'product-description' }}>
-                <CtfRichtext {...description} className={classes.body} />
+                <div {...getLivePreviewProps({ entryId: id, fieldId: 'description', locale })}>
+                  <CtfRichtext {...description} className={classes.body} />
+                </div>
               </LayoutContext.Provider>
             )}
           </div>
           {featuredImage && (
-            <div className={classes.imageContainer}>
+            <div
+              className={classes.imageContainer}
+              {...getLivePreviewProps({ entryId: id, fieldId: 'featuredImage', locale })}>
               <CtfAsset {...featuredImage} showDescription={false} className={classes.imageInner} />
             </div>
           )}
@@ -169,11 +186,28 @@ export const CtfProduct = (props: ProductFieldsFragment) => {
                         <Fragment key={item.sys.id}>
                           <div className={classes.featureSeparator} />
                           <div className={classes.featureRow}>
-                            <Typography variant="h3" component="dt" className={classes.featureName}>
+                            <Typography
+                              variant="h3"
+                              component="dt"
+                              className={classes.featureName}
+                              {...getLivePreviewProps({
+                                entryId: item.sys.id,
+                                fieldId: 'name',
+                                locale,
+                              })}>
                               {item.name}
                             </Typography>
                             <Box component="dd" margin={0} className={classes.featureValue}>
-                              {item.longDescription && <CtfRichtext {...item.longDescription} />}
+                              {item.longDescription && (
+                                <div
+                                  {...getLivePreviewProps({
+                                    entryId: item.sys.id,
+                                    fieldId: 'longDescription',
+                                    locale,
+                                  })}>
+                                  <CtfRichtext {...item.longDescription} />
+                                </div>
+                              )}
                             </Box>
                           </div>
                         </Fragment>

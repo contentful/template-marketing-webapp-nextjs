@@ -26,7 +26,7 @@ function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
     return json.data;
   }
 }
-export type NavigationFieldsFragment = { __typename?: 'NavigationMenuCollection', items: Array<{ __typename?: 'NavigationMenu', menuItemsCollection?: { __typename?: 'NavigationMenuMenuItemsCollection', items: Array<{ __typename?: 'MenuGroup', label?: string | null, link?: (
+export type NavigationFieldsFragment = { __typename?: 'NavigationMenuCollection', items: Array<{ __typename?: 'NavigationMenu', menuItemsCollection?: { __typename?: 'NavigationMenuMenuItemsCollection', items: Array<{ __typename?: 'MenuGroup', label?: string | null, sys: { __typename?: 'Sys', id: string }, link?: (
           { __typename?: 'Page' }
           & PageLinkFieldsFragment
         ) | null, children?: (
@@ -50,6 +50,9 @@ export const NavigationFieldsFragmentDoc = `
   items {
     menuItemsCollection {
       items {
+        sys {
+          id
+        }
         label: groupName
         link: groupLink {
           ...PageLinkFields

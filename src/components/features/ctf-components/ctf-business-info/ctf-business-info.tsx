@@ -3,10 +3,12 @@ import Typography from '@mui/material/Typography';
 import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import React, { useMemo } from 'react';
+import { getLivePreviewProps } from '@contentful/live-preview';
 
 import { BusinessInfoFieldsFragment } from './__generated/business-info.generated';
 
 import { CtfRichtext } from '@src/components/features/ctf-components/ctf-richtext/ctf-richtext';
+import { useContentfulContext } from '@src/contentful-context';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -87,7 +89,14 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 const CtfBusinessInfo = (props: BusinessInfoFieldsFragment) => {
-  const { body, name, shortDescription, featuredImage } = props;
+  const {
+    body,
+    name,
+    shortDescription,
+    featuredImage,
+    sys: { id },
+  } = props;
+  const { locale } = useContentfulContext();
   const backgroundImage = useMemo(
     () => (featuredImage ? `${featuredImage.url}?w=1920` : undefined),
     [featuredImage],
@@ -104,27 +113,37 @@ const CtfBusinessInfo = (props: BusinessInfoFieldsFragment) => {
             style={{
               backgroundImage: `url(${backgroundImage})`,
             }}
+            {...getLivePreviewProps({ entryId: id, fieldId: 'backgroundImage', locale })}
           />
           <Container maxWidth={false}>
             <div className={clsx(classes.containerNarrow, classes.heroInner)}>
               {name && (
-                <Typography variant="h1" className={classes.title}>
+                <Typography
+                  variant="h1"
+                  className={classes.title}
+                  {...getLivePreviewProps({ entryId: id, fieldId: 'name', locale })}>
                   {name}
                 </Typography>
               )}
               {shortDescription && (
-                <Typography className={classes.subtitle}>{shortDescription}</Typography>
+                <Typography
+                  className={classes.subtitle}
+                  {...getLivePreviewProps({ entryId: id, fieldId: 'shortDescription', locale })}>
+                  {shortDescription}
+                </Typography>
               )}
             </div>
           </Container>
         </div>
       )}
       {body && (
-        <CtfRichtext
-          {...body}
-          containerClassName={classes.container}
-          gridClassName={classes.containerNarrow}
-        />
+        <div {...getLivePreviewProps({ entryId: id, fieldId: 'body', locale })}>
+          <CtfRichtext
+            {...body}
+            containerClassName={classes.container}
+            gridClassName={classes.containerNarrow}
+          />
+        </div>
       )}
     </div>
   );

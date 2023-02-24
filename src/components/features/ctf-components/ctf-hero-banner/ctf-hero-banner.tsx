@@ -2,6 +2,7 @@ import { Container, Theme, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import { useMemo } from 'react';
+import { getLivePreviewProps } from '@contentful/live-preview';
 
 import { HeroBannerFieldsFragment } from './__generated/ctf-hero-banner.generated';
 
@@ -9,6 +10,7 @@ import { CtfRichtext } from '@src/components/features/ctf-components/ctf-richtex
 import { PageLink } from '@src/components/features/page-link';
 import LayoutContext, { defaultLayout, useLayoutContext } from '@src/layout-context';
 import { getColorConfigFromPalette, HEADER_HEIGHT_MD, HEADER_HEIGHT } from '@src/theme';
+import { useContentfulContext } from '@src/contentful-context';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -104,9 +106,11 @@ export const CtfHeroBanner = (props: HeroBannerFieldsFragment) => {
     ctaText,
     targetPage,
     colorPalette,
+    sys: { id },
     heroSize: heroSizeBoolean,
   } = props;
   const layout = useLayoutContext();
+  const { locale } = useContentfulContext();
 
   const colorConfig = getColorConfigFromPalette(colorPalette || '');
   const imageStyle = imageStyleBoolean ? 'partial' : 'full';
@@ -124,6 +128,7 @@ export const CtfHeroBanner = (props: HeroBannerFieldsFragment) => {
     <Container
       maxWidth={false}
       className={clsx(classes.root, heroSize === 'full_screen' ? classes.fullScreen : null)}
+      {...getLivePreviewProps({ entryId: id, fieldId: 'backgroundImage', locale })}
       style={{
         backgroundImage:
           imageStyle === 'full' && backgroundImage ? `url(${backgroundImage!})` : undefined,
@@ -151,13 +156,16 @@ export const CtfHeroBanner = (props: HeroBannerFieldsFragment) => {
           <Typography
             variant="h1"
             className={classes.headline}
-            style={{ color: colorConfig.headlineColor }}>
+            style={{ color: colorConfig.headlineColor }}
+            {...getLivePreviewProps({ entryId: id, fieldId: 'headline', locale })}>
             {headline}
           </Typography>
         )}
         {bodyText && (
           <LayoutContext.Provider value={{ ...defaultLayout, parent: 'hero-banner-body' }}>
-            <div style={{ color: colorConfig.textColor }}>
+            <div
+              style={{ color: colorConfig.textColor }}
+              {...getLivePreviewProps({ entryId: id, fieldId: 'bodyText', locale })}>
               <CtfRichtext {...bodyText} className={classes.body} />
             </div>
           </LayoutContext.Provider>
