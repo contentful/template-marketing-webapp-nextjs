@@ -31,7 +31,7 @@ $~$
 
 ## Begin your journey with Contentful and the Marketing Starter Template
 
-Follow this [guide](./docs/tutorials/contentful-and-the-starter-template.md) to understand the relationship between
+Follow this [guide](https://github.com/contentful/template-marketing-webapp-nextjs/blob/main/docs/tutorials/contentful-and-the-starter-template.md/?utm_source=github.com-guide&utm_medium=referral&utm_campaign=template-marketing-webapp-nextjs) to understand the relationship between
 Contentful and the Starter Template source code through guided steps:
 
 - Entry editing, and updates preview in the Starter Template application (online/locally)
