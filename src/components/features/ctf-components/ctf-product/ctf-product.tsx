@@ -153,7 +153,7 @@ export const CtfProduct = (props: ProductFieldsFragment) => {
                 variant="h1"
                 component="h2"
                 className={classes.headline}
-                {...getLivePreviewProps({ entryId: id, fieldId: 'headline', locale })}>
+                {...getLivePreviewProps({ entryId: id, fieldId: 'name', locale })}>
                 {name}
               </Typography>
             )}
