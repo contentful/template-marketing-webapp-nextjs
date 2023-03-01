@@ -2,6 +2,7 @@ import { Container, Typography } from '@mui/material';
 import { Theme } from '@mui/material/styles';
 import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
+import { ContentfulLivePreview } from '@contentful/live-preview';
 
 import { DuplexFieldsFragment } from './__generated/ctf-duplex.generated';
 
@@ -104,19 +105,36 @@ const DuplexContent = (props: DuplexFieldsFragment) => {
           variant="h1"
           component="h2"
           className={classes.headline}
-          style={{ color: colorConfig.headlineColor }}>
+          style={{ color: colorConfig.headlineColor }}
+          {...ContentfulLivePreview.getProps({
+            entryId: props.sys.id,
+            fieldId: 'headline',
+            locale,
+          })}>
           {optimizeLineBreak(headline)}
         </Typography>
       )}
       {bodyText && (
         <LayoutContext.Provider value={{ ...defaultLayout, parent: 'duplex' }}>
-          <div style={{ color: colorConfig.textColor }}>
+          <div
+            style={{ color: colorConfig.textColor }}
+            {...ContentfulLivePreview.getProps({
+              entryId: props.sys.id,
+              fieldId: 'bodyText',
+              locale,
+            })}>
             <CtfRichtext {...bodyText} className={classes.richText} />
           </div>
         </LayoutContext.Provider>
       )}
       {targetPage && targetPage.slug && (
-        <div className={classes.ctaContainer}>
+        <div
+          className={classes.ctaContainer}
+          {...ContentfulLivePreview.getProps({
+            entryId: props.sys.id,
+            fieldId: 'ctaText',
+            locale,
+          })}>
           <PageLink page={targetPage} variant="contained" color={colorConfig.buttonColor} isButton>
             {ctaText}
           </PageLink>
@@ -135,7 +153,9 @@ const DuplexImage = (props: DuplexFieldsFragment) => {
   return (
     <div className={classes.imageContainer}>
       {image?.url ? (
-        <div className={classes.nextImageContainer}>
+        <div
+          className={classes.nextImageContainer}
+          {...ContentfulLivePreview.getProps({ entryId: props.sys.id, fieldId: 'image', locale })}>
           <CtfImage
             className={clsx([classes.image, imageStyle === 'fixed' && classes.imageFull])}
             src={`${image.url}?w=600`}

@@ -2,6 +2,7 @@ import { Container, Theme, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import { useMemo } from 'react';
+import { ContentfulLivePreview } from '@contentful/live-preview';
 
 import { HeroBannerFieldsFragment } from './__generated/ctf-hero-banner.generated';
 
@@ -124,6 +125,11 @@ export const CtfHeroBanner = (props: HeroBannerFieldsFragment) => {
     <Container
       maxWidth={false}
       className={clsx(classes.root, heroSize === 'full_screen' ? classes.fullScreen : null)}
+      {...ContentfulLivePreview.getProps({
+        entryId: id,
+        fieldId: 'backgroundImage',
+        locale,
+      })}
       style={{
         backgroundImage:
           imageStyle === 'full' && backgroundImage ? `url(${backgroundImage!})` : undefined,
@@ -151,13 +157,24 @@ export const CtfHeroBanner = (props: HeroBannerFieldsFragment) => {
           <Typography
             variant="h1"
             className={classes.headline}
-            style={{ color: colorConfig.headlineColor }}>
+            style={{ color: colorConfig.headlineColor }}
+            {...ContentfulLivePreview.getProps({
+              entryId: id,
+              fieldId: 'headline',
+              locale,
+            })}>
             {headline}
           </Typography>
         )}
         {bodyText && (
           <LayoutContext.Provider value={{ ...defaultLayout, parent: 'hero-banner-body' }}>
-            <div style={{ color: colorConfig.textColor }}>
+            <div
+              style={{ color: colorConfig.textColor }}
+              {...ContentfulLivePreview.getProps({
+                entryId: id,
+                fieldId: 'bodyText',
+                locale,
+              })}>
               <CtfRichtext {...bodyText} className={classes.body} />
             </div>
           </LayoutContext.Provider>

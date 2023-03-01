@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import React from 'react';
 
 import { Markdown } from '@src/components/features/markdown';
+import { ContentfulLivePreview } from '@contentful/live-preview';
 
 const useStyles = makeStyles((theme: Theme) => ({
   containerCentered: {
@@ -33,8 +34,10 @@ const useStyles = makeStyles((theme: Theme) => ({
 interface SectionHeadlinesPropsInterface {
   headline?: string | null;
   headlineProps?: TypographyProps;
+  headlineLivePreviewProps?: ReturnType<typeof ContentfulLivePreview.getProps>;
   subline?: string | null;
   sublineProps?: TypographyProps;
+  sublineLivePreviewProps?: ReturnType<typeof ContentfulLivePreview.getProps>;
   body?: string | null;
   align?: 'center' | 'left';
   className?: string;

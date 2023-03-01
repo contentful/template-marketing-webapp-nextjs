@@ -1,5 +1,6 @@
 import { Theme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import { ContentfulLivePreview } from '@contentful/live-preview';
 
 import { NavigationFieldsFragment } from './__generated/ctf-navigation.generated';
 import { getLinkDisplayText, getLinkHrefPrefix } from './utils';
@@ -79,7 +80,14 @@ export const CtfNavigation = (props: NavigationFieldsFragment) => {
       const href = getLinkHrefPrefix(menuItem);
       const linkText = getLinkDisplayText(menuItem);
       return (
-        <li key={i} className={listClassName}>
+        <li
+          key={i}
+          className={listClassName}
+          {...ContentfulLivePreview.getProps({
+            entryId: menuItem.sys.id,
+            fieldId: menuItem?.groupName,
+            locale,
+          })}>
           <Link href={href}>{linkText}</Link>
         </li>
       );
@@ -92,7 +100,14 @@ export const CtfNavigation = (props: NavigationFieldsFragment) => {
         <nav role="navigation">
           <ul className={classes.menu}>
             {navigationContent.menuItemsCollection.items.map((menuItem, i) => (
-              <li key={i} className={classes.menuItem}>
+              <li
+                key={i}
+                className={classes.menuItem}
+                {...ContentfulLivePreview.getProps({
+                  entryId: menuItem?.sys.id,
+                  fieldId: menuItem?.label,
+                  locale,
+                })}>
                 {!menuItem?.link ? (
                   menuItem?.label
                 ) : (

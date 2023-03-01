@@ -2,6 +2,7 @@ import { Container, Theme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import { useMemo } from 'react';
+import { ContentfulLivePreview } from '@contentful/live-preview';
 
 import { QuoteFieldsFragment } from './__generated/ctf-quote.generated';
 
@@ -139,6 +140,7 @@ export const CtfQuote = (props: QuoteFieldsFragment) => {
             )}>
             {quote && (
               <div
+                {...ContentfulLivePreview.getProps({ entryId: id, fieldId: 'quote', locale })}
                 style={{
                   color: colorConfig.textColor,
                   textAlign: quoteAlignment,
@@ -147,7 +149,13 @@ export const CtfQuote = (props: QuoteFieldsFragment) => {
               </div>
             )}
           </div>
-          <div className={classes.imageContainer}>
+          <div
+            className={classes.imageContainer}
+            {...ContentfulLivePreview.getProps({
+              entryId: id,
+              fieldId: 'backgroundImage',
+              locale,
+            })}>
             {backgroundImage && (
               <div
                 className={classes.imageFixed}

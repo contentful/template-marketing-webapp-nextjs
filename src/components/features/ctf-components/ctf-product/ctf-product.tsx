@@ -1,6 +1,7 @@
 import { Theme, Container, Typography, Box } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { Fragment } from 'react';
+import { ContentfulLivePreview } from '@contentful/live-preview';
 
 import { ProductFieldsFragment } from './__generated/ctf-product.generated';
 
@@ -140,18 +141,35 @@ export const CtfProduct = (props: ProductFieldsFragment) => {
         <div className={classes.innerIntroContainer}>
           <div className={classes.innerBody}>
             {name && (
-              <Typography variant="h1" component="h2" className={classes.headline}>
+              <Typography
+                variant="h1"
+                component="h2"
+                className={classes.headline}
+                {...ContentfulLivePreview.getProps({ entryId: id, fieldId: 'name', locale })}>
                 {name}
               </Typography>
             )}
             {description && (
               <LayoutContext.Provider value={{ ...defaultLayout, parent: 'product-description' }}>
-                <CtfRichtext {...description} className={classes.body} />
+                <div
+                  {...ContentfulLivePreview.getProps({
+                    entryId: id,
+                    fieldId: 'description',
+                    locale,
+                  })}>
+                  <CtfRichtext {...description} className={classes.body} />
+                </div>
               </LayoutContext.Provider>
             )}
           </div>
           {featuredImage && (
-            <div className={classes.imageContainer}>
+            <div
+              className={classes.imageContainer}
+              {...ContentfulLivePreview.getProps({
+                entryId: id,
+                fieldId: 'featuredImage',
+                locale,
+              })}>
               <CtfAsset {...featuredImage} showDescription={false} className={classes.imageInner} />
             </div>
           )}
@@ -169,11 +187,28 @@ export const CtfProduct = (props: ProductFieldsFragment) => {
                         <Fragment key={item.sys.id}>
                           <div className={classes.featureSeparator} />
                           <div className={classes.featureRow}>
-                            <Typography variant="h3" component="dt" className={classes.featureName}>
+                            <Typography
+                              variant="h3"
+                              component="dt"
+                              className={classes.featureName}
+                              {...ContentfulLivePreview.getProps({
+                                entryId: item.sys.id,
+                                fieldId: 'name',
+                                locale,
+                              })}>
                               {item.name}
                             </Typography>
                             <Box component="dd" margin={0} className={classes.featureValue}>
-                              {item.longDescription && <CtfRichtext {...item.longDescription} />}
+                              {item.longDescription && (
+                                <div
+                                  {...ContentfulLivePreview.getProps({
+                                    entryId: item.sys.id,
+                                    fieldId: 'longDescription',
+                                    locale,
+                                  })}>
+                                  <CtfRichtext {...item.longDescription} />
+                                </div>
+                              )}
                             </Box>
                           </div>
                         </Fragment>

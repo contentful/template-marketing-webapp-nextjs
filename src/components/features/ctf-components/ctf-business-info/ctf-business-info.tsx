@@ -3,6 +3,7 @@ import Typography from '@mui/material/Typography';
 import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import React, { useMemo } from 'react';
+import { ContentfulLivePreview } from '@contentful/live-preview';
 
 import { BusinessInfoFieldsFragment } from './__generated/business-info.generated';
 
@@ -104,27 +105,41 @@ const CtfBusinessInfo = (props: BusinessInfoFieldsFragment) => {
             style={{
               backgroundImage: `url(${backgroundImage})`,
             }}
+            {...ContentfulLivePreview.getProps({ entryId: id, fieldId: 'backgroundImage', locale })}
           />
           <Container maxWidth={false}>
             <div className={clsx(classes.containerNarrow, classes.heroInner)}>
               {name && (
-                <Typography variant="h1" className={classes.title}>
+                <Typography
+                  variant="h1"
+                  className={classes.title}
+                  {...ContentfulLivePreview.getProps({ entryId: id, fieldId: 'name', locale })}>
                   {name}
                 </Typography>
               )}
               {shortDescription && (
-                <Typography className={classes.subtitle}>{shortDescription}</Typography>
+                <Typography
+                  className={classes.subtitle}
+                  {...ContentfulLivePreview.getProps({
+                    entryId: id,
+                    fieldId: 'shortDescription',
+                    locale,
+                  })}>
+                  {shortDescription}
+                </Typography>
               )}
             </div>
           </Container>
         </div>
       )}
       {body && (
-        <CtfRichtext
-          {...body}
-          containerClassName={classes.container}
-          gridClassName={classes.containerNarrow}
-        />
+        <div {...ContentfulLivePreview.getProps({ entryId: id, fieldId: 'body', locale })}>
+          <CtfRichtext
+            {...body}
+            containerClassName={classes.container}
+            gridClassName={classes.containerNarrow}
+          />
+        </div>
       )}
     </div>
   );
