@@ -1,3 +1,4 @@
+import { ContentfulLivePreview } from '@contentful/live-preview';
 import Facebook from '@mui/icons-material/Facebook';
 import Instagram from '@mui/icons-material/Instagram';
 import LinkedIn from '@mui/icons-material/LinkedIn';
@@ -5,7 +6,6 @@ import Twitter from '@mui/icons-material/Twitter';
 import { Theme, Container, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { useTranslation } from 'next-i18next';
-import { getLivePreviewProps } from '@contentful/live-preview';
 
 import { FooterFieldsFragment } from './__generated/ctf-footer.generated';
 
@@ -15,9 +15,9 @@ import {
 } from '@src/components/features/ctf-components/ctf-navigation/utils';
 import { LanguageSelector } from '@src/components/features/language-selector';
 import { Link } from '@src/components/shared/link';
+import { useContentfulContext } from '@src/contentful-context';
 import Logo from '@src/icons/logo-tagline.svg';
 import { CONTAINER_WIDTH } from '@src/theme';
-import { useContentfulContext } from '@src/contentful-context';
 
 const useStyles = makeStyles((theme: Theme) => ({
   footerContainer: {
@@ -253,7 +253,7 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
                 <div key={i} className={classes.menuColumn}>
                   <ul className={classes.menu}>
                     <li
-                      {...getLivePreviewProps({
+                      {...ContentfulLivePreview.getProps({
                         entryId: footerContent.sys.id,
                         fieldId: menuItem?.groupName,
                         locale,
