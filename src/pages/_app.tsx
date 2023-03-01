@@ -5,6 +5,8 @@ import { appWithTranslation, SSRConfig } from 'next-i18next';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
+import { ContentfulLivePreview } from '@contentful/live-preview';
+import '@contentful/live-preview/dist/style.css';
 
 import { Settings } from '@src/components/features/settings';
 import { Layout } from '@src/components/templates/layout/layout';
@@ -15,6 +17,8 @@ import contentfulConfig from 'contentful.config';
 import nextI18nConfig from 'next-i18next.config';
 
 type CustomPageProps = SSRConfig & { dehydratedState: DehydratedState; err: Error };
+
+ContentfulLivePreview.init();
 
 const CustomApp = ({
   Component,

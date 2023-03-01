@@ -5,7 +5,7 @@ import Twitter from '@mui/icons-material/Twitter';
 import { Theme, Container, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { useTranslation } from 'next-i18next';
-import { getLivePreviewProps } from '@contentful/live-preview';
+import { ContentfulLivePreview } from '@contentful/live-preview';
 
 import { FooterFieldsFragment } from './__generated/ctf-footer.generated';
 
@@ -253,7 +253,7 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
                 <div key={i} className={classes.menuColumn}>
                   <ul className={classes.menu}>
                     <li
-                      {...getLivePreviewProps({
+                      {...ContentfulLivePreview.getProps({
                         entryId: footerContent.sys.id,
                         fieldId: menuItem?.groupName,
                         locale,

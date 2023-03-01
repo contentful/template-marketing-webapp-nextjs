@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography';
 import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import React, { useMemo } from 'react';
-import { getLivePreviewProps } from '@contentful/live-preview';
+import { ContentfulLivePreview } from '@contentful/live-preview';
 
 import { BusinessInfoFieldsFragment } from './__generated/business-info.generated';
 
@@ -113,7 +113,7 @@ const CtfBusinessInfo = (props: BusinessInfoFieldsFragment) => {
             style={{
               backgroundImage: `url(${backgroundImage})`,
             }}
-            {...getLivePreviewProps({ entryId: id, fieldId: 'backgroundImage', locale })}
+            {...ContentfulLivePreview.getProps({ entryId: id, fieldId: 'backgroundImage', locale })}
           />
           <Container maxWidth={false}>
             <div className={clsx(classes.containerNarrow, classes.heroInner)}>
@@ -121,14 +121,18 @@ const CtfBusinessInfo = (props: BusinessInfoFieldsFragment) => {
                 <Typography
                   variant="h1"
                   className={classes.title}
-                  {...getLivePreviewProps({ entryId: id, fieldId: 'name', locale })}>
+                  {...ContentfulLivePreview.getProps({ entryId: id, fieldId: 'name', locale })}>
                   {name}
                 </Typography>
               )}
               {shortDescription && (
                 <Typography
                   className={classes.subtitle}
-                  {...getLivePreviewProps({ entryId: id, fieldId: 'shortDescription', locale })}>
+                  {...ContentfulLivePreview.getProps({
+                    entryId: id,
+                    fieldId: 'shortDescription',
+                    locale,
+                  })}>
                   {shortDescription}
                 </Typography>
               )}
@@ -137,7 +141,7 @@ const CtfBusinessInfo = (props: BusinessInfoFieldsFragment) => {
         </div>
       )}
       {body && (
-        <div {...getLivePreviewProps({ entryId: id, fieldId: 'body', locale })}>
+        <div {...ContentfulLivePreview.getProps({ entryId: id, fieldId: 'body', locale })}>
           <CtfRichtext
             {...body}
             containerClassName={classes.container}

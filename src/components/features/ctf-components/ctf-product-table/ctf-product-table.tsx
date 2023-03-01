@@ -5,7 +5,7 @@ import { useTranslation } from 'next-i18next';
 import Image, { ImageLoader } from 'next/image';
 import queryString from 'query-string';
 import { useState, useMemo, useRef, useEffect, useCallback } from 'react';
-import { getLivePreviewProps } from '@contentful/live-preview';
+import { ContentfulLivePreview } from '@contentful/live-preview';
 
 import { ProductTableFieldsFragment } from './__generated/ctf-product-table.generated';
 
@@ -274,11 +274,11 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
           <SectionHeadlines
             headline={headline}
             headlineLivePreviewProps={{
-              ...getLivePreviewProps({ entryId: id, fieldId: 'headline', locale }),
+              ...ContentfulLivePreview.getProps({ entryId: id, fieldId: 'headline', locale }),
             }}
             subline={subline}
             sublineLivePreviewProps={{
-              ...getLivePreviewProps({ entryId: id, fieldId: 'subline', locale }),
+              ...ContentfulLivePreview.getProps({ entryId: id, fieldId: 'subline', locale }),
             }}
             className={classes.sectionHeadlines}
           />
@@ -295,7 +295,7 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                       }}>
                       <div
                         className={classes.featuredImage}
-                        {...getLivePreviewProps({
+                        {...ContentfulLivePreview.getProps({
                           entryId: product.sys.id,
                           fieldId: 'featuredImage',
                           locale,
@@ -332,7 +332,7 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                         <Typography
                           variant="h2"
                           className={classes.title}
-                          {...getLivePreviewProps({
+                          {...ContentfulLivePreview.getProps({
                             entryId: product.sys.id,
                             fieldId: 'name',
                             locale,
@@ -348,7 +348,7 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                               ? undefined
                               : `${gridSizes['index-2']}px`,
                         }}
-                        {...getLivePreviewProps({
+                        {...ContentfulLivePreview.getProps({
                           entryId: product.sys.id,
                           fieldId: 'description',
                           locale,
@@ -374,7 +374,7 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                               ? undefined
                               : `${gridSizes['index-3']}px`,
                         }}
-                        {...getLivePreviewProps({
+                        {...ContentfulLivePreview.getProps({
                           entryId: product.sys.id,
                           fieldId: 'price',
                           locale,
@@ -398,7 +398,7 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                           }}>
                           <div className={classes.comparisonFeaturesBreak} />
                           <div
-                            {...getLivePreviewProps({
+                            {...ContentfulLivePreview.getProps({
                               entryId: id,
                               fieldId: 'featureNames',
                               locale,
@@ -409,7 +409,7 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                                   <div
                                     key={`${product.sys.id}-${featureName}`}
                                     className={classes.feature}
-                                    {...getLivePreviewProps({
+                                    {...ContentfulLivePreview.getProps({
                                       entryId: product.sys.id,
                                       fieldId: 'shortDescription',
                                       locale,
@@ -442,7 +442,7 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                             variant="h2"
                             component="span"
                             className={classes.priceUpper}
-                            {...getLivePreviewProps({
+                            {...ContentfulLivePreview.getProps({
                               entryId: product.sys.id,
                               fieldId: 'price',
                               locale,
