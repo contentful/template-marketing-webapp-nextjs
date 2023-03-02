@@ -288,7 +288,7 @@ Once you have the Starter Template deployed on your hosting provider, you can up
 space settings.
 
 You can follow our guide to learn how to do
-so: [https://www.contentful.com/help/setup-content-preview](https://www.contentful.com/help/setup-content-preview).
+so: [https://www.contentful.com/help/setup-content-preview](https://www.contentful.com/help/setup-content-preview/?utm_source=github.com-preview-guide&utm_medium=referral&utm_campaign=template-marketing-webapp-nextjs).
 
 $~$
 
