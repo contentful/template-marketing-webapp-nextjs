@@ -128,7 +128,7 @@ export const CtfHeroBanner = (props: HeroBannerFieldsFragment) => {
     <Container
       maxWidth={false}
       className={clsx(classes.root, heroSize === 'full_screen' ? classes.fullScreen : null)}
-      {...ContentfulLivePreview.getProps({ entryId: id, fieldId: 'backgroundImage', locale })}
+      {...ContentfulLivePreview.getProps({ entryId: id, fieldId: 'image', locale })}
       style={{
         backgroundImage:
           imageStyle === 'full' && backgroundImage ? `url(${backgroundImage!})` : undefined,
