@@ -1,14 +1,14 @@
+import { ContentfulLivePreview } from '@contentful/live-preview';
 import { Theme, Container, Typography, Box } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { Fragment } from 'react';
-import { getLivePreviewProps } from '@contentful/live-preview';
 
 import { ProductFieldsFragment } from './__generated/ctf-product.generated';
 
 import { CtfAsset } from '@src/components/features/ctf-components/ctf-asset/ctf-asset';
 import { CtfRichtext } from '@src/components/features/ctf-components/ctf-richtext/ctf-richtext';
-import LayoutContext, { defaultLayout } from '@src/layout-context';
 import { useContentfulContext } from '@src/contentful-context';
+import LayoutContext, { defaultLayout } from '@src/layout-context';
 
 const useStyles = makeStyles((theme: Theme) => ({
   innerIntroContainer: {
@@ -153,13 +153,18 @@ export const CtfProduct = (props: ProductFieldsFragment) => {
                 variant="h1"
                 component="h2"
                 className={classes.headline}
-                {...getLivePreviewProps({ entryId: id, fieldId: 'name', locale })}>
+                {...ContentfulLivePreview.getProps({ entryId: id, fieldId: 'name', locale })}>
                 {name}
               </Typography>
             )}
             {description && (
               <LayoutContext.Provider value={{ ...defaultLayout, parent: 'product-description' }}>
-                <div {...getLivePreviewProps({ entryId: id, fieldId: 'description', locale })}>
+                <div
+                  {...ContentfulLivePreview.getProps({
+                    entryId: id,
+                    fieldId: 'description',
+                    locale,
+                  })}>
                   <CtfRichtext {...description} className={classes.body} />
                 </div>
               </LayoutContext.Provider>
@@ -168,7 +173,11 @@ export const CtfProduct = (props: ProductFieldsFragment) => {
           {featuredImage && (
             <div
               className={classes.imageContainer}
-              {...getLivePreviewProps({ entryId: id, fieldId: 'featuredImage', locale })}>
+              {...ContentfulLivePreview.getProps({
+                entryId: id,
+                fieldId: 'featuredImage',
+                locale,
+              })}>
               <CtfAsset {...featuredImage} showDescription={false} className={classes.imageInner} />
             </div>
           )}
@@ -190,7 +199,7 @@ export const CtfProduct = (props: ProductFieldsFragment) => {
                               variant="h3"
                               component="dt"
                               className={classes.featureName}
-                              {...getLivePreviewProps({
+                              {...ContentfulLivePreview.getProps({
                                 entryId: item.sys.id,
                                 fieldId: 'name',
                                 locale,
@@ -200,7 +209,7 @@ export const CtfProduct = (props: ProductFieldsFragment) => {
                             <Box component="dd" margin={0} className={classes.featureValue}>
                               {item.longDescription && (
                                 <div
-                                  {...getLivePreviewProps({
+                                  {...ContentfulLivePreview.getProps({
                                     entryId: item.sys.id,
                                     fieldId: 'longDescription',
                                     locale,

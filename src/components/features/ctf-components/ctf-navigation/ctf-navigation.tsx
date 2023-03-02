@@ -1,6 +1,6 @@
+import { ContentfulLivePreview } from '@contentful/live-preview';
 import { Theme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import { getLivePreviewProps } from '@contentful/live-preview';
 
 import { NavigationFieldsFragment } from './__generated/ctf-navigation.generated';
 import { getLinkDisplayText, getLinkHrefPrefix } from './utils';
@@ -86,7 +86,7 @@ export const CtfNavigation = (props: NavigationFieldsFragment) => {
         <li
           key={i}
           className={listClassName}
-          {...getLivePreviewProps({
+          {...ContentfulLivePreview.getProps({
             entryId: menuItem.sys.id,
             fieldId: menuItem?.groupName,
             locale,
@@ -106,7 +106,7 @@ export const CtfNavigation = (props: NavigationFieldsFragment) => {
               <li
                 key={i}
                 className={classes.menuItem}
-                {...getLivePreviewProps({
+                {...ContentfulLivePreview.getProps({
                   entryId: menuItem?.sys.id,
                   fieldId: menuItem?.label,
                   locale,
