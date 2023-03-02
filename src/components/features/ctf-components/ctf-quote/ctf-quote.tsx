@@ -156,7 +156,7 @@ export const CtfQuote = (props: QuoteFieldsFragment) => {
             className={classes.imageContainer}
             {...ContentfulLivePreview.getProps({
               entryId: id,
-              fieldId: 'backgroundImage',
+              fieldId: 'image',
               locale,
             })}>
             {backgroundImage && (

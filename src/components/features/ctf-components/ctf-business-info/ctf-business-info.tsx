@@ -113,7 +113,7 @@ const CtfBusinessInfo = (props: BusinessInfoFieldsFragment) => {
             style={{
               backgroundImage: `url(${backgroundImage})`,
             }}
-            {...ContentfulLivePreview.getProps({ entryId: id, fieldId: 'backgroundImage', locale })}
+            {...ContentfulLivePreview.getProps({ entryId: id, fieldId: 'featuredImage', locale })}
           />
           <Container maxWidth={false}>
             <div className={clsx(classes.containerNarrow, classes.heroInner)}>
