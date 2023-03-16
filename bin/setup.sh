@@ -1,32 +1,28 @@
 #!/bin/bash
-for arg in "$@"
-do
-    case $arg in
-        spaceId=*)
-            spaceId="${arg#*=}"
-            ;;
-        deliveryToken=*)
-            deliveryToken="${arg#*=}"
-            ;;
-        previewToken=*)
-            previewToken="${arg#*=}"
-            ;;
-    esac
-done
+
+# Check if .env file already exists
+if [ -f .env ]; then
+  echo ".env file already exists. Please remove it first."
+  exit 1
+fi
+
+# Check if .env.example file exists
+if [ ! -f .env.example ]; then
+  echo ".env.example file does not exist. Please create one."
+  exit 1
+fi
+
+# Copy .env.example to .env
 cp .env.example .env
 
-awk -v spaceId="$spaceId" -v deliveryToken="$deliveryToken" -v previewToken="$previewToken" '{
-  if ($1 == "NEXT_PUBLIC_CONFIG_CONTENTFUL_SPACE_ID=") {
-    print $1 spaceId;
-  } else if ($1 == "NEXT_PUBLIC_CONFIG_CONTENTFUL_DELIVERY_API_TOKEN=") {
-    print $1 deliveryToken;
-  } else if ($1 == "NEXT_PUBLIC_CONFIG_CONTENTFUL_PREVIEW_API_TOKEN=") {
-    print $1 previewToken;
-  } else {
-    print;
-  }
-}' .env > .env.new && mv .env.new .env
+# Read the values of the variables from command-line arguments
+for arg in "$@"; do
+  key=$(echo "$arg" | cut -d'=' -f1)
+  value=$(echo "$arg" | cut -d'=' -f2)
+  sed -i.bak -e "s/^${key}=.*/${key}=${value}/" .env
+done
 
+# install node_modules and run dev
 echo Installing dependencies
 yarn
 yarn dev
