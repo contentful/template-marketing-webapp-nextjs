@@ -34,7 +34,7 @@ for arg in "$@"; do
   fi
 done
 
-# install node_modules and run dev
-# echo Installing dependencies
-# yarn
-# yarn dev
+install node_modules and run dev
+echo Installing dependencies
+yarn
+yarn dev
