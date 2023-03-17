@@ -2,9 +2,9 @@ import { ContentfulLivePreview } from '@contentful/live-preview';
 import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 import { DehydratedState, Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { appWithTranslation, SSRConfig } from 'next-i18next';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
+import { appWithTranslation, SSRConfig } from 'next-i18next';
 import { useEffect, useState } from 'react';
 import '@contentful/live-preview/dist/style.css';
 

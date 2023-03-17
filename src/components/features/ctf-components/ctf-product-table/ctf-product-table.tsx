@@ -2,8 +2,8 @@ import { ContentfulLivePreview } from '@contentful/live-preview';
 import { Theme, Typography, Container } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import throttle from 'lodash/throttle';
-import { useTranslation } from 'next-i18next';
 import Image, { ImageLoader } from 'next/image';
+import { useTranslation } from 'next-i18next';
 import queryString from 'query-string';
 import { useState, useMemo, useRef, useEffect, useCallback } from 'react';
 
@@ -292,14 +292,16 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                       className={classes.comparisonTableColumn}
                       ref={el => {
                         gridColumnElements.current[j] = el;
-                      }}>
+                      }}
+                    >
                       <div
                         className={classes.featuredImage}
                         {...ContentfulLivePreview.getProps({
                           entryId: product.sys.id,
                           fieldId: 'featuredImage',
                           locale,
-                        })}>
+                        })}
+                      >
                         <div
                           data-equal-size="0"
                           style={{
@@ -307,7 +309,8 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                               gridSizes[`index-0`] === undefined
                                 ? undefined
                                 : `${gridSizes[`index-0`]}px`,
-                          }}>
+                          }}
+                        >
                           {product.featuredImage && (
                             <Image
                               src={product.featuredImage.url as string}
@@ -328,7 +331,8 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                             gridSizes[`index-1`] === undefined
                               ? undefined
                               : `${gridSizes[`index-1`]}px`,
-                        }}>
+                        }}
+                      >
                         <Typography
                           variant="h2"
                           className={classes.title}
@@ -336,7 +340,8 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                             entryId: product.sys.id,
                             fieldId: 'name',
                             locale,
-                          })}>
+                          })}
+                        >
                           {product.name}
                         </Typography>
                       </div>
@@ -352,13 +357,15 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                           entryId: product.sys.id,
                           fieldId: 'description',
                           locale,
-                        })}>
+                        })}
+                      >
                         {product.description && (
                           <LayoutContext.Provider
                             value={{
                               ...defaultLayout,
                               parent: 'product-description',
-                            }}>
+                            }}
+                          >
                             <CtfRichtext
                               {...product.description}
                               className={classes.shortDescription}
@@ -378,7 +385,8 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                           entryId: product.sys.id,
                           fieldId: 'price',
                           locale,
-                        })}>
+                        })}
+                      >
                         {!product.price || product.price === 0 ? (
                           <Typography variant="h2" component="span" className={classes.priceUpper}>
                             {t('price.free')}
@@ -395,14 +403,16 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                           value={{
                             ...defaultLayout,
                             parent: 'product-table',
-                          }}>
+                          }}
+                        >
                           <div className={classes.comparisonFeaturesBreak} />
                           <div
                             {...ContentfulLivePreview.getProps({
                               entryId: id,
                               fieldId: 'featureNames',
                               locale,
-                            })}>
+                            })}
+                          >
                             {featureNames.map(
                               (featureName, i) =>
                                 featuresGrid[featureName][product.sys.id] && (
@@ -413,7 +423,8 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                                       entryId: product.sys.id,
                                       fieldId: 'shortDescription',
                                       locale,
-                                    })}>
+                                    })}
+                                  >
                                     <div data-equal-size={i + 4} className={classes.featureInner}>
                                       <CtfRichtext {...featuresGrid[featureName][product.sys.id]} />
                                     </div>
@@ -432,7 +443,8 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                             gridSizes[`index-${featureNames.length + 4}`] === undefined
                               ? undefined
                               : `${gridSizes[`index-${featureNames.length + 4}`]}px`,
-                        }}>
+                        }}
+                      >
                         {!product.price || product.price === 0 ? (
                           <Typography variant="h2" component="span">
                             {t('price.free')}
@@ -446,7 +458,8 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                               entryId: product.sys.id,
                               fieldId: 'price',
                               locale,
-                            })}>
+                            })}
+                          >
                             <FormatCurrency value={product.price} />
                             <span className={classes.priceAddition}>/{t('time.month')}</span>
                           </Typography>
