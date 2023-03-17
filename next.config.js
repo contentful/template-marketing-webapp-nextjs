@@ -23,6 +23,9 @@ module.exports = withPlugins(plugins, {
    */
   env: {
     ENVIRONMENT_NAME: process.env.ENVIRONMENT_NAME,
+    CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID,
+    CONTENTFUL_DELIVERY_API_TOKEN: process.env.CONTENTFUL_DELIVERY_API_TOKEN,
+    CONTENTFUL_PREVIEW_API_TOKEN: process.env.CONTENTFUL_PREVIEW_API_TOKEN,
   },
 
   /**
