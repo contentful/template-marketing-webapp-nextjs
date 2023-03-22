@@ -1077,10 +1077,10 @@
   resolved "https://registry.yarnpkg.com/@colors/colors/-/colors-1.5.0.tgz#bb504579c1cae923e6576a4f5da43d25f97bdbd9"
   integrity sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==
 
-"@contentful/live-preview@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@contentful/live-preview/-/live-preview-1.3.0.tgz#032039ec072cdf412cd2d473aa74960e7e4f0e4c"
-  integrity sha512-BriwBBD1DktGnbTcnwTN26Lr8XNeFP83kJqAliQDI/+TQW+mbFcEzPGj8OY2muMfeDVSXGE0NCLCGIfNy039Ag==
+"@contentful/live-preview@^1.3.1":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@contentful/live-preview/-/live-preview-1.3.1.tgz#4f3d62bc2c8806b2f68b093637fec8303980cc64"
+  integrity sha512-p7x6uAg1W/knEC2b3IMGUtpT3bAe6Ocquhq70H1Cd8XnWJHq91DptNko3/iwqzi1oP9tv/Gfs803GiP1NCveng==
   dependencies:
     use-deep-compare-effect "^1.8.1"
 
