@@ -57,6 +57,10 @@ fragment PageExtraSectionItemFields on PageExtraSectionItem {
 
 
 fragment CtfPageFields on Page {
+  __typename
+  sys {
+    id
+  }
   pageName
   internalName: pageName
   slug
@@ -99,10 +103,6 @@ fragment CtfPageFields on Page {
       }
       ...PageExtraSectionItemFields
     }
-  }
-  __typename
-  sys {
-    id
   }
 }
 

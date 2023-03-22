@@ -43,10 +43,10 @@ export type CtfCtaQuery = { __typename?: 'Query', componentCta?: (
 
 export const CtaFieldsFragmentDoc = `
     fragment CtaFields on ComponentCta {
+  __typename
   sys {
     id
   }
-  __typename
   internalName
   headline
   subline {

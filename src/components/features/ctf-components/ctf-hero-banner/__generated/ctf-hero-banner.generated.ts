@@ -48,11 +48,11 @@ export type CtfHeroBannerQuery = { __typename?: 'Query', componentHeroBanner?: (
 
 export const HeroBannerFieldsFragmentDoc = `
     fragment HeroBannerFields on ComponentHeroBanner {
+  __typename
   sys {
     id
   }
   internalName
-  __typename
   headline
   bodyText {
     json

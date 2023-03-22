@@ -2,6 +2,7 @@ fragment NavigationFields on NavigationMenuCollection {
   items {
     menuItemsCollection {
       items {
+        __typename
         sys {
           id
         }

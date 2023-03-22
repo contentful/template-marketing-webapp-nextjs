@@ -96,6 +96,7 @@ export type CtfBusinessInfoQuery = { __typename?: 'Query', topicBusinessInfo?: (
 
 export const BusinessInfoFieldsFragmentDoc = `
     fragment BusinessInfoFields on TopicBusinessInfo {
+  __typename
   sys {
     id
   }
@@ -119,7 +120,6 @@ export const BusinessInfoFieldsFragmentDoc = `
       }
     }
   }
-  __typename
 }
     `;
 export const CtfBusinessInfoDocument = `

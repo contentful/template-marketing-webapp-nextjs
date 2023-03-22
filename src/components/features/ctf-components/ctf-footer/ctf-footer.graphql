@@ -1,5 +1,6 @@
 fragment FooterFields on FooterMenuCollection {
   items {
+    __typename
     sys {
       id
     }

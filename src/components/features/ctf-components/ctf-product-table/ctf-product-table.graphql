@@ -1,4 +1,5 @@
 fragment ProductTableFields on ComponentProductTable {
+  __typename
   sys {
     id
   }

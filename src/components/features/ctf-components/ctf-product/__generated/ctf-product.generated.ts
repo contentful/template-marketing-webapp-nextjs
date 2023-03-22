@@ -26,7 +26,7 @@ function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
     return json.data;
   }
 }
-export type ProductFieldsFragment = { __typename?: 'TopicProduct', name?: string | null, price?: number | null, sys: { __typename?: 'Sys', id: string }, featuredImage?: (
+export type ProductFieldsFragment = { __typename: 'TopicProduct', name?: string | null, price?: number | null, sys: { __typename?: 'Sys', id: string }, featuredImage?: (
     { __typename?: 'Asset' }
     & AssetFieldsFragment
   ) | null, description?: { __typename?: 'TopicProductDescription', json: any } | null, featuresCollection?: { __typename?: 'TopicProductFeaturesCollection', items: Array<(
@@ -48,6 +48,7 @@ export type CtfProductQuery = { __typename?: 'Query', topicProduct?: (
 
 export const ProductFieldsFragmentDoc = `
     fragment ProductFields on TopicProduct {
+  __typename
   sys {
     id
   }

@@ -49,10 +49,10 @@ export type CtfInfoBlockQuery = { __typename?: 'Query', componentInfoBlock?: (
 
 export const InfoBlockFieldsFragmentDoc = `
     fragment InfoBlockFields on ComponentInfoBlock {
+  __typename
   sys {
     id
   }
-  __typename
   internalName
   headline
   subline

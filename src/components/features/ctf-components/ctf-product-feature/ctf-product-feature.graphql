@@ -1,4 +1,5 @@
 fragment ProductFeatureFields on TopicProductFeature {
+  __typename
   sys {
     id
   }

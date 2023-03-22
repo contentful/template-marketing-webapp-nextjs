@@ -1,8 +1,8 @@
 fragment InfoBlockFields on ComponentInfoBlock {
+  __typename
   sys {
     id
   }
-  __typename
   internalName
   headline
   subline

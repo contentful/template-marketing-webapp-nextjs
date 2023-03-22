@@ -48,10 +48,10 @@ export type CtfDuplexQuery = { __typename?: 'Query', componentDuplex?: (
 
 export const DuplexFieldsFragmentDoc = `
     fragment DuplexFields on ComponentDuplex {
+  __typename
   sys {
     id
   }
-  __typename
   internalName
   containerLayout
   headline
