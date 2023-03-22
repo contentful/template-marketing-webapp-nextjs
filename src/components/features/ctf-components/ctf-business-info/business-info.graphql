@@ -22,6 +22,7 @@ fragment BusinessInfoFields on TopicBusinessInfo {
       }
     }
   }
+  __typename
 }
 
 query CtfBusinessInfo($id: String!, $locale: String, $preview: Boolean) {
