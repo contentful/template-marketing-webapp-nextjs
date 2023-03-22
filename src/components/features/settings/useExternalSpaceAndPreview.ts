@@ -12,14 +12,14 @@ const fetcherGraphqlEndpoint = (space_id, domain = 'contentful.com') =>
 const fetcherHeaderParamsDefault = {
   headers: {
     'Content-Type': 'application/json',
-    Authorization: `Bearer ${process.env.CONTENTFUL_DELIVERY_API_TOKEN}`,
+    Authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
   },
 };
 
 const fetcherHeaderParamsPreview = {
   headers: {
     'Content-Type': 'application/json',
-    Authorization: `Bearer ${process.env.CONTENTFUL_PREVIEW_API_TOKEN}`,
+    Authorization: `Bearer ${process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN}`,
   },
 };
 

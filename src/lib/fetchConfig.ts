@@ -5,7 +5,7 @@ export const fetchConfig = {
   params: {
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${process.env.CONTENTFUL_DELIVERY_API_TOKEN}`,
+      Authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
     },
   },
 };
