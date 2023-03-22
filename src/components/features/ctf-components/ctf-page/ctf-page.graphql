@@ -100,6 +100,10 @@ fragment CtfPageFields on Page {
       ...PageExtraSectionItemFields
     }
   }
+  __typename
+  sys {
+    id
+  }
 }
 
 query CtfPage($slug: String!, $locale: String, $preview: Boolean) {

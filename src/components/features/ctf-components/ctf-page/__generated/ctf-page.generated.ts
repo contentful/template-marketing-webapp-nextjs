@@ -60,7 +60,7 @@ export type PageExtraSectionItemFields_ComponentTextBlock_Fragment = { __typenam
 
 export type PageExtraSectionItemFieldsFragment = PageExtraSectionItemFields_ComponentCta_Fragment | PageExtraSectionItemFields_ComponentDuplex_Fragment | PageExtraSectionItemFields_ComponentHeroBanner_Fragment | PageExtraSectionItemFields_ComponentInfoBlock_Fragment | PageExtraSectionItemFields_ComponentQuote_Fragment | PageExtraSectionItemFields_ComponentTextBlock_Fragment;
 
-export type CtfPageFieldsFragment = { __typename?: 'Page', pageName?: string | null, slug?: string | null, internalName?: string | null, seo?: { __typename?: 'Seo', title?: string | null, description?: string | null, noIndex?: boolean | null, noFollow?: boolean | null, image?: (
+export type CtfPageFieldsFragment = { __typename: 'Page', pageName?: string | null, slug?: string | null, internalName?: string | null, seo?: { __typename?: 'Seo', title?: string | null, description?: string | null, noIndex?: boolean | null, noFollow?: boolean | null, image?: (
       { __typename?: 'Asset' }
       & AssetFieldsFragment
     ) | null } | null, topSectionCollection?: { __typename?: 'PageTopSectionCollection', items: Array<(
@@ -108,7 +108,7 @@ export type CtfPageFieldsFragment = { __typename?: 'Page', pageName?: string | n
     ) | (
       { __typename: 'ComponentTextBlock', sys: { __typename?: 'Sys', id: string } }
       & PageExtraSectionItemFields_ComponentTextBlock_Fragment
-    ) | null> } | null };
+    ) | null> } | null, sys: { __typename?: 'Sys', id: string } };
 
 export type CtfPageQueryVariables = Types.Exact<{
   slug: Types.Scalars['String'];
@@ -226,6 +226,10 @@ export const CtfPageFieldsFragmentDoc = `
       }
       ...PageExtraSectionItemFields
     }
+  }
+  __typename
+  sys {
+    id
   }
 }
     `;
