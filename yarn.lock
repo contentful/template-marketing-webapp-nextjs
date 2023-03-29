@@ -1077,10 +1077,10 @@
   resolved "https://registry.yarnpkg.com/@colors/colors/-/colors-1.5.0.tgz#bb504579c1cae923e6576a4f5da43d25f97bdbd9"
   integrity sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==
 
-"@contentful/live-preview@^1.6.0":
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/@contentful/live-preview/-/live-preview-1.6.0.tgz#262b67f23e831b9278ff7d61393888e55c9126af"
-  integrity sha512-bFhRaiFYR8w0X9AMgt4dX0cQLbHW5nF650/UH6QqWNDCMcCr5zh6cwiXgA7LuUeklX1r2naLycTrI4X9KQOYgg==
+"@contentful/live-preview@^1.6.1":
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/@contentful/live-preview/-/live-preview-1.6.1.tgz#bd9f883ead4cb642c19dceedf7cce1e052953494"
+  integrity sha512-ffMQVc4DqE6NTKIU+ZkXZ/j5DOJp9R6Hew5WFAawD4in9xjUa4hhNYeHEHYuIkX4IWDsAS0rA5a/EoXlkzzVGA==
   dependencies:
     contentful-management "^10.30.1"
     use-deep-compare-effect "^1.8.1"
