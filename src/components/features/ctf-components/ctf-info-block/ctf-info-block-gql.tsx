@@ -1,4 +1,4 @@
-import { useContentfulLiveUpdates } from '@contentful/live-preview/dist/react';
+import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
 
 import { useCtfInfoBlockQuery } from './__generated/ctf-info-block.generated';
 import { CtfInfoBlock } from './ctf-info-block';

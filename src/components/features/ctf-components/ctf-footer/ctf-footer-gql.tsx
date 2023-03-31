@@ -1,4 +1,4 @@
-import { useContentfulLiveUpdates } from '@contentful/live-preview/dist/react';
+import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
 import React from 'react';
 
 import { useCtfFooterQuery } from './__generated/ctf-footer.generated';

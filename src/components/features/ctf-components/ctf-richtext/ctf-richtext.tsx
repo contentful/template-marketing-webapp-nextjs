@@ -1,4 +1,4 @@
-import { useContentfulLiveUpdates } from '@contentful/live-preview/dist/react';
+import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
 import { documentToReactComponents, Options } from '@contentful/rich-text-react-renderer';
 import { Block as RichtextBlock, BLOCKS, INLINES } from '@contentful/rich-text-types';
 import { Theme, Typography, Container } from '@mui/material';
@@ -241,7 +241,8 @@ export const CtfRichtext = (props: CtfRichtextPropsInterface) => {
             'cta-subline',
             'hero-banner-body',
             'post-intro',
-          ].includes(layout.parent)}>
+          ].includes(layout.parent)}
+        >
           <div className={containerClassName}>
             <div className={clsx(classes.paragraphGridContainer, gridClassName)}>
               {containerProps.children}
@@ -363,7 +364,8 @@ export const CtfRichtext = (props: CtfRichtextPropsInterface) => {
           <div
             style={{
               overflow: 'auto',
-            }}>
+            }}
+          >
             <table>{children}</table>
           </div>
         </ParagraphGridContainer>

@@ -1,4 +1,4 @@
-import { useContentfulLiveUpdates } from '@contentful/live-preview/dist/react';
+import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
 
 import { useCtfNavigationQuery } from './__generated/ctf-navigation.generated';
 import { CtfNavigation } from './ctf-navigation';

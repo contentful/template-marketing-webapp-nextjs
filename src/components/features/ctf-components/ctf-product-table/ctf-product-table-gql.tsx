@@ -1,4 +1,4 @@
-import { useContentfulLiveUpdates } from '@contentful/live-preview/dist/react';
+import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
 import { Container } from '@mui/material';
 
 import { useCtfProductTableQuery } from './__generated/ctf-product-table.generated';
