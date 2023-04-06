@@ -6,7 +6,6 @@ import React, { useState, useEffect, ReactElement } from 'react';
 import { Header } from '../header';
 
 import { CtfFooterGql } from '@src/components/features/ctf-components/ctf-footer/ctf-footer-gql';
-import { CtfMobileMenuGql } from '@src/components/features/ctf-components/ctf-mobile-menu/ctf-mobile-menu-gql';
 
 const useStyles = makeStyles((theme: Theme) => ({
   content: {
@@ -55,14 +54,6 @@ export const Layout: React.FC<LayoutPropsInterface> = ({ children }) => {
 
       {/* footer */}
       <CtfFooterGql />
-
-      {/* mobile menu */}
-      <CtfMobileMenuGql
-        isOpen={isMenuOpen}
-        onOpenChange={(newOpen: boolean) => {
-          setMenuOpen(newOpen);
-        }}
-      />
     </>
   );
 };

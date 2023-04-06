@@ -3,7 +3,6 @@ import { NextPage, NextPageContext } from 'next';
 import { useRouter } from 'next/router';
 
 import { useCtfFooterQuery } from '@src/components/features/ctf-components/ctf-footer/__generated/ctf-footer.generated';
-import { useCtfNavigationQuery } from '@src/components/features/ctf-components/ctf-navigation/__generated/ctf-navigation.generated';
 import { useCtfPageQuery } from '@src/components/features/ctf-components/ctf-page/__generated/ctf-page.generated';
 import CtfPageGgl from '@src/components/features/ctf-components/ctf-page/ctf-page-gql';
 import { ComponentReferenceFieldsFragment } from '@src/lib/__generated/graphql.types';
@@ -36,10 +35,7 @@ export const getServerSideProps = async ({ locale, params }: CustomNextPageConte
       useCtfPageQuery.getKey({ slug, locale, preview: false }),
       useCtfPageQuery.fetcher({ slug, locale, preview: false }),
     );
-    await queryClient.prefetchQuery(
-      useCtfNavigationQuery.getKey({ locale, preview: false }),
-      useCtfNavigationQuery.fetcher({ locale, preview: false }),
-    );
+
     await queryClient.prefetchQuery(
       useCtfFooterQuery.getKey({ locale, preview: false }),
       useCtfFooterQuery.fetcher({ locale, preview: false }),
@@ -50,12 +46,10 @@ export const getServerSideProps = async ({ locale, params }: CustomNextPageConte
     const page = pageData.pageCollection?.items[0];
 
     const topSection = page?.topSectionCollection?.items;
-    const extraSection = page?.extraSectionCollection?.items;
     const content: ComponentReferenceFieldsFragment | undefined | null = page?.pageContent;
 
     await Promise.all([
       ...prefetchPromiseArr({ inputArr: topSection, locale, queryClient }),
-      ...prefetchPromiseArr({ inputArr: extraSection, locale, queryClient }),
       ...prefetchPromiseArr({ inputArr: [content], locale, queryClient }),
     ]);
 
@@ -80,26 +74,8 @@ export const getServerSideProps = async ({ locale, params }: CustomNextPageConte
         preview: false,
       })();
 
-      // Different data structured can be returned, this function makes sure the correct data is returned
-      const inputArr = (__typename => {
-        if ('topicBusinessInfo' in data) {
-          return data?.topicBusinessInfo?.body?.links.entries.block;
-        }
-
-        if ('topicPerson' in data) {
-          return [data?.topicPerson];
-        }
-
-        if ('topicProduct' in data) {
-          return [data?.topicProduct];
-        }
-
-        return [];
-      })();
-
       await Promise.all([
         ...prefetchPromiseArr({
-          inputArr,
           locale,
           queryClient,
         }),

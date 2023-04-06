@@ -10,10 +10,6 @@ fragment HeroBannerFields on ComponentHeroBanner {
   bodyText {
     json
   }
-  ctaText
-  targetPage {
-    ...PageLinkFields
-  }
   image {
     ...AssetFields
   }

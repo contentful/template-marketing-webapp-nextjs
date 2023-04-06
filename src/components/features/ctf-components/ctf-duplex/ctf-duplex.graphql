@@ -9,10 +9,6 @@ fragment DuplexFields on ComponentDuplex {
   bodyText {
     json
   }
-  ctaText
-  targetPage {
-    ...PageLinkFields
-  }
   image {
     ...AssetFields
   }
