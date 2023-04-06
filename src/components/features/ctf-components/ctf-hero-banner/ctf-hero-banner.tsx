@@ -101,8 +101,6 @@ export const CtfHeroBanner = (props: HeroBannerFieldsFragment) => {
     // Tutorial: uncomment the line below to make the Greeting field available to render
     // greeting,
     bodyText,
-    ctaText,
-    targetPage,
     colorPalette,
     heroSize: heroSizeBoolean,
   } = props;
@@ -161,17 +159,6 @@ export const CtfHeroBanner = (props: HeroBannerFieldsFragment) => {
               <CtfRichtext {...bodyText} className={classes.body} />
             </div>
           </LayoutContext.Provider>
-        )}
-        {targetPage && ctaText && (
-          <div className={classes.ctaContainer}>
-            <PageLink
-              page={targetPage}
-              variant="contained"
-              color={colorConfig.buttonColor}
-              isButton>
-              {ctaText}
-            </PageLink>
-          </div>
         )}
       </div>
     </Container>

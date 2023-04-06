@@ -92,7 +92,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 const DuplexContent = (props: DuplexFieldsFragment) => {
-  const { headline, bodyText, targetPage, ctaText, colorPalette } = props;
+  const { headline, bodyText, colorPalette } = props;
 
   const colorConfig = getColorConfigFromPalette(colorPalette || '');
   const classes = useStyles();
@@ -114,13 +114,6 @@ const DuplexContent = (props: DuplexFieldsFragment) => {
             <CtfRichtext {...bodyText} className={classes.richText} />
           </div>
         </LayoutContext.Provider>
-      )}
-      {targetPage && targetPage.slug && (
-        <div className={classes.ctaContainer}>
-          <PageLink page={targetPage} variant="contained" color={colorConfig.buttonColor} isButton>
-            {ctaText}
-          </PageLink>
-        </div>
       )}
     </div>
   );

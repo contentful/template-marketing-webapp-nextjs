@@ -1,10 +1,6 @@
 import * as Types from '../../../../../lib/__generated/graphql.types';
 
-import { MenuGroupFieldsFragment } from '../../../../../lib/shared-fragments/__generated/ctf-menuGroup.generated';
-import { PageLinkFieldsFragment } from '../../../page-link/__generated/page-link.generated';
 import { fetchConfig } from '@src/lib/fetchConfig';
-import { MenuGroupFieldsFragmentDoc } from '../../../../../lib/shared-fragments/__generated/ctf-menuGroup.generated';
-import { PageLinkFieldsFragmentDoc } from '../../../page-link/__generated/page-link.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 
 function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
@@ -26,13 +22,7 @@ function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
     return json.data;
   }
 }
-export type FooterFieldsFragment = { __typename?: 'FooterMenuCollection', items: Array<{ __typename?: 'FooterMenu', twitterLink?: string | null, facebookLink?: string | null, linkedinLink?: string | null, instagramLink?: string | null, menuItemsCollection?: { __typename?: 'FooterMenuMenuItemsCollection', items: Array<{ __typename?: 'MenuGroup', groupName?: string | null, featuredPagesCollection?: (
-          { __typename?: 'MenuGroupFeaturedPagesCollection' }
-          & MenuGroupFieldsFragment
-        ) | null } | null> } | null, legalLinks?: { __typename?: 'MenuGroup', featuredPagesCollection?: (
-        { __typename?: 'MenuGroupFeaturedPagesCollection' }
-        & MenuGroupFieldsFragment
-      ) | null } | null } | null> };
+export type FooterFieldsFragment = { __typename?: 'FooterMenuCollection', items: Array<{ __typename?: 'FooterMenu', twitterLink?: string | null, facebookLink?: string | null, linkedinLink?: string | null, instagramLink?: string | null } | null> };
 
 export type CtfFooterQueryVariables = Types.Exact<{
   locale?: Types.InputMaybe<Types.Scalars['String']>;
@@ -48,19 +38,6 @@ export type CtfFooterQuery = { __typename?: 'Query', footerMenuCollection?: (
 export const FooterFieldsFragmentDoc = `
     fragment FooterFields on FooterMenuCollection {
   items {
-    menuItemsCollection {
-      items {
-        groupName
-        featuredPagesCollection {
-          ...MenuGroupFields
-        }
-      }
-    }
-    legalLinks {
-      featuredPagesCollection {
-        ...MenuGroupFields
-      }
-    }
     twitterLink
     facebookLink
     linkedinLink
@@ -74,9 +51,7 @@ export const CtfFooterDocument = `
     ...FooterFields
   }
 }
-    ${FooterFieldsFragmentDoc}
-${MenuGroupFieldsFragmentDoc}
-${PageLinkFieldsFragmentDoc}`;
+    ${FooterFieldsFragmentDoc}`;
 export const useCtfFooterQuery = <
       TData = CtfFooterQuery,
       TError = unknown

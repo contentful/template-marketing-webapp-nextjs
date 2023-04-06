@@ -70,11 +70,7 @@ export const CardLeadership = (props: CardLeadershipPropsInterface) => {
   const classes = useStyles();
 
   return (
-    <div
-      className={clsx(
-        classes.root,
-        previousComponent === 'TopicPerson' ? classes.rootIncreasedSpacing : undefined,
-      )}>
+    <div className={clsx(classes.root, undefined)}>
       {avatar && (
         <div className={classes.avatar}>
           <CtfAsset {...avatar} showDescription={false} />
