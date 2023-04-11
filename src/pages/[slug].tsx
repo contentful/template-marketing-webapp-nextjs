@@ -7,7 +7,7 @@ import { useCtfPageQuery } from '@src/components/features/ctf-components/ctf-pag
 import CtfPageGgl from '@src/components/features/ctf-components/ctf-page/ctf-page-gql';
 import { ComponentReferenceFieldsFragment } from '@src/lib/__generated/graphql.types';
 import { getServerSideTranslations } from '@src/lib/get-serverside-translations';
-import { prefetchMap, PrefetchMappingTypeFetcher } from '@src/lib/prefetch-mappings';
+import { prefetchMap } from '@src/lib/prefetch-mappings';
 import { prefetchPromiseArr } from '@src/lib/prefetch-promise-array';
 
 const SlugPage: NextPage = () => {
@@ -67,12 +67,6 @@ export const getServerSideProps = async ({ locale, params }: CustomNextPageConte
         return {
           notFound: true,
         };
-
-      const data: PrefetchMappingTypeFetcher = await query.fetcher({
-        id: sys.id,
-        locale,
-        preview: false,
-      })();
 
       await Promise.all([
         ...prefetchPromiseArr({
