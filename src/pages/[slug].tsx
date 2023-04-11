@@ -54,7 +54,7 @@ export const getServerSideProps = async ({ locale, params }: CustomNextPageConte
     ]);
 
     if (content) {
-      const { __typename, sys } = content;
+      const { __typename } = content;
 
       if (!__typename)
         return {

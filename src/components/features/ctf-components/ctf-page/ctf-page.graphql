@@ -1,0 +1,17 @@
+fragment CtfPageFields on Page {
+  pageName
+  internalName: pageName
+  topSectionCollection(limit: 20) {
+    items {
+      ...ComponentReferenceFields
+    }
+  }
+}
+
+query CtfPage($locale: String, $preview: Boolean) {
+  pageCollection(locale: $locale, preview: $preview, limit: 1) {
+    items {
+      ...CtfPageFields
+    }
+  }
+}
