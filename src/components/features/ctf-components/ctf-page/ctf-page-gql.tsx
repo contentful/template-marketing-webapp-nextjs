@@ -29,13 +29,9 @@ const CtfPageGgl = () => {
     return <PageError error={error} />;
   }
 
-  const robots = [undefined, undefined].filter((x): x is string => x !== undefined);
-
   return (
     <>
       <Head>
-        {robots.length > 0 && <meta key="robots" name="robots" content={robots.join(', ')} />}
-
         <meta key="og:locale" property="og:locale" content={locale} />
       </Head>
       <CtfPage {...page} />

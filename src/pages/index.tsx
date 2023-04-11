@@ -8,7 +8,7 @@ import { getServerSideTranslations } from '@src/lib/get-serverside-translations'
 import { prefetchPromiseArr } from '@src/lib/prefetch-promise-array';
 
 const LangPage: NextPage = () => {
-  return <CtfPageGgl slug="/" />;
+  return <CtfPageGgl />;
 };
 
 export const getServerSideProps = async ({ locale }: NextPageContext) => {
@@ -17,8 +17,8 @@ export const getServerSideProps = async ({ locale }: NextPageContext) => {
 
     // Default queries
     await queryClient.prefetchQuery(
-      useCtfPageQuery.getKey({ slug: 'home', locale, preview: false }),
-      useCtfPageQuery.fetcher({ slug: 'home', locale, preview: false }),
+      useCtfPageQuery.getKey({ locale, preview: false }),
+      useCtfPageQuery.fetcher({ locale, preview: false }),
     );
 
     await queryClient.prefetchQuery(
@@ -27,16 +27,12 @@ export const getServerSideProps = async ({ locale }: NextPageContext) => {
     );
 
     // Dynamic queries
-    const pageData = await useCtfPageQuery.fetcher({ slug: 'home', locale, preview: false })();
+    const pageData = await useCtfPageQuery.fetcher({ locale, preview: false })();
     const page = pageData.pageCollection?.items[0];
 
     const topSection = page?.topSectionCollection?.items;
-    const content = page?.pageContent;
 
-    await Promise.all([
-      ...prefetchPromiseArr({ inputArr: topSection, locale, queryClient }),
-      ...prefetchPromiseArr({ inputArr: [content], locale, queryClient }),
-    ]);
+    await Promise.all([...prefetchPromiseArr({ inputArr: topSection, locale, queryClient })]);
 
     return {
       props: {
