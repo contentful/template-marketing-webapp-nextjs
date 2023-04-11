@@ -8,8 +8,6 @@ import { useTranslation } from 'next-i18next';
 
 import { FooterFieldsFragment } from './__generated/ctf-footer.generated';
 
-import { LanguageSelector } from '@src/components/features/language-selector';
-import { Link } from '@src/components/shared/link';
 import Logo from '@src/icons/logo-tagline.svg';
 import { CONTAINER_WIDTH } from '@src/theme';
 
@@ -219,18 +217,6 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
   const footerContent = props.items[0];
 
   const { t } = useTranslation();
-
-  const renderMenuGroupLinks = (menuGroup, listClassName) => {
-    return menuGroup?.items?.map((menuItem, i) => {
-      const href = getLinkHrefPrefix(menuItem);
-
-      return (
-        <li key={i} className={listClassName}>
-          <Link href={href} className={classes.menuItem}></Link>
-        </li>
-      );
-    });
-  };
 
   const classes = useStyles();
 

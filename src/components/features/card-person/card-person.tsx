@@ -1,8 +1,8 @@
 import { Theme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import { PersonFieldsFragment } from '@src/components/features/ctf-components/ctf-person/__generated/ctf-person.generated';
 
 import { Avatar } from '@src/components/features/avatar';
-import { PersonFieldsFragment } from '@src/components/features/ctf-components/ctf-person/__generated/ctf-person.generated';
 import { CtfRichtext } from '@src/components/features/ctf-components/ctf-richtext/ctf-richtext';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 
