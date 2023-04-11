@@ -5,7 +5,7 @@ import { appWithTranslation, SSRConfig } from 'next-i18next';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
-
+import { ContentfulLivePreview } from '@contentful/live-preview';
 import { Settings } from '@src/components/features/settings';
 import { Layout } from '@src/components/templates/layout/layout';
 import { useContentfulContext, ContentfulContentProvider } from '@src/contentful-context';
@@ -13,8 +13,11 @@ import { queryConfig } from '@src/lib/gql-client';
 import colorfulTheme from '@src/theme';
 import contentfulConfig from 'contentful.config';
 import nextI18nConfig from 'next-i18next.config';
+import '@contentful/live-preview/style.css';
 
 type CustomPageProps = SSRConfig & { dehydratedState: DehydratedState; err: Error };
+
+ContentfulLivePreview.init();
 
 const CustomApp = ({
   Component,

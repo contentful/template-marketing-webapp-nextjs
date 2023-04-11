@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
 import { useCtfFooterQuery } from './__generated/ctf-footer.generated';
 import { CtfFooter } from './ctf-footer';
 
@@ -13,7 +13,9 @@ export const CtfFooterGql = () => {
     preview: previewActive,
   });
 
-  if (!data?.footerMenuCollection || isLoading) return null;
+  const footerMenuCollection = useContentfulLiveUpdates(data?.footerMenuCollection, locale);
 
-  return <CtfFooter {...data.footerMenuCollection} />;
+  if (!footerMenuCollection || isLoading) return null;
+
+  return <CtfFooter {...footerMenuCollection} />;
 };
