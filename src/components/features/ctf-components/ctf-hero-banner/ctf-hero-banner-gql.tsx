@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
 import { useCtfHeroBannerQuery } from './__generated/ctf-hero-banner.generated';
 import { CtfHeroBanner } from './ctf-hero-banner';
 
@@ -17,7 +17,9 @@ export const CtfHeroGql = (props: CtfHeroGqlPropsInterface) => {
     preview,
   });
 
-  if (!data?.componentHeroBanner || isLoading) return null;
+  const componentHeroBanner = useContentfulLiveUpdates(data?.componentHeroBanner, locale);
 
-  return <CtfHeroBanner {...data.componentHeroBanner} />;
+  if (!componentHeroBanner || isLoading) return null;
+
+  return <CtfHeroBanner {...componentHeroBanner} />;
 };

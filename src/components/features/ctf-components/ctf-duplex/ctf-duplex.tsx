@@ -2,9 +2,9 @@ import { Container, Typography } from '@mui/material';
 import { Theme } from '@mui/material/styles';
 import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
-
+import { ContentfulLivePreview } from '@contentful/live-preview';
 import { DuplexFieldsFragment } from './__generated/ctf-duplex.generated';
-
+import { useContentfulContext } from '@src/contentful-context';
 import { CtfImage } from '@src/components/features/ctf-components/ctf-image/ctf-image';
 import { CtfRichtext } from '@src/components/features/ctf-components/ctf-richtext/ctf-richtext';
 import { PageLink } from '@src/components/features/page-link';
@@ -93,6 +93,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const DuplexContent = (props: DuplexFieldsFragment) => {
   const { headline, bodyText, colorPalette } = props;
+  const { locale } = useContentfulContext();
 
   const colorConfig = getColorConfigFromPalette(colorPalette || '');
   const classes = useStyles();
@@ -104,10 +105,16 @@ const DuplexContent = (props: DuplexFieldsFragment) => {
           variant="h1"
           component="h2"
           className={classes.headline}
-          style={{ color: colorConfig.headlineColor }}>
+          style={{ color: colorConfig.headlineColor }}
+          {...ContentfulLivePreview.getProps({
+            entryId: props.sys.id,
+            fieldId: 'headline',
+            locale,
+          })}>
           {optimizeLineBreak(headline)}
         </Typography>
       )}
+
       {bodyText && (
         <LayoutContext.Provider value={{ ...defaultLayout, parent: 'duplex' }}>
           <div style={{ color: colorConfig.textColor }}>

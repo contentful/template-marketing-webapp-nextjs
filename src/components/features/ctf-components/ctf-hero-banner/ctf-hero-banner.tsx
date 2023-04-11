@@ -2,9 +2,9 @@ import { Container, Theme, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import { useMemo } from 'react';
-
+import { ContentfulLivePreview } from '@contentful/live-preview';
 import { HeroBannerFieldsFragment } from './__generated/ctf-hero-banner.generated';
-
+import { useContentfulContext } from '@src/contentful-context';
 import { CtfRichtext } from '@src/components/features/ctf-components/ctf-richtext/ctf-richtext';
 import { PageLink } from '@src/components/features/page-link';
 import LayoutContext, { defaultLayout, useLayoutContext } from '@src/layout-context';
@@ -102,9 +102,11 @@ export const CtfHeroBanner = (props: HeroBannerFieldsFragment) => {
     // greeting,
     bodyText,
     colorPalette,
+    sys: { id },
     heroSize: heroSizeBoolean,
   } = props;
   const layout = useLayoutContext();
+  const { locale } = useContentfulContext();
 
   const colorConfig = getColorConfigFromPalette(colorPalette || '');
   const imageStyle = imageStyleBoolean ? 'partial' : 'full';
@@ -122,6 +124,7 @@ export const CtfHeroBanner = (props: HeroBannerFieldsFragment) => {
     <Container
       maxWidth={false}
       className={clsx(classes.root, heroSize === 'full_screen' ? classes.fullScreen : null)}
+      {...ContentfulLivePreview.getProps({ entryId: id, fieldId: 'image', locale })}
       style={{
         backgroundImage:
           imageStyle === 'full' && backgroundImage ? `url(${backgroundImage!})` : undefined,
@@ -149,13 +152,16 @@ export const CtfHeroBanner = (props: HeroBannerFieldsFragment) => {
           <Typography
             variant="h1"
             className={classes.headline}
-            style={{ color: colorConfig.headlineColor }}>
+            style={{ color: colorConfig.headlineColor }}
+            {...ContentfulLivePreview.getProps({ entryId: id, fieldId: 'headline', locale })}>
             {headline}
           </Typography>
         )}
         {bodyText && (
           <LayoutContext.Provider value={{ ...defaultLayout, parent: 'hero-banner-body' }}>
-            <div style={{ color: colorConfig.textColor }}>
+            <div
+              style={{ color: colorConfig.textColor }}
+              {...ContentfulLivePreview.getProps({ entryId: id, fieldId: 'bodyText', locale })}>
               <CtfRichtext {...bodyText} className={classes.body} />
             </div>
           </LayoutContext.Provider>
