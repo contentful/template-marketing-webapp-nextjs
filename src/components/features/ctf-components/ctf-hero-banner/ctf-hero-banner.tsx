@@ -6,7 +6,6 @@ import { ContentfulLivePreview } from '@contentful/live-preview';
 import { HeroBannerFieldsFragment } from './__generated/ctf-hero-banner.generated';
 import { useContentfulContext } from '@src/contentful-context';
 import { CtfRichtext } from '@src/components/features/ctf-components/ctf-richtext/ctf-richtext';
-import { PageLink } from '@src/components/features/page-link';
 import LayoutContext, { defaultLayout, useLayoutContext } from '@src/layout-context';
 import { getColorConfigFromPalette, HEADER_HEIGHT_MD, HEADER_HEIGHT } from '@src/theme';
 

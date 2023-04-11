@@ -7,7 +7,6 @@ import { DuplexFieldsFragment } from './__generated/ctf-duplex.generated';
 import { useContentfulContext } from '@src/contentful-context';
 import { CtfImage } from '@src/components/features/ctf-components/ctf-image/ctf-image';
 import { CtfRichtext } from '@src/components/features/ctf-components/ctf-richtext/ctf-richtext';
-import { PageLink } from '@src/components/features/page-link';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 import { getColorConfigFromPalette } from '@src/theme';
 import { optimizeLineBreak } from '@src/utils';

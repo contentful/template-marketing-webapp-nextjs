@@ -6,16 +6,9 @@ import { useCtfPageQuery } from '@src/components/features/ctf-components/ctf-pag
 import { PageError } from '@src/components/features/errors/page-error';
 import { useContentfulContext } from '@src/contentful-context';
 import { tryget } from '@src/utils';
-import contentfulConfig from 'contentful.config';
 
-interface Props {
-  topic?: string;
-}
-
-const CtfPageGgl = Props => {
+const CtfPageGgl = () => {
   const { locale } = useContentfulContext();
-
-  const slug = 'home';
 
   const { previewActive } = useContentfulContext();
 
@@ -36,13 +29,9 @@ const CtfPageGgl = Props => {
     return <PageError error={error} />;
   }
 
-  const robots = [undefined, undefined].filter((x): x is string => x !== undefined);
-
   return (
     <>
       <Head>
-        {robots.length > 0 && <meta key="robots" name="robots" content={robots.join(', ')} />}
-
         <meta key="og:locale" property="og:locale" content={locale} />
       </Head>
       <CtfPage {...page} />

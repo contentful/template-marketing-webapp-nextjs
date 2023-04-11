@@ -10,7 +10,7 @@ export type PageLinkProps = Omit<LinkProps, 'children'> & {
 };
 
 export const PageLink = (props: PageLinkProps) => {
-  const pathname = props.page.slug ? `/${props.page.slug}` : ``;
+  const pathname = ``;
 
   const linkProps = {
     href: pathname,
