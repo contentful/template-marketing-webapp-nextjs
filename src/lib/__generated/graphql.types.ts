@@ -3654,6 +3654,42 @@ export type CtfNavigationQueryVariables = Exact<{
 
 export type CtfNavigationQuery = { __typename?: 'Query', navigationMenuCollection?: { __typename?: 'NavigationMenuCollection', items: Array<{ __typename?: 'NavigationMenu', menuItemsCollection?: { __typename?: 'NavigationMenuMenuItemsCollection', items: Array<{ __typename?: 'MenuGroup', label?: string | null, link?: { __typename: 'Page', slug?: string | null, pageName?: string | null, sys: { __typename?: 'Sys', id: string }, pageContent?: { __typename: 'ComponentProductTable', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProduct', sys: { __typename?: 'Sys', id: string } } | null } | null, children?: { __typename?: 'MenuGroupFeaturedPagesCollection', items: Array<{ __typename: 'Page', slug?: string | null, pageName?: string | null, sys: { __typename?: 'Sys', id: string }, pageContent?: { __typename: 'ComponentProductTable', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProduct', sys: { __typename?: 'Sys', id: string } } | null } | null> } | null } | null> } | null } | null> } | null };
 
+type PageTopSectionFields_ComponentCta_Fragment = { __typename: 'ComponentCta', internalName?: string | null };
+
+type PageTopSectionFields_ComponentDuplex_Fragment = { __typename: 'ComponentDuplex', internalName?: string | null };
+
+type PageTopSectionFields_ComponentHeroBanner_Fragment = { __typename: 'ComponentHeroBanner', internalName?: string | null };
+
+type PageTopSectionFields_ComponentInfoBlock_Fragment = { __typename: 'ComponentInfoBlock', internalName?: string | null };
+
+type PageTopSectionFields_ComponentQuote_Fragment = { __typename: 'ComponentQuote', internalName?: string | null };
+
+type PageTopSectionFields_ComponentTextBlock_Fragment = { __typename: 'ComponentTextBlock', internalName?: string | null };
+
+export type PageTopSectionFieldsFragment = PageTopSectionFields_ComponentCta_Fragment | PageTopSectionFields_ComponentDuplex_Fragment | PageTopSectionFields_ComponentHeroBanner_Fragment | PageTopSectionFields_ComponentInfoBlock_Fragment | PageTopSectionFields_ComponentQuote_Fragment | PageTopSectionFields_ComponentTextBlock_Fragment;
+
+type PageContentFields_ComponentProductTable_Fragment = { __typename: 'ComponentProductTable', internalName?: string | null };
+
+type PageContentFields_TopicBusinessInfo_Fragment = { __typename: 'TopicBusinessInfo', internalName?: string | null };
+
+type PageContentFields_TopicProduct_Fragment = { __typename: 'TopicProduct', internalName?: string | null };
+
+export type PageContentFieldsFragment = PageContentFields_ComponentProductTable_Fragment | PageContentFields_TopicBusinessInfo_Fragment | PageContentFields_TopicProduct_Fragment;
+
+type PageExtraSectionItemFields_ComponentCta_Fragment = { __typename: 'ComponentCta', internalName?: string | null };
+
+type PageExtraSectionItemFields_ComponentDuplex_Fragment = { __typename: 'ComponentDuplex', internalName?: string | null };
+
+type PageExtraSectionItemFields_ComponentHeroBanner_Fragment = { __typename: 'ComponentHeroBanner', internalName?: string | null };
+
+type PageExtraSectionItemFields_ComponentInfoBlock_Fragment = { __typename: 'ComponentInfoBlock', internalName?: string | null };
+
+type PageExtraSectionItemFields_ComponentQuote_Fragment = { __typename: 'ComponentQuote', internalName?: string | null };
+
+type PageExtraSectionItemFields_ComponentTextBlock_Fragment = { __typename: 'ComponentTextBlock', internalName?: string | null };
+
+export type PageExtraSectionItemFieldsFragment = PageExtraSectionItemFields_ComponentCta_Fragment | PageExtraSectionItemFields_ComponentDuplex_Fragment | PageExtraSectionItemFields_ComponentHeroBanner_Fragment | PageExtraSectionItemFields_ComponentInfoBlock_Fragment | PageExtraSectionItemFields_ComponentQuote_Fragment | PageExtraSectionItemFields_ComponentTextBlock_Fragment;
+
 export type CtfPageFieldsFragment = { __typename?: 'Page', pageName?: string | null, slug?: string | null, internalName?: string | null, seo?: { __typename?: 'Seo', title?: string | null, description?: string | null, noIndex?: boolean | null, noFollow?: boolean | null, image?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null } | null, topSectionCollection?: { __typename?: 'PageTopSectionCollection', items: Array<{ __typename: 'ComponentCta', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentInfoBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentTextBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null, pageContent?: { __typename: 'ComponentProductTable', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicBusinessInfo', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'TopicProduct', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | null, extraSectionCollection?: { __typename?: 'PageExtraSectionCollection', items: Array<{ __typename: 'ComponentCta', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentInfoBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentTextBlock', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null };
 
 export type CtfPageQueryVariables = Exact<{
