@@ -2,9 +2,9 @@ const url = process.env.NEXT_PUBLIC_BASE_URL;
 
 module.exports = {
   contentful: {
-    space_id: process.env.CONTENTFUL_SPACE_ID || '',
-    cda_token: process.env.CONTENTFUL_ACCESS_TOKEN || '',
-    cpa_token: process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN || '',
+    space_id: process.env.NEXT_PUBLIC_CONFIG_CONTENTFUL_SPACE_ID || '',
+    cda_token: process.env.NEXT_PUBLIC_CONFIG_CONTENTFUL_DELIVERY_API_TOKEN || '',
+    cpa_token: process.env.NEXT_PUBLIC_CONFIG_CONTENTFUL_PREVIEW_API_TOKEN || '',
   },
   meta: {
     title: 'Digital banking for the new generation | Colorful Coin',
