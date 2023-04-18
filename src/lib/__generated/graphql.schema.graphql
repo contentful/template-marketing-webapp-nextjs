@@ -732,6 +732,7 @@ type Page implements Entry {
   internalName(locale: String): String
   linkedFrom(allowedLocales: [String]): PageLinkingCollections
   pageName(locale: String): String
+  slug(locale: String): String
   sys: Sys!
   topSectionCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageTopSectionCollection
 }
@@ -761,6 +762,13 @@ input PageFilter {
   pageName_not: String
   pageName_not_contains: String
   pageName_not_in: [String]
+  slug: String
+  slug_contains: String
+  slug_exists: Boolean
+  slug_in: [String]
+  slug_not: String
+  slug_not_contains: String
+  slug_not_in: [String]
   sys: SysFilter
   topSectionCollection_exists: Boolean
 }
@@ -774,6 +782,8 @@ enum PageOrder {
   internalName_DESC
   pageName_ASC
   pageName_DESC
+  slug_ASC
+  slug_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC

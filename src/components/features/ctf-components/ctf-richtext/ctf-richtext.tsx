@@ -1,3 +1,4 @@
+import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
 import { documentToReactComponents, Options } from '@contentful/rich-text-react-renderer';
 import { Block as RichtextBlock, BLOCKS, INLINES } from '@contentful/rich-text-types';
 import { Theme, Typography, Container } from '@mui/material';
@@ -193,11 +194,13 @@ const EntryHyperlink = ({ node }) => {
     preview: previewActive,
   });
 
+  const page = useContentfulLiveUpdates(data?.page, locale);
+
   if (!data || isLoading) return null;
 
-  if (data.page) {
+  if (page) {
     return (
-      <PageLink page={data.page} variant="contained" underline>
+      <PageLink page={page} variant="contained" underline>
         {(node.content[0] as any).value}
       </PageLink>
     );

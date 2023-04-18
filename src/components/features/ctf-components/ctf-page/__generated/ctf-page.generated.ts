@@ -1,8 +1,6 @@
 import * as Types from '../../../../../lib/__generated/graphql.types';
 
-import { ComponentReferenceFields_ComponentDuplex_Fragment, ComponentReferenceFields_ComponentHeroBanner_Fragment, ComponentReferenceFields_ComponentQuote_Fragment, ComponentReferenceFields_FooterMenu_Fragment, ComponentReferenceFields_Page_Fragment } from '../../../../../lib/shared-fragments/__generated/ctf-componentMap.generated';
 import { fetchConfig } from '@src/lib/fetchConfig';
-import { ComponentReferenceFieldsFragmentDoc } from '../../../../../lib/shared-fragments/__generated/ctf-componentMap.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 
 function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
@@ -24,18 +22,27 @@ function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
     return json.data;
   }
 }
-export type CtfPageFieldsFragment = { __typename?: 'Page', pageName?: string | null, internalName?: string | null, topSectionCollection?: { __typename?: 'PageTopSectionCollection', items: Array<(
-      { __typename?: 'ComponentDuplex' }
-      & ComponentReferenceFields_ComponentDuplex_Fragment
+export type PageTopSectionFields_ComponentDuplex_Fragment = { __typename: 'ComponentDuplex', internalName?: string | null };
+
+export type PageTopSectionFields_ComponentHeroBanner_Fragment = { __typename: 'ComponentHeroBanner', internalName?: string | null };
+
+export type PageTopSectionFields_ComponentQuote_Fragment = { __typename: 'ComponentQuote', internalName?: string | null };
+
+export type PageTopSectionFieldsFragment = PageTopSectionFields_ComponentDuplex_Fragment | PageTopSectionFields_ComponentHeroBanner_Fragment | PageTopSectionFields_ComponentQuote_Fragment;
+
+export type CtfPageFieldsFragment = { __typename?: 'Page', pageName?: string | null, slug?: string | null, internalName?: string | null, topSectionCollection?: { __typename?: 'PageTopSectionCollection', items: Array<(
+      { __typename: 'ComponentDuplex', sys: { __typename?: 'Sys', id: string } }
+      & PageTopSectionFields_ComponentDuplex_Fragment
     ) | (
-      { __typename?: 'ComponentHeroBanner' }
-      & ComponentReferenceFields_ComponentHeroBanner_Fragment
+      { __typename: 'ComponentHeroBanner', sys: { __typename?: 'Sys', id: string } }
+      & PageTopSectionFields_ComponentHeroBanner_Fragment
     ) | (
-      { __typename?: 'ComponentQuote' }
-      & ComponentReferenceFields_ComponentQuote_Fragment
+      { __typename: 'ComponentQuote', sys: { __typename?: 'Sys', id: string } }
+      & PageTopSectionFields_ComponentQuote_Fragment
     ) | null> } | null };
 
 export type CtfPageQueryVariables = Types.Exact<{
+  slug: Types.Scalars['String'];
   locale?: Types.InputMaybe<Types.Scalars['String']>;
   preview?: Types.InputMaybe<Types.Scalars['Boolean']>;
 }>;
@@ -46,41 +53,67 @@ export type CtfPageQuery = { __typename?: 'Query', pageCollection?: { __typename
       & CtfPageFieldsFragment
     ) | null> } | null };
 
+export const PageTopSectionFieldsFragmentDoc = `
+    fragment PageTopSectionFields on PageTopSectionItem {
+  __typename
+  ... on ComponentDuplex {
+    internalName
+  }
+  ... on ComponentHeroBanner {
+    internalName
+  }
+  ... on ComponentQuote {
+    internalName
+  }
+}
+    `;
 export const CtfPageFieldsFragmentDoc = `
     fragment CtfPageFields on Page {
   pageName
   internalName: pageName
+  slug
   topSectionCollection(limit: 20) {
     items {
-      ...ComponentReferenceFields
+      ... on Entry {
+        __typename
+        sys {
+          id
+        }
+      }
+      ...PageTopSectionFields
     }
   }
 }
     `;
 export const CtfPageDocument = `
-    query CtfPage($locale: String, $preview: Boolean) {
-  pageCollection(locale: $locale, preview: $preview, limit: 1) {
+    query CtfPage($slug: String!, $locale: String, $preview: Boolean) {
+  pageCollection(
+    where: {slug: $slug}
+    locale: $locale
+    preview: $preview
+    limit: 1
+  ) {
     items {
       ...CtfPageFields
     }
   }
 }
     ${CtfPageFieldsFragmentDoc}
-${ComponentReferenceFieldsFragmentDoc}`;
+${PageTopSectionFieldsFragmentDoc}`;
 export const useCtfPageQuery = <
       TData = CtfPageQuery,
       TError = unknown
     >(
-      variables?: CtfPageQueryVariables,
+      variables: CtfPageQueryVariables,
       options?: UseQueryOptions<CtfPageQuery, TError, TData>
     ) =>
     useQuery<CtfPageQuery, TError, TData>(
-      variables === undefined ? ['CtfPage'] : ['CtfPage', variables],
+      ['CtfPage', variables],
       fetcher<CtfPageQuery, CtfPageQueryVariables>(CtfPageDocument, variables),
       options
     );
 
-useCtfPageQuery.getKey = (variables?: CtfPageQueryVariables) => variables === undefined ? ['CtfPage'] : ['CtfPage', variables];
+useCtfPageQuery.getKey = (variables: CtfPageQueryVariables) => ['CtfPage', variables];
 ;
 
-useCtfPageQuery.fetcher = (variables?: CtfPageQueryVariables) => fetcher<CtfPageQuery, CtfPageQueryVariables>(CtfPageDocument, variables);
+useCtfPageQuery.fetcher = (variables: CtfPageQueryVariables) => fetcher<CtfPageQuery, CtfPageQueryVariables>(CtfPageDocument, variables);

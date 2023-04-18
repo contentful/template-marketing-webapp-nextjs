@@ -1,5 +1,6 @@
 fragment PageLinkFields on Page {
   __typename
+  slug
   sys {
     id
   }

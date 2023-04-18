@@ -1038,6 +1038,7 @@ export type Page = Entry & {
   internalName?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<PageLinkingCollections>;
   pageName?: Maybe<Scalars['String']>;
+  slug?: Maybe<Scalars['String']>;
   sys: Sys;
   topSectionCollection?: Maybe<PageTopSectionCollection>;
 };
@@ -1057,6 +1058,12 @@ export type PageLinkedFromArgs = {
 
 /** Container that enables editors to publish a page, define its slug, select & arrange its content [See type definition](https://app.contentful.com/spaces/6l2051vujkx5/content_types/page) */
 export type PagePageNameArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Container that enables editors to publish a page, define its slug, select & arrange its content [See type definition](https://app.contentful.com/spaces/6l2051vujkx5/content_types/page) */
+export type PageSlugArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
@@ -1095,6 +1102,13 @@ export type PageFilter = {
   pageName_not?: InputMaybe<Scalars['String']>;
   pageName_not_contains?: InputMaybe<Scalars['String']>;
   pageName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  slug?: InputMaybe<Scalars['String']>;
+  slug_contains?: InputMaybe<Scalars['String']>;
+  slug_exists?: InputMaybe<Scalars['Boolean']>;
+  slug_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  slug_not?: InputMaybe<Scalars['String']>;
+  slug_not_contains?: InputMaybe<Scalars['String']>;
+  slug_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   sys?: InputMaybe<SysFilter>;
   topSectionCollection_exists?: InputMaybe<Scalars['Boolean']>;
 };
@@ -1117,6 +1131,8 @@ export enum PageOrder {
   InternalNameDesc = 'internalName_DESC',
   PageNameAsc = 'pageName_ASC',
   PageNameDesc = 'pageName_DESC',
+  SlugAsc = 'slug_ASC',
+  SlugDesc = 'slug_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -1347,15 +1363,24 @@ export type CtfHeroBannerQueryVariables = Exact<{
 
 export type CtfHeroBannerQuery = { __typename?: 'Query', componentHeroBanner?: { __typename: 'ComponentHeroBanner', internalName?: string | null, headline?: string | null, imageStyle?: boolean | null, heroSize?: boolean | null, colorPalette?: string | null, sys: { __typename?: 'Sys', id: string }, bodyText?: { __typename?: 'ComponentHeroBannerBodyText', json: any } | null, image?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null } | null };
 
-export type CtfPageFieldsFragment = { __typename?: 'Page', pageName?: string | null, internalName?: string | null, topSectionCollection?: { __typename?: 'PageTopSectionCollection', items: Array<{ __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null };
+type PageTopSectionFields_ComponentDuplex_Fragment = { __typename: 'ComponentDuplex', internalName?: string | null };
+
+type PageTopSectionFields_ComponentHeroBanner_Fragment = { __typename: 'ComponentHeroBanner', internalName?: string | null };
+
+type PageTopSectionFields_ComponentQuote_Fragment = { __typename: 'ComponentQuote', internalName?: string | null };
+
+export type PageTopSectionFieldsFragment = PageTopSectionFields_ComponentDuplex_Fragment | PageTopSectionFields_ComponentHeroBanner_Fragment | PageTopSectionFields_ComponentQuote_Fragment;
+
+export type CtfPageFieldsFragment = { __typename?: 'Page', pageName?: string | null, slug?: string | null, internalName?: string | null, topSectionCollection?: { __typename?: 'PageTopSectionCollection', items: Array<{ __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null };
 
 export type CtfPageQueryVariables = Exact<{
+  slug: Scalars['String'];
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
 }>;
 
 
-export type CtfPageQuery = { __typename?: 'Query', pageCollection?: { __typename?: 'PageCollection', items: Array<{ __typename?: 'Page', pageName?: string | null, internalName?: string | null, topSectionCollection?: { __typename?: 'PageTopSectionCollection', items: Array<{ __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null } | null> } | null };
+export type CtfPageQuery = { __typename?: 'Query', pageCollection?: { __typename?: 'PageCollection', items: Array<{ __typename?: 'Page', pageName?: string | null, slug?: string | null, internalName?: string | null, topSectionCollection?: { __typename?: 'PageTopSectionCollection', items: Array<{ __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null } | null> } | null };
 
 export type QuoteFieldsFragment = { __typename: 'ComponentQuote', internalName?: string | null, quoteAlignment?: boolean | null, imagePosition?: boolean | null, colorPalette?: string | null, sys: { __typename?: 'Sys', id: string }, quote?: { __typename?: 'ComponentQuoteQuote', json: any, links: { __typename?: 'ComponentQuoteQuoteLinks', entries: { __typename?: 'ComponentQuoteQuoteEntries', block: Array<{ __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'FooterMenu', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Page', sys: { __typename?: 'Sys', id: string } } | null> }, assets: { __typename?: 'ComponentQuoteQuoteAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null, image?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null };
 
@@ -1368,7 +1393,7 @@ export type CtfQuoteQueryVariables = Exact<{
 
 export type CtfQuoteQuery = { __typename?: 'Query', componentQuote?: { __typename: 'ComponentQuote', internalName?: string | null, quoteAlignment?: boolean | null, imagePosition?: boolean | null, colorPalette?: string | null, sys: { __typename?: 'Sys', id: string }, quote?: { __typename?: 'ComponentQuoteQuote', json: any, links: { __typename?: 'ComponentQuoteQuoteLinks', entries: { __typename?: 'ComponentQuoteQuoteEntries', block: Array<{ __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentHeroBanner', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'ComponentQuote', internalName?: string | null, sys: { __typename?: 'Sys', id: string } } | { __typename: 'FooterMenu', sys: { __typename?: 'Sys', id: string } } | { __typename: 'Page', sys: { __typename?: 'Sys', id: string } } | null> }, assets: { __typename?: 'ComponentQuoteQuoteAssets', block: Array<{ __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } } } | null, image?: { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null } | null };
 
-export type RichTextHyperlinkFieldsFragment = { __typename?: 'Query', page?: { __typename: 'Page', pageName?: string | null, sys: { __typename?: 'Sys', id: string } } | null };
+export type RichTextHyperlinkFieldsFragment = { __typename?: 'Query', page?: { __typename: 'Page', slug?: string | null, pageName?: string | null, sys: { __typename?: 'Sys', id: string } } | null };
 
 export type CtfRichTextHyperlinkQueryVariables = Exact<{
   id: Scalars['String'];
@@ -1377,9 +1402,9 @@ export type CtfRichTextHyperlinkQueryVariables = Exact<{
 }>;
 
 
-export type CtfRichTextHyperlinkQuery = { __typename?: 'Query', page?: { __typename: 'Page', pageName?: string | null, sys: { __typename?: 'Sys', id: string } } | null };
+export type CtfRichTextHyperlinkQuery = { __typename?: 'Query', page?: { __typename: 'Page', slug?: string | null, pageName?: string | null, sys: { __typename?: 'Sys', id: string } } | null };
 
-export type PageLinkFieldsFragment = { __typename: 'Page', pageName?: string | null, sys: { __typename?: 'Sys', id: string } };
+export type PageLinkFieldsFragment = { __typename: 'Page', slug?: string | null, pageName?: string | null, sys: { __typename?: 'Sys', id: string } };
 
 type ComponentReferenceFields_ComponentDuplex_Fragment = { __typename: 'ComponentDuplex', internalName?: string | null, sys: { __typename?: 'Sys', id: string } };
 

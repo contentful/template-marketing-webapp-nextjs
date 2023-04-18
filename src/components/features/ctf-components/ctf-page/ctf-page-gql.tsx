@@ -1,3 +1,4 @@
+import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
 import Head from 'next/head';
 
 import CtfPage from './ctf-page';
@@ -7,17 +8,28 @@ import { PageError } from '@src/components/features/errors/page-error';
 import { useContentfulContext } from '@src/contentful-context';
 import { tryget } from '@src/utils';
 
-const CtfPageGgl = () => {
+interface Props {
+  topic?: string;
+  slug: string;
+}
+
+const CtfPageGgl = ({ slug: slugFromProps }: Props) => {
   const { locale } = useContentfulContext();
+
+  const slug = !slugFromProps || slugFromProps === '/' ? 'home' : slugFromProps;
 
   const { previewActive } = useContentfulContext();
 
   const { isLoading, data } = useCtfPageQuery({
+    slug,
     locale,
     preview: previewActive,
   });
 
-  const page = tryget(() => data?.pageCollection!.items[0]);
+  const page = useContentfulLiveUpdates(
+    tryget(() => data?.pageCollection!.items[0]),
+    locale,
+  );
 
   if (isLoading) return <></>;
   if (!page) {

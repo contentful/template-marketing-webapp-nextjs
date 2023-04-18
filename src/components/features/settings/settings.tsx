@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
 import { SettingsForm } from '@src/components/features/settings/settings-form';
+import { useExternalSpaceAndPreview } from '@src/components/features/settings/useExternalSpaceAndPreview';
 import SettingsIcon from '@src/icons/settings-icon.svg';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -58,8 +59,11 @@ export const Settings = () => {
   const classes = useStyles();
   const theme = useTheme();
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const { shouldUseSpaceCredsFromParams } = useExternalSpaceAndPreview();
 
   useEffect(() => {
+    if (!shouldUseSpaceCredsFromParams) return;
+
     if (settingsOpen === false) {
       document.body.classList.remove('is-scroll-locked');
       return;
@@ -70,7 +74,11 @@ export const Settings = () => {
     }
 
     document.body.classList.add('is-scroll-locked');
-  }, [settingsOpen, theme.breakpoints]);
+  }, [settingsOpen, shouldUseSpaceCredsFromParams, theme.breakpoints]);
+
+  if (!shouldUseSpaceCredsFromParams) {
+    return null;
+  }
 
   return (
     <>

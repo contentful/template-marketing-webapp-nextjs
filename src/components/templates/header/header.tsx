@@ -63,15 +63,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-interface HeaderPropsInterface {
-  isMenuOpen?: boolean;
-  onMenuClick?: () => any;
-}
-
-export const Header = (props: HeaderPropsInterface) => {
+export const Header = () => {
   const { t } = useTranslation();
 
-  const { onMenuClick, isMenuOpen } = props;
   const classes = useStyles();
 
   return (
@@ -88,18 +82,6 @@ export const Header = (props: HeaderPropsInterface) => {
             <Logo className={classes.corporateLogo} />
           </Link>
         </Container>
-
-        {/* menu button */}
-        <Box display={{ md: 'none' }}>
-          <IconButton
-            title={t('navigation.mobileMenuButton')}
-            onClick={() => onMenuClick?.()}
-            aria-controls="mobile-menu"
-            aria-expanded={isMenuOpen}
-            aria-haspopup="dialog">
-            <Menu />
-          </IconButton>
-        </Box>
       </Toolbar>
     </AppBar>
   );

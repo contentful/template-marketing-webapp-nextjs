@@ -33,7 +33,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@contentful/live-preview": "^1.7.2",
+    "@contentful/live-preview": "^1.9.0",
     "@contentful/rich-text-react-renderer": "^15.12.1",
     "@contentful/rich-text-types": "^15.12.1",
     "@emotion/react": "^11.10.4",
