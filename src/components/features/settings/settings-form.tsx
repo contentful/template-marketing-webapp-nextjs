@@ -255,8 +255,7 @@ export const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
   const router = useRouter();
 
   const classes = useStyles();
-  const { xrayActive, previewActive } = useContentfulContext();
-  const [newXrayActive, setNewXrayActive] = useState(xrayActive || false);
+  const { previewActive } = useContentfulContext();
   const [newPreviewActive, setNewPreviewActive] = useState(previewActive || false);
   const [isDirty, setIsDirty] = useState(false);
 
@@ -268,14 +267,6 @@ export const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
     }
 
     const queryParams = queryString.parse(window.location.search);
-
-    if (xrayActive !== newXrayActive) {
-      if (newXrayActive === false) {
-        delete queryParams.xray;
-      } else {
-        queryParams.xray = '1';
-      }
-    }
 
     if (previewActive !== newPreviewActive) {
       if (newPreviewActive === false) {
@@ -327,26 +318,6 @@ export const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
                 View draft entries, assets and unpublished content changes.
               </FormHelperText>
             </FormControl>
-
-            <FormControl margin="dense" fullWidth>
-              <FormControlLabel
-                className={classes.formControlLabel}
-                labelPlacement="start"
-                control={
-                  <Switch
-                    checked={newXrayActive}
-                    onChange={(_event, checked) => {
-                      setNewXrayActive(checked);
-                      setIsDirty(true);
-                    }}
-                  />
-                }
-                label="X-ray mode"
-              />
-              <FormHelperText>
-                Highlight components making up a page and provide a deep link to the entry editor.
-              </FormHelperText>
-            </FormControl>
           </div>
 
           <footer className={classes.footer}>
@@ -355,7 +326,8 @@ export const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
               type="button"
               variant="text"
               color="primary"
-              onClick={onClose}>
+              onClick={onClose}
+            >
               Close
             </Button>
             <Button
@@ -364,7 +336,8 @@ export const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
               variant="text"
               color="primary"
               onClick={onClose}
-              disabled={!isDirty}>
+              disabled={!isDirty}
+            >
               Apply changes
             </Button>
           </footer>

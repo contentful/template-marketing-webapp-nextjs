@@ -57,6 +57,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 export const Settings = () => {
   const classes = useStyles();
   const theme = useTheme();
+  const [enabled, setEnabled] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
 
   useEffect(() => {
@@ -72,6 +73,21 @@ export const Settings = () => {
     document.body.classList.add('is-scroll-locked');
   }, [settingsOpen, theme.breakpoints]);
 
+  useEffect(() => {
+    try {
+      if (window.top?.location.href === window.location.href) {
+        // Dont show the settings panel when embedded into an iframe (e.g. live preview)
+        setEnabled(true);
+      }
+    } catch (err) {
+      // window.top.location.href is not accessable for non same origin iframes
+    }
+  }, []);
+
+  if (!enabled) {
+    return null;
+  }
+
   return (
     <>
       <CSSTransition
@@ -83,7 +99,8 @@ export const Settings = () => {
           enterActive: classes.animationEnterActive,
           exit: classes.animationExit,
           exitActive: classes.animationExitActive,
-        }}>
+        }}
+      >
         <SettingsForm
           onClose={() => {
             setSettingsOpen(false);
@@ -96,7 +113,8 @@ export const Settings = () => {
         onClick={() => {
           setSettingsOpen(open => !open);
         }}
-        title="Toggle editorial toolbox">
+        title="Toggle editorial toolbox"
+      >
         <SettingsIcon className={classes.toggleImage} />
       </button>
     </>

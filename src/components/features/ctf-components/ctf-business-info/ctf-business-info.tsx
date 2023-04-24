@@ -15,10 +15,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     paddingBottom: theme.spacing(18),
     paddingTop: (props: BusinessInfoFieldsFragment) =>
       props.name || props.shortDescription ? 0 : theme.spacing(18),
-    '& .MuiContainer-root + .ComponentInfoBlock, & .MuiContainer-root + .xray-ComponentInfoBlock': {
+    '& .MuiContainer-root + .ComponentInfoBlock': {
       marginTop: theme.spacing(18),
     },
-    '& .ComponentInfoBlock + .MuiContainer-root, & .xray-ComponentInfoBlock + .MuiContainer-root': {
+    '& .ComponentInfoBlock + .MuiContainer-root': {
       marginTop: theme.spacing(18),
     },
   },
@@ -121,7 +121,8 @@ const CtfBusinessInfo = (props: BusinessInfoFieldsFragment) => {
                 <Typography
                   variant="h1"
                   className={classes.title}
-                  {...ContentfulLivePreview.getProps({ entryId: id, fieldId: 'name', locale })}>
+                  {...ContentfulLivePreview.getProps({ entryId: id, fieldId: 'name', locale })}
+                >
                   {name}
                 </Typography>
               )}
@@ -132,7 +133,8 @@ const CtfBusinessInfo = (props: BusinessInfoFieldsFragment) => {
                     entryId: id,
                     fieldId: 'shortDescription',
                     locale,
-                  })}>
+                  })}
+                >
                   {shortDescription}
                 </Typography>
               )}

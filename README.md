@@ -227,8 +227,7 @@ $~$
 There is a _component-resolver_ (_./src/components/component-resolver.tsx_) React component, which is used to pick the
 right React component for rendering a _content-type_.
 
-It requires as properties the _content type_ `id`, its `__typename`, `internalName` (used by XRAY-mode), and optionally
-the content.
+It requires as properties the _content type_ `id`, its `__typename`, `internalName` (used by live preview), and optionally the content.
 
 The **component-resolver** then uses a key map to find the right React component (`./src/mappings.ts`), where the key is
 the _content type_ name and the value is the React component.
