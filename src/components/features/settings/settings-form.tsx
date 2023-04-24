@@ -21,18 +21,24 @@ const useStyles = makeStyles((theme: Theme) => ({
     backgroundColor: '#fff',
     display: 'flex',
     flexDirection: 'column',
-    height: '100%',
     overflow: 'auto',
     position: 'fixed',
-    width: '100%',
+    bottom: theme.spacing(28),
+    boxShadow: '0 2px 30px rgba(0,0,0,0.29)',
+    height: '70rem',
+    maxHeight: `calc(100vh - ${theme.spacing(29)})`,
+    right: theme.spacing(9),
+    width: '42.3rem',
     zIndex: 1150,
-    [theme.breakpoints.up('md')]: {
-      bottom: theme.spacing(28),
-      boxShadow: '0 2px 30px rgba(0,0,0,0.29)',
-      height: '70rem',
-      maxHeight: `calc(100vh - ${theme.spacing(29)})`,
-      right: theme.spacing(9),
-      width: '42.3rem',
+
+    [theme.breakpoints.down('md')]: {
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      width: 'auto',
+      height: 'auto',
+      maxHeight: 'none',
     },
     '& .MuiTypography-h5, & .MuiFormLabel-root, & .MuiInputBase-root, & .MuiFormHelperText-root, & .MuiTypography-body1, & .MuiButton-root':
       {
@@ -177,36 +183,6 @@ const useStyles = makeStyles((theme: Theme) => ({
       width: 'calc(100% + 6rem)',
     },
   },
-  footerShadowContainer: {
-    bottom: 0,
-    height: '100%',
-    left: 0,
-    pointerEvents: 'none',
-    position: 'absolute',
-    top: 0,
-    right: 0,
-    width: '100%',
-    '&::before': {
-      content: '""',
-      display: 'block',
-      height: 'calc(100% + 1rem - 75px)',
-    },
-  },
-  footerShadow: {
-    backgroundColor: '#fff',
-    bottom: 0,
-    boxShadow: '0px -2px 4px -2px rgba(49,49,49,0.75)',
-    height: '75px',
-    marginLeft: '-1rem',
-    marginTop: 'auto',
-    position: 'sticky',
-    width: 'calc(100% + 2rem)',
-    zIndex: 1,
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: '-3rem',
-      width: 'calc(100% + 6rem)',
-    },
-  },
   footerButton: {
     backgroundColor: '#e5ebed',
     border: '0.1rem solid #c3cfd5',
@@ -255,8 +231,7 @@ export const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
   const router = useRouter();
 
   const classes = useStyles();
-  const { xrayActive, previewActive } = useContentfulContext();
-  const [newXrayActive, setNewXrayActive] = useState(xrayActive || false);
+  const { previewActive } = useContentfulContext();
   const [newPreviewActive, setNewPreviewActive] = useState(previewActive || false);
   const [isDirty, setIsDirty] = useState(false);
 
@@ -268,14 +243,6 @@ export const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
     }
 
     const queryParams = queryString.parse(window.location.search);
-
-    if (xrayActive !== newXrayActive) {
-      if (newXrayActive === false) {
-        delete queryParams.xray;
-      } else {
-        queryParams.xray = '1';
-      }
-    }
 
     if (previewActive !== newPreviewActive) {
       if (newPreviewActive === false) {
@@ -327,26 +294,6 @@ export const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
                 View draft entries, assets and unpublished content changes.
               </FormHelperText>
             </FormControl>
-
-            <FormControl margin="dense" fullWidth>
-              <FormControlLabel
-                className={classes.formControlLabel}
-                labelPlacement="start"
-                control={
-                  <Switch
-                    checked={newXrayActive}
-                    onChange={(_event, checked) => {
-                      setNewXrayActive(checked);
-                      setIsDirty(true);
-                    }}
-                  />
-                }
-                label="X-ray mode"
-              />
-              <FormHelperText>
-                Highlight components making up a page and provide a deep link to the entry editor.
-              </FormHelperText>
-            </FormControl>
           </div>
 
           <footer className={classes.footer}>
@@ -368,9 +315,6 @@ export const SettingsForm: React.FC<SettingsFormPropsInterface> = props => {
               Apply changes
             </Button>
           </footer>
-          <div className={classes.footerShadowContainer}>
-            <div className={classes.footerShadow} />
-          </div>
         </form>
       </div>
     </section>

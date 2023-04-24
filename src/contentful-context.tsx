@@ -10,7 +10,6 @@ export interface ContentfulContextInterface {
     main: string;
   };
   previewActive: boolean;
-  xrayActive: boolean;
 }
 
 export const contentfulContextValue: ContentfulContextInterface = {
@@ -19,7 +18,6 @@ export const contentfulContextValue: ContentfulContextInterface = {
     main: contentfulConfig.contentful.space_id,
   },
   previewActive: false,
-  xrayActive: false,
 };
 
 export const ContentfulContext = createContext<ContentfulContextInterface>(contentfulContextValue);
@@ -37,7 +35,6 @@ const ContentfulContentProvider = ({ children, router }) => {
           main: contentfulConfig.contentful.space_id,
         },
         previewActive,
-        xrayActive: !!router.query.xray,
       }}>
       {children}
     </ContentfulContext.Provider>

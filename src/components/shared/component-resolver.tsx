@@ -1,8 +1,6 @@
 import { Box } from '@mui/material';
 import React, { useMemo } from 'react';
 
-import { XrayFrame } from './xray-frame';
-
 import { useContentfulContext } from '@src/contentful-context';
 import { componentGqlMap, componentMap } from '@src/mappings';
 
@@ -24,19 +22,9 @@ interface Props {
   inline?: boolean;
 }
 
-const XrayWrapper = ({ xrayActive, componentProps, children }) => {
-  return xrayActive ? (
-    <XrayFrame {...componentProps} className={`xray-${componentProps.__typename}`}>
-      {children}
-    </XrayFrame>
-  ) : (
-    children
-  );
-};
-
 export const ComponentResolver = (props: Props) => {
   const { componentProps, inline = false } = props;
-  const { xrayActive, previewActive } = useContentfulContext();
+  const { previewActive } = useContentfulContext();
 
   const { locale } = useContentfulContext();
 
@@ -77,29 +65,27 @@ export const ComponentResolver = (props: Props) => {
   }
 
   return (
-    <XrayWrapper componentProps={componentProps} xrayActive={xrayActive}>
-      <Box
-        position="relative"
-        component={inline ? 'span' : 'div'}
-        className={componentProps.__typename}>
-        {Component ? (
-          <Component
-            {...componentProps}
-            locale={locale}
-            className={props.className}
-            previousComponent={previousComponentProp}
-          />
-        ) : (
-          <ComponentGql
-            id={componentProps.sys.id}
-            __typename={componentProps.__typename}
-            className={props.className}
-            preview={previewActive}
-            locale={locale}
-            previousComponent={previousComponentProp}
-          />
-        )}
-      </Box>
-    </XrayWrapper>
+    <Box
+      position="relative"
+      component={inline ? 'span' : 'div'}
+      className={componentProps.__typename}>
+      {Component ? (
+        <Component
+          {...componentProps}
+          locale={locale}
+          className={props.className}
+          previousComponent={previousComponentProp}
+        />
+      ) : (
+        <ComponentGql
+          id={componentProps.sys.id}
+          __typename={componentProps.__typename}
+          className={props.className}
+          preview={previewActive}
+          locale={locale}
+          previousComponent={previousComponentProp}
+        />
+      )}
+    </Box>
   );
 };
