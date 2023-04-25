@@ -180,7 +180,10 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
     return names;
   }, [productsCollection]);
 
-  const featuresGrid: Record<string, Record<string, any>> | null = useMemo(() => {
+  const featuresGrid: Record<
+    string,
+    Record<string, { attributes: Record<string, string>; value: any }>
+  > | null = useMemo(() => {
     if (!featureNames || !productsCollection) {
       return null;
     }
@@ -203,13 +206,19 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
           return;
         }
 
-        grid[featureName][product.sys.id] =
-          feature.shortDescription === null ? feature.longDescription : feature.shortDescription;
+        const fieldId: keyof typeof feature = feature.shortDescription
+          ? 'shortDescription'
+          : 'longDescription';
+
+        grid[featureName][product.sys.id] = {
+          attributes: ContentfulLivePreview.getProps({ fieldId, entryId: feature.sys.id, locale }),
+          value: feature[fieldId],
+        };
       });
     });
 
     return grid;
-  }, [featureNames, productsCollection]);
+  }, [featureNames, productsCollection, locale]);
 
   // Keeping the grid items the same size
   const gridElement = useRef<HTMLDivElement>(null);
@@ -408,8 +417,8 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                           <div className={classes.comparisonFeaturesBreak} />
                           <div
                             {...ContentfulLivePreview.getProps({
-                              entryId: id,
-                              fieldId: 'featureNames',
+                              entryId: product.sys.id,
+                              fieldId: 'features',
                               locale,
                             })}
                           >
@@ -419,14 +428,12 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                                   <div
                                     key={`${product.sys.id}-${featureName}`}
                                     className={classes.feature}
-                                    {...ContentfulLivePreview.getProps({
-                                      entryId: product.sys.id,
-                                      fieldId: 'shortDescription',
-                                      locale,
-                                    })}
+                                    {...featuresGrid[featureName][product.sys.id].attributes}
                                   >
                                     <div data-equal-size={i + 4} className={classes.featureInner}>
-                                      <CtfRichtext {...featuresGrid[featureName][product.sys.id]} />
+                                      <CtfRichtext
+                                        {...featuresGrid[featureName][product.sys.id].value}
+                                      />
                                     </div>
                                   </div>
                                 ),
