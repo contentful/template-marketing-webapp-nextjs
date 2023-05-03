@@ -1,9 +1,8 @@
-const dotenv = require('dotenv').config();
+require('dotenv').config();
 const nextComposePlugins = require('next-compose-plugins');
 
 const headers = require('./config/headers');
 const includePolyfills = require('./config/includePolyfills');
-const overridePaths = require('./config/overridePaths');
 const plugins = require('./config/plugins');
 const { i18n } = require('./next-i18next.config.js');
 
@@ -88,7 +87,6 @@ module.exports = withPlugins(plugins, {
     });
 
     includePolyfills(config);
-    overridePaths(config);
 
     return config;
   },

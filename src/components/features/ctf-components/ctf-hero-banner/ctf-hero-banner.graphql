@@ -3,7 +3,6 @@ fragment HeroBannerFields on ComponentHeroBanner {
   sys {
     id
   }
-  internalName
   # Tutorial: uncomment the line below to add the Greeting field to the query
   # greeting
   headline

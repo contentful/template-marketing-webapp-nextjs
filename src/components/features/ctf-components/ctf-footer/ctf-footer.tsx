@@ -254,7 +254,15 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
 
   return (
     <>
-      <Container maxWidth={false} className={classes.footerContainer}>
+      <Container
+        maxWidth={false}
+        className={classes.footerContainer}
+        {...ContentfulLivePreview.getProps({
+          entryId: footerContent?.sys?.id,
+          fieldId: 'menuItems',
+          locale,
+        })}
+      >
         <footer className={classes.footer}>
           {footerContent?.menuItemsCollection?.items?.length && (
             <nav role="navigation" className={classes.menuWrapper}>

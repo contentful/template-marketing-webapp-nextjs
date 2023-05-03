@@ -24,7 +24,7 @@ function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
     return json.data;
   }
 }
-export type InfoBlockFieldsFragment = { __typename: 'ComponentInfoBlock', internalName?: string | null, headline?: string | null, subline?: string | null, colorPalette?: string | null, sys: { __typename?: 'Sys', id: string }, block1Image?: (
+export type InfoBlockFieldsFragment = { __typename: 'ComponentInfoBlock', headline?: string | null, subline?: string | null, colorPalette?: string | null, sys: { __typename?: 'Sys', id: string }, block1Image?: (
     { __typename?: 'Asset' }
     & AssetFieldsFragment
   ) | null, block1Body?: { __typename?: 'ComponentInfoBlockBlock1Body', json: any } | null, block2Image?: (
@@ -53,7 +53,6 @@ export const InfoBlockFieldsFragmentDoc = `
   sys {
     id
   }
-  internalName
   headline
   subline
   block1Image {

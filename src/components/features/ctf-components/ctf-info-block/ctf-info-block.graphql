@@ -3,7 +3,6 @@ fragment InfoBlockFields on ComponentInfoBlock {
   sys {
     id
   }
-  internalName
   headline
   subline
   block1Image {

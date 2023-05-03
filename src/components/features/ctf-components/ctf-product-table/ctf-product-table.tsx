@@ -302,6 +302,11 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                       ref={el => {
                         gridColumnElements.current[j] = el;
                       }}
+                      {...ContentfulLivePreview.getProps({
+                        entryId: product.sys.id,
+                        fieldId: 'internalName',
+                        locale,
+                      })}
                     >
                       <div
                         className={classes.featuredImage}

@@ -24,7 +24,7 @@ function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
     return json.data;
   }
 }
-export type PersonFieldsFragment = { __typename: 'TopicPerson', internalName?: string | null, name?: string | null, website?: string | null, location?: string | null, cardStyle?: boolean | null, sys: { __typename?: 'Sys', id: string }, bio?: { __typename?: 'TopicPersonBio', json: any } | null, avatar?: (
+export type PersonFieldsFragment = { __typename: 'TopicPerson', name?: string | null, website?: string | null, location?: string | null, cardStyle?: boolean | null, sys: { __typename?: 'Sys', id: string }, bio?: { __typename?: 'TopicPersonBio', json: any } | null, avatar?: (
     { __typename?: 'Asset' }
     & AssetFieldsFragment
   ) | null };
@@ -47,7 +47,6 @@ export const PersonFieldsFragmentDoc = `
   sys {
     id
   }
-  internalName
   name
   bio {
     json

@@ -11,7 +11,6 @@ import { SectionHeadlines } from '@src/components/features/section-headlines';
 import { useContentfulContext } from '@src/contentful-context';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 import { getColorConfigFromPalette } from '@src/theme';
-// TODO replace this with the actual import
 
 const useStyles = makeStyles((theme: Theme) => ({
   innerContainer: {
@@ -102,14 +101,16 @@ export const CtfInfoBlock = (props: CtfInfoBlockPropsInterface) => {
       maxWidth={false}
       style={{
         backgroundColor: colorConfig.backgroundColor,
-      }}>
+      }}
+    >
       <div
         className={clsx(
           classes.innerContainer,
           previousComponent === 'ComponentInfoBlock' && !headline && !subline
             ? classes.innerContainerAfterInfoBlock
             : null,
-        )}>
+        )}
+      >
         <SectionHeadlines
           headline={headline}
           headlineProps={{
@@ -134,7 +135,8 @@ export const CtfInfoBlock = (props: CtfInfoBlockPropsInterface) => {
                       entryId: id,
                       fieldId: 'block1Image',
                       locale,
-                    })}>
+                    })}
+                  >
                     <CtfAsset {...block1Image} showDescription={false} />
                   </div>
                 )}
@@ -144,7 +146,8 @@ export const CtfInfoBlock = (props: CtfInfoBlockPropsInterface) => {
                     entryId: id,
                     fieldId: 'block1Body',
                     locale,
-                  })}>
+                  })}
+                >
                   <CtfRichtext {...block1Body} className={classes.itemText} />
                 </div>
               </div>
@@ -158,7 +161,8 @@ export const CtfInfoBlock = (props: CtfInfoBlockPropsInterface) => {
                       entryId: id,
                       fieldId: 'block2Image',
                       locale,
-                    })}>
+                    })}
+                  >
                     <CtfAsset {...block2Image} showDescription={false} />
                   </div>
                 )}
@@ -168,7 +172,8 @@ export const CtfInfoBlock = (props: CtfInfoBlockPropsInterface) => {
                     entryId: id,
                     fieldId: 'block2Body',
                     locale,
-                  })}>
+                  })}
+                >
                   <CtfRichtext {...block2Body} className={classes.itemText} />
                 </div>
               </div>
@@ -182,7 +187,8 @@ export const CtfInfoBlock = (props: CtfInfoBlockPropsInterface) => {
                       entryId: id,
                       fieldId: 'block3Image',
                       locale,
-                    })}>
+                    })}
+                  >
                     <CtfAsset {...block3Image} showDescription={false} />
                   </div>
                 )}
@@ -192,7 +198,8 @@ export const CtfInfoBlock = (props: CtfInfoBlockPropsInterface) => {
                     entryId: id,
                     fieldId: 'block3Body',
                     locale,
-                  })}>
+                  })}
+                >
                   <CtfRichtext {...block3Body} className={classes.itemText} />
                 </div>
               </div>

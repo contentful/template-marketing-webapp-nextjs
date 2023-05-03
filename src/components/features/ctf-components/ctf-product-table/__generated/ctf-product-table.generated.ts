@@ -28,7 +28,7 @@ function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
     return json.data;
   }
 }
-export type ProductTableFieldsFragment = { __typename: 'ComponentProductTable', internalName?: string | null, headline?: string | null, subline?: string | null, sys: { __typename?: 'Sys', id: string }, productsCollection?: { __typename?: 'ComponentProductTableProductsCollection', items: Array<(
+export type ProductTableFieldsFragment = { __typename: 'ComponentProductTable', headline?: string | null, subline?: string | null, sys: { __typename?: 'Sys', id: string }, productsCollection?: { __typename?: 'ComponentProductTableProductsCollection', items: Array<(
       { __typename?: 'TopicProduct' }
       & ProductFieldsFragment
     ) | null> } | null };
@@ -51,7 +51,6 @@ export const ProductTableFieldsFragmentDoc = `
   sys {
     id
   }
-  internalName
   headline
   subline
   productsCollection(limit: 3) {

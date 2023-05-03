@@ -3,7 +3,6 @@ fragment CtaFields on ComponentCta {
   sys {
     id
   }
-  internalName
   headline
   subline {
     json

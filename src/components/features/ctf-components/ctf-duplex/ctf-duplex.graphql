@@ -3,7 +3,6 @@ fragment DuplexFields on ComponentDuplex {
   sys {
     id
   }
-  internalName
   containerLayout
   headline
   bodyText {
