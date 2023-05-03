@@ -51,11 +51,11 @@ export const CtfMobileMenu = (props: MobileMenuPropsInterface) => {
   const mobileMenuContent = props.items[0];
 
   const renderMobileMenuLinks = menuGroup => {
-    return menuGroup?.items?.map((menuItem, i) => {
+    return menuGroup?.items?.map(menuItem => {
       const href = getLinkHrefPrefix(menuItem);
       const linkText = getLinkDisplayText(menuItem);
       return (
-        <li key={i}>
+        <li key={menuItem.sys.id}>
           <Link href={href} className={classes.menuItem}>
             {linkText}
           </Link>
@@ -71,22 +71,28 @@ export const CtfMobileMenu = (props: MobileMenuPropsInterface) => {
       onClose={onCloseClick}
       role="dialog"
       id="mobile-menu"
-      aria-modal={true}>
+      aria-modal={true}
+    >
       {mobileMenuContent?.menuItemsCollection?.items.length && (
         <nav role="navigation">
           <ul className={classes.menu}>
-            {mobileMenuContent.menuItemsCollection.items.map((menuItem, i) => (
-              <li key={i} className={classes.menuItem}>
-                {!menuItem?.link ? (
-                  menuItem?.label
-                ) : (
-                  <Link href={`/${menuItem?.link?.slug}`}>{menuItem?.label}</Link>
-                )}
-                {!menuItem?.link && menuItem?.children && (
-                  <ul className={classes.submenu}>{renderMobileMenuLinks(menuItem.children)}</ul>
-                )}
-              </li>
-            ))}
+            {mobileMenuContent.menuItemsCollection.items.map(
+              menuItem =>
+                menuItem && (
+                  <li key={menuItem.sys.id} className={classes.menuItem}>
+                    {!menuItem.link ? (
+                      menuItem.groupName
+                    ) : (
+                      <Link href={`/${menuItem.link.slug}`}>{menuItem.groupName}</Link>
+                    )}
+                    {!menuItem.link && menuItem.children && (
+                      <ul className={classes.submenu}>
+                        {renderMobileMenuLinks(menuItem.children)}
+                      </ul>
+                    )}
+                  </li>
+                ),
+            )}
           </ul>
         </nav>
       )}

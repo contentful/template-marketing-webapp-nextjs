@@ -684,6 +684,7 @@ input ComponentProductTableFilter {
   internalName_not: String
   internalName_not_contains: String
   internalName_not_in: [String]
+  products: cfTopicProductNestedFilter
   productsCollection_exists: Boolean
   subline: String
   subline_contains: String
@@ -1050,6 +1051,7 @@ input FooterMenuFilter {
   linkedinLink_not: String
   linkedinLink_not_contains: String
   linkedinLink_not_in: [String]
+  menuItems: cfMenuGroupNestedFilter
   menuItemsCollection_exists: Boolean
   sys: SysFilter
   twitterLink: String
@@ -1333,6 +1335,7 @@ input NavigationMenuFilter {
   internalName_not: String
   internalName_not_contains: String
   internalName_not_in: [String]
+  menuItems: cfMenuGroupNestedFilter
   menuItemsCollection_exists: Boolean
   sys: SysFilter
 }
@@ -2006,6 +2009,7 @@ input TopicProductFilter {
   description_exists: Boolean
   description_not_contains: String
   featuredImage_exists: Boolean
+  features: cfTopicProductFeatureNestedFilter
   featuresCollection_exists: Boolean
   internalName: String
   internalName_contains: String
@@ -2112,4 +2116,66 @@ input cfSeoNestedFilter {
   title_not: String
   title_not_contains: String
   title_not_in: [String]
+}
+
+input cfTopicProductFeatureNestedFilter {
+  AND: [cfTopicProductFeatureNestedFilter]
+  OR: [cfTopicProductFeatureNestedFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  longDescription_contains: String
+  longDescription_exists: Boolean
+  longDescription_not_contains: String
+  name: String
+  name_contains: String
+  name_exists: Boolean
+  name_in: [String]
+  name_not: String
+  name_not_contains: String
+  name_not_in: [String]
+  shortDescription_contains: String
+  shortDescription_exists: Boolean
+  shortDescription_not_contains: String
+  sys: SysFilter
+}
+
+input cfTopicProductNestedFilter {
+  AND: [cfTopicProductNestedFilter]
+  OR: [cfTopicProductNestedFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  description_contains: String
+  description_exists: Boolean
+  description_not_contains: String
+  featuredImage_exists: Boolean
+  featuresCollection_exists: Boolean
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  name: String
+  name_contains: String
+  name_exists: Boolean
+  name_in: [String]
+  name_not: String
+  name_not_contains: String
+  name_not_in: [String]
+  price: Float
+  price_exists: Boolean
+  price_gt: Float
+  price_gte: Float
+  price_in: [Float]
+  price_lt: Float
+  price_lte: Float
+  price_not: Float
+  price_not_in: [Float]
+  sys: SysFilter
 }

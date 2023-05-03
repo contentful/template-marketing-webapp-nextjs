@@ -6,7 +6,11 @@ fragment FooterFields on FooterMenuCollection {
     }
     menuItemsCollection {
       items {
+        __typename
         groupName
+        sys {
+          id
+        }
         featuredPagesCollection {
           ...MenuGroupFields
         }

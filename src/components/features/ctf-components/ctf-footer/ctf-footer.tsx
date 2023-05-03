@@ -228,11 +228,19 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
   const { locale } = useContentfulContext();
 
   const renderMenuGroupLinks = (menuGroup, listClassName) => {
-    return menuGroup?.items?.map((menuItem, i) => {
+    return menuGroup?.items?.map(menuItem => {
       const href = getLinkHrefPrefix(menuItem);
       const linkText = getLinkDisplayText(menuItem);
       return (
-        <li key={i} className={listClassName}>
+        <li
+          key={menuItem.sys.id}
+          className={listClassName}
+          {...ContentfulLivePreview.getProps({
+            entryId: menuItem.sys.id,
+            fieldId: 'pageName',
+            locale,
+          })}
+        >
           <Link href={href} className={classes.menuItem}>
             {linkText}
           </Link>
@@ -249,28 +257,35 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
         <footer className={classes.footer}>
           {footerContent?.menuItemsCollection?.items?.length && (
             <nav role="navigation" className={classes.menuWrapper}>
-              {footerContent.menuItemsCollection.items.map((menuItem, i) => (
-                <div key={i} className={classes.menuColumn}>
-                  <ul className={classes.menu}>
-                    <li
-                      {...ContentfulLivePreview.getProps({
-                        entryId: footerContent.sys.id,
-                        fieldId: menuItem?.groupName,
-                        locale,
-                      })}>
-                      <p className={classes.menuItem}>{menuItem?.groupName}</p>
-                      {menuItem?.featuredPagesCollection && (
-                        <ul className={classes.submenu}>
-                          {renderMenuGroupLinks(
-                            menuItem.featuredPagesCollection,
-                            classes.submenuItem,
+              {footerContent.menuItemsCollection.items.map(
+                menuItem =>
+                  menuItem && (
+                    <div key={menuItem.sys.id} className={classes.menuColumn}>
+                      <ul className={classes.menu}>
+                        <li>
+                          <p
+                            className={classes.menuItem}
+                            {...ContentfulLivePreview.getProps({
+                              entryId: menuItem.sys.id,
+                              fieldId: 'groupName',
+                              locale,
+                            })}
+                          >
+                            {menuItem.groupName}
+                          </p>
+                          {menuItem.featuredPagesCollection && (
+                            <ul className={classes.submenu}>
+                              {renderMenuGroupLinks(
+                                menuItem.featuredPagesCollection,
+                                classes.submenuItem,
+                              )}
+                            </ul>
                           )}
-                        </ul>
-                      )}
-                    </li>
-                  </ul>
-                </div>
-              ))}
+                        </li>
+                      </ul>
+                    </div>
+                  ),
+              )}
             </nav>
           )}
           <section className={classes.footerEndSection}>
@@ -311,7 +326,8 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
                     href={footerContent.twitterLink}
                     title={t('socials.twitter')}
                     target="_blank"
-                    rel="nofollow noreferrer">
+                    rel="nofollow noreferrer"
+                  >
                     <Twitter />
                   </a>
                 )}
@@ -320,7 +336,8 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
                     href={footerContent.facebookLink}
                     title={t('socials.facebook')}
                     target="_blank"
-                    rel="nofollow noreferrer">
+                    rel="nofollow noreferrer"
+                  >
                     <Facebook />
                   </a>
                 )}
@@ -329,7 +346,8 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
                     href={footerContent.linkedinLink}
                     title={t('socials.linkedin')}
                     target="_blank"
-                    rel="nofollow noreferrer">
+                    rel="nofollow noreferrer"
+                  >
                     <LinkedIn />
                   </a>
                 )}
@@ -338,7 +356,8 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
                     href={footerContent.instagramLink}
                     title={t('socials.instagram')}
                     target="_blank"
-                    rel="nofollow noreferrer">
+                    rel="nofollow noreferrer"
+                  >
                     <Instagram />
                   </a>
                 )}
