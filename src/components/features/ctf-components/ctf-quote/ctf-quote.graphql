@@ -3,7 +3,6 @@ fragment QuoteFields on ComponentQuote {
   sys {
     id
   }
-  internalName
   quote {
     json
     links {

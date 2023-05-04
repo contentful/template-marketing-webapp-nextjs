@@ -1,66 +1,46 @@
 import * as Types from '../../../../../lib/__generated/graphql.types';
 
 import { AssetFieldsFragment } from '../../ctf-asset/__generated/ctf-asset.generated';
-import { fetchConfig } from '@src/lib/fetchConfig';
 import { AssetFieldsFragmentDoc } from '../../ctf-asset/__generated/ctf-asset.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
+import { customFetcher } from '@src/lib/fetchConfig';
+export type PageTopSectionFields_ComponentCta_Fragment = { __typename: 'ComponentCta' };
 
-function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
-  return async (): Promise<TData> => {
-    const res = await fetch(fetchConfig.endpoint as string, {
-    method: "POST",
-    ...(fetchConfig.params),
-      body: JSON.stringify({ query, variables }),
-    });
+export type PageTopSectionFields_ComponentDuplex_Fragment = { __typename: 'ComponentDuplex' };
 
-    const json = await res.json();
+export type PageTopSectionFields_ComponentHeroBanner_Fragment = { __typename: 'ComponentHeroBanner' };
 
-    if (json.errors) {
-      const { message } = json.errors[0];
+export type PageTopSectionFields_ComponentInfoBlock_Fragment = { __typename: 'ComponentInfoBlock' };
 
-      throw new Error(message);
-    }
+export type PageTopSectionFields_ComponentQuote_Fragment = { __typename: 'ComponentQuote' };
 
-    return json.data;
-  }
-}
-export type PageTopSectionFields_ComponentCta_Fragment = { __typename: 'ComponentCta', internalName?: string | null };
-
-export type PageTopSectionFields_ComponentDuplex_Fragment = { __typename: 'ComponentDuplex', internalName?: string | null };
-
-export type PageTopSectionFields_ComponentHeroBanner_Fragment = { __typename: 'ComponentHeroBanner', internalName?: string | null };
-
-export type PageTopSectionFields_ComponentInfoBlock_Fragment = { __typename: 'ComponentInfoBlock', internalName?: string | null };
-
-export type PageTopSectionFields_ComponentQuote_Fragment = { __typename: 'ComponentQuote', internalName?: string | null };
-
-export type PageTopSectionFields_ComponentTextBlock_Fragment = { __typename: 'ComponentTextBlock', internalName?: string | null };
+export type PageTopSectionFields_ComponentTextBlock_Fragment = { __typename: 'ComponentTextBlock' };
 
 export type PageTopSectionFieldsFragment = PageTopSectionFields_ComponentCta_Fragment | PageTopSectionFields_ComponentDuplex_Fragment | PageTopSectionFields_ComponentHeroBanner_Fragment | PageTopSectionFields_ComponentInfoBlock_Fragment | PageTopSectionFields_ComponentQuote_Fragment | PageTopSectionFields_ComponentTextBlock_Fragment;
 
-export type PageContentFields_ComponentProductTable_Fragment = { __typename: 'ComponentProductTable', internalName?: string | null };
+export type PageContentFields_ComponentProductTable_Fragment = { __typename: 'ComponentProductTable' };
 
-export type PageContentFields_TopicBusinessInfo_Fragment = { __typename: 'TopicBusinessInfo', internalName?: string | null };
+export type PageContentFields_TopicBusinessInfo_Fragment = { __typename: 'TopicBusinessInfo' };
 
-export type PageContentFields_TopicProduct_Fragment = { __typename: 'TopicProduct', internalName?: string | null };
+export type PageContentFields_TopicProduct_Fragment = { __typename: 'TopicProduct' };
 
 export type PageContentFieldsFragment = PageContentFields_ComponentProductTable_Fragment | PageContentFields_TopicBusinessInfo_Fragment | PageContentFields_TopicProduct_Fragment;
 
-export type PageExtraSectionItemFields_ComponentCta_Fragment = { __typename: 'ComponentCta', internalName?: string | null };
+export type PageExtraSectionItemFields_ComponentCta_Fragment = { __typename: 'ComponentCta' };
 
-export type PageExtraSectionItemFields_ComponentDuplex_Fragment = { __typename: 'ComponentDuplex', internalName?: string | null };
+export type PageExtraSectionItemFields_ComponentDuplex_Fragment = { __typename: 'ComponentDuplex' };
 
-export type PageExtraSectionItemFields_ComponentHeroBanner_Fragment = { __typename: 'ComponentHeroBanner', internalName?: string | null };
+export type PageExtraSectionItemFields_ComponentHeroBanner_Fragment = { __typename: 'ComponentHeroBanner' };
 
-export type PageExtraSectionItemFields_ComponentInfoBlock_Fragment = { __typename: 'ComponentInfoBlock', internalName?: string | null };
+export type PageExtraSectionItemFields_ComponentInfoBlock_Fragment = { __typename: 'ComponentInfoBlock' };
 
-export type PageExtraSectionItemFields_ComponentQuote_Fragment = { __typename: 'ComponentQuote', internalName?: string | null };
+export type PageExtraSectionItemFields_ComponentQuote_Fragment = { __typename: 'ComponentQuote' };
 
-export type PageExtraSectionItemFields_ComponentTextBlock_Fragment = { __typename: 'ComponentTextBlock', internalName?: string | null };
+export type PageExtraSectionItemFields_ComponentTextBlock_Fragment = { __typename: 'ComponentTextBlock' };
 
 export type PageExtraSectionItemFieldsFragment = PageExtraSectionItemFields_ComponentCta_Fragment | PageExtraSectionItemFields_ComponentDuplex_Fragment | PageExtraSectionItemFields_ComponentHeroBanner_Fragment | PageExtraSectionItemFields_ComponentInfoBlock_Fragment | PageExtraSectionItemFields_ComponentQuote_Fragment | PageExtraSectionItemFields_ComponentTextBlock_Fragment;
 
-export type CtfPageFieldsFragment = { __typename?: 'Page', pageName?: string | null, slug?: string | null, internalName?: string | null, seo?: { __typename?: 'Seo', title?: string | null, description?: string | null, noIndex?: boolean | null, noFollow?: boolean | null, image?: (
+export type CtfPageFieldsFragment = { __typename: 'Page', pageName?: string | null, slug?: string | null, internalName?: string | null, sys: { __typename?: 'Sys', id: string }, seo?: { __typename?: 'Seo', title?: string | null, description?: string | null, noIndex?: boolean | null, noFollow?: boolean | null, image?: (
       { __typename?: 'Asset' }
       & AssetFieldsFragment
     ) | null } | null, topSectionCollection?: { __typename?: 'PageTopSectionCollection', items: Array<(
@@ -125,65 +105,24 @@ export type CtfPageQuery = { __typename?: 'Query', pageCollection?: { __typename
 export const PageTopSectionFieldsFragmentDoc = `
     fragment PageTopSectionFields on PageTopSectionItem {
   __typename
-  ... on ComponentCta {
-    internalName
-  }
-  ... on ComponentDuplex {
-    internalName
-  }
-  ... on ComponentHeroBanner {
-    internalName
-  }
-  ... on ComponentInfoBlock {
-    internalName
-  }
-  ... on ComponentQuote {
-    internalName
-  }
-  ... on ComponentTextBlock {
-    internalName
-  }
 }
     `;
 export const PageContentFieldsFragmentDoc = `
     fragment PageContentFields on PagePageContent {
   __typename
-  ... on ComponentProductTable {
-    internalName
-  }
-  ... on TopicBusinessInfo {
-    internalName
-  }
-  ... on TopicProduct {
-    internalName
-  }
 }
     `;
 export const PageExtraSectionItemFieldsFragmentDoc = `
     fragment PageExtraSectionItemFields on PageExtraSectionItem {
   __typename
-  ... on ComponentCta {
-    internalName
-  }
-  ... on ComponentDuplex {
-    internalName
-  }
-  ... on ComponentHeroBanner {
-    internalName
-  }
-  ... on ComponentInfoBlock {
-    internalName
-  }
-  ... on ComponentQuote {
-    internalName
-  }
-  ... on ComponentTextBlock {
-    internalName
-  }
 }
     `;
 export const CtfPageFieldsFragmentDoc = `
     fragment CtfPageFields on Page {
+  __typename
+  sys {
+    id
+  }
   pageName
   internalName: pageName
   slug
@@ -256,11 +195,11 @@ export const useCtfPageQuery = <
     ) =>
     useQuery<CtfPageQuery, TError, TData>(
       ['CtfPage', variables],
-      fetcher<CtfPageQuery, CtfPageQueryVariables>(CtfPageDocument, variables),
+      customFetcher<CtfPageQuery, CtfPageQueryVariables>(CtfPageDocument, variables),
       options
     );
 
 useCtfPageQuery.getKey = (variables: CtfPageQueryVariables) => ['CtfPage', variables];
 ;
 
-useCtfPageQuery.fetcher = (variables: CtfPageQueryVariables) => fetcher<CtfPageQuery, CtfPageQueryVariables>(CtfPageDocument, variables);
+useCtfPageQuery.fetcher = (variables: CtfPageQueryVariables, options?: RequestInit['headers']) => customFetcher<CtfPageQuery, CtfPageQueryVariables>(CtfPageDocument, variables, options);

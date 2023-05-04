@@ -1,3 +1,5 @@
+import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
+
 import { useCtfNavigationQuery } from './__generated/ctf-navigation.generated';
 import { CtfNavigation } from './ctf-navigation';
 
@@ -11,7 +13,9 @@ export const CtfNavigationGql = () => {
     preview: previewActive,
   });
 
-  if (!data?.navigationMenuCollection || isLoading) return null;
+  const navigationMenuCollection = useContentfulLiveUpdates(data?.navigationMenuCollection, locale);
 
-  return <CtfNavigation {...data.navigationMenuCollection} />;
+  if (!navigationMenuCollection || isLoading) return null;
+
+  return <CtfNavigation {...navigationMenuCollection} />;
 };

@@ -45,7 +45,7 @@
       "deprecatedAt": "0001-01-01T00:00:00.000Z",
       "jsonSchema": {
         "$id": "guest_space_active",
-        "description": "Fired when a guest space is active. A guest space is active when at least a spaceId, CDA token and CPA token are provided as url parameters. Optionally a domain can be passed.\n\nGuest spaces are used for Contentful’s Entry preview links.",
+        "description": "Fired when a guest space is active. A guest space is active when at least a spaceId, CDA token and CPA token are provided as url parameters. Optionally a domain can be passed.\n\nGuest spaces are used for Contentfuls Entry preview links.",
         "eventMetadata": {
           "name": "guest_space_active",
           "type": "TRACK"
@@ -62,7 +62,7 @@
       },
       "key": "guest_space_active",
       "type": "TRACK",
-      "updatedAt": "2023-02-21T10:25:37.000Z",
+      "updatedAt": "2023-04-06T14:39:41.000Z",
       "version": 1
     },
     {
@@ -143,5 +143,5 @@
   ],
   "slug": "",
   "type": "LIVE",
-  "updatedAt": "2023-02-21T16:55:46.000Z"
+  "updatedAt": "2023-04-21T09:29:08.000Z"
 }

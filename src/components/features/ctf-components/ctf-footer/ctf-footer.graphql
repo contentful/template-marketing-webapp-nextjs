@@ -1,8 +1,16 @@
 fragment FooterFields on FooterMenuCollection {
   items {
+    __typename
+    sys {
+      id
+    }
     menuItemsCollection {
       items {
+        __typename
         groupName
+        sys {
+          id
+        }
         featuredPagesCollection {
           ...MenuGroupFields
         }

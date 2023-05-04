@@ -2,31 +2,11 @@ import * as Types from '../../../../../lib/__generated/graphql.types';
 
 import { PageLinkFieldsFragment } from '../../../page-link/__generated/page-link.generated';
 import { AssetFieldsFragment } from '../../ctf-asset/__generated/ctf-asset.generated';
-import { fetchConfig } from '@src/lib/fetchConfig';
 import { PageLinkFieldsFragmentDoc } from '../../../page-link/__generated/page-link.generated';
 import { AssetFieldsFragmentDoc } from '../../ctf-asset/__generated/ctf-asset.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
-
-function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
-  return async (): Promise<TData> => {
-    const res = await fetch(fetchConfig.endpoint as string, {
-    method: "POST",
-    ...(fetchConfig.params),
-      body: JSON.stringify({ query, variables }),
-    });
-
-    const json = await res.json();
-
-    if (json.errors) {
-      const { message } = json.errors[0];
-
-      throw new Error(message);
-    }
-
-    return json.data;
-  }
-}
-export type HeroBannerFieldsFragment = { __typename: 'ComponentHeroBanner', internalName?: string | null, headline?: string | null, ctaText?: string | null, imageStyle?: boolean | null, heroSize?: boolean | null, colorPalette?: string | null, sys: { __typename?: 'Sys', id: string }, bodyText?: { __typename?: 'ComponentHeroBannerBodyText', json: any } | null, targetPage?: (
+import { customFetcher } from '@src/lib/fetchConfig';
+export type HeroBannerFieldsFragment = { __typename: 'ComponentHeroBanner', headline?: string | null, ctaText?: string | null, imageStyle?: boolean | null, heroSize?: boolean | null, colorPalette?: string | null, sys: { __typename?: 'Sys', id: string }, bodyText?: { __typename?: 'ComponentHeroBannerBodyText', json: any } | null, targetPage?: (
     { __typename?: 'Page' }
     & PageLinkFieldsFragment
   ) | null, image?: (
@@ -48,11 +28,10 @@ export type CtfHeroBannerQuery = { __typename?: 'Query', componentHeroBanner?: (
 
 export const HeroBannerFieldsFragmentDoc = `
     fragment HeroBannerFields on ComponentHeroBanner {
+  __typename
   sys {
     id
   }
-  internalName
-  __typename
   headline
   bodyText {
     json
@@ -87,11 +66,11 @@ export const useCtfHeroBannerQuery = <
     ) =>
     useQuery<CtfHeroBannerQuery, TError, TData>(
       ['CtfHeroBanner', variables],
-      fetcher<CtfHeroBannerQuery, CtfHeroBannerQueryVariables>(CtfHeroBannerDocument, variables),
+      customFetcher<CtfHeroBannerQuery, CtfHeroBannerQueryVariables>(CtfHeroBannerDocument, variables),
       options
     );
 
 useCtfHeroBannerQuery.getKey = (variables: CtfHeroBannerQueryVariables) => ['CtfHeroBanner', variables];
 ;
 
-useCtfHeroBannerQuery.fetcher = (variables: CtfHeroBannerQueryVariables) => fetcher<CtfHeroBannerQuery, CtfHeroBannerQueryVariables>(CtfHeroBannerDocument, variables);
+useCtfHeroBannerQuery.fetcher = (variables: CtfHeroBannerQueryVariables, options?: RequestInit['headers']) => customFetcher<CtfHeroBannerQuery, CtfHeroBannerQueryVariables>(CtfHeroBannerDocument, variables, options);

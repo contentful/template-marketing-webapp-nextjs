@@ -1,3 +1,4 @@
+import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
 import React from 'react';
 
 import { useCtfCtaQuery } from './__generated/ctf-cta.generated';
@@ -16,9 +17,11 @@ export const CtfCtaGql = ({ id, locale, preview }: CtfCtaGqlPropsInterface) => {
     preview,
   });
 
-  if (isLoading || !data?.componentCta) {
+  const componentCta = useContentfulLiveUpdates(data?.componentCta, locale);
+
+  if (isLoading || !componentCta) {
     return null;
   }
 
-  return <CtfCta {...data.componentCta} />;
+  return <CtfCta {...componentCta} />;
 };

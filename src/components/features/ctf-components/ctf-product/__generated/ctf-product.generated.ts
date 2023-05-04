@@ -2,31 +2,11 @@ import * as Types from '../../../../../lib/__generated/graphql.types';
 
 import { AssetFieldsFragment } from '../../ctf-asset/__generated/ctf-asset.generated';
 import { ProductFeatureFieldsFragment } from '../../ctf-product-feature/__generated/ctf-product-feature.generated';
-import { fetchConfig } from '@src/lib/fetchConfig';
 import { AssetFieldsFragmentDoc } from '../../ctf-asset/__generated/ctf-asset.generated';
 import { ProductFeatureFieldsFragmentDoc } from '../../ctf-product-feature/__generated/ctf-product-feature.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
-
-function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
-  return async (): Promise<TData> => {
-    const res = await fetch(fetchConfig.endpoint as string, {
-    method: "POST",
-    ...(fetchConfig.params),
-      body: JSON.stringify({ query, variables }),
-    });
-
-    const json = await res.json();
-
-    if (json.errors) {
-      const { message } = json.errors[0];
-
-      throw new Error(message);
-    }
-
-    return json.data;
-  }
-}
-export type ProductFieldsFragment = { __typename?: 'TopicProduct', name?: string | null, price?: number | null, sys: { __typename?: 'Sys', id: string }, featuredImage?: (
+import { customFetcher } from '@src/lib/fetchConfig';
+export type ProductFieldsFragment = { __typename: 'TopicProduct', name?: string | null, price?: number | null, sys: { __typename?: 'Sys', id: string }, featuredImage?: (
     { __typename?: 'Asset' }
     & AssetFieldsFragment
   ) | null, description?: { __typename?: 'TopicProductDescription', json: any } | null, featuresCollection?: { __typename?: 'TopicProductFeaturesCollection', items: Array<(
@@ -48,6 +28,7 @@ export type CtfProductQuery = { __typename?: 'Query', topicProduct?: (
 
 export const ProductFieldsFragmentDoc = `
     fragment ProductFields on TopicProduct {
+  __typename
   sys {
     id
   }
@@ -84,11 +65,11 @@ export const useCtfProductQuery = <
     ) =>
     useQuery<CtfProductQuery, TError, TData>(
       ['CtfProduct', variables],
-      fetcher<CtfProductQuery, CtfProductQueryVariables>(CtfProductDocument, variables),
+      customFetcher<CtfProductQuery, CtfProductQueryVariables>(CtfProductDocument, variables),
       options
     );
 
 useCtfProductQuery.getKey = (variables: CtfProductQueryVariables) => ['CtfProduct', variables];
 ;
 
-useCtfProductQuery.fetcher = (variables: CtfProductQueryVariables) => fetcher<CtfProductQuery, CtfProductQueryVariables>(CtfProductDocument, variables);
+useCtfProductQuery.fetcher = (variables: CtfProductQueryVariables, options?: RequestInit['headers']) => customFetcher<CtfProductQuery, CtfProductQueryVariables>(CtfProductDocument, variables, options);

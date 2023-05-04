@@ -6,9 +6,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   localeMenu: {
     alignItems: 'center',
     display: 'flex',
-    [theme.breakpoints.up('sm')]: {
-      width: '17.2rem',
-    },
     '& > svg': {
       marginRight: theme.spacing(2),
     },
@@ -45,7 +42,8 @@ export const LanguageSelector = () => {
           router.push({ pathname: router.pathname, query: router.query }, router.asPath, {
             locale: String(event.target.value),
           });
-        }}>
+        }}
+      >
         {locales?.map(availableLocale => (
           <MenuItem key={availableLocale} value={availableLocale}>
             {languageNames.of(availableLocale)}

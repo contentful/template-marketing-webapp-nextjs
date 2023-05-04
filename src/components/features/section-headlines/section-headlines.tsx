@@ -1,3 +1,4 @@
+import { ContentfulLivePreview } from '@contentful/live-preview';
 import { Theme, Typography, TypographyProps } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
@@ -33,8 +34,10 @@ const useStyles = makeStyles((theme: Theme) => ({
 interface SectionHeadlinesPropsInterface {
   headline?: string | null;
   headlineProps?: TypographyProps;
+  headlineLivePreviewProps?: ReturnType<typeof ContentfulLivePreview.getProps>;
   subline?: string | null;
   sublineProps?: TypographyProps;
+  sublineLivePreviewProps?: ReturnType<typeof ContentfulLivePreview.getProps>;
   body?: string | null;
   align?: 'center' | 'left';
   className?: string;
@@ -44,8 +47,10 @@ export const SectionHeadlines = (props: SectionHeadlinesPropsInterface) => {
   const {
     headline,
     headlineProps = {},
+    headlineLivePreviewProps = {},
     subline,
     sublineProps = {},
+    sublineLivePreviewProps = {},
     body,
     align = 'center',
     className = '',
@@ -56,11 +61,13 @@ export const SectionHeadlines = (props: SectionHeadlinesPropsInterface) => {
     variant: 'h1',
     component: 'h2',
     ...headlineProps,
+    ...headlineLivePreviewProps,
     className: clsx(headlineProps.className, classes.headline),
   };
   const computedSublineProps: TypographyProps = {
     variant: 'h3',
     ...sublineProps,
+    ...sublineLivePreviewProps,
     className: clsx(sublineProps.className, classes.subline),
   };
 

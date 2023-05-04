@@ -1,5 +1,5 @@
 ### Custom ###
-contenful.config.secret.json
+contentful.config.secret.json
 dist
 .next
 out
