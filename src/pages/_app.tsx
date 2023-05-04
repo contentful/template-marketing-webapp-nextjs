@@ -3,23 +3,18 @@ import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 import { DehydratedState, Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { AppProps } from 'next/app';
-import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { appWithTranslation, SSRConfig } from 'next-i18next';
 import { useEffect, useState } from 'react';
 import '@contentful/live-preview/style.css';
 
+import { Settings } from '@src/components/features/settings';
 import { Layout } from '@src/components/templates/layout/layout';
 import { useContentfulContext, ContentfulContentProvider } from '@src/contentful-context';
 import { queryConfig } from '@src/lib/gql-client';
 import colorfulTheme from '@src/theme';
 import contentfulConfig from 'contentful.config';
 import nextI18nConfig from 'next-i18next.config';
-
-const Settings = dynamic(
-  () => import('@src/components/features/settings').then(mod => mod.Settings),
-  { ssr: false },
-);
 
 type CustomPageProps = SSRConfig & { dehydratedState: DehydratedState; err: Error };
 

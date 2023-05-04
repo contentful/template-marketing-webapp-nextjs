@@ -1,29 +1,9 @@
 import * as Types from '../../../../../lib/__generated/graphql.types';
 
 import { AssetFieldsFragment } from '../../ctf-asset/__generated/ctf-asset.generated';
-import { fetchConfig } from '@src/lib/fetchConfig';
 import { AssetFieldsFragmentDoc } from '../../ctf-asset/__generated/ctf-asset.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
-
-function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
-  return async (): Promise<TData> => {
-    const res = await fetch(fetchConfig.endpoint as string, {
-    method: "POST",
-    ...(fetchConfig.params),
-      body: JSON.stringify({ query, variables }),
-    });
-
-    const json = await res.json();
-
-    if (json.errors) {
-      const { message } = json.errors[0];
-
-      throw new Error(message);
-    }
-
-    return json.data;
-  }
-}
+import { customFetcher } from '@src/lib/fetchConfig';
 export type PageTopSectionFields_ComponentCta_Fragment = { __typename: 'ComponentCta' };
 
 export type PageTopSectionFields_ComponentDuplex_Fragment = { __typename: 'ComponentDuplex' };
@@ -215,11 +195,11 @@ export const useCtfPageQuery = <
     ) =>
     useQuery<CtfPageQuery, TError, TData>(
       ['CtfPage', variables],
-      fetcher<CtfPageQuery, CtfPageQueryVariables>(CtfPageDocument, variables),
+      customFetcher<CtfPageQuery, CtfPageQueryVariables>(CtfPageDocument, variables),
       options
     );
 
 useCtfPageQuery.getKey = (variables: CtfPageQueryVariables) => ['CtfPage', variables];
 ;
 
-useCtfPageQuery.fetcher = (variables: CtfPageQueryVariables) => fetcher<CtfPageQuery, CtfPageQueryVariables>(CtfPageDocument, variables);
+useCtfPageQuery.fetcher = (variables: CtfPageQueryVariables, options?: RequestInit['headers']) => customFetcher<CtfPageQuery, CtfPageQueryVariables>(CtfPageDocument, variables, options);
