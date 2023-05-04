@@ -1,3 +1,5 @@
+import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
+
 import { useCtfInfoBlockQuery } from './__generated/ctf-info-block.generated';
 import { CtfInfoBlock } from './ctf-info-block';
 
@@ -20,9 +22,11 @@ export const CtfInfoBlockGql = ({
     preview,
   });
 
-  if (isLoading || !data?.componentInfoBlock) {
+  const componentInfoBlock = useContentfulLiveUpdates(data?.componentInfoBlock, locale);
+
+  if (isLoading || !componentInfoBlock) {
     return null;
   }
 
-  return <CtfInfoBlock {...data.componentInfoBlock} previousComponent={previousComponent} />;
+  return <CtfInfoBlock {...componentInfoBlock} previousComponent={previousComponent} />;
 };

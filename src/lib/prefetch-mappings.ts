@@ -4,8 +4,8 @@ import { useCtfDuplexQuery } from '@src/components/features/ctf-components/ctf-d
 import { useCtfHeroBannerQuery } from '@src/components/features/ctf-components/ctf-hero-banner/__generated/ctf-hero-banner.generated';
 import { useCtfInfoBlockQuery } from '@src/components/features/ctf-components/ctf-info-block/__generated/ctf-info-block.generated';
 import { useCtfPersonQuery } from '@src/components/features/ctf-components/ctf-person/__generated/ctf-person.generated';
-import { useCtfProductTableQuery } from '@src/components/features/ctf-components/ctf-product-table/__generated/ctf-product-table.generated';
 import { useCtfProductQuery } from '@src/components/features/ctf-components/ctf-product/__generated/ctf-product.generated';
+import { useCtfProductTableQuery } from '@src/components/features/ctf-components/ctf-product-table/__generated/ctf-product-table.generated';
 import { useCtfQuoteQuery } from '@src/components/features/ctf-components/ctf-quote/__generated/ctf-quote.generated';
 import { useCtfTextBlockQuery } from '@src/components/features/ctf-components/ctf-text-block/__generated/ctf-text-block.generated';
 import {

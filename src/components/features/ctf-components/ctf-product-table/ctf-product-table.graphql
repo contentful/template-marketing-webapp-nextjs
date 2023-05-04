@@ -1,8 +1,8 @@
 fragment ProductTableFields on ComponentProductTable {
+  __typename
   sys {
     id
   }
-  internalName
   headline
   subline
   productsCollection(limit: 3) {

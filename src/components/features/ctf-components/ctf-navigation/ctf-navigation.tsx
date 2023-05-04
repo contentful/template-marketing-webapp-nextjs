@@ -1,3 +1,4 @@
+import { ContentfulLivePreview } from '@contentful/live-preview';
 import { Theme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
@@ -5,6 +6,7 @@ import { NavigationFieldsFragment } from './__generated/ctf-navigation.generated
 import { getLinkDisplayText, getLinkHrefPrefix } from './utils';
 
 import { Link } from '@src/components/shared/link';
+import { useContentfulContext } from '@src/contentful-context';
 
 const useStyles = makeStyles((theme: Theme) => ({
   menu: {
@@ -71,15 +73,25 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export const CtfNavigation = (props: NavigationFieldsFragment) => {
   const classes = useStyles();
+  const { locale } = useContentfulContext();
 
   const navigationContent = props.items[0];
 
   const renderNavigationLinks = (menuGroup, listClassName) => {
-    return menuGroup?.items?.map((menuItem, i) => {
+    return menuGroup?.items?.map(menuItem => {
       const href = getLinkHrefPrefix(menuItem);
       const linkText = getLinkDisplayText(menuItem);
+
       return (
-        <li key={i} className={listClassName}>
+        <li
+          key={menuItem.sys.id}
+          className={listClassName}
+          {...ContentfulLivePreview.getProps({
+            entryId: menuItem.sys.id,
+            fieldId: 'pageName',
+            locale,
+          })}
+        >
           <Link href={href}>{linkText}</Link>
         </li>
       );
@@ -91,20 +103,31 @@ export const CtfNavigation = (props: NavigationFieldsFragment) => {
       {navigationContent?.menuItemsCollection?.items.length && (
         <nav role="navigation">
           <ul className={classes.menu}>
-            {navigationContent.menuItemsCollection.items.map((menuItem, i) => (
-              <li key={i} className={classes.menuItem}>
-                {!menuItem?.link ? (
-                  menuItem?.label
-                ) : (
-                  <Link href={`/${menuItem?.link?.slug}`}>{menuItem?.label}</Link>
-                )}
-                {!menuItem?.link && menuItem?.children && (
-                  <ul className={classes.submenu}>
-                    {renderNavigationLinks(menuItem.children, classes.submenuItem)}
-                  </ul>
-                )}
-              </li>
-            ))}
+            {navigationContent.menuItemsCollection.items.map(
+              menuItem =>
+                menuItem && (
+                  <li
+                    key={menuItem.sys.id}
+                    className={classes.menuItem}
+                    {...ContentfulLivePreview.getProps({
+                      entryId: menuItem.sys.id,
+                      fieldId: 'groupName',
+                      locale,
+                    })}
+                  >
+                    {!menuItem.link ? (
+                      menuItem.groupName
+                    ) : (
+                      <Link href={`/${menuItem.link.slug}`}>{menuItem.groupName}</Link>
+                    )}
+                    {!menuItem.link && menuItem.children && (
+                      <ul className={classes.submenu}>
+                        {renderNavigationLinks(menuItem.children, classes.submenuItem)}
+                      </ul>
+                    )}
+                  </li>
+                ),
+            )}
           </ul>
         </nav>
       )}

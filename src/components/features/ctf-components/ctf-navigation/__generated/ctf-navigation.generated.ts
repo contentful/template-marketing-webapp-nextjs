@@ -2,31 +2,11 @@ import * as Types from '../../../../../lib/__generated/graphql.types';
 
 import { PageLinkFieldsFragment } from '../../../page-link/__generated/page-link.generated';
 import { MenuGroupFieldsFragment } from '../../../../../lib/shared-fragments/__generated/ctf-menuGroup.generated';
-import { fetchConfig } from '@src/lib/fetchConfig';
 import { PageLinkFieldsFragmentDoc } from '../../../page-link/__generated/page-link.generated';
 import { MenuGroupFieldsFragmentDoc } from '../../../../../lib/shared-fragments/__generated/ctf-menuGroup.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
-
-function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
-  return async (): Promise<TData> => {
-    const res = await fetch(fetchConfig.endpoint as string, {
-    method: "POST",
-    ...(fetchConfig.params),
-      body: JSON.stringify({ query, variables }),
-    });
-
-    const json = await res.json();
-
-    if (json.errors) {
-      const { message } = json.errors[0];
-
-      throw new Error(message);
-    }
-
-    return json.data;
-  }
-}
-export type NavigationFieldsFragment = { __typename?: 'NavigationMenuCollection', items: Array<{ __typename?: 'NavigationMenu', menuItemsCollection?: { __typename?: 'NavigationMenuMenuItemsCollection', items: Array<{ __typename?: 'MenuGroup', label?: string | null, link?: (
+import { customFetcher } from '@src/lib/fetchConfig';
+export type NavigationFieldsFragment = { __typename?: 'NavigationMenuCollection', items: Array<{ __typename?: 'NavigationMenu', menuItemsCollection?: { __typename?: 'NavigationMenuMenuItemsCollection', items: Array<{ __typename: 'MenuGroup', groupName?: string | null, sys: { __typename?: 'Sys', id: string }, link?: (
           { __typename?: 'Page' }
           & PageLinkFieldsFragment
         ) | null, children?: (
@@ -50,7 +30,11 @@ export const NavigationFieldsFragmentDoc = `
   items {
     menuItemsCollection {
       items {
-        label: groupName
+        __typename
+        sys {
+          id
+        }
+        groupName
         link: groupLink {
           ...PageLinkFields
         }
@@ -80,11 +64,11 @@ export const useCtfNavigationQuery = <
     ) =>
     useQuery<CtfNavigationQuery, TError, TData>(
       variables === undefined ? ['CtfNavigation'] : ['CtfNavigation', variables],
-      fetcher<CtfNavigationQuery, CtfNavigationQueryVariables>(CtfNavigationDocument, variables),
+      customFetcher<CtfNavigationQuery, CtfNavigationQueryVariables>(CtfNavigationDocument, variables),
       options
     );
 
 useCtfNavigationQuery.getKey = (variables?: CtfNavigationQueryVariables) => variables === undefined ? ['CtfNavigation'] : ['CtfNavigation', variables];
 ;
 
-useCtfNavigationQuery.fetcher = (variables?: CtfNavigationQueryVariables) => fetcher<CtfNavigationQuery, CtfNavigationQueryVariables>(CtfNavigationDocument, variables);
+useCtfNavigationQuery.fetcher = (variables?: CtfNavigationQueryVariables, options?: RequestInit['headers']) => customFetcher<CtfNavigationQuery, CtfNavigationQueryVariables>(CtfNavigationDocument, variables, options);

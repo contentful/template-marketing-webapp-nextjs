@@ -1,3 +1,4 @@
+import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
 import Head from 'next/head';
 
 import CtfPage from './ctf-page';
@@ -26,7 +27,10 @@ const CtfPageGgl = ({ slug: slugFromProps }: Props) => {
     preview: previewActive,
   });
 
-  const page = tryget(() => data?.pageCollection!.items[0]);
+  const page = useContentfulLiveUpdates(
+    tryget(() => data?.pageCollection!.items[0]),
+    locale,
+  );
 
   if (isLoading) return <></>;
   if (!page) {

@@ -1,9 +1,8 @@
 fragment DuplexFields on ComponentDuplex {
+  __typename
   sys {
     id
   }
-  __typename
-  internalName
   containerLayout
   headline
   bodyText {

@@ -1,3 +1,5 @@
+import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
+
 import { useCtfQuoteQuery } from './__generated/ctf-quote.generated';
 import { CtfQuote } from './ctf-quote';
 
@@ -16,9 +18,11 @@ export const CtfQuoteGql = (props: CtfQuoteGqlPropsInterface) => {
     preview,
   });
 
-  if (isLoading || !data?.componentQuote) {
+  const componentQuote = useContentfulLiveUpdates(data?.componentQuote, locale);
+
+  if (isLoading || !componentQuote) {
     return null;
   }
 
-  return <CtfQuote {...data.componentQuote} />;
+  return <CtfQuote {...componentQuote} />;
 };

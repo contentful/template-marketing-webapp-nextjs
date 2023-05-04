@@ -63,6 +63,7 @@ export const Settings = () => {
 
   const toolboxRef = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const [enabled, setEnabled] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
 
   useEffect(() => {
@@ -87,6 +88,10 @@ export const Settings = () => {
   };
 
   useEffect(() => {
+    if (!enabled) {
+      return;
+    }
+
     const handleClickOutside = event => {
       if (event.target === buttonRef.current || buttonRef.current?.contains(event.target)) return;
 
@@ -108,7 +113,22 @@ export const Settings = () => {
       document.removeEventListener('click', handleClickOutside, true);
       document.removeEventListener('keydown', handleEscape, true);
     };
+  }, [enabled]);
+
+  useEffect(() => {
+    try {
+      if (window.top?.location.href === window.location.href) {
+        // Dont show the settings panel when embedded into an iframe (e.g. live preview)
+        setEnabled(true);
+      }
+    } catch (err) {
+      // window.top.location.href is not accessable for non same origin iframes
+    }
   }, []);
+
+  if (!enabled) {
+    return null;
+  }
 
   return (
     <>
@@ -121,7 +141,8 @@ export const Settings = () => {
           enterActive: classes.animationEnterActive,
           exit: classes.animationExit,
           exitActive: classes.animationExitActive,
-        }}>
+        }}
+      >
         <SettingsForm
           ref={toolboxRef}
           onClose={() => {
@@ -137,7 +158,8 @@ export const Settings = () => {
           onClick={() => {
             handleToolboxInteraction();
           }}
-          title="Toggle editorial toolbox">
+          title="Toggle editorial toolbox"
+        >
           <SettingsIcon className={classes.toggleImage} />
         </button>
       )}

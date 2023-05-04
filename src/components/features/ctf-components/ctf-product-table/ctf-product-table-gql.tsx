@@ -1,3 +1,4 @@
+import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
 import { Container } from '@mui/material';
 
 import { useCtfProductTableQuery } from './__generated/ctf-product-table.generated';
@@ -18,19 +19,19 @@ export const CtfProductTableGql = (props: CtfProductTableGqlPropsInterface) => {
     preview: props.preview,
   });
 
-  if (isLoading || !data?.componentProductTable) {
+  const componentProductTable = useContentfulLiveUpdates(data?.componentProductTable, props.locale);
+
+  if (isLoading || !componentProductTable) {
     return null;
   }
 
-  if (!data.componentProductTable) {
+  if (!componentProductTable) {
     return (
       <Container>
         <EntryNotFound />
       </Container>
     );
   }
-
-  const { componentProductTable } = data;
 
   return <CtfProductTable {...componentProductTable} />;
 };

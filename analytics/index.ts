@@ -27,7 +27,7 @@ export interface ContentModelInteracted {
  * Fired when a guest space is active. A guest space is active when at least a spaceId, CDA
  * token and CPA token are provided as url parameters. Optionally a domain can be passed.
  *
- * Guest spaces are used for Contentful’s Entry preview links.
+ * Guest spaces are used for Contentfuls Entry preview links.
  */
 export interface GuestSpaceActive {
     /**
@@ -501,7 +501,7 @@ export function contentModelInteracted(props: ContentModelInteracted, options?: 
  */
 export function guestSpaceActive(props: GuestSpaceActive, options?: Options, callback?: Callback): void {
 
-    const schema = {"$id":"guest_space_active","description":"Fired when a guest space is active. A guest space is active when at least a spaceId, CDA token and CPA token are provided as url parameters. Optionally a domain can be passed.\n\nGuest spaces are used for Contentful’s Entry preview links.","properties":{"spaceId":{"$id":"/properties/spaceId","description":"Unique id of a user's space","type":"string"}},"required":["spaceId"],"type":"object"};
+    const schema = {"$id":"guest_space_active","description":"Fired when a guest space is active. A guest space is active when at least a spaceId, CDA token and CPA token are provided as url parameters. Optionally a domain can be passed.\n\nGuest spaces are used for Contentfuls Entry preview links.","properties":{"spaceId":{"$id":"/properties/spaceId","description":"Unique id of a user's space","type":"string"}},"required":["spaceId"],"type":"object"};
     validateAgainstSchema(props, schema);
 
     const a = analytics();

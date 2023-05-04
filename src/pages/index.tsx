@@ -12,26 +12,27 @@ const LangPage: NextPage = () => {
   return <CtfPageGgl slug="/" />;
 };
 
-export const getServerSideProps = async ({ locale }: NextPageContext) => {
+export const getServerSideProps = async ({ locale, query }: NextPageContext) => {
   try {
+    const preview = Boolean(query.preview);
     const queryClient = new QueryClient();
 
     // Default queries
     await queryClient.prefetchQuery(
-      useCtfPageQuery.getKey({ slug: 'home', locale, preview: false }),
-      useCtfPageQuery.fetcher({ slug: 'home', locale, preview: false }),
+      useCtfPageQuery.getKey({ slug: 'home', locale, preview }),
+      useCtfPageQuery.fetcher({ slug: 'home', locale, preview }),
     );
     await queryClient.prefetchQuery(
-      useCtfNavigationQuery.getKey({ locale, preview: false }),
-      useCtfNavigationQuery.fetcher({ locale, preview: false }),
+      useCtfNavigationQuery.getKey({ locale, preview }),
+      useCtfNavigationQuery.fetcher({ locale, preview }),
     );
     await queryClient.prefetchQuery(
-      useCtfFooterQuery.getKey({ locale, preview: false }),
-      useCtfFooterQuery.fetcher({ locale, preview: false }),
+      useCtfFooterQuery.getKey({ locale, preview }),
+      useCtfFooterQuery.fetcher({ locale, preview }),
     );
 
     // Dynamic queries
-    const pageData = await useCtfPageQuery.fetcher({ slug: 'home', locale, preview: false })();
+    const pageData = await useCtfPageQuery.fetcher({ slug: 'home', locale, preview })();
     const page = pageData.pageCollection?.items[0];
 
     const topSection = page?.topSectionCollection?.items;

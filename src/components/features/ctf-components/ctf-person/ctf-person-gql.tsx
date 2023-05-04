@@ -1,3 +1,5 @@
+import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
+
 import { CtfPerson } from './ctf-person';
 
 import { useCtfPersonQuery } from '@src/components/features/ctf-components/ctf-person/__generated/ctf-person.generated';
@@ -18,9 +20,11 @@ export const CtfPersonGql = (props: CtfPersonGqlPropsInterface) => {
     preview,
   });
 
-  if (isLoading || !data?.topicPerson) {
+  const topicPerson = useContentfulLiveUpdates(data?.topicPerson, locale);
+
+  if (isLoading || !topicPerson) {
     return null;
   }
 
-  return <CtfPerson {...data.topicPerson} previousComponent={previousComponent} />;
+  return <CtfPerson {...topicPerson} previousComponent={previousComponent} />;
 };

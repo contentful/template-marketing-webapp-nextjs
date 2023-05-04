@@ -25,28 +25,29 @@ export interface CustomNextPageContext extends NextPageContext {
   id: string;
 }
 
-export const getServerSideProps = async ({ locale, params }: CustomNextPageContext) => {
+export const getServerSideProps = async ({ locale, params, query }: CustomNextPageContext) => {
   const slug = params.slug;
+  const preview = Boolean(query.preview);
 
   try {
     const queryClient = new QueryClient();
 
     // Default queries
     await queryClient.prefetchQuery(
-      useCtfPageQuery.getKey({ slug, locale, preview: false }),
-      useCtfPageQuery.fetcher({ slug, locale, preview: false }),
+      useCtfPageQuery.getKey({ slug, locale, preview }),
+      useCtfPageQuery.fetcher({ slug, locale, preview }),
     );
     await queryClient.prefetchQuery(
-      useCtfNavigationQuery.getKey({ locale, preview: false }),
-      useCtfNavigationQuery.fetcher({ locale, preview: false }),
+      useCtfNavigationQuery.getKey({ locale, preview }),
+      useCtfNavigationQuery.fetcher({ locale, preview }),
     );
     await queryClient.prefetchQuery(
-      useCtfFooterQuery.getKey({ locale, preview: false }),
-      useCtfFooterQuery.fetcher({ locale, preview: false }),
+      useCtfFooterQuery.getKey({ locale, preview }),
+      useCtfFooterQuery.fetcher({ locale, preview }),
     );
 
     // Dynamic queries
-    const pageData = await useCtfPageQuery.fetcher({ slug, locale, preview: false })();
+    const pageData = await useCtfPageQuery.fetcher({ slug, locale, preview })();
     const page = pageData.pageCollection?.items[0];
 
     const topSection = page?.topSectionCollection?.items;
@@ -77,7 +78,7 @@ export const getServerSideProps = async ({ locale, params }: CustomNextPageConte
       const data: PrefetchMappingTypeFetcher = await query.fetcher({
         id: sys.id,
         locale,
-        preview: false,
+        preview,
       })();
 
       // Different data structured can be returned, this function makes sure the correct data is returned

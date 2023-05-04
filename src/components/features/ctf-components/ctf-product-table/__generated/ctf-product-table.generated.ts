@@ -3,32 +3,12 @@ import * as Types from '../../../../../lib/__generated/graphql.types';
 import { ProductFieldsFragment } from '../../ctf-product/__generated/ctf-product.generated';
 import { AssetFieldsFragment } from '../../ctf-asset/__generated/ctf-asset.generated';
 import { ProductFeatureFieldsFragment } from '../../ctf-product-feature/__generated/ctf-product-feature.generated';
-import { fetchConfig } from '@src/lib/fetchConfig';
 import { ProductFieldsFragmentDoc } from '../../ctf-product/__generated/ctf-product.generated';
 import { AssetFieldsFragmentDoc } from '../../ctf-asset/__generated/ctf-asset.generated';
 import { ProductFeatureFieldsFragmentDoc } from '../../ctf-product-feature/__generated/ctf-product-feature.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
-
-function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
-  return async (): Promise<TData> => {
-    const res = await fetch(fetchConfig.endpoint as string, {
-    method: "POST",
-    ...(fetchConfig.params),
-      body: JSON.stringify({ query, variables }),
-    });
-
-    const json = await res.json();
-
-    if (json.errors) {
-      const { message } = json.errors[0];
-
-      throw new Error(message);
-    }
-
-    return json.data;
-  }
-}
-export type ProductTableFieldsFragment = { __typename?: 'ComponentProductTable', internalName?: string | null, headline?: string | null, subline?: string | null, sys: { __typename?: 'Sys', id: string }, productsCollection?: { __typename?: 'ComponentProductTableProductsCollection', items: Array<(
+import { customFetcher } from '@src/lib/fetchConfig';
+export type ProductTableFieldsFragment = { __typename: 'ComponentProductTable', headline?: string | null, subline?: string | null, sys: { __typename?: 'Sys', id: string }, productsCollection?: { __typename?: 'ComponentProductTableProductsCollection', items: Array<(
       { __typename?: 'TopicProduct' }
       & ProductFieldsFragment
     ) | null> } | null };
@@ -47,10 +27,10 @@ export type CtfProductTableQuery = { __typename?: 'Query', componentProductTable
 
 export const ProductTableFieldsFragmentDoc = `
     fragment ProductTableFields on ComponentProductTable {
+  __typename
   sys {
     id
   }
-  internalName
   headline
   subline
   productsCollection(limit: 3) {
@@ -79,11 +59,11 @@ export const useCtfProductTableQuery = <
     ) =>
     useQuery<CtfProductTableQuery, TError, TData>(
       ['CtfProductTable', variables],
-      fetcher<CtfProductTableQuery, CtfProductTableQueryVariables>(CtfProductTableDocument, variables),
+      customFetcher<CtfProductTableQuery, CtfProductTableQueryVariables>(CtfProductTableDocument, variables),
       options
     );
 
 useCtfProductTableQuery.getKey = (variables: CtfProductTableQueryVariables) => ['CtfProductTable', variables];
 ;
 
-useCtfProductTableQuery.fetcher = (variables: CtfProductTableQueryVariables) => fetcher<CtfProductTableQuery, CtfProductTableQueryVariables>(CtfProductTableDocument, variables);
+useCtfProductTableQuery.fetcher = (variables: CtfProductTableQueryVariables, options?: RequestInit['headers']) => customFetcher<CtfProductTableQuery, CtfProductTableQueryVariables>(CtfProductTableDocument, variables, options);

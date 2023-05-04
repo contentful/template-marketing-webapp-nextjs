@@ -9,7 +9,7 @@ import typewriter from 'analytics';
 
 export const CtfSegmentAnalytics = () => {
   const router = useRouter();
-  const { xray, preview, space_id, preview_token, delivery_token } = router.query;
+  const { preview, space_id, preview_token, delivery_token } = router.query;
 
   const [initialized, setInitialized] = useState(false);
   const [initialPageViewFired, setInitialPageViewFired] = useState(false);
@@ -26,12 +26,11 @@ export const CtfSegmentAnalytics = () => {
     if (initialized && analytics) {
       analytics.page({
         templateId: 'marketing',
-        xRayActive: Boolean(xray),
         previewActive: Boolean(preview),
         guestSpaceActive: Boolean(guestSpaceActive),
       });
     }
-  }, [guestSpaceActive, initialized, preview, xray]);
+  }, [guestSpaceActive, initialized, preview]);
 
   useEffect(() => {
     if (guestSpaceActive && initialized) {

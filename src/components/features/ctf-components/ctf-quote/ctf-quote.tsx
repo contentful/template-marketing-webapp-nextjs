@@ -1,3 +1,4 @@
+import { ContentfulLivePreview } from '@contentful/live-preview';
 import { Container, Theme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
@@ -6,6 +7,7 @@ import { useMemo } from 'react';
 import { QuoteFieldsFragment } from './__generated/ctf-quote.generated';
 
 import { CtfRichtext } from '@src/components/features/ctf-components/ctf-richtext/ctf-richtext';
+import { useContentfulContext } from '@src/contentful-context';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 import { getColorConfigFromPalette } from '@src/theme';
 
@@ -116,12 +118,14 @@ export const CtfQuote = (props: QuoteFieldsFragment) => {
     quote,
     colorPalette,
     quoteAlignment: quoteAlignmentBoolean,
+    sys: { id },
   } = props;
   const colorConfig = getColorConfigFromPalette(colorPalette || '');
   const containerLayout = imagePosition === true ? 'imageLeft' : 'imageRight';
   const quoteAlignment = quoteAlignmentBoolean === true ? 'center' : 'left';
   const backgroundImage = useMemo(() => (image ? `${image.url}?w=${600 * 2}` : undefined), [image]);
   const classes = useStyles(props);
+  const { locale } = useContentfulContext();
 
   return (
     <LayoutContext.Provider value={{ ...defaultLayout, parent: 'quote' }}>
@@ -129,25 +133,36 @@ export const CtfQuote = (props: QuoteFieldsFragment) => {
         maxWidth={false}
         style={{
           backgroundColor: colorConfig.backgroundColor,
-        }}>
+        }}
+      >
         <div className={classes.innerContainer}>
           <div
             className={clsx(
               classes.innerBody,
               classes[`innerBody-${containerLayout}`],
               backgroundImage ? undefined : classes.innerBodyFull,
-            )}>
+            )}
+          >
             {quote && (
               <div
+                {...ContentfulLivePreview.getProps({ entryId: id, fieldId: 'quote', locale })}
                 style={{
                   color: colorConfig.textColor,
                   textAlign: quoteAlignment,
-                }}>
+                }}
+              >
                 <CtfRichtext {...quote} />
               </div>
             )}
           </div>
-          <div className={classes.imageContainer}>
+          <div
+            className={classes.imageContainer}
+            {...ContentfulLivePreview.getProps({
+              entryId: id,
+              fieldId: 'image',
+              locale,
+            })}
+          >
             {backgroundImage && (
               <div
                 className={classes.imageFixed}

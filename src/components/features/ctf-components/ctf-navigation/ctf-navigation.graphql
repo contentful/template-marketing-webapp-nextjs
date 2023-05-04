@@ -2,7 +2,11 @@ fragment NavigationFields on NavigationMenuCollection {
   items {
     menuItemsCollection {
       items {
-        label: groupName
+        __typename
+        sys {
+          id
+        }
+        groupName
         link: groupLink {
           ...PageLinkFields
         }
