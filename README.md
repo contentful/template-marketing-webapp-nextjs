@@ -227,8 +227,7 @@ $~$
 There is a _component-resolver_ (_./src/components/component-resolver.tsx_) React component, which is used to pick the
 right React component for rendering a _content-type_.
 
-It requires as properties the _content type_ `id`, its `__typename`, `internalName` (used by XRAY-mode), and optionally
-the content.
+It requires as properties the _content type_ `id`, its `__typename` (used by live preview), and optionally the content.
 
 The **component-resolver** then uses a key map to find the right React component (`./src/mappings.ts`), where the key is
 the _content type_ name and the value is the React component.
@@ -238,7 +237,7 @@ available.
 The content is then passed to the React component.
 
 If the _content type_ could not be resolved, `componentGqlMap` will be used for resolving.
-If the React component is found the _content type_ `id`, `__typename`, and `internalName` will be passed, which is used
+If the React component is found the _content type_ `id` and `__typename` will be passed, which is used
 by the component to fetch its data.
 
 According to this pattern, all _ctf-components_ suffixed with `-gql` should be added to `componentGqlMap` and all
@@ -281,13 +280,16 @@ environment variables.
 
 ---
 
-### Content preview
+### Content preview & live preview
 
 Once you have the Starter Template deployed on your hosting provider, you can update the Content preview URL in your
 space settings.
 
 You can follow our guide to learn how to do
 so: [https://www.contentful.com/help/setup-content-preview](https://www.contentful.com/help/setup-content-preview/?utm_source=github.com-preview-guide&utm_medium=referral&utm_campaign=template-marketing-webapp-nextjs).
+
+For the live preview the basic field tagging for the inspector mode and live updates are already implemented.
+For custom components, you can find the instructions at our [guide](https://www.contentful.com/developers/docs/tutorials/general/live-preview/).
 
 $~$
 

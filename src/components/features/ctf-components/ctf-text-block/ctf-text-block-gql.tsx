@@ -1,3 +1,5 @@
+import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
+
 import { useCtfTextBlockQuery } from './__generated/ctf-text-block.generated';
 import { CtfTextBlock } from './ctf-text-block';
 
@@ -14,9 +16,11 @@ export const CtfTextBlockGql = ({ id, locale, preview }: CtfTextBlockGqlPropsInt
     preview,
   });
 
-  if (isLoading || !data?.componentTextBlock) {
+  const componentTextBlock = useContentfulLiveUpdates(data?.componentTextBlock, locale);
+
+  if (isLoading || !componentTextBlock) {
     return null;
   }
 
-  return <CtfTextBlock {...data.componentTextBlock} />;
+  return <CtfTextBlock {...componentTextBlock} />;
 };

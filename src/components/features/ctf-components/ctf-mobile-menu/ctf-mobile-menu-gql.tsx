@@ -1,3 +1,5 @@
+import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
+
 import { CtfMobileMenu } from './ctf-mobile-menu';
 
 import { useCtfNavigationQuery } from '@src/components/features/ctf-components/ctf-navigation/__generated/ctf-navigation.generated';
@@ -11,7 +13,9 @@ export const CtfMobileMenuGql = props => {
     preview: previewActive,
   });
 
-  if (!data?.navigationMenuCollection || isLoading) return null;
+  const navigationMenuCollection = useContentfulLiveUpdates(data?.navigationMenuCollection, locale);
 
-  return <CtfMobileMenu {...props} {...data.navigationMenuCollection} />;
+  if (!navigationMenuCollection || isLoading) return null;
+
+  return <CtfMobileMenu {...props} {...navigationMenuCollection} />;
 };

@@ -1,9 +1,8 @@
 fragment CtaFields on ComponentCta {
+  __typename
   sys {
     id
   }
-  __typename
-  internalName
   headline
   subline {
     json

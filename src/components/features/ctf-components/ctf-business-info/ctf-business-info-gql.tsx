@@ -1,3 +1,4 @@
+import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
 import { Container } from '@mui/material';
 import Head from 'next/head';
 
@@ -21,11 +22,13 @@ export const CtfBusinessInfoGql = ({ preview, id }: CtfBusinessInfoGqlPropsInter
     preview,
   });
 
+  const topicBusinessInfo = useContentfulLiveUpdates(data?.topicBusinessInfo, locale);
+
   if (!data || isLoading) {
     return null;
   }
 
-  if (!data.topicBusinessInfo) {
+  if (!topicBusinessInfo) {
     return (
       <Container>
         <EntryNotFound />
@@ -35,16 +38,16 @@ export const CtfBusinessInfoGql = ({ preview, id }: CtfBusinessInfoGqlPropsInter
 
   return (
     <>
-      {data.topicBusinessInfo.featuredImage && (
+      {topicBusinessInfo.featuredImage && (
         <Head>
           <meta
             key="og:image"
             property="og:image"
-            content={`${data.topicBusinessInfo.featuredImage.url}?w=1200&h=630&f=faces&fit=fill`}
+            content={`${topicBusinessInfo.featuredImage?.url}?w=1200&h=630&f=faces&fit=fill`}
           />
         </Head>
       )}
-      <CtfBusinessInfo {...data.topicBusinessInfo} />
+      <CtfBusinessInfo {...topicBusinessInfo} />
     </>
   );
 };

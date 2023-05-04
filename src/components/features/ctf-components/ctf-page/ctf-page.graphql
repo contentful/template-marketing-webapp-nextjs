@@ -1,62 +1,21 @@
 fragment PageTopSectionFields on PageTopSectionItem {
   __typename
-  ... on ComponentCta {
-    internalName
-  }
-  ... on ComponentDuplex {
-    internalName
-  }
-  ... on ComponentHeroBanner {
-    internalName
-  }
-  ... on ComponentInfoBlock {
-    internalName
-  }
-  ... on ComponentQuote {
-    internalName
-  }
-  ... on ComponentTextBlock {
-    internalName
-  }
 }
 
 fragment PageContentFields on PagePageContent {
   __typename
-  ... on ComponentProductTable {
-    internalName
-  }
-  ... on TopicBusinessInfo {
-    internalName
-  }
-  ... on TopicProduct {
-    internalName
-  }
 }
 
 fragment PageExtraSectionItemFields on PageExtraSectionItem {
   __typename
-  ... on ComponentCta {
-    internalName
-  }
-  ... on ComponentDuplex {
-    internalName
-  }
-  ... on ComponentHeroBanner {
-    internalName
-  }
-  ... on ComponentInfoBlock {
-    internalName
-  }
-  ... on ComponentQuote {
-    internalName
-  }
-  ... on ComponentTextBlock {
-    internalName
-  }
 }
 
 
 fragment CtfPageFields on Page {
+  __typename
+  sys {
+    id
+  }
   pageName
   internalName: pageName
   slug

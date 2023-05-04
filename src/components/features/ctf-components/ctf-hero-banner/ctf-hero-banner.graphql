@@ -1,9 +1,8 @@
 fragment HeroBannerFields on ComponentHeroBanner {
+  __typename
   sys {
     id
   }
-  internalName
-  __typename
   # Tutorial: uncomment the line below to add the Greeting field to the query
   # greeting
   headline

@@ -1,3 +1,4 @@
+import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
 import React from 'react';
 
 import { useCtfDuplexQuery } from './__generated/ctf-duplex.generated';
@@ -16,9 +17,11 @@ export const CtfDuplexGql = ({ id, locale, preview }: CtfDuplexGqlPropsInterface
     preview,
   });
 
-  if (isLoading || !data?.componentDuplex) {
+  const componentDuplex = useContentfulLiveUpdates(data?.componentDuplex, locale);
+
+  if (isLoading || !componentDuplex) {
     return null;
   }
 
-  return <CtfDuplex {...data.componentDuplex} />;
+  return <CtfDuplex {...componentDuplex} />;
 };

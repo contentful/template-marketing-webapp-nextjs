@@ -32,11 +32,6 @@ export const config: CodegenConfig = {
       plugins: [
         'typescript-operations',
         'typescript-react-query',
-        {
-          add: {
-            content: "import { fetchConfig } from '@src/lib/fetchConfig';",
-          },
-        },
       ],
       config: {
         exposeQueryKeys: true,
@@ -48,10 +43,7 @@ export const config: CodegenConfig = {
         dedupeFragments: true,
         preResolveTypes: true,
         withHooks: true,
-        fetcher: {
-          endpoint: 'fetchConfig.endpoint',
-          fetchParams: 'fetchConfig.params',
-        },
+        fetcher: '@src/lib/fetchConfig#customFetcher',
       },
     },
   },
