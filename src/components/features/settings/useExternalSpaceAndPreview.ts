@@ -59,6 +59,8 @@ export const useExternalSpaceAndPreview = () => {
 
   const { domain, delivery_token, preview_token, space_id, preview } = router.query;
 
+  console.log({ domain, delivery_token, preview_token, space_id, preview });
+
   const previewActive = !!preview;
   const shouldUseSpaceCredsFromParams = !!delivery_token && !!preview_token && !!space_id;
 
@@ -70,9 +72,15 @@ export const useExternalSpaceAndPreview = () => {
   });
 
   fetchConfig.params.headers = fetchParams.headers;
+  fetchConfig.previewParams.headers = fetchParams.headers;
+
   fetchConfig.endpoint = shouldUseSpaceCredsFromParams
     ? fetcherGraphqlEndpoint(space_id, domain as Domain)
     : fetcherGraphqlEndpoint(process.env.CONTENTFUL_SPACE_ID);
+
+  console.log({
+    fetchConfig,
+  });
 
   useEffect(() => {
     if (shouldUseSpaceCredsFromParams) {
