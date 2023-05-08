@@ -1,7 +1,6 @@
-import { Theme, Typography, Button } from '@mui/material';
+import { Theme, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
-import { useTranslation } from 'next-i18next';
 
 import Logo from './CtfLogo.svg';
 
@@ -70,8 +69,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 export const CtfSignUpBanner = () => {
-  const { t } = useTranslation();
-
   const classes = useStyles();
 
   return (
