@@ -70,6 +70,8 @@ export const useExternalSpaceAndPreview = () => {
   });
 
   fetchConfig.params.headers = fetchParams.headers;
+  fetchConfig.previewParams.headers = fetchParams.headers;
+
   fetchConfig.endpoint = shouldUseSpaceCredsFromParams
     ? fetcherGraphqlEndpoint(space_id, domain as Domain)
     : fetcherGraphqlEndpoint(process.env.CONTENTFUL_SPACE_ID);
