@@ -5,6 +5,8 @@ import { useTranslation } from 'next-i18next';
 
 import Logo from './CtfLogo.svg';
 
+import { Link } from '@src/components/shared/link';
+
 const useStyles = makeStyles((theme: Theme) => ({
   banner: {
     background: '#0033A3',
@@ -28,10 +30,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontSize: '14px',
     color: '#FFFFFF',
   },
-  button: {
+  ctflLink: {
     backgroundColor: '#FFDA00',
     borderRadius: '50px',
-
     padding: '8px 24px',
     transition: 'background .2s ease-in-out,opacity .2s ease-in-out,border-color 0.2s ease-in-out',
     '&:hover, &:focus': {
@@ -39,12 +40,15 @@ const useStyles = makeStyles((theme: Theme) => ({
       transform: 'none',
     },
   },
-  buttonText: {
+  ctflLinkText: {
     fontSize: '14px',
     color: '#000000',
     fontWeight: 600,
   },
 }));
+
+const signUpLink =
+  'https://www.contentful.com/starter-templates/marketing-website/sign-up/?action=create_starter_template&template_name=marketing';
 
 export const CtfSignUpBanner = () => {
   const { t } = useTranslation();
@@ -58,13 +62,12 @@ export const CtfSignUpBanner = () => {
       <Typography className={clsx(classes.nonMobile, classes.text)}>
         The content on this template is managed via Contentful
       </Typography>
-      <Button className={classes.button}>
-        <Typography className={clsx(classes.mobile, classes.buttonText)}>Use template</Typography>
-        <Typography className={clsx(classes.nonMobile, classes.buttonText)}>
-          {' '}
+      <Link className={classes.ctflLink} href={signUpLink} target="_blank">
+        <Typography className={clsx(classes.mobile, classes.ctflLinkText)}>Use template</Typography>
+        <Typography className={clsx(classes.nonMobile, classes.ctflLinkText)}>
           Start with this template
         </Typography>
-      </Button>
+      </Link>
     </div>
   );
 };
