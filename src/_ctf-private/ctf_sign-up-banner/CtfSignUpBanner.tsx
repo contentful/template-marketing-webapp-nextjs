@@ -17,6 +17,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     gap: '12px',
   },
   mobile: {
+    order: -1,
+    textAlign: 'right',
     [theme.breakpoints.up('sm')]: {
       display: 'none',
     },
@@ -26,9 +28,21 @@ const useStyles = makeStyles((theme: Theme) => ({
       display: 'none',
     },
   },
-  text: {
+  mobileText: {
     fontSize: '14px',
     color: '#FFFFFF',
+    order: -1,
+    textAlign: 'right',
+    [theme.breakpoints.up('sm')]: {
+      display: 'none',
+    },
+  },
+  nonMobileText: {
+    fontSize: '14px',
+    color: '#FFFFFF',
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
   },
   ctflLink: {
     backgroundColor: '#FFDA00',
@@ -58,8 +72,12 @@ export const CtfSignUpBanner = () => {
   return (
     <div className={classes.banner}>
       <Logo />
-      <Typography className={clsx(classes.mobile, classes.text)}>Content from</Typography>
-      <Typography className={clsx(classes.nonMobile, classes.text)}>
+      <Typography className={clsx(classes.mobile, classes.mobileText)}>
+        Content
+        <br />
+        from
+      </Typography>
+      <Typography className={clsx(classes.nonMobile, classes.nonMobileText)}>
         The content on this template is managed via Contentful
       </Typography>
       <Link className={classes.ctflLink} href={signUpLink} target="_blank">
