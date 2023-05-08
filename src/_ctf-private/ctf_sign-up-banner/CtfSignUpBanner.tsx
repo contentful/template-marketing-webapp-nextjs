@@ -7,6 +7,11 @@ import Logo from './CtfLogo.svg';
 
 import { Link } from '@src/components/shared/link';
 
+const signUpLink =
+  'https://www.contentful.com/starter-templates/marketing-website/sign-up/?action=create_starter_template&template_name=marketing';
+const systemUIFontFamilies =
+  '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
+
 const useStyles = makeStyles((theme: Theme) => ({
   banner: {
     background: '#0033A3',
@@ -30,6 +35,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   mobileText: {
     fontSize: '14px',
+    fontFamily: systemUIFontFamilies,
     color: '#FFFFFF',
     order: -1,
     textAlign: 'right',
@@ -39,6 +45,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   nonMobileText: {
     fontSize: '14px',
+    fontFamily: systemUIFontFamilies,
     color: '#FFFFFF',
     [theme.breakpoints.down('sm')]: {
       display: 'none',
@@ -58,11 +65,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontSize: '14px',
     color: '#000000',
     fontWeight: 600,
+    fontFamily: systemUIFontFamilies,
   },
 }));
-
-const signUpLink =
-  'https://www.contentful.com/starter-templates/marketing-website/sign-up/?action=create_starter_template&template_name=marketing';
 
 export const CtfSignUpBanner = () => {
   const { t } = useTranslation();
