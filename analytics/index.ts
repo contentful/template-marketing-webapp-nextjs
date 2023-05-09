@@ -46,6 +46,17 @@ export interface PreviewModeInteracted {
 }
 
 /**
+ * Fired when a user interacts with the sign up banner on the public template preview.
+ */
+export interface SignUpBannerInteracted {
+    /**
+     * The CTA to sign up and auto-install the template from the banner.
+     */
+    ctaClicked: boolean;
+    [property: string]: any;
+}
+
+/**
  * Fired when the editorial opens or closes
  */
 export interface ToolboxInteracted {
@@ -86,6 +97,14 @@ export class Convert {
 
     public static previewModeInteractedToJson(value: PreviewModeInteracted): string {
         return JSON.stringify(uncast(value, r("PreviewModeInteracted")), null, 2);
+    }
+
+    public static toSignUpBannerInteracted(json: string): SignUpBannerInteracted {
+        return cast(JSON.parse(json), r("SignUpBannerInteracted"));
+    }
+
+    public static signUpBannerInteractedToJson(value: SignUpBannerInteracted): string {
+        return JSON.stringify(uncast(value, r("SignUpBannerInteracted")), null, 2);
     }
 
     public static toToolboxInteracted(json: string): ToolboxInteracted {
@@ -248,6 +267,9 @@ const typeMap: any = {
     ], "any"),
     "PreviewModeInteracted": o([
         { json: "enabled", js: "enabled", typ: true },
+    ], "any"),
+    "SignUpBannerInteracted": o([
+        { json: "ctaClicked", js: "ctaClicked", typ: true },
     ], "any"),
     "ToolboxInteracted": o([
         { json: "isOpen", js: "isOpen", typ: true },
@@ -540,6 +562,30 @@ export function previewModeInteracted(props: PreviewModeInteracted, options?: Op
     }
 }
 /**
+ * Fires a 'SignUpBannerInteracted' track call.
+ *
+ * @param SignUpBannerInteracted props - The analytics properties that will be sent to Segment.
+ * @param {Object} [options] - A dictionary of options. For example, enable or disable specific destinations for the call.
+ * @param {Function} [callback] - An optional callback called after a short timeout after the analytics
+ * 	call is fired.
+ */
+export function signUpBannerInteracted(props: SignUpBannerInteracted, options?: Options, callback?: Callback): void {
+
+    const schema = {"$id":"sign_up_banner_interacted","description":"Fired when a user interacts with the sign up banner on the public template preview.","properties":{"ctaClicked":{"$id":"/properties/ctaClicked","description":"The CTA to sign up and auto-install the template from the banner.","type":"boolean"}},"required":["ctaClicked"],"type":"object"};
+    validateAgainstSchema(props, schema);
+
+    const a = analytics();
+    if (a) {
+        a.track('sign_up_banner_interacted', props || {}, {...options,   context: {
+            ...(options?.context || {}),
+            typewriter: {
+                language: 'typescript',
+                version: '',
+            },
+        },}, callback);
+    }
+}
+/**
  * Fires a 'ToolboxInteracted' track call.
  *
  * @param ToolboxInteracted props - The analytics properties that will be sent to Segment.
@@ -631,6 +677,15 @@ const clientAPI = {
      * 	call is fired.
      */
     previewModeInteracted,
+    /**
+     * Fires a 'SignUpBannerInteracted' track call.
+     *
+     * @param SignUpBannerInteracted props - The analytics properties that will be sent to Segment.
+     * @param {Object} [options] - A dictionary of options. For example, enable or disable specific destinations for the call.
+     * @param {Function} [callback] - An optional callback called after a short timeout after the analytics
+     * 	call is fired.
+     */
+    signUpBannerInteracted,
     /**
      * Fires a 'ToolboxInteracted' track call.
      *

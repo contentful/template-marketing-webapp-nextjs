@@ -91,6 +91,31 @@
       "version": 1
     },
     {
+      "createdAt": "2023-05-08T15:04:12.000Z",
+      "deprecatedAt": "0001-01-01T00:00:00.000Z",
+      "jsonSchema": {
+        "$id": "sign_up_banner_interacted",
+        "description": "Fired when a user interacts with the sign up banner on the public template preview.",
+        "eventMetadata": {
+          "name": "sign_up_banner_interacted",
+          "type": "TRACK"
+        },
+        "properties": {
+          "ctaClicked": {
+            "$id": "/properties/ctaClicked",
+            "description": "The CTA to sign up and auto-install the template from the banner.",
+            "type": "boolean"
+          }
+        },
+        "required": ["ctaClicked"],
+        "type": "object"
+      },
+      "key": "sign_up_banner_interacted",
+      "type": "TRACK",
+      "updatedAt": "2023-05-08T15:50:18.000Z",
+      "version": 1
+    },
+    {
       "createdAt": "2023-02-21T10:04:59.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z",
       "jsonSchema": {
@@ -143,5 +168,5 @@
   ],
   "slug": "",
   "type": "LIVE",
-  "updatedAt": "2023-04-21T09:29:08.000Z"
+  "updatedAt": "2023-05-08T15:50:18.000Z"
 }
