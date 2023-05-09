@@ -9,7 +9,7 @@ import { Link } from '@src/components/shared/link';
 const signUpLink =
   'https://www.contentful.com/starter-templates/marketing-website/sign-up/?action=create_starter_template&template_name=marketing';
 const systemUIFontFamilies =
-  '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
+  '"Avenir Next W01", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
 
 const useStyles = makeStyles((theme: Theme) => ({
   banner: {
@@ -54,15 +54,16 @@ const useStyles = makeStyles((theme: Theme) => ({
     backgroundColor: '#FFDA00',
     borderRadius: '50px',
     padding: '8px 24px',
-    transition: 'background .2s ease-in-out,opacity .2s ease-in-out,border-color 0.2s ease-in-out',
-    '&:hover, &:focus': {
-      backgroundColor: '#d3dce0',
-      transform: 'none',
+    transition: '0.4s',
+    transitionProperty: 'transform, background-color, border-color, background,color',
+    color: '#000000',
+    '&:hover': {
+      transform: 'translateY(-3px)',
+      backgroundColor: '#EFC800',
     },
   },
   ctflLinkText: {
     fontSize: '14px',
-    color: '#000000',
     fontWeight: 600,
     fontFamily: systemUIFontFamilies,
   },
