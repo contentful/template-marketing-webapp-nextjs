@@ -3,6 +3,7 @@ import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 import { DehydratedState, Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { AppProps } from 'next/app';
+import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { appWithTranslation, SSRConfig } from 'next-i18next';
 import { useEffect, useState } from 'react';
@@ -20,6 +21,13 @@ import nextI18nConfig from 'next-i18next.config';
 type CustomPageProps = SSRConfig & { dehydratedState: DehydratedState; err: Error };
 
 ContentfulLivePreview.init();
+
+const DynamicSettings = dynamic(
+  () => import('@src/components/features/settings').then(module => module.Settings),
+  {
+    ssr: false,
+  },
+);
 
 const CustomApp = ({
   Component,
@@ -76,7 +84,7 @@ const CustomApp = ({
               <Hydrate state={dehydratedState}>
                 <Layout preview={previewActive}>
                   <Component {...pageProps} err={err} />
-                  <Settings />
+                  <DynamicSettings />
                 </Layout>
               </Hydrate>
             </ThemeProvider>
