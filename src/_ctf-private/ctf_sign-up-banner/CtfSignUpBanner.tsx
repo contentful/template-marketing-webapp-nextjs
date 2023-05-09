@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import Logo from './CtfLogo.svg';
 
 import { Link } from '@src/components/shared/link';
+import typewriter from 'analytics';
 
 const signUpLink =
   'https://www.contentful.com/starter-templates/marketing-website/sign-up/?action=create_starter_template&template_name=marketing';
@@ -71,6 +72,8 @@ const useStyles = makeStyles((theme: Theme) => ({
 export const CtfSignUpBanner = () => {
   const classes = useStyles();
 
+  const handleSignUpLinkClick = () => typewriter.signUpBannerInteracted({ ctaClicked: true });
+
   return (
     <div className={classes.banner}>
       <Logo />
@@ -80,7 +83,12 @@ export const CtfSignUpBanner = () => {
       <Typography className={clsx(classes.nonMobile, classes.nonMobileText)}>
         The content on this template is managed via Contentful
       </Typography>
-      <Link className={classes.ctflLink} href={signUpLink} target="_blank">
+      <Link
+        className={classes.ctflLink}
+        href={signUpLink}
+        target="_blank"
+        onClick={handleSignUpLinkClick}
+      >
         <Typography className={clsx(classes.mobile, classes.ctflLinkText)}>Use template</Typography>
         <Typography className={clsx(classes.nonMobile, classes.ctflLinkText)}>
           Start with this template
