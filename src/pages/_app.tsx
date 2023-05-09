@@ -10,7 +10,6 @@ import { useEffect, useState } from 'react';
 import '@contentful/live-preview/style.css';
 
 import { CtfSegmentAnalytics } from '@src/_ctf-private';
-import { Settings } from '@src/components/features/settings';
 import { Layout } from '@src/components/templates/layout/layout';
 import { useContentfulContext, ContentfulContentProvider } from '@src/contentful-context';
 import { queryConfig } from '@src/lib/gql-client';
