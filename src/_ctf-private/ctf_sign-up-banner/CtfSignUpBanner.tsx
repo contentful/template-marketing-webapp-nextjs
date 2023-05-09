@@ -56,9 +56,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: '8px 24px',
     transition: '0.4s',
     transitionProperty: 'transform, background-color, border-color, background,color',
-    color: '#000000',
+    color: '#464E5B',
     '&:hover': {
-      transform: 'translateY(-3px)',
       backgroundColor: '#EFC800',
     },
   },
@@ -76,9 +75,7 @@ export const CtfSignUpBanner = () => {
     <div className={classes.banner}>
       <Logo />
       <Typography className={clsx(classes.mobile, classes.mobileText)}>
-        Content
-        <br />
-        from
+        Content managed via
       </Typography>
       <Typography className={clsx(classes.nonMobile, classes.nonMobileText)}>
         The content on this template is managed via Contentful
