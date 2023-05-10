@@ -52,6 +52,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   ctflLink: {
+    height: '38px',
     backgroundColor: '#FFDA00',
     borderRadius: '50px',
     padding: '8px 24px',
