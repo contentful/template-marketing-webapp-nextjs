@@ -2,12 +2,14 @@ import { dehydrate, QueryClient } from '@tanstack/react-query';
 import { NextPage, NextPageContext } from 'next';
 import { useRouter } from 'next/router';
 
+import { FLAGS } from '@src/_ctf-private/_ctf-featureFlags';
 import { useCtfFooterQuery } from '@src/components/features/ctf-components/ctf-footer/__generated/ctf-footer.generated';
 import { useCtfNavigationQuery } from '@src/components/features/ctf-components/ctf-navigation/__generated/ctf-navigation.generated';
 import { useCtfPageQuery } from '@src/components/features/ctf-components/ctf-page/__generated/ctf-page.generated';
 import CtfPageGgl from '@src/components/features/ctf-components/ctf-page/ctf-page-gql';
 import { ComponentReferenceFieldsFragment } from '@src/lib/__generated/graphql.types';
 import { getServerSideTranslations } from '@src/lib/get-serverside-translations';
+import { getFlagVariation } from '@src/lib/launchDarkly';
 import { prefetchMap, PrefetchMappingTypeFetcher } from '@src/lib/prefetch-mappings';
 import { prefetchPromiseArr } from '@src/lib/prefetch-promise-array';
 
@@ -26,6 +28,11 @@ export interface CustomNextPageContext extends NextPageContext {
 }
 
 export const getServerSideProps = async ({ locale, params, query }: CustomNextPageContext) => {
+  // Feature flags
+  const featureFlagArray = await Promise.all([
+    getFlagVariation(FLAGS.STEPHANS_COOL_BOOL_TEST_FLAG),
+  ]);
+
   const slug = params.slug;
   const preview = Boolean(query.preview);
 
@@ -109,6 +116,7 @@ export const getServerSideProps = async ({ locale, params, query }: CustomNextPa
 
     return {
       props: {
+        featureFlags: Object.assign({}, ...featureFlagArray),
         ...(await getServerSideTranslations(locale)),
         dehydratedState: dehydrate(queryClient),
       },

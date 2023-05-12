@@ -1,33 +1,23 @@
 import { dehydrate, QueryClient } from '@tanstack/react-query';
 import { NextPage, NextPageContext } from 'next';
 
+import { FLAGS } from '@src/_ctf-private/_ctf-featureFlags';
 import { useCtfFooterQuery } from '@src/components/features/ctf-components/ctf-footer/__generated/ctf-footer.generated';
 import { useCtfNavigationQuery } from '@src/components/features/ctf-components/ctf-navigation/__generated/ctf-navigation.generated';
 import { useCtfPageQuery } from '@src/components/features/ctf-components/ctf-page/__generated/ctf-page.generated';
 import CtfPageGgl from '@src/components/features/ctf-components/ctf-page/ctf-page-gql';
 import { getServerSideTranslations } from '@src/lib/get-serverside-translations';
-import { getClient } from '@src/lib/ld-server';
+import { getFlagVariation } from '@src/lib/launchDarkly';
 import { prefetchPromiseArr } from '@src/lib/prefetch-promise-array';
 
-const LangPage: NextPage = props => {
-  console.log({ props });
-  return <CtfPageGgl slug="/" />;
-};
+const LangPage: NextPage = () => <CtfPageGgl slug="/" />;
 
 export const getServerSideProps = async ({ locale, query }: NextPageContext) => {
   // Feature flags
-  const client = await getClient();
-  console.log({ client });
-  const flago = await client.variation(
-    'stephans-cool-non-boolean-test-flag',
-    {
-      kind: 'user',
-      key: 'user-key-123abc',
-      name: 'Sandy',
-    },
-    false,
-  );
-  console.log({ flago });
+  const featureFlagArray = await Promise.all([
+    getFlagVariation(FLAGS.STEPHANS_COOL_BOOL_TEST_FLAG),
+  ]);
+
   try {
     const preview = Boolean(query.preview);
     const queryClient = new QueryClient();
@@ -62,7 +52,7 @@ export const getServerSideProps = async ({ locale, query }: NextPageContext) => 
 
     return {
       props: {
-        flago,
+        featureFlags: Object.assign({}, ...featureFlagArray),
         ...(await getServerSideTranslations(locale)),
         dehydratedState: dehydrate(queryClient),
       },

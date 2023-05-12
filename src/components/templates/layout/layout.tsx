@@ -21,9 +21,10 @@ const useStyles = makeStyles((theme: Theme) => ({
 interface LayoutPropsInterface {
   preview: boolean;
   children: ReactElement[];
+  shouldShowSignUpBanner: boolean;
 }
 
-export const Layout: React.FC<LayoutPropsInterface> = ({ children }) => {
+export const Layout: React.FC<LayoutPropsInterface> = ({ children, shouldShowSignUpBanner }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const classes = useStyles();
   const router = useRouter();
@@ -48,7 +49,11 @@ export const Layout: React.FC<LayoutPropsInterface> = ({ children }) => {
     <>
       <CssBaseline />
       {/* header */}
-      <Header isMenuOpen={isMenuOpen} onMenuClick={() => setMenuOpen(true)} />
+      <Header
+        isMenuOpen={isMenuOpen}
+        onMenuClick={() => setMenuOpen(true)}
+        shouldShowSignUpBanner={shouldShowSignUpBanner}
+      />
 
       {/* content */}
       <div className={classes.content}>{children}</div>

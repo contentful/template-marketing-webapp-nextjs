@@ -7,9 +7,11 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { appWithTranslation, SSRConfig } from 'next-i18next';
 import { useEffect, useState } from 'react';
+
 import '@contentful/live-preview/style.css';
 
 import { CtfSegmentAnalytics } from '@src/_ctf-private';
+import { FLAGS } from '@src/_ctf-private/_ctf-featureFlags';
 import { Layout } from '@src/components/templates/layout/layout';
 import { useContentfulContext, ContentfulContentProvider } from '@src/contentful-context';
 import { queryConfig } from '@src/lib/gql-client';
@@ -17,7 +19,11 @@ import colorfulTheme from '@src/theme';
 import contentfulConfig from 'contentful.config';
 import nextI18nConfig from 'next-i18next.config';
 
-type CustomPageProps = SSRConfig & { dehydratedState: DehydratedState; err: Error };
+type CustomPageProps = SSRConfig & {
+  dehydratedState: DehydratedState;
+  err: Error;
+  featureFlags: Record<string, any>;
+};
 
 ContentfulLivePreview.init();
 
@@ -34,8 +40,10 @@ const CustomApp = ({
   pageProps: originalPageProps,
 }: AppProps<CustomPageProps>) => {
   const [queryClient] = useState(() => new QueryClient(queryConfig));
-  const { dehydratedState, err, ...pageProps } = originalPageProps;
+  const { dehydratedState, err, featureFlags, ...pageProps } = originalPageProps;
   const { previewActive } = useContentfulContext();
+
+  const shouldShowSignUpBanner = featureFlags[FLAGS.STEPHANS_COOL_BOOL_TEST_FLAG] === 'treatment';
 
   useEffect(() => {
     // when component is mounting we remove server side rendered css:
@@ -81,7 +89,7 @@ const CustomApp = ({
           <StyledEngineProvider injectFirst>
             <ThemeProvider theme={colorfulTheme}>
               <Hydrate state={dehydratedState}>
-                <Layout preview={previewActive}>
+                <Layout preview={previewActive} shouldShowSignUpBanner={shouldShowSignUpBanner}>
                   <Component {...pageProps} err={err} />
                   <DynamicSettings />
                 </Layout>

@@ -68,6 +68,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 interface HeaderPropsInterface {
   isMenuOpen?: boolean;
   onMenuClick?: () => any;
+  shouldShowSignUpBanner: boolean;
 }
 
 export const Header = (props: HeaderPropsInterface) => {
@@ -78,7 +79,7 @@ export const Header = (props: HeaderPropsInterface) => {
 
   return (
     <AppBar position="sticky" color="secondary" className={classes.appbar}>
-      <CtfSignUpBanner />
+      {props.shouldShowSignUpBanner && <CtfSignUpBanner />}
       <Toolbar>
         <Container
           className={classes.toolbarContent}
