@@ -79,13 +79,12 @@ export const Header = (props: HeaderPropsInterface) => {
   const { t } = useTranslation();
   const { query } = useRouter();
   const { referrer } = query;
-  const referrerFromWebApp = referrer === 'contentful';
   const { onMenuClick, isMenuOpen } = props;
   const classes = useStyles();
 
   return (
     <AppBar position="sticky" color="secondary" className={classes.appbar}>
-      {!referrerFromWebApp && <CtfSignUpBanner />}
+      {referrer && <CtfSignUpBanner />}
       <Toolbar>
         <Container
           className={classes.toolbarContent}
