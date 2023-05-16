@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export const CtfSignUpBanner = () => {
+const CtfSignUpBanner = () => {
   const classes = useStyles();
 
   const handleSignUpLinkClick = () => typewriter.signUpBannerInteracted({ ctaClicked: true });
@@ -98,3 +98,5 @@ export const CtfSignUpBanner = () => {
     </div>
   );
 };
+
+export default CtfSignUpBanner;
