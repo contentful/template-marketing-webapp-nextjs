@@ -1,4 +1,4 @@
-import { ContentfulLivePreview } from '@contentful/live-preview';
+import { useContentfulInspectorMode } from '@contentful/live-preview/react';
 import { Theme, Container } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { makeStyles } from '@mui/styles';
@@ -8,7 +8,6 @@ import React, { useMemo } from 'react';
 import { BusinessInfoFieldsFragment } from './__generated/business-info.generated';
 
 import { CtfRichtext } from '@src/components/features/ctf-components/ctf-richtext/ctf-richtext';
-import { useContentfulContext } from '@src/contentful-context';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -96,13 +95,13 @@ const CtfBusinessInfo = (props: BusinessInfoFieldsFragment) => {
     featuredImage,
     sys: { id },
   } = props;
-  const { locale } = useContentfulContext();
   const backgroundImage = useMemo(
     () => (featuredImage ? `${featuredImage.url}?w=1920` : undefined),
     [featuredImage],
   );
 
   const classes = useStyles(props);
+  const inspectorMode = useContentfulInspectorMode({ entryId: id });
 
   return (
     <div className={classes.root}>
@@ -113,7 +112,7 @@ const CtfBusinessInfo = (props: BusinessInfoFieldsFragment) => {
             style={{
               backgroundImage: `url(${backgroundImage})`,
             }}
-            {...ContentfulLivePreview.getProps({ entryId: id, fieldId: 'featuredImage', locale })}
+            {...inspectorMode({ fieldId: 'featuredImage' })}
           />
           <Container maxWidth={false}>
             <div className={clsx(classes.containerNarrow, classes.heroInner)}>
@@ -121,7 +120,7 @@ const CtfBusinessInfo = (props: BusinessInfoFieldsFragment) => {
                 <Typography
                   variant="h1"
                   className={classes.title}
-                  {...ContentfulLivePreview.getProps({ entryId: id, fieldId: 'name', locale })}
+                  {...inspectorMode({ fieldId: 'name' })}
                 >
                   {name}
                 </Typography>
@@ -129,10 +128,8 @@ const CtfBusinessInfo = (props: BusinessInfoFieldsFragment) => {
               {shortDescription && (
                 <Typography
                   className={classes.subtitle}
-                  {...ContentfulLivePreview.getProps({
-                    entryId: id,
+                  {...inspectorMode({
                     fieldId: 'shortDescription',
-                    locale,
                   })}
                 >
                   {shortDescription}
@@ -143,7 +140,7 @@ const CtfBusinessInfo = (props: BusinessInfoFieldsFragment) => {
         </div>
       )}
       {body && (
-        <div {...ContentfulLivePreview.getProps({ entryId: id, fieldId: 'body', locale })}>
+        <div {...inspectorMode({ fieldId: 'body' })}>
           <CtfRichtext
             {...body}
             containerClassName={classes.container}

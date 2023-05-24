@@ -22,7 +22,7 @@ export const CtfBusinessInfoGql = ({ preview, id }: CtfBusinessInfoGqlPropsInter
     preview,
   });
 
-  const topicBusinessInfo = useContentfulLiveUpdates(data?.topicBusinessInfo, locale);
+  const topicBusinessInfo = useContentfulLiveUpdates(data?.topicBusinessInfo);
 
   if (!data || isLoading) {
     return null;

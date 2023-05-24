@@ -1,4 +1,4 @@
-import { ContentfulLivePreview } from '@contentful/live-preview';
+import { useContentfulInspectorMode } from '@contentful/live-preview/react';
 import { Theme, Typography, Container } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import throttle from 'lodash/throttle';
@@ -12,7 +12,6 @@ import { ProductTableFieldsFragment } from './__generated/ctf-product-table.gene
 import { CtfRichtext } from '@src/components/features/ctf-components/ctf-richtext/ctf-richtext';
 import { FormatCurrency } from '@src/components/features/format-currency';
 import { SectionHeadlines } from '@src/components/features/section-headlines';
-import { useContentfulContext } from '@src/contentful-context';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 
 const contentfulLoader: ImageLoader = ({ src, width, quality }) => {
@@ -141,7 +140,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export const CtfProductTable = (props: ProductTableFieldsFragment) => {
   const { t } = useTranslation();
-  const { locale } = useContentfulContext();
   const {
     headline,
     subline,
@@ -150,6 +148,7 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
   } = props;
 
   const classes = useStyles();
+  const inspectorMode = useContentfulInspectorMode();
 
   // Rendering product features
   const featureNames: string[] | null = useMemo(() => {
@@ -211,14 +210,14 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
           : 'longDescription';
 
         grid[featureName][product.sys.id] = {
-          attributes: ContentfulLivePreview.getProps({ fieldId, entryId: feature.sys.id, locale }),
+          attributes: inspectorMode({ fieldId, entryId: feature.sys.id }),
           value: feature[fieldId],
         };
       });
     });
 
     return grid;
-  }, [featureNames, productsCollection, locale]);
+  }, [featureNames, productsCollection, inspectorMode]);
 
   // Keeping the grid items the same size
   const gridElement = useRef<HTMLDivElement>(null);
@@ -282,13 +281,9 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
         <div className={classes.innerContainer}>
           <SectionHeadlines
             headline={headline}
-            headlineLivePreviewProps={{
-              ...ContentfulLivePreview.getProps({ entryId: id, fieldId: 'headline', locale }),
-            }}
+            headlineLivePreviewProps={inspectorMode({ entryId: id, fieldId: 'headline' })}
             subline={subline}
-            sublineLivePreviewProps={{
-              ...ContentfulLivePreview.getProps({ entryId: id, fieldId: 'subline', locale }),
-            }}
+            sublineLivePreviewProps={inspectorMode({ entryId: id, fieldId: 'subline' })}
             className={classes.sectionHeadlines}
           />
           {productsCollection && productsCollection.items.length > 0 && (
@@ -302,18 +297,16 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                       ref={el => {
                         gridColumnElements.current[j] = el;
                       }}
-                      {...ContentfulLivePreview.getProps({
+                      {...inspectorMode({
                         entryId: product.sys.id,
                         fieldId: 'internalName',
-                        locale,
                       })}
                     >
                       <div
                         className={classes.featuredImage}
-                        {...ContentfulLivePreview.getProps({
+                        {...inspectorMode({
                           entryId: product.sys.id,
                           fieldId: 'featuredImage',
-                          locale,
                         })}
                       >
                         <div
@@ -350,10 +343,9 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                         <Typography
                           variant="h2"
                           className={classes.title}
-                          {...ContentfulLivePreview.getProps({
+                          {...inspectorMode({
                             entryId: product.sys.id,
                             fieldId: 'name',
-                            locale,
                           })}
                         >
                           {product.name}
@@ -367,10 +359,9 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                               ? undefined
                               : `${gridSizes['index-2']}px`,
                         }}
-                        {...ContentfulLivePreview.getProps({
+                        {...inspectorMode({
                           entryId: product.sys.id,
                           fieldId: 'description',
-                          locale,
                         })}
                       >
                         {product.description && (
@@ -395,10 +386,9 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                               ? undefined
                               : `${gridSizes['index-3']}px`,
                         }}
-                        {...ContentfulLivePreview.getProps({
+                        {...inspectorMode({
                           entryId: product.sys.id,
                           fieldId: 'price',
-                          locale,
                         })}
                       >
                         {!product.price || product.price === 0 ? (
@@ -421,10 +411,9 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                         >
                           <div className={classes.comparisonFeaturesBreak} />
                           <div
-                            {...ContentfulLivePreview.getProps({
+                            {...inspectorMode({
                               entryId: product.sys.id,
                               fieldId: 'features',
-                              locale,
                             })}
                           >
                             {featureNames.map(
@@ -466,10 +455,9 @@ export const CtfProductTable = (props: ProductTableFieldsFragment) => {
                             variant="h2"
                             component="span"
                             className={classes.priceUpper}
-                            {...ContentfulLivePreview.getProps({
+                            {...inspectorMode({
                               entryId: product.sys.id,
                               fieldId: 'price',
-                              locale,
                             })}
                           >
                             <FormatCurrency value={product.price} />

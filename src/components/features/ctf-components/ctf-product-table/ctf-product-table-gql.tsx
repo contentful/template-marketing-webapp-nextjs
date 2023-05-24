@@ -19,7 +19,7 @@ export const CtfProductTableGql = (props: CtfProductTableGqlPropsInterface) => {
     preview: props.preview,
   });
 
-  const componentProductTable = useContentfulLiveUpdates(data?.componentProductTable, props.locale);
+  const componentProductTable = useContentfulLiveUpdates(data?.componentProductTable);
 
   if (isLoading || !componentProductTable) {
     return null;

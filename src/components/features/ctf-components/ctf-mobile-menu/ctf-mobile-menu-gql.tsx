@@ -13,7 +13,7 @@ export const CtfMobileMenuGql = props => {
     preview: previewActive,
   });
 
-  const navigationMenuCollection = useContentfulLiveUpdates(data?.navigationMenuCollection, locale);
+  const navigationMenuCollection = useContentfulLiveUpdates(data?.navigationMenuCollection);
 
   if (!navigationMenuCollection || isLoading) return null;
 
