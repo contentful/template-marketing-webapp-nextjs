@@ -1,4 +1,4 @@
-import { ContentfulLivePreview } from '@contentful/live-preview';
+import { useContentfulInspectorMode } from '@contentful/live-preview/react';
 import { Container, Theme, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
@@ -8,7 +8,6 @@ import { HeroBannerFieldsFragment } from './__generated/ctf-hero-banner.generate
 
 import { CtfRichtext } from '@src/components/features/ctf-components/ctf-richtext/ctf-richtext';
 import { PageLink } from '@src/components/features/page-link';
-import { useContentfulContext } from '@src/contentful-context';
 import LayoutContext, { defaultLayout, useLayoutContext } from '@src/layout-context';
 import { getColorConfigFromPalette, HEADER_HEIGHT_MD, HEADER_HEIGHT } from '@src/theme';
 
@@ -110,7 +109,6 @@ export const CtfHeroBanner = (props: HeroBannerFieldsFragment) => {
     heroSize: heroSizeBoolean,
   } = props;
   const layout = useLayoutContext();
-  const { locale } = useContentfulContext();
 
   const colorConfig = getColorConfigFromPalette(colorPalette || '');
   const imageStyle = imageStyleBoolean ? 'partial' : 'full';
@@ -124,16 +122,19 @@ export const CtfHeroBanner = (props: HeroBannerFieldsFragment) => {
     [image, imageStyle, layout.containerWidth],
   );
   const classes = useStyles();
+  const inspectorMode = useContentfulInspectorMode({ entryId: id });
+
   return (
     <Container
       maxWidth={false}
       className={clsx(classes.root, heroSize === 'full_screen' ? classes.fullScreen : null)}
-      {...ContentfulLivePreview.getProps({ entryId: id, fieldId: 'image', locale })}
+      {...inspectorMode({ fieldId: 'image' })}
       style={{
         backgroundImage:
           imageStyle === 'full' && backgroundImage ? `url(${backgroundImage!})` : undefined,
         backgroundColor: colorConfig.backgroundColor,
-      }}>
+      }}
+    >
       {imageStyle === 'partial' && backgroundImage && (
         <div className={classes.partialBgContainer}>
           <div
@@ -157,7 +158,8 @@ export const CtfHeroBanner = (props: HeroBannerFieldsFragment) => {
             variant="h1"
             className={classes.headline}
             style={{ color: colorConfig.headlineColor }}
-            {...ContentfulLivePreview.getProps({ entryId: id, fieldId: 'headline', locale })}>
+            {...inspectorMode({ fieldId: 'headline' })}
+          >
             {headline}
           </Typography>
         )}
@@ -165,7 +167,8 @@ export const CtfHeroBanner = (props: HeroBannerFieldsFragment) => {
           <LayoutContext.Provider value={{ ...defaultLayout, parent: 'hero-banner-body' }}>
             <div
               style={{ color: colorConfig.textColor }}
-              {...ContentfulLivePreview.getProps({ entryId: id, fieldId: 'bodyText', locale })}>
+              {...inspectorMode({ fieldId: 'bodyText' })}
+            >
               <CtfRichtext {...bodyText} className={classes.body} />
             </div>
           </LayoutContext.Provider>
@@ -176,7 +179,8 @@ export const CtfHeroBanner = (props: HeroBannerFieldsFragment) => {
               page={targetPage}
               variant="contained"
               color={colorConfig.buttonColor}
-              isButton>
+              isButton
+            >
               {ctaText}
             </PageLink>
           </div>

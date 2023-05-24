@@ -17,7 +17,7 @@ export const CtfDuplexGql = ({ id, locale, preview }: CtfDuplexGqlPropsInterface
     preview,
   });
 
-  const componentDuplex = useContentfulLiveUpdates(data?.componentDuplex, locale);
+  const componentDuplex = useContentfulLiveUpdates(data?.componentDuplex);
 
   if (isLoading || !componentDuplex) {
     return null;

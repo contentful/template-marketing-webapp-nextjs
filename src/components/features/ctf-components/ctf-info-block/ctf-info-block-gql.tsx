@@ -22,7 +22,7 @@ export const CtfInfoBlockGql = ({
     preview,
   });
 
-  const componentInfoBlock = useContentfulLiveUpdates(data?.componentInfoBlock, locale);
+  const componentInfoBlock = useContentfulLiveUpdates(data?.componentInfoBlock);
 
   if (isLoading || !componentInfoBlock) {
     return null;

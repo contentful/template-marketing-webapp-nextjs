@@ -15,11 +15,9 @@ interface Props {
 }
 
 const CtfPageGgl = ({ slug: slugFromProps }: Props) => {
-  const { locale } = useContentfulContext();
-
   const slug = !slugFromProps || slugFromProps === '/' ? 'home' : slugFromProps;
 
-  const { previewActive } = useContentfulContext();
+  const { previewActive, locale } = useContentfulContext();
 
   const { isLoading, data } = useCtfPageQuery({
     slug,
@@ -27,10 +25,7 @@ const CtfPageGgl = ({ slug: slugFromProps }: Props) => {
     preview: previewActive,
   });
 
-  const page = useContentfulLiveUpdates(
-    tryget(() => data?.pageCollection!.items[0]),
-    locale,
-  );
+  const page = useContentfulLiveUpdates(tryget(() => data?.pageCollection!.items[0]));
 
   if (isLoading) return <></>;
   if (!page) {
