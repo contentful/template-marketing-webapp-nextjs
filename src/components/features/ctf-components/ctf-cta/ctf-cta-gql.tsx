@@ -17,7 +17,7 @@ export const CtfCtaGql = ({ id, locale, preview }: CtfCtaGqlPropsInterface) => {
     preview,
   });
 
-  const componentCta = useContentfulLiveUpdates(data?.componentCta, locale);
+  const componentCta = useContentfulLiveUpdates(data?.componentCta);
 
   if (isLoading || !componentCta) {
     return null;

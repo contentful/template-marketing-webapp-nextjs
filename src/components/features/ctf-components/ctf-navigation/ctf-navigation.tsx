@@ -1,4 +1,4 @@
-import { ContentfulLivePreview } from '@contentful/live-preview';
+import { useContentfulInspectorMode } from '@contentful/live-preview/react';
 import { Theme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
@@ -6,7 +6,6 @@ import { NavigationFieldsFragment } from './__generated/ctf-navigation.generated
 import { getLinkDisplayText, getLinkHrefPrefix } from './utils';
 
 import { Link } from '@src/components/shared/link';
-import { useContentfulContext } from '@src/contentful-context';
 
 const useStyles = makeStyles((theme: Theme) => ({
   menu: {
@@ -73,7 +72,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export const CtfNavigation = (props: NavigationFieldsFragment) => {
   const classes = useStyles();
-  const { locale } = useContentfulContext();
+  const inspectorMode = useContentfulInspectorMode();
 
   const navigationContent = props.items[0];
 
@@ -86,10 +85,9 @@ export const CtfNavigation = (props: NavigationFieldsFragment) => {
         <li
           key={menuItem.sys.id}
           className={listClassName}
-          {...ContentfulLivePreview.getProps({
+          {...inspectorMode({
             entryId: menuItem.sys.id,
             fieldId: 'pageName',
-            locale,
           })}
         >
           <Link href={href}>{linkText}</Link>
@@ -109,10 +107,9 @@ export const CtfNavigation = (props: NavigationFieldsFragment) => {
                   <li
                     key={menuItem.sys.id}
                     className={classes.menuItem}
-                    {...ContentfulLivePreview.getProps({
+                    {...inspectorMode({
                       entryId: menuItem.sys.id,
                       fieldId: 'groupName',
-                      locale,
                     })}
                   >
                     {!menuItem.link ? (

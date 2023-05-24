@@ -1,4 +1,4 @@
-import { ContentfulLivePreview } from '@contentful/live-preview';
+import { useContentfulInspectorMode } from '@contentful/live-preview/react';
 import { Theme, Container } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
@@ -8,7 +8,6 @@ import { InfoBlockFieldsFragment } from './__generated/ctf-info-block.generated'
 import { CtfAsset } from '@src/components/features/ctf-components/ctf-asset/ctf-asset';
 import { CtfRichtext } from '@src/components/features/ctf-components/ctf-richtext/ctf-richtext';
 import { SectionHeadlines } from '@src/components/features/section-headlines';
-import { useContentfulContext } from '@src/contentful-context';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 import { getColorConfigFromPalette } from '@src/theme';
 
@@ -94,7 +93,7 @@ export const CtfInfoBlock = (props: CtfInfoBlockPropsInterface) => {
   } = props;
   const colorConfig = getColorConfigFromPalette(colorPalette || '');
   const classes = useStyles();
-  const { locale } = useContentfulContext();
+  const inspectorMode = useContentfulInspectorMode({ entryId: id });
 
   return (
     <Container
@@ -115,12 +114,12 @@ export const CtfInfoBlock = (props: CtfInfoBlockPropsInterface) => {
           headline={headline}
           headlineProps={{
             style: { color: colorConfig.headlineColor },
-            ...ContentfulLivePreview.getProps({ entryId: id, fieldId: 'headline', locale }),
+            ...inspectorMode({ fieldId: 'headline' }),
           }}
           subline={subline}
           sublineProps={{
             style: { color: colorConfig.textColor },
-            ...ContentfulLivePreview.getProps({ entryId: id, fieldId: 'subline', locale }),
+            ...inspectorMode({ fieldId: 'subline' }),
           }}
           className={classes.sectionHeadlines}
         />
@@ -131,10 +130,8 @@ export const CtfInfoBlock = (props: CtfInfoBlockPropsInterface) => {
                 {block1Image && (
                   <div
                     className={classes.itemIcon}
-                    {...ContentfulLivePreview.getProps({
-                      entryId: id,
+                    {...inspectorMode({
                       fieldId: 'block1Image',
-                      locale,
                     })}
                   >
                     <CtfAsset {...block1Image} showDescription={false} />
@@ -142,10 +139,8 @@ export const CtfInfoBlock = (props: CtfInfoBlockPropsInterface) => {
                 )}
                 <div
                   style={{ color: colorConfig.textColor }}
-                  {...ContentfulLivePreview.getProps({
-                    entryId: id,
+                  {...inspectorMode({
                     fieldId: 'block1Body',
-                    locale,
                   })}
                 >
                   <CtfRichtext {...block1Body} className={classes.itemText} />
@@ -157,10 +152,8 @@ export const CtfInfoBlock = (props: CtfInfoBlockPropsInterface) => {
                 {block2Image && (
                   <div
                     className={classes.itemIcon}
-                    {...ContentfulLivePreview.getProps({
-                      entryId: id,
+                    {...inspectorMode({
                       fieldId: 'block2Image',
-                      locale,
                     })}
                   >
                     <CtfAsset {...block2Image} showDescription={false} />
@@ -168,10 +161,8 @@ export const CtfInfoBlock = (props: CtfInfoBlockPropsInterface) => {
                 )}
                 <div
                   style={{ color: colorConfig.textColor }}
-                  {...ContentfulLivePreview.getProps({
-                    entryId: id,
+                  {...inspectorMode({
                     fieldId: 'block2Body',
-                    locale,
                   })}
                 >
                   <CtfRichtext {...block2Body} className={classes.itemText} />
@@ -183,10 +174,8 @@ export const CtfInfoBlock = (props: CtfInfoBlockPropsInterface) => {
                 {block3Image && (
                   <div
                     className={classes.itemIcon}
-                    {...ContentfulLivePreview.getProps({
-                      entryId: id,
+                    {...inspectorMode({
                       fieldId: 'block3Image',
-                      locale,
                     })}
                   >
                     <CtfAsset {...block3Image} showDescription={false} />
@@ -194,10 +183,8 @@ export const CtfInfoBlock = (props: CtfInfoBlockPropsInterface) => {
                 )}
                 <div
                   style={{ color: colorConfig.textColor }}
-                  {...ContentfulLivePreview.getProps({
-                    entryId: id,
+                  {...inspectorMode({
                     fieldId: 'block3Body',
-                    locale,
                   })}
                 >
                   <CtfRichtext {...block3Body} className={classes.itemText} />

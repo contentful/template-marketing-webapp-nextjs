@@ -18,7 +18,7 @@ export const CtfQuoteGql = (props: CtfQuoteGqlPropsInterface) => {
     preview,
   });
 
-  const componentQuote = useContentfulLiveUpdates(data?.componentQuote, locale);
+  const componentQuote = useContentfulLiveUpdates(data?.componentQuote);
 
   if (isLoading || !componentQuote) {
     return null;

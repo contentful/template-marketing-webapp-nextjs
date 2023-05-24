@@ -1,4 +1,4 @@
-import { ContentfulLivePreview } from '@contentful/live-preview';
+import { useContentfulInspectorMode } from '@contentful/live-preview/react';
 import Facebook from '@mui/icons-material/Facebook';
 import Instagram from '@mui/icons-material/Instagram';
 import LinkedIn from '@mui/icons-material/LinkedIn';
@@ -228,6 +228,7 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
 
   const { t } = useTranslation();
   const { locale } = useContentfulContext();
+  const inspectorMode = useContentfulInspectorMode();
 
   const renderMenuGroupLinks = (menuGroup, listClassName) => {
     return menuGroup?.items?.map(menuItem => {
@@ -237,10 +238,9 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
         <li
           key={menuItem.sys.id}
           className={listClassName}
-          {...ContentfulLivePreview.getProps({
+          {...inspectorMode({
             entryId: menuItem.sys.id,
             fieldId: 'pageName',
-            locale,
           })}
         >
           <Link href={href} className={classes.menuItem}>
@@ -252,18 +252,17 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
   };
 
   const classes = useStyles();
+  const containerProps = footerContent?.sys?.id
+    ? inspectorMode({
+        entryId: footerContent.sys.id,
+        fieldId: 'menuItems',
+        locale,
+      })
+    : undefined;
 
   return (
     <>
-      <Container
-        maxWidth={false}
-        className={classes.footerContainer}
-        {...ContentfulLivePreview.getProps({
-          entryId: footerContent?.sys?.id,
-          fieldId: 'menuItems',
-          locale,
-        })}
-      >
+      <Container {...containerProps} maxWidth={false} className={classes.footerContainer}>
         <footer className={classes.footer}>
           {footerContent?.menuItemsCollection?.items?.length && (
             <nav role="navigation" className={classes.menuWrapper}>
@@ -275,7 +274,7 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
                         <li>
                           <p
                             className={classes.menuItem}
-                            {...ContentfulLivePreview.getProps({
+                            {...inspectorMode({
                               entryId: menuItem.sys.id,
                               fieldId: 'groupName',
                               locale,
