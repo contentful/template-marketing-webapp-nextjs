@@ -1,4 +1,4 @@
-import { ContentfulLivePreview } from '@contentful/live-preview';
+import type { InspectorModeTags } from '@contentful/live-preview/dist/types';
 import { Theme, Typography, TypographyProps } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
@@ -34,10 +34,10 @@ const useStyles = makeStyles((theme: Theme) => ({
 interface SectionHeadlinesPropsInterface {
   headline?: string | null;
   headlineProps?: TypographyProps;
-  headlineLivePreviewProps?: ReturnType<typeof ContentfulLivePreview.getProps>;
+  headlineLivePreviewProps?: InspectorModeTags;
   subline?: string | null;
   sublineProps?: TypographyProps;
-  sublineLivePreviewProps?: ReturnType<typeof ContentfulLivePreview.getProps>;
+  sublineLivePreviewProps?: InspectorModeTags;
   body?: string | null;
   align?: 'center' | 'left';
   className?: string;

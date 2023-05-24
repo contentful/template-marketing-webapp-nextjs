@@ -16,7 +16,7 @@ export const CtfTextBlockGql = ({ id, locale, preview }: CtfTextBlockGqlPropsInt
     preview,
   });
 
-  const componentTextBlock = useContentfulLiveUpdates(data?.componentTextBlock, locale);
+  const componentTextBlock = useContentfulLiveUpdates(data?.componentTextBlock);
 
   if (isLoading || !componentTextBlock) {
     return null;

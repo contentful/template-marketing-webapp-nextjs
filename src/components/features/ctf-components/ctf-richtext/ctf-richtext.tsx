@@ -194,7 +194,7 @@ const EntryHyperlink = ({ node }) => {
     preview: previewActive,
   });
 
-  const page = useContentfulLiveUpdates(data?.page, locale);
+  const page = useContentfulLiveUpdates(data?.page);
 
   if (!data || isLoading) return null;
 

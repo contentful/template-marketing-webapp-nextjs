@@ -20,7 +20,7 @@ export const CtfProductGql = (props: CtfProductGqlPropsInterface) => {
     preview: props.preview,
   });
 
-  const topicProduct = useContentfulLiveUpdates(data?.topicProduct, props.locale);
+  const topicProduct = useContentfulLiveUpdates(data?.topicProduct);
 
   if (!data || isLoading) {
     return null;

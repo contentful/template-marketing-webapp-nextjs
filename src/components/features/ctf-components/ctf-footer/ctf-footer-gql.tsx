@@ -14,7 +14,7 @@ export const CtfFooterGql = () => {
     preview: previewActive,
   });
 
-  const footerMenuCollection = useContentfulLiveUpdates(data?.footerMenuCollection, locale);
+  const footerMenuCollection = useContentfulLiveUpdates(data?.footerMenuCollection);
 
   if (!footerMenuCollection || isLoading) return null;
 

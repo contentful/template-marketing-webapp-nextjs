@@ -1,4 +1,4 @@
-import { ContentfulLivePreview } from '@contentful/live-preview';
+import { useContentfulInspectorMode } from '@contentful/live-preview/react';
 import { Theme, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
@@ -7,7 +7,6 @@ import React from 'react';
 import { CtfAsset } from '@src/components/features/ctf-components/ctf-asset/ctf-asset';
 import { PersonFieldsFragment } from '@src/components/features/ctf-components/ctf-person/__generated/ctf-person.generated';
 import { CtfRichtext } from '@src/components/features/ctf-components/ctf-richtext/ctf-richtext';
-import { useContentfulContext } from '@src/contentful-context';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -66,7 +65,6 @@ interface CardLeadershipPropsInterface extends PersonFieldsFragment {
 }
 
 export const CardLeadership = (props: CardLeadershipPropsInterface) => {
-  const { locale } = useContentfulContext();
   const {
     name,
     bio,
@@ -77,6 +75,7 @@ export const CardLeadership = (props: CardLeadershipPropsInterface) => {
   const nameSplit = name?.split(', ');
 
   const classes = useStyles();
+  const inspectorMode = useContentfulInspectorMode({ entryId });
 
   return (
     <div
@@ -86,15 +85,12 @@ export const CardLeadership = (props: CardLeadershipPropsInterface) => {
       )}
     >
       {avatar && (
-        <div
-          {...ContentfulLivePreview.getProps({ entryId, fieldId: 'avatar', locale })}
-          className={classes.avatar}
-        >
+        <div {...inspectorMode({ fieldId: 'avatar' })} className={classes.avatar}>
           <CtfAsset {...avatar} showDescription={false} />
         </div>
       )}
       <div>
-        <div {...ContentfulLivePreview.getProps({ entryId, fieldId: 'name', locale })}>
+        <div {...inspectorMode({ fieldId: 'name' })}>
           {nameSplit && <Typography className={classes.name}>{nameSplit[0]}</Typography>}
           {nameSplit && nameSplit.length === 2 && (
             <Typography className={classes.role}>{nameSplit[1]}</Typography>
@@ -102,7 +98,7 @@ export const CardLeadership = (props: CardLeadershipPropsInterface) => {
         </div>
         {bio && (
           <LayoutContext.Provider value={{ ...defaultLayout, parent: 'card-person' }}>
-            <div {...ContentfulLivePreview.getProps({ entryId, fieldId: 'bio', locale })}>
+            <div {...inspectorMode({ fieldId: 'bio' })}>
               <CtfRichtext {...bio} className={classes.bio} />
             </div>
           </LayoutContext.Provider>

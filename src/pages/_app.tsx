@@ -1,4 +1,4 @@
-import { ContentfulLivePreview } from '@contentful/live-preview';
+import { ContentfulLivePreviewProvider } from '@contentful/live-preview/react';
 import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 import { DehydratedState, Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
@@ -17,9 +17,21 @@ import colorfulTheme from '@src/theme';
 import contentfulConfig from 'contentful.config';
 import nextI18nConfig from 'next-i18next.config';
 
-type CustomPageProps = SSRConfig & { dehydratedState: DehydratedState; err: Error };
+const LivePreviewProvider = ({ children }) => {
+  const { previewActive, locale } = useContentfulContext();
 
-ContentfulLivePreview.init();
+  return (
+    <ContentfulLivePreviewProvider
+      locale={locale}
+      enableInspectorMode={previewActive}
+      enableLiveUpdates={previewActive}
+    >
+      {children}
+    </ContentfulLivePreviewProvider>
+  );
+};
+
+type CustomPageProps = SSRConfig & { dehydratedState: DehydratedState; err: Error };
 
 const DynamicSettings = dynamic(
   () => import('@src/components/features/settings').then(module => module.Settings),
@@ -75,20 +87,22 @@ const CustomApp = ({
       </Head>
 
       <ContentfulContentProvider router={router}>
-        <QueryClientProvider client={queryClient}>
-          <CtfSegmentAnalytics />
-          <ReactQueryDevtools initialIsOpen={false} />
-          <StyledEngineProvider injectFirst>
-            <ThemeProvider theme={colorfulTheme}>
-              <Hydrate state={dehydratedState}>
-                <Layout preview={previewActive}>
-                  <Component {...pageProps} err={err} />
-                  <DynamicSettings />
-                </Layout>
-              </Hydrate>
-            </ThemeProvider>
-          </StyledEngineProvider>
-        </QueryClientProvider>
+        <LivePreviewProvider>
+          <QueryClientProvider client={queryClient}>
+            <CtfSegmentAnalytics />
+            <ReactQueryDevtools initialIsOpen={false} />
+            <StyledEngineProvider injectFirst>
+              <ThemeProvider theme={colorfulTheme}>
+                <Hydrate state={dehydratedState}>
+                  <Layout preview={previewActive}>
+                    <Component {...pageProps} err={err} />
+                    <DynamicSettings />
+                  </Layout>
+                </Hydrate>
+              </ThemeProvider>
+            </StyledEngineProvider>
+          </QueryClientProvider>
+        </LivePreviewProvider>
       </ContentfulContentProvider>
     </>
   );
