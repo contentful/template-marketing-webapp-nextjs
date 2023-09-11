@@ -10,7 +10,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 type Props = {
-  className?: string;
+  className?: 'page';
   style?: CSSProperties;
   children?: React.ReactNode | React.ReactNode[];
 };
