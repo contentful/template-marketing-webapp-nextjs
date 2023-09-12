@@ -1,198 +1,199 @@
-import { useContentfulInspectorMode } from '@contentful/live-preview/react';
-import { Container, Typography } from '@mui/material';
-import { Theme } from '@mui/material/styles';
-import { makeStyles } from '@mui/styles';
-import clsx from 'clsx';
+import { Container } from '@mui/material';
 
 import { DuplexFieldsFragment } from './__generated/ctf-duplex.generated';
 
-import { CtfImage } from '@src/components/features/ctf-components/ctf-image/ctf-image';
-import { CtfRichtext } from '@src/components/features/ctf-components/ctf-richtext/ctf-richtext';
-import { PageLink } from '@src/components/features/page-link';
-import LayoutContext, { defaultLayout } from '@src/layout-context';
-import { getColorConfigFromPalette } from '@src/theme';
-import { optimizeLineBreak } from '@src/utils';
-
-const useStyles = makeStyles((theme: Theme) => ({
-  innerContainer: {
-    display: 'grid',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    maxWidth: '126rem',
-    padding: theme.spacing(8, 0, 8),
-    gap: theme.spacing(7),
-
-    [theme.breakpoints.up('md')]: {
-      gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
-      gap: theme.spacing(14),
-      padding: theme.spacing(19, 0, 19),
-    },
-  },
-  contentContainer: {
-    margin: 'auto 0',
-    order: 1,
-    [theme.breakpoints.up('md')]: {
-      order: 'initial',
-    },
-  },
-  headline: {
-    fontSize: '3rem',
-    lineHeight: 1.3,
-    fontWeight: 700,
-    maxWidth: '60.4rem',
-    [theme.breakpoints.up('xl')]: {
-      fontSize: '3.5rem',
-    },
-  },
-  richText: {
-    fontWeight: 400,
-    lineHeight: 1.56,
-    marginTop: theme.spacing(7),
-    '& .MuiTypography-body1': {
-      fontSize: '2.5rem',
-      [theme.breakpoints.up('xl')]: {
-        fontSize: '1.8rem',
-      },
-    },
-  },
-  ctaContainer: {
-    marginTop: theme.spacing(8),
-    '& svg.MuiSvgIcon-root': {
-      fontSize: 'inherit',
-    },
-  },
-  imageContainer: {
-    display: 'flex',
-    alignItems: 'center',
-    order: 0,
-    boxShadow: `0px 0px 0px 1px rgba(25, 37, 50, 0.1),
-    0px -6px 16px -6px rgba(25, 37, 50, 0.03),
-    0px 8px 16px -8px rgba(25, 37, 50, 0.2),
-    0px 13px 27px -5px rgba(25, 37, 50, 0.15)`,
-    borderRadius: '16px',
-    [theme.breakpoints.up('md')]: {
-      order: 'initial',
-    },
-  },
-  image: {
-    display: 'block',
-    margin: 'auto 0',
-    maxWidth: '100%',
-    borderRadius: '16px',
-  },
-  imageFull: {
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
-    objectPosition: 'center center',
-  },
-  nextImageContainer: {
-    width: '100%',
-    height: 'auto',
-  },
-}));
-
-const DuplexContent = (props: DuplexFieldsFragment) => {
-  const { headline, bodyText, targetPage, ctaText, colorPalette } = props;
-
-  const colorConfig = getColorConfigFromPalette(colorPalette || '');
-  const classes = useStyles();
-  const inspectorMode = useContentfulInspectorMode({ entryId: props.sys.id });
-
-  return (
-    <div className={classes.contentContainer}>
-      {headline && (
-        <Typography
-          variant="h1"
-          component="h2"
-          className={classes.headline}
-          style={{ color: colorConfig.headlineColor }}
-          {...inspectorMode({
-            fieldId: 'headline',
-          })}
-        >
-          {optimizeLineBreak(headline)}
-        </Typography>
-      )}
-      {bodyText && (
-        <LayoutContext.Provider value={{ ...defaultLayout, parent: 'duplex' }}>
-          <div
-            style={{ color: colorConfig.textColor }}
-            {...inspectorMode({
-              fieldId: 'bodyText',
-            })}
-          >
-            <CtfRichtext {...bodyText} className={classes.richText} />
-          </div>
-        </LayoutContext.Provider>
-      )}
-      {targetPage && targetPage.slug && (
-        <div
-          className={classes.ctaContainer}
-          {...inspectorMode({
-            fieldId: 'ctaText',
-          })}
-        >
-          <PageLink page={targetPage} variant="contained" color={colorConfig.buttonColor} isButton>
-            {ctaText}
-          </PageLink>
-        </div>
-      )}
-    </div>
-  );
-};
-
-const DuplexImage = (props: DuplexFieldsFragment) => {
-  const { image, imageStyle: imageStyleBoolean } = props;
-  const imageStyle = imageStyleBoolean ? 'fixed' : 'full';
-
-  const classes = useStyles();
-  const inspectorMode = useContentfulInspectorMode({ entryId: props.sys.id });
-
-  return (
-    <div className={classes.imageContainer}>
-      {image?.url ? (
-        <div className={classes.nextImageContainer} {...inspectorMode({ fieldId: 'image' })}>
-          <CtfImage
-            className={clsx([classes.image, imageStyle === 'fixed' && classes.imageFull])}
-            src={`${image.url}?w=600`}
-            alt={image.description || ''}
-            layout="responsive"
-            width={image.width || undefined}
-            height={image.height || undefined}
-          />
-        </div>
-      ) : null}
-    </div>
-  );
-};
-
 export const CtfDuplex = (props: DuplexFieldsFragment) => {
-  const { colorPalette, containerLayout: containerLayoutBoolean } = props;
-
-  const colorConfig = getColorConfigFromPalette(colorPalette || '');
-  const classes = useStyles();
-
   return (
-    <Container
-      maxWidth={false}
-      style={{
-        backgroundColor: colorConfig.backgroundColor,
-      }}
-    >
-      <div className={classes.innerContainer}>
-        {containerLayoutBoolean ? (
-          <>
-            <DuplexImage {...props} />
-            <DuplexContent {...props} />
-          </>
-        ) : (
-          <>
-            <DuplexContent {...props} />
-            <DuplexImage {...props} />
-          </>
-        )}
+    <Container maxWidth={false}>
+      <div className="who-we-are-inner" style={{ boxSizing: 'border-box' }}>
+        <div
+          className="who-we-are-cont"
+          style={{
+            boxSizing: 'border-box',
+            margin: '0px auto',
+            display: 'flex',
+            maxWidth: '1140px',
+            width: '100%',
+          }}
+        >
+          <div
+            className="who-we-are-cont-left"
+            style={{
+              boxSizing: 'border-box',
+              maxWidth: '350px',
+              marginBottom: '0px',
+              paddingTop: '100px',
+            }}
+          >
+            <div
+              className="who-we-are-title"
+              style={{
+                boxSizing: 'border-box',
+                borderBottom: '2px solid rgb(188, 188, 188)',
+                fontFamily: '"Helvetica Neue LT Std Co", Helvetica, Arial, sans-serif',
+                fontWeight: 300,
+                color: 'rgb(14, 64, 103)',
+                textTransform: 'capitalize',
+                lineHeight: 1,
+                paddingBottom: '20px',
+                fontSize: '45px',
+                marginBottom: '35px',
+              }}
+            >
+              Who we are
+            </div>
+            <div
+              className="who-we-are-text"
+              style={{
+                boxSizing: 'border-box',
+                fontFamily: '"Helvetica Neue LT Std", Helvetica, Arial, sans-serif',
+                fontWeight: 100,
+                fontSize: '20px',
+                lineHeight: '32px',
+              }}
+            >
+              We are the consulting firm known for asking tough questions, listening well, digging
+              in and rolling up our sleeves. We are fact-driven and action-oriented. We move our
+              clients forward, to where they need to be. We are A&M.
+            </div>
+            <div
+              className="who-we-are-link link-blue-arrow"
+              style={{
+                boxSizing: 'border-box',
+                transition: 'all 0.5s ease 0s',
+                marginTop: '50px',
+                position: 'relative',
+                display: 'inline-flex',
+              }}
+            >
+              <a
+                href="https://www.alvarezandmarsal.com/about-am"
+                style={{
+                  boxSizing: 'border-box',
+                  transition: 'color 0.2s ease-out 0s',
+                  textDecoration: 'none',
+                  whiteSpace: 'nowrap',
+                  height: '45px',
+                  paddingLeft: '65px',
+                  paddingRight: '15px',
+                  textTransform: 'uppercase',
+                  display: 'flex',
+                  alignItems: 'center',
+                  letterSpacing: '1.6px',
+                  zIndex: 2,
+                  lineHeight: '28px',
+                  color: 'rgb(0, 133, 202)',
+                  fontFamily: '"Helvetica Neue LT Std", Helvetica, Arial, sans-serif',
+                  fontWeight: 500,
+                  fontSize: '16px',
+                }}
+              >
+                {' '}
+                Learn more
+              </a>
+            </div>
+          </div>
+          <div
+            className="who-we-are-cont-right"
+            style={{
+              boxSizing: 'border-box',
+              maxWidth: '100%',
+              width: 'calc(100% - 395px)',
+              paddingLeft: '45px',
+            }}
+          >
+            <div
+              className="who-we-are-video"
+              style={{
+                boxSizing: 'border-box',
+                width: '100%',
+                maxWidth: '800px',
+                padding: '100px 0px',
+                position: 'relative',
+              }}
+            >
+              <div className="youtube-play-on-click" style={{ boxSizing: 'border-box' }}>
+                <div
+                  className="youtube-play-on-click-container"
+                  style={{
+                    boxSizing: 'border-box',
+                    margin: '0px auto',
+                    maxWidth: '700px',
+                    position: 'relative',
+                  }}
+                >
+                  <a
+                    className="video-show-btn youtube-play-on-click-image"
+                    href="https://www.youtube.com/watch?v=_oF5oY5TAQE"
+                    style={{
+                      boxSizing: 'border-box',
+                      transition: 'color 0.2s ease-out 0s',
+                      textDecoration: 'none',
+                      color: 'rgb(0, 133, 202)',
+                      overflow: 'hidden',
+                      backgroundPosition: 'center center',
+                      backgroundRepeat: 'no-repeat',
+                      display: 'block',
+                      height: '0px',
+                      minHeight: '1px',
+                      position: 'relative',
+                      width: '100%',
+                      backgroundSize: 'cover',
+                      paddingBottom: '56.25%',
+                      backgroundImage:
+                        'url("https://www.alvarezandmarsal.com/sites/default/files/oembed_thumbnails/Xp1GSj8kEl3R-2fcBlPnALwVyYzP7midoc8MQaSidlA.jpg")',
+                    }}
+                  >
+                    <div
+                      className="youtube-play-on-click-arrow"
+                      style={{
+                        boxSizing: 'border-box',
+                        border: '2px solid white',
+                        borderRadius: '50%',
+                        width: '86px',
+                        height: '86px',
+                        position: 'absolute',
+                        left: 'calc(50% - 43px)',
+                        top: 'calc(50% - 43px)',
+                      }}
+                    />
+                  </a>
+                  <div
+                    className="youtube-play-on-click-video-container"
+                    style={{
+                      boxSizing: 'border-box',
+                      overflow: 'hidden',
+                      display: 'none',
+                      paddingBottom: '56.25%',
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+html {
+  box-sizing: border-box;
+  width: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+  background-color: rgb(238, 238, 238);
+  font-family: "Helvetica Neue LT Std Cn", Helvetica, Arial, sans-serif;
+}
+`,
+        }}
+      />
     </Container>
   );
 };

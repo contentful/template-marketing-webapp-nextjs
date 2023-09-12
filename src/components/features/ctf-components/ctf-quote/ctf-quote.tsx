@@ -1,176 +1,165 @@
-import { useContentfulInspectorMode } from '@contentful/live-preview/react';
-import { Container, Theme } from '@mui/material';
-import { makeStyles } from '@mui/styles';
-import clsx from 'clsx';
-import { useMemo } from 'react';
-
 import { QuoteFieldsFragment } from './__generated/ctf-quote.generated';
-
-import { CtfRichtext } from '@src/components/features/ctf-components/ctf-richtext/ctf-richtext';
 import LayoutContext, { defaultLayout } from '@src/layout-context';
-import { getColorConfigFromPalette } from '@src/theme';
-
-const useStyles = makeStyles((theme: Theme) => ({
-  innerContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    maxWidth: (props: QuoteFieldsFragment) => (!props.image ? '93.4rem' : '126rem'),
-    padding: theme.spacing(19, 0, 19),
-    [theme.breakpoints.up('md')]: {
-      alignItems: 'center',
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-    },
-  },
-  innerBody: {
-    order: 2,
-    width: '100%',
-
-    [theme.breakpoints.up('md')]: {
-      width: 'calc(50% - 2.5rem)',
-    },
-
-    '& p': {
-      fontSize: '1.563rem',
-      fontWeight: 400,
-    },
-
-    '& blockquote': {
-      borderLeftWidth: 0,
-      fontStyle: 'normal',
-      paddingLeft: 0,
-      color: (props: QuoteFieldsFragment) => {
-        const colorConfig = getColorConfigFromPalette(props.colorPalette || '');
-
-        return colorConfig.headlineColor;
-      },
-      '& .MuiContainer-root': {
-        paddingLeft: 0,
-        paddingRight: 0,
-      },
-      '& p': {
-        fontSize: '2.8rem',
-        fontWeight: 300,
-        lineHeight: 1.314,
-        color: '#414D63',
-      },
-    },
-
-    '& figure': {
-      display: 'inline-block',
-      marginBottom: theme.spacing(6),
-      maxWidth: '24rem',
-    },
-  },
-  innerBodyFull: {
-    flexShrink: 0,
-    width: '100%',
-  },
-  'innerBody-imageLeft': {
-    [theme.breakpoints.up('md')]: {
-      order: 2,
-    },
-  },
-  'innerBody-imageRight': {
-    [theme.breakpoints.up('md')]: {
-      order: 0,
-    },
-  },
-  imageContainer: {
-    maxWidth: '60rem',
-    order: 1,
-    width: '100%',
-
-    [theme.breakpoints.up('md')]: {
-      maxWidth: '100%',
-      width: 'calc(50% - 2.5rem)',
-    },
-  },
-  imageFixed: {
-    backgroundPosition: 'center',
-    backgroundSize: 'cover',
-    marginBottom: theme.spacing(7),
-    borderRadius: '16px',
-    boxShadow: `0px 0px 0px 1px rgba(25, 37, 50, 0.1),
-    0px -6px 16px -6px rgba(25, 37, 50, 0.03),
-    0px 8px 16px -8px rgba(25, 37, 50, 0.2),
-    0px 13px 27px -5px rgba(25, 37, 50, 0.15)`,
-
-    [theme.breakpoints.up('md')]: {
-      marginBottom: 0,
-    },
-
-    '&::before': {
-      content: '""',
-      display: 'block',
-      paddingTop: '83.333%',
-    },
-  },
-}));
 
 export const CtfQuote = (props: QuoteFieldsFragment) => {
   const {
-    imagePosition,
-    image,
-    quote,
-    colorPalette,
     quoteAlignment: quoteAlignmentBoolean,
     sys: { id },
   } = props;
-  const colorConfig = getColorConfigFromPalette(colorPalette || '');
-  const containerLayout = imagePosition === true ? 'imageLeft' : 'imageRight';
-  const quoteAlignment = quoteAlignmentBoolean === true ? 'center' : 'left';
-  const backgroundImage = useMemo(() => (image ? `${image.url}?w=${600 * 2}` : undefined), [image]);
-  const classes = useStyles(props);
-  const inspectorMode = useContentfulInspectorMode({ entryId: id });
 
   return (
     <LayoutContext.Provider value={{ ...defaultLayout, parent: 'quote' }}>
-      <Container
-        maxWidth={false}
-        style={{
-          backgroundColor: colorConfig.backgroundColor,
-        }}
-      >
-        <div className={classes.innerContainer}>
-          <div
-            className={clsx(
-              classes.innerBody,
-              classes[`innerBody-${containerLayout}`],
-              backgroundImage ? undefined : classes.innerBodyFull,
-            )}
-          >
-            {quote && (
-              <div
-                {...inspectorMode({ fieldId: 'quote' })}
-                style={{
-                  color: colorConfig.textColor,
-                  textAlign: quoteAlignment,
-                }}
-              >
-                <CtfRichtext {...quote} />
+      <div className="views-element-container" id="block-views-block-slide-testimonial-main">
+        <div>
+          <div className="view-slide-testimonial js-view-dom-id-45bdef47395b0d0953e29b778d9a0b1af6d606c94d3bc41570bc57aaa73dfc1e">
+            <div
+              className="splide splide--default blazy splide--view splide--view--slide-testimonial splide--view--slide-testimonial--main splide--view--slide-testimonial-block-main splide--optionset--slide-testimonial is-paginated splide--fade splide--ltr splide--draggable is-active is-initialized is-mounted"
+              data-splide='{"count":2,"type":"fade","rewind":true,"speed":0,"waitForTransition":false,"autoplay":true}'
+              data-once="splide"
+              role="region"
+              aria-roledescription="carousel"
+            >
+              <div className="splide__slider">
+                <div
+                  className="splide__track splide__track--fade splide__track--ltr splide__track--draggable"
+                  id="splide-47ee28b9e2b-track"
+                  style={{ paddingLeft: 0, paddingRight: 0 }}
+                  aria-live="off"
+                  aria-atomic="true"
+                  aria-busy="false"
+                >
+                  <ul className="splide__list" id="splide-47ee28b9e2b-list" role="presentation">
+                    {' '}
+                    <li
+                      className="splide__slide slide slide--1 is-next"
+                      id="splide-47ee28b9e2b-slide02"
+                      role="tabpanel"
+                      aria-roledescription="slide"
+                      aria-label="2 of 2"
+                      tabIndex={-1}
+                      style={{
+                        width: 'calc(100%)',
+                        transition: 'opacity 0ms cubic-bezier(0.42, 0.65, 0.27, 0.99) 0s',
+                      }}
+                      aria-hidden="true"
+                    >
+                      {' '}
+                      <div className="slide-testimonial">
+                        <div className="slide-testimonial-container H⚡️R-focused">
+                          <div className="slide-testimonial-left">
+                            <div className="field_slide_background field--name-field_slide_background field--name-field-slide-background">
+                              {' '}
+                              <img
+                                src="https://www.alvarezandmarsal.com/sites/default/files/slide/background/418644_gess_am_homepage_graphic_511x563px.jpg"
+                                width={511}
+                                height={563}
+                                alt=""
+                                className=""
+                              />
+                            </div>
+                            <div className="field_slide_image field--name-field_slide_image field--name-field-slide-image">
+                              {' '}
+                              <img
+                                src="https://www.alvarezandmarsal.com/sites/default/files/slide/image/bryanmarsal_2.jpg"
+                                width={370}
+                                height={372}
+                                alt=""
+                              />
+                            </div>
+                          </div>
+                          <div className="slide-testimonial-right">
+                            <div className="slide-testimonial-wrapper">
+                              <div className="field_text field--name-field_text field--name-field-text text-formatted">
+                                <p className="">We dont believe in hurry up and wait.</p>
+                              </div>
+                              <div className="name field--name-name">Bryan Marsal</div>
+                              <div className="field_job_title field--name-field_job_title field--name-field-job-title">
+                                Chief Executive Officer
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div className="splide__navigation">
+                  <div className="splide__navigation__wrap">
+                    <ul
+                      className="splide__pagination splide__pagination--ltr"
+                      role="tablist"
+                      aria-label="Select a slide to show"
+                    >
+                      <li role="presentation">
+                        <button
+                          className="splide__pagination__page is-active"
+                          type="button"
+                          role="tab"
+                          aria-controls="splide-47ee28b9e2b-slide01"
+                          aria-label="Go to slide 1"
+                          aria-selected="true"
+                        />
+                      </li>
+                      <li role="presentation">
+                        <button
+                          className="splide__pagination__page"
+                          type="button"
+                          role="tab"
+                          aria-controls="splide-47ee28b9e2b-slide02"
+                          aria-label="Go to slide 2"
+                          tabIndex={-1}
+                        />
+                      </li>
+                    </ul>
+                    <div className="splide__arrows splide__arrows--ltr">
+                      <button
+                        className="splide__arrow splide__arrow--prev"
+                        type="button"
+                        aria-label="Go to last slide"
+                        aria-controls="splide-47ee28b9e2b-track"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 40 40"
+                          width={40}
+                          height={40}
+                          focusable="false"
+                        >
+                          <path d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z" />
+                        </svg>
+                      </button>
+                      <button
+                        className="splide__arrow splide__arrow--next"
+                        type="button"
+                        aria-label="Next slide"
+                        aria-controls="splide-47ee28b9e2b-track"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 40 40"
+                          width={40}
+                          height={40}
+                          focusable="false"
+                        >
+                          <path d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
-            )}
-          </div>
-          <div
-            className={classes.imageContainer}
-            {...inspectorMode({
-              fieldId: 'image',
-            })}
-          >
-            {backgroundImage && (
-              <div
-                className={classes.imageFixed}
-                style={{
-                  backgroundImage: `url('${backgroundImage}')`,
-                }}
-              />
-            )}
+              <div className="splide__autoplay">
+                <button className="splide__play" aria-label="Play">
+                  Play
+                </button>
+                <button className="splide__pause" aria-label="Pause">
+                  Pause
+                </button>
+              </div>
+            </div>
           </div>
         </div>
-      </Container>
+      </div>
     </LayoutContext.Provider>
   );
 };

@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'FontAwesomeYESP';
-    src: url('/themes/custom/am/styles/libraries/icons/css/../fonts/fontawesome-webfont.eot?v=4.3.0');
-    src: url('/themes/custom/am/styles/libraries/icons/css/../fonts/fontawesome-webfont.eot?#iefix&v=4.3.0') format('embedded-opentype'), url('/themes/custom/am/styles/libraries/icons/css/../fonts/fontawesome-webfont.woff2?v=4.3.0') format('woff2'), url('/themes/custom/am/styles/libraries/icons/css/../fonts/fontawesome-webfont.woff?v=4.3.0') format('woff'), url('/themes/custom/am/styles/libraries/icons/css/../fonts/fontawesome-webfont.ttf?v=4.3.0') format('truetype'), url('/themes/custom/am/styles/libraries/icons/css/../fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular') format('svg');
+    src: url('https://www.alvarezandmarsal.com/themes/custom/am/styles/libraries/icons/css/../fonts/fontawesome-webfont.eot?v=4.3.0');
+        src: url('https://www.alvarezandmarsal.com/themes/custom/am/styles/libraries/icons/css/../fonts/fontawesome-webfont.eot?#iefix&v=4.3.0') format('embedded-opentype'), url('https://www.alvarezandmarsal.com/themes/custom/am/styles/libraries/icons/css/../fonts/fontawesome-webfont.woff2?v=4.3.0') format('woff2'), url('https://www.alvarezandmarsal.com/themes/custom/am/styles/libraries/icons/css/../fonts/fontawesome-webfont.woff?v=4.3.0') format('woff'), url('https://www.alvarezandmarsal.com/themes/custom/am/styles/libraries/icons/css/../fonts/fontawesome-webfont.ttf?v=4.3.0') format('truetype'), url('https://www.alvarezandmarsal.com/themes/custom/am/styles/libraries/icons/css/../fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -2346,181 +2346,181 @@
 
 @font-face {
     font-family: "DINNextW01-CondensedMed";
-    src: url("/themes/custom/am/dist/../fonts/DINNextW01-CondensedMed.eot?#iefix");
-    src: url("/themes/custom/am/dist/../fonts/DINNextW01-CondensedMed.eot?#iefix") format("eot"), url("/themes/custom/am/dist/../fonts/DINNextW01-CondensedMed.woff2") format("woff2"), url("/themes/custom/am/dist/../fonts/DINNextW01-CondensedMed.woff") format("woff"), url("/themes/custom/am/dist/../fonts/DINNextW01-CondensedMed.ttf") format("truetype"), url("/themes/custom/am/dist/../fonts/DINNextW01-CondensedMed.svg#4f311da1-9ec6-4379-9621-b45be0e23abd") format("svg");
+    src: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/DINNextW01-CondensedMed.eot?#iefix");
+        src: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/DINNextW01-CondensedMed.eot?#iefix") format("eot"), url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/DINNextW01-CondensedMed.woff2") format("woff2"), url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/DINNextW01-CondensedMed.woff") format("woff"), url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/DINNextW01-CondensedMed.ttf") format("truetype"), url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/DINNextW01-CondensedMed.svg#4f311da1-9ec6-4379-9621-b45be0e23abd") format("svg");
 }
 
 @font-face {
     font-family: "HelveticaNeueW01-75Bold";
-    src: url("/themes/custom/am/dist/../fonts/HelveticaNeueW01-75Bold.eot?#iefix");
-    src: url("/themes/custom/am/dist/../fonts/HelveticaNeueW01-75Bold.eot?#iefix") format("eot"), url("/themes/custom/am/dist/../fonts/HelveticaNeueW01-75Bold.woff2") format("woff2"), url("/themes/custom/am/dist/../fonts/HelveticaNeueW01-75Bold.woff") format("woff"), url("/themes/custom/am/dist/../fonts/HelveticaNeueW01-75Bold.ttf") format("truetype"), url("/themes/custom/am/dist/../fonts/HelveticaNeueW01-75Bold.svg#f751c8ae-1057-46d9-8d74-62592e002568") format("svg");
+    src: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueW01-75Bold.eot?#iefix");
+        src: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueW01-75Bold.eot?#iefix") format("eot"), url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueW01-75Bold.woff2") format("woff2"), url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueW01-75Bold.woff") format("woff"), url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueW01-75Bold.ttf") format("truetype"), url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueW01-75Bold.svg#f751c8ae-1057-46d9-8d74-62592e002568") format("svg");
 }
 
 @font-face {
     font-family: "HelveticaNeueW01-55Roma";
-    src: url("/themes/custom/am/dist/../fonts/HelveticaNeueW01-55Roma.eot?#iefix");
-    src: url("/themes/custom/am/dist/../fonts/HelveticaNeueW01-55Roma.eot?#iefix") format("eot"), url("/themes/custom/am/dist/../fonts/HelveticaNeueW01-55Roma.woff2") format("woff2"), url("/themes/custom/am/dist/../fonts/HelveticaNeueW01-55Roma.woff") format("woff"), url("/themes/custom/am/dist/../fonts/HelveticaNeueW01-55Roma.ttf") format("truetype"), url("/themes/custom/am/dist/../fonts/HelveticaNeueW01-55Roma.svg#da09f1f1-062a-45af-86e1-2bbdb3dd94f9") format("svg");
+    src: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueW01-55Roma.eot?#iefix");
+        src: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueW01-55Roma.eot?#iefix") format("eot"), url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueW01-55Roma.woff2") format("woff2"), url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueW01-55Roma.woff") format("woff"), url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueW01-55Roma.ttf") format("truetype"), url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueW01-55Roma.svg#da09f1f1-062a-45af-86e1-2bbdb3dd94f9") format("svg");
 }
 
 @font-face {
     font-family: "HelveticaNeueW01-56It";
-    src: url("/themes/custom/am/dist/../fonts/HelveticaNeueW01-56It.eot?#iefix");
-    src: url("/themes/custom/am/dist/../fonts/HelveticaNeueW01-56It.eot?#iefix") format("eot"), url("/themes/custom/am/dist/../fonts/HelveticaNeueW01-56It.woff2") format("woff2"), url("/themes/custom/am/dist/../fonts/HelveticaNeueW01-56It.woff") format("woff"), url("/themes/custom/am/dist/../fonts/HelveticaNeueW01-56It.ttf") format("truetype"), url("/themes/custom/am/dist/../fonts/HelveticaNeueW01-56It.svg#d0697971-6f58-4597-942e-8beabd1adc87") format("svg");
+    src: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueW01-56It.eot?#iefix");
+        src: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueW01-56It.eot?#iefix") format("eot"), url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueW01-56It.woff2") format("woff2"), url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueW01-56It.woff") format("woff"), url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueW01-56It.ttf") format("truetype"), url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueW01-56It.svg#d0697971-6f58-4597-942e-8beabd1adc87") format("svg");
 }
 
 @font-face {
     font-family: "Helvetica Neue LT W05_57 Cond";
-    src: url("/themes/custom/am/dist/../fonts/9516ef74-4fe9-45fe-a09f-493cb9518f71.woff2") format("woff2"), url("/themes/custom/am/dist/../fonts/5b99bc59-1b2e-446b-961e-2e1dbdfcd641.woff") format("woff");
+    src: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/9516ef74-4fe9-45fe-a09f-493cb9518f71.woff2") format("woff2"), url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/5b99bc59-1b2e-446b-961e-2e1dbdfcd641.woff") format("woff");
 }
 
 @font-face {
     font-family: "Helvetica Neue LT W05_45 Light";
-    src: url("/themes/custom/am/dist/../fonts/f9c5199e-a996-4c08-9042-1eb845bb7495.woff2") format("woff2"), url("/themes/custom/am/dist/../fonts/2a34f1f8-d701-4949-b12d-133c1c2636eb.woff") format("woff");
+    src: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/f9c5199e-a996-4c08-9042-1eb845bb7495.woff2") format("woff2"), url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/2a34f1f8-d701-4949-b12d-133c1c2636eb.woff") format("woff");
 }
 
 @font-face {
     font-family: "Helvetica Neue LT W05_47 Lt Cn";
-    src: url("/themes/custom/am/dist/../fonts/083e1179-98b4-4cbd-a13a-50a7c78d6fea.woff2") format("woff2"), url("/themes/custom/am/dist/../fonts/239170e6-7f0d-4c35-97d4-490b362e4ef7.woff") format("woff");
+    src: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/083e1179-98b4-4cbd-a13a-50a7c78d6fea.woff2") format("woff2"), url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/239170e6-7f0d-4c35-97d4-490b362e4ef7.woff") format("woff");
 }
 
 @font-face {
     font-family: "Helvetica Neue LT Std";
     font-style: normal;
     font-weight: normal;
-    src: url("/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-Roman.otf") format("opentype");
+    src: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-Roman.otf") format("opentype");
 }
 
 @font-face {
     font-family: "Helvetica Neue LT Std";
     font-style: italic;
     font-weight: normal;
-    src: url("/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-lt.otf") format("opentype");
+    src: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-lt.otf") format("opentype");
 }
 
 @font-face {
     font-family: "Helvetica Neue LT Std";
     font-style: normal;
     font-weight: 300;
-    src: url("/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-Lt.otf") format("opentype");
+    src: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-Lt.otf") format("opentype");
 }
 
 @font-face {
     font-family: "Helvetica Neue LT Std";
     font-style: italic;
     font-weight: 300;
-    src: url("/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-LtIt.otf") format("opentype");
+    src: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-LtIt.otf") format("opentype");
 }
 
 @font-face {
     font-family: "Helvetica Neue LT Std";
     font-style: normal;
     font-weight: 500;
-    src: url("/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-Md.otf") format("opentype");
+    src: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-Md.otf") format("opentype");
 }
 
 @font-face {
     font-family: "Helvetica Neue LT Std";
     font-style: italic;
     font-weight: 500;
-    src: url("/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-MdIt.otf") format("opentype");
+    src: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-MdIt.otf") format("opentype");
 }
 
 @font-face {
     font-family: "Helvetica Neue LT Std";
     font-style: normal;
     font-weight: bold;
-    src: url("/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-Bd.otf") format("opentype");
+    src: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-Bd.otf") format("opentype");
 }
 
 @font-face {
     font-family: "Helvetica Neue LT Std";
     font-style: normal;
     font-weight: 900;
-    src: url("/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-Hv.otf") format("opentype");
+    src: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-Hv.otf") format("opentype");
 }
 
 @font-face {
     font-family: "Helvetica Neue LT Std";
     font-style: italic;
     font-weight: 900;
-    src: url("/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-HvIt.otf") format("opentype");
+    src: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-HvIt.otf") format("opentype");
 }
 
 @font-face {
     font-family: "Helvetica Neue LT Std";
     font-style: normal;
     font-weight: 100;
-    src: url("/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-Lt.otf") format("opentype");
+    src: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-Lt.otf") format("opentype");
 }
 
 @font-face {
     font-family: "Helvetica Neue LT Std Co";
     font-style: normal;
     font-weight: 300;
-    src: url("/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-LtCn.otf") format("opentype");
+    src: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-LtCn.otf") format("opentype");
 }
 
 @font-face {
     font-family: "Helvetica Neue LT Std Ex";
     font-style: normal;
     font-weight: normal;
-    src: url("/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-Ex.otf") format("opentype");
+    src: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-Ex.otf") format("opentype");
 }
 
 @font-face {
     font-family: "Helvetica Neue LT Std Ex";
     font-style: normal;
     font-weight: 300;
-    src: url("/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-LtEx.otf") format("opentype");
+    src: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-LtEx.otf") format("opentype");
 }
 
 @font-face {
     font-family: "Helvetica Neue LT Std Ex";
     font-style: normal;
     font-weight: 500;
-    src: url("/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-MdEx.otf") format("opentype");
+    src: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-MdEx.otf") format("opentype");
 }
 
 @font-face {
     font-family: "Helvetica Neue LT Std Cn";
     font-style: normal;
     font-weight: 300;
-    src: url("/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-LtCn.otf") format("opentype");
+    src: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-LtCn.otf") format("opentype");
 }
 
 @font-face {
     font-family: "Helvetica Neue LT Std Cn";
     font-style: normal;
     font-weight: normal;
-    src: url("/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-Cn.otf") format("opentype");
+    src: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-Cn.otf") format("opentype");
 }
 
 @font-face {
     font-family: "Helvetica Neue LT Std Cn";
     font-style: normal;
     font-weight: 500;
-    src: url("/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-MdCn.otf") format("opentype");
+    src: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-MdCn.otf") format("opentype");
 }
 
 @font-face {
     font-family: "Helvetica Neue LT Std Cn";
     font-style: normal;
     font-weight: 700;
-    src: url("/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-BdCn.otf") format("opentype");
+    src: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-BdCn.otf") format("opentype");
 }
 
 @font-face {
     font-family: "Helvetica Neue LT Std Cn";
     font-style: normal;
     font-weight: 900;
-    src: url("/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-HvCn.otf") format("opentype");
+    src: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-HvCn.otf") format("opentype");
 }
 
 @font-face {
     font-family: "Helvetica Neue LT Std Cn O";
     font-style: normal;
     font-weight: 300;
-    src: url("/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-LtCnO.otf") format("opentype");
+    src: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../fonts/HelveticaNeueLTStd/Linotype - HelveticaNeueLTStd-LtCnO.otf") format("opentype");
 }
 
 .text-formatted {
@@ -2932,7 +2932,7 @@ header .menu-holder nav .menu-level--0>li.menu-item>a {
 
 header .menu-holder nav .menu-level--0>li.menu-item>a .mobile-item-arrow {
     display: none;
-    background-image: url(/themes/custom/am/dist/../images/icons/right-chevron-white.png);
+    background-image: url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/right-chevron-white.png);
     width: 20px;
     height: 20px;
     background-size: contain;
@@ -2949,7 +2949,7 @@ header .menu-holder nav .menu-level--0>li.menu-item>a .mobile-item-arrow {
 }
 
 header .menu-holder nav .menu-level--0>li.menu-item>a .mobile-item-arrow.active {
-    background-image: url(/themes/custom/am/dist/../images/icons/right-chevron-white.png);
+    background-image: url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/right-chevron-white.png);
     transform: rotate(180deg);
 }
 
@@ -3129,7 +3129,7 @@ label.option {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -3246,7 +3246,7 @@ label.option {
 .main-header .branding-region>.search-block-form .form-submit:hover,
 .main-header .branding-region>.search-block-form .form-submit:active,
 .main-header .branding-region>.search-block-form .form-submit:focus {
-    background-image: url(/themes/custom/am/dist/../images/icons/search-white.png);
+    background-image: url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/search-white.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 24px 24px;
@@ -3296,7 +3296,7 @@ label.option {
     content: "";
     width: 20px;
     height: 20px;
-    background-image: url("/themes/custom/am/dist/../images/icons/menu-toggle-blue.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/menu-toggle-blue.png");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -3305,14 +3305,14 @@ label.option {
 }
 
 .main-header .menu-toggle:hover::after {
-    background-image: url("/themes/custom/am/dist/../images/icons/menu-toggle-blue.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/menu-toggle-blue.png");
 }
 
 .main-header .menu-toggle.active::after {
     content: "";
     width: 20px;
     height: 15px;
-    background-image: url("/themes/custom/am/dist/../images/icons/close-blue.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/close-blue.png");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -3321,7 +3321,7 @@ label.option {
 }
 
 .main-header .menu-toggle.active:hover::after {
-    background-image: url("/themes/custom/am/dist/../images/icons/close-blue.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/close-blue.png");
 }
 
 .main-header .head-submenu-btns {
@@ -3405,14 +3405,14 @@ label.option {
 }
 
 .main-header.on-top .region-header-short .header-search-btn {
-    background-image: url(/themes/custom/am/dist/../images/icons/search-white.png);
+    background-image: url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/search-white.png);
 }
 
 .main-header.on-top .menu-toggle::after {
     content: "";
     width: 20px;
     height: 20px;
-    background-image: url("/themes/custom/am/dist/../images/icons/menu-toggle-white.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/menu-toggle-white.png");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -3421,14 +3421,14 @@ label.option {
 }
 
 .main-header.on-top .menu-toggle:hover::after {
-    background-image: url("/themes/custom/am/dist/../images/icons/menu-toggle-white.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/menu-toggle-white.png");
 }
 
 .main-header.on-top .menu-toggle.active::after {
     content: "";
     width: 20px;
     height: 15px;
-    background-image: url("/themes/custom/am/dist/../images/icons/close-white.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/close-white.png");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -3437,7 +3437,7 @@ label.option {
 }
 
 .main-header.on-top .menu-toggle.active:hover::after {
-    background-image: url("/themes/custom/am/dist/../images/icons/close-white.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/close-white.png");
 }
 
 @media (min-width: 960px) {
@@ -3468,7 +3468,7 @@ label.option {
 }
 
 .region-header-short .header-search-btn {
-    background-image: url(/themes/custom/am/dist/../images/icons/search-blue.png);
+    background-image: url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/search-blue.png);
     background-repeat: no-repeat;
     background-position: center;
     background-color: transparent;
@@ -3655,7 +3655,7 @@ label.option {
     content: "";
     width: 8px;
     height: 5px;
-    background-image: url("/themes/custom/am/dist/../images/icons/arrow-right-white.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white.png");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -3664,7 +3664,7 @@ label.option {
 }
 
 .menu-holder nav .menu-item .menu-open-button:hover::after {
-    background-image: url("/themes/custom/am/dist/../images/icons/arrow-right-white.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white.png");
 }
 
 .menu-holder nav .menu-item .menu-open-button::after {
@@ -3713,7 +3713,7 @@ label.option {
     content: "";
     width: 8px;
     height: 5px;
-    background-image: url("/themes/custom/am/dist/../images/icons/arrow-left-white.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-left-white.png");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -3722,7 +3722,7 @@ label.option {
 }
 
 .menu-holder nav .menu-item.has-children.active .menu-open-button:hover::after {
-    background-image: url("/themes/custom/am/dist/../images/icons/arrow-left-white.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-left-white.png");
 }
 
 .menu-holder nav .menu-item.has-children.active .menu-open-button::after {
@@ -4415,7 +4415,7 @@ header[role=banner] {
 .view-global-location-list-heading {
     position: relative;
     padding: 130px 10px 60px 10px;
-    background: transparent url("/themes/custom/am/dist/../images/bg/global-location-bg.jpg") no-repeat center center;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/bg/global-location-bg.jpg") no-repeat center center;
     background-size: cover;
     color: white;
 }
@@ -4530,7 +4530,7 @@ header[role=banner] {
     top: 10px;
     width: 20px;
     height: 20px;
-    background: transparent url("/themes/custom/am/dist/../images/icons/arrow-right-white-64.png") no-repeat center center;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-64.png") no-repeat center center;
     background-size: contain;
     transform: rotate(90deg);
     transition: all 0.5s;
@@ -4649,7 +4649,7 @@ header[role=banner] {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -4773,7 +4773,7 @@ header[role=banner] {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -4951,7 +4951,7 @@ header[role=banner] {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -5228,7 +5228,7 @@ header[role=banner] {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -5440,7 +5440,7 @@ header[role=banner] {
     top: 6px;
     width: 16px;
     height: 10px;
-    background: transparent url("/themes/custom/am/dist/../images/icons/arrow-up-black.png") center center no-repeat;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-up-black.png") center center no-repeat;
     transform: rotate(180deg);
     transition: all 0.5s ease-in;
 }
@@ -5545,7 +5545,7 @@ header[role=banner] {
     top: 14px;
     width: 12px;
     height: 12px;
-    background: transparent url("/themes/custom/am/dist/../images/icons/close-blue-32.png") center no-repeat;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/close-blue-32.png") center no-repeat;
     background-size: contain;
 }
 
@@ -5656,7 +5656,7 @@ header[role=banner] {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -5758,7 +5758,7 @@ header[role=banner] {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -5869,7 +5869,7 @@ header[role=banner] {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -5966,7 +5966,7 @@ header[role=banner] {
 .our-people-filter-heading {
     padding: 120px 10px 100px 10px;
     position: relative;
-    background: transparent url("/themes/custom/am/dist/../images/bg/our-people-heading-bg.jpg") no-repeat center center;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/bg/our-people-heading-bg.jpg") no-repeat center center;
     background-size: cover;
     min-height: 400px;
 }
@@ -6049,7 +6049,7 @@ header[role=banner] {
     top: 6px;
     width: 16px;
     height: 10px;
-    background: transparent url("/themes/custom/am/dist/../images/icons/arrow-up-black.png") center center no-repeat;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-up-black.png") center center no-repeat;
     transform: rotate(180deg);
     transition: all 0.5s ease-in;
 }
@@ -6147,7 +6147,7 @@ header[role=banner] {
     top: 14px;
     width: 12px;
     height: 12px;
-    background: transparent url("/themes/custom/am/dist/../images/icons/close-blue-32.png") center no-repeat;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/close-blue-32.png") center no-repeat;
     background-size: contain;
 }
 
@@ -6247,7 +6247,7 @@ header[role=banner] {
     width: 16px;
     height: 16px;
     border-width: 0;
-    background: transparent url(/themes/custom/am/dist/../images/icons/search-blue.png) no-repeat center center;
+    background: transparent url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/search-blue.png) no-repeat center center;
     background-size: contain;
     cursor: pointer;
 }
@@ -6326,7 +6326,7 @@ header[role=banner] {
     top: 6px;
     width: 16px;
     height: 10px;
-    background: transparent url("/themes/custom/am/dist/../images/icons/arrow-up-black.png") center center no-repeat;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-up-black.png") center center no-repeat;
     transform: rotate(180deg);
     transition: all 0.5s ease-in;
 }
@@ -6428,7 +6428,7 @@ header[role=banner] {
     top: 14px;
     width: 12px;
     height: 12px;
-    background: transparent url("/themes/custom/am/dist/../images/icons/close-blue-32.png") center no-repeat;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/close-blue-32.png") center no-repeat;
     background-size: contain;
     font-size: 0;
 }
@@ -6442,7 +6442,7 @@ header[role=banner] {
 }
 
 .tpl-careers .am-heading-head {
-    background-image: url("/themes/custom/am/dist/../images/bg/careers-bg.jpg");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/bg/careers-bg.jpg");
 }
 
 .tpl-careers .am-heading .title {
@@ -6490,7 +6490,7 @@ header[role=banner] {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -6657,7 +6657,7 @@ header[role=banner] {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -6802,7 +6802,7 @@ header[role=banner] {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -7176,7 +7176,7 @@ header[role=banner] {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -7238,7 +7238,7 @@ header[role=banner] {
 }
 
 .view-awards .am-heading {
-    background-image: url("/themes/custom/am/dist/../images/bg/award-bg.jpg");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/bg/award-bg.jpg");
     min-height: 400px;
 }
 
@@ -7292,7 +7292,7 @@ header[role=banner] {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 .view-awards .view-content .item-list .link-to-awards .link a {
@@ -7788,7 +7788,7 @@ body {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -7962,7 +7962,7 @@ body {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -8780,7 +8780,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
     content: "";
     min-width: 45px;
     height: 45px;
-    background: #022546 url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #022546 url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 .scroll-to-top.fixed {
@@ -9516,7 +9516,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
 
 .select-styled:after {
     overflow: hidden;
-    background-image: url("/themes/custom/am/images/generated/sprite-564dd70e8a7c5d3594403dfd29555548.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-564dd70e8a7c5d3594403dfd29555548.png");
     background-size: 3335.5px 46px;
     background-repeat: no-repeat;
     background-position: -150px 0px;
@@ -9544,7 +9544,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
 .select-styled:active:after,
 .select-styled.active:after {
     overflow: hidden;
-    background-image: url("/themes/custom/am/images/generated/sprite-564dd70e8a7c5d3594403dfd29555548.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-564dd70e8a7c5d3594403dfd29555548.png");
     background-size: 3335.5px 46px;
     background-repeat: no-repeat;
     background-position: -222px 0px;
@@ -9789,7 +9789,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
     margin-left: 1.25rem;
     vertical-align: middle;
     overflow: hidden;
-    background-image: url("/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
     background-size: 3411.5px 46px;
     background-repeat: no-repeat;
     background-position: -132px 0px;
@@ -9798,7 +9798,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
 }
 
 #block-quicktabs-block-insights-listing .active-state.opened:after {
-    background-image: url("/themes/custom/am/dist/../images/icons/close-white.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/close-white.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -9990,7 +9990,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
     content: "";
     display: block;
     overflow: hidden;
-    background-image: url("/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
     background-size: 3411.5px 46px;
     background-repeat: no-repeat;
     background-position: -362px 0px;
@@ -10016,7 +10016,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
 .no-touch #block-quicktabs-block-insights-listing .active-filters .active-btn:focus:after,
 .no-touch #block-quicktabs-block-insights-listing .active-filters .active-btn:hover:after {
     overflow: hidden;
-    background-image: url("/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
     background-size: 3411.5px 46px;
     background-repeat: no-repeat;
     background-position: -384px 0px;
@@ -10031,7 +10031,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
 .no-touch #block-quicktabs-block-insights-listing #quicktabs-insights_listing.mobile-filters-open .active-state:focus:after,
 .no-touch #block-quicktabs-block-insights-listing #quicktabs-insights_listing.mobile-filters-open .active-state:hover:after {
     overflow: hidden;
-    background-image: url("/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
     background-size: 3411.5px 46px;
     background-repeat: no-repeat;
     background-position: -222px 0px;
@@ -10051,7 +10051,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
 
 #block-quicktabs-block-insights-listing #quicktabs-insights_listing.mobile-filters-closed .active-state:after {
     overflow: hidden;
-    background-image: url("/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
     background-size: 3411.5px 46px;
     background-repeat: no-repeat;
     background-position: -132px 0px;
@@ -10062,7 +10062,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
 .no-touch #block-quicktabs-block-insights-listing #quicktabs-insights_listing.mobile-filters-closed .active-state:focus:after,
 .no-touch #block-quicktabs-block-insights-listing #quicktabs-insights_listing.mobile-filters-closed .active-state:hover:after {
     overflow: hidden;
-    background-image: url("/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
     background-size: 3411.5px 46px;
     background-repeat: no-repeat;
     background-position: -78px 0px;
@@ -12895,7 +12895,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
     margin-left: 2px;
     margin-left: 0.125rem;
     overflow: hidden;
-    background-image: url("/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
     background-size: 3411.5px 46px;
     background-repeat: no-repeat;
     background-position: -1533px 0px;
@@ -12907,7 +12907,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
 .no-touch .block-am-social-am-social-share #am-article-social ul #am-social-twitter a:focus .icon:before,
 .no-touch .block-am-social-am-social-share #am-article-social ul #am-social-twitter a:hover .icon:before {
     overflow: hidden;
-    background-image: url("/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
     background-size: 3411.5px 46px;
     background-repeat: no-repeat;
     background-position: -1500px 0px;
@@ -12919,7 +12919,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
     margin-left: 2px;
     margin-left: 0.125rem;
     overflow: hidden;
-    background-image: url("/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
     background-size: 3411.5px 46px;
     background-repeat: no-repeat;
     background-position: -1276px 0px;
@@ -12931,7 +12931,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
 .no-touch .block-am-social-am-social-share #am-article-social ul #am-social-linkedin a:focus .icon:before,
 .no-touch .block-am-social-am-social-share #am-article-social ul #am-social-linkedin a:hover .icon:before {
     overflow: hidden;
-    background-image: url("/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
     background-size: 3411.5px 46px;
     background-repeat: no-repeat;
     background-position: -1246px 0px;
@@ -12943,7 +12943,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
     margin-top: 2px;
     margin-top: 0.125rem;
     overflow: hidden;
-    background-image: url("/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
     background-size: 3411.5px 46px;
     background-repeat: no-repeat;
     background-position: -258px 0px;
@@ -12955,7 +12955,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
 .no-touch .block-am-social-am-social-share #am-article-social ul #am-social-facebook a:focus .icon:before,
 .no-touch .block-am-social-am-social-share #am-article-social ul #am-social-facebook a:hover .icon:before {
     overflow: hidden;
-    background-image: url("/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
     background-size: 3411.5px 46px;
     background-repeat: no-repeat;
     background-position: -278px 0px;
@@ -12967,7 +12967,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
     margin-top: 2px;
     margin-top: 0.125rem;
     overflow: hidden;
-    background-image: url("/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
     background-size: 3411.5px 46px;
     background-repeat: no-repeat;
     background-position: -2199px 0px;
@@ -12979,7 +12979,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
 .no-touch .block-am-social-am-social-share #am-article-social ul #am-social-youtube a:focus .icon:before,
 .no-touch .block-am-social-am-social-share #am-article-social ul #am-social-youtube a:hover .icon:before {
     overflow: hidden;
-    background-image: url("/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
     background-size: 3411.5px 46px;
     background-repeat: no-repeat;
     background-position: -2237px 0px;
@@ -12991,7 +12991,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
     margin-top: 3px;
     margin-top: 0.1875rem;
     overflow: hidden;
-    background-image: url("/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
     background-size: 3411.5px 46px;
     background-repeat: no-repeat;
     background-position: -1066px 0px;
@@ -13003,7 +13003,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
 .no-touch .block-am-social-am-social-share #am-article-social ul #am-social-bulletin-sign-up a:focus .icon:before,
 .no-touch .block-am-social-am-social-share #am-article-social ul #am-social-bulletin-sign-up a:hover .icon:before {
     overflow: hidden;
-    background-image: url("/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
     background-size: 3411.5px 46px;
     background-repeat: no-repeat;
     background-position: -1036px 0px;
@@ -13012,7 +13012,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
 }
 
 .page-node-6051 .page-heading-heading {
-    background: transparent url("/themes/custom/am/dist/../images/bg/our-people-heading-bg.jpg") center center no-repeat;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/bg/our-people-heading-bg.jpg") center center no-repeat;
     background-size: cover;
 }
 
@@ -13059,7 +13059,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -13409,7 +13409,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
 .yesp .yesp-container {
     float: left;
     width: 100%;
-    background: #333 url(/themes/custom/am/dist/../images/ajax.gif) no-repeat center center;
+    background: #333 url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/ajax.gif) no-repeat center center;
     position: relative;
     height: 300px;
     overflow: hidden;
@@ -13442,7 +13442,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
 .yesp .yesp-playlist {
     float: left;
     width: 200px;
-    background: #333 url(/themes/custom/am/dist/../images/ajax.gif) no-repeat center center;
+    background: #333 url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/ajax.gif) no-repeat center center;
     height: 300px;
     overflow: hidden;
     position: relative;
@@ -13469,13 +13469,13 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
     position: relative;
     left: -42px;
     top: -30px;
-    background: url(/themes/custom/am/dist/../images/youtube-icon-dark.png) no-repeat top left;
+    background: url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/youtube-icon-dark.png) no-repeat top left;
     width: 85px;
     height: 60px;
 }
 
 .yesp .yesp-container .yesp-autoposter:hover .yesp-autoposter-icon div {
-    background-image: url(/themes/custom/am/dist/../images/youtube-icon-red.png);
+    background-image: url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/youtube-icon-red.png);
 }
 
 .yesp a.yesp-big-play {
@@ -13660,7 +13660,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
 }
 
 .yesp .yesp-social a.yesp-social-link {
-    background: transparent url(/themes/custom/am/dist/../images/share_link.png) no-repeat top left;
+    background: transparent url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/share_link.png) no-repeat top left;
 }
 
 .yesp a.yesp-youtube-logo {
@@ -13675,7 +13675,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
     z-index: 999;
     bottom: 50px;
     right: 0px;
-    background: transparent url(/themes/custom/am/dist/../images/youtube-logo-light.png) no-repeat top left;
+    background: transparent url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/youtube-logo-light.png) no-repeat top left;
     background-size: 100%;
     opacity: 0.25;
     cursor: pointer;
@@ -13797,7 +13797,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
 }
 
 .yesp .yesp-volume a.yesp-volume-icon.yesp-volume-icon-off {
-    background: transparent url(/themes/custom/am/dist/../images/volume-off.png) center center no-repeat;
+    background: transparent url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/volume-off.png) center center no-repeat;
 }
 
 .yesp .yesp-volume .yesp-volume-bar {
@@ -13977,7 +13977,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
 .yesp .yesp-hp {
     clear: both;
     height: 90px;
-    background: #333 url(/themes/custom/am/dist/../images/ajax.gif) no-repeat center center;
+    background: #333 url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/ajax.gif) no-repeat center center;
     overflow: hidden;
     width: 100%;
 }
@@ -17662,7 +17662,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -17835,7 +17835,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -17888,7 +17888,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
 
 .node-tpl-leasescre-reg {
     padding: 50px 0;
-    background: transparent url("/themes/custom/am/dist/../images/bg/leasescre-points.jpg") center center no-repeat;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/bg/leasescre-points.jpg") center center no-repeat;
     background-size: cover;
 }
 
@@ -17932,7 +17932,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #fff url(/themes/custom/am/dist/../images/icons/arrow-right-blue-32.png) no-repeat center center;
+    background: #fff url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-blue-32.png) no-repeat center center;
 }
 
 .node-tpl-leasescre-reg-link a {
@@ -21366,7 +21366,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -22637,7 +22637,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
 
 .regulatoryrisk-compliance-holder .jump-to-trigger .icon {
     overflow: hidden;
-    background-image: url(/themes/custom/am/dist/../images/icons/arrow-down-white.png);
+    background-image: url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-down-white.png);
     vertical-align: middle;
     margin-left: 0.9375rem;
     position: absolute;
@@ -22652,7 +22652,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
 }
 
 .regulatoryrisk-compliance-holder .jump-to-trigger .icon.active {
-    background-image: url(/themes/custom/am/dist/../images/icons/arrow-up-white.png);
+    background-image: url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-up-white.png);
 }
 
 .regulatoryrisk-compliance-holder>.views-row {
@@ -23049,7 +23049,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
     content: "";
     margin: auto;
     overflow: hidden;
-    background-image: url(/themes/custom/am/dist/../images/icons/play-white.png);
+    background-image: url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/play-white.png);
     background-size: 18px 22px;
     background-repeat: no-repeat;
     background-position: center;
@@ -23103,7 +23103,7 @@ html .page-node-31471.node-type-page .group-article-body .field--name-field-vide
     height: 32px;
     left: calc(50% - 16px);
     top: calc(50% - 16px);
-    background: transparent url("/themes/custom/am/dist/../images/icons/arrow-right-white-full-32.png") no-repeat center center;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-full-32.png") no-repeat center center;
 }
 
 .expertise-video-without-popup-wrap {
@@ -24321,7 +24321,7 @@ form textarea {
 }
 
 .webform-connect-with-us-wrapper {
-    background: transparent url("/themes/custom/am/dist/../images/trash/screen-video.png") center center no-repeat;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/trash/screen-video.png") center center no-repeat;
     background-size: cover;
     padding: 50px 20px;
 }
@@ -24424,7 +24424,7 @@ form textarea {
     font-size: 18px;
     font-weight: 500;
     padding: 0 30px 0 0;
-    background: transparent url("/themes/custom/am/dist/../images/icons/arrow-right-submit-blue.png") center right no-repeat;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-submit-blue.png") center right no-repeat;
 }
 
 .webform-connect-with-us .form-acknowledge {
@@ -24607,7 +24607,7 @@ form textarea {
     border-width: 0;
     font-size: 14px;
     text-transform: uppercase;
-    background: transparent url("/themes/custom/am/dist/../images/icons/arrow-right-white-full-32.png") no-repeat right center;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-full-32.png") no-repeat right center;
     padding-right: 20px;
     background-size: 15px 15px;
     line-height: 1;
@@ -24631,7 +24631,7 @@ form textarea {
 }
 
 .print-mail-form .form-actions input {
-    background: transparent url("/themes/custom/am/dist/../images/bg-arrow-blue-right.jpg") left center no-repeat;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/bg-arrow-blue-right.jpg") left center no-repeat;
     color: #0085CA;
     font-size: 16px;
     text-transform: uppercase;
@@ -24774,7 +24774,7 @@ form textarea {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 .view-company-list .views-field-view-node>* a {
@@ -24848,7 +24848,7 @@ form textarea {
     left: 50%;
     transform: translate(-50%, -50%);
     overflow: hidden;
-    background-image: url("/themes/custom/am/dist/../images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
     background-size: 3411.5px 46px;
     background-repeat: no-repeat;
     background-position: -2799.5px 0px;
@@ -25010,7 +25010,7 @@ form textarea {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 .paragraph-cell-doc-link span a {
@@ -25073,7 +25073,7 @@ form textarea {
     content: "";
     width: 8px;
     height: 5px;
-    background-image: url("/themes/custom/am/dist/../images/icons/arrow-down-blue.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-down-blue.png");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -27126,7 +27126,7 @@ form textarea {
 
 .jump-to-menu.open .jump-to-trigger .icon {
     overflow: hidden;
-    background-image: url("/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
     background-size: 3411.5px 46px;
     background-repeat: no-repeat;
     background-position: -240px 0px;
@@ -27137,7 +27137,7 @@ form textarea {
 .jump-to-menu.open .jump-to-trigger:focus .icon,
 .jump-to-menu.open .jump-to-trigger:hover .icon {
     overflow: hidden;
-    background-image: url("/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
     background-size: 3411.5px 46px;
     background-repeat: no-repeat;
     background-position: -240px 0px;
@@ -27266,7 +27266,7 @@ form textarea {
 
 .jump-to-category .jump-to-trigger .icon {
     overflow: hidden;
-    background-image: url("/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
     background-size: 3411.5px 46px;
     background-repeat: no-repeat;
     background-position: -132px 0px;
@@ -27309,7 +27309,7 @@ form textarea {
 .no-touch .jump-to-category-ind .jump-to-trigger:focus .icon,
 .no-touch .jump-to-category-ind .jump-to-trigger:hover .icon {
     overflow: hidden;
-    background-image: url("/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
     background-size: 3411.5px 46px;
     background-repeat: no-repeat;
     background-position: -132px 0px;
@@ -27321,7 +27321,7 @@ form textarea {
 
 .jump-to-category-ind .jump-to-trigger .icon {
     overflow: hidden;
-    background-image: url("/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
     background-size: 3411.5px 46px;
     background-repeat: no-repeat;
     background-position: -114px 0px;
@@ -27364,7 +27364,7 @@ form textarea {
 
 .jump-to-country .jump-to-trigger .icon {
     overflow: hidden;
-    background-image: url("/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
     background-size: 3411.5px 46px;
     background-repeat: no-repeat;
     background-position: -132px 0px;
@@ -29695,7 +29695,7 @@ form textarea {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -30755,7 +30755,7 @@ form textarea {
     content: "";
     margin: auto;
     overflow: hidden;
-    background-image: url("/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
     background-size: 3411.5px 46px;
     background-repeat: no-repeat;
     background-position: -948px 0px;
@@ -30990,7 +30990,7 @@ form textarea {
 .block--am-customization-am-case-in-point .swiper-button-prev,
 .block--am-customization-am-news-releases .swiper-button-prev {
     overflow: hidden;
-    background-image: url("/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
     background-size: 3411.5px 46px;
     background-repeat: no-repeat;
     background-position: -781px 0px;
@@ -31005,7 +31005,7 @@ form textarea {
 .no-touch .block--am-customization-am-news-releases .swiper-button-prev:focus,
 .no-touch .block--am-customization-am-news-releases .swiper-button-prev:hover {
     overflow: hidden;
-    background-image: url("/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
     background-size: 3411.5px 46px;
     background-repeat: no-repeat;
     background-position: -677px 0px;
@@ -31016,7 +31016,7 @@ form textarea {
 .block--am-customization-am-case-in-point .swiper-button-next,
 .block--am-customization-am-news-releases .swiper-button-next {
     overflow: hidden;
-    background-image: url("/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
     background-size: 3411.5px 46px;
     background-repeat: no-repeat;
     background-position: -703px 0px;
@@ -31031,7 +31031,7 @@ form textarea {
 .no-touch .block--am-customization-am-news-releases .swiper-button-next:focus,
 .no-touch .block--am-customization-am-news-releases .swiper-button-next:hover {
     overflow: hidden;
-    background-image: url("/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
     background-size: 3411.5px 46px;
     background-repeat: no-repeat;
     background-position: -755px 0px;
@@ -31916,7 +31916,7 @@ form textarea {
     right: 15px;
     right: 0.9375rem;
     overflow: hidden;
-    background-image: url("/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
     background-size: 3411.5px 46px;
     background-repeat: no-repeat;
     background-position: -835px 0px;
@@ -31927,7 +31927,7 @@ form textarea {
 @media (min-width: 580px) {
     .has-overlay .fancybox-wrap .fancybox-skin .fancybox-close {
         overflow: hidden;
-        background-image: url("/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
+        background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
         background-size: 3411.5px 46px;
         background-repeat: no-repeat;
         background-position: -1872px 0px;
@@ -31941,7 +31941,7 @@ form textarea {
 .no-touch .has-overlay .fancybox-wrap .fancybox-skin .fancybox-close:focus,
 .no-touch .has-overlay .fancybox-wrap .fancybox-skin .fancybox-close:hover {
     overflow: hidden;
-    background-image: url("/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
     background-size: 3411.5px 46px;
     background-repeat: no-repeat;
     background-position: -807px 0px;
@@ -31955,7 +31955,7 @@ form textarea {
     .no-touch .has-overlay .fancybox-wrap .fancybox-skin .fancybox-close:focus,
     .no-touch .has-overlay .fancybox-wrap .fancybox-skin .fancybox-close:hover {
         overflow: hidden;
-        background-image: url("/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
+        background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
         background-size: 3411.5px 46px;
         background-repeat: no-repeat;
         background-position: -1907px 0px;
@@ -32154,7 +32154,7 @@ form textarea {
     height: 1.125rem;
     transform: translate(-50%, -50%);
     overflow: hidden;
-    background-image: url("/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
     background-size: 3411.5px 46px;
     background-repeat: no-repeat;
     background-position: -863px 0px;
@@ -32172,7 +32172,7 @@ form textarea {
 .no-touch .page-not-found #block-search-form--2 .block__content .search-block-form--2 .container-inline #edit-actions--2>div:focus:after,
 .no-touch .page-not-found #block-search-form--2 .block__content .search-block-form--2 .container-inline #edit-actions--2>div:hover:after {
     overflow: hidden;
-    background-image: url("/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
     background-size: 3411.5px 46px;
     background-repeat: no-repeat;
     background-position: -1216px 0px;
@@ -32440,7 +32440,7 @@ form textarea {
     width: 16px;
     height: 16px;
     border-width: 0;
-    background: transparent url("/themes/custom/am/dist/../images/icons/search-white.png") no-repeat center center;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/search-white.png") no-repeat center center;
     background-size: contain;
 }
 
@@ -32510,7 +32510,7 @@ form textarea {
 }
 
 .search-result-page .search-mobile-menu .result-count::after {
-    background-image: url(/themes/custom/am/dist/../images/icons/arrow-down-white.png);
+    background-image: url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-down-white.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -32808,7 +32808,7 @@ form textarea {
 
 @media (min-width: 580px) {
     .search-result-page .views-infinite-scroll-content-wrapper .item-list li::after {
-        background: #0085CA url("/themes/custom/am/dist/../images/icons/arrow-right-white-64.png") center center no-repeat;
+        background: #0085CA url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-64.png") center center no-repeat;
         background-size: 20px 20px;
         height: 45px;
         width: 45px;
@@ -33176,7 +33176,7 @@ form textarea {
     content: "";
     margin: auto;
     overflow: hidden;
-    background-image: url("/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-7c171dcf5b611e75f3ab87fad4d80bfb.png");
     background-size: 3411.5px 46px;
     background-repeat: no-repeat;
     background-position: -948px 0px;
@@ -34013,7 +34013,7 @@ ul.two-columns {
     display: block;
     position: absolute;
     overflow: hidden;
-    background-image: url(/sites/default/themes/custom/am/images/generated/sprite-7c171dcâ€¦.png);
+    background-image: url(/sites/defaulthttps://www.alvarezandmarsal.com/themes/custom/am/images/generated/sprite-7c171dcâ€¦.png);
     background-size: 3411.5px 46px;
     background-repeat: no-repeat;
     background-position: -2015px 0px;
@@ -34030,7 +34030,7 @@ ul.two-columns {
     height: 0.875rem;
     position: absolute;
     left: 0;
-    background: url(/themes/custom/am/dist/../images/icons2x/icon-our-people-tab.png);
+    background: url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons2x/icon-our-people-tab.png);
     background-size: cover;
     z-index: 300;
 }
@@ -34209,7 +34209,7 @@ ul.two-columns {
     width: 1.8125rem;
     height: 0.875rem;
     margin: 20px auto -15px;
-    background: url(/themes/custom/am/images/icons2x/icon-our-people-tab.png);
+    background: url(https://www.alvarezandmarsal.com/themes/custom/am/images/icons2x/icon-our-people-tab.png);
     background-size: cover;
     z-index: 300;
 }
@@ -36738,7 +36738,7 @@ ul.two-columns {
     .page-taxonomy-term.section-industries .new-text-and-profile-container #profiles-container .profile-content .content-container .connect-button a div::after,
     .page-taxonomy-term.section-expertise .new-text-and-profile-container #profiles-container .profile-content .content-container .connect-button a div::after {
         overflow: hidden;
-        background-image: url(/themes/custom/am/dist/../images/icons/arrow-right-white.png);
+        background-image: url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white.png);
         background-size: 6px 10px;
         background-repeat: no-repeat;
         background-position: center;
@@ -37420,7 +37420,7 @@ ul.two-columns {
 
 #block-am-blocks-featured-expert-pepi .profiles-connect-block .profile-container .profile-link .profile-content .connect-button a div::after {
     overflow: hidden;
-    background-image: url(/themes/custom/am/dist/../images/icons/arrow-right-white.png);
+    background-image: url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white.png);
     background-size: 6px 10px;
     background-repeat: no-repeat;
     background-position: center;
@@ -38605,7 +38605,7 @@ ul.two-columns {
 }
 
 .splide .splide__arrows .splide__arrow {
-    background: transparent url("/themes/custom/am/dist/../images/icons/arrow-right-gray-64.png") no-repeat center center;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-gray-64.png") no-repeat center center;
     height: 50px;
     width: 50px;
     border-width: 0;
@@ -38630,7 +38630,7 @@ ul.two-columns {
 }
 
 .splide .splide__arrows .splide__arrow:hover {
-    background-image: url("/themes/custom/am/dist/../images/icons/arrow-right-blue-64.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-blue-64.png");
 }
 
 .splide .splide__list img {
@@ -38642,7 +38642,7 @@ ul.two-columns {
 }
 
 .splide--view--front-slide--main .splide__arrows .splide__arrow {
-    background-image: url("/themes/custom/am/dist/../images/icons/arrow-right-white-64.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-64.png");
 }
 
 @media (min-width: 1350px) {
@@ -38870,7 +38870,7 @@ ul.two-columns {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -39125,7 +39125,7 @@ ul.two-columns {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -39206,7 +39206,7 @@ ul.two-columns {
     content: "";
     height: 100%;
     width: 100%;
-    background: transparent url("/themes/custom/am/dist/../images/black-white-building-stock.jpg") no-repeat left top;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/black-white-building-stock.jpg") no-repeat left top;
     left: 150px;
     top: 0;
     background-size: 460px auto;
@@ -39401,7 +39401,7 @@ ul.two-columns {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -39612,7 +39612,7 @@ ul.two-columns {
     top: 0;
     width: 10px;
     height: 100%;
-    background: transparent url("/themes/custom/am/dist/../images/icons/arrow-right-blue.png") center center no-repeat;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-blue.png") center center no-repeat;
 }
 
 @media (max-width: 580px) {
@@ -39663,14 +39663,14 @@ ul.two-columns {
 .how-help-client-arrow>div {
     cursor: pointer;
     margin-left: 15px;
-    background: transparent url("/themes/custom/am/dist/../images/icons/arrow-right-white-64.png") no-repeat center center;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-64.png") no-repeat center center;
     background-size: contain;
     height: 35px;
     width: 35px;
 }
 
 .how-help-client-arrow>div:hover {
-    background-image: url("/themes/custom/am/dist/../images/icons/arrow-right-blue-64.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-blue-64.png");
 }
 
 .how-help-client-arrow-prev {
@@ -39795,7 +39795,7 @@ ul.two-columns {
     padding-left: 60px;
     padding-right: 60px;
     padding-top: 25px;
-    background: transparent url("/themes/custom/am/dist/../images/icons/quote-blue-50.png") left top no-repeat;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/quote-blue-50.png") left top no-repeat;
     margin-bottom: 25px;
     font-family: "Helvetica Neue LT Std", Helvetica, Arial, sans-serif;
     font-weight: 300;
@@ -39816,7 +39816,7 @@ ul.two-columns {
     height: 50px;
     bottom: -25px;
     right: 0;
-    background: transparent url("/themes/custom/am/dist/../images/icons/quote-blue-50.png") left top no-repeat;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/quote-blue-50.png") left top no-repeat;
     transform: rotate(180deg);
 }
 
@@ -40394,7 +40394,7 @@ ul.two-columns {
     content: "";
     left: calc(50% - 22px);
     top: calc(50% - 22px);
-    background: transparent url("/themes/custom/am/dist/../images/icons/play-white-43.png") no-repeat center center;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/play-white-43.png") no-repeat center center;
     width: 43px;
     height: 43px;
 }
@@ -40467,7 +40467,7 @@ ul.two-columns {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -40701,7 +40701,7 @@ ul.two-columns {
     content: "";
     left: calc(50% - 22px);
     top: calc(50% - 22px);
-    background: transparent url("/themes/custom/am/dist/../images/icons/play-white-43.png") no-repeat center center;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/play-white-43.png") no-repeat center center;
     width: 43px;
     height: 43px;
 }
@@ -40774,7 +40774,7 @@ ul.two-columns {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -40927,7 +40927,7 @@ ul.two-columns {
     content: "";
     left: calc(50% - 22px);
     top: calc(50% - 22px);
-    background: transparent url("/themes/custom/am/dist/../images/icons/play-white-43.png") no-repeat center center;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/play-white-43.png") no-repeat center center;
     width: 43px;
     height: 43px;
 }
@@ -41050,14 +41050,14 @@ ul.two-columns {
 
 .on-social-external-arrow>div {
     cursor: pointer;
-    background: transparent url("/themes/custom/am/dist/../images/icons/arrow-right-gray-64.png") no-repeat center center;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-gray-64.png") no-repeat center center;
     background-size: contain;
     height: 55px;
     width: 55px;
 }
 
 .on-social-external-arrow>div:hover {
-    background-image: url("/themes/custom/am/dist/../images/icons/arrow-right-blue-64.png");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-blue-64.png");
 }
 
 .on-social-external-arrow-prev {
@@ -41262,7 +41262,7 @@ ul.two-columns {
 }
 
 .view-front-events-main:before {
-    background: transparent url("/themes/custom/am/dist/../images/bg/front-event-bg.jpg") no-repeat center center;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/bg/front-event-bg.jpg") no-repeat center center;
     background-size: cover;
     filter: grayscale(100%);
     -webkit-filter: grayscale(100%);
@@ -41348,7 +41348,7 @@ ul.two-columns {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -41516,7 +41516,7 @@ ul.two-columns {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -41707,7 +41707,7 @@ ul.two-columns {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -41905,7 +41905,7 @@ ul.two-columns {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -42011,7 +42011,7 @@ ul.two-columns {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -42145,7 +42145,7 @@ ul.two-columns {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -42329,7 +42329,7 @@ ul.two-columns {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -42451,7 +42451,7 @@ ul.two-columns {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -42552,7 +42552,7 @@ ul.two-columns {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -43213,7 +43213,7 @@ ul.two-columns {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -43436,7 +43436,7 @@ ul.two-columns {
     height: 32px;
     left: calc(50% - 16px);
     top: calc(50% - 16px);
-    background: transparent url("/themes/custom/am/dist/../images/icons/arrow-right-white-full-32.png") no-repeat center center;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-full-32.png") no-repeat center center;
 }
 
 .youtube-play-on-click-image {
@@ -44558,12 +44558,12 @@ ul.two-columns {
 }
 
 .node-custom-page-tpl-podcast .am-heading-head {
-    background: transparent url("/themes/custom/am/dist/../images/bg/insight-filter-bg2.png") 0 0 no-repeat padding-box;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/bg/insight-filter-bg2.png") 0 0 no-repeat padding-box;
     background-size: cover;
 }
 
 .insight-filter {
-    background: transparent url("/themes/custom/am/dist/../images/bg/insight-filter-bg2.png") 0 0 no-repeat padding-box;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/bg/insight-filter-bg2.png") 0 0 no-repeat padding-box;
     background-size: cover;
     padding: 120px 10px 50px 10px;
     position: relative;
@@ -44683,7 +44683,7 @@ ul.two-columns {
     width: 16px;
     height: 16px;
     border-width: 0;
-    background: transparent url("/themes/custom/am/dist/../images/icons/search-white.png") no-repeat center center;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/search-white.png") no-repeat center center;
     background-size: contain;
 }
 
@@ -44761,7 +44761,7 @@ ul.two-columns {
     top: 5px;
     width: 20px;
     height: 20px;
-    background: transparent url("/themes/custom/am/dist/../images/icons/arrow-right-white-64.png") no-repeat center center;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-64.png") no-repeat center center;
     background-size: contain;
     transform: rotate(90deg);
     transition: all 0.5s;
@@ -44937,7 +44937,7 @@ ul.two-columns {
     height: 12px;
     width: 12px;
     font-size: 0;
-    background: transparent url("/themes/custom/am/dist/../images/icons/close-blue-32.png") no-repeat center center;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/close-blue-32.png") no-repeat center center;
     background-size: contain;
 }
 
@@ -45022,7 +45022,7 @@ ul.two-columns {
 .our-people-filter-heading {
     padding: 120px 10px 100px 10px;
     position: relative;
-    background: transparent url("/themes/custom/am/dist/../images/bg/our-people-heading-bg.jpg") no-repeat center center;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/bg/our-people-heading-bg.jpg") no-repeat center center;
     background-size: cover;
     min-height: 400px;
 }
@@ -45105,7 +45105,7 @@ ul.two-columns {
     top: 6px;
     width: 16px;
     height: 10px;
-    background: transparent url("/themes/custom/am/dist/../images/icons/arrow-up-black.png") center center no-repeat;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-up-black.png") center center no-repeat;
     transform: rotate(180deg);
     transition: all 0.5s ease-in;
 }
@@ -45203,7 +45203,7 @@ ul.two-columns {
     top: 14px;
     width: 12px;
     height: 12px;
-    background: transparent url("/themes/custom/am/dist/../images/icons/close-blue-32.png") center no-repeat;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/close-blue-32.png") center no-repeat;
     background-size: contain;
 }
 
@@ -45303,7 +45303,7 @@ ul.two-columns {
     width: 16px;
     height: 16px;
     border-width: 0;
-    background: transparent url(/themes/custom/am/dist/../images/icons/search-blue.png) no-repeat center center;
+    background: transparent url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/search-blue.png) no-repeat center center;
     background-size: contain;
     cursor: pointer;
 }
@@ -45382,7 +45382,7 @@ ul.two-columns {
     top: 6px;
     width: 16px;
     height: 10px;
-    background: transparent url("/themes/custom/am/dist/../images/icons/arrow-up-black.png") center center no-repeat;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-up-black.png") center center no-repeat;
     transform: rotate(180deg);
     transition: all 0.5s ease-in;
 }
@@ -45484,7 +45484,7 @@ ul.two-columns {
     top: 14px;
     width: 12px;
     height: 12px;
-    background: transparent url("/themes/custom/am/dist/../images/icons/close-blue-32.png") center no-repeat;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/close-blue-32.png") center no-repeat;
     background-size: contain;
     font-size: 0;
 }
@@ -45586,7 +45586,7 @@ ul.two-columns {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -45678,7 +45678,7 @@ ul.two-columns {
     width: 40px;
     height: 40px;
     cursor: pointer;
-    background: transparent url("/themes/custom/am/dist/../images/icons/close-blueo-32.png") no-repeat center center;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/close-blueo-32.png") no-repeat center center;
     background-size: 32px 32px;
     margin-right: 15px !important;
 }
@@ -45766,7 +45766,7 @@ ul.two-columns {
 .node-postcast-full-head {
     padding: 120px 10px 100px 10px;
     position: relative;
-    background-image: url("/themes/custom/am/dist/../images/bg/podcast-mood.jpg");
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/bg/podcast-mood.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -45934,7 +45934,7 @@ div[data-drupal-messages] ul li {
 }
 
 .who-we-serve-wrap {
-    background: transparent url("/themes/custom/am/dist/../images/who_we_serve/who_we_serve_bg.jpg") center center no-repeat;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/who_we_serve/who_we_serve_bg.jpg") center center no-repeat;
     background-size: cover;
 }
 
@@ -46253,7 +46253,7 @@ div[data-drupal-messages] ul li {
 }
 
 .storage-popup-webform .webform-submission-form .form-actions input {
-    background: transparent url("/themes/custom/am/dist/../images/icons/arrow-right-white-blue.png") left center no-repeat;
+    background: transparent url("https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-blue.png") left center no-repeat;
     padding-left: 55px;
     height: 45px;
     color: #0085CA;
@@ -46322,7 +46322,7 @@ div[data-drupal-messages] ul li {
 
 .contact_us_with_salesforce {
     padding: 50px 10px;
-    background: transparent url(/themes/custom/am/dist/../images/trash/screen-video.png) center center no-repeat;
+    background: transparent url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/trash/screen-video.png) center center no-repeat;
     background-size: cover;
 }
 
@@ -46588,7 +46588,7 @@ div[data-drupal-messages] ul li {
     cursor: pointer;
     padding: 0 30px 0 0;
     font-size: 18px;
-    background: transparent url(/themes/custom/am/dist/../images/icons/arrow-right-submit-blue.png) center right no-repeat;
+    background: transparent url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-submit-blue.png) center right no-repeat;
     font-weight: 500;
     font-family: "Helvetica Neue LT Std", Helvetica, Arial, sans-serif;
     border-width: 0;
@@ -46703,7 +46703,7 @@ div[data-drupal-messages] ul li {
 }
 
 .page-node-type-custom-page .tpl-lead-generation .am-heading-head .am-heading-link>div:after {
-    background: #F3BF2D url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #F3BF2D url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 .page-node-type-custom-page .tpl-lead-generation .am-heading-head .am-heading-link>div a {
@@ -47183,7 +47183,7 @@ div[data-drupal-messages] ul li {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -47462,7 +47462,7 @@ div[data-drupal-messages] ul li {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -47583,7 +47583,7 @@ div[data-drupal-messages] ul li {
     top: 0;
     min-width: 45px;
     height: 45px;
-    background: #0085ca url(/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
+    background: #0085ca url(https://www.alvarezandmarsal.com/themes/custom/am/dist/../images/icons/arrow-right-white-32.png) no-repeat center center;
 }
 
 @media (max-width: 960px) {
@@ -48412,23 +48412,23 @@ table.dataTable thead .sorting_desc_disabled {
 }
 
 table.dataTable thead .sorting {
-    background-image: url("/themes/custom/am/js/datatables/css/../images/sort_both.png")
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/js/datatables/css/../images/sort_both.png")
 }
 
 table.dataTable thead .sorting_asc {
-    background-image: url("/themes/custom/am/js/datatables/css/../images/sort_asc.png")
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/js/datatables/css/../images/sort_asc.png")
 }
 
 table.dataTable thead .sorting_desc {
-    background-image: url("/themes/custom/am/js/datatables/css/../images/sort_desc.png")
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/js/datatables/css/../images/sort_desc.png")
 }
 
 table.dataTable thead .sorting_asc_disabled {
-    background-image: url("/themes/custom/am/js/datatables/css/../images/sort_asc_disabled.png")
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/js/datatables/css/../images/sort_asc_disabled.png")
 }
 
 table.dataTable thead .sorting_desc_disabled {
-    background-image: url("/themes/custom/am/js/datatables/css/../images/sort_desc_disabled.png")
+    background-image: url("https://www.alvarezandmarsal.com/themes/custom/am/js/datatables/css/../images/sort_desc_disabled.png")
 }
 
 table.dataTable tbody tr {

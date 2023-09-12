@@ -1,23 +1,9 @@
-import Menu from '@mui/icons-material/Menu';
-import { AppBar, Container, IconButton, Theme, Toolbar, Box } from '@mui/material';
-import { makeStyles } from '@mui/styles';
-import { useTranslation } from 'next-i18next';
-
-import { CtfNavigationGql } from '@src/components/features/ctf-components/ctf-navigation/ctf-navigation-gql';
-import { Link } from '@src/components/shared/link';
-import Logo from '@src/icons/colorful-coin-logo.svg';
-import { HEADER_HEIGHT, HEADER_HEIGHT_MD, CONTAINER_WIDTH } from '@src/theme';
-
 interface HeaderPropsInterface {
   isMenuOpen?: boolean;
   onMenuClick?: () => any;
 }
 
 export const Header = (props: HeaderPropsInterface) => {
-  const { t } = useTranslation();
-
-  const { onMenuClick, isMenuOpen } = props;
-
   return (
     <div role="banner" className="main-header on-top" style={{ top: '0px', position: 'fixed' }}>
       <div className="main-header-inner">
