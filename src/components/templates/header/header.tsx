@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/anchor-has-content */
+/* eslint-disable react/self-closing-comp */
 import Menu from '@mui/icons-material/Menu';
 import { AppBar, Container, IconButton, Theme, Toolbar, Box } from '@mui/material';
 import { makeStyles } from '@mui/styles';
