@@ -1,3 +1,4 @@
+/* eslint-disable react/self-closing-comp */
 interface HeaderPropsInterface {
   isMenuOpen?: boolean;
   onMenuClick?: () => any;
