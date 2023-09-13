@@ -7,7 +7,6 @@ import { useMemo } from 'react';
 import { HeroBannerFieldsFragment } from './__generated/ctf-hero-banner.generated';
 
 import { CtfRichtext } from '@src/components/features/ctf-components/ctf-richtext/ctf-richtext';
-import { PageLink } from '@src/components/features/page-link';
 import LayoutContext, { defaultLayout, useLayoutContext } from '@src/layout-context';
 import { getColorConfigFromPalette, HEADER_HEIGHT_MD, HEADER_HEIGHT } from '@src/theme';
 
@@ -103,7 +102,7 @@ export const CtfHeroBanner = (props: HeroBannerFieldsFragment) => {
     // greeting,
     bodyText,
     ctaText,
-    targetPage,
+    ctaTargetLink,
     colorPalette,
     sys: { id },
     heroSize: heroSizeBoolean,
@@ -132,7 +131,6 @@ export const CtfHeroBanner = (props: HeroBannerFieldsFragment) => {
       style={{
         backgroundImage:
           imageStyle === 'full' && backgroundImage ? `url(${backgroundImage!})` : undefined,
-        backgroundColor: colorConfig.backgroundColor,
       }}
     >
       {imageStyle === 'partial' && backgroundImage && (
@@ -146,13 +144,6 @@ export const CtfHeroBanner = (props: HeroBannerFieldsFragment) => {
         </div>
       )}
       <div className={classes.innerContainer}>
-        {/* Tutorial: uncomment this block to render the Greeting field value
-        {greeting && (
-          <Typography>
-            {greeting}
-          </Typography>
-        )}
-        */}
         {headline && (
           <Typography
             variant="h1"
@@ -173,16 +164,11 @@ export const CtfHeroBanner = (props: HeroBannerFieldsFragment) => {
             </div>
           </LayoutContext.Provider>
         )}
-        {targetPage && ctaText && (
+        {ctaTargetLink && ctaText && (
           <div className={classes.ctaContainer}>
-            <PageLink
-              page={targetPage}
-              variant="contained"
-              color={colorConfig.buttonColor}
-              isButton
-            >
+            <a href={ctaTargetLink} className="button">
               {ctaText}
-            </PageLink>
+            </a>
           </div>
         )}
       </div>

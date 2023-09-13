@@ -16,7 +16,9 @@ export type PageTopSectionFields_ComponentQuote_Fragment = { __typename: 'Compon
 
 export type PageTopSectionFields_ComponentTextBlock_Fragment = { __typename: 'ComponentTextBlock' };
 
-export type PageTopSectionFieldsFragment = PageTopSectionFields_ComponentCta_Fragment | PageTopSectionFields_ComponentDuplex_Fragment | PageTopSectionFields_ComponentHeroBanner_Fragment | PageTopSectionFields_ComponentInfoBlock_Fragment | PageTopSectionFields_ComponentQuote_Fragment | PageTopSectionFields_ComponentTextBlock_Fragment;
+export type PageTopSectionFields_WhyAmBlock_Fragment = { __typename: 'WhyAmBlock' };
+
+export type PageTopSectionFieldsFragment = PageTopSectionFields_ComponentCta_Fragment | PageTopSectionFields_ComponentDuplex_Fragment | PageTopSectionFields_ComponentHeroBanner_Fragment | PageTopSectionFields_ComponentInfoBlock_Fragment | PageTopSectionFields_ComponentQuote_Fragment | PageTopSectionFields_ComponentTextBlock_Fragment | PageTopSectionFields_WhyAmBlock_Fragment;
 
 export type PageContentFields_ComponentProductTable_Fragment = { __typename: 'ComponentProductTable' };
 
@@ -61,6 +63,9 @@ export type CtfPageFieldsFragment = { __typename: 'Page', pageName?: string | nu
     ) | (
       { __typename: 'ComponentTextBlock', sys: { __typename?: 'Sys', id: string } }
       & PageTopSectionFields_ComponentTextBlock_Fragment
+    ) | (
+      { __typename: 'WhyAmBlock', sys: { __typename?: 'Sys', id: string } }
+      & PageTopSectionFields_WhyAmBlock_Fragment
     ) | null> } | null, pageContent?: (
     { __typename: 'ComponentProductTable', sys: { __typename?: 'Sys', id: string } }
     & PageContentFields_ComponentProductTable_Fragment

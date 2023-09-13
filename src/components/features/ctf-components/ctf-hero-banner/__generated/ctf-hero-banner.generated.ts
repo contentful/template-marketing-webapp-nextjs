@@ -1,15 +1,10 @@
 import * as Types from '../../../../../lib/__generated/graphql.types';
 
-import { PageLinkFieldsFragment } from '../../../page-link/__generated/page-link.generated';
 import { AssetFieldsFragment } from '../../ctf-asset/__generated/ctf-asset.generated';
-import { PageLinkFieldsFragmentDoc } from '../../../page-link/__generated/page-link.generated';
 import { AssetFieldsFragmentDoc } from '../../ctf-asset/__generated/ctf-asset.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { customFetcher } from '@src/lib/fetchConfig';
-export type HeroBannerFieldsFragment = { __typename: 'ComponentHeroBanner', headline?: string | null, ctaText?: string | null, imageStyle?: boolean | null, heroSize?: boolean | null, colorPalette?: string | null, sys: { __typename?: 'Sys', id: string }, bodyText?: { __typename?: 'ComponentHeroBannerBodyText', json: any } | null, targetPage?: (
-    { __typename?: 'Page' }
-    & PageLinkFieldsFragment
-  ) | null, image?: (
+export type HeroBannerFieldsFragment = { __typename: 'ComponentHeroBanner', headline?: string | null, ctaText?: string | null, ctaTargetLink?: string | null, imageStyle?: boolean | null, heroSize?: boolean | null, colorPalette?: string | null, sys: { __typename?: 'Sys', id: string }, bodyText?: { __typename?: 'ComponentHeroBannerBodyText', json: any } | null, image?: (
     { __typename?: 'Asset' }
     & AssetFieldsFragment
   ) | null };
@@ -37,9 +32,7 @@ export const HeroBannerFieldsFragmentDoc = `
     json
   }
   ctaText
-  targetPage {
-    ...PageLinkFields
-  }
+  ctaTargetLink
   image {
     ...AssetFields
   }
@@ -55,7 +48,6 @@ export const CtfHeroBannerDocument = `
   }
 }
     ${HeroBannerFieldsFragmentDoc}
-${PageLinkFieldsFragmentDoc}
 ${AssetFieldsFragmentDoc}`;
 export const useCtfHeroBannerQuery = <
       TData = CtfHeroBannerQuery,
