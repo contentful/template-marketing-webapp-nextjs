@@ -1,0 +1,20 @@
+fragment AmHeroFields on AmHero {
+  __typename
+  sys {
+    id
+  }
+  headerCopy
+  subHeaderCopy
+  ctaCopy
+  ctaTargetLink
+	backgroundImage{
+    fileName,
+    url
+  }
+}
+
+query CtfAmHero($id: String!, $locale: String, $preview: Boolean) {
+  amHero(id: $id, locale: $locale, preview: $preview) {
+    ...AmHeroFields
+  }
+}

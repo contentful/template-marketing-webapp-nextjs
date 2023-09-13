@@ -1,3 +1,101 @@
+"""
+Alvarez and Marsal Hero [See type definition](https://app.contentful.com/spaces/l4jg3uoi3pbp/content_types/amHero)
+"""
+type AmHero implements Entry {
+  backgroundImage(locale: String, preview: Boolean): Asset
+  contentfulMetadata: ContentfulMetadata!
+  ctaCopy(locale: String): String
+  ctaTargetLink(locale: String): String
+  headerCopy(locale: String): String
+  linkedFrom(allowedLocales: [String]): AmHeroLinkingCollections
+  subHeaderCopy(locale: String): String
+  sys: Sys!
+}
+
+type AmHeroCollection {
+  items: [AmHero]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input AmHeroFilter {
+  AND: [AmHeroFilter]
+  OR: [AmHeroFilter]
+  backgroundImage_exists: Boolean
+  contentfulMetadata: ContentfulMetadataFilter
+  ctaCopy: String
+  ctaCopy_contains: String
+  ctaCopy_exists: Boolean
+  ctaCopy_in: [String]
+  ctaCopy_not: String
+  ctaCopy_not_contains: String
+  ctaCopy_not_in: [String]
+  ctaTargetLink: String
+  ctaTargetLink_contains: String
+  ctaTargetLink_exists: Boolean
+  ctaTargetLink_in: [String]
+  ctaTargetLink_not: String
+  ctaTargetLink_not_contains: String
+  ctaTargetLink_not_in: [String]
+  headerCopy: String
+  headerCopy_contains: String
+  headerCopy_exists: Boolean
+  headerCopy_in: [String]
+  headerCopy_not: String
+  headerCopy_not_contains: String
+  headerCopy_not_in: [String]
+  subHeaderCopy: String
+  subHeaderCopy_contains: String
+  subHeaderCopy_exists: Boolean
+  subHeaderCopy_in: [String]
+  subHeaderCopy_not: String
+  subHeaderCopy_not_contains: String
+  subHeaderCopy_not_in: [String]
+  sys: SysFilter
+}
+
+type AmHeroLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  pageCollection(limit: Int = 100, locale: String, order: [AmHeroLinkingCollectionsPageCollectionOrder], preview: Boolean, skip: Int = 0): PageCollection
+}
+
+enum AmHeroLinkingCollectionsPageCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  pageName_ASC
+  pageName_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum AmHeroOrder {
+  ctaCopy_ASC
+  ctaCopy_DESC
+  ctaTargetLink_ASC
+  ctaTargetLink_DESC
+  headerCopy_ASC
+  headerCopy_DESC
+  subHeaderCopy_ASC
+  subHeaderCopy_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
 """Represents a binary file in a space. An asset can be any file type."""
 type Asset {
   contentType(locale: String): String
@@ -90,6 +188,7 @@ input AssetFilter {
 }
 
 type AssetLinkingCollections {
+  amHeroCollection(limit: Int = 100, locale: String, order: [AssetLinkingCollectionsAmHeroCollectionOrder], preview: Boolean, skip: Int = 0): AmHeroCollection
   componentDuplexCollection(limit: Int = 100, locale: String, order: [AssetLinkingCollectionsComponentDuplexCollectionOrder], preview: Boolean, skip: Int = 0): ComponentDuplexCollection
   componentHeroBannerCollection(limit: Int = 100, locale: String, order: [AssetLinkingCollectionsComponentHeroBannerCollectionOrder], preview: Boolean, skip: Int = 0): ComponentHeroBannerCollection
   componentInfoBlockCollection(limit: Int = 100, locale: String, order: [AssetLinkingCollectionsComponentInfoBlockCollectionOrder], preview: Boolean, skip: Int = 0): ComponentInfoBlockCollection
@@ -100,6 +199,25 @@ type AssetLinkingCollections {
   topicPersonCollection(limit: Int = 100, locale: String, order: [AssetLinkingCollectionsTopicPersonCollectionOrder], preview: Boolean, skip: Int = 0): TopicPersonCollection
   topicProductCollection(limit: Int = 100, locale: String, order: [AssetLinkingCollectionsTopicProductCollectionOrder], preview: Boolean, skip: Int = 0): TopicProductCollection
   whyAmBlockCollection(limit: Int = 100, locale: String, order: [AssetLinkingCollectionsWhyAmBlockCollectionOrder], preview: Boolean, skip: Int = 0): WhyAmBlockCollection
+}
+
+enum AssetLinkingCollectionsAmHeroCollectionOrder {
+  ctaCopy_ASC
+  ctaCopy_DESC
+  ctaTargetLink_ASC
+  ctaTargetLink_DESC
+  headerCopy_ASC
+  headerCopy_DESC
+  subHeaderCopy_ASC
+  subHeaderCopy_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 enum AssetLinkingCollectionsComponentDuplexCollectionOrder {
@@ -608,6 +726,7 @@ type ComponentHeroBanner implements Entry {
   internalName(locale: String): String
   linkedFrom(allowedLocales: [String]): ComponentHeroBannerLinkingCollections
   sys: Sys!
+  targetPage(locale: String, preview: Boolean): Entry
 }
 
 type ComponentHeroBannerBodyText {
@@ -693,6 +812,7 @@ input ComponentHeroBannerFilter {
   internalName_not_contains: String
   internalName_not_in: [String]
   sys: SysFilter
+  targetPage_exists: Boolean
 }
 
 type ComponentHeroBannerLinkingCollections {
@@ -986,24 +1106,6 @@ input ComponentProductTableFilter {
 
 type ComponentProductTableLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  pageCollection(limit: Int = 100, locale: String, order: [ComponentProductTableLinkingCollectionsPageCollectionOrder], preview: Boolean, skip: Int = 0): PageCollection
-}
-
-enum ComponentProductTableLinkingCollectionsPageCollectionOrder {
-  internalName_ASC
-  internalName_DESC
-  pageName_ASC
-  pageName_DESC
-  slug_ASC
-  slug_DESC
-  sys_firstPublishedAt_ASC
-  sys_firstPublishedAt_DESC
-  sys_id_ASC
-  sys_id_DESC
-  sys_publishedAt_ASC
-  sys_publishedAt_DESC
-  sys_publishedVersion_ASC
-  sys_publishedVersion_DESC
 }
 
 enum ComponentProductTableOrder {
@@ -2059,7 +2161,7 @@ enum PageOrder {
   sys_publishedVersion_DESC
 }
 
-union PagePageContent = ComponentProductTable | TopicBusinessInfo | TopicProduct
+union PagePageContent = AmHero | TopicBusinessInfo | TopicProduct | TopicProductFeature
 
 type PageTopSectionCollection {
   items: [PageTopSectionItem]!
@@ -2097,6 +2199,8 @@ The 'Quality' type represents quality as whole numeric values between `1` and `1
 scalar Quality
 
 type Query {
+  amHero(id: String!, locale: String, preview: Boolean): AmHero
+  amHeroCollection(limit: Int = 100, locale: String, order: [AmHeroOrder], preview: Boolean, skip: Int = 0, where: AmHeroFilter): AmHeroCollection
   asset(id: String!, locale: String, preview: Boolean): Asset
   assetCollection(limit: Int = 100, locale: String, order: [AssetOrder], preview: Boolean, skip: Int = 0, where: AssetFilter): AssetCollection
   componentCta(id: String!, locale: String, preview: Boolean): ComponentCta
@@ -2621,7 +2725,25 @@ input TopicProductFeatureFilter {
 
 type TopicProductFeatureLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  pageCollection(limit: Int = 100, locale: String, order: [TopicProductFeatureLinkingCollectionsPageCollectionOrder], preview: Boolean, skip: Int = 0): PageCollection
   topicProductCollection(limit: Int = 100, locale: String, order: [TopicProductFeatureLinkingCollectionsTopicProductCollectionOrder], preview: Boolean, skip: Int = 0): TopicProductCollection
+}
+
+enum TopicProductFeatureLinkingCollectionsPageCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  pageName_ASC
+  pageName_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 enum TopicProductFeatureLinkingCollectionsTopicProductCollectionOrder {

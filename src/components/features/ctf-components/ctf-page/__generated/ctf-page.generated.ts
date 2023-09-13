@@ -20,13 +20,15 @@ export type PageTopSectionFields_WhyAmBlock_Fragment = { __typename: 'WhyAmBlock
 
 export type PageTopSectionFieldsFragment = PageTopSectionFields_ComponentCta_Fragment | PageTopSectionFields_ComponentDuplex_Fragment | PageTopSectionFields_ComponentHeroBanner_Fragment | PageTopSectionFields_ComponentInfoBlock_Fragment | PageTopSectionFields_ComponentQuote_Fragment | PageTopSectionFields_ComponentTextBlock_Fragment | PageTopSectionFields_WhyAmBlock_Fragment;
 
-export type PageContentFields_ComponentProductTable_Fragment = { __typename: 'ComponentProductTable' };
+export type PageContentFields_AmHero_Fragment = { __typename: 'AmHero' };
 
 export type PageContentFields_TopicBusinessInfo_Fragment = { __typename: 'TopicBusinessInfo' };
 
 export type PageContentFields_TopicProduct_Fragment = { __typename: 'TopicProduct' };
 
-export type PageContentFieldsFragment = PageContentFields_ComponentProductTable_Fragment | PageContentFields_TopicBusinessInfo_Fragment | PageContentFields_TopicProduct_Fragment;
+export type PageContentFields_TopicProductFeature_Fragment = { __typename: 'TopicProductFeature' };
+
+export type PageContentFieldsFragment = PageContentFields_AmHero_Fragment | PageContentFields_TopicBusinessInfo_Fragment | PageContentFields_TopicProduct_Fragment | PageContentFields_TopicProductFeature_Fragment;
 
 export type PageExtraSectionItemFields_ComponentCta_Fragment = { __typename: 'ComponentCta' };
 
@@ -67,14 +69,17 @@ export type CtfPageFieldsFragment = { __typename: 'Page', pageName?: string | nu
       { __typename: 'WhyAmBlock', sys: { __typename?: 'Sys', id: string } }
       & PageTopSectionFields_WhyAmBlock_Fragment
     ) | null> } | null, pageContent?: (
-    { __typename: 'ComponentProductTable', sys: { __typename?: 'Sys', id: string } }
-    & PageContentFields_ComponentProductTable_Fragment
+    { __typename: 'AmHero', sys: { __typename?: 'Sys', id: string } }
+    & PageContentFields_AmHero_Fragment
   ) | (
     { __typename: 'TopicBusinessInfo', sys: { __typename?: 'Sys', id: string } }
     & PageContentFields_TopicBusinessInfo_Fragment
   ) | (
     { __typename: 'TopicProduct', sys: { __typename?: 'Sys', id: string } }
     & PageContentFields_TopicProduct_Fragment
+  ) | (
+    { __typename: 'TopicProductFeature', sys: { __typename?: 'Sys', id: string } }
+    & PageContentFields_TopicProductFeature_Fragment
   ) | null, extraSectionCollection?: { __typename?: 'PageExtraSectionCollection', items: Array<(
       { __typename: 'ComponentCta', sys: { __typename?: 'Sys', id: string } }
       & PageExtraSectionItemFields_ComponentCta_Fragment

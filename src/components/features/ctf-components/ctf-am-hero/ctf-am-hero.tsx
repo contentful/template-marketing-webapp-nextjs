@@ -1,9 +1,17 @@
 import { useContentfulInspectorMode } from '@contentful/live-preview/react';
 import LayoutContext, { defaultLayout, useLayoutContext } from '@src/layout-context';
+import { AmHeroFieldsFragment } from './__generated/am-hero.generated';
 
-export const AmHero = () => {
+export const AmHero = (props: AmHeroFieldsFragment) => {
   const layout = useLayoutContext();
-
+  const {
+    backgroundImage,
+    ctaCopy,
+    ctaTargetLink,
+    headerCopy,
+    subHeaderCopy,
+    sys: { id },
+  } = props;
   return (
     <div className="views-element-container" id="block-views-block-front-slide-main">
       <div>

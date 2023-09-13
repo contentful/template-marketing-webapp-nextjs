@@ -37,6 +37,11 @@ export const componentMap = {
       module => module.CtfAmWhyAm,
     ),
   ),
+  AmHero: dynamic(() =>
+    import('@src/components/features/ctf-components/ctf-am-hero/ctf-am-hero').then(
+      module => module.AmHero,
+    ),
+  ),
   ComponentInfoBlock: dynamic(() =>
     import('@src/components/features/ctf-components/ctf-info-block/ctf-info-block').then(
       module => module.CtfInfoBlock,
@@ -79,6 +84,11 @@ export const componentGqlMap = {
   WhyAmBlock: dynamic(() =>
     import('@src/components/features/ctf-components/ctf-am-why-am/ctf-am-why-am-gql').then(
       module => module.CtfAmWhyAmGql,
+    ),
+  ),
+  AmHero: dynamic(() =>
+    import('@src/components/features/ctf-components/ctf-am-hero/ctf-am-hero-gql').then(
+      module => module.CtfAmHeroGql,
     ),
   ),
   ComponentInfoBlock: dynamic(() =>
