@@ -1,0 +1,28 @@
+fragment HeroBannerFields on ComponentHeroBanner {
+  __typename
+  sys {
+    id
+  }
+  # Tutorial: uncomment the line below to add the Greeting field to the query
+  # greeting
+  headline
+  bodyText {
+    json
+  }
+  ctaText
+  targetPage {
+    ...PageLinkFields
+  }
+  image {
+    ...AssetFields
+  }
+  imageStyle
+  heroSize
+  colorPalette
+}
+
+query CtfHeroBanner($id: String!, $locale: String, $preview: Boolean) {
+  componentHeroBanner(id: $id, locale: $locale, preview: $preview) {
+    ...HeroBannerFields
+  }
+}

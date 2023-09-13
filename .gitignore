@@ -192,3 +192,7 @@ bower_components
 
 ### Install artifacts ###
 package-lock.json
+
+### Local development artifacts ###
+src/components/alvarez
+
