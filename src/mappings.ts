@@ -2,7 +2,9 @@ import dynamic from 'next/dynamic';
 
 const pageTopicMap = {
   TopicProduct: dynamic(() =>
-    import('@src/components/features/ctf-components/ctf-product/ctf-product-gql').then(module => module.CtfProductGql),
+    import('@src/components/features/ctf-components/ctf-product/ctf-product-gql').then(
+      module => module.CtfProductGql,
+    ),
   ),
   TopicBusinessInfo: dynamic(() =>
     import('@src/components/features/ctf-components/ctf-business-info/ctf-business-info-gql').then(
@@ -21,36 +23,62 @@ export const componentMap = {
     import('@src/components/features/ctf-components/ctf-cta/ctf-cta').then(module => module.CtfCta),
   ),
   ComponentDuplex: dynamic(() =>
-    import('@src/components/features/ctf-components/ctf-duplex/ctf-duplex').then(module => module.CtfDuplex),
+    import('@src/components/features/ctf-components/ctf-duplex/ctf-duplex').then(
+      module => module.CtfDuplex,
+    ),
   ),
   ComponentHeroBanner: dynamic(() =>
-    import('@src/components/features/ctf-components/ctf-hero-banner/ctf-hero-banner').then(module => module.CtfHeroBanner),
+    import('@src/components/features/ctf-components/ctf-hero-banner/ctf-hero-banner').then(
+      module => module.CtfHeroBanner,
+    ),
+  ),
+  WhyAmBlock: dynamic(() =>
+    import('@src/components/features/ctf-components/ctf-am-why-am/ctf-am-why-am').then(
+      module => module.CtfAmWhyAm,
+    ),
   ),
   ComponentInfoBlock: dynamic(() =>
-    import('@src/components/features/ctf-components/ctf-info-block/ctf-info-block').then(module => module.CtfInfoBlock),
+    import('@src/components/features/ctf-components/ctf-info-block/ctf-info-block').then(
+      module => module.CtfInfoBlock,
+    ),
   ),
   ComponentQuote: dynamic(() =>
-    import('@src/components/features/ctf-components/ctf-quote/ctf-quote').then(module => module.CtfQuote),
+    import('@src/components/features/ctf-components/ctf-quote/ctf-quote').then(
+      module => module.CtfQuote,
+    ),
   ),
   ComponentTextBlock: dynamic(() =>
-    import('@src/components/features/ctf-components/ctf-text-block/ctf-text-block').then(module => module.CtfTextBlock),
+    import('@src/components/features/ctf-components/ctf-text-block/ctf-text-block').then(
+      module => module.CtfTextBlock,
+    ),
   ),
   TopicPerson: dynamic(() =>
-    import('@src/components/features/ctf-components/ctf-person/ctf-person').then(module => module.CtfPerson),
+    import('@src/components/features/ctf-components/ctf-person/ctf-person').then(
+      module => module.CtfPerson,
+    ),
   ),
 };
 
 export const componentGqlMap = {
   ...pageTopicMap,
   ComponentCta: dynamic(() =>
-    import('@src/components/features/ctf-components/ctf-cta/ctf-cta-gql').then(module => module.CtfCtaGql),
+    import('@src/components/features/ctf-components/ctf-cta/ctf-cta-gql').then(
+      module => module.CtfCtaGql,
+    ),
   ),
   ComponentDuplex: dynamic(() =>
-    import('@src/components/features/ctf-components/ctf-duplex/ctf-duplex-gql').then(module => module.CtfDuplexGql),
+    import('@src/components/features/ctf-components/ctf-duplex/ctf-duplex-gql').then(
+      module => module.CtfDuplexGql,
+    ),
   ),
   ComponentHeroBanner: dynamic(() =>
     import('@src/components/features/ctf-components/ctf-hero-banner/ctf-hero-banner-gql').then(
       module => module.CtfHeroGql,
+    ),
+  ),
+  WhyAmBlock: dynamic(() =>
+    import('@src/components/features/ctf-components/ctf-am-why-am/ctf-am-why-am-gql').then(
+      module => module.CtfAmWhyAmGql,
     ),
   ),
   ComponentInfoBlock: dynamic(() =>
@@ -59,7 +87,9 @@ export const componentGqlMap = {
     ),
   ),
   ComponentQuote: dynamic(() =>
-    import('@src/components/features/ctf-components/ctf-quote/ctf-quote-gql').then(module => module.CtfQuoteGql),
+    import('@src/components/features/ctf-components/ctf-quote/ctf-quote-gql').then(
+      module => module.CtfQuoteGql,
+    ),
   ),
   ComponentTextBlock: dynamic(() =>
     import('@src/components/features/ctf-components/ctf-text-block/ctf-text-block-gql').then(
@@ -67,9 +97,13 @@ export const componentGqlMap = {
     ),
   ),
   TopicPerson: dynamic(() =>
-    import('@src/components/features/ctf-components/ctf-person/ctf-person-gql').then(module => module.CtfPersonGql),
+    import('@src/components/features/ctf-components/ctf-person/ctf-person-gql').then(
+      module => module.CtfPersonGql,
+    ),
   ),
   ComponentFooter: dynamic(() =>
-    import('@src/components/features/ctf-components/ctf-footer/ctf-footer-gql').then(module => module.CtfFooterGql),
+    import('@src/components/features/ctf-components/ctf-footer/ctf-footer-gql').then(
+      module => module.CtfFooterGql,
+    ),
   ),
 };
