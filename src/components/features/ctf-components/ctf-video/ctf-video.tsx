@@ -37,7 +37,6 @@ export const CtfVideo = (props: CtfVideoPropsInterface) => {
   const classes = useStyles();
   return (
     <div className={className}>
-      {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
       <video src={url!} autoPlay={autoplay} controls className={classes.video} />
       {showDescription && <p className={classes.caption}>{description}</p>}
     </div>
