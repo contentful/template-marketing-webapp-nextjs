@@ -84,6 +84,8 @@ module.exports = {
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/self-closing-comp': 'warn',
+    'react/no-unknown-property': 'off',
+    'react/no-unescaped-entities': 'off',
   },
   overrides: [
     {
