@@ -4,7 +4,7 @@ import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import { useMemo } from 'react';
 
-import { WhyAmFieldsFragment } from './__generated/ctf-am-why-am.generated';
+import { AmWhyAmFieldsFragment } from './__generated/ctf-am-why-am.generated';
 
 import { CtfRichtext } from '@src/components/features/ctf-components/ctf-richtext/ctf-richtext';
 import { PageLink } from '@src/components/features/page-link';
@@ -94,7 +94,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export const CtfAmWhyAm = (props: WhyAmFieldsFragment) => {
+export const CtfAmWhyAm = (props: AmWhyAmFieldsFragment) => {
   const {
     image,
     imageStyle: imageStyleBoolean,

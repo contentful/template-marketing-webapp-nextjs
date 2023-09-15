@@ -1,4 +1,4 @@
-fragment HeroBannerFields on ComponentHeroBanner {
+fragment AmWhyAmFields on WhyAmBlock {
   __typename
   sys {
     id
@@ -21,8 +21,8 @@ fragment HeroBannerFields on ComponentHeroBanner {
   colorPalette
 }
 
-query CtfHeroBanner($id: String!, $locale: String, $preview: Boolean) {
-  componentHeroBanner(id: $id, locale: $locale, preview: $preview) {
-    ...HeroBannerFields
+query CtfAmWhyAm($id: String!, $locale: String, $preview: Boolean) {
+  whyAmBlock(id: $id, locale: $locale, preview: $preview) {
+    ...AmWhyAmFields
   }
 }

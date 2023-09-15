@@ -1,0 +1,12 @@
+fragment AmFeaturedInsightsFields on AmFeaturedInsights {
+  __typename
+  sys {
+    id
+  }
+}
+
+query CtfFeaturedInsights($id: String!, $locale: String, $preview: Boolean) {
+  amFeaturedInsights(id: $id, locale: $locale, preview: $preview) {
+    ...AmFeaturedInsightsFields
+  }
+}

@@ -42,6 +42,26 @@ export const componentMap = {
       module => module.AmHero,
     ),
   ),
+  AmCtaFeatureBlock: dynamic(() =>
+    import(
+      '@src/components/features/ctf-components/ctf-cta-feature-block/ctf-cta-feature-block'
+    ).then(module => module.CtaFeatureBlock),
+  ),
+  AmFeaturedInsights: dynamic(() =>
+    import(
+      '@src/components/features/ctf-components/ctf-featured-insights/ctf-featured-insights'
+    ).then(module => module.FeaturedInsights),
+  ),
+  AmTestimonial: dynamic(() =>
+    import('@src/components/features/ctf-components/ctf-testimonial/ctf-testimonial').then(
+      module => module.Testimonial,
+    ),
+  ),
+  AmValueProp: dynamic(() =>
+    import('@src/components/features/ctf-components/ctf-value-prop/ctf-value-prop').then(
+      module => module.ValueProp,
+    ),
+  ),
   ComponentInfoBlock: dynamic(() =>
     import('@src/components/features/ctf-components/ctf-info-block/ctf-info-block').then(
       module => module.CtfInfoBlock,
@@ -89,6 +109,26 @@ export const componentGqlMap = {
   AmHero: dynamic(() =>
     import('@src/components/features/ctf-components/ctf-am-hero/ctf-am-hero-gql').then(
       module => module.CtfAmHeroGql,
+    ),
+  ),
+  AmCtaFeatureBlock: dynamic(() =>
+    import(
+      '@src/components/features/ctf-components/ctf-cta-feature-block/ctf-cta-feature-block-gql'
+    ).then(module => module.CtfCtaFeatureBlockGql),
+  ),
+  AmFeaturedInsights: dynamic(() =>
+    import(
+      '@src/components/features/ctf-components/ctf-featured-insights/ctf-featured-insights-gql'
+    ).then(module => module.CtfFeaturedInsightsGql),
+  ),
+  AmTestimonial: dynamic(() =>
+    import('@src/components/features/ctf-components/ctf-testimonial/ctf-testimonial-gql').then(
+      module => module.CtfTestimonialGql,
+    ),
+  ),
+  AmValueProp: dynamic(() =>
+    import('@src/components/features/ctf-components/ctf-value-prop/ctf-value-prop-gql').then(
+      module => module.CtfValuePropGql,
     ),
   ),
   ComponentInfoBlock: dynamic(() =>

@@ -4,6 +4,8 @@ import { AssetFieldsFragment } from '../../ctf-asset/__generated/ctf-asset.gener
 import { AssetFieldsFragmentDoc } from '../../ctf-asset/__generated/ctf-asset.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { customFetcher } from '@src/lib/fetchConfig';
+export type PageTopSectionFields_AmHero_Fragment = { __typename: 'AmHero' };
+
 export type PageTopSectionFields_ComponentCta_Fragment = { __typename: 'ComponentCta' };
 
 export type PageTopSectionFields_ComponentDuplex_Fragment = { __typename: 'ComponentDuplex' };
@@ -12,13 +14,15 @@ export type PageTopSectionFields_ComponentHeroBanner_Fragment = { __typename: 'C
 
 export type PageTopSectionFields_ComponentInfoBlock_Fragment = { __typename: 'ComponentInfoBlock' };
 
+export type PageTopSectionFields_ComponentProductTable_Fragment = { __typename: 'ComponentProductTable' };
+
 export type PageTopSectionFields_ComponentQuote_Fragment = { __typename: 'ComponentQuote' };
 
 export type PageTopSectionFields_ComponentTextBlock_Fragment = { __typename: 'ComponentTextBlock' };
 
 export type PageTopSectionFields_WhyAmBlock_Fragment = { __typename: 'WhyAmBlock' };
 
-export type PageTopSectionFieldsFragment = PageTopSectionFields_ComponentCta_Fragment | PageTopSectionFields_ComponentDuplex_Fragment | PageTopSectionFields_ComponentHeroBanner_Fragment | PageTopSectionFields_ComponentInfoBlock_Fragment | PageTopSectionFields_ComponentQuote_Fragment | PageTopSectionFields_ComponentTextBlock_Fragment | PageTopSectionFields_WhyAmBlock_Fragment;
+export type PageTopSectionFieldsFragment = PageTopSectionFields_AmHero_Fragment | PageTopSectionFields_ComponentCta_Fragment | PageTopSectionFields_ComponentDuplex_Fragment | PageTopSectionFields_ComponentHeroBanner_Fragment | PageTopSectionFields_ComponentInfoBlock_Fragment | PageTopSectionFields_ComponentProductTable_Fragment | PageTopSectionFields_ComponentQuote_Fragment | PageTopSectionFields_ComponentTextBlock_Fragment | PageTopSectionFields_WhyAmBlock_Fragment;
 
 export type PageContentFields_AmHero_Fragment = { __typename: 'AmHero' };
 
@@ -48,6 +52,9 @@ export type CtfPageFieldsFragment = { __typename: 'Page', pageName?: string | nu
       { __typename?: 'Asset' }
       & AssetFieldsFragment
     ) | null } | null, topSectionCollection?: { __typename?: 'PageTopSectionCollection', items: Array<(
+      { __typename: 'AmHero', sys: { __typename?: 'Sys', id: string } }
+      & PageTopSectionFields_AmHero_Fragment
+    ) | (
       { __typename: 'ComponentCta', sys: { __typename?: 'Sys', id: string } }
       & PageTopSectionFields_ComponentCta_Fragment
     ) | (
@@ -59,6 +66,9 @@ export type CtfPageFieldsFragment = { __typename: 'Page', pageName?: string | nu
     ) | (
       { __typename: 'ComponentInfoBlock', sys: { __typename?: 'Sys', id: string } }
       & PageTopSectionFields_ComponentInfoBlock_Fragment
+    ) | (
+      { __typename: 'ComponentProductTable', sys: { __typename?: 'Sys', id: string } }
+      & PageTopSectionFields_ComponentProductTable_Fragment
     ) | (
       { __typename: 'ComponentQuote', sys: { __typename?: 'Sys', id: string } }
       & PageTopSectionFields_ComponentQuote_Fragment

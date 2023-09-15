@@ -1,7 +1,7 @@
 import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
 import React from 'react';
 
-import { useCtfWhyAmQuery } from './__generated/ctf-am-why-am.generated';
+import { useCtfAmWhyAmQuery } from './__generated/ctf-am-why-am.generated';
 import { CtfAmWhyAm } from './ctf-am-why-am';
 
 interface CtfWhyAmGqlPropsInterface {
@@ -12,7 +12,7 @@ interface CtfWhyAmGqlPropsInterface {
 
 export const CtfAmWhyAmGql = (props: CtfWhyAmGqlPropsInterface) => {
   const { id, locale, preview } = props;
-  const { data, isLoading } = useCtfWhyAmQuery({
+  const { data, isLoading } = useCtfAmWhyAmQuery({
     id,
     locale,
     preview,

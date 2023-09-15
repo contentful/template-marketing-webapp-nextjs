@@ -6,7 +6,7 @@ import { PageLinkFieldsFragmentDoc } from '../../../page-link/__generated/page-l
 import { AssetFieldsFragmentDoc } from '../../ctf-asset/__generated/ctf-asset.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { customFetcher } from '@src/lib/fetchConfig';
-export type WhyAmFieldsFragment = { __typename: 'WhyAmBlock', headline?: string | null, ctaText?: string | null, imageStyle?: boolean | null, heroSize?: boolean | null, colorPalette?: string | null, sys: { __typename?: 'Sys', id: string }, bodyText?: { __typename?: 'WhyAmBlockBodyText', json: any } | null, targetPage?: (
+export type AmWhyAmFieldsFragment = { __typename: 'WhyAmBlock', headline?: string | null, ctaText?: string | null, imageStyle?: boolean | null, heroSize?: boolean | null, colorPalette?: string | null, sys: { __typename?: 'Sys', id: string }, bodyText?: { __typename?: 'WhyAmBlockBodyText', json: any } | null, targetPage?: (
     { __typename?: 'Page' }
     & PageLinkFieldsFragment
   ) | null, image?: (
@@ -14,20 +14,20 @@ export type WhyAmFieldsFragment = { __typename: 'WhyAmBlock', headline?: string 
     & AssetFieldsFragment
   ) | null };
 
-export type CtfWhyAmQueryVariables = Types.Exact<{
+export type CtfAmWhyAmQueryVariables = Types.Exact<{
   id: Types.Scalars['String'];
   locale?: Types.InputMaybe<Types.Scalars['String']>;
   preview?: Types.InputMaybe<Types.Scalars['Boolean']>;
 }>;
 
 
-export type CtfWhyAmQuery = { __typename?: 'Query', whyAmBlock?: (
+export type CtfAmWhyAmQuery = { __typename?: 'Query', whyAmBlock?: (
     { __typename?: 'WhyAmBlock' }
-    & WhyAmFieldsFragment
+    & AmWhyAmFieldsFragment
   ) | null };
 
-export const WhyAmFieldsFragmentDoc = `
-    fragment WhyAmFields on WhyAmBlock {
+export const AmWhyAmFieldsFragmentDoc = `
+    fragment AmWhyAmFields on WhyAmBlock {
   __typename
   sys {
     id
@@ -48,29 +48,29 @@ export const WhyAmFieldsFragmentDoc = `
   colorPalette
 }
     `;
-export const CtfWhyAmDocument = `
-    query CtfWhyAm($id: String!, $locale: String, $preview: Boolean) {
+export const CtfAmWhyAmDocument = `
+    query CtfAmWhyAm($id: String!, $locale: String, $preview: Boolean) {
   whyAmBlock(id: $id, locale: $locale, preview: $preview) {
-    ...WhyAmFields
+    ...AmWhyAmFields
   }
 }
-    ${WhyAmFieldsFragmentDoc}
+    ${AmWhyAmFieldsFragmentDoc}
 ${PageLinkFieldsFragmentDoc}
 ${AssetFieldsFragmentDoc}`;
-export const useCtfWhyAmQuery = <
-      TData = CtfWhyAmQuery,
+export const useCtfAmWhyAmQuery = <
+      TData = CtfAmWhyAmQuery,
       TError = unknown
     >(
-      variables: CtfWhyAmQueryVariables,
-      options?: UseQueryOptions<CtfWhyAmQuery, TError, TData>
+      variables: CtfAmWhyAmQueryVariables,
+      options?: UseQueryOptions<CtfAmWhyAmQuery, TError, TData>
     ) =>
-    useQuery<CtfWhyAmQuery, TError, TData>(
-      ['CtfWhyAm', variables],
-      customFetcher<CtfWhyAmQuery, CtfWhyAmQueryVariables>(CtfWhyAmDocument, variables),
+    useQuery<CtfAmWhyAmQuery, TError, TData>(
+      ['CtfAmWhyAm', variables],
+      customFetcher<CtfAmWhyAmQuery, CtfAmWhyAmQueryVariables>(CtfAmWhyAmDocument, variables),
       options
     );
 
-    useCtfWhyAmQuery.getKey = (variables: CtfWhyAmQueryVariables) => ['CtfWhyAm', variables];
+useCtfAmWhyAmQuery.getKey = (variables: CtfAmWhyAmQueryVariables) => ['CtfAmWhyAm', variables];
 ;
 
-useCtfWhyAmQuery.fetcher = (variables: CtfWhyAmQueryVariables, options?: RequestInit['headers']) => customFetcher<CtfWhyAmQuery, CtfWhyAmQueryVariables>(CtfWhyAmDocument, variables, options);
+useCtfAmWhyAmQuery.fetcher = (variables: CtfAmWhyAmQueryVariables, options?: RequestInit['headers']) => customFetcher<CtfAmWhyAmQuery, CtfAmWhyAmQueryVariables>(CtfAmWhyAmDocument, variables, options);
