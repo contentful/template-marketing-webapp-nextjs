@@ -2,7 +2,7 @@ import * as Types from '../../../../../lib/__generated/graphql.types';
 
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { customFetcher } from '@src/lib/fetchConfig';
-export type AmValuePropFieldsFragment = { __typename: 'AmValueProp', sys: { __typename?: 'Sys', id: string } };
+export type AmValuePropFieldsFragment = { __typename: 'AmValueProp', headerTextLeft?: string | null, metricsBlockTitle?: string | null, metrics?: any | null, supplementalNavigation?: boolean | null, supplementalNavigationTitle?: string | null, supplementalNavigationTitleLeft?: string | null, supplementalNavigationItemsLeft?: any | null, supplementalNavigationTitleRight?: string | null, supplementalNavigationItemsRight?: any | null, ctaCopy?: string | null, ctaTargetLink?: string | null, sys: { __typename?: 'Sys', id: string } };
 
 export type CtfValuePropQueryVariables = Types.Exact<{
   id: Types.Scalars['String'];
@@ -22,6 +22,17 @@ export const AmValuePropFieldsFragmentDoc = `
   sys {
     id
   }
+  headerTextLeft
+  metricsBlockTitle
+  metrics
+  supplementalNavigation
+  supplementalNavigationTitle
+  supplementalNavigationTitleLeft
+  supplementalNavigationItemsLeft
+  supplementalNavigationTitleRight
+  supplementalNavigationItemsRight
+  ctaCopy
+  ctaTargetLink
 }
     `;
 export const CtfValuePropDocument = `

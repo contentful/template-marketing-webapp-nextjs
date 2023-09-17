@@ -1,0 +1,55 @@
+fragment PodcastFields on AmPodcasts {
+  sys {
+    id
+    firstPublishedAt
+  }
+  name
+  slug
+  shortDescription
+  featuredImage {
+    ...AssetFields
+  }
+}
+
+fragment VideoFields on AmVideos {
+  sys {
+    id
+    firstPublishedAt
+  }
+  name
+  slug
+  shortDescription
+  featuredImage {
+    ...AssetFields
+  }
+}
+
+fragment AmFeaturedMediaBlockFields on AmFeaturedMediaBlock {
+  __typename
+  sys {
+    id
+  }
+  headerText
+  featuredVideo {
+    ...VideoFields
+  }
+  featuredPodcast {
+    ...PodcastFields
+  }
+  podcastsCollection(limit: 5) {
+    items {
+      ...PodcastFields
+    }
+  }
+  videosCollection(limit: 5) {
+    items {
+      ...VideoFields
+    }
+  }
+}
+
+query CtfFeaturedMediaBlock($id: String!, $locale: String, $preview: Boolean) {
+  amFeaturedMediaBlock(id: $id, locale: $locale, preview: $preview) {
+    ...AmFeaturedMediaBlockFields
+  }
+}

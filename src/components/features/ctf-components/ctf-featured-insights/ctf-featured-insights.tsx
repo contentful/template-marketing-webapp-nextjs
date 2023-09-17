@@ -5,6 +5,12 @@ import { AmFeaturedInsightsFieldsFragment } from './__generated/ctf-featured-ins
 export const FeaturedInsights = (props: AmFeaturedInsightsFieldsFragment) => {
   const {
     sys: { id },
+    headerText,
+    newsHeaderText,
+    enableNewsBlock,
+    featuredInsight,
+    featuredNewsCollection,
+    additionalInsightsCollection,
   } = props;
   return (
     <div id="block-am-insights">
@@ -12,7 +18,7 @@ export const FeaturedInsights = (props: AmFeaturedInsightsFieldsFragment) => {
         <div className="insights_news-main">
           <div className="insights_news-main-left">
             <div className="insights_news-insight-top">
-              <div className="insights_news-insight-title">A&amp;M Insights</div>
+              <div className="insights_news-insight-title">{headerText}</div>
               <div className="insights_news-insight-top-menu">
                 <a className="show-success-story" href="#">
                   Success Stories
@@ -155,10 +161,11 @@ export const FeaturedInsights = (props: AmFeaturedInsightsFieldsFragment) => {
                                   </a>
                                 </div>
                               </div>
-                              <div className="node-insight-wide-created">August 22, 2023</div>
+                              <div className="node-insight-wide-created">
+                                {featuredInsight?.sys?.firstPublishedAt}
+                              </div>
                               <h1 property="schema:name" className="title field--name-title">
-                                Case Study: Private Equity Fund Seeking Platform Acquisition in the
-                                Waste Industry{' '}
+                                {featuredInsight?.name}
                               </h1>
                             </div>
                             <a
@@ -171,134 +178,65 @@ export const FeaturedInsights = (props: AmFeaturedInsightsFieldsFragment) => {
                     </div>
                   </div>
                   <div className="view-homepage-insights-homepage-content">
-                    <div>
-                      <article
-                        role="article"
-                        about="/insights/case-study-value-driven-private-equity-fund-seeking-carbon-emissions-analysis"
-                        typeof="schema:Article"
-                        className="node-insight-inner"
-                      >
-                        <div className="field_category field--name-field_category field--name-field-category">
-                          <div className="field-item">
-                            <a href="/taxonomy/term/1771" hrefLang="en">
-                              Success Stories
-                            </a>
+                    {additionalInsightsCollection &&
+                      additionalInsightsCollection?.items.map(item => {
+                        return (
+                          <div key={item?.sys?.id}>
+                            <article
+                              role="article"
+                              about="/insights/case-study-value-driven-private-equity-fund-seeking-carbon-emissions-analysis"
+                              typeof="schema:Article"
+                              className="node-insight-inner"
+                            >
+                              <div className="field_category field--name-field_category field--name-field-category">
+                                <div className="field-item">
+                                  <a href="/taxonomy/term/1771" hrefLang="en">
+                                    Success Stories
+                                  </a>
+                                </div>
+                              </div>
+                              <div className="node-insight-inner-created">
+                                {' '}
+                                {item?.sys?.firstPublishedAt}
+                              </div>
+                              <h1 property="schema:name" className="title field--name-title">
+                                {item?.name}
+                              </h1>
+                              <a
+                                href="/insights/case-study-value-driven-private-equity-fund-seeking-carbon-emissions-analysis"
+                                className="node-insight-inner-link"
+                              />
+                            </article>
                           </div>
-                        </div>
-                        <div className="node-insight-inner-created">July 27, 2023</div>
-                        <h1 property="schema:name" className="title field--name-title">
-                          Case Study: Value-Driven Private Equity Fund Seeking Carbon Emissions
-                          Analysis
-                        </h1>
-                        <a
-                          href="/insights/case-study-value-driven-private-equity-fund-seeking-carbon-emissions-analysis"
-                          className="node-insight-inner-link"
-                        />
-                      </article>
-                    </div>
-                    <div>
-                      <article
-                        role="article"
-                        about="/insights/case-study-tracing-funds-hard-way-0"
-                        typeof="schema:Article"
-                        className="node-insight-inner"
-                      >
-                        <div className="field_category field--name-field_category field--name-field-category">
-                          <div className="field-item">
-                            <a href="/taxonomy/term/1771" hrefLang="en">
-                              Success Stories
-                            </a>
-                          </div>
-                        </div>
-                        <div className="node-insight-inner-created">March 31, 2023</div>
-                        <h1 property="schema:name" className="title field--name-title">
-                          Case Study: Tracing Funds The Hard Way
-                        </h1>
-                        <a
-                          href="/insights/case-study-tracing-funds-hard-way-0"
-                          className="node-insight-inner-link"
-                        />
-                      </article>
-                    </div>
-                    <div>
-                      <article
-                        role="article"
-                        about="/insights/case-study-north-american-expansion-drive-value"
-                        typeof="schema:Article"
-                        className="node-insight-inner"
-                      >
-                        <div className="field_category field--name-field_category field--name-field-category">
-                          <div className="field-item">
-                            <a href="/taxonomy/term/1771" hrefLang="en">
-                              Success Stories
-                            </a>
-                          </div>
-                        </div>
-                        <div className="node-insight-inner-created">August 23, 2022</div>
-                        <h1 property="schema:name" className="title field--name-title">
-                          Case Study: North American Expansion to Drive Value
-                        </h1>
-                        <a
-                          href="/insights/case-study-north-american-expansion-drive-value"
-                          className="node-insight-inner-link"
-                        />
-                      </article>
-                    </div>
+                        );
+                      })}
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <div className="insights_news-main-right">
-            <div className="insights_news-in-news-title">In The News</div>
+            <div className="insights_news-in-news-title">{newsHeaderText}</div>
             <div className="views-element-container">
               <div className="view-in-the-new-main js-view-dom-id-78b5288fbc4eb0c4638b70c85ab123c32ff0b55bc2f3a310d39f5d3e4e9e07c4">
-                <div className="views-row">
-                  <div className="views-field views-field-created">September 14, 2023</div>
-                  <div className="views-field views-field-title">
-                    <a
-                      href="/insights/key-strike-considerations-automotive-industry-suppliers"
-                      hrefLang="en"
-                    >
-                      Key Strike Considerations For Automotive Suppliers
-                    </a>
-                  </div>
-                </div>
-                <div className="views-row">
-                  <div className="views-field views-field-created">September 14, 2023</div>
-                  <div className="views-field views-field-title">
-                    <a
-                      href="/insights/clearer-lines-crypto-reporting-sand-would-cast-wide-net"
-                      hrefLang="en"
-                    >
-                      Clearer Lines in Crypto Reporting Sand Would Cast a Wide Net
-                    </a>
-                  </div>
-                </div>
-                <div className="views-row">
-                  <div className="views-field views-field-created">September 14, 2023</div>
-                  <div className="views-field views-field-title">
-                    <a
-                      href="/insights/alvarez-marsal-disputes-and-investigations-expands-construction-disputes-offering-two-new"
-                      hrefLang="en"
-                    >
-                      Alvarez &amp; Marsal Disputes and Investigations Expands Construction Disputes
-                      Offering with Two New Managing Directors
-                    </a>
-                  </div>
-                </div>
-                <div className="views-row">
-                  <div className="views-field views-field-created">September 14, 2023</div>
-                  <div className="views-field views-field-title">
-                    <a
-                      href="/insights/rise-co-investment-key-tax-considerations-fund-managers-and-investors"
-                      hrefLang="en"
-                    >
-                      The Rise of the Co-Investment: Key Tax Considerations for Fund Managers and
-                      Investors
-                    </a>
-                  </div>
-                </div>
+                {featuredNewsCollection &&
+                  featuredNewsCollection?.items.map(item => {
+                    return (
+                      <div key={item?.sys?.id} className="views-row">
+                        <div className="views-field views-field-created">
+                          {item?.sys?.firstPublishedAt}
+                        </div>
+                        <div className="views-field views-field-title">
+                          <a
+                            href="/insights/key-strike-considerations-automotive-industry-suppliers"
+                            hrefLang="en"
+                          >
+                            {item?.name}
+                          </a>
+                        </div>
+                      </div>
+                    );
+                  })}
               </div>
             </div>
           </div>

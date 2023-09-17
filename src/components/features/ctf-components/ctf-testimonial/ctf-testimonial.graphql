@@ -3,6 +3,15 @@ fragment AmTestimonialFields on AmTestimonial {
   sys {
     id
   }
+  testimonialBody
+  witness
+  witnessTitle
+  featuredMedia {
+    ...AssetFields
+  }
+  backgroundImage {
+    ...AssetFields
+  }
 }
 
 query CtfTestimonial($id: String!, $locale: String, $preview: Boolean) {

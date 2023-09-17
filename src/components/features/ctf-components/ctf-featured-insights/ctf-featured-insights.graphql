@@ -1,7 +1,48 @@
+fragment FeaturedNewsFields on NewsArticle {
+  sys {
+    id
+    firstPublishedAt
+  }
+  name
+  featuredImage {
+    ...AssetFields
+  }
+  shortDescription
+}
+
+fragment InsightsPageFields on AmInsights {
+  sys {
+    id
+    firstPublishedAt
+  }
+  name
+  slug
+  type
+  featuredImage {
+    ...AssetFields
+  }
+}
+
 fragment AmFeaturedInsightsFields on AmFeaturedInsights {
   __typename
   sys {
     id
+  }
+  headerText
+  newsHeaderText
+  enableNewsBlock
+  featuredInsight {
+    ...InsightsPageFields
+  }
+  featuredNewsCollection(limit: 3) {
+    items {
+      ...FeaturedNewsFields
+    }
+  }
+  additionalInsightsCollection(limit: 3) {
+    items {
+      ...InsightsPageFields
+    }
   }
 }
 

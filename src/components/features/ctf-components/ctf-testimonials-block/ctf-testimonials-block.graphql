@@ -1,0 +1,17 @@
+fragment AmTestimonialsBlockFields on AmTestimonialsBlock {
+  __typename
+  sys {
+    id
+  }
+  testimonialsCollection(limit: 5) {
+    items {
+      ...AmTestimonialFields
+    }
+  }
+}
+
+query CtfTestimonialsBlock($id: String!, $locale: String, $preview: Boolean) {
+  amTestimonialsBlock(id: $id, locale: $locale, preview: $preview) {
+    ...AmTestimonialsBlockFields
+  }
+}

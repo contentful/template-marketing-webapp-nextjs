@@ -47,6 +47,11 @@ export const componentMap = {
       '@src/components/features/ctf-components/ctf-cta-feature-block/ctf-cta-feature-block'
     ).then(module => module.CtaFeatureBlock),
   ),
+  AmFeaturedMediaBlock: dynamic(() =>
+    import(
+      '@src/components/features/ctf-components/ctf-featured-media-block/ctf-featured-media-block'
+    ).then(module => module.FeaturedMediaBlock),
+  ),
   AmFeaturedInsights: dynamic(() =>
     import(
       '@src/components/features/ctf-components/ctf-featured-insights/ctf-featured-insights'
@@ -56,6 +61,11 @@ export const componentMap = {
     import('@src/components/features/ctf-components/ctf-testimonial/ctf-testimonial').then(
       module => module.Testimonial,
     ),
+  ),
+  AmTestimonialsBlock: dynamic(() =>
+    import(
+      '@src/components/features/ctf-components/ctf-testimonials-block/ctf-testimonials-block'
+    ).then(module => module.TestimonialsBlock),
   ),
   AmValueProp: dynamic(() =>
     import('@src/components/features/ctf-components/ctf-value-prop/ctf-value-prop').then(
@@ -116,6 +126,11 @@ export const componentGqlMap = {
       '@src/components/features/ctf-components/ctf-cta-feature-block/ctf-cta-feature-block-gql'
     ).then(module => module.CtfCtaFeatureBlockGql),
   ),
+  AmFeaturedMediaBlock: dynamic(() =>
+    import(
+      '@src/components/features/ctf-components/ctf-featured-media-block/ctf-featured-media-block-gql'
+    ).then(module => module.CtfFeaturedMediaBlockGql),
+  ),
   AmFeaturedInsights: dynamic(() =>
     import(
       '@src/components/features/ctf-components/ctf-featured-insights/ctf-featured-insights-gql'
@@ -125,6 +140,11 @@ export const componentGqlMap = {
     import('@src/components/features/ctf-components/ctf-testimonial/ctf-testimonial-gql').then(
       module => module.CtfTestimonialGql,
     ),
+  ),
+  AmTestimonialsBlock: dynamic(() =>
+    import(
+      '@src/components/features/ctf-components/ctf-testimonials-block/ctf-testimonials-block-gql'
+    ).then(module => module.CtfTestimonialsBlockGql),
   ),
   AmValueProp: dynamic(() =>
     import('@src/components/features/ctf-components/ctf-value-prop/ctf-value-prop-gql').then(

@@ -1,0 +1,9 @@
+.backgroundImage {
+  position: absolute;
+  height: 100%;
+  width: 350px;
+  right: -50px;
+  top: 0;
+  background-size: 460px auto;
+  background-repeat: no-repeat;
+}

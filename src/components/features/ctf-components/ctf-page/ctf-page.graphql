@@ -10,7 +10,6 @@ fragment PageExtraSectionItemFields on PageExtraSectionItem {
   __typename
 }
 
-
 fragment CtfPageFields on Page {
   __typename
   sys {
@@ -28,7 +27,7 @@ fragment CtfPageFields on Page {
     noIndex
     noFollow
   }
-  topSectionCollection(limit: 20) {
+  topSectionCollection(limit: 10) {
     items {
       ... on Entry {
         __typename
@@ -48,7 +47,7 @@ fragment CtfPageFields on Page {
     }
     ...PageContentFields
   }
-  extraSectionCollection(limit: 20) {
+  extraSectionCollection(limit: 10) {
     items {
       ... on Entry {
         __typename

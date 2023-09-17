@@ -1,35 +1,45 @@
 import { useContentfulInspectorMode } from '@contentful/live-preview/react';
 import LayoutContext, { defaultLayout, useLayoutContext } from '@src/layout-context';
 import { AmCtaFeatureBlockieldsFragment } from './__generated/ctf-cta-feature-block.generated';
-
+import classes from './ctf-cta-feature-block.module.css';
 export const CtaFeatureBlock = (props: AmCtaFeatureBlockieldsFragment) => {
   const {
     sys: { id },
+    headline,
+    bodyCopy,
+    backgroundImage,
+    ctaCopy,
+    ctaTargetLink,
+    featuredMedia,
   } = props;
+  console.log(backgroundImage?.url);
   return (
     <div id="block-am-who-we-are">
       <div className="who-we-are" id="who_we_are">
         <div className="who-we-are-inner">
           <div className="who-we-are-cont">
             <div className="who-we-are-cont-left">
-              <div className="who-we-are-title">Who we are</div>
-              <div className="who-we-are-text">
-                We are the consulting firm known for asking tough questions, listening well, digging
-                in and rolling up our sleeves. We are fact-driven and action-oriented. We move our
-                clients forward, to where they need to be. We are A&amp;M.
-              </div>
-              <div className="who-we-are-link link-blue-arrow">
-                <a href="/about-am"> Learn more</a>
-              </div>
+              <div className="who-we-are-title">{headline}</div>
+              <div className="who-we-are-text">{bodyCopy}</div>
+              {ctaTargetLink && (
+                <div className="who-we-are-link link-blue-arrow">
+                  <a href={ctaTargetLink}> {ctaCopy}</a>
+                </div>
+              )}
             </div>
             <div className="who-we-are-cont-right">
               <div className="who-we-are-video">
+                <div
+                  className={classes.backgroundImage}
+                  style={{
+                    backgroundImage: `url("${backgroundImage?.url}")`,
+                  }}
+                ></div>
                 <div className="youtube-play-on-click">
                   <div className="youtube-play-on-click-container">
                     <a
                       style={{
-                        backgroundImage:
-                          'url("https://www.alvarezandmarsal.com/sites/default/files/oembed_thumbnails/Xp1GSj8kEl3R-2fcBlPnALwVyYzP7midoc8MQaSidlA.jpg")',
+                        backgroundImage: `url("${featuredMedia?.url}")`,
                       }}
                       href="https://www.youtube.com/watch?v=_oF5oY5TAQE"
                       video-id=""

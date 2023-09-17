@@ -5,6 +5,11 @@ import { AmTestimonialFieldsFragment } from './__generated/ctf-testimonial.gener
 export const Testimonial = (props: AmTestimonialFieldsFragment) => {
   const {
     sys: { id },
+    testimonialBody,
+    witness,
+    witnessTitle,
+    featuredMedia,
+    backgroundImage,
   } = props;
   return (
     <div className="views-element-container" id="block-views-block-slide-testimonial-main">
@@ -70,14 +75,11 @@ export const Testimonial = (props: AmTestimonialFieldsFragment) => {
                         <div className="slide-testimonial-right">
                           <div className="slide-testimonial-wrapper">
                             <div className="field_text field--name-field_text field--name-field-text text-formatted">
-                              <p>
-                                It’s the magic of human endeavor. You can get people to do more than
-                                they think they are capable of, if you lead them.
-                              </p>
+                              <p>{testimonialBody}</p>
                             </div>
-                            <div className="name field--name-name">Tony Alvarez II</div>
+                            <div className="name field--name-name">{witness}</div>
                             <div className="field_job_title field--name-field_job_title field--name-field-job-title">
-                              Chief Executive Officer
+                              {witnessTitle}
                             </div>
                           </div>
                         </div>
@@ -103,23 +105,27 @@ export const Testimonial = (props: AmTestimonialFieldsFragment) => {
                         <div className="slide-testimonial-left">
                           <div className="field_slide_background field--name-field_slide_background field--name-field-slide-background">
                             {' '}
-                            <img
-                              src="/sites/default/files/slide/background/418644_gess_am_homepage_graphic_511x563px.jpg"
-                              width={511}
-                              height={563}
-                              alt=""
-                              typeof="foaf:Image"
-                            />
+                            {backgroundImage?.url && (
+                              <img
+                                src={backgroundImage?.url}
+                                width={511}
+                                height={563}
+                                alt=""
+                                typeof="foaf:Image"
+                              />
+                            )}
                           </div>
                           <div className="field_slide_image field--name-field_slide_image field--name-field-slide-image">
                             {' '}
-                            <img
-                              src="/sites/default/files/slide/image/bryanmarsal_2.jpg"
-                              width={370}
-                              height={372}
-                              alt=""
-                              typeof="foaf:Image"
-                            />
+                            {featuredMedia?.url && (
+                              <img
+                                src={featuredMedia?.url}
+                                width={370}
+                                height={372}
+                                alt=""
+                                typeof="foaf:Image"
+                              />
+                            )}
                           </div>
                         </div>
                         <div className="slide-testimonial-right">

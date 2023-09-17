@@ -3,6 +3,16 @@ fragment AmCtaFeatureBlockields on AmCtaFeatureBlock {
   sys {
     id
   }
+  headline
+  bodyCopy
+  backgroundImage {
+    ...AssetFields
+  }
+  ctaCopy
+  ctaTargetLink
+  featuredMedia {
+    ...AssetFields
+  }
 }
 
 query CtfCtaFeatureBlock($id: String!, $locale: String, $preview: Boolean) {

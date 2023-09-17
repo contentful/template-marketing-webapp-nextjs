@@ -3,6 +3,17 @@ fragment AmValuePropFields on AmValueProp {
   sys {
     id
   }
+  headerTextLeft
+  metricsBlockTitle
+  metrics
+  supplementalNavigation
+  supplementalNavigationTitle
+  supplementalNavigationTitleLeft
+  supplementalNavigationItemsLeft
+  supplementalNavigationTitleRight
+  supplementalNavigationItemsRight
+  ctaCopy
+  ctaTargetLink
 }
 
 query CtfValueProp($id: String!, $locale: String, $preview: Boolean) {
