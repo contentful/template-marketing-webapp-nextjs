@@ -26,3 +26,13 @@ updates:
       - npm-registry-registry-npmjs-org
     allow:
       - dependency-name: '@contentful/live-preview'
+  - package-ecosystem: github-actions
+    directory: '/'
+    schedule:
+      interval: daily
+      time: '05:00'
+      timezone: UTC
+    open-pull-requests-limit: 15
+    commit-message:
+      prefix: build
+      include: scope
