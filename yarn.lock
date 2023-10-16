@@ -1516,13 +1516,13 @@
   dependencies:
     emotion "^10.0.17"
 
-"@contentful/live-preview@^2.11.1":
-  version "2.11.1"
-  resolved "https://registry.yarnpkg.com/@contentful/live-preview/-/live-preview-2.11.1.tgz#dcaa5cd079cf06f0c747f1a5cfab46037e3bc060"
-  integrity sha512-Oh7soO3IYq/PGdOdxdAa9+ecc1kx9jnUaZ2/n+uPP6YRFgMCr1+OAlRhyWHYVkqa2TFBoaROiiZR5RpzauWFMA==
+"@contentful/live-preview@^2.11.4":
+  version "2.11.4"
+  resolved "https://registry.yarnpkg.com/@contentful/live-preview/-/live-preview-2.11.4.tgz#178e080eeaadfc2bbcc15eed2f960173bb55c7f3"
+  integrity sha512-ktRJ1fXoM5wlMg78kFbm/3IIRC0Y8+TsS0i0aG5xUTiVdrqOhM4KwtaRvbAiUMGR9JS6T5J4xySqy5aMXXpGUA==
   dependencies:
     "@contentful/rich-text-types" "^16.2.0"
-    "@contentful/visual-sdk" "^1.0.0-alpha.21"
+    "@contentful/visual-sdk" "^1.0.0-alpha.24"
     lodash.isequal "^4.5.0"
 
 "@contentful/rich-text-react-renderer@^15.12.1":
@@ -1537,20 +1537,15 @@
   resolved "https://registry.yarnpkg.com/@contentful/rich-text-types/-/rich-text-types-15.15.1.tgz#96835cf0d0eba9e54f92ee43a4a1ce2a74014b53"
   integrity sha512-oheW0vkxWDuKBIIXDeJfZaRYo+NzKbC4gETMhH+MGJd4nfL9cqrOvtRxZBgnhICN4vDpH4my/zUIZGKcFqGSjQ==
 
-"@contentful/rich-text-types@^16.0.3":
-  version "16.0.3"
-  resolved "https://registry.yarnpkg.com/@contentful/rich-text-types/-/rich-text-types-16.0.3.tgz#c590268483e07881fb01b6799e837337093e42bf"
-  integrity sha512-BsUtXj93jo5XUt0YeUwfCkMWRoZIzJDPUIY4vMy9SwGIO9olTsMoQKadjA2ktlmK+Gg6710WH3eFKZxj2q39Iw==
-
-"@contentful/rich-text-types@^16.2.0":
+"@contentful/rich-text-types@^16.0.3", "@contentful/rich-text-types@^16.2.0":
   version "16.3.0"
   resolved "https://registry.yarnpkg.com/@contentful/rich-text-types/-/rich-text-types-16.3.0.tgz#d44145a43b32d61eb4d6a82d3001cdfddbbda42e"
   integrity sha512-OfQmAu5bxE0CgQA3WlUleVej+ifFG/iXmB2DmUl4EyWyFue1aiIvfjxQhcDRSH4n1jUNMJ6L1wInZL8uV5m3TQ==
 
-"@contentful/visual-sdk@^1.0.0-alpha.21":
-  version "1.0.0-alpha.21"
-  resolved "https://registry.yarnpkg.com/@contentful/visual-sdk/-/visual-sdk-1.0.0-alpha.21.tgz#f58b5030b55d20747c84ad094644c8b577715172"
-  integrity sha512-mqq9t42msPo3hXHdiRmqbjkwgOFMhyXRONyyeesPTCXNgyIIRV8DY+zkrn4p36JNc3L1W3u9lic2d9vY6LfWNQ==
+"@contentful/visual-sdk@^1.0.0-alpha.24":
+  version "1.0.0-alpha.24"
+  resolved "https://registry.yarnpkg.com/@contentful/visual-sdk/-/visual-sdk-1.0.0-alpha.24.tgz#d2d4d550ce7a49f99e961c0b34b40c766fae88e8"
+  integrity sha512-tteYw0rCT3eq+J0SLZ/2hqNdaf3WaPDwV4V9HhxbqAJDehVxJMfphULtcEYlzj7S+ZvHF/0QAxhAWsDpCtENNg==
 
 "@cspotcode/source-map-support@^0.8.0":
   version "0.8.1"
