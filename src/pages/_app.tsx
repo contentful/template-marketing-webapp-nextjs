@@ -1,16 +1,15 @@
 import { ContentfulLivePreviewProvider } from '@contentful/live-preview/react';
-import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
+import { StyledEngineProvider, ThemeProvider } from '@mui/material/styles';
 import { DehydratedState, Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { appWithTranslation, SSRConfig } from 'next-i18next';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import { appWithTranslation, SSRConfig } from 'next-i18next';
 import { useEffect, useState } from 'react';
-import '@contentful/live-preview/style.css';
 
 import { Settings } from '@src/components/features/settings';
 import { Layout } from '@src/components/templates/layout/layout';
-import { useContentfulContext, ContentfulContentProvider } from '@src/contentful-context';
+import { ContentfulContentProvider, useContentfulContext } from '@src/contentful-context';
 import { queryConfig } from '@src/lib/gql-client';
 import colorfulTheme from '@src/theme';
 import contentfulConfig from 'contentful.config';
@@ -24,6 +23,7 @@ const LivePreviewProvider = ({ children }) => {
       locale={locale}
       enableInspectorMode={previewActive}
       enableLiveUpdates={previewActive}
+      targetOrigin={['https://app.flinkly.com', 'https://app.contentful.com']}
     >
       {children}
     </ContentfulLivePreviewProvider>

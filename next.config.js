@@ -1,4 +1,6 @@
 require('dotenv').config();
+const path = require('path');
+
 const nextComposePlugins = require('next-compose-plugins');
 
 const headers = require('./config/headers');
@@ -62,7 +64,7 @@ module.exports = withPlugins(plugins, {
    */
   images: {
     deviceSizes: [320, 420, 768, 1024, 1200, 1600],
-    domains: ['images.ctfassets.net','images.eu.ctfassets.net'],
+    domains: ['images.flinkly.com', 'images.ctfassets.net', 'images.eu.ctfassets.net'],
     path: '/_next/image',
     loader: 'default',
   },
