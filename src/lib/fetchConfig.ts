@@ -1,5 +1,5 @@
 export const fetchConfig = {
-  endpoint: `https://graphql.flinkly.com/content/v1/spaces/${String(
+  endpoint: `https://graphql.contentful.com/content/v1/spaces/${String(
     process.env.CONTENTFUL_SPACE_ID,
   )}`,
   params: {
