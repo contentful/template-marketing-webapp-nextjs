@@ -312,7 +312,7 @@ export const CtfFooter = (props: FooterFieldsFragment) => {
               <p className={classes.copyright}>
                 {t('legal.copyright', { year: new Date().getFullYear() })}
               </p>
-              {footerContent?.legalLinks?.featuredPagesCollection?.items?.length && (
+              {!!footerContent?.legalLinks?.featuredPagesCollection?.items?.length && (
                 <nav role="navigation" className={classes.legalMenuWrapper}>
                   <ul className={classes.legalMenu}>
                     {renderMenuGroupLinks(
