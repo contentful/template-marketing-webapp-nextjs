@@ -1077,14 +1077,13 @@
   resolved "https://registry.yarnpkg.com/@colors/colors/-/colors-1.5.0.tgz#bb504579c1cae923e6576a4f5da43d25f97bdbd9"
   integrity sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==
 
-"@contentful/live-preview@2.15.0-alpha.12":
-  version "2.15.0-alpha.12"
-  resolved "https://registry.yarnpkg.com/@contentful/live-preview/-/live-preview-2.15.0-alpha.12.tgz#86d034bfd9f0e272e86f7f999537a67f7ce89d2b"
-  integrity sha512-xnnWKX4CoAu3yMsD0LKa5sD9c2p1TCPgAGi1IwKOPID1zUKqIBhGjRnCnUccmb3M/Yw7evTWZ0f5HQXraxF6Kw==
+"@contentful/live-preview@2.15.0-alpha.14":
+  version "2.15.0-alpha.14"
+  resolved "https://registry.yarnpkg.com/@contentful/live-preview/-/live-preview-2.15.0-alpha.14.tgz#4ab8b5d48e9a99a17ace6748ff103b203ba6f4e9"
+  integrity sha512-EJOkOUI4Or+Ee8cK5igxW1V6VibMz5jMlba9Db86L1T6/YpsNwKFsvTg4uOlsRp5U2uMnHHAd99E587nic9CKQ==
   dependencies:
     "@contentful/rich-text-types" "^16.2.0"
-    "@contentful/visual-sdk" "1.0.0-alpha.39"
-    "@vercel/stega" "^0.1.0"
+    "@contentful/visual-sdk" "^1.0.0-alpha.39"
     flatted "^3.2.9"
     graphql-tag "^2.12.6"
     json-pointer "^0.6.2"
@@ -1112,10 +1111,10 @@
   resolved "https://registry.yarnpkg.com/@contentful/rich-text-types/-/rich-text-types-16.3.0.tgz#d44145a43b32d61eb4d6a82d3001cdfddbbda42e"
   integrity sha512-OfQmAu5bxE0CgQA3WlUleVej+ifFG/iXmB2DmUl4EyWyFue1aiIvfjxQhcDRSH4n1jUNMJ6L1wInZL8uV5m3TQ==
 
-"@contentful/visual-sdk@1.0.0-alpha.39":
-  version "1.0.0-alpha.39"
-  resolved "https://registry.yarnpkg.com/@contentful/visual-sdk/-/visual-sdk-1.0.0-alpha.39.tgz#dab435842a0be3acc6776ade01b317088370628d"
-  integrity sha512-17IofPY+p6EuNcMDExlxRKW31+BUHluAS2iPH1o1IYfMKoAQPeHWmwVnto4m4+LmmRIgiHE7W44JMEgh1teqnw==
+"@contentful/visual-sdk@^1.0.0-alpha.39":
+  version "1.0.0-dev-20240108T234655.0"
+  resolved "https://registry.yarnpkg.com/@contentful/visual-sdk/-/visual-sdk-1.0.0-dev-20240108T234655.0.tgz#ad019b1f812813a1a60b7158110a64a2692813ff"
+  integrity sha512-ApwoVHThEm137GhMH/y+FLlmEg10DikQU8tysva36peqVlKNEDK5o459iG13BlXot2bMLf7DfqKiCkY6z7y7Qg==
 
 "@cspotcode/source-map-support@^0.8.0":
   version "0.8.1"
@@ -2719,11 +2718,6 @@
   dependencies:
     "@typescript-eslint/types" "5.55.0"
     eslint-visitor-keys "^3.3.0"
-
-"@vercel/stega@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@vercel/stega/-/stega-0.1.0.tgz#2eadbbc9eb0eaab26d28b0c443a922d78c23b6e3"
-  integrity sha512-5b0PkOJsFBX5alChuIO3qpkt5vIZBevzLPhUQ1UP8UzVjL3F1VllnZxp/thfD8R5ol7D7WHkgZHIjdUBX4tDpQ==
 
 "@whatwg-node/events@^0.0.2":
   version "0.0.2"
