@@ -23,7 +23,11 @@ const LivePreviewProvider = ({ children }) => {
       locale={locale}
       enableInspectorMode={previewActive}
       enableLiveUpdates={previewActive}
-      targetOrigin={['https://app.flinkly.com', 'https://app.contentful.com']}
+      targetOrigin={[
+        'https://app.flinkly.com',
+        'https://app.contentful.com',
+        'http://localhost:3001',
+      ]}
     >
       {children}
     </ContentfulLivePreviewProvider>
