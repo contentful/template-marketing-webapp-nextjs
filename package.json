@@ -46,7 +46,7 @@
     "@tanstack/react-query": "^4.3.9",
     "clsx": "^1.2.1",
     "dotenv": "^16.0.1",
-    "graphql": "^16.5.0",
+    "graphql": "^16.8.1",
     "intersection-observer": "^0.12.2",
     "lodash": "^4.17.21",
     "next": "12.3.1",
