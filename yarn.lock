@@ -1172,18 +1172,18 @@
   resolved "https://registry.yarnpkg.com/@colors/colors/-/colors-1.5.0.tgz#bb504579c1cae923e6576a4f5da43d25f97bdbd9"
   integrity sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==
 
-"@contentful/experience-consent-manager@^2.3.2":
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/@contentful/experience-consent-manager/-/experience-consent-manager-2.3.2.tgz#e3756048ec88d021fde39518f49e6fc37b5eb20e"
-  integrity sha512-3NOR7Pt7ESVkoJGh7Lah2VmEI8vYJIC+gzN6+V0ce1FvnmbgeUZxb5sJWzv0KjYploIeybBoQ00esTjLWESy1Q==
+"@contentful/experience-consent-manager@^2.3.26":
+  version "2.3.26"
+  resolved "https://npm.pkg.github.com/download/@contentful/experience-consent-manager/2.3.26/74919b3e697bf510814bc46bf1ee531d0e405cb5#74919b3e697bf510814bc46bf1ee531d0e405cb5"
+  integrity sha512-CL7/vGHDwHXSt503HtaSalS/dSy/57XOhF/bcMrx7qXsIUlIB98+EGFE2FjdTRg2yjEi4zkS3oUF5EbOdGsqmw==
   dependencies:
     "@contentful/f36-components" "^4.15.0"
     "@contentful/f36-tokens" "^4.0.1"
     emotion "^10.0.17"
     js-cookie "^3.0.1"
     lodash "^4.17.21"
-    lodash-es "^4.17.21"
     mitt "^2.1.0"
+    type-fest "^4.0.0"
 
 "@contentful/f36-accordion@^4.26.0":
   version "4.26.0"
@@ -7817,11 +7817,6 @@ locate-path@^6.0.0:
   dependencies:
     p-locate "^5.0.0"
 
-lodash-es@^4.17.21:
-  version "4.17.21"
-  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee"
-  integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==
-
 lodash.clonedeep@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
@@ -10294,6 +10289,11 @@ type-fest@^3.0.0:
   version "3.6.1"
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-3.6.1.tgz#cf8025edeebfd6cf48de73573a5e1423350b9993"
   integrity sha512-htXWckxlT6U4+ilVgweNliPqlsVSSucbxVexRYllyMVJDtf5rTjv6kF/s+qAd4QSL1BZcnJPEJavYBPQiWuZDA==
+
+type-fest@^4.0.0:
+  version "4.15.0"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-4.15.0.tgz#21da206b89c15774cc718c4f2d693e13a1a14a43"
+  integrity sha512-tB9lu0pQpX5KJq54g+oHOLumOx+pMep4RaM6liXh2PKmVRFF+/vAtUP0ZaJ0kOySfVNjF6doBWPHhBhISKdlIA==
 
 typed-array-length@^1.0.4:
   version "1.0.4"
