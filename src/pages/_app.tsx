@@ -7,7 +7,6 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { appWithTranslation, SSRConfig } from 'next-i18next';
 import { useEffect, useState } from 'react';
-import '@contentful/live-preview/style.css';
 
 import { CtfSegmentAnalytics } from '@src/_ctf-private';
 import { Layout } from '@src/components/templates/layout/layout';
