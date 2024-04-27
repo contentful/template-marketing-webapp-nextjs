@@ -12,7 +12,7 @@ export type FooterFieldsFragment = { __typename?: 'FooterMenuCollection', items:
         ) | null } | null> } | null, legalLinks?: { __typename?: 'MenuGroup', featuredPagesCollection?: (
         { __typename?: 'MenuGroupFeaturedPagesCollection' }
         & MenuGroupFieldsFragment
-      ) | null } | null } | null> };
+      ) | null } | null, companyAddress?: { __typename?: 'FooterMenuCompanyAddress', json: any } | null, copyright?: { __typename?: 'FooterMenuCopyright', json: any } | null } | null> };
 
 export type CtfFooterQueryVariables = Types.Exact<{
   locale?: Types.InputMaybe<Types.Scalars['String']>;
@@ -53,6 +53,12 @@ export const FooterFieldsFragmentDoc = `
     facebookLink
     linkedinLink
     instagramLink
+    companyAddress {
+      json
+    }
+    copyright {
+      json
+    }
   }
 }
     `;

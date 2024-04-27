@@ -25,6 +25,12 @@ fragment FooterFields on FooterMenuCollection {
     facebookLink
     linkedinLink
     instagramLink
+    companyAddress {
+      json
+    }
+    copyright {
+      json
+    }
   }
 }
 

@@ -125,7 +125,7 @@ enum AssetOrder {
 }
 
 """
-Full-width container for creating visually distinct Calls-to-Action (CTAs) [See type definition](https://app.contentful.com/spaces/c586i03gpxi9/content_types/componentCta)
+Full-width container for creating visually distinct Calls-to-Action (CTAs) [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/componentCta)
 """
 type ComponentCta implements Entry {
   colorPalette(locale: String): String
@@ -195,7 +195,24 @@ input ComponentCtaFilter {
 
 type ComponentCtaLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  pageCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageCollection
+  pageCollection(limit: Int = 100, locale: String, order: [ComponentCtaLinkingCollectionsPageCollectionOrder], preview: Boolean, skip: Int = 0): PageCollection
+}
+
+enum ComponentCtaLinkingCollectionsPageCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  pageName_ASC
+  pageName_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 enum ComponentCtaOrder {
@@ -238,12 +255,31 @@ type ComponentCtaSublineEntries {
 type ComponentCtaSublineLinks {
   assets: ComponentCtaSublineAssets!
   entries: ComponentCtaSublineEntries!
+  resources: ComponentCtaSublineResources!
+}
+
+type ComponentCtaSublineResources {
+  block: [ComponentCtaSublineResourcesBlock!]!
+  hyperlink: [ComponentCtaSublineResourcesHyperlink!]!
+  inline: [ComponentCtaSublineResourcesInline!]!
+}
+
+type ComponentCtaSublineResourcesBlock implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type ComponentCtaSublineResourcesHyperlink implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type ComponentCtaSublineResourcesInline implements ResourceLink {
+  sys: ResourceSys!
 }
 
 union ComponentCtaTargetPage = Page
 
 """
-Full-width container for displaying side-by-side image and copy, includes multiple layout options [See type definition](https://app.contentful.com/spaces/c586i03gpxi9/content_types/componentDuplex)
+Full-width container for displaying side-by-side image and copy, includes multiple layout options [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/componentDuplex)
 """
 type ComponentDuplex implements Entry {
   bodyText(locale: String): ComponentDuplexBodyText
@@ -279,6 +315,25 @@ type ComponentDuplexBodyTextEntries {
 type ComponentDuplexBodyTextLinks {
   assets: ComponentDuplexBodyTextAssets!
   entries: ComponentDuplexBodyTextEntries!
+  resources: ComponentDuplexBodyTextResources!
+}
+
+type ComponentDuplexBodyTextResources {
+  block: [ComponentDuplexBodyTextResourcesBlock!]!
+  hyperlink: [ComponentDuplexBodyTextResourcesHyperlink!]!
+  inline: [ComponentDuplexBodyTextResourcesInline!]!
+}
+
+type ComponentDuplexBodyTextResourcesBlock implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type ComponentDuplexBodyTextResourcesHyperlink implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type ComponentDuplexBodyTextResourcesInline implements ResourceLink {
+  sys: ResourceSys!
 }
 
 type ComponentDuplexCollection {
@@ -336,7 +391,24 @@ input ComponentDuplexFilter {
 
 type ComponentDuplexLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  pageCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageCollection
+  pageCollection(limit: Int = 100, locale: String, order: [ComponentDuplexLinkingCollectionsPageCollectionOrder], preview: Boolean, skip: Int = 0): PageCollection
+}
+
+enum ComponentDuplexLinkingCollectionsPageCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  pageName_ASC
+  pageName_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 enum ComponentDuplexOrder {
@@ -365,7 +437,7 @@ enum ComponentDuplexOrder {
 union ComponentDuplexTargetPage = Page
 
 """
-Full-width container for displaying images and snappy copy; can include an optional CTA [See type definition](https://app.contentful.com/spaces/c586i03gpxi9/content_types/componentHeroBanner)
+Full-width container for displaying images and snappy copy; can include an optional CTA [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/componentHeroBanner)
 """
 type ComponentHeroBanner implements Entry {
   bodyText(locale: String): ComponentHeroBannerBodyText
@@ -401,6 +473,25 @@ type ComponentHeroBannerBodyTextEntries {
 type ComponentHeroBannerBodyTextLinks {
   assets: ComponentHeroBannerBodyTextAssets!
   entries: ComponentHeroBannerBodyTextEntries!
+  resources: ComponentHeroBannerBodyTextResources!
+}
+
+type ComponentHeroBannerBodyTextResources {
+  block: [ComponentHeroBannerBodyTextResourcesBlock!]!
+  hyperlink: [ComponentHeroBannerBodyTextResourcesHyperlink!]!
+  inline: [ComponentHeroBannerBodyTextResourcesInline!]!
+}
+
+type ComponentHeroBannerBodyTextResourcesBlock implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type ComponentHeroBannerBodyTextResourcesHyperlink implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type ComponentHeroBannerBodyTextResourcesInline implements ResourceLink {
+  sys: ResourceSys!
 }
 
 type ComponentHeroBannerCollection {
@@ -458,7 +549,24 @@ input ComponentHeroBannerFilter {
 
 type ComponentHeroBannerLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  pageCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageCollection
+  pageCollection(limit: Int = 100, locale: String, order: [ComponentHeroBannerLinkingCollectionsPageCollectionOrder], preview: Boolean, skip: Int = 0): PageCollection
+}
+
+enum ComponentHeroBannerLinkingCollectionsPageCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  pageName_ASC
+  pageName_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 enum ComponentHeroBannerOrder {
@@ -487,7 +595,7 @@ enum ComponentHeroBannerOrder {
 union ComponentHeroBannerTargetPage = Page
 
 """
-Full-width container for displaying short bits of generic information with optional icons/visuals [See type definition](https://app.contentful.com/spaces/c586i03gpxi9/content_types/componentInfoBlock)
+Full-width container for displaying short bits of generic information with optional icons/visuals [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/componentInfoBlock)
 """
 type ComponentInfoBlock implements Entry {
   block1Body(locale: String): ComponentInfoBlockBlock1Body
@@ -524,6 +632,25 @@ type ComponentInfoBlockBlock1BodyEntries {
 type ComponentInfoBlockBlock1BodyLinks {
   assets: ComponentInfoBlockBlock1BodyAssets!
   entries: ComponentInfoBlockBlock1BodyEntries!
+  resources: ComponentInfoBlockBlock1BodyResources!
+}
+
+type ComponentInfoBlockBlock1BodyResources {
+  block: [ComponentInfoBlockBlock1BodyResourcesBlock!]!
+  hyperlink: [ComponentInfoBlockBlock1BodyResourcesHyperlink!]!
+  inline: [ComponentInfoBlockBlock1BodyResourcesInline!]!
+}
+
+type ComponentInfoBlockBlock1BodyResourcesBlock implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type ComponentInfoBlockBlock1BodyResourcesHyperlink implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type ComponentInfoBlockBlock1BodyResourcesInline implements ResourceLink {
+  sys: ResourceSys!
 }
 
 type ComponentInfoBlockBlock2Body {
@@ -545,6 +672,25 @@ type ComponentInfoBlockBlock2BodyEntries {
 type ComponentInfoBlockBlock2BodyLinks {
   assets: ComponentInfoBlockBlock2BodyAssets!
   entries: ComponentInfoBlockBlock2BodyEntries!
+  resources: ComponentInfoBlockBlock2BodyResources!
+}
+
+type ComponentInfoBlockBlock2BodyResources {
+  block: [ComponentInfoBlockBlock2BodyResourcesBlock!]!
+  hyperlink: [ComponentInfoBlockBlock2BodyResourcesHyperlink!]!
+  inline: [ComponentInfoBlockBlock2BodyResourcesInline!]!
+}
+
+type ComponentInfoBlockBlock2BodyResourcesBlock implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type ComponentInfoBlockBlock2BodyResourcesHyperlink implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type ComponentInfoBlockBlock2BodyResourcesInline implements ResourceLink {
+  sys: ResourceSys!
 }
 
 type ComponentInfoBlockBlock3Body {
@@ -566,6 +712,25 @@ type ComponentInfoBlockBlock3BodyEntries {
 type ComponentInfoBlockBlock3BodyLinks {
   assets: ComponentInfoBlockBlock3BodyAssets!
   entries: ComponentInfoBlockBlock3BodyEntries!
+  resources: ComponentInfoBlockBlock3BodyResources!
+}
+
+type ComponentInfoBlockBlock3BodyResources {
+  block: [ComponentInfoBlockBlock3BodyResourcesBlock!]!
+  hyperlink: [ComponentInfoBlockBlock3BodyResourcesHyperlink!]!
+  inline: [ComponentInfoBlockBlock3BodyResourcesInline!]!
+}
+
+type ComponentInfoBlockBlock3BodyResourcesBlock implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type ComponentInfoBlockBlock3BodyResourcesHyperlink implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type ComponentInfoBlockBlock3BodyResourcesInline implements ResourceLink {
+  sys: ResourceSys!
 }
 
 type ComponentInfoBlockCollection {
@@ -624,7 +789,24 @@ input ComponentInfoBlockFilter {
 
 type ComponentInfoBlockLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  pageCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageCollection
+  pageCollection(limit: Int = 100, locale: String, order: [ComponentInfoBlockLinkingCollectionsPageCollectionOrder], preview: Boolean, skip: Int = 0): PageCollection
+}
+
+enum ComponentInfoBlockLinkingCollectionsPageCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  pageName_ASC
+  pageName_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 enum ComponentInfoBlockOrder {
@@ -647,14 +829,14 @@ enum ComponentInfoBlockOrder {
 }
 
 """
-Component that renders products in a table enabling a side-by-side comparison [See type definition](https://app.contentful.com/spaces/c586i03gpxi9/content_types/componentProductTable)
+Component that renders products in a table enabling a side-by-side comparison [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/componentProductTable)
 """
 type ComponentProductTable implements Entry {
   contentfulMetadata: ContentfulMetadata!
   headline(locale: String): String
   internalName(locale: String): String
   linkedFrom(allowedLocales: [String]): ComponentProductTableLinkingCollections
-  productsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentProductTableProductsCollection
+  productsCollection(limit: Int = 100, locale: String, order: [ComponentProductTableProductsCollectionOrder], preview: Boolean, skip: Int = 0, where: TopicProductFilter): ComponentProductTableProductsCollection
   subline(locale: String): String
   sys: Sys!
 }
@@ -698,7 +880,24 @@ input ComponentProductTableFilter {
 
 type ComponentProductTableLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  pageCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageCollection
+  pageCollection(limit: Int = 100, locale: String, order: [ComponentProductTableLinkingCollectionsPageCollectionOrder], preview: Boolean, skip: Int = 0): PageCollection
+}
+
+enum ComponentProductTableLinkingCollectionsPageCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  pageName_ASC
+  pageName_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 enum ComponentProductTableOrder {
@@ -725,8 +924,25 @@ type ComponentProductTableProductsCollection {
   total: Int!
 }
 
+enum ComponentProductTableProductsCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  name_ASC
+  name_DESC
+  price_ASC
+  price_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
 """
-Full-width component for quotes, reviews and testimonials, includes multiple layout options [See type definition](https://app.contentful.com/spaces/c586i03gpxi9/content_types/componentQuote)
+Full-width component for quotes, reviews and testimonials, includes multiple layout options [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/componentQuote)
 """
 type ComponentQuote implements Entry {
   colorPalette(locale: String): String
@@ -780,7 +996,24 @@ input ComponentQuoteFilter {
 
 type ComponentQuoteLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  pageCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageCollection
+  pageCollection(limit: Int = 100, locale: String, order: [ComponentQuoteLinkingCollectionsPageCollectionOrder], preview: Boolean, skip: Int = 0): PageCollection
+}
+
+enum ComponentQuoteLinkingCollectionsPageCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  pageName_ASC
+  pageName_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 enum ComponentQuoteOrder {
@@ -821,10 +1054,29 @@ type ComponentQuoteQuoteEntries {
 type ComponentQuoteQuoteLinks {
   assets: ComponentQuoteQuoteAssets!
   entries: ComponentQuoteQuoteEntries!
+  resources: ComponentQuoteQuoteResources!
+}
+
+type ComponentQuoteQuoteResources {
+  block: [ComponentQuoteQuoteResourcesBlock!]!
+  hyperlink: [ComponentQuoteQuoteResourcesHyperlink!]!
+  inline: [ComponentQuoteQuoteResourcesInline!]!
+}
+
+type ComponentQuoteQuoteResourcesBlock implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type ComponentQuoteQuoteResourcesHyperlink implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type ComponentQuoteQuoteResourcesInline implements ResourceLink {
+  sys: ResourceSys!
 }
 
 """
-Constrained-width component for displaying ad-hoc paragraphs of text (FAQs, intros, descriptions) [See type definition](https://app.contentful.com/spaces/c586i03gpxi9/content_types/componentTextBlock)
+Constrained-width component for displaying ad-hoc paragraphs of text (FAQs, intros, descriptions) [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/componentTextBlock)
 """
 type ComponentTextBlock implements Entry {
   body(locale: String): ComponentTextBlockBody
@@ -856,6 +1108,25 @@ type ComponentTextBlockBodyEntries {
 type ComponentTextBlockBodyLinks {
   assets: ComponentTextBlockBodyAssets!
   entries: ComponentTextBlockBodyEntries!
+  resources: ComponentTextBlockBodyResources!
+}
+
+type ComponentTextBlockBodyResources {
+  block: [ComponentTextBlockBodyResourcesBlock!]!
+  hyperlink: [ComponentTextBlockBodyResourcesHyperlink!]!
+  inline: [ComponentTextBlockBodyResourcesInline!]!
+}
+
+type ComponentTextBlockBodyResourcesBlock implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type ComponentTextBlockBodyResourcesHyperlink implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type ComponentTextBlockBodyResourcesInline implements ResourceLink {
+  sys: ResourceSys!
 }
 
 type ComponentTextBlockCollection {
@@ -905,7 +1176,24 @@ input ComponentTextBlockFilter {
 
 type ComponentTextBlockLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  pageCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageCollection
+  pageCollection(limit: Int = 100, locale: String, order: [ComponentTextBlockLinkingCollectionsPageCollectionOrder], preview: Boolean, skip: Int = 0): PageCollection
+}
+
+enum ComponentTextBlockLinkingCollectionsPageCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  pageName_ASC
+  pageName_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 enum ComponentTextBlockOrder {
@@ -995,17 +1283,19 @@ enum EntryOrder {
 }
 
 """
-Navigation content type used for powering the Footer menu [See type definition](https://app.contentful.com/spaces/c586i03gpxi9/content_types/footerMenu)
+Navigation content type used for powering the Footer menu [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/footerMenu)
 """
 type FooterMenu implements Entry {
+  companyAddress(locale: String): FooterMenuCompanyAddress
   contentfulMetadata: ContentfulMetadata!
+  copyright(locale: String): FooterMenuCopyright
   facebookLink(locale: String): String
   instagramLink(locale: String): String
   internalName(locale: String): String
-  legalLinks(locale: String, preview: Boolean): MenuGroup
+  legalLinks(locale: String, preview: Boolean, where: MenuGroupFilter): MenuGroup
   linkedFrom(allowedLocales: [String]): FooterMenuLinkingCollections
   linkedinLink(locale: String): String
-  menuItemsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): FooterMenuMenuItemsCollection
+  menuItemsCollection(limit: Int = 100, locale: String, order: [FooterMenuMenuItemsCollectionOrder], preview: Boolean, skip: Int = 0, where: MenuGroupFilter): FooterMenuMenuItemsCollection
   sys: Sys!
   twitterLink(locale: String): String
 }
@@ -1017,10 +1307,96 @@ type FooterMenuCollection {
   total: Int!
 }
 
+type FooterMenuCompanyAddress {
+  json: JSON!
+  links: FooterMenuCompanyAddressLinks!
+}
+
+type FooterMenuCompanyAddressAssets {
+  block: [Asset]!
+  hyperlink: [Asset]!
+}
+
+type FooterMenuCompanyAddressEntries {
+  block: [Entry]!
+  hyperlink: [Entry]!
+  inline: [Entry]!
+}
+
+type FooterMenuCompanyAddressLinks {
+  assets: FooterMenuCompanyAddressAssets!
+  entries: FooterMenuCompanyAddressEntries!
+  resources: FooterMenuCompanyAddressResources!
+}
+
+type FooterMenuCompanyAddressResources {
+  block: [FooterMenuCompanyAddressResourcesBlock!]!
+  hyperlink: [FooterMenuCompanyAddressResourcesHyperlink!]!
+  inline: [FooterMenuCompanyAddressResourcesInline!]!
+}
+
+type FooterMenuCompanyAddressResourcesBlock implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type FooterMenuCompanyAddressResourcesHyperlink implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type FooterMenuCompanyAddressResourcesInline implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type FooterMenuCopyright {
+  json: JSON!
+  links: FooterMenuCopyrightLinks!
+}
+
+type FooterMenuCopyrightAssets {
+  block: [Asset]!
+  hyperlink: [Asset]!
+}
+
+type FooterMenuCopyrightEntries {
+  block: [Entry]!
+  hyperlink: [Entry]!
+  inline: [Entry]!
+}
+
+type FooterMenuCopyrightLinks {
+  assets: FooterMenuCopyrightAssets!
+  entries: FooterMenuCopyrightEntries!
+  resources: FooterMenuCopyrightResources!
+}
+
+type FooterMenuCopyrightResources {
+  block: [FooterMenuCopyrightResourcesBlock!]!
+  hyperlink: [FooterMenuCopyrightResourcesHyperlink!]!
+  inline: [FooterMenuCopyrightResourcesInline!]!
+}
+
+type FooterMenuCopyrightResourcesBlock implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type FooterMenuCopyrightResourcesHyperlink implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type FooterMenuCopyrightResourcesInline implements ResourceLink {
+  sys: ResourceSys!
+}
+
 input FooterMenuFilter {
   AND: [FooterMenuFilter]
   OR: [FooterMenuFilter]
+  companyAddress_contains: String
+  companyAddress_exists: Boolean
+  companyAddress_not_contains: String
   contentfulMetadata: ContentfulMetadataFilter
+  copyright_contains: String
+  copyright_exists: Boolean
+  copyright_not_contains: String
   facebookLink: String
   facebookLink_contains: String
   facebookLink_exists: Boolean
@@ -1074,6 +1450,21 @@ type FooterMenuMenuItemsCollection {
   total: Int!
 }
 
+enum FooterMenuMenuItemsCollectionOrder {
+  groupName_ASC
+  groupName_DESC
+  internalTitle_ASC
+  internalTitle_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
 enum FooterMenuOrder {
   facebookLink_ASC
   facebookLink_DESC
@@ -1093,6 +1484,63 @@ enum FooterMenuOrder {
   sys_publishedVersion_DESC
   twitterLink_ASC
   twitterLink_DESC
+}
+
+"""
+The hero carousel component in the landing page that displays products in a slider [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/heroCarouselComponent)
+"""
+type HeroCarouselComponent implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  internalName(locale: String): String
+  linkedFrom(allowedLocales: [String]): HeroCarouselComponentLinkingCollections
+  productsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): HeroCarouselComponentProductsCollection
+  sys: Sys!
+}
+
+type HeroCarouselComponentCollection {
+  items: [HeroCarouselComponent]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input HeroCarouselComponentFilter {
+  AND: [HeroCarouselComponentFilter]
+  OR: [HeroCarouselComponentFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  productsCollection_exists: Boolean
+  sys: SysFilter
+}
+
+type HeroCarouselComponentLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum HeroCarouselComponentOrder {
+  internalName_ASC
+  internalName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+type HeroCarouselComponentProductsCollection {
+  items: [Entry]!
+  limit: Int!
+  skip: Int!
+  total: Int!
 }
 
 """The 'HexColor' type represents color in `rgb:ffffff` string format."""
@@ -1232,12 +1680,12 @@ The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://
 scalar JSON
 
 """
-A group of items making up a section in the navigation menu [See type definition](https://app.contentful.com/spaces/c586i03gpxi9/content_types/menuGroup)
+A group of items making up a section in the navigation menu [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/menuGroup)
 """
 type MenuGroup implements Entry {
   contentfulMetadata: ContentfulMetadata!
-  featuredPagesCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): MenuGroupFeaturedPagesCollection
-  groupLink(locale: String, preview: Boolean): MenuGroupGroupLink
+  featuredPagesCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, where: MenuGroupFeaturedPagesFilter): MenuGroupFeaturedPagesCollection
+  groupLink(locale: String, preview: Boolean, where: MenuGroupGroupLinkFilter): MenuGroupGroupLink
   groupName(locale: String): String
   internalTitle(locale: String): String
   linkedFrom(allowedLocales: [String]): MenuGroupLinkingCollections
@@ -1258,13 +1706,49 @@ type MenuGroupFeaturedPagesCollection {
   total: Int!
 }
 
+input MenuGroupFeaturedPagesFilter {
+  AND: [MenuGroupFeaturedPagesFilter]
+  OR: [MenuGroupFeaturedPagesFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  extraSection: cfextraSectionMultiTypeNestedFilter
+  extraSectionCollection_exists: Boolean
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  pageContent_exists: Boolean
+  pageName: String
+  pageName_contains: String
+  pageName_exists: Boolean
+  pageName_in: [String]
+  pageName_not: String
+  pageName_not_contains: String
+  pageName_not_in: [String]
+  seo_exists: Boolean
+  slug: String
+  slug_contains: String
+  slug_exists: Boolean
+  slug_in: [String]
+  slug_not: String
+  slug_not_contains: String
+  slug_not_in: [String]
+  sys: SysFilter
+  topSection: cftopSectionMultiTypeNestedFilter
+  topSectionCollection_exists: Boolean
+}
+
 union MenuGroupFeaturedPagesItem = Page
 
 input MenuGroupFilter {
   AND: [MenuGroupFilter]
   OR: [MenuGroupFilter]
   contentfulMetadata: ContentfulMetadataFilter
+  featuredPages: cffeaturedPagesMultiTypeNestedFilter
   featuredPagesCollection_exists: Boolean
+  groupLink: cfgroupLinkMultiTypeNestedFilter
   groupLink_exists: Boolean
   groupName: String
   groupName_contains: String
@@ -1285,10 +1769,78 @@ input MenuGroupFilter {
 
 union MenuGroupGroupLink = Page
 
+input MenuGroupGroupLinkFilter {
+  AND: [MenuGroupGroupLinkFilter]
+  OR: [MenuGroupGroupLinkFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  extraSection: cfextraSectionMultiTypeNestedFilter
+  extraSectionCollection_exists: Boolean
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  pageContent_exists: Boolean
+  pageName: String
+  pageName_contains: String
+  pageName_exists: Boolean
+  pageName_in: [String]
+  pageName_not: String
+  pageName_not_contains: String
+  pageName_not_in: [String]
+  seo_exists: Boolean
+  slug: String
+  slug_contains: String
+  slug_exists: Boolean
+  slug_in: [String]
+  slug_not: String
+  slug_not_contains: String
+  slug_not_in: [String]
+  sys: SysFilter
+  topSection: cftopSectionMultiTypeNestedFilter
+  topSectionCollection_exists: Boolean
+}
+
 type MenuGroupLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  footerMenuCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): FooterMenuCollection
-  navigationMenuCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): NavigationMenuCollection
+  footerMenuCollection(limit: Int = 100, locale: String, order: [MenuGroupLinkingCollectionsFooterMenuCollectionOrder], preview: Boolean, skip: Int = 0): FooterMenuCollection
+  navigationMenuCollection(limit: Int = 100, locale: String, order: [MenuGroupLinkingCollectionsNavigationMenuCollectionOrder], preview: Boolean, skip: Int = 0): NavigationMenuCollection
+}
+
+enum MenuGroupLinkingCollectionsFooterMenuCollectionOrder {
+  facebookLink_ASC
+  facebookLink_DESC
+  instagramLink_ASC
+  instagramLink_DESC
+  internalName_ASC
+  internalName_DESC
+  linkedinLink_ASC
+  linkedinLink_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  twitterLink_ASC
+  twitterLink_DESC
+}
+
+enum MenuGroupLinkingCollectionsNavigationMenuCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 enum MenuGroupOrder {
@@ -1307,13 +1859,13 @@ enum MenuGroupOrder {
 }
 
 """
-Navigation menu in the header [See type definition](https://app.contentful.com/spaces/c586i03gpxi9/content_types/navigationMenu)
+Navigation menu in the header [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/navigationMenu)
 """
 type NavigationMenu implements Entry {
   contentfulMetadata: ContentfulMetadata!
   internalName(locale: String): String
   linkedFrom(allowedLocales: [String]): NavigationMenuLinkingCollections
-  menuItemsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): NavigationMenuMenuItemsCollection
+  menuItemsCollection(limit: Int = 100, locale: String, order: [NavigationMenuMenuItemsCollectionOrder], preview: Boolean, skip: Int = 0, where: MenuGroupFilter): NavigationMenuMenuItemsCollection
   sys: Sys!
 }
 
@@ -1351,6 +1903,21 @@ type NavigationMenuMenuItemsCollection {
   total: Int!
 }
 
+enum NavigationMenuMenuItemsCollectionOrder {
+  groupName_ASC
+  groupName_DESC
+  internalTitle_ASC
+  internalTitle_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
 enum NavigationMenuOrder {
   internalName_ASC
   internalName_DESC
@@ -1365,19 +1932,19 @@ enum NavigationMenuOrder {
 }
 
 """
-Container that enables editors to publish a page, define its slug, select & arrange its content [See type definition](https://app.contentful.com/spaces/c586i03gpxi9/content_types/page)
+Container that enables editors to publish a page, define its slug, select & arrange its content [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/page)
 """
 type Page implements Entry {
   contentfulMetadata: ContentfulMetadata!
-  extraSectionCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageExtraSectionCollection
+  extraSectionCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, where: PageExtraSectionFilter): PageExtraSectionCollection
   internalName(locale: String): String
   linkedFrom(allowedLocales: [String]): PageLinkingCollections
   pageContent(locale: String, preview: Boolean): PagePageContent
   pageName(locale: String): String
-  seo(locale: String, preview: Boolean): Seo
+  seo(locale: String, preview: Boolean, where: SeoFilter): Seo
   slug(locale: String): String
   sys: Sys!
-  topSectionCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageTopSectionCollection
+  topSectionCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, where: PageTopSectionFilter): PageTopSectionCollection
 }
 
 type PageCollection {
@@ -1394,12 +1961,34 @@ type PageExtraSectionCollection {
   total: Int!
 }
 
+input PageExtraSectionFilter {
+  AND: [PageExtraSectionFilter]
+  OR: [PageExtraSectionFilter]
+  colorPalette: String
+  colorPalette_contains: String
+  colorPalette_exists: Boolean
+  colorPalette_in: [String]
+  colorPalette_not: String
+  colorPalette_not_contains: String
+  colorPalette_not_in: [String]
+  contentfulMetadata: ContentfulMetadataFilter
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  sys: SysFilter
+}
+
 union PageExtraSectionItem = ComponentCta | ComponentDuplex | ComponentHeroBanner | ComponentInfoBlock | ComponentQuote | ComponentTextBlock
 
 input PageFilter {
   AND: [PageFilter]
   OR: [PageFilter]
   contentfulMetadata: ContentfulMetadataFilter
+  extraSection: cfextraSectionMultiTypeNestedFilter
   extraSectionCollection_exists: Boolean
   internalName: String
   internalName_contains: String
@@ -1426,15 +2015,98 @@ input PageFilter {
   slug_not_contains: String
   slug_not_in: [String]
   sys: SysFilter
+  topSection: cftopSectionMultiTypeNestedFilter
   topSectionCollection_exists: Boolean
 }
 
 type PageLinkingCollections {
-  componentCtaCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentCtaCollection
-  componentDuplexCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentDuplexCollection
-  componentHeroBannerCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentHeroBannerCollection
+  componentCtaCollection(limit: Int = 100, locale: String, order: [PageLinkingCollectionsComponentCtaCollectionOrder], preview: Boolean, skip: Int = 0): ComponentCtaCollection
+  componentDuplexCollection(limit: Int = 100, locale: String, order: [PageLinkingCollectionsComponentDuplexCollectionOrder], preview: Boolean, skip: Int = 0): ComponentDuplexCollection
+  componentHeroBannerCollection(limit: Int = 100, locale: String, order: [PageLinkingCollectionsComponentHeroBannerCollectionOrder], preview: Boolean, skip: Int = 0): ComponentHeroBannerCollection
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  menuGroupCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): MenuGroupCollection
+  menuGroupCollection(limit: Int = 100, locale: String, order: [PageLinkingCollectionsMenuGroupCollectionOrder], preview: Boolean, skip: Int = 0): MenuGroupCollection
+}
+
+enum PageLinkingCollectionsComponentCtaCollectionOrder {
+  colorPalette_ASC
+  colorPalette_DESC
+  ctaText_ASC
+  ctaText_DESC
+  headline_ASC
+  headline_DESC
+  internalName_ASC
+  internalName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  urlParameters_ASC
+  urlParameters_DESC
+}
+
+enum PageLinkingCollectionsComponentDuplexCollectionOrder {
+  colorPalette_ASC
+  colorPalette_DESC
+  containerLayout_ASC
+  containerLayout_DESC
+  ctaText_ASC
+  ctaText_DESC
+  headline_ASC
+  headline_DESC
+  imageStyle_ASC
+  imageStyle_DESC
+  internalName_ASC
+  internalName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum PageLinkingCollectionsComponentHeroBannerCollectionOrder {
+  colorPalette_ASC
+  colorPalette_DESC
+  ctaText_ASC
+  ctaText_DESC
+  headline_ASC
+  headline_DESC
+  heroSize_ASC
+  heroSize_DESC
+  imageStyle_ASC
+  imageStyle_DESC
+  internalName_ASC
+  internalName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum PageLinkingCollectionsMenuGroupCollectionOrder {
+  groupName_ASC
+  groupName_DESC
+  internalTitle_ASC
+  internalTitle_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 enum PageOrder {
@@ -1463,6 +2135,27 @@ type PageTopSectionCollection {
   total: Int!
 }
 
+input PageTopSectionFilter {
+  AND: [PageTopSectionFilter]
+  OR: [PageTopSectionFilter]
+  colorPalette: String
+  colorPalette_contains: String
+  colorPalette_exists: Boolean
+  colorPalette_in: [String]
+  colorPalette_not: String
+  colorPalette_not_contains: String
+  colorPalette_not_in: [String]
+  contentfulMetadata: ContentfulMetadataFilter
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  sys: SysFilter
+}
+
 union PageTopSectionItem = ComponentCta | ComponentDuplex | ComponentHeroBanner | ComponentInfoBlock | ComponentQuote | ComponentTextBlock
 
 """
@@ -1471,6 +2164,7 @@ The 'Quality' type represents quality as whole numeric values between `1` and `1
 scalar Quality
 
 type Query {
+  _node(id: ID!, locale: String, preview: Boolean): _Node
   asset(id: String!, locale: String, preview: Boolean): Asset
   assetCollection(limit: Int = 100, locale: String, order: [AssetOrder], preview: Boolean, skip: Int = 0, where: AssetFilter): AssetCollection
   componentCta(id: String!, locale: String, preview: Boolean): ComponentCta
@@ -1490,6 +2184,8 @@ type Query {
   entryCollection(limit: Int = 100, locale: String, order: [EntryOrder], preview: Boolean, skip: Int = 0, where: EntryFilter): EntryCollection
   footerMenu(id: String!, locale: String, preview: Boolean): FooterMenu
   footerMenuCollection(limit: Int = 100, locale: String, order: [FooterMenuOrder], preview: Boolean, skip: Int = 0, where: FooterMenuFilter): FooterMenuCollection
+  heroCarouselComponent(id: String!, locale: String, preview: Boolean): HeroCarouselComponent
+  heroCarouselComponentCollection(limit: Int = 100, locale: String, order: [HeroCarouselComponentOrder], preview: Boolean, skip: Int = 0, where: HeroCarouselComponentFilter): HeroCarouselComponentCollection
   menuGroup(id: String!, locale: String, preview: Boolean): MenuGroup
   menuGroupCollection(limit: Int = 100, locale: String, order: [MenuGroupOrder], preview: Boolean, skip: Int = 0, where: MenuGroupFilter): MenuGroupCollection
   navigationMenu(id: String!, locale: String, preview: Boolean): NavigationMenu
@@ -1508,8 +2204,17 @@ type Query {
   topicProductFeatureCollection(limit: Int = 100, locale: String, order: [TopicProductFeatureOrder], preview: Boolean, skip: Int = 0, where: TopicProductFeatureFilter): TopicProductFeatureCollection
 }
 
+interface ResourceLink {
+  sys: ResourceSys!
+}
+
+type ResourceSys {
+  linkType: String!
+  urn: String!
+}
+
 """
-Open Graph (OG) meta tags for optimizing SEO visibility [See type definition](https://app.contentful.com/spaces/c586i03gpxi9/content_types/seo)
+Open Graph (OG) meta tags for optimizing SEO visibility [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/seo)
 """
 type Seo implements Entry {
   contentfulMetadata: ContentfulMetadata!
@@ -1567,7 +2272,24 @@ input SeoFilter {
 
 type SeoLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  pageCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageCollection
+  pageCollection(limit: Int = 100, locale: String, order: [SeoLinkingCollectionsPageCollectionOrder], preview: Boolean, skip: Int = 0): PageCollection
+}
+
+enum SeoLinkingCollectionsPageCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  pageName_ASC
+  pageName_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 enum SeoOrder {
@@ -1638,7 +2360,7 @@ input SysFilter {
 }
 
 """
-Container for ever-green content like About us, Career pages, FAQ, Knowledge base & more [See type definition](https://app.contentful.com/spaces/c586i03gpxi9/content_types/topicBusinessInfo)
+Container for ever-green content like About us, Career pages, FAQ, Knowledge base & more [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/topicBusinessInfo)
 """
 type TopicBusinessInfo implements Entry {
   body(locale: String): TopicBusinessInfoBody
@@ -1670,6 +2392,25 @@ type TopicBusinessInfoBodyEntries {
 type TopicBusinessInfoBodyLinks {
   assets: TopicBusinessInfoBodyAssets!
   entries: TopicBusinessInfoBodyEntries!
+  resources: TopicBusinessInfoBodyResources!
+}
+
+type TopicBusinessInfoBodyResources {
+  block: [TopicBusinessInfoBodyResourcesBlock!]!
+  hyperlink: [TopicBusinessInfoBodyResourcesHyperlink!]!
+  inline: [TopicBusinessInfoBodyResourcesInline!]!
+}
+
+type TopicBusinessInfoBodyResourcesBlock implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type TopicBusinessInfoBodyResourcesHyperlink implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type TopicBusinessInfoBodyResourcesInline implements ResourceLink {
+  sys: ResourceSys!
 }
 
 type TopicBusinessInfoCollection {
@@ -1713,7 +2454,24 @@ input TopicBusinessInfoFilter {
 
 type TopicBusinessInfoLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  pageCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageCollection
+  pageCollection(limit: Int = 100, locale: String, order: [TopicBusinessInfoLinkingCollectionsPageCollectionOrder], preview: Boolean, skip: Int = 0): PageCollection
+}
+
+enum TopicBusinessInfoLinkingCollectionsPageCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  pageName_ASC
+  pageName_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 enum TopicBusinessInfoOrder {
@@ -1732,7 +2490,7 @@ enum TopicBusinessInfoOrder {
 }
 
 """
-Container for holding info about people (article authors, company leadership, quoted customers, etc.) [See type definition](https://app.contentful.com/spaces/c586i03gpxi9/content_types/topicPerson)
+Container for holding info about people (article authors, company leadership, quoted customers, etc.) [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/topicPerson)
 """
 type TopicPerson implements Entry {
   avatar(locale: String, preview: Boolean): Asset
@@ -1766,6 +2524,25 @@ type TopicPersonBioEntries {
 type TopicPersonBioLinks {
   assets: TopicPersonBioAssets!
   entries: TopicPersonBioEntries!
+  resources: TopicPersonBioResources!
+}
+
+type TopicPersonBioResources {
+  block: [TopicPersonBioResourcesBlock!]!
+  hyperlink: [TopicPersonBioResourcesHyperlink!]!
+  inline: [TopicPersonBioResourcesInline!]!
+}
+
+type TopicPersonBioResourcesBlock implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type TopicPersonBioResourcesHyperlink implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type TopicPersonBioResourcesInline implements ResourceLink {
+  sys: ResourceSys!
 }
 
 type TopicPersonCollection {
@@ -1843,13 +2620,13 @@ enum TopicPersonOrder {
 }
 
 """
-Container for product-specific information like card definitions, features, benefits, prices & more [See type definition](https://app.contentful.com/spaces/c586i03gpxi9/content_types/topicProduct)
+Container for product-specific information like card definitions, features, benefits, prices & more [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/topicProduct)
 """
 type TopicProduct implements Entry {
   contentfulMetadata: ContentfulMetadata!
   description(locale: String): TopicProductDescription
   featuredImage(locale: String, preview: Boolean): Asset
-  featuresCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): TopicProductFeaturesCollection
+  featuresCollection(limit: Int = 100, locale: String, order: [TopicProductFeaturesCollectionOrder], preview: Boolean, skip: Int = 0, where: TopicProductFeatureFilter): TopicProductFeaturesCollection
   internalName(locale: String): String
   linkedFrom(allowedLocales: [String]): TopicProductLinkingCollections
   name(locale: String): String
@@ -1883,10 +2660,29 @@ type TopicProductDescriptionEntries {
 type TopicProductDescriptionLinks {
   assets: TopicProductDescriptionAssets!
   entries: TopicProductDescriptionEntries!
+  resources: TopicProductDescriptionResources!
+}
+
+type TopicProductDescriptionResources {
+  block: [TopicProductDescriptionResourcesBlock!]!
+  hyperlink: [TopicProductDescriptionResourcesHyperlink!]!
+  inline: [TopicProductDescriptionResourcesInline!]!
+}
+
+type TopicProductDescriptionResourcesBlock implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type TopicProductDescriptionResourcesHyperlink implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type TopicProductDescriptionResourcesInline implements ResourceLink {
+  sys: ResourceSys!
 }
 
 """
-Sub-container for product features enabling re-use of generic features across different products [See type definition](https://app.contentful.com/spaces/c586i03gpxi9/content_types/topicProductFeature)
+Sub-container for product features enabling re-use of generic features across different products [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/topicProductFeature)
 """
 type TopicProductFeature implements Entry {
   contentfulMetadata: ContentfulMetadata!
@@ -1934,7 +2730,24 @@ input TopicProductFeatureFilter {
 
 type TopicProductFeatureLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  topicProductCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): TopicProductCollection
+  topicProductCollection(limit: Int = 100, locale: String, order: [TopicProductFeatureLinkingCollectionsTopicProductCollectionOrder], preview: Boolean, skip: Int = 0): TopicProductCollection
+}
+
+enum TopicProductFeatureLinkingCollectionsTopicProductCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  name_ASC
+  name_DESC
+  price_ASC
+  price_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 type TopicProductFeatureLongDescription {
@@ -1956,6 +2769,25 @@ type TopicProductFeatureLongDescriptionEntries {
 type TopicProductFeatureLongDescriptionLinks {
   assets: TopicProductFeatureLongDescriptionAssets!
   entries: TopicProductFeatureLongDescriptionEntries!
+  resources: TopicProductFeatureLongDescriptionResources!
+}
+
+type TopicProductFeatureLongDescriptionResources {
+  block: [TopicProductFeatureLongDescriptionResourcesBlock!]!
+  hyperlink: [TopicProductFeatureLongDescriptionResourcesHyperlink!]!
+  inline: [TopicProductFeatureLongDescriptionResourcesInline!]!
+}
+
+type TopicProductFeatureLongDescriptionResourcesBlock implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type TopicProductFeatureLongDescriptionResourcesHyperlink implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type TopicProductFeatureLongDescriptionResourcesInline implements ResourceLink {
+  sys: ResourceSys!
 }
 
 enum TopicProductFeatureOrder {
@@ -1992,6 +2824,25 @@ type TopicProductFeatureShortDescriptionEntries {
 type TopicProductFeatureShortDescriptionLinks {
   assets: TopicProductFeatureShortDescriptionAssets!
   entries: TopicProductFeatureShortDescriptionEntries!
+  resources: TopicProductFeatureShortDescriptionResources!
+}
+
+type TopicProductFeatureShortDescriptionResources {
+  block: [TopicProductFeatureShortDescriptionResourcesBlock!]!
+  hyperlink: [TopicProductFeatureShortDescriptionResourcesHyperlink!]!
+  inline: [TopicProductFeatureShortDescriptionResourcesInline!]!
+}
+
+type TopicProductFeatureShortDescriptionResourcesBlock implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type TopicProductFeatureShortDescriptionResourcesHyperlink implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type TopicProductFeatureShortDescriptionResourcesInline implements ResourceLink {
+  sys: ResourceSys!
 }
 
 type TopicProductFeaturesCollection {
@@ -1999,6 +2850,21 @@ type TopicProductFeaturesCollection {
   limit: Int!
   skip: Int!
   total: Int!
+}
+
+enum TopicProductFeaturesCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  name_ASC
+  name_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 input TopicProductFilter {
@@ -2038,9 +2904,43 @@ input TopicProductFilter {
 }
 
 type TopicProductLinkingCollections {
-  componentProductTableCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentProductTableCollection
+  componentProductTableCollection(limit: Int = 100, locale: String, order: [TopicProductLinkingCollectionsComponentProductTableCollectionOrder], preview: Boolean, skip: Int = 0): ComponentProductTableCollection
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-  pageCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageCollection
+  pageCollection(limit: Int = 100, locale: String, order: [TopicProductLinkingCollectionsPageCollectionOrder], preview: Boolean, skip: Int = 0): PageCollection
+}
+
+enum TopicProductLinkingCollectionsComponentProductTableCollectionOrder {
+  headline_ASC
+  headline_DESC
+  internalName_ASC
+  internalName_DESC
+  subline_ASC
+  subline_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum TopicProductLinkingCollectionsPageCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  pageName_ASC
+  pageName_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 enum TopicProductOrder {
@@ -2058,6 +2958,10 @@ enum TopicProductOrder {
   sys_publishedAt_DESC
   sys_publishedVersion_ASC
   sys_publishedVersion_DESC
+}
+
+interface _Node {
+  _id: ID!
 }
 
 input cfMenuGroupNestedFilter {
@@ -2177,5 +3081,111 @@ input cfTopicProductNestedFilter {
   price_lte: Float
   price_not: Float
   price_not_in: [Float]
+  sys: SysFilter
+}
+
+input cfextraSectionMultiTypeNestedFilter {
+  AND: [cfextraSectionMultiTypeNestedFilter]
+  OR: [cfextraSectionMultiTypeNestedFilter]
+  colorPalette: String
+  colorPalette_contains: String
+  colorPalette_exists: Boolean
+  colorPalette_in: [String]
+  colorPalette_not: String
+  colorPalette_not_contains: String
+  colorPalette_not_in: [String]
+  contentfulMetadata: ContentfulMetadataFilter
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  sys: SysFilter
+}
+
+input cffeaturedPagesMultiTypeNestedFilter {
+  AND: [cffeaturedPagesMultiTypeNestedFilter]
+  OR: [cffeaturedPagesMultiTypeNestedFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  extraSectionCollection_exists: Boolean
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  pageContent_exists: Boolean
+  pageName: String
+  pageName_contains: String
+  pageName_exists: Boolean
+  pageName_in: [String]
+  pageName_not: String
+  pageName_not_contains: String
+  pageName_not_in: [String]
+  seo_exists: Boolean
+  slug: String
+  slug_contains: String
+  slug_exists: Boolean
+  slug_in: [String]
+  slug_not: String
+  slug_not_contains: String
+  slug_not_in: [String]
+  sys: SysFilter
+  topSectionCollection_exists: Boolean
+}
+
+input cfgroupLinkMultiTypeNestedFilter {
+  AND: [cfgroupLinkMultiTypeNestedFilter]
+  OR: [cfgroupLinkMultiTypeNestedFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  extraSectionCollection_exists: Boolean
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  pageContent_exists: Boolean
+  pageName: String
+  pageName_contains: String
+  pageName_exists: Boolean
+  pageName_in: [String]
+  pageName_not: String
+  pageName_not_contains: String
+  pageName_not_in: [String]
+  seo_exists: Boolean
+  slug: String
+  slug_contains: String
+  slug_exists: Boolean
+  slug_in: [String]
+  slug_not: String
+  slug_not_contains: String
+  slug_not_in: [String]
+  sys: SysFilter
+  topSectionCollection_exists: Boolean
+}
+
+input cftopSectionMultiTypeNestedFilter {
+  AND: [cftopSectionMultiTypeNestedFilter]
+  OR: [cftopSectionMultiTypeNestedFilter]
+  colorPalette: String
+  colorPalette_contains: String
+  colorPalette_exists: Boolean
+  colorPalette_in: [String]
+  colorPalette_not: String
+  colorPalette_not_contains: String
+  colorPalette_not_in: [String]
+  contentfulMetadata: ContentfulMetadataFilter
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
   sys: SysFilter
 }
