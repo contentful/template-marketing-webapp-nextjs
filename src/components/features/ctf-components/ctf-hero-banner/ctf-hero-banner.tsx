@@ -107,13 +107,12 @@ export const CtfHeroBanner = (props: HeroBannerFieldsFragment) => {
     bodyText,
     ctaText,
     targetPage,
-    colorPalette,
     sys: {id},
     heroSize: heroSizeBoolean,
   } = props
   const layout = useLayoutContext()
 
-  const colorConfig = getColorConfigFromPalette(colorPalette || "")
+  const colorConfig = getColorConfigFromPalette()
   const imageStyle = imageStyleBoolean ? "partial" : "full"
   const heroSize =
     heroSizeBoolean === null || heroSizeBoolean === true ? "full_screen" : "fixed_height"

@@ -1,0 +1,35 @@
+fragment HeroCarouselFields on ComponentHeroCarousel {
+  __typename
+  sys {
+    id
+  }
+  internalName
+  carouselProductsCollection {
+    items {
+      __typename
+      sys {
+        id
+      }
+      __typename
+      sys {
+        id
+      }
+      internalName
+      name
+      featuredImage {
+        title
+        url
+        description
+      }
+      targetPage {
+        ...CtfProductDetailPageFields
+      }
+    }
+  }
+}
+
+query CtfHeroCarousel($id: String!, $locale: String, $preview: Boolean) {
+  componentHeroCarousel(id: $id, locale: $locale, preview: $preview) {
+    ...HeroCarouselFields
+  }
+}

@@ -15,56 +15,16 @@ interface ColorConfigInterface {
 }
 
 const colorConfigs: {[key: string]: ColorConfigInterface} = {
-  "palette-1. White (#FFFFFF)": {
+  "palette-1. Honeytek": {
     headlineColor: PRIMARY_COLOR,
     textColor: "#414D63",
     backgroundColor: "#fff",
     buttonColor: "primary",
   },
-  "palette-7. Black (#000000)": {
-    headlineColor: "#fff",
-    textColor: "#bbb",
-    backgroundColor: "#000",
-    buttonColor: "secondary",
-  },
-  "palette-2. White Smoke (#FCFCFC)": {
-    headlineColor: "#1B273A",
-    textColor: "#414D63",
-    backgroundColor: "#fcfcfc",
-    buttonColor: "primary",
-  },
-  "palette-3. Light Gray (#F4F4F4)": {
-    headlineColor: "#000",
-    textColor: "#000",
-    backgroundColor: "#f4f4f4",
-    buttonColor: "primary",
-  },
-  "palette-4. Gray (#EAEAEA)": {
-    headlineColor: "#000",
-    textColor: "#000",
-    backgroundColor: "#eaeaea",
-    buttonColor: "primary",
-  },
-  "palette-5. Steel Gray (#BBBBBB)": {
-    headlineColor: "#000",
-    textColor: "#000",
-    backgroundColor: "#bbbbbb",
-    buttonColor: "primary",
-  },
-  "palette-6. Dark Gray (#797979)": {
-    headlineColor: "#fff",
-    textColor: "#fff",
-    backgroundColor: "#797979",
-    buttonColor: "secondary",
-  },
 }
 
-export const getColorConfigFromPalette = (palette: string): ColorConfigInterface => {
-  if (colorConfigs[`palette-${palette}`] === undefined) {
-    return colorConfigs["palette-1. White (#FFFFFF)"]
-  }
-
-  return colorConfigs[`palette-${palette}`]
+export const getColorConfigFromPalette = (): ColorConfigInterface => {
+  return colorConfigs["palette-1. Honeytek"]
 }
 
 const colorfulTheme = createTheme({

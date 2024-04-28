@@ -42,10 +42,10 @@ export type PageExtraSectionItemFields_ComponentTextBlock_Fragment = { __typenam
 
 export type PageExtraSectionItemFieldsFragment = PageExtraSectionItemFields_ComponentCta_Fragment | PageExtraSectionItemFields_ComponentDuplex_Fragment | PageExtraSectionItemFields_ComponentHeroBanner_Fragment | PageExtraSectionItemFields_ComponentInfoBlock_Fragment | PageExtraSectionItemFields_ComponentQuote_Fragment | PageExtraSectionItemFields_ComponentTextBlock_Fragment;
 
-export type CtfPageFieldsFragment = { __typename: 'Page', pageName?: string | null, slug?: string | null, internalName?: string | null, sys: { __typename?: 'Sys', id: string }, seo?: { __typename?: 'Seo', title?: string | null, description?: string | null, noIndex?: boolean | null, noFollow?: boolean | null, image?: (
+export type CtfProductDetailPageFieldsFragment = { __typename: 'ProductDetailPage', pageName?: string | null, slug?: string | null, internalName?: string | null, sys: { __typename?: 'Sys', id: string }, seo?: { __typename?: 'Seo', title?: string | null, description?: string | null, noIndex?: boolean | null, noFollow?: boolean | null, image?: (
       { __typename?: 'Asset' }
       & AssetFieldsFragment
-    ) | null } | null, topSectionCollection?: { __typename?: 'PageTopSectionCollection', items: Array<(
+    ) | null } | null, topSectionCollection?: { __typename?: 'ProductDetailPageTopSectionCollection', items: Array<(
       { __typename: 'ComponentCta', sys: { __typename?: 'Sys', id: string } }
       & PageTopSectionFields_ComponentCta_Fragment
     ) | (
@@ -75,7 +75,7 @@ export type CtfPageFieldsFragment = { __typename: 'Page', pageName?: string | nu
   ) | (
     { __typename: 'TopicProduct', sys: { __typename?: 'Sys', id: string } }
     & PageContentFields_TopicProduct_Fragment
-  ) | null, extraSectionCollection?: { __typename?: 'PageExtraSectionCollection', items: Array<(
+  ) | null, extraSectionCollection?: { __typename?: 'ProductDetailPageExtraSectionCollection', items: Array<(
       { __typename: 'ComponentCta', sys: { __typename?: 'Sys', id: string } }
       & PageExtraSectionItemFields_ComponentCta_Fragment
     ) | (
@@ -95,16 +95,16 @@ export type CtfPageFieldsFragment = { __typename: 'Page', pageName?: string | nu
       & PageExtraSectionItemFields_ComponentTextBlock_Fragment
     ) | null> } | null };
 
-export type CtfPageQueryVariables = Types.Exact<{
+export type CtfProductDetailPageQueryVariables = Types.Exact<{
   slug: Types.Scalars['String'];
   locale?: Types.InputMaybe<Types.Scalars['String']>;
   preview?: Types.InputMaybe<Types.Scalars['Boolean']>;
 }>;
 
 
-export type CtfPageQuery = { __typename?: 'Query', pageCollection?: { __typename?: 'PageCollection', items: Array<(
-      { __typename?: 'Page' }
-      & CtfPageFieldsFragment
+export type CtfProductDetailPageQuery = { __typename?: 'Query', productDetailPageCollection?: { __typename?: 'ProductDetailPageCollection', items: Array<(
+      { __typename?: 'ProductDetailPage' }
+      & CtfProductDetailPageFieldsFragment
     ) | null> } | null };
 
 export const PageTopSectionFieldsFragmentDoc = `
@@ -122,8 +122,8 @@ export const PageExtraSectionItemFieldsFragmentDoc = `
   __typename
 }
     `;
-export const CtfPageFieldsFragmentDoc = `
-    fragment CtfPageFields on Page {
+export const CtfProductDetailPageFieldsFragmentDoc = `
+    fragment CtfProductDetailPageFields on ProductDetailPage {
   __typename
   sys {
     id
@@ -173,38 +173,38 @@ export const CtfPageFieldsFragmentDoc = `
   }
 }
     `;
-export const CtfPageDocument = `
-    query CtfPage($slug: String!, $locale: String, $preview: Boolean) {
-  pageCollection(
+export const CtfProductDetailPageDocument = `
+    query CtfProductDetailPage($slug: String!, $locale: String, $preview: Boolean) {
+  productDetailPageCollection(
     where: {slug: $slug}
     locale: $locale
     preview: $preview
     limit: 1
   ) {
     items {
-      ...CtfPageFields
+      ...CtfProductDetailPageFields
     }
   }
 }
-    ${CtfPageFieldsFragmentDoc}
+    ${CtfProductDetailPageFieldsFragmentDoc}
 ${AssetFieldsFragmentDoc}
 ${PageTopSectionFieldsFragmentDoc}
 ${PageContentFieldsFragmentDoc}
 ${PageExtraSectionItemFieldsFragmentDoc}`;
-export const useCtfPageQuery = <
-      TData = CtfPageQuery,
+export const useCtfProductDetailPageQuery = <
+      TData = CtfProductDetailPageQuery,
       TError = unknown
     >(
-      variables: CtfPageQueryVariables,
-      options?: UseQueryOptions<CtfPageQuery, TError, TData>
+      variables: CtfProductDetailPageQueryVariables,
+      options?: UseQueryOptions<CtfProductDetailPageQuery, TError, TData>
     ) =>
-    useQuery<CtfPageQuery, TError, TData>(
-      ['CtfPage', variables],
-      customFetcher<CtfPageQuery, CtfPageQueryVariables>(CtfPageDocument, variables),
+    useQuery<CtfProductDetailPageQuery, TError, TData>(
+      ['CtfProductDetailPage', variables],
+      customFetcher<CtfProductDetailPageQuery, CtfProductDetailPageQueryVariables>(CtfProductDetailPageDocument, variables),
       options
     );
 
-useCtfPageQuery.getKey = (variables: CtfPageQueryVariables) => ['CtfPage', variables];
+useCtfProductDetailPageQuery.getKey = (variables: CtfProductDetailPageQueryVariables) => ['CtfProductDetailPage', variables];
 ;
 
-useCtfPageQuery.fetcher = (variables: CtfPageQueryVariables, options?: RequestInit['headers']) => customFetcher<CtfPageQuery, CtfPageQueryVariables>(CtfPageDocument, variables, options);
+useCtfProductDetailPageQuery.fetcher = (variables: CtfProductDetailPageQueryVariables, options?: RequestInit['headers']) => customFetcher<CtfProductDetailPageQuery, CtfProductDetailPageQueryVariables>(CtfProductDetailPageDocument, variables, options);

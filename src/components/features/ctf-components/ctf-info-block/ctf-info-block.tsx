@@ -1,21 +1,21 @@
-import { useContentfulInspectorMode } from '@contentful/live-preview/react';
-import { Theme, Container } from '@mui/material';
-import { makeStyles } from '@mui/styles';
-import clsx from 'clsx';
+import {useContentfulInspectorMode} from "@contentful/live-preview/react"
+import {Theme, Container} from "@mui/material"
+import {makeStyles} from "@mui/styles"
+import clsx from "clsx"
 
-import { InfoBlockFieldsFragment } from './__generated/ctf-info-block.generated';
+import {InfoBlockFieldsFragment} from "./__generated/ctf-info-block.generated"
 
-import { CtfAsset } from '@src/components/features/ctf-components/ctf-asset/ctf-asset';
-import { CtfRichtext } from '@src/components/features/ctf-components/ctf-richtext/ctf-richtext';
-import { SectionHeadlines } from '@src/components/features/section-headlines';
-import LayoutContext, { defaultLayout } from '@src/layout-context';
-import { getColorConfigFromPalette } from '@src/theme';
+import {CtfAsset} from "@src/components/features/ctf-components/ctf-asset/ctf-asset"
+import {CtfRichtext} from "@src/components/features/ctf-components/ctf-richtext/ctf-richtext"
+import {SectionHeadlines} from "@src/components/features/section-headlines"
+import LayoutContext, {defaultLayout} from "@src/layout-context"
+import {getColorConfigFromPalette} from "@src/theme"
 
 const useStyles = makeStyles((theme: Theme) => ({
   innerContainer: {
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    maxWidth: '126rem',
+    marginLeft: "auto",
+    marginRight: "auto",
+    maxWidth: "126rem",
     padding: theme.spacing(19, 0, 19),
   },
   innerContainerAfterInfoBlock: {
@@ -26,55 +26,55 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginBottom: theme.spacing(12),
   },
   blocksGrid: {
-    alignItems: 'flex-start',
-    display: 'flex',
-    justifyContent: 'center',
-    flexWrap: 'wrap',
-    marginLeft: '-5rem',
-    marginTop: '-5rem',
+    alignItems: "flex-start",
+    display: "flex",
+    justifyContent: "center",
+    flexWrap: "wrap",
+    marginLeft: "-5rem",
+    marginTop: "-5rem",
   },
   block: {
-    marginLeft: '5rem',
-    marginTop: '5rem',
-    maxWidth: '39rem',
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: 'calc((100% - 15rem) / 3)',
-      '@supports not (width: calc((100% - 15rem) / 3))': {
-        width: '29%',
+    marginLeft: "5rem",
+    marginTop: "5rem",
+    maxWidth: "39rem",
+    width: "100%",
+    [theme.breakpoints.up("md")]: {
+      width: "calc((100% - 15rem) / 3)",
+      "@supports not (width: calc((100% - 15rem) / 3))": {
+        width: "29%",
       },
     },
   },
   itemIcon: {
-    alignItems: 'center',
-    display: 'flex',
+    alignItems: "center",
+    display: "flex",
     fontSize: 0,
-    height: '11.3rem',
-    justifyContent: 'center',
-    width: '11.3rem',
+    height: "11.3rem",
+    justifyContent: "center",
+    width: "11.3rem",
   },
   itemText: {
-    '& .MuiContainer-root:last-child .MuiTypography-body1': {
+    "& .MuiContainer-root:last-child .MuiTypography-body1": {
       marginBottom: 0,
     },
-    '& .MuiContainer-root:first-child': {
-      marginTop: '3rem',
+    "& .MuiContainer-root:first-child": {
+      marginTop: "3rem",
     },
-    '& h3': {
-      fontSize: '1.8rem',
-      marginBottom: '2rem',
-      marginTop: '3rem',
+    "& h3": {
+      fontSize: "1.8rem",
+      marginBottom: "2rem",
+      marginTop: "3rem",
     },
-    '& p': {
-      color: '#6f6f6f',
-      fontSize: '1.8rem',
+    "& p": {
+      color: "#6f6f6f",
+      fontSize: "1.8rem",
       lineHeight: 1.52,
     },
   },
-}));
+}))
 
 export interface CtfInfoBlockPropsInterface extends InfoBlockFieldsFragment {
-  previousComponent?: string | null;
+  previousComponent?: string | null
 }
 
 export const CtfInfoBlock = (props: CtfInfoBlockPropsInterface) => {
@@ -88,12 +88,11 @@ export const CtfInfoBlock = (props: CtfInfoBlockPropsInterface) => {
     block3Image,
     block3Body,
     previousComponent,
-    colorPalette,
-    sys: { id },
-  } = props;
-  const colorConfig = getColorConfigFromPalette(colorPalette || '');
-  const classes = useStyles();
-  const inspectorMode = useContentfulInspectorMode({ entryId: id });
+    sys: {id},
+  } = props
+  const colorConfig = getColorConfigFromPalette()
+  const classes = useStyles()
+  const inspectorMode = useContentfulInspectorMode({entryId: id})
 
   return (
     <Container
@@ -105,7 +104,7 @@ export const CtfInfoBlock = (props: CtfInfoBlockPropsInterface) => {
       <div
         className={clsx(
           classes.innerContainer,
-          previousComponent === 'ComponentInfoBlock' && !headline && !subline
+          previousComponent === "ComponentInfoBlock" && !headline && !subline
             ? classes.innerContainerAfterInfoBlock
             : null,
         )}
@@ -113,17 +112,17 @@ export const CtfInfoBlock = (props: CtfInfoBlockPropsInterface) => {
         <SectionHeadlines
           headline={headline}
           headlineProps={{
-            style: { color: colorConfig.headlineColor },
-            ...inspectorMode({ fieldId: 'headline' }),
+            style: {color: colorConfig.headlineColor},
+            ...inspectorMode({fieldId: "headline"}),
           }}
           subline={subline}
           sublineProps={{
-            style: { color: colorConfig.textColor },
-            ...inspectorMode({ fieldId: 'subline' }),
+            style: {color: colorConfig.textColor},
+            ...inspectorMode({fieldId: "subline"}),
           }}
           className={classes.sectionHeadlines}
         />
-        <LayoutContext.Provider value={{ ...defaultLayout, parent: 'info-block' }}>
+        <LayoutContext.Provider value={{...defaultLayout, parent: "info-block"}}>
           <div className={classes.blocksGrid}>
             {block1Body && (
               <div className={classes.block}>
@@ -131,16 +130,16 @@ export const CtfInfoBlock = (props: CtfInfoBlockPropsInterface) => {
                   <div
                     className={classes.itemIcon}
                     {...inspectorMode({
-                      fieldId: 'block1Image',
+                      fieldId: "block1Image",
                     })}
                   >
                     <CtfAsset {...block1Image} showDescription={false} />
                   </div>
                 )}
                 <div
-                  style={{ color: colorConfig.textColor }}
+                  style={{color: colorConfig.textColor}}
                   {...inspectorMode({
-                    fieldId: 'block1Body',
+                    fieldId: "block1Body",
                   })}
                 >
                   <CtfRichtext {...block1Body} className={classes.itemText} />
@@ -153,16 +152,16 @@ export const CtfInfoBlock = (props: CtfInfoBlockPropsInterface) => {
                   <div
                     className={classes.itemIcon}
                     {...inspectorMode({
-                      fieldId: 'block2Image',
+                      fieldId: "block2Image",
                     })}
                   >
                     <CtfAsset {...block2Image} showDescription={false} />
                   </div>
                 )}
                 <div
-                  style={{ color: colorConfig.textColor }}
+                  style={{color: colorConfig.textColor}}
                   {...inspectorMode({
-                    fieldId: 'block2Body',
+                    fieldId: "block2Body",
                   })}
                 >
                   <CtfRichtext {...block2Body} className={classes.itemText} />
@@ -175,16 +174,16 @@ export const CtfInfoBlock = (props: CtfInfoBlockPropsInterface) => {
                   <div
                     className={classes.itemIcon}
                     {...inspectorMode({
-                      fieldId: 'block3Image',
+                      fieldId: "block3Image",
                     })}
                   >
                     <CtfAsset {...block3Image} showDescription={false} />
                   </div>
                 )}
                 <div
-                  style={{ color: colorConfig.textColor }}
+                  style={{color: colorConfig.textColor}}
                   {...inspectorMode({
-                    fieldId: 'block3Body',
+                    fieldId: "block3Body",
                   })}
                 >
                   <CtfRichtext {...block3Body} className={classes.itemText} />
@@ -195,5 +194,5 @@ export const CtfInfoBlock = (props: CtfInfoBlockPropsInterface) => {
         </LayoutContext.Provider>
       </div>
     </Container>
-  );
-};
+  )
+}

@@ -1,0 +1,70 @@
+fragment PageTopSectionFields on PageTopSectionItem {
+  __typename
+}
+
+fragment PageContentFields on PagePageContent {
+  __typename
+}
+
+fragment PageExtraSectionItemFields on PageExtraSectionItem {
+  __typename
+}
+
+
+fragment CtfProductDetailPageFields on ProductDetailPage {
+  __typename
+  sys {
+    id
+  }
+  pageName
+  internalName: pageName
+  slug
+  seo {
+    title
+    description
+    image {
+      ...AssetFields
+    }
+    noIndex
+    noFollow
+  }
+  topSectionCollection(limit: 20) {
+    items {
+      ... on Entry {
+        __typename
+        sys {
+          id
+        }
+      }
+      ...PageTopSectionFields
+    }
+  }
+  pageContent {
+    ... on Entry {
+      __typename
+      sys {
+        id
+      }
+    }
+    ...PageContentFields
+  }
+  extraSectionCollection(limit: 20) {
+    items {
+      ... on Entry {
+        __typename
+        sys {
+          id
+        }
+      }
+      ...PageExtraSectionItemFields
+    }
+  }
+}
+
+query CtfProductDetailPage($slug: String!, $locale: String, $preview: Boolean) {
+  productDetailPageCollection(where: {slug: $slug}, locale: $locale, preview: $preview, limit: 1) {
+    items {
+      ...CtfProductDetailPageFields
+    }
+  }
+}

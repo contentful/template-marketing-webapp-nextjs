@@ -20,7 +20,6 @@ fragment TextBlockFields on ComponentTextBlock {
       }
     }
   }
-  colorPalette
 }
 
 query CtfTextBlock($id: String!, $locale: String, $preview: Boolean) {

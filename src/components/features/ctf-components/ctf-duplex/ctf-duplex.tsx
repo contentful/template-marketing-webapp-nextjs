@@ -86,9 +86,9 @@ const useStyles = makeStyles((theme: Theme) => ({
 }))
 
 const DuplexContent = (props: DuplexFieldsFragment) => {
-  const {headline, bodyText, targetPage, ctaText, colorPalette} = props
+  const {headline, bodyText, targetPage, ctaText} = props
 
-  const colorConfig = getColorConfigFromPalette(colorPalette || "")
+  const colorConfig = getColorConfigFromPalette()
   const classes = useStyles()
   const inspectorMode = useContentfulInspectorMode({entryId: props.sys.id})
 
@@ -161,9 +161,9 @@ const DuplexImage = (props: DuplexFieldsFragment) => {
 }
 
 export const CtfDuplex = (props: DuplexFieldsFragment) => {
-  const {colorPalette, containerLayout: containerLayoutBoolean} = props
+  const {containerLayout: containerLayoutBoolean} = props
 
-  const colorConfig = getColorConfigFromPalette(colorPalette || "")
+  const colorConfig = getColorConfigFromPalette()
   const classes = useStyles()
 
   return (

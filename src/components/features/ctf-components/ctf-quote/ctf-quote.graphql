@@ -23,7 +23,6 @@ fragment QuoteFields on ComponentQuote {
     ...AssetFields
   }
   imagePosition
-  colorPalette
 }
 
 query CtfQuote($id: String!, $locale: String, $preview: Boolean) {

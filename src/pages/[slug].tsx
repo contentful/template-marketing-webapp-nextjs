@@ -1,102 +1,102 @@
-import { dehydrate, QueryClient } from '@tanstack/react-query';
-import { NextPage, NextPageContext } from 'next';
-import { useRouter } from 'next/router';
+import {dehydrate, QueryClient} from "@tanstack/react-query"
+import {NextPage, NextPageContext} from "next"
+import {useRouter} from "next/router"
 
-import { useCtfFooterQuery } from '@src/components/features/ctf-components/ctf-footer/__generated/ctf-footer.generated';
-import { useCtfNavigationQuery } from '@src/components/features/ctf-components/ctf-navigation/__generated/ctf-navigation.generated';
-import { useCtfPageQuery } from '@src/components/features/ctf-components/ctf-page/__generated/ctf-page.generated';
-import CtfPageGgl from '@src/components/features/ctf-components/ctf-page/ctf-page-gql';
-import { ComponentReferenceFieldsFragment } from '@src/lib/__generated/graphql.types';
-import { getServerSideTranslations } from '@src/lib/get-serverside-translations';
-import { prefetchMap, PrefetchMappingTypeFetcher } from '@src/lib/prefetch-mappings';
-import { prefetchPromiseArr } from '@src/lib/prefetch-promise-array';
+import {useCtfFooterQuery} from "@src/components/features/ctf-components/ctf-footer/__generated/ctf-footer.generated"
+import {useCtfNavigationQuery} from "@src/components/features/ctf-components/ctf-navigation/__generated/ctf-navigation.generated"
+import {useCtfPageQuery} from "@src/components/features/ctf-components/ctf-page/__generated/ctf-page.generated"
+import CtfPageGgl from "@src/components/features/ctf-components/ctf-page/ctf-page-gql"
+import {getServerSideTranslations} from "@src/lib/get-serverside-translations"
+import {prefetchMap, PrefetchMappingTypeFetcher} from "@src/lib/prefetch-mappings"
+import {prefetchPromiseArr} from "@src/lib/prefetch-promise-array"
+import {ComponentReferenceFieldsFragment} from "@src/lib/shared-fragments/__generated/ctf-componentMap.generated"
 
 const SlugPage: NextPage = () => {
-  const router = useRouter();
-  const slug = (router?.query.slug as string) || '';
+  const router = useRouter()
+  const slug = (router?.query.slug as string) || ""
 
-  return <CtfPageGgl slug={slug} />;
-};
+  return <CtfPageGgl slug={slug} />
+}
 
 export interface CustomNextPageContext extends NextPageContext {
   params: {
-    slug: string;
-  };
-  id: string;
+    slug: string
+  }
+  id: string
 }
 
-export const getServerSideProps = async ({ locale, params, query }: CustomNextPageContext) => {
-  const slug = params.slug;
-  const preview = Boolean(query.preview);
+export const getServerSideProps = async ({locale, params, query}: CustomNextPageContext) => {
+  const slug = params.slug
+  const preview = Boolean(query.preview)
 
   try {
-    const queryClient = new QueryClient();
+    const queryClient = new QueryClient()
 
     // Default queries
     await queryClient.prefetchQuery(
-      useCtfPageQuery.getKey({ slug, locale, preview }),
-      useCtfPageQuery.fetcher({ slug, locale, preview }),
-    );
+      useCtfPageQuery.getKey({slug, locale, preview}),
+      useCtfPageQuery.fetcher({slug, locale, preview}),
+    )
     await queryClient.prefetchQuery(
-      useCtfNavigationQuery.getKey({ locale, preview }),
-      useCtfNavigationQuery.fetcher({ locale, preview }),
-    );
+      useCtfNavigationQuery.getKey({locale, preview}),
+      useCtfNavigationQuery.fetcher({locale, preview}),
+    )
     await queryClient.prefetchQuery(
-      useCtfFooterQuery.getKey({ locale, preview }),
-      useCtfFooterQuery.fetcher({ locale, preview }),
-    );
+      useCtfFooterQuery.getKey({locale, preview}),
+      useCtfFooterQuery.fetcher({locale, preview}),
+    )
 
     // Dynamic queries
-    const pageData = await useCtfPageQuery.fetcher({ slug, locale, preview })();
-    const page = pageData.pageCollection?.items[0];
+    const pageData = await useCtfPageQuery.fetcher({slug, locale, preview})()
+    const page = pageData.pageCollection?.items[0]
 
-    const topSection = page?.topSectionCollection?.items;
-    const extraSection = page?.extraSectionCollection?.items;
-    const content: ComponentReferenceFieldsFragment | undefined | null = page?.pageContent;
+    const topSection = page?.topSectionCollection?.items
+    const extraSection = page?.extraSectionCollection?.items
+    const content: ComponentReferenceFieldsFragment | undefined | null = page?.pageContent
 
     await Promise.all([
-      ...prefetchPromiseArr({ inputArr: topSection, locale, queryClient }),
-      ...prefetchPromiseArr({ inputArr: extraSection, locale, queryClient }),
-      ...prefetchPromiseArr({ inputArr: [content], locale, queryClient }),
-    ]);
+      ...prefetchPromiseArr({inputArr: topSection, locale, queryClient}),
+      ...prefetchPromiseArr({inputArr: extraSection, locale, queryClient}),
+      ...prefetchPromiseArr({inputArr: [content], locale, queryClient}),
+    ])
 
     if (content) {
-      const { __typename, sys } = content;
+      const {__typename, sys} = content
 
       if (!__typename)
         return {
           notFound: true,
-        };
+        }
 
-      const query = prefetchMap?.[__typename];
+      const query = prefetchMap?.[__typename]
 
       if (!query)
         return {
           notFound: true,
-        };
+        }
 
       const data: PrefetchMappingTypeFetcher = await query.fetcher({
         id: sys.id,
         locale,
         preview,
-      })();
+      })()
 
       // Different data structured can be returned, this function makes sure the correct data is returned
       const inputArr = (__typename => {
-        if ('topicBusinessInfo' in data) {
-          return data?.topicBusinessInfo?.body?.links.entries.block;
+        if ("topicBusinessInfo" in data) {
+          return data?.topicBusinessInfo?.body?.links.entries.block
         }
 
-        if ('topicPerson' in data) {
-          return [data?.topicPerson];
+        if ("topicPerson" in data) {
+          return [data?.topicPerson]
         }
 
-        if ('topicProduct' in data) {
-          return [data?.topicProduct];
+        if ("topicProduct" in data) {
+          return [data?.topicProduct]
         }
 
-        return [];
-      })();
+        return []
+      })()
 
       await Promise.all([
         ...prefetchPromiseArr({
@@ -104,7 +104,7 @@ export const getServerSideProps = async ({ locale, params, query }: CustomNextPa
           locale,
           queryClient,
         }),
-      ]);
+      ])
     }
 
     return {
@@ -112,12 +112,12 @@ export const getServerSideProps = async ({ locale, params, query }: CustomNextPa
         ...(await getServerSideTranslations(locale)),
         dehydratedState: dehydrate(queryClient),
       },
-    };
+    }
   } catch {
     return {
       notFound: true,
-    };
+    }
   }
-};
+}
 
-export default SlugPage;
+export default SlugPage

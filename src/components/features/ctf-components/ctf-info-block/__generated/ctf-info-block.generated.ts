@@ -4,7 +4,7 @@ import { AssetFieldsFragment } from '../../ctf-asset/__generated/ctf-asset.gener
 import { AssetFieldsFragmentDoc } from '../../ctf-asset/__generated/ctf-asset.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { customFetcher } from '@src/lib/fetchConfig';
-export type InfoBlockFieldsFragment = { __typename: 'ComponentInfoBlock', headline?: string | null, subline?: string | null, colorPalette?: string | null, sys: { __typename?: 'Sys', id: string }, block1Image?: (
+export type InfoBlockFieldsFragment = { __typename: 'ComponentInfoBlock', headline?: string | null, subline?: string | null, sys: { __typename?: 'Sys', id: string }, block1Image?: (
     { __typename?: 'Asset' }
     & AssetFieldsFragment
   ) | null, block1Body?: { __typename?: 'ComponentInfoBlockBlock1Body', json: any } | null, block2Image?: (
@@ -53,7 +53,6 @@ export const InfoBlockFieldsFragmentDoc = `
   block3Body {
     json
   }
-  colorPalette
 }
     `;
 export const CtfInfoBlockDocument = `

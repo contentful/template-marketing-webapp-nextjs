@@ -1,7 +1,7 @@
 import {useContentfulLiveUpdates} from "@contentful/live-preview/react"
 import Head from "next/head"
 
-import CtfPage from "./ctf-page"
+import CtfProductDetailPage from "./ctf-product-detail-page"
 
 import {useCtfPageQuery} from "@src/components/features/ctf-components/ctf-page/__generated/ctf-page.generated"
 import {PageError} from "@src/components/features/errors/page-error"
@@ -14,7 +14,7 @@ interface Props {
   slug: string
 }
 
-const CtfPageGgl = ({slug: slugFromProps}: Props) => {
+const CtfProductDetailPageGgl = ({slug: slugFromProps}: Props) => {
   const slug = !slugFromProps || slugFromProps === "/" ? "home" : slugFromProps
 
   const {previewActive, locale} = useContentfulContext()
@@ -25,7 +25,7 @@ const CtfPageGgl = ({slug: slugFromProps}: Props) => {
     preview: previewActive,
   })
 
-  console.log("ctf-page", data)
+  console.log(data)
 
   const page = useContentfulLiveUpdates(tryget(() => data?.pageCollection!.items[0]))
 
@@ -86,9 +86,9 @@ const CtfPageGgl = ({slug: slugFromProps}: Props) => {
         )}
         <meta key="og:locale" property="og:locale" content={locale} />
       </Head>
-      <CtfPage {...page} />
+      <CtfProductDetailPage {...page} />
     </>
   )
 }
 
-export default CtfPageGgl
+export default CtfProductDetailPageGgl

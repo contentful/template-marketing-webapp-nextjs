@@ -23,7 +23,6 @@ fragment InfoBlockFields on ComponentInfoBlock {
   block3Body {
     json
   }
-  colorPalette
 }
 
 query CtfInfoBlock($id: String!, $locale: String, $preview: Boolean) {

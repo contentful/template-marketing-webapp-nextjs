@@ -128,7 +128,6 @@ enum AssetOrder {
 Full-width container for creating visually distinct Calls-to-Action (CTAs) [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/componentCta)
 """
 type ComponentCta implements Entry {
-  colorPalette(locale: String): String
   contentfulMetadata: ContentfulMetadata!
   ctaText(locale: String): String
   headline(locale: String): String
@@ -150,13 +149,6 @@ type ComponentCtaCollection {
 input ComponentCtaFilter {
   AND: [ComponentCtaFilter]
   OR: [ComponentCtaFilter]
-  colorPalette: String
-  colorPalette_contains: String
-  colorPalette_exists: Boolean
-  colorPalette_in: [String]
-  colorPalette_not: String
-  colorPalette_not_contains: String
-  colorPalette_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
   ctaText: String
   ctaText_contains: String
@@ -196,6 +188,7 @@ input ComponentCtaFilter {
 type ComponentCtaLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   pageCollection(limit: Int = 100, locale: String, order: [ComponentCtaLinkingCollectionsPageCollectionOrder], preview: Boolean, skip: Int = 0): PageCollection
+  productDetailPageCollection(limit: Int = 100, locale: String, order: [ComponentCtaLinkingCollectionsProductDetailPageCollectionOrder], preview: Boolean, skip: Int = 0): ProductDetailPageCollection
 }
 
 enum ComponentCtaLinkingCollectionsPageCollectionOrder {
@@ -215,9 +208,24 @@ enum ComponentCtaLinkingCollectionsPageCollectionOrder {
   sys_publishedVersion_DESC
 }
 
+enum ComponentCtaLinkingCollectionsProductDetailPageCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  pageName_ASC
+  pageName_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
 enum ComponentCtaOrder {
-  colorPalette_ASC
-  colorPalette_DESC
   ctaText_ASC
   ctaText_DESC
   headline_ASC
@@ -283,7 +291,6 @@ Full-width container for displaying side-by-side image and copy, includes multip
 """
 type ComponentDuplex implements Entry {
   bodyText(locale: String): ComponentDuplexBodyText
-  colorPalette(locale: String): String
   containerLayout(locale: String): Boolean
   contentfulMetadata: ContentfulMetadata!
   ctaText(locale: String): String
@@ -293,7 +300,7 @@ type ComponentDuplex implements Entry {
   internalName(locale: String): String
   linkedFrom(allowedLocales: [String]): ComponentDuplexLinkingCollections
   sys: Sys!
-  targetPage(locale: String, preview: Boolean): ComponentDuplexTargetPage
+  targetPage(locale: String, preview: Boolean, where: PageFilter): Page
 }
 
 type ComponentDuplexBodyText {
@@ -349,13 +356,6 @@ input ComponentDuplexFilter {
   bodyText_contains: String
   bodyText_exists: Boolean
   bodyText_not_contains: String
-  colorPalette: String
-  colorPalette_contains: String
-  colorPalette_exists: Boolean
-  colorPalette_in: [String]
-  colorPalette_not: String
-  colorPalette_not_contains: String
-  colorPalette_not_in: [String]
   containerLayout: Boolean
   containerLayout_exists: Boolean
   containerLayout_not: Boolean
@@ -386,12 +386,14 @@ input ComponentDuplexFilter {
   internalName_not_contains: String
   internalName_not_in: [String]
   sys: SysFilter
+  targetPage: cfPageNestedFilter
   targetPage_exists: Boolean
 }
 
 type ComponentDuplexLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   pageCollection(limit: Int = 100, locale: String, order: [ComponentDuplexLinkingCollectionsPageCollectionOrder], preview: Boolean, skip: Int = 0): PageCollection
+  productDetailPageCollection(limit: Int = 100, locale: String, order: [ComponentDuplexLinkingCollectionsProductDetailPageCollectionOrder], preview: Boolean, skip: Int = 0): ProductDetailPageCollection
 }
 
 enum ComponentDuplexLinkingCollectionsPageCollectionOrder {
@@ -411,9 +413,24 @@ enum ComponentDuplexLinkingCollectionsPageCollectionOrder {
   sys_publishedVersion_DESC
 }
 
+enum ComponentDuplexLinkingCollectionsProductDetailPageCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  pageName_ASC
+  pageName_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
 enum ComponentDuplexOrder {
-  colorPalette_ASC
-  colorPalette_DESC
   containerLayout_ASC
   containerLayout_DESC
   ctaText_ASC
@@ -434,14 +451,11 @@ enum ComponentDuplexOrder {
   sys_publishedVersion_DESC
 }
 
-union ComponentDuplexTargetPage = Page
-
 """
 Full-width container for displaying images and snappy copy; can include an optional CTA [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/componentHeroBanner)
 """
 type ComponentHeroBanner implements Entry {
   bodyText(locale: String): ComponentHeroBannerBodyText
-  colorPalette(locale: String): String
   contentfulMetadata: ContentfulMetadata!
   ctaText(locale: String): String
   headline(locale: String): String
@@ -507,13 +521,6 @@ input ComponentHeroBannerFilter {
   bodyText_contains: String
   bodyText_exists: Boolean
   bodyText_not_contains: String
-  colorPalette: String
-  colorPalette_contains: String
-  colorPalette_exists: Boolean
-  colorPalette_in: [String]
-  colorPalette_not: String
-  colorPalette_not_contains: String
-  colorPalette_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
   ctaText: String
   ctaText_contains: String
@@ -550,6 +557,7 @@ input ComponentHeroBannerFilter {
 type ComponentHeroBannerLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   pageCollection(limit: Int = 100, locale: String, order: [ComponentHeroBannerLinkingCollectionsPageCollectionOrder], preview: Boolean, skip: Int = 0): PageCollection
+  productDetailPageCollection(limit: Int = 100, locale: String, order: [ComponentHeroBannerLinkingCollectionsProductDetailPageCollectionOrder], preview: Boolean, skip: Int = 0): ProductDetailPageCollection
 }
 
 enum ComponentHeroBannerLinkingCollectionsPageCollectionOrder {
@@ -569,9 +577,24 @@ enum ComponentHeroBannerLinkingCollectionsPageCollectionOrder {
   sys_publishedVersion_DESC
 }
 
+enum ComponentHeroBannerLinkingCollectionsProductDetailPageCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  pageName_ASC
+  pageName_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
 enum ComponentHeroBannerOrder {
-  colorPalette_ASC
-  colorPalette_DESC
   ctaText_ASC
   ctaText_DESC
   headline_ASC
@@ -595,6 +618,117 @@ enum ComponentHeroBannerOrder {
 union ComponentHeroBannerTargetPage = Page
 
 """
+The carousel displaying various products that is located on the landing page [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/componentHeroCarousel)
+"""
+type ComponentHeroCarousel implements Entry {
+  carouselProductsCollection(limit: Int = 100, locale: String, order: [ComponentHeroCarouselCarouselProductsCollectionOrder], preview: Boolean, skip: Int = 0, where: TopicProductFilter): ComponentHeroCarouselCarouselProductsCollection
+  contentfulMetadata: ContentfulMetadata!
+  internalName(locale: String): String
+  linkedFrom(allowedLocales: [String]): ComponentHeroCarouselLinkingCollections
+  sys: Sys!
+}
+
+type ComponentHeroCarouselCarouselProductsCollection {
+  items: [TopicProduct]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+enum ComponentHeroCarouselCarouselProductsCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  name_ASC
+  name_DESC
+  price_ASC
+  price_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+type ComponentHeroCarouselCollection {
+  items: [ComponentHeroCarousel]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input ComponentHeroCarouselFilter {
+  AND: [ComponentHeroCarouselFilter]
+  OR: [ComponentHeroCarouselFilter]
+  carouselProducts: cfTopicProductNestedFilter
+  carouselProductsCollection_exists: Boolean
+  contentfulMetadata: ContentfulMetadataFilter
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  sys: SysFilter
+}
+
+type ComponentHeroCarouselLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  pageCollection(limit: Int = 100, locale: String, order: [ComponentHeroCarouselLinkingCollectionsPageCollectionOrder], preview: Boolean, skip: Int = 0): PageCollection
+  productDetailPageCollection(limit: Int = 100, locale: String, order: [ComponentHeroCarouselLinkingCollectionsProductDetailPageCollectionOrder], preview: Boolean, skip: Int = 0): ProductDetailPageCollection
+}
+
+enum ComponentHeroCarouselLinkingCollectionsPageCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  pageName_ASC
+  pageName_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum ComponentHeroCarouselLinkingCollectionsProductDetailPageCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  pageName_ASC
+  pageName_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum ComponentHeroCarouselOrder {
+  internalName_ASC
+  internalName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+"""
 Full-width container for displaying short bits of generic information with optional icons/visuals [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/componentInfoBlock)
 """
 type ComponentInfoBlock implements Entry {
@@ -604,7 +738,6 @@ type ComponentInfoBlock implements Entry {
   block2Image(locale: String, preview: Boolean): Asset
   block3Body(locale: String): ComponentInfoBlockBlock3Body
   block3Image(locale: String, preview: Boolean): Asset
-  colorPalette(locale: String): String
   contentfulMetadata: ContentfulMetadata!
   headline(locale: String): String
   internalName(locale: String): String
@@ -755,13 +888,6 @@ input ComponentInfoBlockFilter {
   block3Body_exists: Boolean
   block3Body_not_contains: String
   block3Image_exists: Boolean
-  colorPalette: String
-  colorPalette_contains: String
-  colorPalette_exists: Boolean
-  colorPalette_in: [String]
-  colorPalette_not: String
-  colorPalette_not_contains: String
-  colorPalette_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
   headline: String
   headline_contains: String
@@ -790,6 +916,7 @@ input ComponentInfoBlockFilter {
 type ComponentInfoBlockLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   pageCollection(limit: Int = 100, locale: String, order: [ComponentInfoBlockLinkingCollectionsPageCollectionOrder], preview: Boolean, skip: Int = 0): PageCollection
+  productDetailPageCollection(limit: Int = 100, locale: String, order: [ComponentInfoBlockLinkingCollectionsProductDetailPageCollectionOrder], preview: Boolean, skip: Int = 0): ProductDetailPageCollection
 }
 
 enum ComponentInfoBlockLinkingCollectionsPageCollectionOrder {
@@ -809,9 +936,24 @@ enum ComponentInfoBlockLinkingCollectionsPageCollectionOrder {
   sys_publishedVersion_DESC
 }
 
+enum ComponentInfoBlockLinkingCollectionsProductDetailPageCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  pageName_ASC
+  pageName_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
 enum ComponentInfoBlockOrder {
-  colorPalette_ASC
-  colorPalette_DESC
   headline_ASC
   headline_DESC
   internalName_ASC
@@ -881,9 +1023,27 @@ input ComponentProductTableFilter {
 type ComponentProductTableLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   pageCollection(limit: Int = 100, locale: String, order: [ComponentProductTableLinkingCollectionsPageCollectionOrder], preview: Boolean, skip: Int = 0): PageCollection
+  productDetailPageCollection(limit: Int = 100, locale: String, order: [ComponentProductTableLinkingCollectionsProductDetailPageCollectionOrder], preview: Boolean, skip: Int = 0): ProductDetailPageCollection
 }
 
 enum ComponentProductTableLinkingCollectionsPageCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  pageName_ASC
+  pageName_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum ComponentProductTableLinkingCollectionsProductDetailPageCollectionOrder {
   internalName_ASC
   internalName_DESC
   pageName_ASC
@@ -945,7 +1105,6 @@ enum ComponentProductTableProductsCollectionOrder {
 Full-width component for quotes, reviews and testimonials, includes multiple layout options [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/componentQuote)
 """
 type ComponentQuote implements Entry {
-  colorPalette(locale: String): String
   contentfulMetadata: ContentfulMetadata!
   image(locale: String, preview: Boolean): Asset
   imagePosition(locale: String): Boolean
@@ -966,13 +1125,6 @@ type ComponentQuoteCollection {
 input ComponentQuoteFilter {
   AND: [ComponentQuoteFilter]
   OR: [ComponentQuoteFilter]
-  colorPalette: String
-  colorPalette_contains: String
-  colorPalette_exists: Boolean
-  colorPalette_in: [String]
-  colorPalette_not: String
-  colorPalette_not_contains: String
-  colorPalette_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
   imagePosition: Boolean
   imagePosition_exists: Boolean
@@ -997,6 +1149,7 @@ input ComponentQuoteFilter {
 type ComponentQuoteLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   pageCollection(limit: Int = 100, locale: String, order: [ComponentQuoteLinkingCollectionsPageCollectionOrder], preview: Boolean, skip: Int = 0): PageCollection
+  productDetailPageCollection(limit: Int = 100, locale: String, order: [ComponentQuoteLinkingCollectionsProductDetailPageCollectionOrder], preview: Boolean, skip: Int = 0): ProductDetailPageCollection
 }
 
 enum ComponentQuoteLinkingCollectionsPageCollectionOrder {
@@ -1016,9 +1169,24 @@ enum ComponentQuoteLinkingCollectionsPageCollectionOrder {
   sys_publishedVersion_DESC
 }
 
+enum ComponentQuoteLinkingCollectionsProductDetailPageCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  pageName_ASC
+  pageName_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
 enum ComponentQuoteOrder {
-  colorPalette_ASC
-  colorPalette_DESC
   imagePosition_ASC
   imagePosition_DESC
   internalName_ASC
@@ -1080,7 +1248,6 @@ Constrained-width component for displaying ad-hoc paragraphs of text (FAQs, intr
 """
 type ComponentTextBlock implements Entry {
   body(locale: String): ComponentTextBlockBody
-  colorPalette(locale: String): String
   contentfulMetadata: ContentfulMetadata!
   headline(locale: String): String
   internalName(locale: String): String
@@ -1142,13 +1309,6 @@ input ComponentTextBlockFilter {
   body_contains: String
   body_exists: Boolean
   body_not_contains: String
-  colorPalette: String
-  colorPalette_contains: String
-  colorPalette_exists: Boolean
-  colorPalette_in: [String]
-  colorPalette_not: String
-  colorPalette_not_contains: String
-  colorPalette_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
   headline: String
   headline_contains: String
@@ -1177,6 +1337,7 @@ input ComponentTextBlockFilter {
 type ComponentTextBlockLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   pageCollection(limit: Int = 100, locale: String, order: [ComponentTextBlockLinkingCollectionsPageCollectionOrder], preview: Boolean, skip: Int = 0): PageCollection
+  productDetailPageCollection(limit: Int = 100, locale: String, order: [ComponentTextBlockLinkingCollectionsProductDetailPageCollectionOrder], preview: Boolean, skip: Int = 0): ProductDetailPageCollection
 }
 
 enum ComponentTextBlockLinkingCollectionsPageCollectionOrder {
@@ -1196,9 +1357,24 @@ enum ComponentTextBlockLinkingCollectionsPageCollectionOrder {
   sys_publishedVersion_DESC
 }
 
+enum ComponentTextBlockLinkingCollectionsProductDetailPageCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  pageName_ASC
+  pageName_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
 enum ComponentTextBlockOrder {
-  colorPalette_ASC
-  colorPalette_DESC
   headline_ASC
   headline_DESC
   internalName_ASC
@@ -1484,63 +1660,6 @@ enum FooterMenuOrder {
   sys_publishedVersion_DESC
   twitterLink_ASC
   twitterLink_DESC
-}
-
-"""
-The hero carousel component in the landing page that displays products in a slider [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/heroCarouselComponent)
-"""
-type HeroCarouselComponent implements Entry {
-  contentfulMetadata: ContentfulMetadata!
-  internalName(locale: String): String
-  linkedFrom(allowedLocales: [String]): HeroCarouselComponentLinkingCollections
-  productsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): HeroCarouselComponentProductsCollection
-  sys: Sys!
-}
-
-type HeroCarouselComponentCollection {
-  items: [HeroCarouselComponent]!
-  limit: Int!
-  skip: Int!
-  total: Int!
-}
-
-input HeroCarouselComponentFilter {
-  AND: [HeroCarouselComponentFilter]
-  OR: [HeroCarouselComponentFilter]
-  contentfulMetadata: ContentfulMetadataFilter
-  internalName: String
-  internalName_contains: String
-  internalName_exists: Boolean
-  internalName_in: [String]
-  internalName_not: String
-  internalName_not_contains: String
-  internalName_not_in: [String]
-  productsCollection_exists: Boolean
-  sys: SysFilter
-}
-
-type HeroCarouselComponentLinkingCollections {
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-}
-
-enum HeroCarouselComponentOrder {
-  internalName_ASC
-  internalName_DESC
-  sys_firstPublishedAt_ASC
-  sys_firstPublishedAt_DESC
-  sys_id_ASC
-  sys_id_DESC
-  sys_publishedAt_ASC
-  sys_publishedAt_DESC
-  sys_publishedVersion_ASC
-  sys_publishedVersion_DESC
-}
-
-type HeroCarouselComponentProductsCollection {
-  items: [Entry]!
-  limit: Int!
-  skip: Int!
-  total: Int!
 }
 
 """The 'HexColor' type represents color in `rgb:ffffff` string format."""
@@ -1964,13 +2083,6 @@ type PageExtraSectionCollection {
 input PageExtraSectionFilter {
   AND: [PageExtraSectionFilter]
   OR: [PageExtraSectionFilter]
-  colorPalette: String
-  colorPalette_contains: String
-  colorPalette_exists: Boolean
-  colorPalette_in: [String]
-  colorPalette_not: String
-  colorPalette_not_contains: String
-  colorPalette_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
   internalName: String
   internalName_contains: String
@@ -2028,8 +2140,6 @@ type PageLinkingCollections {
 }
 
 enum PageLinkingCollectionsComponentCtaCollectionOrder {
-  colorPalette_ASC
-  colorPalette_DESC
   ctaText_ASC
   ctaText_DESC
   headline_ASC
@@ -2049,8 +2159,6 @@ enum PageLinkingCollectionsComponentCtaCollectionOrder {
 }
 
 enum PageLinkingCollectionsComponentDuplexCollectionOrder {
-  colorPalette_ASC
-  colorPalette_DESC
   containerLayout_ASC
   containerLayout_DESC
   ctaText_ASC
@@ -2072,8 +2180,6 @@ enum PageLinkingCollectionsComponentDuplexCollectionOrder {
 }
 
 enum PageLinkingCollectionsComponentHeroBannerCollectionOrder {
-  colorPalette_ASC
-  colorPalette_DESC
   ctaText_ASC
   ctaText_DESC
   headline_ASC
@@ -2126,7 +2232,7 @@ enum PageOrder {
   sys_publishedVersion_DESC
 }
 
-union PagePageContent = ComponentProductTable | TopicBusinessInfo | TopicProduct
+union PagePageContent = ComponentHeroCarousel | ComponentProductTable | TopicBusinessInfo | TopicProduct
 
 type PageTopSectionCollection {
   items: [PageTopSectionItem]!
@@ -2138,13 +2244,6 @@ type PageTopSectionCollection {
 input PageTopSectionFilter {
   AND: [PageTopSectionFilter]
   OR: [PageTopSectionFilter]
-  colorPalette: String
-  colorPalette_contains: String
-  colorPalette_exists: Boolean
-  colorPalette_in: [String]
-  colorPalette_not: String
-  colorPalette_not_contains: String
-  colorPalette_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
   internalName: String
   internalName_contains: String
@@ -2157,6 +2256,151 @@ input PageTopSectionFilter {
 }
 
 union PageTopSectionItem = ComponentCta | ComponentDuplex | ComponentHeroBanner | ComponentInfoBlock | ComponentQuote | ComponentTextBlock
+
+"""
+Container that holds all the content for the product detail. Enables editors to publish a product, define its slug, select & arrange its content [See type definition](https://app.contentful.com/spaces/2kj13cowuhcm/content_types/productDetailPage)
+"""
+type ProductDetailPage implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  extraSectionCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, where: ProductDetailPageExtraSectionFilter): ProductDetailPageExtraSectionCollection
+  internalName(locale: String): String
+  linkedFrom(allowedLocales: [String]): ProductDetailPageLinkingCollections
+  pageContent(locale: String, preview: Boolean): ProductDetailPagePageContent
+  pageName(locale: String): String
+  seo(locale: String, preview: Boolean, where: SeoFilter): Seo
+  slug(locale: String): String
+  sys: Sys!
+  topSectionCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, where: ProductDetailPageTopSectionFilter): ProductDetailPageTopSectionCollection
+}
+
+type ProductDetailPageCollection {
+  items: [ProductDetailPage]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+type ProductDetailPageExtraSectionCollection {
+  items: [ProductDetailPageExtraSectionItem]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input ProductDetailPageExtraSectionFilter {
+  AND: [ProductDetailPageExtraSectionFilter]
+  OR: [ProductDetailPageExtraSectionFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  sys: SysFilter
+}
+
+union ProductDetailPageExtraSectionItem = ComponentCta | ComponentDuplex | ComponentHeroBanner | ComponentInfoBlock | ComponentQuote | ComponentTextBlock
+
+input ProductDetailPageFilter {
+  AND: [ProductDetailPageFilter]
+  OR: [ProductDetailPageFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  extraSection: cfextraSectionMultiTypeNestedFilter
+  extraSectionCollection_exists: Boolean
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  pageContent_exists: Boolean
+  pageName: String
+  pageName_contains: String
+  pageName_exists: Boolean
+  pageName_in: [String]
+  pageName_not: String
+  pageName_not_contains: String
+  pageName_not_in: [String]
+  seo: cfSeoNestedFilter
+  seo_exists: Boolean
+  slug: String
+  slug_contains: String
+  slug_exists: Boolean
+  slug_in: [String]
+  slug_not: String
+  slug_not_contains: String
+  slug_not_in: [String]
+  sys: SysFilter
+  topSection: cftopSectionMultiTypeNestedFilter
+  topSectionCollection_exists: Boolean
+}
+
+type ProductDetailPageLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  topicProductCollection(limit: Int = 100, locale: String, order: [ProductDetailPageLinkingCollectionsTopicProductCollectionOrder], preview: Boolean, skip: Int = 0): TopicProductCollection
+}
+
+enum ProductDetailPageLinkingCollectionsTopicProductCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  name_ASC
+  name_DESC
+  price_ASC
+  price_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum ProductDetailPageOrder {
+  internalName_ASC
+  internalName_DESC
+  pageName_ASC
+  pageName_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+union ProductDetailPagePageContent = ComponentHeroCarousel | ComponentProductTable | TopicBusinessInfo | TopicProduct
+
+type ProductDetailPageTopSectionCollection {
+  items: [ProductDetailPageTopSectionItem]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input ProductDetailPageTopSectionFilter {
+  AND: [ProductDetailPageTopSectionFilter]
+  OR: [ProductDetailPageTopSectionFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  sys: SysFilter
+}
+
+union ProductDetailPageTopSectionItem = ComponentCta | ComponentDuplex | ComponentHeroBanner | ComponentInfoBlock | ComponentQuote | ComponentTextBlock
 
 """
 The 'Quality' type represents quality as whole numeric values between `1` and `100`.
@@ -2173,6 +2417,8 @@ type Query {
   componentDuplexCollection(limit: Int = 100, locale: String, order: [ComponentDuplexOrder], preview: Boolean, skip: Int = 0, where: ComponentDuplexFilter): ComponentDuplexCollection
   componentHeroBanner(id: String!, locale: String, preview: Boolean): ComponentHeroBanner
   componentHeroBannerCollection(limit: Int = 100, locale: String, order: [ComponentHeroBannerOrder], preview: Boolean, skip: Int = 0, where: ComponentHeroBannerFilter): ComponentHeroBannerCollection
+  componentHeroCarousel(id: String!, locale: String, preview: Boolean): ComponentHeroCarousel
+  componentHeroCarouselCollection(limit: Int = 100, locale: String, order: [ComponentHeroCarouselOrder], preview: Boolean, skip: Int = 0, where: ComponentHeroCarouselFilter): ComponentHeroCarouselCollection
   componentInfoBlock(id: String!, locale: String, preview: Boolean): ComponentInfoBlock
   componentInfoBlockCollection(limit: Int = 100, locale: String, order: [ComponentInfoBlockOrder], preview: Boolean, skip: Int = 0, where: ComponentInfoBlockFilter): ComponentInfoBlockCollection
   componentProductTable(id: String!, locale: String, preview: Boolean): ComponentProductTable
@@ -2184,14 +2430,14 @@ type Query {
   entryCollection(limit: Int = 100, locale: String, order: [EntryOrder], preview: Boolean, skip: Int = 0, where: EntryFilter): EntryCollection
   footerMenu(id: String!, locale: String, preview: Boolean): FooterMenu
   footerMenuCollection(limit: Int = 100, locale: String, order: [FooterMenuOrder], preview: Boolean, skip: Int = 0, where: FooterMenuFilter): FooterMenuCollection
-  heroCarouselComponent(id: String!, locale: String, preview: Boolean): HeroCarouselComponent
-  heroCarouselComponentCollection(limit: Int = 100, locale: String, order: [HeroCarouselComponentOrder], preview: Boolean, skip: Int = 0, where: HeroCarouselComponentFilter): HeroCarouselComponentCollection
   menuGroup(id: String!, locale: String, preview: Boolean): MenuGroup
   menuGroupCollection(limit: Int = 100, locale: String, order: [MenuGroupOrder], preview: Boolean, skip: Int = 0, where: MenuGroupFilter): MenuGroupCollection
   navigationMenu(id: String!, locale: String, preview: Boolean): NavigationMenu
   navigationMenuCollection(limit: Int = 100, locale: String, order: [NavigationMenuOrder], preview: Boolean, skip: Int = 0, where: NavigationMenuFilter): NavigationMenuCollection
   page(id: String!, locale: String, preview: Boolean): Page
   pageCollection(limit: Int = 100, locale: String, order: [PageOrder], preview: Boolean, skip: Int = 0, where: PageFilter): PageCollection
+  productDetailPage(id: String!, locale: String, preview: Boolean): ProductDetailPage
+  productDetailPageCollection(limit: Int = 100, locale: String, order: [ProductDetailPageOrder], preview: Boolean, skip: Int = 0, where: ProductDetailPageFilter): ProductDetailPageCollection
   seo(id: String!, locale: String, preview: Boolean): Seo
   seoCollection(limit: Int = 100, locale: String, order: [SeoOrder], preview: Boolean, skip: Int = 0, where: SeoFilter): SeoCollection
   topicBusinessInfo(id: String!, locale: String, preview: Boolean): TopicBusinessInfo
@@ -2273,9 +2519,27 @@ input SeoFilter {
 type SeoLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   pageCollection(limit: Int = 100, locale: String, order: [SeoLinkingCollectionsPageCollectionOrder], preview: Boolean, skip: Int = 0): PageCollection
+  productDetailPageCollection(limit: Int = 100, locale: String, order: [SeoLinkingCollectionsProductDetailPageCollectionOrder], preview: Boolean, skip: Int = 0): ProductDetailPageCollection
 }
 
 enum SeoLinkingCollectionsPageCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  pageName_ASC
+  pageName_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum SeoLinkingCollectionsProductDetailPageCollectionOrder {
   internalName_ASC
   internalName_DESC
   pageName_ASC
@@ -2455,9 +2719,27 @@ input TopicBusinessInfoFilter {
 type TopicBusinessInfoLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   pageCollection(limit: Int = 100, locale: String, order: [TopicBusinessInfoLinkingCollectionsPageCollectionOrder], preview: Boolean, skip: Int = 0): PageCollection
+  productDetailPageCollection(limit: Int = 100, locale: String, order: [TopicBusinessInfoLinkingCollectionsProductDetailPageCollectionOrder], preview: Boolean, skip: Int = 0): ProductDetailPageCollection
 }
 
 enum TopicBusinessInfoLinkingCollectionsPageCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  pageName_ASC
+  pageName_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum TopicBusinessInfoLinkingCollectionsProductDetailPageCollectionOrder {
   internalName_ASC
   internalName_DESC
   pageName_ASC
@@ -2632,6 +2914,7 @@ type TopicProduct implements Entry {
   name(locale: String): String
   price(locale: String): Float
   sys: Sys!
+  targetPage(locale: String, preview: Boolean, where: ProductDetailPageFilter): ProductDetailPage
 }
 
 type TopicProductCollection {
@@ -2901,12 +3184,29 @@ input TopicProductFilter {
   price_not: Float
   price_not_in: [Float]
   sys: SysFilter
+  targetPage: cfProductDetailPageNestedFilter
+  targetPage_exists: Boolean
 }
 
 type TopicProductLinkingCollections {
+  componentHeroCarouselCollection(limit: Int = 100, locale: String, order: [TopicProductLinkingCollectionsComponentHeroCarouselCollectionOrder], preview: Boolean, skip: Int = 0): ComponentHeroCarouselCollection
   componentProductTableCollection(limit: Int = 100, locale: String, order: [TopicProductLinkingCollectionsComponentProductTableCollectionOrder], preview: Boolean, skip: Int = 0): ComponentProductTableCollection
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   pageCollection(limit: Int = 100, locale: String, order: [TopicProductLinkingCollectionsPageCollectionOrder], preview: Boolean, skip: Int = 0): PageCollection
+  productDetailPageCollection(limit: Int = 100, locale: String, order: [TopicProductLinkingCollectionsProductDetailPageCollectionOrder], preview: Boolean, skip: Int = 0): ProductDetailPageCollection
+}
+
+enum TopicProductLinkingCollectionsComponentHeroCarouselCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 enum TopicProductLinkingCollectionsComponentProductTableCollectionOrder {
@@ -2927,6 +3227,23 @@ enum TopicProductLinkingCollectionsComponentProductTableCollectionOrder {
 }
 
 enum TopicProductLinkingCollectionsPageCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  pageName_ASC
+  pageName_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum TopicProductLinkingCollectionsProductDetailPageCollectionOrder {
   internalName_ASC
   internalName_DESC
   pageName_ASC
@@ -2985,6 +3302,70 @@ input cfMenuGroupNestedFilter {
   internalTitle_not_contains: String
   internalTitle_not_in: [String]
   sys: SysFilter
+}
+
+input cfPageNestedFilter {
+  AND: [cfPageNestedFilter]
+  OR: [cfPageNestedFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  extraSectionCollection_exists: Boolean
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  pageContent_exists: Boolean
+  pageName: String
+  pageName_contains: String
+  pageName_exists: Boolean
+  pageName_in: [String]
+  pageName_not: String
+  pageName_not_contains: String
+  pageName_not_in: [String]
+  seo_exists: Boolean
+  slug: String
+  slug_contains: String
+  slug_exists: Boolean
+  slug_in: [String]
+  slug_not: String
+  slug_not_contains: String
+  slug_not_in: [String]
+  sys: SysFilter
+  topSectionCollection_exists: Boolean
+}
+
+input cfProductDetailPageNestedFilter {
+  AND: [cfProductDetailPageNestedFilter]
+  OR: [cfProductDetailPageNestedFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  extraSectionCollection_exists: Boolean
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  pageContent_exists: Boolean
+  pageName: String
+  pageName_contains: String
+  pageName_exists: Boolean
+  pageName_in: [String]
+  pageName_not: String
+  pageName_not_contains: String
+  pageName_not_in: [String]
+  seo_exists: Boolean
+  slug: String
+  slug_contains: String
+  slug_exists: Boolean
+  slug_in: [String]
+  slug_not: String
+  slug_not_contains: String
+  slug_not_in: [String]
+  sys: SysFilter
+  topSectionCollection_exists: Boolean
 }
 
 input cfSeoNestedFilter {
@@ -3082,18 +3463,12 @@ input cfTopicProductNestedFilter {
   price_not: Float
   price_not_in: [Float]
   sys: SysFilter
+  targetPage_exists: Boolean
 }
 
 input cfextraSectionMultiTypeNestedFilter {
   AND: [cfextraSectionMultiTypeNestedFilter]
   OR: [cfextraSectionMultiTypeNestedFilter]
-  colorPalette: String
-  colorPalette_contains: String
-  colorPalette_exists: Boolean
-  colorPalette_in: [String]
-  colorPalette_not: String
-  colorPalette_not_contains: String
-  colorPalette_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
   internalName: String
   internalName_contains: String
@@ -3172,13 +3547,6 @@ input cfgroupLinkMultiTypeNestedFilter {
 input cftopSectionMultiTypeNestedFilter {
   AND: [cftopSectionMultiTypeNestedFilter]
   OR: [cftopSectionMultiTypeNestedFilter]
-  colorPalette: String
-  colorPalette_contains: String
-  colorPalette_exists: Boolean
-  colorPalette_in: [String]
-  colorPalette_not: String
-  colorPalette_not_contains: String
-  colorPalette_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
   internalName: String
   internalName_contains: String
