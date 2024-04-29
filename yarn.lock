@@ -1170,20 +1170,20 @@
   resolved "https://registry.yarnpkg.com/@colors/colors/-/colors-1.5.0.tgz#bb504579c1cae923e6576a4f5da43d25f97bdbd9"
   integrity sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==
 
-"@contentful/content-source-maps@0.2.0-alpha.13":
-  version "0.2.0-alpha.13"
-  resolved "https://registry.yarnpkg.com/@contentful/content-source-maps/-/content-source-maps-0.2.0-alpha.13.tgz#43f27367c316069fbf30eb7bf22c5e898d7f924d"
-  integrity sha512-zlwdaA4TFgCIUJjWNtVH4V5MJ3nMQo/XiFGgPbMELz8c3xnoXDaPu9Z8tB0JPCndqSbBcS+ejCVwT2r5lEB5rA==
+"@contentful/content-source-maps@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@contentful/content-source-maps/-/content-source-maps-0.4.0.tgz#48c513c7347b7dd5bf71bdb4a060df4a8453c914"
+  integrity sha512-yjim5TpBMYnufKN+a42b1iJjq04NHppKjAPh4jK2f8yDfVPl/L6035dbFEE3KwDBaMbe3dP79RpMZ+909248fA==
   dependencies:
     "@vercel/stega" "^0.1.0"
     json-pointer "^0.6.2"
 
-"@contentful/live-preview@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@contentful/live-preview/-/live-preview-3.0.0.tgz#4934e556cd66a4bc7fe52fbf6f893c93f6438867"
-  integrity sha512-8um0ug2LKeWVfhDGFvn1mqKjP3MkgIWCC7SHavQE8wDWHpgx5Bi6ji69+fh4DdT6vsRM+OpASu7V2NO18x7IRw==
+"@contentful/live-preview@^3.3.1":
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/@contentful/live-preview/-/live-preview-3.3.1.tgz#9505197a3d2536b670404a928f34b128ab05b69c"
+  integrity sha512-OPbr2XDzekmrW7AHOIgekdkwGB97r4Mul95+T3W9tN79BJSqYAi+eTc7Exa8gPL9UV7wd489V8Vdqgp6D+l3rA==
   dependencies:
-    "@contentful/content-source-maps" "0.2.0-alpha.13"
+    "@contentful/content-source-maps" "^0.4.0"
     "@contentful/rich-text-types" "^16.2.0"
     flatted "^3.2.9"
     graphql-tag "^2.12.6"
@@ -1202,17 +1202,7 @@
   resolved "https://registry.yarnpkg.com/@contentful/rich-text-types/-/rich-text-types-15.15.1.tgz#96835cf0d0eba9e54f92ee43a4a1ce2a74014b53"
   integrity sha512-oheW0vkxWDuKBIIXDeJfZaRYo+NzKbC4gETMhH+MGJd4nfL9cqrOvtRxZBgnhICN4vDpH4my/zUIZGKcFqGSjQ==
 
-"@contentful/rich-text-types@^16.0.3":
-  version "16.0.3"
-  resolved "https://registry.yarnpkg.com/@contentful/rich-text-types/-/rich-text-types-16.0.3.tgz#c590268483e07881fb01b6799e837337093e42bf"
-  integrity sha512-BsUtXj93jo5XUt0YeUwfCkMWRoZIzJDPUIY4vMy9SwGIO9olTsMoQKadjA2ktlmK+Gg6710WH3eFKZxj2q39Iw==
-
-"@contentful/rich-text-types@^16.2.0":
-  version "16.3.0"
-  resolved "https://registry.yarnpkg.com/@contentful/rich-text-types/-/rich-text-types-16.3.0.tgz#d44145a43b32d61eb4d6a82d3001cdfddbbda42e"
-  integrity sha512-OfQmAu5bxE0CgQA3WlUleVej+ifFG/iXmB2DmUl4EyWyFue1aiIvfjxQhcDRSH4n1jUNMJ6L1wInZL8uV5m3TQ==
-
-"@contentful/rich-text-types@^16.3.0":
+"@contentful/rich-text-types@^16.0.3", "@contentful/rich-text-types@^16.2.0", "@contentful/rich-text-types@^16.3.0":
   version "16.3.4"
   resolved "https://registry.yarnpkg.com/@contentful/rich-text-types/-/rich-text-types-16.3.4.tgz#c5fc9c834dde03d4c4ee189900d304ce1888a74b"
   integrity sha512-PyVSrQa5j1hO4grgA0Ivo/taiOvW0uFN79JB5JkTG8U7DnWGI7Ap2As6zN6/E6YvDqb7w2cYRMSGSQ3qfxu8HQ==
@@ -4943,12 +4933,7 @@ flat-cache@^3.0.4:
     flatted "^3.1.0"
     rimraf "^3.0.2"
 
-flatted@^3.1.0:
-  version "3.2.7"
-  resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.7.tgz#609f39207cb614b89d0765b477cb2d437fbf9787"
-  integrity sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==
-
-flatted@^3.2.9:
+flatted@^3.1.0, flatted@^3.2.9:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.3.1.tgz#21db470729a6734d4997002f439cb308987f567a"
   integrity sha512-X8cqMLLie7KsNUDSdzeN8FYK9rEt4Dt67OsG/DNGnYTSDBG4uFAJFBnUeiV+zCVAvwFy56IjM9sH51jVaEhNxw==
