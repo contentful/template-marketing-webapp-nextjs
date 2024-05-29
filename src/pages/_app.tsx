@@ -16,6 +16,16 @@ import colorfulTheme from '@src/theme';
 import contentfulConfig from 'contentful.config';
 import nextI18nConfig from 'next-i18next.config';
 
+const allowedOriginList = [
+  'https://app.contentful.com',
+  'https://app.eu.contentful.com',
+  'https://app.flinkly.com',
+  'https://app.eu.flinkly.com',
+  'https://app.quirely.com',
+  'https://app.eu.quirely.com',
+  'http://localhost:3001',
+];
+
 const LivePreviewProvider = ({ children }) => {
   const { previewActive, locale } = useContentfulContext();
 
@@ -24,6 +34,7 @@ const LivePreviewProvider = ({ children }) => {
       locale={locale}
       enableInspectorMode={previewActive}
       enableLiveUpdates={previewActive}
+      targetOrigin={allowedOriginList}
     >
       {children}
     </ContentfulLivePreviewProvider>
