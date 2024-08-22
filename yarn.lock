@@ -1172,20 +1172,20 @@
   resolved "https://registry.yarnpkg.com/@colors/colors/-/colors-1.5.0.tgz#bb504579c1cae923e6576a4f5da43d25f97bdbd9"
   integrity sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==
 
-"@contentful/content-source-maps@^0.10.0":
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/@contentful/content-source-maps/-/content-source-maps-0.10.0.tgz#ff77954daa74da79aa2aa9e8f3692302e2a4c48f"
-  integrity sha512-MFuZQSznXmNGuxTNUeL0Nrt8h0tMfGEOODqkgUxRSfqDorP3e1pJNlgXL8SuTQfx+3Ho4De0liZaLJHBDWyMWg==
+"@contentful/content-source-maps@^0.11.0":
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/@contentful/content-source-maps/-/content-source-maps-0.11.0.tgz#8a3eedeb7e3959358dcfec2ad27330840ed8f9e8"
+  integrity sha512-eS/Bm1hzv5C3SyTpP08+sYVQ7fFcNUdANrLsotUWk+uC7WpponQIIY26R9QZhX7tE3r5Nq80Z+aR7uo5u31ksg==
   dependencies:
     "@vercel/stega" "^0.1.2"
     json-pointer "^0.6.2"
 
-"@contentful/live-preview@^4.5.1":
-  version "4.5.1"
-  resolved "https://registry.yarnpkg.com/@contentful/live-preview/-/live-preview-4.5.1.tgz#b01146e25d68018fba759b607c84bd22612874b8"
-  integrity sha512-UEnmvoAsS80QkLx1qVOyO+1igKiM7uwT+Jpo6I3JpTBx86RkTjj/M9W9+hc3vNMvRWEXHLxPCpxqMjeIvXwQpg==
+"@contentful/live-preview@^4.5.2":
+  version "4.5.2"
+  resolved "https://registry.yarnpkg.com/@contentful/live-preview/-/live-preview-4.5.2.tgz#e7fb3aae44bfa18066b557fe5690da3a8900fbc0"
+  integrity sha512-xn8zxc5bnE+D3nw7DqeEshtIlM1K240Nv5EsgLkgMxvtdtygzT8G6GqvBapV6fF3J82hnF5PT8tGRLgTAPWSxQ==
   dependencies:
-    "@contentful/content-source-maps" "^0.10.0"
+    "@contentful/content-source-maps" "^0.11.0"
     "@contentful/rich-text-types" "^16.2.0"
     flatted "^3.2.9"
     graphql-tag "^2.12.6"
@@ -1204,12 +1204,7 @@
   resolved "https://registry.yarnpkg.com/@contentful/rich-text-types/-/rich-text-types-15.15.1.tgz#96835cf0d0eba9e54f92ee43a4a1ce2a74014b53"
   integrity sha512-oheW0vkxWDuKBIIXDeJfZaRYo+NzKbC4gETMhH+MGJd4nfL9cqrOvtRxZBgnhICN4vDpH4my/zUIZGKcFqGSjQ==
 
-"@contentful/rich-text-types@^16.0.3", "@contentful/rich-text-types@^16.2.0":
-  version "16.3.4"
-  resolved "https://registry.yarnpkg.com/@contentful/rich-text-types/-/rich-text-types-16.3.4.tgz#c5fc9c834dde03d4c4ee189900d304ce1888a74b"
-  integrity sha512-PyVSrQa5j1hO4grgA0Ivo/taiOvW0uFN79JB5JkTG8U7DnWGI7Ap2As6zN6/E6YvDqb7w2cYRMSGSQ3qfxu8HQ==
-
-"@contentful/rich-text-types@^16.6.1":
+"@contentful/rich-text-types@^16.0.3", "@contentful/rich-text-types@^16.2.0", "@contentful/rich-text-types@^16.6.1":
   version "16.8.3"
   resolved "https://registry.yarnpkg.com/@contentful/rich-text-types/-/rich-text-types-16.8.3.tgz#f0effea5d0ed23f9abfd992c9b1be8a00f4d63e9"
   integrity sha512-vXwXDQMDbqITCWfTkU5R/q+uvXWCc1eYNvdZyjtrs0YDIYr4L7QJ2s1r4ZheIs3iVf3AFucKIHgDSpwCAm2wKA==
