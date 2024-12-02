@@ -1180,10 +1180,10 @@
     "@vercel/stega" "^0.1.2"
     json-pointer "^0.6.2"
 
-"@contentful/live-preview@^4.5.15":
-  version "4.5.15"
-  resolved "https://registry.yarnpkg.com/@contentful/live-preview/-/live-preview-4.5.15.tgz#b336d24e8e08249456d0307768ed70808466b0bb"
-  integrity sha512-c0QO5Zeu/GBcNPWGEclGg95Xe1u0MYV+zwajqquWftORXjj5rBUgGFhrvWwzh2E6tlF7o/WR1q+S1gQ/DxMJWQ==
+"@contentful/live-preview@^4.5.16":
+  version "4.5.16"
+  resolved "https://registry.yarnpkg.com/@contentful/live-preview/-/live-preview-4.5.16.tgz#7043402a81df225d1dd7373dcb4fd991d10e098b"
+  integrity sha512-XCB8KtLRVmJyo10+zZobA1DA4dxAcLkqpas2NaOX166Wsn17X9BfgpYd9uhELOe+nQKbraI4BERKH7PEj4/UiA==
   dependencies:
     "@contentful/content-source-maps" "^0.11.6"
     "@contentful/rich-text-types" "^17.0.0"
