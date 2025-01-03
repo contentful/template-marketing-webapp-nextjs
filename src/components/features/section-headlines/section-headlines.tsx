@@ -1,4 +1,4 @@
-import type { InspectorModeTags } from '@contentful/live-preview/dist/types';
+import type { InspectorModeTags } from '@contentful/live-preview/dist/inspectorMode/types';
 import { Theme, Typography, TypographyProps } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';

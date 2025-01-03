@@ -13,23 +13,26 @@ const LangPage: NextPage = () => {
 };
 
 export const getServerSideProps = async ({ locale, query }: NextPageContext) => {
+  const preview = Boolean(query.preview);
+
   try {
-    const preview = Boolean(query.preview);
     const queryClient = new QueryClient();
 
     // Default queries
-    await queryClient.prefetchQuery(
-      useCtfPageQuery.getKey({ slug: 'home', locale, preview }),
-      useCtfPageQuery.fetcher({ slug: 'home', locale, preview }),
-    );
-    await queryClient.prefetchQuery(
-      useCtfNavigationQuery.getKey({ locale, preview }),
-      useCtfNavigationQuery.fetcher({ locale, preview }),
-    );
-    await queryClient.prefetchQuery(
-      useCtfFooterQuery.getKey({ locale, preview }),
-      useCtfFooterQuery.fetcher({ locale, preview }),
-    );
+    const prefetchPromises = [
+      queryClient.prefetchQuery(
+        useCtfPageQuery.getKey({ slug: 'home', locale, preview }),
+        useCtfPageQuery.fetcher({ slug: 'home', locale, preview }),
+      ),
+      queryClient.prefetchQuery(
+        useCtfNavigationQuery.getKey({ locale, preview }),
+        useCtfNavigationQuery.fetcher({ locale, preview }),
+      ),
+      queryClient.prefetchQuery(
+        useCtfFooterQuery.getKey({ locale, preview }),
+        useCtfFooterQuery.fetcher({ locale, preview }),
+      ),
+    ];
 
     // Dynamic queries
     const pageData = await useCtfPageQuery.fetcher({ slug: 'home', locale, preview })();
@@ -40,6 +43,7 @@ export const getServerSideProps = async ({ locale, query }: NextPageContext) => 
     const extraSection = page?.extraSectionCollection?.items;
 
     await Promise.all([
+      ...prefetchPromises,
       ...prefetchPromiseArr({ inputArr: topSection, locale, queryClient }),
       ...prefetchPromiseArr({ inputArr: extraSection, locale, queryClient }),
       ...prefetchPromiseArr({ inputArr: [content], locale, queryClient }),
