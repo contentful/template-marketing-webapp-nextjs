@@ -21,8 +21,8 @@ export const getServerSideProps = async ({ locale, query }: NextPageContext) => 
     // Default queries
     const prefetchPromises = [
       queryClient.prefetchQuery(
-        useCtfPageQuery.getKey({ slug: 'home', locale, preview }),
-        useCtfPageQuery.fetcher({ slug: 'home', locale, preview }),
+        useCtfPageQuery.getKey({ slug: process.env.CONTENTFUL_HOME_SLUG!, locale, preview }),
+        useCtfPageQuery.fetcher({ slug: process.env.CONTENTFUL_HOME_SLUG!, locale, preview }),
       ),
       queryClient.prefetchQuery(
         useCtfNavigationQuery.getKey({ locale, preview }),
@@ -35,7 +35,7 @@ export const getServerSideProps = async ({ locale, query }: NextPageContext) => 
     ];
 
     // Dynamic queries
-    const pageData = await useCtfPageQuery.fetcher({ slug: 'home', locale, preview })();
+    const pageData = await useCtfPageQuery.fetcher({ slug: process.env.CONTENTFUL_HOME_SLUG!, locale, preview })();
     const page = pageData.pageCollection?.items[0];
 
     const topSection = page?.topSectionCollection?.items;

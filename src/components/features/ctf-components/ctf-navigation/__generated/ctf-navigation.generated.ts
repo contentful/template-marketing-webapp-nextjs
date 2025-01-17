@@ -17,6 +17,7 @@ export type NavigationFieldsFragment = { __typename?: 'NavigationMenuCollection'
 export type CtfNavigationQueryVariables = Types.Exact<{
   locale?: Types.InputMaybe<Types.Scalars['String']>;
   preview?: Types.InputMaybe<Types.Scalars['Boolean']>;
+  brand?: Types.InputMaybe<Types.Scalars['String']>;
 }>;
 
 
@@ -47,8 +48,12 @@ export const NavigationFieldsFragmentDoc = `
 }
     `;
 export const CtfNavigationDocument = `
-    query CtfNavigation($locale: String, $preview: Boolean) {
-  navigationMenuCollection(locale: $locale, preview: $preview, limit: 1) {
+    query CtfNavigation($locale: String, $preview: Boolean, $brand: String) {
+  navigationMenuCollection(
+    locale: $locale
+    preview: $preview
+    where: {internalName_contains: $brand}
+  ) {
     ...NavigationFields
   }
 }

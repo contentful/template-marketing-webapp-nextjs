@@ -18,8 +18,8 @@ fragment NavigationFields on NavigationMenuCollection {
   }
 }
 
-query CtfNavigation($locale: String, $preview: Boolean) {
-  navigationMenuCollection(locale: $locale, preview: $preview, limit: 1) {
+query CtfNavigation($locale: String, $preview: Boolean, $brand: String) {
+  navigationMenuCollection(locale: $locale, preview: $preview, where: { internalName_contains: $brand }) {
     ...NavigationFields
   }
 }

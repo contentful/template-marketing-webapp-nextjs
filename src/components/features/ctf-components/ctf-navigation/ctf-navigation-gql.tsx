@@ -11,6 +11,7 @@ export const CtfNavigationGql = () => {
   const { data, isLoading } = useCtfNavigationQuery({
     locale,
     preview: previewActive,
+    brand: process.env.CONTENTFUL_GLOBAL_BRAND,
   });
 
   const navigationMenuCollection = useContentfulLiveUpdates(data?.navigationMenuCollection);

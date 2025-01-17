@@ -15,7 +15,7 @@ interface Props {
 }
 
 const CtfPageGgl = ({ slug: slugFromProps }: Props) => {
-  const slug = !slugFromProps || slugFromProps === '/' ? 'home' : slugFromProps;
+  const slug = !slugFromProps || slugFromProps === '/' ? process.env.CONTENTFUL_HOME_SLUG : slugFromProps;
 
   const { previewActive, locale } = useContentfulContext();
 
@@ -79,7 +79,7 @@ const CtfPageGgl = ({ slug: slugFromProps }: Props) => {
           <meta
             key="og:url"
             property="og:url"
-            content={`${contentfulConfig.meta.url}/${page.slug === 'home' ? '' : `/${page.slug}`}`}
+            content={`${contentfulConfig.meta.url}/${page.slug === process.env.CONTENTFUL_HOME_SLUG ? '' : `/${page.slug}`}`}
           />
         )}
         <meta key="og:locale" property="og:locale" content={locale} />
