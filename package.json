@@ -73,7 +73,7 @@
     "@graphql-codegen/typescript-operations": "2.5.3",
     "@graphql-codegen/typescript-react-query": "4.1.0",
     "@tanstack/react-query-devtools": "4.26.1",
-    "@types/imagesloaded": "4.1.2",
+    "@types/imagesloaded": "4.1.7",
     "@types/lodash": "4.14.191",
     "@types/react": "18.0.28",
     "@types/react-transition-group": "4.4.5",
