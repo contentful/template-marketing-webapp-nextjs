@@ -64,8 +64,8 @@
     "styled-jsx": "5.1.7"
   },
   "devDependencies": {
-    "@babel/core": "7.21.3",
-    "@babel/eslint-parser": "7.21.3",
+    "@babel/core": "7.28.0",
+    "@babel/eslint-parser": "7.28.0",
     "@graphql-codegen/cli": "2.16.5",
     "@graphql-codegen/introspection": "2.2.3",
     "@graphql-codegen/near-operation-file-preset": "2.5.0",
