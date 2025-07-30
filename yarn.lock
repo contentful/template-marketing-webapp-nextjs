@@ -3423,7 +3423,7 @@ axe-core@^4.6.2:
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.6.3.tgz#fc0db6fdb65cc7a80ccf85286d91d64ababa3ece"
   integrity sha512-/BQzOX780JhsxDnPpH4ZiyrJAzcd8AfzFPkv+89veFSr1rcMjuq2JDCwypKaPeB6ljHp9KjXhPpjgCvQlWYuqg==
 
-axios@^1.8.4:
+axios@^1.11.0:
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/axios/-/axios-1.11.0.tgz#c2ec219e35e414c025b2095e8b8280278478fdb6"
   integrity sha512-1Lx3WLFQWm3ooKDYZD1eXmoGO9fxYQjrycfHFC8P0sCfQVXyROp0p9PFWBehewBOdCwHc+f/b8I0fMto5eSfwA==
@@ -4119,16 +4119,16 @@ contentful-batch-libs@^9.6.0:
     lodash.clonedeep "^4.5.0"
     uuid "^9.0.1"
 
-contentful-import@9.4.107:
-  version "9.4.107"
-  resolved "https://registry.yarnpkg.com/contentful-import/-/contentful-import-9.4.107.tgz#8ef5df862a937a36030ff5d173645b0340ed502e"
-  integrity sha512-aRhQbsBz5Tk++gkzW2eXPtvNi6dPhLwJb8JofQXXU2z3ixk57q+YVvxYIAmoN9mxV3utDOMKjHW6Opa/J2dD2g==
+contentful-import@9.4.108:
+  version "9.4.108"
+  resolved "https://registry.yarnpkg.com/contentful-import/-/contentful-import-9.4.108.tgz#245775986798b5000739864b34277120493540b0"
+  integrity sha512-+RsU9uI++/ZsRR5d6nMrj2hYEp6bdC7WUn/kjdCieCQML211ZNcgHiVVjDC3SO9ZKA6HosTVevX/dBDG0d+rzg==
   dependencies:
     "@discoveryjs/json-ext" "^0.6.3"
     bluebird "^3.7.2"
     cli-table3 "^0.6.5"
     contentful-batch-libs "^9.6.0"
-    contentful-management "^11.54.3"
+    contentful-management "^11.54.4"
     date-fns "^2.30.0"
     eslint "^8.57.1"
     eslint-config-standard "^17.1.0"
@@ -4140,13 +4140,13 @@ contentful-import@9.4.107:
     p-queue "^6.6.2"
     yargs "^17.7.2"
 
-contentful-management@^11.54.3:
-  version "11.54.3"
-  resolved "https://registry.yarnpkg.com/contentful-management/-/contentful-management-11.54.3.tgz#7fa25a36f64a7077b2a5d91bbf295ac32dca9f29"
-  integrity sha512-/2aGKLBW5pUytB4Q3mpza80wgs5rf9Rg+q/ps0txrWgWQBbE1ZSeX5Yg6e+ogVIKvV28JgfBKRndAVZE4LFdaw==
+contentful-management@^11.54.4:
+  version "11.54.4"
+  resolved "https://registry.yarnpkg.com/contentful-management/-/contentful-management-11.54.4.tgz#0bf338cae388e9af4ac8d0f6e0f93bda91572501"
+  integrity sha512-h1+aIj0xHVK3aDn6KkDOmCGO5kqwElgEEELel6EZC4skJkBOHU5DACdHc3thkhua5hbSufExNjmwdmN4TLFb8w==
   dependencies:
     "@contentful/rich-text-types" "^16.6.1"
-    axios "^1.8.4"
+    axios "^1.11.0"
     contentful-sdk-core "^9.0.1"
     fast-copy "^3.0.0"
     globals "^15.15.0"
