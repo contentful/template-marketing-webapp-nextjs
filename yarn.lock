@@ -3607,15 +3607,12 @@ babel-jest@30.0.5:
     graceful-fs "^4.2.11"
     slash "^3.0.0"
 
-babel-loader@8.4.1:
-  version "8.4.1"
-  resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-8.4.1.tgz#6ccb75c66e62c3b144e1c5f2eaec5b8f6c08c675"
-  integrity sha512-nXzRChX+Z1GoE6yWavBQg6jDslyFF3SDjl2paADuoQtQW10JqShJt62R6eJQ5m/pjJFDT8xgKIWSP85OY8eXeA==
+babel-loader@10.0.0:
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-10.0.0.tgz#b9743714c0e1e084b3e4adef3cd5faee33089977"
+  integrity sha512-z8jt+EdS61AMw22nSfoNJAZ0vrtmhPRVi6ghL3rCeRZI8cdNYFiV5xeV3HbE7rlZZNmGH8BVccwWt8/ED0QOHA==
   dependencies:
-    find-cache-dir "^3.3.1"
-    loader-utils "^2.0.4"
-    make-dir "^3.1.0"
-    schema-utils "^2.6.5"
+    find-up "^5.0.0"
 
 babel-loader@^8.2.5:
   version "8.3.0"
@@ -7257,7 +7254,7 @@ listr@^0.14.1:
     p-map "^2.0.0"
     rxjs "^6.3.3"
 
-loader-utils@^2.0.0, loader-utils@^2.0.4:
+loader-utils@^2.0.0:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/loader-utils/-/loader-utils-2.0.4.tgz#8b5cb38b5c34a9a018ee1fc0e6a066d1dfcc528c"
   integrity sha512-xXqpXoINfFhgua9xiqD8fPFHgkoq1mmmpE92WlDbm9rNRd/EbRb+Gqf908T2DMfuHjjJlksiK2RbHVOdD/MqSw==
