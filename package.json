@@ -95,7 +95,7 @@
     "eslint-plugin-react-hooks": "4.6.2",
     "husky": "9.1.7",
     "i18next": "21.10.0",
-    "lint-staged": "13.3.0",
+    "lint-staged": "16.1.4",
     "postcss": "8.5.6",
     "prettier": "2.8.8",
     "react-i18next": "11.18.6",
