@@ -103,7 +103,7 @@
   },
   "resolutions": {
     "**/trim": "1.0.1",
-    "**/trim-newlines": "3.0.1",
+    "**/trim-newlines": "5.0.0",
     "**/glob-parent": "6.0.2"
   }
 }
