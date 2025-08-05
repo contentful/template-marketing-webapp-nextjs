@@ -44,7 +44,7 @@
     "@next/bundle-analyzer": "12.3.7",
     "@svgr/webpack": "8.1.0",
     "@tanstack/react-query": "4.40.1",
-    "clsx": "1.2.1",
+    "clsx": "2.1.1",
     "dotenv": "16.6.1",
     "graphql": "16.11.0",
     "intersection-observer": "0.12.2",
