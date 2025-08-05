@@ -42,7 +42,7 @@
     "@mui/material": "5.11.13",
     "@mui/styles": "5.11.13",
     "@next/bundle-analyzer": "12.3.7",
-    "@svgr/webpack": "6.5.1",
+    "@svgr/webpack": "8.1.0",
     "@tanstack/react-query": "4.40.1",
     "clsx": "1.2.1",
     "dotenv": "16.6.1",
