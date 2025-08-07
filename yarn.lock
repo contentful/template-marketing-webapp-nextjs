@@ -9127,12 +9127,10 @@ react-is@^18.2.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.2.0.tgz#199431eeaaa2e09f86427efbb4f1473edb47609b"
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
 
-react-kawaii@0.18.0:
-  version "0.18.0"
-  resolved "https://registry.yarnpkg.com/react-kawaii/-/react-kawaii-0.18.0.tgz#bc95c6b1f76acfcaca83fcc6a4790e10beb821db"
-  integrity sha512-/+WLnb2sNyqpfE8wurxZRtx2NkypZWHU6XMphj0yo2nvUFm1BX7MD7o+L+gAwkD7UJvfBDtzFP9a+CmIXkge3A==
-  dependencies:
-    prop-types "^15.6.2"
+react-kawaii@1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/react-kawaii/-/react-kawaii-1.6.0.tgz#59f3b674cd44926ea86250e41d5933bd46d53060"
+  integrity sha512-cmz9zzuIEplDIPRrtW9MiQsszVZBRzFYFwfxbArskn+0qMLzTQJPq+6avkVDvvTHI9GzvnMc9HhVCwUq+KpJUg==
 
 react-transition-group@4.4.5, react-transition-group@^4.4.5:
   version "4.4.5"
