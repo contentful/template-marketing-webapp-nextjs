@@ -84,7 +84,7 @@
     "babel-plugin-import": "1.13.8",
     "circular-dependency-plugin": "5.2.2",
     "contentful-import": "9.4.109",
-    "eslint": "8.57.1",
+    "eslint": "9.35.0",
     "eslint-config-next": "15.4.6",
     "eslint-config-prettier": "10.1.8",
     "eslint-import-resolver-typescript": "4.4.4",
