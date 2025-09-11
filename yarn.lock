@@ -5364,20 +5364,20 @@ contentful-batch-libs@^9.6.0:
     lodash.clonedeep "^4.5.0"
     uuid "^9.0.1"
 
-contentful-import@9.4.109:
-  version "9.4.109"
-  resolved "https://registry.yarnpkg.com/contentful-import/-/contentful-import-9.4.109.tgz#3d0c1bbc0f2dec6bbb8e2cfa36bafeb6c8608245"
-  integrity sha512-+ld0sZqQnNYpdizsbDWPdfLEcYZq7SVnPiR9mNahOY2lymJzexOg8TTnq6PnjXSozzFyNAxRltLIV2JW0432Vg==
+contentful-import@9.4.112:
+  version "9.4.112"
+  resolved "https://registry.yarnpkg.com/contentful-import/-/contentful-import-9.4.112.tgz#57c53d6f64fecf3e991d7170223d09aed9104b84"
+  integrity sha512-hxf/4evH7vz3ck6reHMxksqXFmNnXkpOjpo9zTKwhNiYbV2sdgW6uZWGIxex1gjo0wyN6NVp213ukY5/mGwNSQ==
   dependencies:
     "@discoveryjs/json-ext" "^0.6.3"
     bluebird "^3.7.2"
     cli-table3 "^0.6.5"
     contentful-batch-libs "^9.6.0"
-    contentful-management "^11.54.4"
+    contentful-management "^11.56.0"
     date-fns "^2.30.0"
     eslint "^8.57.1"
     eslint-config-standard "^17.1.0"
-    joi "^18.0.0"
+    joi "^18.0.1"
     listr "^0.14.1"
     listr-update-renderer "^0.5.0"
     listr-verbose-renderer "^0.6.0"
@@ -5385,10 +5385,10 @@ contentful-import@9.4.109:
     p-queue "^6.6.2"
     yargs "^17.7.2"
 
-contentful-management@^11.54.4:
-  version "11.54.4"
-  resolved "https://registry.yarnpkg.com/contentful-management/-/contentful-management-11.54.4.tgz#0bf338cae388e9af4ac8d0f6e0f93bda91572501"
-  integrity sha512-h1+aIj0xHVK3aDn6KkDOmCGO5kqwElgEEELel6EZC4skJkBOHU5DACdHc3thkhua5hbSufExNjmwdmN4TLFb8w==
+contentful-management@^11.56.0:
+  version "11.56.0"
+  resolved "https://registry.yarnpkg.com/contentful-management/-/contentful-management-11.56.0.tgz#fbf41fc6f0af7d7e81d6d44631b719eaffe2e80b"
+  integrity sha512-d8VeXYNpV3mgiWVEkB1g085NK/RLn2GkqIrjrgZul+2+9GIVRQP9EUrchLaJSizje4Mqrx1y7QlnAImZNZIovw==
   dependencies:
     "@contentful/rich-text-types" "^16.6.1"
     axios "^1.11.0"
@@ -7908,10 +7908,10 @@ jiti@^2.0.0:
   resolved "https://registry.yarnpkg.com/jiti/-/jiti-2.5.1.tgz#bd099c1c2be1c59bbea4e5adcd127363446759d0"
   integrity sha512-twQoecYPiVA5K/h6SxtORw/Bs3ar+mLUtoPSc7iMXzQzK8d7eJ/R09wmTwAjiamETn1cXYPGfNnu7DMoHgu12w==
 
-joi@^18.0.0:
-  version "18.0.0"
-  resolved "https://registry.yarnpkg.com/joi/-/joi-18.0.0.tgz#03b62ab0ff12bf9f1366a80c0865bb8669fe7a51"
-  integrity sha512-fpbpXN/TD04Xz1/cCXzUR3ghDkhyiHjbzTILx3wNyKXIzQJ55uYAkUGWwhX72uHge/6MdFA/kp1ZUh35DlYmaA==
+joi@^18.0.1:
+  version "18.0.1"
+  resolved "https://registry.yarnpkg.com/joi/-/joi-18.0.1.tgz#1e1885d035cc6ca1624e81bf22112e7c1ee38e1b"
+  integrity sha512-IiQpRyypSnLisQf3PwuN2eIHAsAIGZIrLZkd4zdvIar2bDyhM91ubRjy8a3eYablXsh9BeI/c7dmPYHca5qtoA==
   dependencies:
     "@hapi/address" "^5.1.1"
     "@hapi/formula" "^3.0.2"
