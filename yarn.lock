@@ -5393,16 +5393,16 @@ contentful-batch-libs@^9.6.0:
     lodash.clonedeep "^4.5.0"
     uuid "^9.0.1"
 
-contentful-import@9.4.114:
-  version "9.4.114"
-  resolved "https://registry.yarnpkg.com/contentful-import/-/contentful-import-9.4.114.tgz#db3718295f1dd56268cb874fb614f47035905790"
-  integrity sha512-MfC5SUqc41Oy5MkUGr4UMU9wQbqaMvXCfllAzw3xGxZ5Yvxxax9bS08pjLAsdc3q3e+MTw5fpnczlDy8c+Pwcw==
+contentful-import@9.4.115:
+  version "9.4.115"
+  resolved "https://registry.yarnpkg.com/contentful-import/-/contentful-import-9.4.115.tgz#0547778593d2481971f02fefebcb56f62ec06608"
+  integrity sha512-PuojFRuNS8foPqmArY3CmPJn9/APsQ3IJPm4W68BJIgpnmBNLBQMHv8TwnU061Q0tCM/vXIujmBRhIwXPhD/fA==
   dependencies:
     "@discoveryjs/json-ext" "^0.6.3"
     bluebird "^3.7.2"
     cli-table3 "^0.6.5"
     contentful-batch-libs "^9.6.0"
-    contentful-management "^11.57.0"
+    contentful-management "^11.57.1"
     date-fns "^2.30.0"
     eslint "^8.57.1"
     eslint-config-standard "^17.1.0"
@@ -5414,10 +5414,10 @@ contentful-import@9.4.114:
     p-queue "^6.6.2"
     yargs "^17.7.2"
 
-contentful-management@^11.57.0:
-  version "11.57.1"
-  resolved "https://registry.yarnpkg.com/contentful-management/-/contentful-management-11.57.1.tgz#9638e4d1176833a4cddd94d464621aba6f8798a8"
-  integrity sha512-QMi8kzwbhjhAcJaBs0N2u3oGTS4X4RUyflbEH3uelZgzS4t/mO+hr0LvaBXgXQsxOwDJYf0ZlMJtdiKzx9XJSA==
+contentful-management@^11.57.1:
+  version "11.57.2"
+  resolved "https://registry.yarnpkg.com/contentful-management/-/contentful-management-11.57.2.tgz#d837a304c952041d4f7199b0bced401a721d72a0"
+  integrity sha512-8GR4rl7GhHuluD3w0j2BcSVRFui9Wyl0ZTcCsxZjlQ8kzBLpA01jKqJAZOysZ5kPdMtRZTfpcJL0Y0ppn+HI7g==
   dependencies:
     "@contentful/rich-text-types" "^16.6.1"
     axios "^1.11.0"
