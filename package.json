@@ -83,7 +83,7 @@
     "babel-loader": "10.0.0",
     "babel-plugin-import": "1.13.8",
     "circular-dependency-plugin": "5.2.2",
-    "contentful-import": "9.4.117",
+    "contentful-import": "9.4.118",
     "eslint": "8.57.1",
     "eslint-config-next": "15.4.6",
     "eslint-config-prettier": "10.1.8",
