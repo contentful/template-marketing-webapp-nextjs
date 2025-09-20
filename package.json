@@ -58,7 +58,7 @@
     "react-dom": "18.2.0",
     "react-kawaii": "1.6.0",
     "react-transition-group": "4.4.5",
-    "rehype-parse": "8.0.5",
+    "rehype-parse": "9.0.1",
     "rehype-react": "7.2.0",
     "remark-breaks": "4.0.0",
     "styled-jsx": "5.1.7"
