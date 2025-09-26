@@ -2066,17 +2066,17 @@
     json-pointer "^0.6.2"
     lodash.isequal "^4.5.0"
 
-"@contentful/rich-text-react-renderer@16.1.3":
-  version "16.1.3"
-  resolved "https://registry.yarnpkg.com/@contentful/rich-text-react-renderer/-/rich-text-react-renderer-16.1.3.tgz#7038c26416eb3c86697b69e55636f36a600340c1"
-  integrity sha512-o7LAJ+u4i1foRamc7pUUgRjWuTKfOifhMfBkkpbiThNEUAmRnmodlWg9GSjNgNQDib5Ccfu5hGDiJNNbuejXdQ==
+"@contentful/rich-text-react-renderer@16.1.5":
+  version "16.1.5"
+  resolved "https://registry.yarnpkg.com/@contentful/rich-text-react-renderer/-/rich-text-react-renderer-16.1.5.tgz#7afac9924c63bb015df257103eade49843ce91c3"
+  integrity sha512-5iGG70YVH1f0zcsG7zKOCHdF5zHo38dpCXdAw5gjPpJkI5MTI200KUKU+q0B55Bdp4PzFQr6EcTSUI+k6jluyw==
   dependencies:
-    "@contentful/rich-text-types" "^17.2.2"
+    "@contentful/rich-text-types" "^17.2.4"
 
-"@contentful/rich-text-types@17.2.2", "@contentful/rich-text-types@^17.2.2":
-  version "17.2.2"
-  resolved "https://registry.yarnpkg.com/@contentful/rich-text-types/-/rich-text-types-17.2.2.tgz#2be7a99b05f5fff4573e6dce7a752aabca39c50c"
-  integrity sha512-Mpq62n2zNHc1Z2GbExd8yiJD4esFjv+0efi/zziYRIbhvlakvIALYJbt720agoGg62QLPrX3r3e8U/iGSRiaqQ==
+"@contentful/rich-text-types@17.2.4", "@contentful/rich-text-types@^17.2.4":
+  version "17.2.4"
+  resolved "https://registry.yarnpkg.com/@contentful/rich-text-types/-/rich-text-types-17.2.4.tgz#09ba76364ecf068e3e3a80dd407fdf3d47a283be"
+  integrity sha512-3y456l+x5aPzqcvjpG6L66sIkfH66rBl1QtGKexgJ3Nvd6k4ORvpAJ6gMDBz3WMAYvXGrVZMyhlFE0e6UdHngA==
   dependencies:
     "@lingui/core" "^5.4.1"
     is-plain-obj "^3.0.0"
