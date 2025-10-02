@@ -2046,20 +2046,20 @@
   resolved "https://registry.yarnpkg.com/@colors/colors/-/colors-1.5.0.tgz#bb504579c1cae923e6576a4f5da43d25f97bdbd9"
   integrity sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==
 
-"@contentful/content-source-maps@^0.11.33":
-  version "0.11.33"
-  resolved "https://registry.yarnpkg.com/@contentful/content-source-maps/-/content-source-maps-0.11.33.tgz#2150c1bf0944d0fb1922abce6f86ca216d365ea1"
-  integrity sha512-5C5dLmG9L7se9i+DvO+sT3AocyRNmqVXWO/zoDKUsu7PuyWhDFbZHh/eZQCd0D15bGKOm3jN+lwxW13f8ogiYA==
+"@contentful/content-source-maps@^0.11.35":
+  version "0.11.35"
+  resolved "https://registry.yarnpkg.com/@contentful/content-source-maps/-/content-source-maps-0.11.35.tgz#9ced4777ccd1bab3f1418f379dc21c9c2f3b4de8"
+  integrity sha512-cbZ9cRGid+G7V/QosOt1YW1fXOE47cb1rn+Da9ATe4qbYZsBv3XTcto4HVpHF2J2mlAjf+asl6YAkfj5epcQUg==
   dependencies:
     "@vercel/stega" "^0.1.2"
     json-pointer "^0.6.2"
 
-"@contentful/live-preview@4.6.45":
-  version "4.6.45"
-  resolved "https://registry.yarnpkg.com/@contentful/live-preview/-/live-preview-4.6.45.tgz#73f73bc97296ef6492addf5972739961d4a9a04d"
-  integrity sha512-d3BOLxG6ogaUCoISXgSolkJdgBFJqD6SJy9B8eZ3D93lT/ToET+ctitsbiXOsvC3scr0PVXVFpjGO0S9/zjtEA==
+"@contentful/live-preview@4.6.47":
+  version "4.6.47"
+  resolved "https://registry.yarnpkg.com/@contentful/live-preview/-/live-preview-4.6.47.tgz#963778b52ac0107a84d1681e6a7907e124310140"
+  integrity sha512-EiE5xgIrZ82o/oSVUKfv5N+GCXrYDico661mLnThYQvsIM9vm8E7dHEDcw0sNAfGBcQHFeEIzDrQT77oEPz8IA==
   dependencies:
-    "@contentful/content-source-maps" "^0.11.33"
+    "@contentful/content-source-maps" "^0.11.35"
     "@contentful/rich-text-types" "^17.0.0"
     flatted "^3.2.9"
     graphql-tag "^2.12.6"
