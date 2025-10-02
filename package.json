@@ -45,7 +45,7 @@
     "@svgr/webpack": "8.1.0",
     "@tanstack/react-query": "4.41.0",
     "clsx": "2.1.1",
-    "dotenv": "17.2.2",
+    "dotenv": "17.2.3",
     "graphql": "16.11.0",
     "intersection-observer": "0.12.2",
     "lodash": "4.17.21",
