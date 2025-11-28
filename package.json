@@ -74,7 +74,7 @@
     "@graphql-codegen/typescript-react-query": "6.1.1",
     "@tanstack/react-query-devtools": "4.41.0",
     "@types/imagesloaded": "4.1.7",
-    "@types/lodash": "4.17.20",
+    "@types/lodash": "4.17.21",
     "@types/react": "18.0.28",
     "@types/react-transition-group": "4.4.12",
     "@typescript-eslint/eslint-plugin": "5.62.0",
