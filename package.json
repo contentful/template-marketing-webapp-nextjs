@@ -68,7 +68,7 @@
     "@babel/eslint-parser": "7.28.5",
     "@graphql-codegen/cli": "6.1.0",
     "@graphql-codegen/introspection": "5.0.0",
-    "@graphql-codegen/near-operation-file-preset": "3.1.0",
+    "@graphql-codegen/near-operation-file-preset": "4.0.0",
     "@graphql-codegen/typescript": "5.0.7",
     "@graphql-codegen/typescript-operations": "5.0.7",
     "@graphql-codegen/typescript-react-query": "6.1.1",
