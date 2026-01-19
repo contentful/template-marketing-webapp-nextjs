@@ -8,7 +8,7 @@ import { Link } from '@src/components/shared/link';
 import typewriter from 'analytics';
 
 const signUpLink =
-  'https://www.contentful.com/starter-templates/marketing-website/sign-up/?action=create_starter_template&template_name=marketing';
+  'https://www.contentful.com/sign-up/?action=create_starter_template&template_name=marketing';
 const systemUIFontFamilies =
   '"Avenir Next W01", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
 
