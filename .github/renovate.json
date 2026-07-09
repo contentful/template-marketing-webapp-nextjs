@@ -1,11 +1,9 @@
 {
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:js-app",
+    "local>contentful/renovate-config",
     "schedule:nonOfficeHours",
-    ":semanticCommits",
-    ":semanticCommitScopeDisabled",
-    ":automergeRequireAllStatusChecks",
-    ":automergeAll"
+    ":semanticCommitScopeDisabled"
   ],
   "timezone": "UTC",
   "prConcurrentLimit": 15,
