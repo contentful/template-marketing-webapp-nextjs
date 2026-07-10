@@ -2,10 +2,9 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "local>contentful/renovate-config",
-    "schedule:nonOfficeHours",
+    ":pinAllExceptPeerDependencies",
     ":semanticCommitScopeDisabled"
   ],
-  "timezone": "UTC",
   "prConcurrentLimit": 15,
   "reviewers": ["contentful/team-workflows"],
   "baseBranches": ["main", "main-private"]
