@@ -1,11 +1,16 @@
+const serverContentfulConfig = {
+  endpoint: `https://graphql.contentful.com/content/v1/spaces/${String(process.env.CONTENTFUL_SPACE_ID)}`,
+  spaceId: process.env.CONTENTFUL_SPACE_ID,
+  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+  previewAccessToken: process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN,
+};
+
 export const fetchConfig = {
-  endpoint: `https://graphql.contentful.com/content/v1/spaces/${String(
-    process.env.CONTENTFUL_SPACE_ID,
-  )}`,
+  endpoint: serverContentfulConfig.endpoint,
   params: {
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
+      Authorization: `Bearer ${serverContentfulConfig.accessToken}`,
     },
   },
 };
@@ -15,12 +20,11 @@ export function fetchContentful(
   variables?: { preview?: boolean | null },
   options?: RequestInit['headers'],
 ) {
-  const spaceId = process.env.CONTENTFUL_SPACE_ID;
   const token = variables?.preview
-    ? process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN
-    : process.env.CONTENTFUL_ACCESS_TOKEN;
+    ? serverContentfulConfig.previewAccessToken
+    : serverContentfulConfig.accessToken;
 
-  if (!spaceId || !token) {
+  if (!serverContentfulConfig.spaceId || !token) {
     throw new Error('Contentful is not configured');
   }
 
@@ -28,7 +32,7 @@ export function fetchContentful(
   headers.set('Content-Type', 'application/json');
   headers.set('Authorization', `Bearer ${token}`);
 
-  return fetch(`https://graphql.contentful.com/content/v1/spaces/${spaceId}`, {
+  return fetch(serverContentfulConfig.endpoint, {
     method: 'POST',
     headers,
     body: JSON.stringify({ query, variables }),
