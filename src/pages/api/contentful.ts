@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
+import { getContentfulQuery } from '@src/lib/contentfulQueries';
 import { fetchContentful } from '@src/lib/serverFetchConfig';
 
 type ContentfulResponse = {
@@ -20,13 +21,19 @@ export default async function handler(
     return res.status(400).json({ error: 'Request body must be JSON' });
   }
 
-  const { query, variables } = req.body as {
-    query?: string;
+  const { operationName, variables } = req.body as {
+    operationName?: string;
     variables?: Record<string, unknown> & { preview?: boolean | null };
   };
 
-  if (typeof query !== 'string' || !query.trim()) {
-    return res.status(400).json({ error: 'Query is required' });
+  if (typeof operationName !== 'string' || !operationName.trim()) {
+    return res.status(400).json({ error: 'Operation name is required' });
+  }
+
+  const query = getContentfulQuery(operationName);
+
+  if (!query) {
+    return res.status(400).json({ error: 'Unknown operation' });
   }
 
   try {
