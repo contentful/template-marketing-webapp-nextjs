@@ -17,6 +17,10 @@ const { withPlugins } = nextComposePlugins.extend(() => ({}));
  */
 module.exports = withPlugins(plugins, {
   i18n,
+  /**
+   * add the environment variables you would like exposed to the client here
+   * documentation: https://nextjs.org/docs/api-reference/next.config.js/environment-variables
+   */
   env: {
     ENVIRONMENT_NAME: process.env.ENVIRONMENT_NAME,
   },
