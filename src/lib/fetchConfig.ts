@@ -4,16 +4,23 @@ export function customFetcher<TData, TVariables extends { preview?: boolean | nu
   options?: RequestInit['headers'],
 ) {
   return async (): Promise<TData> => {
+    const headers = new Headers(options);
+    headers.set('Content-Type', 'application/json');
+
     const res =
       typeof window === 'undefined'
         ? await (await import('./serverFetchConfig')).fetchContentful(query, variables, options)
         : await fetch('/api/contentful', {
             method: 'POST',
-            ...options,
+            headers,
             body: JSON.stringify({ query, variables }),
           });
 
     const json = await res.json();
+
+    if (!res.ok) {
+      throw new Error(json.error || json.errors?.[0]?.message || `Contentful request failed (${res.status})`);
+    }
 
     if (json.errors) {
       const { message } = json.errors[0];

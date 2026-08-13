@@ -24,13 +24,13 @@ export function fetchContentful(
     throw new Error('Contentful is not configured');
   }
 
+  const headers = new Headers(options);
+  headers.set('Content-Type', 'application/json');
+  headers.set('Authorization', `Bearer ${token}`);
+
   return fetch(`https://graphql.contentful.com/content/v1/spaces/${spaceId}`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-      ...options,
-    },
+    headers,
     body: JSON.stringify({ query, variables }),
   });
 }
