@@ -6,51 +6,8 @@ import { fetchConfig } from '@src/lib/fetchConfig';
 
 type Domain = 'contentful.com' | 'flinkly.com' | 'quirely.com';
 
-const fetcherGraphqlEndpoint = (space_id, domain = 'contentful.com') =>
+const fetcherGraphqlEndpoint = (space_id, domain: Domain = 'contentful.com') =>
   `https://graphql.${domain}/content/v1/spaces/${space_id}`;
-
-const fetcherHeaderParamsDefault = {
-  headers: {
-    'Content-Type': 'application/json',
-    Authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
-  },
-};
-
-const fetcherHeaderParamsPreview = {
-  headers: {
-    'Content-Type': 'application/json',
-    Authorization: `Bearer ${process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN}`,
-  },
-};
-
-const getFetchParams = ({
-  previewActive,
-  shouldUseSpaceCredsFromParams,
-  preview_token,
-  delivery_token,
-}) => {
-  if (previewActive) {
-    if (shouldUseSpaceCredsFromParams) {
-      return {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${preview_token}`,
-        },
-      };
-    } else {
-      return fetcherHeaderParamsPreview;
-    }
-  } else if (shouldUseSpaceCredsFromParams) {
-    return {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${delivery_token}`,
-      },
-    };
-  } else {
-    return fetcherHeaderParamsDefault;
-  }
-};
 
 export const useExternalSpaceAndPreview = () => {
   const router = useRouter();
@@ -61,20 +18,21 @@ export const useExternalSpaceAndPreview = () => {
 
   const previewActive = !!preview;
   const shouldUseSpaceCredsFromParams = !!delivery_token && !!preview_token && !!space_id;
+  const requestedDomain = Array.isArray(domain) ? domain[0] : domain;
+  const externalDomain =
+    requestedDomain === 'flinkly.com' || requestedDomain === 'quirely.com'
+      ? requestedDomain
+      : 'contentful.com';
 
-  const fetchParams = getFetchParams({
-    previewActive,
-    shouldUseSpaceCredsFromParams,
-    preview_token,
-    delivery_token,
-  });
-
-  fetchConfig.params.headers = fetchParams.headers;
-  fetchConfig.previewParams.headers = fetchParams.headers;
-
-  fetchConfig.endpoint = shouldUseSpaceCredsFromParams
-    ? fetcherGraphqlEndpoint(space_id, domain as Domain)
-    : fetcherGraphqlEndpoint(process.env.CONTENTFUL_SPACE_ID);
+  fetchConfig.external = shouldUseSpaceCredsFromParams
+    ? {
+        endpoint: fetcherGraphqlEndpoint(space_id, externalDomain),
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${previewActive ? preview_token : delivery_token}`,
+        },
+      }
+    : undefined;
 
   useEffect(() => {
     if (shouldUseSpaceCredsFromParams) {
