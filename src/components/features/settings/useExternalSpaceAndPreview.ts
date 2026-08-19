@@ -9,6 +9,20 @@ type Domain = 'contentful.com' | 'flinkly.com' | 'quirely.com';
 const fetcherGraphqlEndpoint = (space_id, domain: Domain = 'contentful.com') =>
   `https://graphql.${domain}/content/v1/spaces/${space_id}`;
 
+const resolveExternalDomain = (domain: string | string[] | undefined): Domain => {
+  const requestedDomain = Array.isArray(domain) ? domain[0] : domain;
+
+  switch (requestedDomain) {
+    case 'contentful.com':
+    case 'flinkly.com':
+    case 'quirely.com':
+      return requestedDomain;
+    default:
+      // Keep URL-supplied credentials from being sent to an arbitrary host.
+      return 'contentful.com';
+  }
+};
+
 export const useExternalSpaceAndPreview = () => {
   const router = useRouter();
 
@@ -18,15 +32,10 @@ export const useExternalSpaceAndPreview = () => {
 
   const previewActive = !!preview;
   const shouldUseSpaceCredsFromParams = !!delivery_token && !!preview_token && !!space_id;
-  const requestedDomain = Array.isArray(domain) ? domain[0] : domain;
-  const externalDomain =
-    requestedDomain === 'flinkly.com' || requestedDomain === 'quirely.com'
-      ? requestedDomain
-      : 'contentful.com';
 
   fetchConfig.external = shouldUseSpaceCredsFromParams
     ? {
-        endpoint: fetcherGraphqlEndpoint(space_id, externalDomain),
+        endpoint: fetcherGraphqlEndpoint(space_id, resolveExternalDomain(domain)),
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${previewActive ? preview_token : delivery_token}`,
