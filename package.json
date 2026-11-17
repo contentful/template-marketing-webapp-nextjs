@@ -12,7 +12,7 @@
     "dev": "next dev",
     "build": "next build",
     "export": "next build && next export",
-    "prepare": "husky install",
+    "postinstall": "husky install",
     "type-check": "tsc --noEmit",
     "test": "echo \"Error: no test specified\" && exit 1",
     "migrate:init": "ctf-migrate init",
@@ -102,8 +102,9 @@
     "typescript": "4.8.4"
   },
   "resolutions": {
-    "**/trim": "1.0.1",
-    "**/trim-newlines": "5.0.0",
-    "**/glob-parent": "6.0.2"
-  }
+    "trim": "1.0.1",
+    "trim-newlines": "5.0.0",
+    "glob-parent": "6.0.2"
+  },
+  "packageManager": "yarn@4.18.1+sha512.b2e1e7524f654f2749d32b4ebcb4622473cb5bcbc485df2007e12a154e50162a4d795526768bc5f5b8f81717bfd79deb2472813d86fb5ae2eb551fa9c872b08f"
 }
