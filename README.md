@@ -80,9 +80,10 @@ $~$
 
 ### Dependencies
 
-To install the necessary dependencies, run:
+To install the necessary dependencies, enable Yarn 4 (pinned in `package.json`) once and run:
 
 ```bash
+corepack enable
 yarn
 ```
 
